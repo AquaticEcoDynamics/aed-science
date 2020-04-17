@@ -1,0 +1,12 @@
+book_filename: "bookdown-start"
+repo: https://github.com/gilesnknight/Bookdown-practice
+output_dir: docs
+rmd_files: ["index.Rmd", "01-welcome.Rmd", "02-foreward.Rmd","03-preface.Rmd",
+            "04-intro.Rmd","05-oxygen.Rmd", "06-inorganic_nutrients.Rmd",
+            "07-organic_matter.Rmd", "08-phytoplankton.Rmd",
+            "09-zooplankton.Rmd", "10-pathogens.Rmd", "11-geochemistry.Rmd",
+            "12-sediment_quality.Rmd", "13-benthic_vegetation.Rmd",
+            "14-benthic_macroinvertebrates.Rmd",
+            "15-riparian_ecohydrology.Rmd", "16-riparian_biochemistry.Rmd",
+            "17-biotic_habitat_quality.Rmd"]
+new_session: yes
