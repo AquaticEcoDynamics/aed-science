@@ -3,8 +3,7 @@ title: "Draft AED2/AED2+ Manual"
 author: "Giles Knight"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
-github-repo: gilesnknight/Bookdown-practice
-description: "Construction in progress."
+github-repo: AquaticEcoDynamics/aed-science
+description: "Work in progress."
 ---
 
-<!-- ––>

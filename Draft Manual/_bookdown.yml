@@ -1,12 +1,29 @@
 book_filename: "bookdown-start"
 repo: https://github.com/gilesnknight/Bookdown-practice
 output_dir: docs
-rmd_files: ["index.Rmd", "01-welcome.Rmd", "02-foreward.Rmd","03-preface.Rmd",
-            "04-intro.Rmd","05-oxygen.Rmd", "06-inorganic_nutrients.Rmd",
-            "07-organic_matter.Rmd", "08-phytoplankton.Rmd",
-            "09-zooplankton.Rmd", "10-pathogens.Rmd", "11-geochemistry.Rmd",
-            "12-sediment_quality.Rmd", "13-benthic_vegetation.Rmd",
-            "14-benthic_macroinvertebrates.Rmd",
-            "15-riparian_ecohydrology.Rmd", "16-riparian_biochemistry.Rmd",
-            "17-biotic_habitat_quality.Rmd"]
+rmd_files: ["index.Rmd",
+            "01-welcome.Rmd",
+            "02-foreward.Rmd",
+            "03-preface.Rmd",
+            "04-intro.Rmd",
+            "05-tracers.Rmd",
+            "06-oxygen.Rmd",
+            "07-inorganic_nutrients.Rmd",
+            "08-organic_matter.Rmd",
+            "09-phytoplankton.Rmd",
+            "10-zooplankton.Rmd",
+            "11-totals.Rmd", 
+            "12-sediment_flux.Rmd",
+            "13-sediment_biogeochemistry.Rmd",
+            "14-aqueous_geochemistry.Rmd",
+            "15-stable_isotopes.Rmd",
+            "16-pathogens.Rmd",
+            "17-benthic_macrophytes.Rmd",
+            "18-macroalgae.Rmd",
+            "19-bivalves.Rmd",
+            "20-habitat_quality.Rmd",
+            "21-land_soil_hydrology.Rmd",
+            "22-soil_biogeochemistry.Rmd",
+            "23-riparian_vegetation.Rmd",
+            "24-ASS.Rmd"]
 new_session: yes

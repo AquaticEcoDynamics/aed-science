@@ -1,3 +1,0 @@
-# (PART)  AED2+ {-} 
-
-# Pathogens
