@@ -1,5 +1,5 @@
 book_filename: "bookdown-start"
-repo: https://github.com/gilesnknight/Bookdown-practice
+repo: https://github.com/AquaticEcoDynamics/aed-science
 output_dir: docs
 rmd_files: ["index.Rmd",
             "01-welcome.Rmd",
