@@ -1,5 +1,5 @@
 book_filename: "bookdown-start"
-repo: https://github.com/AquaticEcoDynamics/aed-science
+repo: https://github.com/AquaticEcoDynamics/aed-science/tree/master/Draft%20Manual
 output_dir: docs
 rmd_files: ["index.Rmd",
             "01-welcome.Rmd",
@@ -12,7 +12,7 @@ rmd_files: ["index.Rmd",
             "08-organic_matter.Rmd",
             "09-phytoplankton.Rmd",
             "10-zooplankton.Rmd",
-            "11-totals.Rmd", 
+            "11-totals.Rmd",
             "12-sediment_flux.Rmd",
             "13-sediment_biogeochemistry.Rmd",
             "14-aqueous_geochemistry.Rmd",

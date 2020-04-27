@@ -13,7 +13,7 @@
   
   
   <meta property="og:description" content="Work in progress." />
-  <meta name="github-repo" content="AquaticEcoDynamics/aed-science" />
+  <meta name="github-repo" content="AquaticEcoDynamics/aed-science/" />
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="12 Pathogens | Draft AED2/AED2+ Manual" />
@@ -24,7 +24,7 @@
 <meta name="author" content="Giles Knight" />
 
 
-<meta name="date" content="2020-04-23" />
+<meta name="date" content="2020-04-27" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -157,30 +157,53 @@
 <div id="general-approach" class="section level3">
 <h3><span class="header-section-number">12.2.1</span> General Approach</h3>
 <p>The general balance equation for organism transport and fate is summarized in Hipsey et al., (2008) as:</p>
-<p>where <span class="math inline">\(C\)</span> is the organic concentration (orgs m-3), <span class="math inline">\(t\)</span> is time, xj is the distance in the <span class="math inline">\(j\)</span>-th dimension (m), Uj is the velocity in the j-th dimension (m s-1), is the eddy-diffusivity and Cin and Cout are the inflow and outflow fluxes respectively (orgs m-3 s-1). This relates organism concentration through time to hydrodynamic characteristics within the lake (as captured by <span class="math inline">\(U\)</span>, and ), and the environmental conditions experienced that influence organism fate (including temperature, salinity, light intensity, dissolved organic carbon, oxygen and pH). This comprehensive description is usually simplified for specific applications, based on justification of the dominant processes present in any particular lake and available data for model setup and validation.</p>
-<p>Within the TUFLOWFV-AED2 model framework, the 1st three terms on the RHS are solved via the finite volume scalar transport routines with TUFLOW-FV and the fourth and fifth terms are simulated by the aed2_pathogens module of the AED2 aquatic ecological modelling library. For this application the growth and predation terms suggested by Hipsey et al. (2008) are not considered directly since the likelihood of growth is small <span class="citation">(Sidhu and Toze <a href="pathogens.html#ref-toze2012">2012</a>)</span> and predation/grazing is factored into the die-off rate (described below). The remaining terms for simulation of organism resuspension and inactivation are described in detail next.</p>
+<p><span class="math display" id="eq:test">\[
+\begin{equation}
+\frac{dC}{dt} =
+\begin{split}
+-\frac{\partial }{\partial x_{j}}(CU_{j})+\frac{\partial }{\partial x_{j}}(\kappa_{j}\frac{\partial C}{\partial x_{j}})
++C_{in}-C_{out}+C_{r}(\tau,SS_{SED},C_{SED})
++[k_{g}(T,S,DOC_{L})-k_{d}(T,S,pH)-k_{l}
+(I_{0},S,DO,pH)-k_{s}(T,S,SS)-k_{p}(T)]C
+\end{split}
+\tag{12.1}
+\end{equation}
+\]</span></p>
+<p>where <span class="math inline">\(C\)</span> is the organic concentration (orgs m<sup>-3</sup>), <span class="math inline">\(t\)</span> is time, <span class="math inline">\(x_j\)</span> is the distance in the <span class="math inline">\(j\)</span>-th dimension (m), <span class="math inline">\(U_j\)</span> is the velocity in the <span class="math inline">\(j\)</span>-th dimension (ms<sup>-1</sup>), is the eddy-diffusivity and <span class="math inline">\(C_{in}\)</span> and <span class="math inline">\(C_{out}\)</span> are the inflow and outflow fluxes respectively (orgs m<sup>-3</sup>s<sup>-1</sup>). This relates organism concentration through time to hydrodynamic characteristics within the lake (as captured by <span class="math inline">\(U\)</span>, <span class="math inline">\(\kappa\)</span> and <span class="math inline">\(\tau\)</span>), and the environmental conditions experienced that influence organism fate (including temperature, salinity, light intensity, dissolved organic carbon, oxygen and pH). This comprehensive description is usually simplified for specific applications, based on justification of the dominant processes present in any particular lake and available data for model setup and validation.</p>
+<p>Within the TUFLOWFV-AED2 model framework, the 1<sup>st</sup> three terms on the RHS are solved via the finite volume scalar transport routines with TUFLOW-FV and the fourth and fifth terms are simulated by the aed2_pathogens module of the AED2 aquatic ecological modelling library. For this application the growth and predation terms suggested by Hipsey et al. (2008) are not considered directly since the likelihood of growth is small <span class="citation">(Sidhu and Toze <a href="pathogens.html#ref-toze2012">2012</a>)</span> and predation/grazing is factored into the die-off rate (described below). The remaining terms for simulation of organism resuspension and inactivation are described in detail next.</p>
 </div>
 <div id="natural-mortality" class="section level3">
 <h3><span class="header-section-number">12.2.2</span> Natural Mortality</h3>
-<p>Natural mortality, or the ‘dark-death rate’, <span class="math inline">\(kd\)</span>, is an important process determining the net rate of die off of protozoan, viral and bacterial organisms and has been reported to vary for specific organisms due to changes in temperature, salinity and pH. The reported die off rates in the literature however are widely variable, with a synthesis of numerous studies from a range of water bodies presented in Hipsey et al., (2008). For freshwater reservoirs, changes in salinity and pH are unlikely to be a significant driver of organism viability relative to the range presented Hipsey et al., (2008) and therefore a simple constant die-off rate that depends on temperature is appropriate:</p>
-<p>where is the rate of mortality in the dark at 20C and in freshwater. Since the AED2 implementation of the model to be applied with NPD does not include protozoan grazing as a separate term (as in Eq 1), the grazing effect needs to be embodied within the term. This effectively assumes a constant grazing pressure over time, and if chosen to be a low value this will essentially ensure conservative estimate of the die-off due to grazing. Empirical data from Wivenhoe dam shows the presence of native micro-organisms can increase the background die-off rate by 1.1-3.0x (eg Table 5 in <span class="citation">Sidhu and Toze (<a href="pathogens.html#ref-toze2012">2012</a>)</span>).</p>
+<p>Natural mortality, or the ‘dark-death rate’, <span class="math inline">\(k_d\)</span>, is an important process determining the net rate of die off of protozoan, viral and bacterial organisms and has been reported to vary for specific organisms due to changes in temperature, salinity and pH. The reported die off rates in the literature however are widely variable, with a synthesis of numerous studies from a range of water bodies presented in Hipsey et al., (2008). For freshwater reservoirs, changes in salinity and pH are unlikely to be a significant driver of organism viability relative to the range presented Hipsey et al., (2008) and therefore a simple constant die-off rate that depends on temperature is appropriate:</p>
+<p><span class="math display">\[
+k_{d}(T) = k_{d_{20}}\vartheta _{M}^{T-20}
+\]</span></p>
+<p>where <span class="math inline">\(k_{d_{20}}\)</span> is the rate of mortality in the dark at 20C and in freshwater. Since the AED2 implementation of the model to be applied with NPD does not include protozoan grazing as a separate term (as in Eq 1), the grazing effect needs to be embodied within the <span class="math inline">\(k_{d_{20}}\)</span> term. This effectively assumes a constant grazing pressure over time, and if chosen to be a low value this will essentially ensure conservative estimate of the die-off due to grazing. Empirical data from Wivenhoe dam shows the presence of native micro-organisms can increase the background die-off rate by 1.1-3.0x (eg Table 5 in <span class="citation">Sidhu and Toze (<a href="pathogens.html#ref-toze2012">2012</a>)</span>).</p>
 </div>
 <div id="sunlight-inactivation" class="section level3">
 <h3><span class="header-section-number">12.2.3</span> Sunlight Inactivation</h3>
 <p>Depending on the clarity of the water, the light climate of the lake can be a dominant factor influencing organism viability and this has been observed empirically in Wivenhoe Dam by <span class="citation">Sidhu and Toze (<a href="pathogens.html#ref-toze2012">2012</a>)</span>. Different organism types experience different sensitivity to different light bandwidths, with most organisms sensitive to UV-B and UV-A and some sensitive to light in the visible spectrum <span class="citation">(Sinton, Hall, and Braithwaite <a href="pathogens.html#ref-sinton2007">2007</a>)</span>. Hipsey et al. (2008) formulated a multiple band-width model for organisms that included direct and indirect mechanisms for sunlight mediated inactivation by accounting for the effect of salinity, oxygen and pH on free radical formation. Here we use a simplified form that accounts only for direct sunlight denaturation as the indirect mechanism is more specific to MS2 phage relative to rotavirus for example <span class="citation">(Verbyla and Mihelcic <a href="pathogens.html#ref-verbyla2015">2015</a>)</span>. The implemented expression is therefore:</p>
-<p>where NB is the number of discrete solar bandwidths to be modeled, <span class="math inline">\(b\)</span> is the bandwidth class
-{1, 2, … , NB}, kb is the freshwater inactivation rate coefficient for exposure to the bth class (m2 MJ-1), Ib is the intensity of the bth bandwidth class (Wm-2), j is a constant to convert units from seconds to days and J to MJ (= 8.64´10-2).</p>
+<p><span class="math display">\[
+k_{l} = \sum_{b=1}^{N_{b}}[\varphi k_{b} I_{b}]
+\]</span></p>
+<p>where <span class="math inline">\(N_B\)</span> is the number of discrete solar bandwidths to be modeled, <span class="math inline">\(b\)</span> is the bandwidth class {1, 2, … , <span class="math inline">\(N_B\)</span>}, <span class="math inline">\(k_b\)</span> is the freshwater inactivation rate coefficient for exposure to the <span class="math inline">\(b^{th}\)</span> class (m<sup>2</sup> MJ<sup>-1</sup>), <span class="math inline">\(I_b\)</span> is the intensity of the <span class="math inline">\(b^{th}\)</span> bandwidth class (Wm<sup>-2</sup>), <span class="math inline">\(\varphi\)</span> is a constant to convert units from seconds to days and J to MJ (= 8.64*10<sup>-2</sup>).</p>
 <p>In AED2, the light intensity is computed for 3 distinct bandwidths, including UV-B, UV-A and PAR, and the attenuation of each through the reservoir water column is based on bandwidth specific light extinction coefficients, that account for the effect of turbidity and chromophoric dissolved organic matter (CDOM) on attenutation.</p>
 </div>
 <div id="sedimentation" class="section level3">
 <h3><span class="header-section-number">12.2.4</span> Sedimentation</h3>
 <p>Sedimentation of organisms occurs at a rate depending on the degree to which the population is attached to suspended particles. Within AED2, this is captured by simulating free and attached organisms and multiple groups of particles may be accounted for. If we assume a single dominant particle size and ignore the effect of salinity on the settling velocity, then the expression in Hipsey et al (2008) for the effective sedimentation velocity reduces to:<br />
-where fa is the attached fraction, and <span class="math inline">\(V\)</span> is the vertical velocity of organisms or sediment particles.</p>
+<span class="math display">\[
+k_{s}=(1-f_{a})\frac{V_{c}}{\Delta z}+f_{a}\frac{V_{s}}{\Delta z}
+\]</span>
+where <span class="math inline">\(f_a\)</span> is the attached fraction, and <span class="math inline">\(V\)</span> is the vertical velocity of organisms or sediment particles.</p>
 </div>
 <div id="resupension" class="section level3">
 <h3><span class="header-section-number">12.2.5</span> Resupension</h3>
 <p>Resuspension of organisms accumulated within the sediment has been show to be a relatively important terms in environments where high currents or waves exist. In reservoirs this can occur in the lake margins or deeper in the lake where internal waves or river underflows increase the shear stress at the sediment. The amount of organisms that resuspend depends not only on the shear stress but also n the concentration of organisms in the surficial layers of the sediment. This may be modelled by accounting for the deposited organisms, decay within the sediment and resuspension rate, however, this is notoriously difficult given potentially complex dynamics of organisms in the sediment. Instead we assume that a standard background concentration exists within different sediment regions (based on depth and local geomorphology) and simulate resuspension rate as:</p>
-<p>where, is the rate of organism suspension (orgs m-2 s-1), which occurs when the critical shear stress is exceeded in the relative computational cell.</p>
+<p><span class="math display">\[
+C_{r}(\tau)=\alpha_{c}\frac{(\tau - \tau_{c_{s}})}{\tau _{ref}}\frac{1}{\Delta z_{bot}}
+\]</span></p>
+<p>where, <span class="math inline">\(\alpha_C\)</span> is the rate of organism suspension (orgs m<sup>-2</sup>s<sup>-1</sup>), which occurs when the critical shear stress is exceeded in the relative computational cell.</p>
 </div>
 </div>
 <div id="parameter-summary" class="section level2">
