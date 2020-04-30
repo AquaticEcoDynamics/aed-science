@@ -1,7 +1,7 @@
 ---
 title: "Draft AED2/AED2+ Manual"
 author: "Giles Knight"
-date: "2020-04-27"
+date: "2020-04-30"
 site: bookdown::bookdown_site
 github-repo: AquaticEcoDynamics/aed-science/
 description: "Work in progress."

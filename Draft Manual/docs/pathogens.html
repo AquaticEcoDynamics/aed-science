@@ -24,7 +24,7 @@
 <meta name="author" content="Giles Knight" />
 
 
-<meta name="date" content="2020-04-27" />
+<meta name="date" content="2020-04-30" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -76,7 +76,10 @@
 </ul></li>
 <li class="chapter" data-level="" data-path="foreward.html"><a href="foreward.html"><i class="fa fa-check"></i>Foreward</a></li>
 <li class="chapter" data-level="" data-path="preface.html"><a href="preface.html"><i class="fa fa-check"></i>Preface</a></li>
-<li class="chapter" data-level="" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i>Introduction</a></li>
+<li class="chapter" data-level="" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i>Introduction</a><ul>
+<li class="chapter" data-level="" data-path="introduction.html"><a href="introduction.html#modelling-within-the-aed-framework"><i class="fa fa-check"></i>Modelling within the AED framework</a></li>
+<li class="chapter" data-level="" data-path="introduction.html"><a href="introduction.html#a-note-on-notation"><i class="fa fa-check"></i>A Note on Notation</a></li>
+</ul></li>
 <li class="part"><span><b>I AED2 Core Modules</b></span></li>
 <li class="chapter" data-level="1" data-path="tracers-suspended-soilds-and-retention-time.html"><a href="tracers-suspended-soilds-and-retention-time.html"><i class="fa fa-check"></i><b>1</b> Tracers, Suspended Soilds and Retention Time</a></li>
 <li class="chapter" data-level="2" data-path="dissolved-oxygen.html"><a href="dissolved-oxygen.html"><i class="fa fa-check"></i><b>2</b> Dissolved Oxygen</a><ul>
@@ -120,7 +123,19 @@
 <li class="part"><span><b>III AED2+ Benthic Biology Modules</b></span></li>
 <li class="chapter" data-level="13" data-path="benthic-macrophytes.html"><a href="benthic-macrophytes.html"><i class="fa fa-check"></i><b>13</b> Benthic Macrophytes</a></li>
 <li class="chapter" data-level="14" data-path="macroalgae.html"><a href="macroalgae.html"><i class="fa fa-check"></i><b>14</b> Macroalgae</a></li>
-<li class="chapter" data-level="15" data-path="bivalves.html"><a href="bivalves.html"><i class="fa fa-check"></i><b>15</b> Bivalves</a></li>
+<li class="chapter" data-level="15" data-path="bivalves.html"><a href="bivalves.html"><i class="fa fa-check"></i><b>15</b> Bivalves</a><ul>
+<li class="chapter" data-level="15.1" data-path="bivalves.html"><a href="bivalves.html#overview-2"><i class="fa fa-check"></i><b>15.1</b> Overview</a></li>
+<li class="chapter" data-level="15.2" data-path="bivalves.html"><a href="bivalves.html#process-description-1"><i class="fa fa-check"></i><b>15.2</b> Process Description</a><ul>
+<li class="chapter" data-level="15.2.1" data-path="bivalves.html"><a href="bivalves.html#ingestion"><i class="fa fa-check"></i><b>15.2.1</b> Ingestion</a></li>
+<li class="chapter" data-level="15.2.2" data-path="bivalves.html"><a href="bivalves.html#respiration"><i class="fa fa-check"></i><b>15.2.2</b> Respiration</a></li>
+<li class="chapter" data-level="15.2.3" data-path="bivalves.html"><a href="bivalves.html#excretion"><i class="fa fa-check"></i><b>15.2.3</b> Excretion</a></li>
+<li class="chapter" data-level="15.2.4" data-path="bivalves.html"><a href="bivalves.html#egestion"><i class="fa fa-check"></i><b>15.2.4</b> Egestion</a></li>
+<li class="chapter" data-level="15.2.5" data-path="bivalves.html"><a href="bivalves.html#mortality"><i class="fa fa-check"></i><b>15.2.5</b> Mortality</a></li>
+</ul></li>
+<li class="chapter" data-level="15.3" data-path="bivalves.html"><a href="bivalves.html#parameter-summary-1"><i class="fa fa-check"></i><b>15.3</b> Parameter Summary</a></li>
+<li class="chapter" data-level="15.4" data-path="bivalves.html"><a href="bivalves.html#setup-configuration-1"><i class="fa fa-check"></i><b>15.4</b> Setup &amp; Configuration</a></li>
+<li class="chapter" data-level="15.5" data-path="bivalves.html"><a href="bivalves.html#references-1"><i class="fa fa-check"></i><b>15.5</b> References</a></li>
+</ul></li>
 <li class="chapter" data-level="16" data-path="habitat-quality.html"><a href="habitat-quality.html"><i class="fa fa-check"></i><b>16</b> Habitat Quality</a></li>
 <li class="part"><span><b>IV AED2+ Riparian Ecohydrology Modules</b></span></li>
 <li class="chapter" data-level="17" data-path="land-soil-hydrology.html"><a href="land-soil-hydrology.html"><i class="fa fa-check"></i><b>17</b> Land &amp; Soil Hydrology</a></li>
@@ -150,31 +165,27 @@
 <h1><span class="header-section-number">12</span> Pathogens</h1>
 <div id="overview-1" class="section level2">
 <h2><span class="header-section-number">12.1</span> Overview</h2>
-<p>Understanding the fate and transport of pathogenic and indicator microbes within drinking water reservoirs is critical for managers to effectively reduce risk. Over the past decade several advances have been made for the simulating organism dynamics using coupled hydrodynamic-organism fate models. These have generally been used for simulating coliform bacteria (Hipsey et al., 2008), with applications also reported for Cryptosporidium (Hipsey et al., 2004) and viruses <span class="citation">(Sokolova et al. <a href="pathogens.html#ref-Sokolova2012">2012</a>)</span> . In general, these models simulate organism concentrations within water bodies by accounting for external loading, advection and mixing process that occur within the lake interior, organism inactivation and sedimentation. The purpose of this document is to firstly synthesize relevant information from empirical and prior modelling studies to justify the necessary model required for reservoir systems, and secondly to summarise the implementation of the pathogen module within the AED2 model framework.</p>
+<p>Understanding the fate and transport of pathogenic and indicator microbes within drinking water reservoirs is critical for managers to effectively reduce risk. Over the past decade several advances have been made for the simulating organism dynamics using coupled hydrodynamic-organism fate models. These have generally been used for simulating coliform bacteria <span class="citation">(Hipsey, Antenucci, and Brookes <a href="pathogens.html#ref-hipsey2008">2008</a>)</span>, with applications also reported for Cryptosporidium <span class="citation">(Hipsey et al. <a href="pathogens.html#ref-hipsey2004">2004</a>)</span> and viruses <span class="citation">(Sokolova et al. <a href="pathogens.html#ref-Sokolova2012">2012</a>)</span> . In general, these models simulate organism concentrations within water bodies by accounting for external loading, advection and mixing process that occur within the lake interior, organism inactivation and sedimentation. The purpose of this document is to firstly synthesize relevant information from empirical and prior modelling studies to justify the necessary model required for reservoir systems, and secondly to summarise the implementation of the pathogen module within the AED2 model framework.</p>
 </div>
 <div id="process-description" class="section level2">
 <h2><span class="header-section-number">12.2</span> Process Description</h2>
 <div id="general-approach" class="section level3">
 <h3><span class="header-section-number">12.2.1</span> General Approach</h3>
-<p>The general balance equation for organism transport and fate is summarized in Hipsey et al., (2008) as:</p>
-<p><span class="math display" id="eq:test">\[
+<p>The general balance equation for organism transport and fate is summarized in <span class="citation">Hipsey, Antenucci, and Brookes (<a href="pathogens.html#ref-hipsey2008">2008</a>)</span> as:</p>
+<p><span class="math display">\[
 \begin{equation}
-\frac{dC}{dt} =
-\begin{split}
--\frac{\partial }{\partial x_{j}}(CU_{j})+\frac{\partial }{\partial x_{j}}(\kappa_{j}\frac{\partial C}{\partial x_{j}})
-+C_{in}-C_{out}+C_{r}(\tau,SS_{SED},C_{SED})
+\frac{dC}{dt} = -\frac{\partial }{\partial x_{j}}(CU_{j})+\frac{\partial }{\partial x_{j}}(\kappa_{j}\frac{\partial C}{\partial x_{j}})
++C_{in}-C_{out}+C_{r}(\tau,SS_{SED},C_{SED})\\
 +[k_{g}(T,S,DOC_{L})-k_{d}(T,S,pH)-k_{l}
 (I_{0},S,DO,pH)-k_{s}(T,S,SS)-k_{p}(T)]C
-\end{split}
-\tag{12.1}
 \end{equation}
 \]</span></p>
 <p>where <span class="math inline">\(C\)</span> is the organic concentration (orgs m<sup>-3</sup>), <span class="math inline">\(t\)</span> is time, <span class="math inline">\(x_j\)</span> is the distance in the <span class="math inline">\(j\)</span>-th dimension (m), <span class="math inline">\(U_j\)</span> is the velocity in the <span class="math inline">\(j\)</span>-th dimension (ms<sup>-1</sup>), is the eddy-diffusivity and <span class="math inline">\(C_{in}\)</span> and <span class="math inline">\(C_{out}\)</span> are the inflow and outflow fluxes respectively (orgs m<sup>-3</sup>s<sup>-1</sup>). This relates organism concentration through time to hydrodynamic characteristics within the lake (as captured by <span class="math inline">\(U\)</span>, <span class="math inline">\(\kappa\)</span> and <span class="math inline">\(\tau\)</span>), and the environmental conditions experienced that influence organism fate (including temperature, salinity, light intensity, dissolved organic carbon, oxygen and pH). This comprehensive description is usually simplified for specific applications, based on justification of the dominant processes present in any particular lake and available data for model setup and validation.</p>
-<p>Within the TUFLOWFV-AED2 model framework, the 1<sup>st</sup> three terms on the RHS are solved via the finite volume scalar transport routines with TUFLOW-FV and the fourth and fifth terms are simulated by the aed2_pathogens module of the AED2 aquatic ecological modelling library. For this application the growth and predation terms suggested by Hipsey et al. (2008) are not considered directly since the likelihood of growth is small <span class="citation">(Sidhu and Toze <a href="pathogens.html#ref-toze2012">2012</a>)</span> and predation/grazing is factored into the die-off rate (described below). The remaining terms for simulation of organism resuspension and inactivation are described in detail next.</p>
+<p>Within the TUFLOWFV-AED2 model framework, the 1<sup>st</sup> three terms on the RHS are solved via the finite volume scalar transport routines with TUFLOW-FV and the fourth and fifth terms are simulated by the aed2_pathogens module of the AED2 aquatic ecological modelling library. For this application the growth and predation terms suggested by <span class="citation">Hipsey, Antenucci, and Brookes (<a href="pathogens.html#ref-hipsey2008">2008</a>)</span> are not considered directly since the likelihood of growth is small <span class="citation">(Sidhu and Toze <a href="pathogens.html#ref-toze2012">2012</a>)</span> and predation/grazing is factored into the die-off rate (described below). The remaining terms for simulation of organism resuspension and inactivation are described in detail next.</p>
 </div>
 <div id="natural-mortality" class="section level3">
 <h3><span class="header-section-number">12.2.2</span> Natural Mortality</h3>
-<p>Natural mortality, or the ‘dark-death rate’, <span class="math inline">\(k_d\)</span>, is an important process determining the net rate of die off of protozoan, viral and bacterial organisms and has been reported to vary for specific organisms due to changes in temperature, salinity and pH. The reported die off rates in the literature however are widely variable, with a synthesis of numerous studies from a range of water bodies presented in Hipsey et al., (2008). For freshwater reservoirs, changes in salinity and pH are unlikely to be a significant driver of organism viability relative to the range presented Hipsey et al., (2008) and therefore a simple constant die-off rate that depends on temperature is appropriate:</p>
+<p>Natural mortality, or the ‘dark-death rate’, <span class="math inline">\(k_d\)</span>, is an important process determining the net rate of die off of protozoan, viral and bacterial organisms and has been reported to vary for specific organisms due to changes in temperature, salinity and pH. The reported die off rates in the literature however are widely variable, with a synthesis of numerous studies from a range of water bodies presented in <span class="citation">Hipsey, Antenucci, and Brookes (<a href="pathogens.html#ref-hipsey2008">2008</a>)</span>. For freshwater reservoirs, changes in salinity and pH are unlikely to be a significant driver of organism viability relative to the range presented <span class="citation">Hipsey, Antenucci, and Brookes (<a href="pathogens.html#ref-hipsey2008">2008</a>)</span> and therefore a simple constant die-off rate that depends on temperature is appropriate:</p>
 <p><span class="math display">\[
 k_{d}(T) = k_{d_{20}}\vartheta _{M}^{T-20}
 \]</span></p>
@@ -182,7 +193,7 @@ k_{d}(T) = k_{d_{20}}\vartheta _{M}^{T-20}
 </div>
 <div id="sunlight-inactivation" class="section level3">
 <h3><span class="header-section-number">12.2.3</span> Sunlight Inactivation</h3>
-<p>Depending on the clarity of the water, the light climate of the lake can be a dominant factor influencing organism viability and this has been observed empirically in Wivenhoe Dam by <span class="citation">Sidhu and Toze (<a href="pathogens.html#ref-toze2012">2012</a>)</span>. Different organism types experience different sensitivity to different light bandwidths, with most organisms sensitive to UV-B and UV-A and some sensitive to light in the visible spectrum <span class="citation">(Sinton, Hall, and Braithwaite <a href="pathogens.html#ref-sinton2007">2007</a>)</span>. Hipsey et al. (2008) formulated a multiple band-width model for organisms that included direct and indirect mechanisms for sunlight mediated inactivation by accounting for the effect of salinity, oxygen and pH on free radical formation. Here we use a simplified form that accounts only for direct sunlight denaturation as the indirect mechanism is more specific to MS2 phage relative to rotavirus for example <span class="citation">(Verbyla and Mihelcic <a href="pathogens.html#ref-verbyla2015">2015</a>)</span>. The implemented expression is therefore:</p>
+<p>Depending on the clarity of the water, the light climate of the lake can be a dominant factor influencing organism viability and this has been observed empirically in Wivenhoe Dam by <span class="citation">Sidhu and Toze (<a href="pathogens.html#ref-toze2012">2012</a>)</span>. Different organism types experience different sensitivity to different light bandwidths, with most organisms sensitive to UV-B and UV-A and some sensitive to light in the visible spectrum <span class="citation">(Sinton, Hall, and Braithwaite <a href="pathogens.html#ref-sinton2007">2007</a>)</span>. <span class="citation">Hipsey, Antenucci, and Brookes (<a href="pathogens.html#ref-hipsey2008">2008</a>)</span> formulated a multiple band-width model for organisms that included direct and indirect mechanisms for sunlight mediated inactivation by accounting for the effect of salinity, oxygen and pH on free radical formation. Here we use a simplified form that accounts only for direct sunlight denaturation as the indirect mechanism is more specific to MS2 phage relative to rotavirus for example <span class="citation">(Verbyla and Mihelcic <a href="pathogens.html#ref-verbyla2015">2015</a>)</span>. The implemented expression is therefore:</p>
 <p><span class="math display">\[
 k_{l} = \sum_{b=1}^{N_{b}}[\varphi k_{b} I_{b}]
 \]</span></p>
@@ -191,7 +202,7 @@ k_{l} = \sum_{b=1}^{N_{b}}[\varphi k_{b} I_{b}]
 </div>
 <div id="sedimentation" class="section level3">
 <h3><span class="header-section-number">12.2.4</span> Sedimentation</h3>
-<p>Sedimentation of organisms occurs at a rate depending on the degree to which the population is attached to suspended particles. Within AED2, this is captured by simulating free and attached organisms and multiple groups of particles may be accounted for. If we assume a single dominant particle size and ignore the effect of salinity on the settling velocity, then the expression in Hipsey et al (2008) for the effective sedimentation velocity reduces to:<br />
+<p>Sedimentation of organisms occurs at a rate depending on the degree to which the population is attached to suspended particles. Within AED2, this is captured by simulating free and attached organisms and multiple groups of particles may be accounted for. If we assume a single dominant particle size and ignore the effect of salinity on the settling velocity, then the expression in <span class="citation">Hipsey, Antenucci, and Brookes (<a href="pathogens.html#ref-hipsey2008">2008</a>)</span> for the effective sedimentation velocity reduces to:<br />
 <span class="math display">\[
 k_{s}=(1-f_{a})\frac{V_{c}}{\Delta z}+f_{a}\frac{V_{s}}{\Delta z}
 \]</span>
@@ -215,6 +226,12 @@ C_{r}(\tau)=\alpha_{c}\frac{(\tau - \tau_{c_{s}})}{\tau _{ref}}\frac{1}{\Delta z
 <div id="references" class="section level2">
 <h2><span class="header-section-number">12.5</span> References</h2>
 <div id="refs">
+<div id="ref-hipsey2008">
+<p>Hipsey, Matthew R, Jason P Antenucci, and Justin D Brookes. 2008. “A generic, process-based model of microbial pollution in aquatic systems: MICROBIAL POLLUTION IN AQUATIC SYSTEMS.” <em>Water Resources Research</em> 44 (7). <a href="https://doi.org/10.1029/2007wr006395">https://doi.org/10.1029/2007wr006395</a>.</p>
+</div>
+<div id="ref-hipsey2004">
+<p>Hipsey, Matthew R, Jason P Antenucci, Justin D Brookes, Michael D Burch, Rudi H Regel, and Leon Linden. 2004. “A three dimensional model of Cryptosporidium dynamics in lakes and reservoirs: A new tool for risk management.” <em>International Journal of River Basin Management</em> 2 (3): 181–97. <a href="https://doi.org/10.1080/15715124.2004.9635231">https://doi.org/10.1080/15715124.2004.9635231</a>.</p>
+</div>
 <div id="ref-toze2012">
 <p>Sidhu, J.P.S., and S. Toze. 2012. “Assessment of pathogen survival potential during managed aquifer recharge with diffusion chambers.” <em>Journal of Applied Microbiology</em> 113 (3): 693–700. <a href="https://doi.org/10.1111/j.1365-2672.2012.05360.x">https://doi.org/10.1111/j.1365-2672.2012.05360.x</a>.</p>
 </div>
