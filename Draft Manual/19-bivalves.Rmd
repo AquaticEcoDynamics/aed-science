@@ -9,19 +9,86 @@ The physiology of mussels are set to be size dependent, and can vary between spe
 
 ## Process Description
 
+<table>
+<caption>**Table 4. Mussel mass balance equations and process parameterisations.**</caption>
+<tr>
+</tr>
+<tr>
+<td>
+**State Variable Mass Balance Equation**
+<center>
+<br>
+$\frac{\mathrm{dB_{i}} }{\mathrm{dt}}= [I-(R+Ex+Eg+M)]*B$ for $[A] < KA$
+</center>
+<br>
+where $B$ is biomass, $i$ is the size class, gains are ingestion ($I$) (C,N,P), and losses are respiration ($R$) ($C$), excretion ($Ex$) (C,N,P), egestion ($Eg$) (C,N,P), and mortality ($M$) (C,N,P).
+</td>
+</tr>
+<tr>
+<td>
+**Process Parameterisations**
+
+***Ingestion***
+<center>
+<br>
+$I = I_{max}*F(T)*FR*[A]$
+</center>
+<br>
+where $I$ is ingestion (mmol/mmol/d), $FR$ is filtration rate (m3/mmol/d), $[A]$ is algal + POC concentration (mmol/m3).  
+<center>
+<br>
+$FR = FR_{max}*g(A)*f(D)*f(SS)*f(S)$
+</center>
+<br>
+$FR$ is filtration rate (see below,  m3/mmol/d), $[A]$ is algal + POC concentration (mmol/m3), $f(D)$ is a function of density (D, mmol/m2) with values between 0 and 1 that account for decrease filtering rates at high densities, $f(SS)$ is a function of suspended solids ($SS$, mg/L) with values between 0 and 1 that decrease filtering rates at high suspended solid concentrations and $f(S)$ is a function of salinity ($S$, ppt) with values between 0 and 1 that decrease filtering rates at high salinities.
+<center>
+<br>
+$FR_{max} = aW^{b}$
+</center>
+<br>
+This is the maximum filtration rate at optimal temperature for a given individual mussel weight (mmol C). 
+
+***Respiration***
+
+</td>
+</tr>
+</table>
+
+
+
 ### Ingestion
 Ingestion is modelled as a function of filtration rate, food availability, pseudofeces production, density, suspended solids, and salinity (Equation 2) (Schneider 1992; Bierman et al. 2005; Spillman et al. 2008; Gudimov et al. 2015). Filtration rate is based on maximum ingestion, temperature, food availability, and pseudofeces production according to the following:
-FR = (Imax * f(T)I / KA) / PFmin 					         for [A] < KA
-FR = (Imax * f(T)I / [A]) / PFmin 					         for [A] > KA
-where FR is filtration rate (mmol/mmol/d), Imax is maximum ingestion rate (mmol/mmol/d), f(T)I is filtration temperature function, KA is optimum algal concentration (mmol/m3), [A] is algal concentration + particulate organic carbon (POC) concentration (mmol/m3), and PFmin is minimum pseudofeces production (-).
+<center>
+<br>
+$FR = \frac{\frac{I_{max}*f(T)_{I}}{K_{A}}}{PF_{min}}$ for $[A] < KA$
+</center>
+<br>
+<center>
+$FR = \frac{\frac{I_{max}*f(T)_{I}}{[A]}}{PF_{min}}$ for $[A] > KA$
+</center>
+<br>
+where $FR$ is filtration rate (mmol/mmol/d), $I_{max}$ is maximum ingestion rate (mmol/mmol/d), $f(T)_{I}$ is filtration temperature function, $K_{A}$ is optimum algal concentration (mmol/m3), $[A]$ is algal concentration + particulate organic carbon (POC) concentration (mmol/m3), and $PF_{min}$ is minimum pseudofeces production (-).
 The maximum ingestion rate is based on weight from length according to the following:
-Imax = (aI * WbI)
-W = (0.071/1000) * L2.8
-where Imax is maximum ingestion rate (mmol/mmol/d), aI is maximum standard ingestion rate (mmol/mmol/d), W is weight (g), bI is exponent for weight effect on ingestion, L in length (mm) (Schneider et al. 1992; Bierman et al. 2005).
+<center>
+<br>
+$I_{max} = (a_{I} * W^{bI})$
+</center>
+<br>
+<center>
+$W = \frac{0.071}{1000} * L^{2.8}$
+</center>
+<br>
+where $I_{max}$ is maximum ingestion rate (mmol/mmol/d), $a_{I}$ is maximum standard ingestion rate (mmol/mmol/d), $W$ is weight (g), $bI$ is exponent for weight effect on ingestion, $L$ in length (mm) (Schneider et al. 1992; Bierman et al. 2005).
 The temperature dependence function (Thornton and Lessem 1978) was fit to zebra and quagga mussel data (Hetherington et al. Submitted) with optimal ingestion from 17°C to 20°C according to the following:
-f(T)I = 1 								       	for TminI < T < TmaxI
-f(T)I = ((2*(T-minTI)/TminI)–(T-minTI)2/TminI2)) / ((2*(TminI-minTI)/TminI)–(TminI-minTI)2/TminI2))
-for minTI< T < TminI
+<center>
+<br>
+$f(T)_{I} = 1$ for $T_{min_{I}} < T < T_{max_{I}}$
+</center>
+<br>
+<center>
+$f(T)_{I} = (2*\frac{T_{min_{TI}}}{T_{min_{I}}} - \frac{(T_{min_{TI}})^2}{(T_{min_{I}})^2}) / (2*\frac{T_{min_{I}}-min_{T_{I}}}{T_{min_{I}}}-\frac{(T_{min_{I}}-min_{T_{I}})^2}{(T_{min_{I}})^2})$ for $min_{T_{I}} < T < T_{min_{I}}$
+</center>
+<br>
 f(T)I = -(T2 + 2*TmaxI*T – 2*TmaxI*maxTI + maxTI2)/(TmaxI-maxTI)2		for TmaxI<T<maxTI
 f(T)I = 0 							             		for T > maxTI or T < minTI
 where T is temperature (°C), minTI is lower temperature for no ingestion (°C), TminI is lower temperature for optimum ingestion (°C), TmaxI is upper temperature for optimum ingestion, maxTI is upper temperature for no ingestion (°C).
@@ -79,6 +146,7 @@ where DO is dissolved oxygen (mmol/m3), KBDO is basal respiration rate (mmol/m3)
 
 
 ## Parameter Summary
+
 
 ## Setup & Configuration
 

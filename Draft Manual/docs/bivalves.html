@@ -50,77 +50,8 @@
 
 
 
-<script src="libs/htmlwidgets-1.3/htmlwidgets.js"></script>
-<script src="libs/plotly-binding-4.9.2.1/plotly.js"></script>
-<script src="libs/typedarray-0.1/typedarray.min.js"></script>
-<link href="libs/crosstalk-1.0.0/css/crosstalk.css" rel="stylesheet" />
-<script src="libs/crosstalk-1.0.0/js/crosstalk.min.js"></script>
-<link href="libs/plotly-htmlwidgets-css-1.52.2/plotly-htmlwidgets.css" rel="stylesheet" />
-<script src="libs/plotly-main-1.52.2/plotly-latest.min.js"></script>
 
 
-<style type="text/css">
-a.sourceLine { display: inline-block; line-height: 1.25; }
-a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-code.sourceCode { white-space: pre-wrap; }
-a.sourceLine { text-indent: -1em; padding-left: 1em; }
-}
-pre.numberSource a.sourceLine
-  { position: relative; left: -4em; }
-pre.numberSource a.sourceLine::before
-  { content: attr(data-line-number);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-    color: #aaaaaa;
-  }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-div.sourceCode
-  {  }
-@media screen {
-a.sourceLine::before { text-decoration: underline; }
-}
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-</style>
 
 <link rel="stylesheet" href="css/style.css" type="text/css" />
 </head>
@@ -240,20 +171,84 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="process-description-1" class="section level2">
 <h2><span class="header-section-number">15.2</span> Process Description</h2>
+<table>
+<caption>
+<strong>Table 4. Mussel mass balance equations and process parameterisations.</strong>
+</caption>
+<tr>
+</tr>
+<tr>
+<td>
+<strong>State Variable Mass Balance Equation</strong>
+<center>
+<br>
+<span class="math inline">\(\frac{\mathrm{dB_{i}} }{\mathrm{dt}}= [I-(R+Ex+Eg+M)]*B\)</span> for <span class="math inline">\([A] &lt; KA\)</span>
+</center>
+<br>
+where <span class="math inline">\(B\)</span> is biomass, <span class="math inline">\(i\)</span> is the size class, gains are ingestion (<span class="math inline">\(I\)</span>) (C,N,P), and losses are respiration (<span class="math inline">\(R\)</span>) (<span class="math inline">\(C\)</span>), excretion (<span class="math inline">\(Ex\)</span>) (C,N,P), egestion (<span class="math inline">\(Eg\)</span>) (C,N,P), and mortality (<span class="math inline">\(M\)</span>) (C,N,P).
+</td>
+</tr>
+<tr>
+<td>
+<p><strong>Process Parameterisations</strong></p>
+<strong><em>Ingestion</em></strong>
+<center>
+<br>
+<span class="math inline">\(I = I_{max}*F(T)*FR*[A]\)</span>
+</center>
+<br>
+where <span class="math inline">\(I\)</span> is ingestion (mmol/mmol/d), <span class="math inline">\(FR\)</span> is filtration rate (m3/mmol/d), <span class="math inline">\([A]\)</span> is algal + POC concentration (mmol/m3).<br />
+
+<center>
+<br>
+<span class="math inline">\(FR = FR_{max}*g(A)*f(D)*f(SS)*f(S)\)</span>
+</center>
+<br>
+<span class="math inline">\(FR\)</span> is filtration rate (see below, m3/mmol/d), <span class="math inline">\([A]\)</span> is algal + POC concentration (mmol/m3), <span class="math inline">\(f(D)\)</span> is a function of density (D, mmol/m2) with values between 0 and 1 that account for decrease filtering rates at high densities, <span class="math inline">\(f(SS)\)</span> is a function of suspended solids (<span class="math inline">\(SS\)</span>, mg/L) with values between 0 and 1 that decrease filtering rates at high suspended solid concentrations and <span class="math inline">\(f(S)\)</span> is a function of salinity (<span class="math inline">\(S\)</span>, ppt) with values between 0 and 1 that decrease filtering rates at high salinities.
+<center>
+<br>
+<span class="math inline">\(FR_{max} = aW^{b}\)</span>
+</center>
+<p><br>
+This is the maximum filtration rate at optimal temperature for a given individual mussel weight (mmol C).</p>
+<p><strong><em>Respiration</em></strong></p>
+</td>
+</tr>
+</table>
 <div id="ingestion" class="section level3">
 <h3><span class="header-section-number">15.2.1</span> Ingestion</h3>
-<p>Ingestion is modelled as a function of filtration rate, food availability, pseudofeces production, density, suspended solids, and salinity (Equation 2) (Schneider 1992; Bierman et al. 2005; Spillman et al. 2008; Gudimov et al. 2015). Filtration rate is based on maximum ingestion, temperature, food availability, and pseudofeces production according to the following:
-FR = (Imax * f(T)I / KA) / PFmin for [A] &lt; KA
-FR = (Imax * f(T)I / [A]) / PFmin for [A] &gt; KA
-where FR is filtration rate (mmol/mmol/d), Imax is maximum ingestion rate (mmol/mmol/d), f(T)I is filtration temperature function, KA is optimum algal concentration (mmol/m3), [A] is algal concentration + particulate organic carbon (POC) concentration (mmol/m3), and PFmin is minimum pseudofeces production (-).
+Ingestion is modelled as a function of filtration rate, food availability, pseudofeces production, density, suspended solids, and salinity (Equation 2) (Schneider 1992; Bierman et al. 2005; Spillman et al. 2008; Gudimov et al. 2015). Filtration rate is based on maximum ingestion, temperature, food availability, and pseudofeces production according to the following:
+<center>
+<br>
+<span class="math inline">\(FR = \frac{\frac{I_{max}*f(T)_{I}}{K_{A}}}{PF_{min}}\)</span> for <span class="math inline">\([A] &lt; KA\)</span>
+</center>
+<br>
+<center>
+<span class="math inline">\(FR = \frac{\frac{I_{max}*f(T)_{I}}{[A]}}{PF_{min}}\)</span> for <span class="math inline">\([A] &gt; KA\)</span>
+</center>
+<br>
+where <span class="math inline">\(FR\)</span> is filtration rate (mmol/mmol/d), <span class="math inline">\(I_{max}\)</span> is maximum ingestion rate (mmol/mmol/d), <span class="math inline">\(f(T)_{I}\)</span> is filtration temperature function, <span class="math inline">\(K_{A}\)</span> is optimum algal concentration (mmol/m3), <span class="math inline">\([A]\)</span> is algal concentration + particulate organic carbon (POC) concentration (mmol/m3), and <span class="math inline">\(PF_{min}\)</span> is minimum pseudofeces production (-).
 The maximum ingestion rate is based on weight from length according to the following:
-Imax = (aI * WbI)
-W = (0.071/1000) * L2.8
-where Imax is maximum ingestion rate (mmol/mmol/d), aI is maximum standard ingestion rate (mmol/mmol/d), W is weight (g), bI is exponent for weight effect on ingestion, L in length (mm) (Schneider et al. 1992; Bierman et al. 2005).
+<center>
+<br>
+<span class="math inline">\(I_{max} = (a_{I} * W^{bI})\)</span>
+</center>
+<br>
+<center>
+<span class="math inline">\(W = \frac{0.071}{1000} * L^{2.8}\)</span>
+</center>
+<br>
+where <span class="math inline">\(I_{max}\)</span> is maximum ingestion rate (mmol/mmol/d), <span class="math inline">\(a_{I}\)</span> is maximum standard ingestion rate (mmol/mmol/d), <span class="math inline">\(W\)</span> is weight (g), <span class="math inline">\(bI\)</span> is exponent for weight effect on ingestion, <span class="math inline">\(L\)</span> in length (mm) (Schneider et al. 1992; Bierman et al. 2005).
 The temperature dependence function (Thornton and Lessem 1978) was fit to zebra and quagga mussel data (Hetherington et al. Submitted) with optimal ingestion from 17°C to 20°C according to the following:
-f(T)I = 1 for TminI &lt; T &lt; TmaxI
-f(T)I = ((2<em>(T-minTI)/TminI)–(T-minTI)2/TminI2)) / ((2</em>(TminI-minTI)/TminI)–(TminI-minTI)2/TminI2))
-for minTI&lt; T &lt; TminI
+<center>
+<br>
+<span class="math inline">\(f(T)_{I} = 1\)</span> for <span class="math inline">\(T_{min_{I}} &lt; T &lt; T_{max_{I}}\)</span>
+</center>
+<br>
+<center>
+<span class="math inline">\(f(T)_{I} = (2*\frac{T_{min_{TI}}}{T_{min_{I}}} - \frac{(T_{min_{TI}})^2}{(T_{min_{I}})^2}) / (2*\frac{T_{min_{I}}-min_{T_{I}}}{T_{min_{I}}}-\frac{(T_{min_{I}}-min_{T_{I}})^2}{(T_{min_{I}})^2})\)</span> for <span class="math inline">\(min_{T_{I}} &lt; T &lt; T_{min_{I}}\)</span>
+</center>
+<p><br>
 f(T)I = -(T2 + 2<em>TmaxI</em>T – 2<em>TmaxI</em>maxTI + maxTI2)/(TmaxI-maxTI)2 for TmaxI&lt;T&lt;maxTI
 f(T)I = 0 for T &gt; maxTI or T &lt; minTI
 where T is temperature (°C), minTI is lower temperature for no ingestion (°C), TminI is lower temperature for optimum ingestion (°C), TmaxI is upper temperature for optimum ingestion, maxTI is upper temperature for no ingestion (°C).
@@ -323,24 +318,7 @@ where DO is dissolved oxygen (mmol/m3), KBDO is basal respiration rate (mmol/m3)
 <div id="references-1" class="section level2">
 <h2><span class="header-section-number">15.5</span> References</h2>
 <div id="refs">
-<div id="ref-hipsey2008">
-<p>Hipsey, Matthew R, Jason P Antenucci, and Justin D Brookes. 2008. “A generic, process-based model of microbial pollution in aquatic systems: MICROBIAL POLLUTION IN AQUATIC SYSTEMS.” <em>Water Resources Research</em> 44 (7). <a href="https://doi.org/10.1029/2007wr006395">https://doi.org/10.1029/2007wr006395</a>.</p>
-</div>
-<div id="ref-hipsey2004">
-<p>Hipsey, Matthew R, Jason P Antenucci, Justin D Brookes, Michael D Burch, Rudi H Regel, and Leon Linden. 2004. “A three dimensional model of Cryptosporidium dynamics in lakes and reservoirs: A new tool for risk management.” <em>International Journal of River Basin Management</em> 2 (3): 181–97. <a href="https://doi.org/10.1080/15715124.2004.9635231">https://doi.org/10.1080/15715124.2004.9635231</a>.</p>
-</div>
-<div id="ref-toze2012">
-<p>Sidhu, J.P.S., and S. Toze. 2012. “Assessment of pathogen survival potential during managed aquifer recharge with diffusion chambers.” <em>Journal of Applied Microbiology</em> 113 (3): 693–700. <a href="https://doi.org/10.1111/j.1365-2672.2012.05360.x">https://doi.org/10.1111/j.1365-2672.2012.05360.x</a>.</p>
-</div>
-<div id="ref-sinton2007">
-<p>Sinton, Lester, Carollyn Hall, and Robin Braithwaite. 2007. “Sunlight inactivation of Campylobacter jejuni and Salmonella enterica, compared with Escherichia coli, in seawater and river water.” <em>Journal of Water and Health</em> 5 (3): 357–65. <a href="https://doi.org/10.2166/wh.2007.031">https://doi.org/10.2166/wh.2007.031</a>.</p>
-</div>
-<div id="ref-Sokolova2012">
-<p>Sokolova, Ekaterina, Johan Åström, Thomas J. R. Pettersson, Olof Bergstedt, and Malte Hermansson. 2012. “Estimation of pathogen concentrations in a drinking water source using hydrodynamic modelling and microbial source tracking.” <em>Journal of Water and Health</em> 10 (3): 358–70. <a href="https://doi.org/10.2166/wh.2012.183">https://doi.org/10.2166/wh.2012.183</a>.</p>
-</div>
-<div id="ref-verbyla2015">
-<p>Verbyla, Matthew E., and James R. Mihelcic. 2015. “A review of virus removal in wastewater treatment pond systems.” <em>Water Research</em> 71: 107–24. <a href="https://doi.org/10.1016/j.watres.2014.12.031">https://doi.org/10.1016/j.watres.2014.12.031</a>.</p>
-</div>
+
 </div>
 
 </div>
