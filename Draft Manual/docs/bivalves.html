@@ -171,50 +171,6 @@
 </div>
 <div id="process-description-1" class="section level2">
 <h2><span class="header-section-number">15.2</span> Process Description</h2>
-<table>
-<caption>
-<strong>Table 4. Mussel mass balance equations and process parameterisations.</strong>
-</caption>
-<tr>
-</tr>
-<tr>
-<td>
-<strong>State Variable Mass Balance Equation</strong>
-<center>
-<br>
-<span class="math inline">\(\frac{\mathrm{dB_{i}} }{\mathrm{dt}}= [I-(R+Ex+Eg+M)]*B\)</span> for <span class="math inline">\([A] &lt; KA\)</span>
-</center>
-<br>
-where <span class="math inline">\(B\)</span> is biomass, <span class="math inline">\(i\)</span> is the size class, gains are ingestion (<span class="math inline">\(I\)</span>) (C,N,P), and losses are respiration (<span class="math inline">\(R\)</span>) (<span class="math inline">\(C\)</span>), excretion (<span class="math inline">\(Ex\)</span>) (C,N,P), egestion (<span class="math inline">\(Eg\)</span>) (C,N,P), and mortality (<span class="math inline">\(M\)</span>) (C,N,P).
-</td>
-</tr>
-<tr>
-<td>
-<p><strong>Process Parameterisations</strong></p>
-<strong><em>Ingestion</em></strong>
-<center>
-<br>
-<span class="math inline">\(I = I_{max}*F(T)*FR*[A]\)</span>
-</center>
-<br>
-where <span class="math inline">\(I\)</span> is ingestion (mmol/mmol/d), <span class="math inline">\(FR\)</span> is filtration rate (m3/mmol/d), <span class="math inline">\([A]\)</span> is algal + POC concentration (mmol/m3).<br />
-
-<center>
-<br>
-<span class="math inline">\(FR = FR_{max}*g(A)*f(D)*f(SS)*f(S)\)</span>
-</center>
-<br>
-<span class="math inline">\(FR\)</span> is filtration rate (see below, m3/mmol/d), <span class="math inline">\([A]\)</span> is algal + POC concentration (mmol/m3), <span class="math inline">\(f(D)\)</span> is a function of density (D, mmol/m2) with values between 0 and 1 that account for decrease filtering rates at high densities, <span class="math inline">\(f(SS)\)</span> is a function of suspended solids (<span class="math inline">\(SS\)</span>, mg/L) with values between 0 and 1 that decrease filtering rates at high suspended solid concentrations and <span class="math inline">\(f(S)\)</span> is a function of salinity (<span class="math inline">\(S\)</span>, ppt) with values between 0 and 1 that decrease filtering rates at high salinities.
-<center>
-<br>
-<span class="math inline">\(FR_{max} = aW^{b}\)</span>
-</center>
-<p><br>
-This is the maximum filtration rate at optimal temperature for a given individual mussel weight (mmol C).</p>
-<p><strong><em>Respiration</em></strong></p>
-</td>
-</tr>
-</table>
 <div id="ingestion" class="section level3">
 <h3><span class="header-section-number">15.2.1</span> Ingestion</h3>
 Ingestion is modelled as a function of filtration rate, food availability, pseudofeces production, density, suspended solids, and salinity (Equation 2) (Schneider 1992; Bierman et al. 2005; Spillman et al. 2008; Gudimov et al. 2015). Filtration rate is based on maximum ingestion, temperature, food availability, and pseudofeces production according to the following:
@@ -227,7 +183,7 @@ Ingestion is modelled as a function of filtration rate, food availability, pseud
 <span class="math inline">\(FR = \frac{\frac{I_{max}*f(T)_{I}}{[A]}}{PF_{min}}\)</span> for <span class="math inline">\([A] &gt; KA\)</span>
 </center>
 <br>
-where <span class="math inline">\(FR\)</span> is filtration rate (mmol/mmol/d), <span class="math inline">\(I_{max}\)</span> is maximum ingestion rate (mmol/mmol/d), <span class="math inline">\(f(T)_{I}\)</span> is filtration temperature function, <span class="math inline">\(K_{A}\)</span> is optimum algal concentration (mmol/m3), <span class="math inline">\([A]\)</span> is algal concentration + particulate organic carbon (POC) concentration (mmol/m3), and <span class="math inline">\(PF_{min}\)</span> is minimum pseudofeces production (-).
+where <span class="math inline">\(FR\)</span> is filtration rate (mmol/mmol/d), <span class="math inline">\(Imax\)</span> is maximum ingestion rate (mmol/mmol/d), <span class="math inline">\(f(T)_{I}\)</span> is filtration temperature function, <span class="math inline">\(K_{A}\)</span> is optimum algal concentration (mmol/m3), <span class="math inline">\([A]\)</span> is algal concentration + particulate organic carbon (POC) concentration (mmol/m3), and <span class="math inline">\(PFmin\)</span> is minimum pseudofeces production (-).
 The maximum ingestion rate is based on weight from length according to the following:
 <center>
 <br>
@@ -238,7 +194,7 @@ The maximum ingestion rate is based on weight from length according to the follo
 <span class="math inline">\(W = \frac{0.071}{1000} * L^{2.8}\)</span>
 </center>
 <br>
-where <span class="math inline">\(I_{max}\)</span> is maximum ingestion rate (mmol/mmol/d), <span class="math inline">\(a_{I}\)</span> is maximum standard ingestion rate (mmol/mmol/d), <span class="math inline">\(W\)</span> is weight (g), <span class="math inline">\(bI\)</span> is exponent for weight effect on ingestion, <span class="math inline">\(L\)</span> in length (mm) (Schneider et al. 1992; Bierman et al. 2005).
+where <span class="math inline">\(Imax\)</span> is maximum ingestion rate (mmol/mmol/d), <span class="math inline">\(a_{I}\)</span> is maximum standard ingestion rate (mmol/mmol/d), <span class="math inline">\(W\)</span> is weight (g), <span class="math inline">\(bI\)</span> is exponent for weight effect on ingestion, <span class="math inline">\(L\)</span> in length (mm) (Schneider et al. 1992; Bierman et al. 2005).
 The temperature dependence function (Thornton and Lessem 1978) was fit to zebra and quagga mussel data (Hetherington et al. Submitted) with optimal ingestion from 17°C to 20°C according to the following:
 <center>
 <br>
@@ -246,52 +202,135 @@ The temperature dependence function (Thornton and Lessem 1978) was fit to zebra 
 </center>
 <br>
 <center>
-<span class="math inline">\(f(T)_{I} = (2*\frac{T_{min_{TI}}}{T_{min_{I}}} - \frac{(T_{min_{TI}})^2}{(T_{min_{I}})^2}) / (2*\frac{T_{min_{I}}-min_{T_{I}}}{T_{min_{I}}}-\frac{(T_{min_{I}}-min_{T_{I}})^2}{(T_{min_{I}})^2})\)</span> for <span class="math inline">\(min_{T_{I}} &lt; T &lt; T_{min_{I}}\)</span>
+<span class="math inline">\(f(T)_{I} = (2*\frac{Tmin_{TI}}{Tmin_{I}} - \frac{(Tmin_{TI})^2}{(Tmin_{I})^2}) / (2*\frac{Tmin_{I}-minT_{I}}{Tmin_{I}}-\frac{(Tmin_{I}-minT_{I})^2}{(Tmin_{I})^2})\)</span> for <span class="math inline">\(minT_{I} &lt; T &lt; Tmin_{I}\)</span>
+</center>
+<br>
+<center>
+<br>
+<span class="math inline">\(f(T)_{I} = -\frac{(T^{2} + 2*Tmax_{I}*T–2*Tmax_{I}*maxT_{I} + maxT_{I}^{2})}{(Tmax_{I}-maxT_{I})^{2}}\)</span> for <span class="math inline">\(Tmax_{I}&lt;T&lt;maxT_{I}\)</span>
+</center>
+<br>
+<center>
+<br>
+<span class="math inline">\(f(T)_{I} = 0\)</span> for <span class="math inline">\(T &gt; maxT_{I}\)</span> or <span class="math inline">\(T &lt; minT_{I}\)</span>
 </center>
 <p><br>
-f(T)I = -(T2 + 2<em>TmaxI</em>T – 2<em>TmaxI</em>maxTI + maxTI2)/(TmaxI-maxTI)2 for TmaxI&lt;T&lt;maxTI
-f(T)I = 0 for T &gt; maxTI or T &lt; minTI
-where T is temperature (°C), minTI is lower temperature for no ingestion (°C), TminI is lower temperature for optimum ingestion (°C), TmaxI is upper temperature for optimum ingestion, maxTI is upper temperature for no ingestion (°C).
+where <span class="math inline">\(T\)</span> is temperature (°C), <span class="math inline">\(minT_{I}\)</span> is lower temperature for no ingestion (°C), <span class="math inline">\(Tmin_{I}\)</span> is lower temperature for optimum ingestion (°C), <span class="math inline">\(Tmax_{I}\)</span> is upper temperature for optimum ingestion, <span class="math inline">\(maxT_{I}\)</span> is upper temperature for no ingestion (°C).
 Filtration rate is related to food concentration (Walz 1978, Sprung and Rose 1988, Schneider 1992; Bierman et al. 2005). The filtration rate is maintained at a maximum value for all food values less than saturation food concentration. The filtration rate decreases as food concentrations increase above this value.
-Pseudofeces production is implicit as the difference between the mass filtered and consumed. According to Walz (1978), pseudofeces production (66%) was approximately double the ingestion rate (34%) at high food concentrations (Bierman et al. 2005).
- 
+Pseudofeces production is implicit as the difference between the mass filtered and consumed. According to Walz (1978), pseudofeces production (66%) was approximately double the ingestion rate (34%) at high food concentrations (Bierman et al. 2005).</p>
 Mussel density limits ingestion above some maximum density according to the following:
-f(D) = 1 for D&lt;Dmax
-f(D) = -(D2 + 2<em>Dmax</em>D – 2<em>Dmax</em>maxD + maxD2)/(Dmax – maxD)2 for D&gt;Dmax
-f(D) = 0 for D&gt;maxD
-where D is density (mmol/m2), Dmax is upper density for optimum ingestion (mmol/m2), and maxD is upper density for no ingestion (mmol/m2).
+<center>
+<br>
+<span class="math inline">\(f(D) = 1\)</span> for <span class="math inline">\(D&lt;Dmax\)</span>
+</center>
+<br>
+<center>
+<br>
+<span class="math inline">\(f(D) = \frac{-(D^{2} + 2*Dmax*D – 2*Dmax*maxD + maxD^{2})}{(Dmax – maxD)^{2}}\)</span> for <span class="math inline">\(D&gt;Dmax\)</span>
+</center>
+<br>
+<center>
+<br>
+<span class="math inline">\(f(D) = 0\)</span> for <span class="math inline">\(D&gt;maxD\)</span>
+</center>
+<br>
+where <span class="math inline">\(D\)</span> is density (mmol/m2), <span class="math inline">\(Dmax\)</span> is upper density for optimum ingestion (mmol/m2), and <span class="math inline">\(maxD\)</span> is upper density for no ingestion (mmol/m2).
 An additional function to reduce ingestion is the suspended solids function which decreases ingestion with high inorganic loads according to the following:
-f(SS) = 1 for SS&lt;SSmax
-f(SS) = -(SS2 + 2<em>SSmax</em>SS – 2<em>SSmax</em>maxSS + maxSS2)/(SSmax – maxSS)2 for SS&gt;SSmax
-f(SS) = 0 for SS&gt;maxSS
-where SS is suspended solids (mg/L), SSmax is upper suspended solids for optimum ingestion (mg/L), and maxSS is upper suspended solids for no ingestion (mg/L) (Spillman et al. 2008).
+<center>
+<br>
+<span class="math inline">\(f(SS) = 1\)</span> for <span class="math inline">\(SS&lt;SSmax\)</span>
+</center>
+<br>
+<center>
+<br>
+<span class="math inline">\(f(SS) = \frac{-(SS^{2} + 2*SSmax*SS – 2*SSmax*maxSS + maxSS^{2})}{(SSmax – maxSS)^{2}}\)</span> for <span class="math inline">\(SS&gt;SSmax\)</span>
+</center>
+<br>
+<center>
+<br>
+<span class="math inline">\(f(SS) = 0\)</span> for <span class="math inline">\(SS&gt;maxSS\)</span>
+</center>
+<br>
+where <span class="math inline">\(SS\)</span> is suspended solids (mg/L), <span class="math inline">\(SSmax\)</span> is upper suspended solids for optimum ingestion (mg/L), and <span class="math inline">\(maxSS\)</span> is upper suspended solids for no ingestion (mg/L) (Spillman et al. 2008).
 Along with suspended solids, salinity limits ingestion according to the following:
-f(S) = 1 for Smin &lt; S &lt; Smax
-f(S) = ((2<em>(S-minS)/Smin)–(S-minS)2/Smin2)) / ((2</em>(Smin-minS)/Smin)–(Smin-minS)2/Smin2)) for minS&lt; S &lt; Smin
-f(S) = -(S2 + 2<em>Smax</em>S – 2<em>Smax</em>maxS + maxS2)/(Smax-maxS)2 for Smax&lt;S&lt;maxS
-f(S) = 0 for S &gt; maxS or S &lt; minS
-where S is salinity (psu), minS is lower salinity for no ingestion (psu), Smin is lower salinity for optimum ingestion (psu), Smax is upper salinity for optimum ingestion (psu), maxS is upper salinity for no ingestion (psu) (Spillman et al. 2008).</p>
+<center>
+<br>
+<span class="math inline">\(f(S) = 1\)</span> for <span class="math inline">\(Smin &lt; S &lt; Smax\)</span>
+</center>
+<br>
+<center>
+<br>
+<span class="math inline">\(f(S) = \frac{(2*(S-minS)/Smin)–(S-minS)^{2}/Smin^{2})}{(2*(Smin-minS)/Smin)–(Smin-minS)^{2}/Smin^{2})}\)</span> for <span class="math inline">\(minS&lt; S &lt; Smin\)</span>
+</center>
+<br>
+<span class="math inline">\(f(S) = \frac{-(S^{2} + 2*Smax*S – 2*Smax*maxS + maxS^{2})}{(Smax-maxS)^{2}}\)</span> for <span class="math inline">\(Smax&lt;S&lt;maxS\)</span>
+<center>
+<br>
+<span class="math inline">\(f(S) = 0\)</span> for <span class="math inline">\(S &gt; maxS\)</span> or <span class="math inline">\(S &lt; minS\)</span>
+</center>
+<p><br>
+where <span class="math inline">\(S\)</span> is salinity (psu), <span class="math inline">\(minS\)</span> is lower salinity for no ingestion (psu), <span class="math inline">\(Smin\)</span> is lower salinity for optimum ingestion (psu), <span class="math inline">\(Smax\)</span> is upper salinity for optimum ingestion (psu), <span class="math inline">\(maxS\)</span> is upper salinity for no ingestion (psu) (Spillman et al. 2008).</p>
 </div>
 <div id="respiration" class="section level3">
 <h3><span class="header-section-number">15.2.2</span> Respiration</h3>
-<p>Respiration is modelled as a base or standard respiration rate based on weight and temperature (Spillman et al. 2008). Respiration rate coefficient at 20°C is based on weight from length according to the following:
-R20 = (aR * WbR)
-W = (0.071/1000) * L2.8
-where R20 is respiration rate coefficient at 20°C (mmol/mmol/d), aR is standard respiration rate (mmol/mmol/d), W is weight (g), bR is exponent for weight effect of respiration, and L is length (mm) (Schneider 1992).
+Respiration is modelled as a base or standard respiration rate based on weight and temperature (Spillman et al. 2008). Respiration rate coefficient at 20°C is based on weight from length according to the following:
+<center>
+<br>
+<span class="math inline">\(R_{20} = (a_{R} * W^{b}_{R})\)</span>
+</center>
+<br>
+<center>
+<br>
+<span class="math inline">\(W = \frac{0.071}{1000} * L^{2.8}\)</span>
+</center>
+<br>
+where <span class="math inline">\(R_{20}\)</span> is respiration rate coefficient at 20°C (mmol/mmol/d), <span class="math inline">\(a_{R}\)</span> is standard respiration rate (mmol/mmol/d), <span class="math inline">\(W\)</span> is weight (g), <span class="math inline">\(b_{R}\)</span> is exponent for weight effect of respiration, and <span class="math inline">\(L\)</span> is length (mm) (Schneider 1992).
 The respiration rate coefficient is adjusted for temperature according to the following:
-f(T)RSpillman = ϴRSpillmanT-20
-where f(T)RSpillman is respiration temperature function, ϴRSpillman is temperature multiplier for bivalve respiration (-), and T is temperature (°C) (Spillman et al. 2008).
+<center>
+<br>
+<span class="math inline">\(f(T)_{RSpillman} = \Theta_{RSpillman}^{T-20}\)</span>
+</center>
+<br>
+where <span class="math inline">\(f(T)_{RSpillman}\)</span> is respiration temperature function, <span class="math inline">\(\Theta_{RSpillman}\)</span> is temperature multiplier for bivalve respiration (-), and <span class="math inline">\(T\)</span> is temperature (°C) (Spillman et al. 2008).
 Alternatively, respiration is modelled as a base or standard respiration rate based on weight and temperature in addition to the energetic cost of feeding. Respiration rate coefficient at 30°C is based on weight from length according to the following:
-R30 = (aR * WbR)
-W = (0.071/1000) * L2.8
-where R30 is respiration rate coefficient at 30°C (mmol/mmol/d), aR is standard respiration rate (mmol/mmol/d), W is weight (g), bR is exponent for weight effect of respiration, and L is length (mm) (Schneider 1992).
+<center>
+<br>
+<span class="math inline">\(R_{30} = (a^{R} * W^{b}_{R})\)</span>
+</center>
+<br>
+<center>
+<br>
+<span class="math inline">\(W = \frac{0.071}{1000} * L^{2.8}\)</span>
+</center>
+<br>
+where <span class="math inline">\(R_{30}\)</span> is respiration rate coefficient at 30°C (mmol/mmol/d), <span class="math inline">\(a^{R}\)</span> is standard respiration rate (mmol/mmol/d), <span class="math inline">\(W\)</span> is weight (g), <span class="math inline">\(b_{R}\)</span> is exponent for weight effect of respiration, and <span class="math inline">\(L\)</span> is length (mm) (Schneider 1992).
 The temperature function follows Schneider’s (1992) application of the model of Kitchell et al. (1977) to the data of Alexander and McMahon (2004) according to the following:
-f(T)RSchneider = VX * eX * (1-V)
-V = ((TmaxR – T)/(TmaxR – maxTR))
-X = ((W * (1 + SQRT(1 + (40 / Y))) / 20)2
-W = (lnQR<em>(TmaxR – maxTR)
-Y = lnQR</em>(TmaxR – maxTR + 2)
-where T is temperature (°C), TmaxR is upper temperature for optimum respiration (°C), maxTR is upper temperature for no respiration (°C), and QR is respiration curve slope estimate (-). The maximum respiration occurs at 30°C with 43°C as the upper lethal temperature.
+<center>
+<br>
+<span class="math inline">\(f(T)_{RSchneider} = V^{X} * e^{X * (1-V)}\)</span>
+</center>
+<br>
+<center>
+<br>
+<span class="math inline">\(V = \frac{Tmax_{R} – T}{Tmax_{R} – maxT_{R}}\)</span>
+</center>
+<br>
+<center>
+<br>
+<span class="math inline">\(X = (\frac{W*(1+\sqrt{1 + (\frac{40}{Y})})}{20})^2\)</span>
+</center>
+<br>
+<center>
+<br>
+<span class="math inline">\(W = lnQ_{R}*(Tmax_{R} – maxT_{R})\)</span>
+</center>
+<br>
+<center>
+<br>
+<span class="math inline">\(Y = lnQ_{R}*(Tmax_{R} – maxT_{R} + 2)\)</span>
+</center>
+<p><br>
+where <span class="math inline">\(T\)</span> is temperature (°C), <span class="math inline">\(Tmax_{R}\)</span> is upper temperature for optimum respiration (°C), <span class="math inline">\(maxT_{R}\)</span> is upper temperature for no respiration (°C), and <span class="math inline">\(Q_{R}\)</span> is respiration curve slope estimate (-). The maximum respiration occurs at 30°C with 43°C as the upper lethal temperature.
 The energetic cost of feeding or specific dynamic action is applied only to the portion of ingestion that is not egested (Schneider 1992; Bierman et al. 2005; Gudimov et al. 2015).</p>
 </div>
 <div id="excretion" class="section level3">
@@ -304,9 +343,13 @@ The energetic cost of feeding or specific dynamic action is applied only to the 
 </div>
 <div id="mortality" class="section level3">
 <h3><span class="header-section-number">15.2.5</span> Mortality</h3>
-<p>Mortality is a function of dissolved oxygen and predation (Equation 7). Mortality increases with low dissolved oxygen concentrations according to the following:
-f(DO) = 1 + KBDO * (KDO / (KDO + DO))
-where DO is dissolved oxygen (mmol/m3), KBDO is basal respiration rate (mmol/m3), and KDO is half saturation constant for metabolic response to dissolved oxygen (mmol/m3) (Spillman et al. 2008). A mortality rate coefficient (KMORT) further influences the dissolved oxygen function. Additionally, mortality from predation is a constant rate added to the effect from dissolved oxygen.</p>
+Mortality is a function of dissolved oxygen and predation (Equation 7). Mortality increases with low dissolved oxygen concentrations according to the following:
+<center>
+<br>
+<span class="math inline">\(f(DO) = 1 + K_{BDO} * \frac{K_{DO}}{K_{DO} + DO}\)</span>
+</center>
+<p><br>
+where <span class="math inline">\(DO\)</span> is dissolved oxygen (mmol/m3), <span class="math inline">\(K_{BDO}\)</span> is basal respiration rate (mmol/m3), and <span class="math inline">\(K_{DO}\)</span> is half saturation constant for metabolic response to dissolved oxygen (mmol/m3) (Spillman et al. 2008). A mortality rate coefficient (<span class="math inline">\(K_{MORT}\)</span>) further influences the dissolved oxygen function. Additionally, mortality from predation is a constant rate added to the effect from dissolved oxygen.</p>
 </div>
 </div>
 <div id="parameter-summary-1" class="section level2">

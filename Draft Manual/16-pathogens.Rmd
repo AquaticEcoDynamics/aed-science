@@ -62,6 +62,7 @@ $$
 
 where, $\alpha_C$ is the rate of organism suspension (orgs m^-2^s^-1^), which occurs when the critical shear stress is exceeded in the relative computational cell. 
 
+
 ## Parameter Summary
 
 ## Setup & Configuration
