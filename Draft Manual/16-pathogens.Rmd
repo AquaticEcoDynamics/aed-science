@@ -65,6 +65,56 @@ where, $\alpha_C$ is the rate of organism suspension (orgs m^-2^s^-1^), which oc
 
 ## Parameter Summary
 
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+library(ggplot2)
+library(plotly)
+
+
+#### functions####
+a_plot <- function(x) {
+  0.341*1.107^(x-20)
+}
+
+b_plot <- function(x) {
+  0.709*1.056^(x-20)
+}
+
+c_plot <- function(x) {
+  0.482*1.111^(x-20)
+}
+
+d_plot <- function(x) {
+  0.454*1.044^(x-20)
+}
+
+e_plot <- function(x) {
+  0.342*1.102^(x-20)
+}
+
+f_plot <- function(x) {
+  0.164*1.010^(x-20)
+}
+
+
+#### plot ####
+
+plot <- ggplot(data.frame(x = c(0, 40)), aes(x = x)) +
+  geom_path(aes(colour="red"), stat="function", fun=a_plot) +
+  geom_path(aes(colour="blue"), stat="function", fun=b_plot) +
+  geom_path(aes(colour="green"), stat="function", fun=c_plot) +
+  geom_path(aes(colour="yellow"), stat="function", fun=d_plot) +
+  geom_path(aes(colour="orange"), stat="function", fun=e_plot) +
+  geom_path(aes(colour="pink"), stat="function", fun=f_plot) +
+  xlab("Temperature (˚C)") + ylab(bquote('k[d](T,0,7)(day^-1)'))
+
+interactive <- ggplotly(plot)
+interactive
+
+
+#+ ylab(bquote(k[d]~'(T,0,7)'~'('~day^-1~')'))
+
+```
+
 ## Setup & Configuration
 
 ## References
