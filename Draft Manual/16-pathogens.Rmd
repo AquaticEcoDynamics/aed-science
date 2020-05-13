@@ -99,16 +99,35 @@ f_plot <- function(x) {
 #### plot ####
 
 plot <- ggplot(data.frame(x = c(0, 40)), aes(x = x)) +
-  geom_path(aes(colour="red"), stat="function", fun=a_plot) +
-  geom_path(aes(colour="blue"), stat="function", fun=b_plot) +
-  geom_path(aes(colour="green"), stat="function", fun=c_plot) +
-  geom_path(aes(colour="yellow"), stat="function", fun=d_plot) +
-  geom_path(aes(colour="orange"), stat="function", fun=e_plot) +
-  geom_path(aes(colour="pink"), stat="function", fun=f_plot) +
-  xlab("Temperature (˚C)") + ylab(bquote('k[d](T,0,7)(day^-1)'))
+  geom_path(aes(colour="Total Coliforms\n(0.341, 1.107)"), stat="function", fun=a_plot) +
+  geom_path(aes(colour="Faecal Coliforms\n(0.709, 1.056)"), stat="function", fun=b_plot) +
+  geom_path(aes(colour="<i>E.coli</i>\n(0.482, 1.111)"), stat="function", fun=c_plot) +
+  geom_path(aes(colour="Enterococci\n(0.454, 1.044)"), stat="function", fun=d_plot) +
+  geom_path(aes(colour="F+RNA Phages\n(0.342, 1.102)"), stat="function", fun=e_plot) +
+  geom_path(aes(colour="Somatic Coliphages\n(0.164,1.010)"), stat="function", fun=f_plot) +
+  xlab("Temperature (˚C)") + ylab('k<sub>d</sub>(T,0,7)(day<sup>-1</sup>)')
 
-interactive <- ggplotly(plot)
+plot <- plot + scale_color_discrete(name="Organism Group",
+                                    labels=c("Total Coliforms (0.341, 1.107)", 
+                                             "Faecal Coliforms (0.709, 1.056)",
+                                             "E.coli (0.482,1.111)", 
+                                             "Enterococci (0.454, 1.044)",
+                                             "F+RNA Phages (0.342, 1.102)", 
+                                             "Somatic Coliphages (0.164, 1.010)"))+
+              theme(legend.title = element_text(color = "black", size = 8),
+              legend.text = element_text(color = "black", size = 8),
+              legend.position="right") + 
+              theme_bw()
+
+interactive <- ggplotly(plot) %>%
+  layout(legend = list(x = 1.0, y =1.0))
 interactive
+
+  
+#              breaks=c("a_plot", "b_plot", "c_plot", "d_plot", "e_plot", "f_plot"),
+#              labels=c("Total Coliforms (0.341, 1.107)", "Faecal Coliforms (0.709, 1.056)",
+#                       "E.coli (0.482,1.111)", "Enterococci (0.454, 1.044)",
+ #                      "F+RNA Phages (0.342, 1.102)", "Somatic Coliphages (0.164, 1.010)")
 
 
 #+ ylab(bquote(k[d]~'(T,0,7)'~'('~day^-1~')'))
