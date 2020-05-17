@@ -1,6 +1,6 @@
 ---
 title: "Draft AED2/AED2+ Manual"
-author: "Giles Knight"
+author: ""
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
 github-repo: AquaticEcoDynamics/aed-science/

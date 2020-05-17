@@ -1,9 +1,9 @@
 bookdown::gitbook:
-  css: css/style.css
   split_by: chapter
+  css: css/style.css
   config:
     toc:
-      collapse: subsection
+      collapse: section
       before: |
         <li><a href="./">A Draft AED2/AED2+ Manual</a></li>
       after: |
