@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>8 Carbon | Draft AED2/AED2+ Manual</title>
+  <title>30 Generic Utilities &amp; Functions | Draft AED2/AED2+ Manual</title>
   <meta name="description" content="Work in progress." />
   <meta name="generator" content="bookdown 0.18 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="8 Carbon | Draft AED2/AED2+ Manual" />
+  <meta property="og:title" content="30 Generic Utilities &amp; Functions | Draft AED2/AED2+ Manual" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="AquaticEcoDynamics/aed-science/" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="8 Carbon | Draft AED2/AED2+ Manual" />
+  <meta name="twitter:title" content="30 Generic Utilities &amp; Functions | Draft AED2/AED2+ Manual" />
   
   <meta name="twitter:description" content="Work in progress." />
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="dissolved-oxygen.html"/>
-<link rel="next" href="nitrogen.html"/>
+<link rel="prev" href="riparian-habitat-quality.html"/>
+<link rel="next" href="publications-25.html"/>
 <script src="libs/header-attrs-2.1/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -649,47 +649,302 @@
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="carbon" class="section level1" number="8">
-<h1><span class="header-section-number">8</span> Carbon</h1>
-<div id="contributors-3" class="section level2" number="8.1">
-<h2><span class="header-section-number">8.1</span> Contributors</h2>
+<div id="generic-utilities-functions" class="section level1" number="30">
+<h1><span class="header-section-number">30</span> Generic Utilities &amp; Functions</h1>
+<div id="overview-25" class="section level2" number="30.1">
+<h2><span class="header-section-number">30.1</span> Overview</h2>
 </div>
-<div id="overview-3" class="section level2" number="8.2">
-<h2><span class="header-section-number">8.2</span> Overview</h2>
+<div id="physico-chemical" class="section level2" number="30.2">
+<h2><span class="header-section-number">30.2</span> Physico-chemical</h2>
+<div id="gas-transfer" class="section level3" number="30.2.1">
+<h3><span class="header-section-number">30.2.1</span> Gas Transfer</h3>
+<p>Target: review and select a few most popularly used gas exchange velocity to be used in AED modules. Note only key factors of wind speed, current speed, and water depths are considered.</p>
+<p>Selection criteria:</p>
+<ol style="list-style-type: decimal">
+<li>Environment: ocean; lake; estuary/river;</li>
+<li>Study for which gas: O<sub>2</sub>, CH<sub>4</sub>, N<sub>2</sub>O, CO<sub>2</sub></li>
+<li>Variables: wind speeds (<span class="math inline">\(U\)</span>), current speeds (<span class="math inline">\(v\)</span>), depths (<span class="math inline">\(h\)</span>)</li>
+<li>Schmidt number normalization: yes/no. <span class="math inline">\(Sc = \frac{\mu }{d} = \frac{\text{kinematic viscosity}}{\text{diffusion}}\)</span></li>
+</ol>
+<center>
+<div style="border: 1px solid #ddd; padding: 5px; overflow-y: scroll; height:500px; overflow-x: scroll; width:725px; ">
+<table class="table table-condensed" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:center;">
+Source
+</th>
+<th style="text-align:center;">
+Computation <br> <span class="math inline">\(v\)</span>: current velocity <br> <span class="math inline">\(U\)</span>: wind speed <br> <span class="math inline">\(h\)</span>: water depth
+</th>
+<th style="text-align:center;">
+Environment
+</th>
+<th style="text-align:center;">
+Gas
+</th>
+<th style="text-align:center;">
+Required Variables
+</th>
+<th style="text-align:center;">
+<span class="math inline">\(Sc\)</span> Normalisation
+</th>
+<th style="text-align:center;">
+Comment
+</th>
+<th style="text-align:center;">
+AED Option Number
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center;min-width: 12em; ">
+<span class="citation">Liss and Merlivat (<a href="#ref-liss1986" role="doc-biblioref">1986</a>)</span>
+</td>
+<td style="text-align:center;min-width: 22em; ">
+<span class="math inline">\(k = K_{600}(\frac{Sc}{600})^{-\frac{1}{2}}\)</span> <br> <span class="math inline">\(K_{600} = 0.17U\)</span> for <span class="math inline">\(U \leq 3.6\)</span> <br> <span class="math inline">\(K_{600} = 2.85U - 9.65\)</span> for <span class="math inline">\(3.6 \lt U \leq 13\)</span> <br> <span class="math inline">\(K_{600} = 5.9U - 49.3\)</span> for <span class="math inline">\(U \gt 13\)</span>
+</td>
+<td style="text-align:center;">
+Lake and ocean
+</td>
+<td style="text-align:center;">
+CO<sub>2</sub>
+</td>
+<td style="text-align:center;">
+<span class="math inline">\(U\)</span>
+</td>
+<td style="text-align:center;">
+Yes, 600
+</td>
+<td style="text-align:center;min-width: 15em; ">
+One of the most popular formulas in early stage
+</td>
+<td style="text-align:center;">
+<span class="math inline">\(\Theta_{gas}^{schmidt} = 1\)</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 12em; ">
+<span class="citation">Wanninkhof (<a href="#ref-wanninkhof1992" role="doc-biblioref">1992</a>)</span>
+</td>
+<td style="text-align:center;min-width: 22em; ">
+<span class="math inline">\(k = 0.31U^{2}(\frac{Sc}{660})^{-\frac{1}{2}}\)</span>
+</td>
+<td style="text-align:center;">
+Ocean, open lakes
+</td>
+<td style="text-align:center;">
+CO<sub>2</sub>
+</td>
+<td style="text-align:center;">
+<span class="math inline">\(U\)</span>
+</td>
+<td style="text-align:center;">
+Yes, 660
+</td>
+<td style="text-align:center;min-width: 15em; ">
+One of the most globally popular formulas for oceans and lakes
+</td>
+<td style="text-align:center;">
+<span class="math inline">\(\Theta_{gas}^{schmidt} = 2\)</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 12em; ">
+<span class="citation">Wanninkhof (<a href="#ref-wanninkhof2014" role="doc-biblioref">2014</a>)</span>
+</td>
+<td style="text-align:center;min-width: 22em; ">
+<span class="math inline">\(k = 0.251U^{2}(\frac{Sc}{660})^{-\frac{1}{2}}\)</span>
+</td>
+<td style="text-align:center;">
+Ocean, open lakes
+</td>
+<td style="text-align:center;">
+CO<sub>2</sub>
+</td>
+<td style="text-align:center;">
+<span class="math inline">\(U\)</span>
+</td>
+<td style="text-align:center;">
+Yes, 660
+</td>
+<td style="text-align:center;min-width: 15em; ">
+Updated formula of <span class="citation">Wanninkhof (<a href="#ref-wanninkhof1992" role="doc-biblioref">1992</a>)</span>. Note the coefficient of 0.251 is now closer to <span class="citation">Ho et al. (<a href="#ref-ho2011" role="doc-biblioref">2011</a>)</span>, <span class="citation">Ho et al. (<a href="#ref-ho2016" role="doc-biblioref">2016</a>)</span>, and <span class="citation">Borges et al. (<a href="#ref-borges2004" role="doc-biblioref">2004</a>)</span>.
+</td>
+<td style="text-align:center;">
+<span class="math inline">\(\Theta_{gas}^{schmidt} = 3\)</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 12em; ">
+<span class="citation">Ho et al. (<a href="#ref-ho2011" role="doc-biblioref">2011</a>)</span>
+</td>
+<td style="text-align:center;min-width: 22em; ">
+<span class="math inline">\(k = 0.26U^{2}(\frac{Sc}{600})^{-\frac{1}{2}}\)</span>
+</td>
+<td style="text-align:center;">
+Ocean, coastal area
+</td>
+<td style="text-align:center;">
+He/SF<sub>6</sub>
+</td>
+<td style="text-align:center;">
+<span class="math inline">\(U\)</span>
+</td>
+<td style="text-align:center;">
+Yes, 600
+</td>
+<td style="text-align:center;min-width: 15em; ">
+Measurement at ocean and coastal area
+</td>
+<td style="text-align:center;">
+<span class="math inline">\(\Theta_{gas}^{schmidt} = 4\)</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 12em; ">
+<span class="citation">Ho et al. (<a href="#ref-ho2016" role="doc-biblioref">2016</a>)</span>
+</td>
+<td style="text-align:center;min-width: 22em; ">
+<span class="math inline">\(k = K_{600}(\frac{Sc}{600})^{-\frac{1}{2}}\)</span> <br> <span class="math inline">\(K_{600} = 0.77v^{\frac{1}{2}}h^{-\frac{1}{2}}+0.266U^{2}\)</span>
+</td>
+<td style="text-align:center;">
+Estuary, rivers
+</td>
+<td style="text-align:center;">
+He/SF<sub>6</sub>
+</td>
+<td style="text-align:center;">
+<span class="math inline">\(v\)</span>,<span class="math inline">\(U\)</span>,<span class="math inline">\(h\)</span>
+</td>
+<td style="text-align:center;">
+Yes, 600
+</td>
+<td style="text-align:center;min-width: 15em; ">
+Measurement at estuarine environment
+</td>
+<td style="text-align:center;">
+<span class="math inline">\(\Theta_{gas}^{schmidt} = 5\)</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 12em; ">
+<span class="citation">Raymond and Cole (<a href="#ref-raymond2001" role="doc-biblioref">2001</a>)</span>
+</td>
+<td style="text-align:center;min-width: 22em; ">
+<span class="math inline">\(k = K_{600}(\frac{Sc}{600})^{-\frac{1}{2}}\)</span> <br> <span class="math inline">\(K_{600} = 1.91exp(0.35U)\)</span>
+</td>
+<td style="text-align:center;">
+Estuary, rivers
+</td>
+<td style="text-align:center;">
+CO<sub>2</sub>
+</td>
+<td style="text-align:center;">
+<span class="math inline">\(U\)</span>
+</td>
+<td style="text-align:center;">
+Yes, 600
+</td>
+<td style="text-align:center;min-width: 15em; ">
+An equation for estuary/river environment but against only on winds based on extensive review. Note the K value here is much higher than ocean environment in high wind speeds (e.g. <span class="citation">Wanninkhof (<a href="#ref-wanninkhof1992" role="doc-biblioref">1992</a>)</span>).
+</td>
+<td style="text-align:center;">
+<span class="math inline">\(\Theta_{gas}^{schmidt} = 6\)</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 12em; ">
+<span class="citation">Borges et al. (<a href="#ref-borges2004" role="doc-biblioref">2004</a>)</span>
+</td>
+<td style="text-align:center;min-width: 22em; ">
+<span class="math inline">\(k = K_{600}(\frac{Sc}{600})^{-\frac{1}{2}}\)</span> <br> <span class="math inline">\(K_{600} = 1.0 + 1.719v^{\frac{1}{2}}h^{\frac{1}{2}}+2.85U\)</span>
+</td>
+<td style="text-align:center;">
+Scheldt Estuary
+</td>
+<td style="text-align:center;">
+CO<sub>2</sub>
+</td>
+<td style="text-align:center;">
+<span class="math inline">\(v\)</span>,<span class="math inline">\(U\)</span>,<span class="math inline">\(h\)</span>
+</td>
+<td style="text-align:center;">
+Yes, 600
+</td>
+<td style="text-align:center;min-width: 15em; ">
+A equation for estuary environment from extensive measurement at Scheldt Estuary
+</td>
+<td style="text-align:center;">
+<span class="math inline">\(\Theta_{gas}^{schmidt} = 7\)</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 12em; ">
+<span class="citation">Rosentreter et al. (<a href="#ref-rosentreter2016" role="doc-biblioref">2016</a>)</span>
+</td>
+<td style="text-align:center;min-width: 22em; ">
+<span class="math inline">\(k = K_{600}(\frac{Sc}{600})^{-\frac{1}{2}}\)</span> <br> <span class="math inline">\(K_{600CO_{2}} = -0.08+0.26v+0.83U+0.59h\)</span> <br> <span class="math inline">\(K_{600CO_{4}} = -1.07+0.36v+0.99U+0.87h\)</span>
+</td>
+<td style="text-align:center;">
+Estuaries
+</td>
+<td style="text-align:center;">
+CO<sub>2</sub>, CH<sub>4</sub>
+</td>
+<td style="text-align:center;">
+<span class="math inline">\(v\)</span>,<span class="math inline">\(U\)</span>,<span class="math inline">\(h\)</span>
+</td>
+<td style="text-align:center;">
+Yes, 600
+</td>
+<td style="text-align:center;min-width: 15em; ">
+Equations developed specially for Queensland estuaries
+</td>
+<td style="text-align:center;">
+<span class="math inline">\(\Theta_{gas}^{schmidt} = 8\)</span>
+</td>
+</tr>
+</tbody>
+</table>
 </div>
-<div id="model-description-3" class="section level2" number="8.3">
-<h2><span class="header-section-number">8.3</span> Model Description</h2>
-<div id="process-descriptions-3" class="section level3" number="8.3.1">
-<h3><span class="header-section-number">8.3.1</span> Process Descriptions</h3>
-</div>
-<div id="variable-summary-3" class="section level3" number="8.3.2">
-<h3><span class="header-section-number">8.3.2</span> Variable Summary</h3>
-</div>
-<div id="parameter-summary-3" class="section level3" number="8.3.3">
-<h3><span class="header-section-number">8.3.3</span> Parameter Summary</h3>
-</div>
-<div id="optional-module-links-3" class="section level3" number="8.3.4">
-<h3><span class="header-section-number">8.3.4</span> Optional Module Links</h3>
-</div>
-<div id="feedbacks-to-the-host-model-3" class="section level3" number="8.3.5">
-<h3><span class="header-section-number">8.3.5</span> Feedbacks to the Host Model</h3>
+</center>
 </div>
 </div>
-<div id="setup-configuration-3" class="section level2" number="8.4">
-<h2><span class="header-section-number">8.4</span> Setup &amp; Configuration</h2>
+<div id="biological" class="section level2" number="30.3">
+<h2><span class="header-section-number">30.3</span> Biological</h2>
 </div>
-<div id="case-studies-examples-3" class="section level2" number="8.5">
-<h2><span class="header-section-number">8.5</span> Case Studies &amp; Examples</h2>
-<div id="case-study-3" class="section level3" number="8.5.1">
-<h3><span class="header-section-number">8.5.1</span> Case Study</h3>
-</div>
-<div id="publications-3" class="section level3" number="8.5.2">
-<h3><span class="header-section-number">8.5.2</span> Publications</h3>
-</div>
-</div>
-<div id="references-3" class="section level2" number="8.6">
-<h2><span class="header-section-number">8.6</span> References</h2>
+<div id="references-25" class="section level2" number="30.4">
+<h2><span class="header-section-number">30.4</span> References</h2>
 
+</div>
+</div>
+<h3>References</h3>
+<div id="refs" class="references">
+<div id="ref-borges2004">
+<p>Borges, Alberto Vieira, Jean-Pierre Vanderborght, Laure-Sophie Schiettecatte, Frédéric Gazeau, Sarah Ferrón-Smith, Bruno Delille, and Michel Frankignoulle. 2004. “Variability of the gas transfer velocity of CO2 in a macrotidal estuary (the Scheldt).” <em>Estuaries</em> 27 (4): 593–603. <a href="https://doi.org/10.1007/bf02907647">https://doi.org/10.1007/bf02907647</a>.</p>
+</div>
+<div id="ref-ho2016">
+<p>Ho, David T, Nathalie Coffineau, Benjamin Hickman, Nicholas Chow, Tobias Koffman, and Peter Schlosser. 2016. “Influence of current velocity and wind speed on air-water gas exchange in a mangrove estuary: Gas Exchange in a Mangrove Estuary.” <em>Geophysical Research Letters</em> 43 (8): 3813–21. <a href="https://doi.org/10.1002/2016gl068727">https://doi.org/10.1002/2016gl068727</a>.</p>
+</div>
+<div id="ref-ho2011">
+<p>Ho, David T, Rik Wanninkhof, Peter Schlosser, David S Ullman, David Hebert, and Kevin F Sullivan. 2011. “Toward a universal relationship between wind speed and gas exchange: Gas transfer velocities measured with 3 He/SF 6 during the Southern Ocean Gas Exchange Experiment.” <em>Journal of Geophysical Research</em> 116 (C4). <a href="https://doi.org/10.1029/2010jc006854">https://doi.org/10.1029/2010jc006854</a>.</p>
+</div>
+<div id="ref-liss1986">
+<p>Liss, Peter S, and Liliane Merlivat. 1986. “The Role of Air-Sea Exchange in Geochemical Cycling,” 113–27. <a href="https://doi.org/10.1007/978-94-009-4738-2\_5">https://doi.org/10.1007/978-94-009-4738-2\_5</a>.</p>
+</div>
+<div id="ref-raymond2001">
+<p>Raymond, Peter A, and Jonathan J Cole. 2001. “Gas Exchange in Rivers and Estuaries: Choosing a Gas Transfer Velocity.” <em>Estuaries</em> 24 (2): 312. <a href="https://doi.org/10.2307/1352954">https://doi.org/10.2307/1352954</a>.</p>
+</div>
+<div id="ref-rosentreter2016">
+<p>Rosentreter, J A, D T Maher, D T Ho, M Call, J G Barr, and B D Eyre. 2016. “Spatial and temporal variability of CO 2 and CH 4 gas transfer velocities and quantification of the CH 4 microbubble flux in mangrove dominated estuaries: Gas transfers in estuaries.” <em>Limnology and Oceanography</em> 62 (2): 561–78. <a href="https://doi.org/10.1002/lno.10444">https://doi.org/10.1002/lno.10444</a>.</p>
+</div>
+<div id="ref-wanninkhof1992">
+<p>Wanninkhof, Rik. 1992. “Relationship between wind speed and gas exchange over the ocean.” <em>Journal of Geophysical Research</em> 97 (C5): 7373. <a href="https://doi.org/10.1029/92jc00188">https://doi.org/10.1029/92jc00188</a>.</p>
+</div>
+<div id="ref-wanninkhof2014">
+<p>Wanninkhof, Rik. 2014. “Relationship between wind speed and gas exchange over the ocean revisited: Gas exchange and wind speed over the ocean.” <em>Limnology and Oceanography: Methods</em> 12 (6): 351–62. <a href="https://doi.org/10.4319/lom.2014.12.351">https://doi.org/10.4319/lom.2014.12.351</a>.</p>
 </div>
 </div>
             </section>
@@ -697,8 +952,8 @@
           </div>
         </div>
       </div>
-<a href="dissolved-oxygen.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="nitrogen.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="riparian-habitat-quality.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="publications-25.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

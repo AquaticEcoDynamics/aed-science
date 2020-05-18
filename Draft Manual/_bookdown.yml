@@ -34,6 +34,7 @@ rmd_files: ["index.Rmd",
             "30-acid_sulphate_soils.Rmd",
             "31-riparian_vegetation.Rmd",
             "32-riparian_habitat_quality.Rmd",
-            "33-publications.Rmd",
-            "34-abbreviations.Rmd"]
+            "33-generic_utilities_functions.Rmd",
+            "34-publications.Rmd",
+            "35-abbreviations.Rmd"]
 new_session: yes
