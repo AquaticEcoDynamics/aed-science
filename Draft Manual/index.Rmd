@@ -5,7 +5,9 @@ date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
 github-repo: AquaticEcoDynamics/aed-science/
 description: "Work in progress."
-bibliography: ["references/pathogens.bib"]
+bibliography: ["references/pathogens.bib",
+              "references/generic_utilities_functions.bib",
+              "references/bivalves.bib"]
 biblio-style: "apalike"
 link-citations: true
 ---
