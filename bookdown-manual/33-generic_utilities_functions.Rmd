@@ -1,0 +1,40 @@
+# (PART)  Supporting Material {-} 
+
+# Generic Utilities & Functions
+
+## Overview
+
+
+## Physico-chemical
+
+### Gas Transfer
+
+Target: review and select a few most popularly used gas exchange velocity to be used in AED modules. Note only key factors of wind speed, current speed, and water depths are considered. 
+
+Selection criteria:
+
+1. Environment: ocean; lake; estuary/river;
+2. Study for which gas: O~2~, CH~4~, N~2~O, CO~2~
+3. Variables: wind speeds ($U$), current speeds ($v$), depths ($h$)
+4. Schmidt number normalization: yes/no. $Sc = \frac{\mu }{d} = \frac{\text{kinematic viscosity}}{\text{diffusion}}$
+
+
+<center>
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+library(knitr)
+library(kableExtra)
+test <- read.csv("tables/table_test.csv", check.names=FALSE)
+kable(test,"html", escape = F, align = "c") %>%
+  kable_styling(bootstrap_options = c("condensed"), full_width = F, position = "center") %>%
+  column_spec(1, width_min = "12em") %>%
+  column_spec(2, width_min = "22em") %>%
+  column_spec(7, width_min = "15em") %>%
+  scroll_box(width = "725px", height = "500px",
+  fixed_thead = FALSE) 
+```
+</center>
+
+## Biological
+
+## References
+

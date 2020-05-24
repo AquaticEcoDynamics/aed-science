@@ -1,0 +1,310 @@
+# Bivalves
+
+## Contributors
+## Overview
+
+Based on work in freshwater and estuarine systems a bivalve module to simulate growth, production, and (optionally) population dynamics has been incorporated into the AED2+ library.
+
+The model is originally based on an application to Oneida Lake and Lake Erie for mussels. One to several size classes of mussels are simulated based on physiological parameters assembled by @schneider1992 and modified by @bierman2005 to estimate effect of mussels on Saginaw Bay, Michigan, USA; a formulation also used by @gudimov2015 to estimate mussel effects in Lake Simcoe, Ontario, Canada.  Additionally, some model structure was taken from the @spillman2008 model of Tapes clams in the Barbamarco Lagoon, Italy, as modified by @bocaniov2014 for mussels in Lake Erie. 
+
+The physiology of mussels are set to be size dependent, and can vary between species (e.g., Zebra vs Quagga)(Hetherington, 2016).  Three size classes of mussels can be incorporated in the model, roughly corresponding to age-0, age-1 and age>1 mussels.  Physiological parameters are calculated for the weight assigned to each age class, using equations in Table 4.  Individual mussel mass is given in mmol C or in the case of calculations of N and P budgets, in mmol N and mmol P.  The stoichiometric ratios (C:N:P) are fixed.  Group mussel biomass is calculated at each time step by calculating ingestion and subtracting pseudofeces production, standard dynamic action, respiration, excretion, egestion and mortality (expressed in mmol C/mmol C/day, mmol N/mmol N/day; mmol P/mmol P/day).  Several of these processes are also functions of temperature, algal+POC concentrations, salinity, suspended solids and mussel density.  The effect of salinity, suspended solids and mussel density is incorporated as a multiplier of filtration rate with the multipliers having values between -0 – (no filtering) and 1 (no effect). Mussel nitrogen and phosphorus concentrations are fixed ratios of mussel carbon concentrations. Since the various input and output fluxes have variable C:N:P ratios, the excretion of nutrients is dynamically adjusted each time-step to maintain this ratio at each time step.  Reproduction and larval dynamics are not simulated. There is no transfer of biomass between age groups.
+
+## Model Description
+###	Process Descriptions
+
+#### Ingestion {-}
+Ingestion is modelled as a function of filtration rate, food availability, pseudofeces production, density, suspended solids, and salinity (Equation 2) [@schneider1992; @bierman2005; @spillman2008; @gudimov2015]. Filtration rate is based on maximum ingestion, temperature, food availability, and pseudofeces production according to the following:
+<center>
+<br>
+\begin{equation}
+FR = \frac{\frac{I_{max}*f(T)_{I}}{K_{A}}}{PF_{min}} \text{ for } [A] < KA
+(\#eq:bivalve1)
+\end{equation}
+</center>
+<br>
+<center>
+\begin{equation}
+FR = \frac{\frac{I_{max}*f(T)_{I}}{[A]}}{PF_{min}} \text{ for } [A] > KA
+(\#eq:bivalve2)
+\end{equation}
+</center>
+<br>
+
+where $FR$ is filtration rate (mmol/mmol/d), $Imax$ is maximum ingestion rate (mmol/mmol/d), $f(T)_{I}$ is filtration temperature function, $K_{A}$ is optimum algal concentration (mmol/m3), $[A]$ is algal concentration + particulate organic carbon (POC) concentration (mmol/m3), and $PFmin$ is minimum pseudofeces production (-).
+The maximum ingestion rate is based on weight from length according to the following:
+
+<center>
+<br>
+\begin{equation}
+I_{max} = (a_{I} * W^{bI})
+(\#eq:bivalve3)
+\end{equation}
+</center>
+<br>
+<center>
+\begin{equation}
+W = \frac{0.071}{1000} * L^{2.8}
+(\#eq:bivalve4)
+\end{equation}
+</center>
+<br>
+
+where $Imax$ is maximum ingestion rate (mmol/mmol/d), $a_{I}$ is maximum standard ingestion rate (mmol/mmol/d), $W$ is weight (g), $bI$ is exponent for weight effect on ingestion, $L$ in length (mm) [@schneider1992; @bierman2005].
+The temperature dependence function [@thornton1978] was fit to zebra and quagga mussel data (Hetherington et al. Submitted) with optimal ingestion from 17°C to 20°C according to the following:
+
+<center>
+<br>
+\begin{equation}
+f(T)_{I} = 1 \text{ for } T_{min_{I}} < T < T_{max_{I}}
+(\#eq:bivalve5)
+\end{equation}
+</center>
+<br>
+<center>
+\begin{equation}
+f(T)_{I} = (2*\frac{Tmin_{TI}}{Tmin_{I}} - \frac{(Tmin_{TI})^2}{(Tmin_{I})^2}) / (2*\frac{Tmin_{I}-minT_{I}}{Tmin_{I}}-\frac{(Tmin_{I}-minT_{I})^2}{(Tmin_{I})^2}) \text{ for } minT_{I} < T < Tmin_{I}
+(\#eq:bivalve6)
+\end{equation}
+</center>
+<br>
+<center>
+<br>
+\begin{equation}
+f(T)_{I} = -\frac{(T^{2} + 2*Tmax_{I}*T–2*Tmax_{I}*maxT_{I} + maxT_{I}^{2})}{(Tmax_{I}-maxT_{I})^{2}}	\text{ for } Tmax_{I}<T<maxT_{I}
+(\#eq:bivalve7)
+\end{equation}
+</center>
+<br>
+<center>
+<br>
+\begin{equation}
+f(T)_{I} = 0	\text{ for } T > maxT_{I} \text{ or } T < minT_{I}
+(\#eq:bivalve8)
+\end{equation}
+</center>
+<br>
+
+where $T$ is temperature (°C), $minT_{I}$ is lower temperature for no ingestion (°C), $Tmin_{I}$ is lower temperature for optimum ingestion (°C), $Tmax_{I}$ is upper temperature for optimum ingestion, $maxT_{I}$ is upper temperature for no ingestion (°C).
+Filtration rate is related to food concentration [@walz1978; @sprung1988; @schneider1992; @bierman2005). The filtration rate is maintained at a maximum value for all food values less than saturation food concentration. The filtration rate decreases as food concentrations increase above this value.
+Pseudofeces production is implicit as the difference between the mass filtered and consumed. According to @walz1978, pseudofeces production (66%) was approximately double the ingestion rate (34%) at high food concentrations @bierman2005.
+
+Mussel density limits ingestion above some maximum density according to the following: 
+
+<center>
+<br>
+\begin{equation}
+$f(D) = 1$ 								     	     	for $D<Dmax$
+(\#eq:bivalve9)
+\end{equation}
+</center>
+<br>
+<center>
+<br>
+\begin{equation}
+f(D) = \frac{-(D^{2} + 2*Dmax*D – 2*Dmax*maxD + maxD^{2})}{(Dmax – maxD)^{2}} \text{ for } D>Dmax
+(\#eq:bivalve10)
+\end{equation}
+</center>
+<br>
+<center>
+<br>
+\begin{equation}
+f(D) = 0 \text{ for } D>maxD
+(\#eq:bivalve11)
+\end{equation}
+</center>
+<br>
+
+where $D$ is density (mmol/m2), $Dmax$ is upper density for optimum ingestion (mmol/m2), and $maxD$ is upper density for no ingestion (mmol/m2).
+An additional function to reduce ingestion is the suspended solids function which decreases ingestion with high inorganic loads according to the following:
+
+<center>
+<br>
+\begin{equation}
+f(SS) = 1 \text{ for } SS<SSmax
+(\#eq:bivalve12)
+\end{equation}
+</center>
+<br>
+<center>
+<br>
+\begin{equation}
+f(SS) = \frac{-(SS^{2} + 2*SSmax*SS – 2*SSmax*maxSS + maxSS^{2})}{(SSmax – maxSS)^{2}} \text{ for } SS>SSmax
+(\#eq:bivalve13)
+\end{equation}
+</center>
+<br>
+<center>
+<br>
+\begin{equation}
+f(SS) = 0 \text{ for } SS>maxSS
+(\#eq:bivalve14)
+\end{equation}
+</center>
+<br>
+
+where $SS$ is suspended solids (mg/L), $SSmax$ is upper suspended solids for optimum ingestion (mg/L), and $maxSS$ is upper suspended solids for no ingestion (mg/L) [@spillman2008].
+Along with suspended solids, salinity limits ingestion according to the following: 
+
+<center>
+<br>
+\begin{equation}
+f(S) = 1 \text{ for } Smin < S < Smax
+(\#eq:bivalve15)
+\end{equation}
+</center>
+<br>
+<center>
+<br>
+\begin{equation}
+f(S) = \frac{(2*(S-minS)/Smin)–(S-minS)^{2}/Smin^{2})}{(2*(Smin-minS)/Smin)–(Smin-minS)^{2}/Smin^{2})} \text{ for } minS< S < Smin
+(\#eq:bivalve16)
+\end{equation}
+</center>
+<br>
+\begin{equation}
+f(S) = \frac{-(S^{2} + 2*Smax*S – 2*Smax*maxS + maxS^{2})}{(Smax-maxS)^{2}} \text{ for } Smax<S<maxS
+(\#eq:bivalve17)
+\end{equation}
+<center>
+<br>
+\begin{equation}
+f(S) = 0 \text{ for } S > maxS \text{ or } S < minS
+(\#eq:bivalve18)
+\end{equation}
+</center>
+<br>
+
+where $S$ is salinity (psu), $minS$ is lower salinity for no ingestion (psu), $Smin$ is lower salinity for optimum ingestion (psu), $Smax$ is upper salinity for optimum ingestion (psu), $maxS$ is upper salinity for no ingestion (psu) [@spillman2008].
+
+#### Respiration {-}
+Respiration is modelled as a base or standard respiration rate based on weight and temperature  [@spillman2008]. Respiration rate coefficient at 20°C is based on weight from length according to the following:
+
+<center>
+<br>
+\begin{equation}
+R_{20} = (a_{R} * W^{b}_{R})
+(\#eq:bivalve19)
+\end{equation}
+</center>
+<br>
+<center>
+<br>
+\begin{equation}
+W = \frac{0.071}{1000} * L^{2.8}
+(\#eq:bivalve20)
+\end{equation}
+</center>
+<br>
+
+where $R_{20}$ is respiration rate coefficient at 20°C (mmol/mmol/d), $a_{R}$ is standard respiration rate (mmol/mmol/d), $W$ is weight (g), $b_{R}$ is exponent for weight effect of respiration, and $L$ is length (mm) (Schneider 1992).
+The respiration rate coefficient is adjusted for temperature according to the following:
+
+<center>
+<br>
+\begin{equation}
+f(T)_{RSpillman} = \Theta_{RSpillman}^{T-20}
+(\#eq:bivalve21)
+\end{equation}
+</center>
+<br>
+
+where $f(T)_{RSpillman}$ is respiration temperature function, $\Theta_{RSpillman}$ is temperature multiplier for bivalve respiration (-), and $T$ is temperature (°C) [@spillman2008].
+Alternatively, respiration is modelled as a base or standard respiration rate based on weight and temperature in addition to the energetic cost of feeding. Respiration rate coefficient at 30°C is based on weight from length according to the following:
+
+<center>
+<br>
+\begin{equation}
+R_{30} = (a^{R} * W^{b}_{R})
+(\#eq:bivalve22)
+\end{equation}
+</center>
+<br>
+<center>
+<br>
+\begin{equation}
+W = \frac{0.071}{1000} * L^{2.8}
+(\#eq:bivalve23)
+\end{equation}
+</center>
+<br>
+
+where $R_{30}$ is respiration rate coefficient at 30°C (mmol/mmol/d), $a^{R}$ is standard respiration rate (mmol/mmol/d), $W$ is weight (g), $b_{R}$ is exponent for weight effect of respiration, and $L$ is length (mm) [@schneider1992].
+The temperature function follows @schneider1992 application of the model of @kitchell1977 to the data of @alexander_jr2004 according to the following:
+
+<center>
+<br>
+\begin{equation}
+f(T)_{RSchneider} = V^{X} * e^{X * (1-V)}
+(\#eq:bivalve24)
+\end{equation}
+</center>
+<br>
+<center>
+<br>
+\begin{equation}
+V = \frac{Tmax_{R} – T}{Tmax_{R} – maxT_{R}}
+(\#eq:bivalve25)
+\end{equation}
+</center>
+<br>
+<center>
+<br>
+\begin{equation}
+X = (\frac{W*(1+\sqrt{1 + (\frac{40}{Y})})}{20})^2
+(\#eq:bivalve26)
+\end{equation}
+</center>
+<br>
+<center>
+<br>
+\begin{equation}
+W = lnQ_{R}*(Tmax_{R} – maxT_{R})
+(\#eq:bivalve27)
+\end{equation}
+</center>
+<br>
+<center>
+<br>
+\begin{equation}
+Y = lnQ_{R}*(Tmax_{R} – maxT_{R} + 2)
+(\#eq:bivalve28)
+\end{equation}
+</center>
+<br>
+
+where $T$ is temperature (°C), $Tmax_{R}$ is upper temperature for optimum respiration (°C), $maxT_{R}$ is upper temperature for no respiration (°C), and $Q_{R}$ is respiration curve slope estimate (-). The maximum respiration occurs at 30°C with 43°C as the upper lethal temperature.
+The energetic cost of feeding or specific dynamic action is applied only to the portion of ingestion that is not egested [@schneider1992; @bierman2005; @gudimov2015].
+
+#### Excretion {-}
+Excretion is modelled as a constant fraction of assimilated food [@schneider1992; @bierman2005; @gudimov2015]. Excretion data for zebra and quagga mussels are limited; therefore, the excretion formulation for Mytilus edulis derived by Bayne and Newell (1983) was used [@schneider1992; @bierman2005; @gudimov2015].
+
+#### Egestion {-}
+Egestion is modeled as a function of ingestion [@schneider1992; @bierman2005; @gudimov2015]. The model follows the assumption that ingestion is directly proportional to the food content of the water for all food concentrations less than the maximum which can be ingested. For all food concentrations above this saturation value, ingestion remains constant at a maximum value ($I_{max}$) [@walz1978].
+
+#### Mortality {-}
+Mortality is a function of dissolved oxygen and predation (Equation 7). Mortality increases with low dissolved oxygen concentrations according to the following:
+
+<center>
+<br>
+\begin{equation}
+f(DO) = 1 + K_{BDO} * \frac{K_{DO}}{K_{DO} + DO}
+(\#eq:bivalve29)
+\end{equation}
+</center>
+<br>
+
+where $DO$ is dissolved oxygen (mmol/m3), $K_{BDO}$ is basal respiration rate (mmol/m3), and $K_{DO}$ is half saturation constant for metabolic response to dissolved oxygen (mmol/m3) [@spillman2008]. A mortality rate coefficient ($K_{MORT}$) further influences the dissolved oxygen function. Additionally, mortality from predation is a constant rate added to the effect from dissolved oxygen.
+
+###	Variable Summary
+###	Parameter Summary
+###	Optional Module Links
+###	Feedbacks to the Host Model
+## Setup & Configuration
+## Case Studies & Examples
+###	Case Study
+###	Publications
+## References
+
+<div id="refs"></div> 
+

@@ -1,0 +1,1467 @@
+--- 
+title: "AED2/AED2+ Manual"
+author: ""
+date: "`r Sys.Date()`"
+site: "bookdown::bookdown_site"
+bookdown::gitbook:
+  config:
+    toc:
+      collapse: subsection
+      scroll_highlight: yes
+      before: null
+      after: null
+    toolbar:
+      position: fixed
+    edit : null
+    download: null
+    search: yes
+    fontsettings:
+      theme: white
+      family: sans
+      size: 2
+    sharing:
+      facebook: yes
+      github: no
+      twitter: yes
+      linkedin: no
+      weibo: no
+      instapaper: no
+      vk: no
+      all: ['facebook', 'twitter', 'linkedin', 'weibo', 'instapaper']
+    info: yes
+documentclass: book
+bibliography: ["references/pathogens.bib",
+              "references/generic_utilities_functions.bib",
+              "references/bivalves.bib"]
+biblio-style: apalike
+link-citations: yes
+---
+
+<!--chapter:end:index.Rmd-->
+
+
+# Welcome{-}
+
+## How to contribute?{-}
+
+## Reproducibility{-}
+
+## Supporting the project{-}
+
+<!--chapter:end:01-welcome.Rmd-->
+
+# Foreward{-}
+
+
+<!--chapter:end:02-foreward.Rmd-->
+
+# Preface{-}
+
+
+<!--chapter:end:03-preface.Rmd-->
+
+# Introduction
+
+## Scientific Overview
+
+
+## Application Contexts
+
+
+## Book Structure
+
+
+
+
+
+
+
+
+
+
+
+<!--chapter:end:04-intro.Rmd-->
+
+# Nomenclature
+
+## A Note on Notation
+
+The remainder of this section presents the range of equations and parameterisations adopted by the various model approaches. For consistency, a standard mathematical notation is used.
+
+- $N$ = number of groups (integer)
+- $a, om, z$ = indices of various sub-groups of algae/phytoplankton, organic matter and zooplankton (integer)
+- $\chi_{C:Y}^{group}$ = the stoichiometric ratio of “$group$” between $C$ and element “$Y$”  (mmol C/mmol Y)
+- $f_{process}^{var}$ = function that returns the mass flux of “$process$” on “$var$”  (mmol var/time)
+- $R_{process}^{var}$ = the rate of “$process$” influencing the variable “$var$”  (/time)
+- $F_{process}^{var}$ = the maximum benthic areal flux of variable “var” (mmol var/area/time)
+- $p_{source}^{group}$ = the preference of “$group$” for “$source$”  (0-1)
+- $\Phi_{lim}^{group}(var)$ = dimensionless limitation or scaling function to account for the effect of “$lim$” on “$group$” (-)
+- $k^{var}$	= generic fraction related to “$var$”  (0-1)
+- $\Theta_{config}^{group}$	= switch to configure selectable model component “$config$” for “$group$” (0,1,2,…)
+- $c,\theta,\gamma…$ 		= coefficient  (various units)
+
+
+## Data Types
+
+<!--chapter:end:05-nomenclature.Rmd-->
+
+# Organisation of the Library & Module Structure
+
+## Library Design
+
+
+## Model Structure
+<!-- Previously from 'Modelling within the AED framework'-->
+
+The AED2 Model has ability to simulate a range of physical, chemical and biological processes, that can be generally described based as:
+
+-	Feedback of chemical or biological attributes to physical properties of water (light extinction, drag, density)
+-	Water column kinetic (time-varying) chemical / biological transformations (e.g., denitrification or algal growth)
+-	Water column equilibrium (instantaneous) chemical transformations (e.g., PO~4~ adsorption)
+-	Biogeochemical transformations in the sediment or biological changes in the benthos
+-	Vertical sedimentation or migration
+-	Fluxes across the air-water interface
+-	Fluxes across the sediment-water interface
+-	Fluxes across the terrestrial-water interface (riparian interactions)
+-	Ecohydrological dynamics and biogeochemical transformations in the exposed (dry) cells
+-	Feedbacks of soil and vegetation dynamics onto lake hydrodynamics and water balance
+
+The model is organised as a series of “modules” that can be connected or “linked” through specific variable dependencies. Relevant variables (Table 3) are described in the following sections, along with the science basis relevant to the Lower Lakes model setup. For the initial phase of the CLLMM RWQM model, only the core variables are configured, and future proposed variables are also indicated in the Table 3, denoted with an asterisk.
+
+## Module Summary
+
+<!--chapter:end:06-organisation_and_structure.Rmd-->
+
+# Coupling to Host Models
+
+## Interface Approach
+
+
+## “Environment” Variables
+
+
+## Feedback Options
+
+
+## Light Climate
+
+
+## Velocity & Stress
+
+
+## Sediment Zones
+
+
+## Lagrangian Particles
+
+
+## Current Hosts
+
+
+<!--chapter:end:07-host_model_coupling.Rmd-->
+
+# (PART)  AED Water Modules{-} 
+
+# Tracers & Water Age
+
+## Contributors
+## Overview
+## Model Description
+###	Process Descriptions
+###	Variable Summary
+###	Parameter Summary
+###	Optional Module Links
+###	Feedbacks to the Host Model
+## Setup & Configuration
+## Case Studies & Examples
+###	Case Study
+###	Publications
+## References
+
+<!--chapter:end:08-tracers_water_age.Rmd-->
+
+# Suspended Sediment
+
+## Contributors
+## Overview
+## Model Description
+###	Process Descriptions
+###	Variable Summary
+###	Parameter Summary
+###	Optional Module Links
+###	Feedbacks to the Host Model
+## Setup & Configuration
+## Case Studies & Examples
+###	Case Study
+###	Publications
+## References
+
+<!--chapter:end:09-suspended_sediment.Rmd-->
+
+# Dissolved Oxygen 
+
+## Contributors
+
+
+## Overview 
+
+Dissolved Oxygen (DO) dynamics respond to processes of atmospheric exchange, sediment oxygen demand, microbial use during organic matter mineralisation and nitrification, photosynthetic oxygen production and respiratory oxygen consumption, chemical oxygen demand, and respiration by other biotic components such as seagrass and bivalves (see table below).
+
+Other processes impacting the oxygen concentration include the breakdown of DOC by aerobic heterotrophic bacteria to CO2, whereby a stoichiometrically equivalent amount of oxygen is removed. Chemical oxidation, for example processes such as nitrification or sulfide oxidation, also consume oxygen dependent on the relevant stoichiometric factor. Photosynthetic oxygen production and respiratory oxygen consumption by pelagic phytoplankton is also included and is summed over the number of simulated phytoplankton groups. Seagrass interaction with the oxygen cycle is configurable within the model.
+
+
+## Model Description
+
+### Process Descriptions
+
+<!-- previously from 'aed2_oxygen : oxygen solubility & atmospheric exchange' on website version-->
+#### Oxygen Solubility & Atmospheric Exchange {-} 
+Atmospheric exchange is typically modelled based on Wanninkhof (1992) and the flux equation of Riley and Skirrow (1974) for the open water, and on Ho et al. (2011) for estuarine environments.
+\begin{equation}
+								F_{O_2} = k_{O_2} \left(C_{air} - C_{water}\right)
+\end{equation}
+Where $k_{O_2} (ms^{-1})$ is the oxygen transfer coefficient, $C_{water} (gm^{-3})$ is the oxygen concentration in the surface waters near the interface and $C_{air} (gm^{-3})$ is the concentration of oxygen in the air phase near the interface. A positive flux represents input of oxygen from the atmosphere to the water. $C_{air}$ is dependent on temperature, $T$, salinity, $S$ and atmospheric pressure, $p$, as given by:
+\begin{eqnarray}
+							C_{air}\left(T,S,p \right) &=& 1.42763\: f\left(p\right) \exp \left\{ -173.4292+249.6339 \left[\frac{100}{\theta_k}\right] + 143.3483 \ln \left[ \frac{\theta_k}{100}\right] \right. \nonumber \\ &-& \left. 21.8492 \left[\frac{\theta_k}{100}\right] + S\left(-0.033096 +0.014259 \left[\frac{\theta_k}{100}\right] -0.0017 \left[\frac{\theta_k}{100}\right]^2 \right) \right\}
+\end{eqnarray}
+Where $\theta_k$ is temperature in degrees Kelvin, salinity is expressed as parts per thousand and atmospheric pressure is in kPa. The pressure correction function, $f(p)$ varies between one and zero for the surface and high altitudes respectively: 
+\begin{equation}
+							f\left(p\right)=\frac{p_H}{p_{SL}}\left[1-\frac{p_{vap}}{p_H}\right]/\left[1-\frac{p_{vap}}{p_{SL}}\right].
+\end{equation}
+
+
+#### aed2_oxygen : sediment oxygen demand {-} 
+Modelling sediment oxygen demand can take a variety of forms. The simplest form in AED2 is the $SOD$ varies as a function of the overlying water temperature and dissolved oxygen levels.
+\begin{equation}
+							f_{O_2}^{DSF}(T,DO)= S_{SOD}\:f_{SED}^{T2}(T)\:f_{SOD}^{DO1}(DO)
+\end{equation}
+
+Where $S_{SOD}$ is a fixed oxygen flux across the sediment-water interface and $K_{DO_{SOD}}$ is a half-saturation constant for the sediment oxygen demand.
+
+#### Other oxygen sources/sinks (optional) {-} 
+- Oxygen consumption during baterial mineralisation of DOC is done in the bacteria module - aed2_bacteria;
+- Oxygen consumption during nitrification is done in the nitrogen module - [aed2_nitrogen][Inorganic Nutrients: C/N/P/Si];
+- Oxygen production/consumption by phytoplankton phtosynthesis/respiration is done in the phytoplankton module - [aed2_phytoplankton][Phytoplankton];
+- Oxygen consumption due to zooplankton respiration is done in the zooplankton module - [aed2_zooplankton][Zooplankton];
+- Oxygen production/consumption by seagrass phtosynthesis/respiration is done in the bateria module - aed2_seagrass;
+- Oxygen consumption due to bivalve respiration is done in the benthic module - [aed2_benthic][Benthic Vegetation];
+
+### Variable Summary
+
+<table>
+<tr>
+<td> Variable Name </td> <td> Description </td> <td> Units </td> <td> Variable Type </td> <td> Core/Optional </td> 
+</tr>
+<tr>
+<td>
+```
+OXY_oxy
+```
+</td>
+<td>
+Dissolved oxygen concentration
+</td>
+<td>
+$mmol\,m^{-3}$
+</td>
+<td>
+Pelagic
+</td>
+<td>
+Core
+</td>
+</tr>
+</table>
+
+#### Diagnostics{-}
+<table>
+<tr>
+<td> Variable Name </td> <td> Description </td> <td> Units </td> <td> Variable Type </td> <td> Core/Optional </td> 
+</tr>
+
+<tr>
+<td>
+```
+OXY_oxysat
+```
+</td>
+<td>
+Dissolved oxygen saturation
+</td>
+<td>
+%
+</td>
+<td>
+Pelagic diagnostic
+</td>
+<td>
+Core
+</td>
+</tr>
+
+<tr>
+<td>
+```
+OXY_atm_oxy_flux
+```
+</td>
+<td>
+O2 exchange across atm/water interface
+</td>
+<td>
+$mmol\,m^{-2}\,day^{-1}$
+</td>
+<td>
+$-$
+</td>
+<td>
+$-$
+</td>
+</tr>
+
+</table>
+
+<!-- Previously from 'Parameters & Configuration' on website-->
+<table>
+<tr>
+<td> Parameter Name </td> <td> Description </td> <td> Units </td> <td> Parameter Type </td> <td> Default </td> <td> Typical Range </td> <td> Comment </td> 
+</tr>
+
+<tr>
+<td>
+```
+oxy_initial
+```
+</td>
+<td>
+Initial dissolved oxygen (DO) concentration
+</td>
+<td>
+$mmol\,m^{-3}$
+</td>
+<td>
+Float
+</td>
+<td>
+$-$
+</td>
+<td>
+0-400
+</td>
+<td>
+Note: will be overwritten by GLM or TFV IC
+</td>
+</tr>
+
+<tr>
+<td>
+```
+Fsed_oxy
+```
+</td>
+<td>
+Sediment oxygen demand (SOD)
+</td>
+<td>
+$mmol\,m^{-2}\,day^{-1}$
+</td>
+<td>
+Float
+</td>
+<td>
+$-$
+</td>
+<td>
+-100
+</td>
+<td>
+Note: unused if Fsed_oxy_variable is activated via aed2_sedflux
+</td>
+</tr>
+
+<tr>
+<td>
+```
+Ksed_oxy
+```
+</td>
+<td>
+Half-saturation concentration of oxygen sediment flux
+</td>
+<td>
+$mmol\,m^{-3}$
+</td>
+<td>
+Float
+</td>
+<td>
+50
+</td>
+<td>
+10-100
+</td>
+<td>
+Changes the sensitivity of the oxygen flux to the overlying oxygen concentration
+</td>
+</tr>
+
+<tr>
+<td>
+```
+theta_sed_oxy
+```
+</td>
+<td>
+Arrhenius temperature multiplier for sediment oxygen flux
+</td>
+<td>
+$-$
+</td>
+<td>
+Float
+</td>
+<td>
+1e+00
+</td>
+<td>
+1.04 - 1.12
+</td>
+<td>
+Changes the sensitivity of the oxygen flux to the overlying temperature
+</td>
+</tr>
+
+<tr>
+<td>
+```
+Fsed_oxy_variable
+```
+</td>
+<td>
+Oxygen sediment flux variable link
+</td>
+<td>
+$-$
+</td>
+<td>
+String
+</td>
+<td>
+$-$
+</td>
+<td>
+e.g.: SDF_Fsed_oxy
+</td>
+<td>
+Will use the value supplied by the aed2_sedflux model for Fsed_oxy; use this option to allow for spatial or temperal variation
+</td>
+</tr>
+
+<tr>
+<td>
+```
+oxy_min
+```
+</td>
+<td>
+Minimum dissolved oxygen (DO) concentration
+</td>
+<td>
+$mmol\,m^{-3}$
+</td>
+<td>
+Float
+</td>
+<td>
+$-$
+</td>
+<td>
+$-$
+</td>
+<td>
+Optional variable to enforce negative number clipping
+</td>
+</tr>
+
+<tr>
+<td>
+```
+oxy_max
+```
+</td>
+<td>
+Maximum dissolved oxygen (DO) concentration
+</td>
+<td>
+$mmol\,m^{-3}$
+</td>
+<td>
+Float
+</td>
+<td>
+$-$
+</td>
+<td>
+1000
+</td>
+<td>
+Optional variable to enforce high number clipping
+</td>
+</tr>
+
+</table>
+
+### Parameter Summary
+
+
+### Optional Module Links
+
+
+### Feedbacks to the Host Model
+
+
+## Setup & Configuration
+<!--Previously from 'Setup Example'-->
+An example `nml` block for the oxygen module is shown below:
+```{}
+&aed2_oxygen
+   oxy_initial = 225.0
+   Fsed_oxy = -40.0
+   Ksed_oxy = 100.0
+   theta_sed_oxy = 1.08
+!  Fsed_oxy_variable = 'SDF_Fsed_oxy'
+   oxy_min = 0
+   oxy_max = 500
+ /
+```
+
+
+## Case Studies & Examples
+
+### Case Study
+<!-- Previously from 'Examples' on website version -->
+
+<center>
+
+![Example 1: Cross-section plots comparing modelled and field salinity (psu, left) and oxygen (mg/L, right) for Sep-Dec 2008 at Swan River. The field plots are based on a contouring around 20 profile data locations.](images/oxygen_example4.png){width=75%}
+
+</center>
+
+<center>
+
+![Example 2: The total area of anoxia (<2 mg O2 / L) and hypoxia (<4 mg O2 / L) within the estuary for 2008 and 2010, comparing the model (black line) and spatially interpolated weekly profile data (shaded region).](images/oxygen_example2.png){width=75%} 
+
+</center>
+
+### Publications
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## References
+
+<!--chapter:end:10-dissolved_oxygen.Rmd-->
+
+# Carbon
+
+## Contributors
+## Overview
+## Model Description
+###	Process Descriptions
+###	Variable Summary
+###	Parameter Summary
+###	Optional Module Links
+###	Feedbacks to the Host Model
+## Setup & Configuration
+## Case Studies & Examples
+###	Case Study
+###	Publications
+## References
+
+<!--chapter:end:11-carbon.Rmd-->
+
+# Nitrogen 
+
+## Contributors
+## Overview
+## Model Description
+###	Process Descriptions
+###	Variable Summary
+###	Parameter Summary
+###	Optional Module Links
+###	Feedbacks to the Host Model
+## Setup & Configuration
+## Case Studies & Examples
+###	Case Study
+###	Publications
+## References
+
+<!--chapter:end:12-nitrogen.Rmd-->
+
+# Phosphorous
+
+## Contributors
+## Overview
+## Model Description
+###	Process Descriptions
+###	Variable Summary
+###	Parameter Summary
+###	Optional Module Links
+###	Feedbacks to the Host Model
+## Setup & Configuration
+## Case Studies & Examples
+###	Case Study
+###	Publications
+## References
+
+<!--chapter:end:13-phosphorous.Rmd-->
+
+# Silica
+
+## Contributors
+## Overview
+## Model Description
+###	Process Descriptions
+###	Variable Summary
+###	Parameter Summary
+###	Optional Module Links
+###	Feedbacks to the Host Model
+## Setup & Configuration
+## Case Studies & Examples
+###	Case Study
+###	Publications
+## References
+
+<!--chapter:end:14-silica.Rmd-->
+
+# Organic Matter
+
+## Contributors
+## Overview
+## Model Description
+###	Process Descriptions
+###	Variable Summary
+###	Parameter Summary
+###	Optional Module Links
+###	Feedbacks to the Host Model
+## Setup & Configuration
+## Case Studies & Examples
+###	Case Study
+###	Publications
+## References
+
+<!--chapter:end:15-organic_matter.Rmd-->
+
+# Phytoplankton
+
+## Contributors
+## Overview
+## Model Description
+###	Process Descriptions
+###	Variable Summary
+###	Parameter Summary
+###	Optional Module Links
+###	Feedbacks to the Host Model
+## Setup & Configuration
+## Case Studies & Examples
+###	Case Study
+###	Publications
+## References
+
+<!--chapter:end:16-phytoplankton.Rmd-->
+
+# Zooplankton
+
+## Contributors
+## Overview
+## Model Description
+###	Process Descriptions
+###	Variable Summary
+###	Parameter Summary
+###	Optional Module Links
+###	Feedbacks to the Host Model
+## Setup & Configuration
+## Case Studies & Examples
+###	Case Study
+###	Publications
+## References
+
+<!--chapter:end:17-zooplankton.Rmd-->
+
+# Totals
+
+## Contributors
+## Overview
+## Model Description
+###	Process Descriptions
+###	Variable Summary
+###	Parameter Summary
+###	Optional Module Links
+###	Feedbacks to the Host Model
+## Setup & Configuration
+## Case Studies & Examples
+###	Case Study
+###	Publications
+## References
+
+<!--chapter:end:18-totals.Rmd-->
+
+# (PART)  AED+ Water Modules{-} 
+
+# Aqueous Geochemistry
+
+## Contributors
+## Overview
+## Model Description
+###	Process Descriptions
+###	Variable Summary
+###	Parameter Summary
+###	Optional Module Links
+###	Feedbacks to the Host Model
+## Setup & Configuration
+## Case Studies & Examples
+###	Case Study
+###	Publications
+## References
+
+<!--chapter:end:19-aqueous_geochemistry.Rmd-->
+
+# Pathogens & Microbial Indicator Organisms
+
+## Contributors
+## Overview
+
+Understanding the fate and transport of pathogenic and indicator microbes within drinking water reservoirs is critical for managers to effectively reduce risk. Over the past decade several advances have been made for the simulating organism dynamics using coupled hydrodynamic-organism fate models. These have generally been used for simulating coliform bacteria [@hipsey2008], with applications also reported for Cryptosporidium [@hipsey2004] and viruses [@sokolova2012] . In general, these models simulate organism concentrations within water bodies by accounting for external loading, advection and mixing process that occur within the lake interior, organism inactivation and sedimentation. The purpose of this document is to firstly synthesize relevant information from empirical and prior modelling studies to justify the necessary model required for reservoir systems, and secondly to summarise the implementation of the pathogen module within the AED2 model framework. 
+
+## Model Description
+###	Process Descriptions
+
+#### General Approach {-}
+
+The general balance equation for organism transport and fate is summarized in @hipsey2008 as: 
+
+$$
+\begin{equation}
+\frac{dC}{dt} = -\frac{\partial }{\partial x_{j}}(CU_{j})+\frac{\partial }{\partial x_{j}}(\kappa_{j}\frac{\partial C}{\partial x_{j}})
++C_{in}-C_{out}+C_{r}(\tau,SS_{SED},C_{SED})\\
++[k_{g}(T,S,DOC_{L})-k_{d}(T,S,pH)-k_{l}
+(I_{0},S,DO,pH)-k_{s}(T,S,SS)-k_{p}(T)]C
+\end{equation}
+$$
+
+where $C$ is the organic concentration (orgs m^-3^), $t$ is time, $x_j$ is the distance in the $j$-th dimension (m), $U_j$ is the velocity in the $j$-th dimension (ms^-1^), is the eddy-diffusivity and $C_{in}$ and $C_{out}$ are the inflow and outflow fluxes respectively (orgs m^-3^s^-1^). This relates organism concentration through time to hydrodynamic characteristics within the lake (as captured by $U$, $\kappa$ and $\tau$), and the environmental conditions experienced that influence organism fate (including temperature, salinity, light intensity, dissolved organic carbon, oxygen and pH). This comprehensive description is usually simplified for specific applications, based on justification of the dominant processes present in any particular lake and available data for model setup and validation. 
+
+Within the TUFLOWFV-AED2 model framework, the 1^st^ three terms on the RHS are solved via the finite volume scalar transport routines with TUFLOW-FV and the fourth and fifth terms are simulated by the aed2_pathogens module of the AED2 aquatic ecological modelling library. For this application the growth and predation terms suggested by @hipsey2008 are not considered directly since the likelihood of growth is small [@sidhu2012] and predation/grazing is factored into the die-off rate (described below). The remaining terms for simulation of organism resuspension and inactivation are described in detail next.
+
+#### Natural Mortality {-}
+
+Natural mortality, or the ‘dark-death rate’, $k_d$, is an important process determining the net rate of die off of protozoan, viral and bacterial organisms and has been reported to vary for specific organisms due to changes in temperature, salinity and pH. The reported die off rates in the literature however are widely variable, with a synthesis of numerous studies from a range of water bodies presented in @hipsey2008. For freshwater reservoirs, changes in salinity and pH are unlikely to be a significant driver of organism viability relative to the range presented @hipsey2008 and therefore a simple constant die-off rate that depends on temperature is appropriate: 
+
+$$
+k_{d}(T) = k_{d_{20}}\vartheta _{M}^{T-20}
+$$
+
+where $k_{d_{20}}$ is the rate of mortality in the dark at 20C and in freshwater. Since the AED2 implementation of the model to be applied with NPD does not include protozoan grazing as a separate term (as in Eq 1), the grazing effect needs to be embodied within the $k_{d_{20}}$ term. This effectively assumes a constant grazing pressure over time, and if chosen to be a low value this will essentially ensure conservative estimate of the die-off due to grazing. Empirical data from Wivenhoe dam shows the presence of native micro-organisms can increase the background die-off rate by 1.1-3.0x (eg Table 5 in @sidhu2012). 
+
+#### Sunlight Inactivation {-}
+Depending on the clarity of the water, the light climate of the lake can be a dominant factor influencing organism viability and this has been observed empirically in Wivenhoe Dam by @sidhu2012. Different organism types experience different sensitivity to different light bandwidths, with most organisms sensitive to UV-B and UV-A and some sensitive to light in the visible spectrum [@sinton2007]. @hipsey2008 formulated a multiple band-width model for organisms that included direct and indirect mechanisms for sunlight mediated inactivation by accounting for the effect of salinity, oxygen and pH on free radical formation. Here we use a simplified form that accounts only for direct sunlight denaturation as the indirect mechanism is more specific to MS2 phage relative to rotavirus for example [@verbyla2015]. The implemented expression is therefore: 
+
+$$
+k_{l} = \sum_{b=1}^{N_{b}}[\varphi k_{b} I_{b}]
+$$
+
+where $N_B$ is the number of discrete solar bandwidths to be modeled, $b$ is the bandwidth class {1, 2, … , $N_B$}, $k_b$ is the freshwater inactivation rate coefficient for exposure to the $b^{th}$ class (m^2^ MJ^-1^), $I_b$ is the intensity of the $b^{th}$ bandwidth class (Wm^-2^), $\varphi$ is a constant to convert units from seconds to days and J to MJ (= 8.64*10^-2^).
+ 
+In AED2, the light intensity is computed for 3 distinct bandwidths, including UV-B, UV-A and PAR, and the attenuation of each through the reservoir water column is based on bandwidth specific light extinction coefficients, that account for the effect of turbidity and chromophoric dissolved organic matter (CDOM) on attenutation. 
+
+#### Sedimentation {-}
+
+Sedimentation of organisms occurs at a rate depending on the degree to which the population is attached to suspended particles. Within AED2, this is captured by simulating free and attached organisms and multiple groups of particles may be accounted for. If we assume a single dominant particle size and ignore the effect of salinity on the settling velocity, then the expression in @hipsey2008 for the effective sedimentation velocity reduces to:  
+$$
+k_{s}=(1-f_{a})\frac{V_{c}}{\Delta z}+f_{a}\frac{V_{s}}{\Delta z}
+$$
+where $f_a$ is the attached fraction, and $V$ is the vertical velocity of organisms or sediment particles.  
+
+#### Resupension {-}
+
+Resuspension of organisms accumulated within the sediment has been show to be a relatively important terms in environments where high currents or waves exist. In reservoirs this can occur in the lake margins or deeper in the lake where internal waves or river underflows increase the shear stress at the sediment. The amount of organisms that resuspend depends not only on the shear stress but also n the concentration of organisms in the surficial layers of the sediment. This may be modelled by accounting for the deposited organisms, decay within the sediment and resuspension rate, however, this is notoriously difficult given potentially complex dynamics of organisms in the sediment. Instead we assume that a standard background concentration exists within different sediment regions (based on depth and local geomorphology) and simulate resuspension rate as: 
+
+$$
+C_{r}(\tau)=\alpha_{c}\frac{(\tau - \tau_{c_{s}})}{\tau _{ref}}\frac{1}{\Delta z_{bot}}
+$$
+
+where, $\alpha_C$ is the rate of organism suspension (orgs m^-2^s^-1^), which occurs when the critical shear stress is exceeded in the relative computational cell. 
+
+
+###	Variable Summary
+###	Parameter Summary
+###	Optional Module Links
+###	Feedbacks to the Host Model
+## Setup & Configuration
+## Case Studies & Examples
+###	Case Study
+
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+library(ggplot2)
+library(plotly)
+
+
+#### functions####
+a_plot <- function(x) {
+  0.341*1.107^(x-20)
+}
+
+b_plot <- function(x) {
+  0.709*1.056^(x-20)
+}
+
+c_plot <- function(x) {
+  0.482*1.111^(x-20)
+}
+
+d_plot <- function(x) {
+  0.454*1.044^(x-20)
+}
+
+e_plot <- function(x) {
+  0.342*1.102^(x-20)
+}
+
+f_plot <- function(x) {
+  0.164*1.010^(x-20)
+}
+
+
+#### plot ####
+
+plot <- ggplot(data.frame(x = c(0, 40)), aes(x = x)) +
+  geom_path(aes(colour="Total Coliforms\n(0.341, 1.107)"), stat="function", fun=a_plot) +
+  geom_path(aes(colour="Faecal Coliforms\n(0.709, 1.056)"), stat="function", fun=b_plot) +
+  geom_path(aes(colour="<i>E.coli</i>\n(0.482, 1.111)"), stat="function", fun=c_plot) +
+  geom_path(aes(colour="Enterococci\n(0.454, 1.044)"), stat="function", fun=d_plot) +
+  geom_path(aes(colour="F+RNA Phages\n(0.342, 1.102)"), stat="function", fun=e_plot) +
+  geom_path(aes(colour="Somatic Coliphages\n(0.164,1.010)"), stat="function", fun=f_plot) +
+  xlab("Temperature (˚C)") + ylab('k<sub>d</sub>(T,0,7)(day<sup>-1</sup>)')
+
+plot <- plot + scale_color_discrete(name="Organism Group",
+                                    labels=c("Total Coliforms (0.341, 1.107)", 
+                                             "Faecal Coliforms (0.709, 1.056)",
+                                             "E.coli (0.482,1.111)", 
+                                             "Enterococci (0.454, 1.044)",
+                                             "F+RNA Phages (0.342, 1.102)", 
+                                             "Somatic Coliphages (0.164, 1.010)"))+
+              theme(legend.title = element_text(color = "black", size = 8),
+              legend.text = element_text(color = "black", size = 8),
+              legend.position="right") + 
+              theme_bw()
+
+interactive <- ggplotly(plot) %>%
+  layout(legend = list(x = 1.0, y =1.0))
+interactive
+
+  
+#              breaks=c("a_plot", "b_plot", "c_plot", "d_plot", "e_plot", "f_plot"),
+#              labels=c("Total Coliforms (0.341, 1.107)", "Faecal Coliforms (0.709, 1.056)",
+#                       "E.coli (0.482,1.111)", "Enterococci (0.454, 1.044)",
+ #                      "F+RNA Phages (0.342, 1.102)", "Somatic Coliphages (0.164, 1.010)")
+
+
+#+ ylab(bquote(k[d]~'(T,0,7)'~'('~day^-1~')'))
+
+```
+
+
+###	Publications
+
+## References
+
+
+
+
+
+<!--chapter:end:20-pathogens_microbial_indicators.Rmd-->
+
+# Stable Isotopes
+
+## Contributors
+## Overview
+## Model Description
+###	Process Descriptions
+###	Variable Summary
+###	Parameter Summary
+###	Optional Module Links
+###	Feedbacks to the Host Model
+## Setup & Configuration
+## Case Studies & Examples
+###	Case Study
+###	Publications
+## References
+
+<!--chapter:end:21-stable_isotopes.Rmd-->
+
+# Bioactive Particles
+
+## Contributors
+## Overview
+## Model Description
+###	Process Descriptions
+###	Variable Summary
+###	Parameter Summary
+###	Optional Module Links
+###	Feedbacks to the Host Model
+## Setup & Configuration
+## Case Studies & Examples
+###	Case Study
+###	Publications
+## References
+
+<!--chapter:end:22-bioactive_particles.Rmd-->
+
+# (PART) AED+ Benthic Modules {-} 
+
+# Sediment Biogeochemistry
+
+## Contributors
+## Overview
+## Model Description
+###	Process Descriptions
+###	Variable Summary
+###	Parameter Summary
+###	Optional Module Links
+###	Feedbacks to the Host Model
+## Setup & Configuration
+## Case Studies & Examples
+###	Case Study
+###	Publications
+## References
+
+<!--chapter:end:23-sediment_biogeochemistry.Rmd-->
+
+# Submerged Macrophytes
+
+## Contributors
+## Overview
+## Model Description
+###	Process Descriptions
+###	Variable Summary
+###	Parameter Summary
+###	Optional Module Links
+###	Feedbacks to the Host Model
+## Setup & Configuration
+## Case Studies & Examples
+###	Case Study
+###	Publications
+## References
+
+<!--chapter:end:24-submerged_macrophytes.Rmd-->
+
+# Macroalgae
+
+## Contributors
+## Overview
+## Model Description
+###	Process Descriptions
+###	Variable Summary
+###	Parameter Summary
+###	Optional Module Links
+###	Feedbacks to the Host Model
+## Setup & Configuration
+## Case Studies & Examples
+###	Case Study
+###	Publications
+## References
+
+<!--chapter:end:25-macroalgae.Rmd-->
+
+# Bivalves
+
+## Contributors
+## Overview
+
+Based on work in freshwater and estuarine systems a bivalve module to simulate growth, production, and (optionally) population dynamics has been incorporated into the AED2+ library.
+
+The model is originally based on an application to Oneida Lake and Lake Erie for mussels. One to several size classes of mussels are simulated based on physiological parameters assembled by @schneider1992 and modified by @bierman2005 to estimate effect of mussels on Saginaw Bay, Michigan, USA; a formulation also used by @gudimov2015 to estimate mussel effects in Lake Simcoe, Ontario, Canada.  Additionally, some model structure was taken from the @spillman2008 model of Tapes clams in the Barbamarco Lagoon, Italy, as modified by @bocaniov2014 for mussels in Lake Erie. 
+
+The physiology of mussels are set to be size dependent, and can vary between species (e.g., Zebra vs Quagga)(Hetherington, 2016).  Three size classes of mussels can be incorporated in the model, roughly corresponding to age-0, age-1 and age>1 mussels.  Physiological parameters are calculated for the weight assigned to each age class, using equations in Table 4.  Individual mussel mass is given in mmol C or in the case of calculations of N and P budgets, in mmol N and mmol P.  The stoichiometric ratios (C:N:P) are fixed.  Group mussel biomass is calculated at each time step by calculating ingestion and subtracting pseudofeces production, standard dynamic action, respiration, excretion, egestion and mortality (expressed in mmol C/mmol C/day, mmol N/mmol N/day; mmol P/mmol P/day).  Several of these processes are also functions of temperature, algal+POC concentrations, salinity, suspended solids and mussel density.  The effect of salinity, suspended solids and mussel density is incorporated as a multiplier of filtration rate with the multipliers having values between -0 – (no filtering) and 1 (no effect). Mussel nitrogen and phosphorus concentrations are fixed ratios of mussel carbon concentrations. Since the various input and output fluxes have variable C:N:P ratios, the excretion of nutrients is dynamically adjusted each time-step to maintain this ratio at each time step.  Reproduction and larval dynamics are not simulated. There is no transfer of biomass between age groups.
+
+## Model Description
+###	Process Descriptions
+
+#### Ingestion {-}
+Ingestion is modelled as a function of filtration rate, food availability, pseudofeces production, density, suspended solids, and salinity (Equation 2) [@schneider1992; @bierman2005; @spillman2008; @gudimov2015]. Filtration rate is based on maximum ingestion, temperature, food availability, and pseudofeces production according to the following:
+<center>
+<br>
+\begin{equation}
+FR = \frac{\frac{I_{max}*f(T)_{I}}{K_{A}}}{PF_{min}} \text{ for } [A] < KA
+(\#eq:bivalve1)
+\end{equation}
+</center>
+<br>
+<center>
+\begin{equation}
+FR = \frac{\frac{I_{max}*f(T)_{I}}{[A]}}{PF_{min}} \text{ for } [A] > KA
+(\#eq:bivalve2)
+\end{equation}
+</center>
+<br>
+
+where $FR$ is filtration rate (mmol/mmol/d), $Imax$ is maximum ingestion rate (mmol/mmol/d), $f(T)_{I}$ is filtration temperature function, $K_{A}$ is optimum algal concentration (mmol/m3), $[A]$ is algal concentration + particulate organic carbon (POC) concentration (mmol/m3), and $PFmin$ is minimum pseudofeces production (-).
+The maximum ingestion rate is based on weight from length according to the following:
+
+<center>
+<br>
+\begin{equation}
+I_{max} = (a_{I} * W^{bI})
+(\#eq:bivalve3)
+\end{equation}
+</center>
+<br>
+<center>
+\begin{equation}
+W = \frac{0.071}{1000} * L^{2.8}
+(\#eq:bivalve4)
+\end{equation}
+</center>
+<br>
+
+where $Imax$ is maximum ingestion rate (mmol/mmol/d), $a_{I}$ is maximum standard ingestion rate (mmol/mmol/d), $W$ is weight (g), $bI$ is exponent for weight effect on ingestion, $L$ in length (mm) [@schneider1992; @bierman2005].
+The temperature dependence function [@thornton1978] was fit to zebra and quagga mussel data (Hetherington et al. Submitted) with optimal ingestion from 17°C to 20°C according to the following:
+
+<center>
+<br>
+\begin{equation}
+f(T)_{I} = 1 \text{ for } T_{min_{I}} < T < T_{max_{I}}
+(\#eq:bivalve5)
+\end{equation}
+</center>
+<br>
+<center>
+\begin{equation}
+f(T)_{I} = (2*\frac{Tmin_{TI}}{Tmin_{I}} - \frac{(Tmin_{TI})^2}{(Tmin_{I})^2}) / (2*\frac{Tmin_{I}-minT_{I}}{Tmin_{I}}-\frac{(Tmin_{I}-minT_{I})^2}{(Tmin_{I})^2}) \text{ for } minT_{I} < T < Tmin_{I}
+(\#eq:bivalve6)
+\end{equation}
+</center>
+<br>
+<center>
+<br>
+\begin{equation}
+f(T)_{I} = -\frac{(T^{2} + 2*Tmax_{I}*T–2*Tmax_{I}*maxT_{I} + maxT_{I}^{2})}{(Tmax_{I}-maxT_{I})^{2}}	\text{ for } Tmax_{I}<T<maxT_{I}
+(\#eq:bivalve7)
+\end{equation}
+</center>
+<br>
+<center>
+<br>
+\begin{equation}
+f(T)_{I} = 0	\text{ for } T > maxT_{I} \text{ or } T < minT_{I}
+(\#eq:bivalve8)
+\end{equation}
+</center>
+<br>
+
+where $T$ is temperature (°C), $minT_{I}$ is lower temperature for no ingestion (°C), $Tmin_{I}$ is lower temperature for optimum ingestion (°C), $Tmax_{I}$ is upper temperature for optimum ingestion, $maxT_{I}$ is upper temperature for no ingestion (°C).
+Filtration rate is related to food concentration [@walz1978; @sprung1988; @schneider1992; @bierman2005). The filtration rate is maintained at a maximum value for all food values less than saturation food concentration. The filtration rate decreases as food concentrations increase above this value.
+Pseudofeces production is implicit as the difference between the mass filtered and consumed. According to @walz1978, pseudofeces production (66%) was approximately double the ingestion rate (34%) at high food concentrations @bierman2005.
+
+Mussel density limits ingestion above some maximum density according to the following: 
+
+<center>
+<br>
+\begin{equation}
+$f(D) = 1$ 								     	     	for $D<Dmax$
+(\#eq:bivalve9)
+\end{equation}
+</center>
+<br>
+<center>
+<br>
+\begin{equation}
+f(D) = \frac{-(D^{2} + 2*Dmax*D – 2*Dmax*maxD + maxD^{2})}{(Dmax – maxD)^{2}} \text{ for } D>Dmax
+(\#eq:bivalve10)
+\end{equation}
+</center>
+<br>
+<center>
+<br>
+\begin{equation}
+f(D) = 0 \text{ for } D>maxD
+(\#eq:bivalve11)
+\end{equation}
+</center>
+<br>
+
+where $D$ is density (mmol/m2), $Dmax$ is upper density for optimum ingestion (mmol/m2), and $maxD$ is upper density for no ingestion (mmol/m2).
+An additional function to reduce ingestion is the suspended solids function which decreases ingestion with high inorganic loads according to the following:
+
+<center>
+<br>
+\begin{equation}
+f(SS) = 1 \text{ for } SS<SSmax
+(\#eq:bivalve12)
+\end{equation}
+</center>
+<br>
+<center>
+<br>
+\begin{equation}
+f(SS) = \frac{-(SS^{2} + 2*SSmax*SS – 2*SSmax*maxSS + maxSS^{2})}{(SSmax – maxSS)^{2}} \text{ for } SS>SSmax
+(\#eq:bivalve13)
+\end{equation}
+</center>
+<br>
+<center>
+<br>
+\begin{equation}
+f(SS) = 0 \text{ for } SS>maxSS
+(\#eq:bivalve14)
+\end{equation}
+</center>
+<br>
+
+where $SS$ is suspended solids (mg/L), $SSmax$ is upper suspended solids for optimum ingestion (mg/L), and $maxSS$ is upper suspended solids for no ingestion (mg/L) [@spillman2008].
+Along with suspended solids, salinity limits ingestion according to the following: 
+
+<center>
+<br>
+\begin{equation}
+f(S) = 1 \text{ for } Smin < S < Smax
+(\#eq:bivalve15)
+\end{equation}
+</center>
+<br>
+<center>
+<br>
+\begin{equation}
+f(S) = \frac{(2*(S-minS)/Smin)–(S-minS)^{2}/Smin^{2})}{(2*(Smin-minS)/Smin)–(Smin-minS)^{2}/Smin^{2})} \text{ for } minS< S < Smin
+(\#eq:bivalve16)
+\end{equation}
+</center>
+<br>
+\begin{equation}
+f(S) = \frac{-(S^{2} + 2*Smax*S – 2*Smax*maxS + maxS^{2})}{(Smax-maxS)^{2}} \text{ for } Smax<S<maxS
+(\#eq:bivalve17)
+\end{equation}
+<center>
+<br>
+\begin{equation}
+f(S) = 0 \text{ for } S > maxS \text{ or } S < minS
+(\#eq:bivalve18)
+\end{equation}
+</center>
+<br>
+
+where $S$ is salinity (psu), $minS$ is lower salinity for no ingestion (psu), $Smin$ is lower salinity for optimum ingestion (psu), $Smax$ is upper salinity for optimum ingestion (psu), $maxS$ is upper salinity for no ingestion (psu) [@spillman2008].
+
+#### Respiration {-}
+Respiration is modelled as a base or standard respiration rate based on weight and temperature  [@spillman2008]. Respiration rate coefficient at 20°C is based on weight from length according to the following:
+
+<center>
+<br>
+\begin{equation}
+R_{20} = (a_{R} * W^{b}_{R})
+(\#eq:bivalve19)
+\end{equation}
+</center>
+<br>
+<center>
+<br>
+\begin{equation}
+W = \frac{0.071}{1000} * L^{2.8}
+(\#eq:bivalve20)
+\end{equation}
+</center>
+<br>
+
+where $R_{20}$ is respiration rate coefficient at 20°C (mmol/mmol/d), $a_{R}$ is standard respiration rate (mmol/mmol/d), $W$ is weight (g), $b_{R}$ is exponent for weight effect of respiration, and $L$ is length (mm) (Schneider 1992).
+The respiration rate coefficient is adjusted for temperature according to the following:
+
+<center>
+<br>
+\begin{equation}
+f(T)_{RSpillman} = \Theta_{RSpillman}^{T-20}
+(\#eq:bivalve21)
+\end{equation}
+</center>
+<br>
+
+where $f(T)_{RSpillman}$ is respiration temperature function, $\Theta_{RSpillman}$ is temperature multiplier for bivalve respiration (-), and $T$ is temperature (°C) [@spillman2008].
+Alternatively, respiration is modelled as a base or standard respiration rate based on weight and temperature in addition to the energetic cost of feeding. Respiration rate coefficient at 30°C is based on weight from length according to the following:
+
+<center>
+<br>
+\begin{equation}
+R_{30} = (a^{R} * W^{b}_{R})
+(\#eq:bivalve22)
+\end{equation}
+</center>
+<br>
+<center>
+<br>
+\begin{equation}
+W = \frac{0.071}{1000} * L^{2.8}
+(\#eq:bivalve23)
+\end{equation}
+</center>
+<br>
+
+where $R_{30}$ is respiration rate coefficient at 30°C (mmol/mmol/d), $a^{R}$ is standard respiration rate (mmol/mmol/d), $W$ is weight (g), $b_{R}$ is exponent for weight effect of respiration, and $L$ is length (mm) [@schneider1992].
+The temperature function follows @schneider1992 application of the model of @kitchell1977 to the data of @alexander_jr2004 according to the following:
+
+<center>
+<br>
+\begin{equation}
+f(T)_{RSchneider} = V^{X} * e^{X * (1-V)}
+(\#eq:bivalve24)
+\end{equation}
+</center>
+<br>
+<center>
+<br>
+\begin{equation}
+V = \frac{Tmax_{R} – T}{Tmax_{R} – maxT_{R}}
+(\#eq:bivalve25)
+\end{equation}
+</center>
+<br>
+<center>
+<br>
+\begin{equation}
+X = (\frac{W*(1+\sqrt{1 + (\frac{40}{Y})})}{20})^2
+(\#eq:bivalve26)
+\end{equation}
+</center>
+<br>
+<center>
+<br>
+\begin{equation}
+W = lnQ_{R}*(Tmax_{R} – maxT_{R})
+(\#eq:bivalve27)
+\end{equation}
+</center>
+<br>
+<center>
+<br>
+\begin{equation}
+Y = lnQ_{R}*(Tmax_{R} – maxT_{R} + 2)
+(\#eq:bivalve28)
+\end{equation}
+</center>
+<br>
+
+where $T$ is temperature (°C), $Tmax_{R}$ is upper temperature for optimum respiration (°C), $maxT_{R}$ is upper temperature for no respiration (°C), and $Q_{R}$ is respiration curve slope estimate (-). The maximum respiration occurs at 30°C with 43°C as the upper lethal temperature.
+The energetic cost of feeding or specific dynamic action is applied only to the portion of ingestion that is not egested [@schneider1992; @bierman2005; @gudimov2015].
+
+#### Excretion {-}
+Excretion is modelled as a constant fraction of assimilated food [@schneider1992; @bierman2005; @gudimov2015]. Excretion data for zebra and quagga mussels are limited; therefore, the excretion formulation for Mytilus edulis derived by Bayne and Newell (1983) was used [@schneider1992; @bierman2005; @gudimov2015].
+
+#### Egestion {-}
+Egestion is modeled as a function of ingestion [@schneider1992; @bierman2005; @gudimov2015]. The model follows the assumption that ingestion is directly proportional to the food content of the water for all food concentrations less than the maximum which can be ingested. For all food concentrations above this saturation value, ingestion remains constant at a maximum value ($I_{max}$) [@walz1978].
+
+#### Mortality {-}
+Mortality is a function of dissolved oxygen and predation (Equation 7). Mortality increases with low dissolved oxygen concentrations according to the following:
+
+<center>
+<br>
+\begin{equation}
+f(DO) = 1 + K_{BDO} * \frac{K_{DO}}{K_{DO} + DO}
+(\#eq:bivalve29)
+\end{equation}
+</center>
+<br>
+
+where $DO$ is dissolved oxygen (mmol/m3), $K_{BDO}$ is basal respiration rate (mmol/m3), and $K_{DO}$ is half saturation constant for metabolic response to dissolved oxygen (mmol/m3) [@spillman2008]. A mortality rate coefficient ($K_{MORT}$) further influences the dissolved oxygen function. Additionally, mortality from predation is a constant rate added to the effect from dissolved oxygen.
+
+###	Variable Summary
+###	Parameter Summary
+###	Optional Module Links
+###	Feedbacks to the Host Model
+## Setup & Configuration
+## Case Studies & Examples
+###	Case Study
+###	Publications
+## References
+
+<div id="refs"></div> 
+
+
+<!--chapter:end:26-bivalves.Rmd-->
+
+# Benthic Habitat Quality 
+
+## Contributors
+## Overview
+## Model Description
+###	Process Descriptions
+###	Variable Summary
+###	Parameter Summary
+###	Optional Module Links
+###	Feedbacks to the Host Model
+## Setup & Configuration
+## Case Studies & Examples
+###	Case Study
+###	Publications
+## References
+
+<!--chapter:end:27-benthic_habitat_quality.Rmd-->
+
+# (PART)  AED+ Riparian  Modules {-} 
+
+# Soil Hydrology
+
+## Contributors
+## Overview
+## Model Description
+###	Process Descriptions
+###	Variable Summary
+###	Parameter Summary
+###	Optional Module Links
+###	Feedbacks to the Host Model
+## Setup & Configuration
+## Case Studies & Examples
+###	Case Study
+###	Publications
+## References
+
+<!--chapter:end:28-soil_hydrology.Rmd-->
+
+# Soil Biogeochemistry
+
+## Contributors
+## Overview
+## Model Description
+###	Process Descriptions
+###	Variable Summary
+###	Parameter Summary
+###	Optional Module Links
+###	Feedbacks to the Host Model
+## Setup & Configuration
+## Case Studies & Examples
+###	Case Study
+###	Publications
+## References
+
+<!--chapter:end:29-soil_biogeochemistry.Rmd-->
+
+# Acid Sulfate Soils
+
+## Contributors
+## Overview
+## Model Description
+###	Process Descriptions
+###	Variable Summary
+###	Parameter Summary
+###	Optional Module Links
+###	Feedbacks to the Host Model
+## Setup & Configuration
+## Case Studies & Examples
+###	Case Study
+###	Publications
+## References
+
+<!--chapter:end:30-acid_sulphate_soils.Rmd-->
+
+# Riparian Vegetation
+
+## Contributors
+## Overview
+## Model Description
+###	Process Descriptions
+###	Variable Summary
+###	Parameter Summary
+###	Optional Module Links
+###	Feedbacks to the Host Model
+## Setup & Configuration
+## Case Studies & Examples
+###	Case Study
+###	Publications
+## References
+
+<!--chapter:end:31-riparian_vegetation.Rmd-->
+
+# Riparian Habitat Quality
+
+## Contributors
+## Overview
+## Model Description
+###	Process Descriptions
+###	Variable Summary
+###	Parameter Summary
+###	Optional Module Links
+###	Feedbacks to the Host Model
+## Setup & Configuration
+## Case Studies & Examples
+###	Case Study
+###	Publications
+## References
+
+<!--chapter:end:32-riparian_habitat_quality.Rmd-->
+
+# (PART)  Supporting Material {-} 
+
+# Generic Utilities & Functions
+
+## Overview
+
+
+## Physico-chemical
+
+### Gas Transfer
+
+Target: review and select a few most popularly used gas exchange velocity to be used in AED modules. Note only key factors of wind speed, current speed, and water depths are considered. 
+
+Selection criteria:
+
+1. Environment: ocean; lake; estuary/river;
+2. Study for which gas: O~2~, CH~4~, N~2~O, CO~2~
+3. Variables: wind speeds ($U$), current speeds ($v$), depths ($h$)
+4. Schmidt number normalization: yes/no. $Sc = \frac{\mu }{d} = \frac{\text{kinematic viscosity}}{\text{diffusion}}$
+
+
+<center>
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+library(knitr)
+library(kableExtra)
+test <- read.csv("tables/table_test.csv", check.names=FALSE)
+kable(test,"html", escape = F, align = "c") %>%
+  kable_styling(bootstrap_options = c("condensed"), full_width = F, position = "center") %>%
+  column_spec(1, width_min = "12em") %>%
+  column_spec(2, width_min = "22em") %>%
+  column_spec(7, width_min = "15em") %>%
+  scroll_box(width = "725px", height = "500px",
+  fixed_thead = FALSE) 
+```
+</center>
+
+## Biological
+
+
+## References
+
+
+<!--chapter:end:33-generic_utilities_functions.Rmd-->
+
+# Publications
+
+<!--chapter:end:34-publications.Rmd-->
+
+# Abbreviations
+
+<!--chapter:end:35-abbreviations.Rmd-->
+
