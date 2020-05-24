@@ -36,6 +36,5 @@ kable(test,"html", escape = F, align = "c") %>%
 
 ## Biological
 
-
 ## References
 

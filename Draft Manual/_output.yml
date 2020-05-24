@@ -1,6 +1,4 @@
 bookdown::gitbook:
-  split_by: chapter
-  split_bib: yes
   css: css/style.css
   config:
     toc:
@@ -9,3 +7,31 @@ bookdown::gitbook:
         <li><a href="./">A Draft AED2/AED2+ Manual</a></li>
       after: |
         <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+    edit: https://github.com/rstudio/bookdown/edit/master/inst/examples/%s
+    download: ["pdf"]
+    search: yes
+    fontsettings:
+      theme: white
+      family: sans
+      size: 2
+    sharing:
+      facebook: no
+      github: yes
+      twitter: no
+      linkedin: no
+      weibo: no
+      instapaper: no
+      vk: no
+      all: no
+    info: yes
+  toolbar:
+    position: fixed
+    download: 'docs/_main.pdf'
+    search: yes
+bookdown::pdf_book:
+  includes:
+    in_header: preamble.tex
+  latex_engine: xelatex
+  citation_package: natbib
+bookdown::epub_book:
+  stylesheet: css/style.css

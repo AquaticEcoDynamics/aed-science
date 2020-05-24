@@ -1,15 +1,15 @@
 ---
-title: "Draft AED2/AED2+ Manual"
+title: "AED2/AED2+ Manual"
 author: ""
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
-github-repo: AquaticEcoDynamics/aed-science/
-description: "Work in progress."
-bibliography: ["references/pathogens.bib",
+documentclass: book
+bibliography:  ["references/pathogens.bib",
               "references/generic_utilities_functions.bib",
               "references/bivalves.bib"]
-biblio-style: "apalike"
-link-citations: true
+biblio-style: apalike
+link-citations: yes
+github-repo: AquaticEcoDynamics/aed-science
+url: ''
+description: "Work in progress."
 ---
-
-
