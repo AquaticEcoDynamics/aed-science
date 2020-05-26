@@ -355,23 +355,3 @@ An example `nml` block for the oxygen module is shown below:
 
 ### Publications
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-## References

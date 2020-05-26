@@ -26,3 +26,4 @@ leaflet() %>%
 ## Supporting the project{-}
 
 [^1]: Here is a footnote.
+

@@ -14,4 +14,3 @@
 ## Case Studies & Examples
 ###	Case Study
 ###	Publications
-## References

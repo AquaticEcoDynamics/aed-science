@@ -1,5 +1,5 @@
 book_filename: bookdown-start
-repo: https://github.com/AquaticEcoDynamics/aed-science
+repo: https://github.com/AquaticEcoDynamics/aed-science/tree/master/bookdown-manual/%s
 output_dir: docs
 rmd_files: ["index.Rmd",
             "01-welcome.Rmd",
@@ -36,11 +36,10 @@ rmd_files: ["index.Rmd",
             "32-riparian_habitat_quality.Rmd",
             "33-generic_utilities_functions.Rmd",
             "34-publications.Rmd",
-            "35-abbreviations.Rmd"]
+            "35-abbreviations.Rmd",
+            "36-references.Rmd"]
+history: https://github.com/AquaticEcoDynamics/aed-science/commits/master/bookdown-manual/%s
 clean: [packages.bib, bookdown.bbl]
-ui:
-  edit: "Edit"
-  chapter_name: "Chapter "
 new_session: yes
 
 

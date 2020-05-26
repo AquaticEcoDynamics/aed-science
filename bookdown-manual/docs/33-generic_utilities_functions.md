@@ -20,6 +20,50 @@ Selection criteria:
 
 
 <center>
+<div style="border: 1px solid #ddd; padding: 5px; overflow-y: scroll; height:400px; overflow-x: scroll; width:725px; "><table class="table table-condensed" style="width: auto !important; margin-left: auto; margin-right: auto;">
+ <thead>
+  <tr>
+   <th style="text-align:center;"> Source </th>
+   <th style="text-align:center;"> Computation </th>
+   <th style="text-align:center;"> AED Case Number </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:center;min-width: 12em; "> NA </td>
+   <td style="text-align:center;min-width: 17em; "> $schmidt = (0.9+0.1*\frac{salt}{35.0})*(1953.4+temp*(-128.0+temp*(3.9918-temp*0.050091)))$ </td>
+   <td style="text-align:center;min-width: 10em; "> 1 </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;min-width: 12em; "> NA </td>
+   <td style="text-align:center;min-width: 17em; "> $schmidt = 0.9 + \frac{salt}{350.0}$ <br> $schmidt = schmidt * (2073.1 -125.62*temp +3.6276*temp^{2} - 0.043219*temp^{3})$ </td>
+   <td style="text-align:center;min-width: 10em; "> 2 </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;min-width: 12em; "> NA </td>
+   <td style="text-align:center;min-width: 17em; "> $schmidt = (1.0 + 3.4e-3*salt)$ <br> $schmidt = schmidt * (1800.6 -120.1*temp +3.7818*temp^{2} - 0.047608*temp^{3})$ </td>
+   <td style="text-align:center;min-width: 10em; "> 3 </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;min-width: 12em; "> Arianto Santoso </td>
+   <td style="text-align:center;min-width: 17em; "> $schmidt = 2039.2 - (120.31*temp) + (3.4209*temp^{2}) - (0.040437*temp^{3})$ <br> $schmidt = \frac{schmidt}{600}$ </td>
+   <td style="text-align:center;min-width: 10em; "> 4 </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;min-width: 12em; "> @wanninkhof1992 </td>
+   <td style="text-align:center;min-width: 17em; "> $schmidt = 1897.8 - (114.28*temp) + (3.2902*temp^{2}) - (0.039061*temp^{3})$ </td>
+   <td style="text-align:center;min-width: 10em; "> 5 </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;min-width: 12em; "> @wanninkhof1992 </td>
+   <td style="text-align:center;min-width: 17em; "> $schmidt = 2055.6 - (137.11*temp) + (4.3173*temp^{2}) - (0.054350*temp^{3})$ </td>
+   <td style="text-align:center;min-width: 10em; "> 6 </td>
+  </tr>
+</tbody>
+</table></div>
+</center>
+<br>
+<center>
 <div style="border: 1px solid #ddd; padding: 5px; overflow-y: scroll; height:500px; overflow-x: scroll; width:725px; "><table class="table table-condensed" style="width: auto !important; margin-left: auto; margin-right: auto;">
  <thead>
   <tr>
@@ -120,5 +164,5 @@ Selection criteria:
 
 ## Biological
 
-## References
+
 

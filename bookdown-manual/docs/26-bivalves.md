@@ -304,7 +304,4 @@ where $DO$ is dissolved oxygen (mmol/m3), $K_{BDO}$ is basal respiration rate (m
 ## Case Studies & Examples
 ###	Case Study
 ###	Publications
-## References
-
-<div id="refs"></div> 
 

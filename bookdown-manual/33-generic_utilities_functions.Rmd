@@ -23,8 +23,23 @@ Selection criteria:
 ```{r echo=FALSE, message=FALSE, warning=FALSE}
 library(knitr)
 library(kableExtra)
-test <- read.csv("tables/table_test.csv", check.names=FALSE)
-kable(test,"html", escape = F, align = "c") %>%
+table1 <- read.csv("tables/generic_utilities_functions-1.csv", check.names=FALSE)
+kable(table1,"html", escape = F, align = "c") %>%
+  kable_styling(bootstrap_options = c("condensed"), full_width = F, position = "center") %>%
+  column_spec(1, width_min = "12em") %>%
+  column_spec(2, width_min = "17em") %>%
+  column_spec(3, width_min = "10em") %>%
+  scroll_box(width = "725px", height = "400px",
+  fixed_thead = FALSE) 
+```
+</center>
+<br>
+<center>
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+library(knitr)
+library(kableExtra)
+table2 <- read.csv("tables/generic_utilities_functions-2.csv", check.names=FALSE)
+kable(table2,"html", escape = F, align = "c") %>%
   kable_styling(bootstrap_options = c("condensed"), full_width = F, position = "center") %>%
   column_spec(1, width_min = "12em") %>%
   column_spec(2, width_min = "22em") %>%
@@ -36,5 +51,5 @@ kable(test,"html", escape = F, align = "c") %>%
 
 ## Biological
 
-## References
+
 
