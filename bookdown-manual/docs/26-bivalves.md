@@ -14,6 +14,7 @@ The physiology of mussels are set to be size dependent, and can vary between spe
 
 #### Ingestion {-}
 Ingestion is modelled as a function of filtration rate, food availability, pseudofeces production, density, suspended solids, and salinity (Equation 2) [@schneider1992; @bierman2005; @spillman2008; @gudimov2015]. Filtration rate is based on maximum ingestion, temperature, food availability, and pseudofeces production according to the following:
+
 <center>
 <br>
 \begin{equation}
@@ -457,396 +458,396 @@ where $DO$ is dissolved oxygen (mmol/m3), $K_{BDO}$ is basal respiration rate (m
  </thead>
 <tbody>
   <tr>
-   <td style="text-align:center;min-width: 12em; background-color: white !important;"> General Parameters </td>
-   <td style="text-align:center;min-width: 15em; background-color: white !important;">  </td>
-   <td style="text-align:center;min-width: 12em; background-color: white !important;">  </td>
-   <td style="text-align:center;min-width: 13em; background-color: white !important;">  </td>
-   <td style="text-align:center;min-width: 15em; background-color: white !important;">  </td>
+   <td style="text-align:center;min-width: 8em; background-color: white !important;background-color: #E8EAEF !important;"> General Parameters </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;">  </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;">  </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;">  </td>
+   <td style="text-align:center;min-width: 13em; background-color: white !important;background-color: #E8EAEF !important;">  </td>
   </tr>
   <tr>
-   <td style="text-align:center;min-width: 12em; background-color: white !important;"> initial_conc </td>
-   <td style="text-align:center;min-width: 15em; background-color: white !important;"> 833 </td>
-   <td style="text-align:center;min-width: 12em; background-color: white !important;"> 833 </td>
-   <td style="text-align:center;min-width: 13em; background-color: white !important;"> real </td>
-   <td style="text-align:center;min-width: 15em; background-color: white !important;"> Initial concentration of bivalve (mmolC/m2) </td>
+   <td style="text-align:center;min-width: 8em; background-color: white !important;"> `initial_conc` </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 833 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 833 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> real </td>
+   <td style="text-align:center;min-width: 13em; background-color: white !important;"> Initial concentration of bivalve (mmolC/m2) </td>
   </tr>
   <tr>
-   <td style="text-align:center;min-width: 12em; background-color: white !important;"> min </td>
-   <td style="text-align:center;min-width: 15em; background-color: white !important;"> 8.3 </td>
-   <td style="text-align:center;min-width: 12em; background-color: white !important;"> 8.3 </td>
-   <td style="text-align:center;min-width: 13em; background-color: white !important;"> real </td>
-   <td style="text-align:center;min-width: 15em; background-color: white !important;"> Minimum concentration of bivalve (mmolC/m3) </td>
+   <td style="text-align:center;min-width: 8em; background-color: white !important;"> `min` </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 8.3 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 8.3 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> real </td>
+   <td style="text-align:center;min-width: 13em; background-color: white !important;"> Minimum concentration of bivalve (mmolC/m3) </td>
   </tr>
   <tr>
-   <td style="text-align:center;min-width: 12em; background-color: white !important;"> length </td>
-   <td style="text-align:center;min-width: 15em; background-color: white !important;"> 15 </td>
-   <td style="text-align:center;min-width: 12em; background-color: white !important;"> 15 </td>
-   <td style="text-align:center;min-width: 13em; background-color: white !important;"> real </td>
-   <td style="text-align:center;min-width: 15em; background-color: white !important;"> Length of bivalve (mm) </td>
+   <td style="text-align:center;min-width: 8em; background-color: white !important;"> `length` </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 15 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 15 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> real </td>
+   <td style="text-align:center;min-width: 13em; background-color: white !important;"> Length of bivalve (mm) </td>
   </tr>
   <tr>
-   <td style="text-align:center;min-width: 12em; background-color: white !important;"> INC </td>
-   <td style="text-align:center;min-width: 15em; background-color: white !important;"> 291.67 </td>
-   <td style="text-align:center;min-width: 12em; background-color: white !important;"> 291.67 </td>
-   <td style="text-align:center;min-width: 13em; background-color: white !important;"> real </td>
-   <td style="text-align:center;min-width: 15em; background-color: white !important;"> Ratio of internal nitrogen to carbon of bivalve (-) </td>
+   <td style="text-align:center;min-width: 8em; background-color: white !important;"> `INC` </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 291.67 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 291.67 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> real </td>
+   <td style="text-align:center;min-width: 13em; background-color: white !important;"> Ratio of internal nitrogen to carbon of bivalve (-) </td>
   </tr>
   <tr>
-   <td style="text-align:center;min-width: 12em; background-color: white !important;"> IPC </td>
-   <td style="text-align:center;min-width: 15em; background-color: white !important;"> 64.58 </td>
-   <td style="text-align:center;min-width: 12em; background-color: white !important;"> 64.58 </td>
-   <td style="text-align:center;min-width: 13em; background-color: white !important;"> real </td>
-   <td style="text-align:center;min-width: 15em; background-color: white !important;"> Ratio of internal phosphorus to carbon of bivalve (-) </td>
+   <td style="text-align:center;min-width: 8em; background-color: white !important;"> `IPC` </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 64.58 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 64.58 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> real </td>
+   <td style="text-align:center;min-width: 13em; background-color: white !important;"> Ratio of internal phosphorus to carbon of bivalve (-) </td>
   </tr>
   <tr>
-   <td style="text-align:center;min-width: 12em; background-color: white !important;"> FILTRATION &amp; INGESTION Parameters </td>
-   <td style="text-align:center;min-width: 15em; background-color: white !important;">  </td>
-   <td style="text-align:center;min-width: 12em; background-color: white !important;">  </td>
-   <td style="text-align:center;min-width: 13em; background-color: white !important;">  </td>
-   <td style="text-align:center;min-width: 15em; background-color: white !important;">  </td>
+   <td style="text-align:center;min-width: 8em; background-color: white !important;background-color: #E8EAEF !important;"> FILTRATION &amp; INGESTION Parameters </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;">  </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;">  </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;">  </td>
+   <td style="text-align:center;min-width: 13em; background-color: white !important;background-color: #E8EAEF !important;">  </td>
   </tr>
   <tr>
-   <td style="text-align:center;min-width: 12em; background-color: white !important;"> Rgrz </td>
-   <td style="text-align:center;min-width: 15em; background-color: white !important;"> 1.9 </td>
-   <td style="text-align:center;min-width: 12em; background-color: white !important;"> 0.12 </td>
-   <td style="text-align:center;min-width: 13em; background-color: white !important;"> real </td>
-   <td style="text-align:center;min-width: 15em; background-color: white !important;"> Maximum ingestion rate of bivalve (mmol/mmol/day) (Spillman et al. 2008) Calculated from Schneider 1992 based on 15 mm mussel </td>
+   <td style="text-align:center;min-width: 8em; background-color: white !important;"> `Rgrz` </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 1.9 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.12 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> real </td>
+   <td style="text-align:center;min-width: 13em; background-color: white !important;"> Maximum ingestion rate of bivalve (mmol/mmol/day) (Spillman et al. 2008) Calculated from Schneider 1992 based on 15 mm mussel </td>
   </tr>
   <tr>
-   <td style="text-align:center;min-width: 12em; background-color: white !important;"> Ing </td>
-   <td style="text-align:center;min-width: 15em; background-color: white !important;"> 0 </td>
-   <td style="text-align:center;min-width: 12em; background-color: white !important;"> 0 </td>
-   <td style="text-align:center;min-width: 13em; background-color: white !important;"> integer </td>
-   <td style="text-align:center;min-width: 15em; background-color: white !important;"> Type of maximum ingestion for bivalve; 0=Enter (mmol/mmol/d) or 1=Calculate based on length </td>
+   <td style="text-align:center;min-width: 8em; background-color: white !important;"> `Ing` </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> integer </td>
+   <td style="text-align:center;min-width: 13em; background-color: white !important;"> Type of maximum ingestion for bivalve; 0=Enter (mmol/mmol/d) or 1=Calculate based on length </td>
   </tr>
   <tr>
-   <td style="text-align:center;min-width: 12em; background-color: white !important;"> WaI </td>
-   <td style="text-align:center;min-width: 15em; background-color: white !important;"> 0 </td>
-   <td style="text-align:center;min-width: 12em; background-color: white !important;"> 0 </td>
-   <td style="text-align:center;min-width: 13em; background-color: white !important;"> real </td>
-   <td style="text-align:center;min-width: 15em; background-color: white !important;"> Maximum standard ingestion rate of bivalve (mmol/mmol/day) (Schneider 1992) </td>
+   <td style="text-align:center;min-width: 8em; background-color: white !important;"> `WaI` </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> real </td>
+   <td style="text-align:center;min-width: 13em; background-color: white !important;"> Maximum standard ingestion rate of bivalve (mmol/mmol/day) (Schneider 1992) </td>
   </tr>
   <tr>
-   <td style="text-align:center;min-width: 12em; background-color: white !important;"> WbI </td>
-   <td style="text-align:center;min-width: 15em; background-color: white !important;"> -0.39 </td>
-   <td style="text-align:center;min-width: 12em; background-color: white !important;"> -0.39 </td>
-   <td style="text-align:center;min-width: 13em; background-color: white !important;"> real </td>
-   <td style="text-align:center;min-width: 15em; background-color: white !important;"> Exponent for weight effect on ingestion of bivalve (-) (Schneider 1992) </td>
+   <td style="text-align:center;min-width: 8em; background-color: white !important;"> `WbI` </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> -0.39 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> -0.39 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> real </td>
+   <td style="text-align:center;min-width: 13em; background-color: white !important;"> Exponent for weight effect on ingestion of bivalve (-) (Schneider 1992) </td>
   </tr>
   <tr>
-   <td style="text-align:center;min-width: 12em; background-color: white !important;"> fassim </td>
-   <td style="text-align:center;min-width: 15em; background-color: white !important;"> 0.34 </td>
-   <td style="text-align:center;min-width: 12em; background-color: white !important;"> 0.34 </td>
-   <td style="text-align:center;min-width: 13em; background-color: white !important;"> real </td>
-   <td style="text-align:center;min-width: 15em; background-color: white !important;"> Minimum proportion of food lost as pseudofeces for bivalve (-) </td>
+   <td style="text-align:center;min-width: 8em; background-color: white !important;"> `fassim` </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.34 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.34 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> real </td>
+   <td style="text-align:center;min-width: 13em; background-color: white !important;"> Minimum proportion of food lost as pseudofeces for bivalve (-) </td>
   </tr>
   <tr>
-   <td style="text-align:center;min-width: 12em; background-color: white !important;"> Cmin_grz </td>
-   <td style="text-align:center;min-width: 15em; background-color: white !important;"> 0.05 </td>
-   <td style="text-align:center;min-width: 12em; background-color: white !important;"> 0.05 </td>
-   <td style="text-align:center;min-width: 13em; background-color: white !important;"> real </td>
-   <td style="text-align:center;min-width: 15em; background-color: white !important;"> Minimum prey concentration for grazing by bivalve (mmolC/m3) </td>
+   <td style="text-align:center;min-width: 8em; background-color: white !important;"> `Cmin_grz` </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.05 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.05 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> real </td>
+   <td style="text-align:center;min-width: 13em; background-color: white !important;"> Minimum prey concentration for grazing by bivalve (mmolC/m3) </td>
   </tr>
   <tr>
-   <td style="text-align:center;min-width: 12em; background-color: white !important;"> Kgrz </td>
-   <td style="text-align:center;min-width: 15em; background-color: white !important;"> 187.5 </td>
-   <td style="text-align:center;min-width: 12em; background-color: white !important;"> 187.5 </td>
-   <td style="text-align:center;min-width: 13em; background-color: white !important;"> real </td>
-   <td style="text-align:center;min-width: 15em; background-color: white !important;"> Optimum algae+POC concentration for ingestion of bivalve (mmol/m3) </td>
+   <td style="text-align:center;min-width: 8em; background-color: white !important;"> `Kgrz` </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 187.5 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 187.5 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> real </td>
+   <td style="text-align:center;min-width: 13em; background-color: white !important;"> Optimum algae+POC concentration for ingestion of bivalve (mmol/m3) </td>
   </tr>
   <tr>
-   <td style="text-align:center;min-width: 12em; background-color: white !important;"> minT </td>
-   <td style="text-align:center;min-width: 15em; background-color: white !important;"> 4 </td>
-   <td style="text-align:center;min-width: 12em; background-color: white !important;"> 4 </td>
-   <td style="text-align:center;min-width: 13em; background-color: white !important;"> real </td>
-   <td style="text-align:center;min-width: 15em; background-color: white !important;"> Lower temperature for no ingestion of bivalve (degC) </td>
+   <td style="text-align:center;min-width: 8em; background-color: white !important;"> `minT` </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 4 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 4 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> real </td>
+   <td style="text-align:center;min-width: 13em; background-color: white !important;"> Lower temperature for no ingestion of bivalve (degC) </td>
   </tr>
   <tr>
-   <td style="text-align:center;min-width: 12em; background-color: white !important;"> Tmin </td>
-   <td style="text-align:center;min-width: 15em; background-color: white !important;"> 17 </td>
-   <td style="text-align:center;min-width: 12em; background-color: white !important;"> 17 </td>
-   <td style="text-align:center;min-width: 13em; background-color: white !important;"> real </td>
-   <td style="text-align:center;min-width: 15em; background-color: white !important;"> Lower temperature for optimum ingestion of bivalve (degC) </td>
+   <td style="text-align:center;min-width: 8em; background-color: white !important;"> `Tmin` </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 17 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 17 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> real </td>
+   <td style="text-align:center;min-width: 13em; background-color: white !important;"> Lower temperature for optimum ingestion of bivalve (degC) </td>
   </tr>
   <tr>
-   <td style="text-align:center;min-width: 12em; background-color: white !important;"> Tmax </td>
-   <td style="text-align:center;min-width: 15em; background-color: white !important;"> 20 </td>
-   <td style="text-align:center;min-width: 12em; background-color: white !important;"> 20 </td>
-   <td style="text-align:center;min-width: 13em; background-color: white !important;"> real </td>
-   <td style="text-align:center;min-width: 15em; background-color: white !important;"> Upper temperature for optimum ingestion of bivalve (degC) </td>
+   <td style="text-align:center;min-width: 8em; background-color: white !important;"> `Tmax` </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 20 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 20 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> real </td>
+   <td style="text-align:center;min-width: 13em; background-color: white !important;"> Upper temperature for optimum ingestion of bivalve (degC) </td>
   </tr>
   <tr>
-   <td style="text-align:center;min-width: 12em; background-color: white !important;"> maxT </td>
-   <td style="text-align:center;min-width: 15em; background-color: white !important;"> 32 </td>
-   <td style="text-align:center;min-width: 12em; background-color: white !important;"> 32 </td>
-   <td style="text-align:center;min-width: 13em; background-color: white !important;"> real </td>
-   <td style="text-align:center;min-width: 15em; background-color: white !important;"> Upper temperature for no ingestion of bivalve (degC) </td>
+   <td style="text-align:center;min-width: 8em; background-color: white !important;"> `maxT` </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 32 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 32 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> real </td>
+   <td style="text-align:center;min-width: 13em; background-color: white !important;"> Upper temperature for no ingestion of bivalve (degC) </td>
   </tr>
   <tr>
-   <td style="text-align:center;min-width: 12em; background-color: white !important;"> Dmax </td>
-   <td style="text-align:center;min-width: 15em; background-color: white !important;"> 6333.3 </td>
-   <td style="text-align:center;min-width: 12em; background-color: white !important;"> 6333.3 </td>
-   <td style="text-align:center;min-width: 13em; background-color: white !important;"> real </td>
-   <td style="text-align:center;min-width: 15em; background-color: white !important;"> Upper density for optimum ingestion of bivalve (mmol/m2) </td>
+   <td style="text-align:center;min-width: 8em; background-color: white !important;"> `Dmax` </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 6333.3 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 6333.3 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> real </td>
+   <td style="text-align:center;min-width: 13em; background-color: white !important;"> Upper density for optimum ingestion of bivalve (mmol/m2) </td>
   </tr>
   <tr>
-   <td style="text-align:center;min-width: 12em; background-color: white !important;"> maxD </td>
-   <td style="text-align:center;min-width: 15em; background-color: white !important;"> 20000 </td>
-   <td style="text-align:center;min-width: 12em; background-color: white !important;"> 20000 </td>
-   <td style="text-align:center;min-width: 13em; background-color: white !important;"> real </td>
-   <td style="text-align:center;min-width: 15em; background-color: white !important;"> Upper density for no ingestion of bivalve (mmol/m2) </td>
+   <td style="text-align:center;min-width: 8em; background-color: white !important;"> `maxD` </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 20000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 20000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> real </td>
+   <td style="text-align:center;min-width: 13em; background-color: white !important;"> Upper density for no ingestion of bivalve (mmol/m2) </td>
   </tr>
   <tr>
-   <td style="text-align:center;min-width: 12em; background-color: white !important;"> SSmax </td>
-   <td style="text-align:center;min-width: 15em; background-color: white !important;"> 20 </td>
-   <td style="text-align:center;min-width: 12em; background-color: white !important;"> 20 </td>
-   <td style="text-align:center;min-width: 13em; background-color: white !important;"> real </td>
-   <td style="text-align:center;min-width: 15em; background-color: white !important;"> Upper suspended solids for optimum ingestion of bivalve (mg/L) </td>
+   <td style="text-align:center;min-width: 8em; background-color: white !important;"> `Ssmax` </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 20 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 20 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> real </td>
+   <td style="text-align:center;min-width: 13em; background-color: white !important;"> Upper suspended solids for optimum ingestion of bivalve (mg/L) </td>
   </tr>
   <tr>
-   <td style="text-align:center;min-width: 12em; background-color: white !important;"> maxSS </td>
-   <td style="text-align:center;min-width: 15em; background-color: white !important;"> 100 </td>
-   <td style="text-align:center;min-width: 12em; background-color: white !important;"> 100 </td>
-   <td style="text-align:center;min-width: 13em; background-color: white !important;"> real </td>
-   <td style="text-align:center;min-width: 15em; background-color: white !important;"> Upper suspended solids for no ingestion of bivalve (mg/L) </td>
+   <td style="text-align:center;min-width: 8em; background-color: white !important;"> `maxSS` </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 100 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 100 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> real </td>
+   <td style="text-align:center;min-width: 13em; background-color: white !important;"> Upper suspended solids for no ingestion of bivalve (mg/L) </td>
   </tr>
   <tr>
-   <td style="text-align:center;min-width: 12em; background-color: white !important;"> EXCRETION AND EGESTION Parameters </td>
-   <td style="text-align:center;min-width: 15em; background-color: white !important;">  </td>
-   <td style="text-align:center;min-width: 12em; background-color: white !important;">  </td>
-   <td style="text-align:center;min-width: 13em; background-color: white !important;">  </td>
-   <td style="text-align:center;min-width: 15em; background-color: white !important;">  </td>
+   <td style="text-align:center;min-width: 8em; background-color: white !important;background-color: #E8EAEF !important;"> EXCRETION AND EGESTION Parameters </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;">  </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;">  </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;">  </td>
+   <td style="text-align:center;min-width: 13em; background-color: white !important;background-color: #E8EAEF !important;">  </td>
   </tr>
   <tr>
-   <td style="text-align:center;min-width: 12em; background-color: white !important;"> Rexcr </td>
-   <td style="text-align:center;min-width: 15em; background-color: white !important;"> 0 </td>
-   <td style="text-align:center;min-width: 12em; background-color: white !important;"> 0 </td>
-   <td style="text-align:center;min-width: 13em; background-color: white !important;"> real </td>
-   <td style="text-align:center;min-width: 15em; background-color: white !important;"> Excretion fraction of ingestion for bivalve(-) </td>
+   <td style="text-align:center;min-width: 8em; background-color: white !important;"> `Rexcr` </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> real </td>
+   <td style="text-align:center;min-width: 13em; background-color: white !important;"> Excretion fraction of ingestion for bivalve(-) </td>
   </tr>
   <tr>
-   <td style="text-align:center;min-width: 12em; background-color: white !important;"> Regst </td>
-   <td style="text-align:center;min-width: 15em; background-color: white !important;"> 0 </td>
-   <td style="text-align:center;min-width: 12em; background-color: white !important;"> 0 </td>
-   <td style="text-align:center;min-width: 13em; background-color: white !important;"> real </td>
-   <td style="text-align:center;min-width: 15em; background-color: white !important;"> Minimum proportion egested as feces for bivalve (-) </td>
+   <td style="text-align:center;min-width: 8em; background-color: white !important;"> `Regst` </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> real </td>
+   <td style="text-align:center;min-width: 13em; background-color: white !important;"> Minimum proportion egested as feces for bivalve (-) </td>
   </tr>
   <tr>
-   <td style="text-align:center;min-width: 12em; background-color: white !important;"> gegst </td>
-   <td style="text-align:center;min-width: 15em; background-color: white !important;"> 0 </td>
-   <td style="text-align:center;min-width: 12em; background-color: white !important;"> 0 </td>
-   <td style="text-align:center;min-width: 13em; background-color: white !important;"> real </td>
-   <td style="text-align:center;min-width: 15em; background-color: white !important;"> Gamma coefficient for food availability dependence for bivalve </td>
+   <td style="text-align:center;min-width: 8em; background-color: white !important;"> `gegst` </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> real </td>
+   <td style="text-align:center;min-width: 13em; background-color: white !important;"> Gamma coefficient for food availability dependence for bivalve </td>
   </tr>
   <tr>
-   <td style="text-align:center;min-width: 12em; background-color: white !important;"> RESPIRATION Parameters </td>
-   <td style="text-align:center;min-width: 15em; background-color: white !important;">  </td>
-   <td style="text-align:center;min-width: 12em; background-color: white !important;">  </td>
-   <td style="text-align:center;min-width: 13em; background-color: white !important;">  </td>
-   <td style="text-align:center;min-width: 15em; background-color: white !important;">  </td>
+   <td style="text-align:center;min-width: 8em; background-color: white !important;background-color: #E8EAEF !important;"> RESPIRATION Parameters </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;">  </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;">  </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;">  </td>
+   <td style="text-align:center;min-width: 13em; background-color: white !important;background-color: #E8EAEF !important;">  </td>
   </tr>
   <tr>
-   <td style="text-align:center;min-width: 12em; background-color: white !important;"> Rresp </td>
-   <td style="text-align:center;min-width: 15em; background-color: white !important;"> 0.01 </td>
-   <td style="text-align:center;min-width: 12em; background-color: white !important;"> 0.01 </td>
-   <td style="text-align:center;min-width: 13em; background-color: white !important;"> real </td>
-   <td style="text-align:center;min-width: 15em; background-color: white !important;"> Respiration rate coefficient of bivalve (/day) (Calculated from Schneider 1992 based on 15 mm mussel) </td>
+   <td style="text-align:center;min-width: 8em; background-color: white !important;"> `Rresp` </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.01 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.01 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> real </td>
+   <td style="text-align:center;min-width: 13em; background-color: white !important;"> Respiration rate coefficient of bivalve (/day) (Calculated from Schneider 1992 based on 15 mm mussel) </td>
   </tr>
   <tr>
-   <td style="text-align:center;min-width: 12em; background-color: white !important;"> saltfunc </td>
-   <td style="text-align:center;min-width: 15em; background-color: white !important;"> 0 </td>
-   <td style="text-align:center;min-width: 12em; background-color: white !important;"> 0 </td>
-   <td style="text-align:center;min-width: 13em; background-color: white !important;"> integer </td>
-   <td style="text-align:center;min-width: 15em; background-color: white !important;"> Type of salinity function for bivalve; 0=None or 1=Spillman et al. 2008 </td>
+   <td style="text-align:center;min-width: 8em; background-color: white !important;"> `saltfunc` </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> integer </td>
+   <td style="text-align:center;min-width: 13em; background-color: white !important;"> Type of salinity function for bivalve; 0=None or 1=Spillman et al. 2008 </td>
   </tr>
   <tr>
-   <td style="text-align:center;min-width: 12em; background-color: white !important;"> minS </td>
-   <td style="text-align:center;min-width: 15em; background-color: white !important;"> 0 </td>
-   <td style="text-align:center;min-width: 12em; background-color: white !important;"> 0 </td>
-   <td style="text-align:center;min-width: 13em; background-color: white !important;"> real </td>
-   <td style="text-align:center;min-width: 15em; background-color: white !important;"> Lower salinity for no ingestion of bivalve (psu) </td>
+   <td style="text-align:center;min-width: 8em; background-color: white !important;"> `minS` </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> real </td>
+   <td style="text-align:center;min-width: 13em; background-color: white !important;"> Lower salinity for no ingestion of bivalve (psu) </td>
   </tr>
   <tr>
-   <td style="text-align:center;min-width: 12em; background-color: white !important;"> Smin </td>
-   <td style="text-align:center;min-width: 15em; background-color: white !important;"> 0 </td>
-   <td style="text-align:center;min-width: 12em; background-color: white !important;"> 0 </td>
-   <td style="text-align:center;min-width: 13em; background-color: white !important;"> real </td>
-   <td style="text-align:center;min-width: 15em; background-color: white !important;"> Lower salinity for optimum ingestion of bivalve (psu) </td>
+   <td style="text-align:center;min-width: 8em; background-color: white !important;"> `Smin` </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> real </td>
+   <td style="text-align:center;min-width: 13em; background-color: white !important;"> Lower salinity for optimum ingestion of bivalve (psu) </td>
   </tr>
   <tr>
-   <td style="text-align:center;min-width: 12em; background-color: white !important;"> Smax </td>
-   <td style="text-align:center;min-width: 15em; background-color: white !important;"> 0 </td>
-   <td style="text-align:center;min-width: 12em; background-color: white !important;"> 0 </td>
-   <td style="text-align:center;min-width: 13em; background-color: white !important;"> real </td>
-   <td style="text-align:center;min-width: 15em; background-color: white !important;"> Upper salinity for optimum ingestion of bivalve (psu) </td>
+   <td style="text-align:center;min-width: 8em; background-color: white !important;"> `Smax` </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> real </td>
+   <td style="text-align:center;min-width: 13em; background-color: white !important;"> Upper salinity for optimum ingestion of bivalve (psu) </td>
   </tr>
   <tr>
-   <td style="text-align:center;min-width: 12em; background-color: white !important;"> maxS </td>
-   <td style="text-align:center;min-width: 15em; background-color: white !important;"> 0 </td>
-   <td style="text-align:center;min-width: 12em; background-color: white !important;"> 0 </td>
-   <td style="text-align:center;min-width: 13em; background-color: white !important;"> real </td>
-   <td style="text-align:center;min-width: 15em; background-color: white !important;"> Upper salinity for no ingestion of bivalve (psu) </td>
+   <td style="text-align:center;min-width: 8em; background-color: white !important;"> `maxS` </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> real </td>
+   <td style="text-align:center;min-width: 13em; background-color: white !important;"> Upper salinity for no ingestion of bivalve (psu) </td>
   </tr>
   <tr>
-   <td style="text-align:center;min-width: 12em; background-color: white !important;"> fR20 </td>
-   <td style="text-align:center;min-width: 15em; background-color: white !important;"> 0 </td>
-   <td style="text-align:center;min-width: 12em; background-color: white !important;"> 0 </td>
-   <td style="text-align:center;min-width: 13em; background-color: white !important;"> integer </td>
-   <td style="text-align:center;min-width: 15em; background-color: white !important;"> Type of maximum respiration for bivalve; 0=Enter or 1=Calculate based on length (mm) </td>
+   <td style="text-align:center;min-width: 8em; background-color: white !important;"> `fR20` </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> integer </td>
+   <td style="text-align:center;min-width: 13em; background-color: white !important;"> Type of maximum respiration for bivalve; 0=Enter or 1=Calculate based on length (mm) </td>
   </tr>
   <tr>
-   <td style="text-align:center;min-width: 12em; background-color: white !important;"> War </td>
-   <td style="text-align:center;min-width: 15em; background-color: white !important;"> 16.759 </td>
-   <td style="text-align:center;min-width: 12em; background-color: white !important;"> 16.759 </td>
-   <td style="text-align:center;min-width: 13em; background-color: white !important;"> real </td>
-   <td style="text-align:center;min-width: 15em; background-color: white !important;"> Standard respiration rate of bivalve (mmol/mmol/d) (Schneider 1992) </td>
+   <td style="text-align:center;min-width: 8em; background-color: white !important;"> `War` </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 16.759 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 16.759 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> real </td>
+   <td style="text-align:center;min-width: 13em; background-color: white !important;"> Standard respiration rate of bivalve (mmol/mmol/d) (Schneider 1992) </td>
   </tr>
   <tr>
-   <td style="text-align:center;min-width: 12em; background-color: white !important;"> Wbr </td>
-   <td style="text-align:center;min-width: 15em; background-color: white !important;"> -0.25 </td>
-   <td style="text-align:center;min-width: 12em; background-color: white !important;"> -0.25 </td>
-   <td style="text-align:center;min-width: 13em; background-color: white !important;"> real </td>
-   <td style="text-align:center;min-width: 15em; background-color: white !important;"> Exponent for weight effect on respiration of bivalve (-) </td>
+   <td style="text-align:center;min-width: 8em; background-color: white !important;"> `Wbr` </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> -0.25 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> -0.25 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> real </td>
+   <td style="text-align:center;min-width: 13em; background-color: white !important;"> Exponent for weight effect on respiration of bivalve (-) </td>
   </tr>
   <tr>
-   <td style="text-align:center;min-width: 12em; background-color: white !important;"> fR </td>
-   <td style="text-align:center;min-width: 15em; background-color: white !important;"> 1 </td>
-   <td style="text-align:center;min-width: 12em; background-color: white !important;"> 1 </td>
-   <td style="text-align:center;min-width: 13em; background-color: white !important;"> integer </td>
-   <td style="text-align:center;min-width: 15em; background-color: white !important;"> Type of respiration function for bivalve; 0=Schneider 1992 or 1=Spillman et al. 2008 </td>
+   <td style="text-align:center;min-width: 8em; background-color: white !important;"> `fR` </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 1 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 1 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> integer </td>
+   <td style="text-align:center;min-width: 13em; background-color: white !important;"> Type of respiration function for bivalve; 0=Schneider 1992 or 1=Spillman et al. 2008 </td>
   </tr>
   <tr>
-   <td style="text-align:center;min-width: 12em; background-color: white !important;"> theta_resp </td>
-   <td style="text-align:center;min-width: 15em; background-color: white !important;"> 1.08 </td>
-   <td style="text-align:center;min-width: 12em; background-color: white !important;"> 1.08 </td>
-   <td style="text-align:center;min-width: 13em; background-color: white !important;"> real </td>
-   <td style="text-align:center;min-width: 15em; background-color: white !important;"> Temperature multiplier for respiration of bivalve (-) </td>
+   <td style="text-align:center;min-width: 8em; background-color: white !important;"> `theta_resp` </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 1.08 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 1.08 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> real </td>
+   <td style="text-align:center;min-width: 13em; background-color: white !important;"> Temperature multiplier for respiration of bivalve (-) </td>
   </tr>
   <tr>
-   <td style="text-align:center;min-width: 12em; background-color: white !important;"> TmaxR </td>
-   <td style="text-align:center;min-width: 15em; background-color: white !important;"> 30 </td>
-   <td style="text-align:center;min-width: 12em; background-color: white !important;"> 30 </td>
-   <td style="text-align:center;min-width: 13em; background-color: white !important;"> real </td>
-   <td style="text-align:center;min-width: 15em; background-color: white !important;"> Upper temperature for optimum respiration of bivalve (degC) </td>
+   <td style="text-align:center;min-width: 8em; background-color: white !important;"> `TmaxR` </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 30 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 30 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> real </td>
+   <td style="text-align:center;min-width: 13em; background-color: white !important;"> Upper temperature for optimum respiration of bivalve (degC) </td>
   </tr>
   <tr>
-   <td style="text-align:center;min-width: 12em; background-color: white !important;"> maxTR </td>
-   <td style="text-align:center;min-width: 15em; background-color: white !important;"> 43 </td>
-   <td style="text-align:center;min-width: 12em; background-color: white !important;"> 43 </td>
-   <td style="text-align:center;min-width: 13em; background-color: white !important;"> real </td>
-   <td style="text-align:center;min-width: 15em; background-color: white !important;"> Upper temperature for no respiration of bivalve (degC) </td>
+   <td style="text-align:center;min-width: 8em; background-color: white !important;"> `maxTR` </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 43 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 43 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> real </td>
+   <td style="text-align:center;min-width: 13em; background-color: white !important;"> Upper temperature for no respiration of bivalve (degC) </td>
   </tr>
   <tr>
-   <td style="text-align:center;min-width: 12em; background-color: white !important;"> Qresp </td>
-   <td style="text-align:center;min-width: 15em; background-color: white !important;"> 2.3 </td>
-   <td style="text-align:center;min-width: 12em; background-color: white !important;"> 2.3 </td>
-   <td style="text-align:center;min-width: 13em; background-color: white !important;"> real </td>
-   <td style="text-align:center;min-width: 15em; background-color: white !important;"> Respiration curve slope estimate for bivalve (-) </td>
+   <td style="text-align:center;min-width: 8em; background-color: white !important;"> `Qresp` </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 2.3 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 2.3 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> real </td>
+   <td style="text-align:center;min-width: 13em; background-color: white !important;"> Respiration curve slope estimate for bivalve (-) </td>
   </tr>
   <tr>
-   <td style="text-align:center;min-width: 12em; background-color: white !important;"> SDA </td>
-   <td style="text-align:center;min-width: 15em; background-color: white !important;"> 0.285 </td>
-   <td style="text-align:center;min-width: 12em; background-color: white !important;"> 0.285 </td>
-   <td style="text-align:center;min-width: 13em; background-color: white !important;"> real </td>
-   <td style="text-align:center;min-width: 15em; background-color: white !important;"> Specific dynamic action of bivalve (-) </td>
+   <td style="text-align:center;min-width: 8em; background-color: white !important;"> `SDA` </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.285 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.285 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> real </td>
+   <td style="text-align:center;min-width: 13em; background-color: white !important;"> Specific dynamic action of bivalve (-) </td>
   </tr>
   <tr>
-   <td style="text-align:center;min-width: 12em; background-color: white !important;"> MORTALITY Parameters </td>
-   <td style="text-align:center;min-width: 15em; background-color: white !important;">  </td>
-   <td style="text-align:center;min-width: 12em; background-color: white !important;">  </td>
-   <td style="text-align:center;min-width: 13em; background-color: white !important;">  </td>
-   <td style="text-align:center;min-width: 15em; background-color: white !important;">  </td>
+   <td style="text-align:center;min-width: 8em; background-color: white !important;background-color: #E8EAEF !important;"> MORTALITY Parameters </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;">  </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;">  </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;">  </td>
+   <td style="text-align:center;min-width: 13em; background-color: white !important;background-color: #E8EAEF !important;">  </td>
   </tr>
   <tr>
-   <td style="text-align:center;min-width: 12em; background-color: white !important;"> Rmort </td>
-   <td style="text-align:center;min-width: 15em; background-color: white !important;"> 0 </td>
-   <td style="text-align:center;min-width: 12em; background-color: white !important;"> 0 </td>
-   <td style="text-align:center;min-width: 13em; background-color: white !important;"> real </td>
-   <td style="text-align:center;min-width: 15em; background-color: white !important;"> Mortality rate coefficient for bivalve (/day) </td>
+   <td style="text-align:center;min-width: 8em; background-color: white !important;"> `Rmort` </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> real </td>
+   <td style="text-align:center;min-width: 13em; background-color: white !important;"> Mortality rate coefficient for bivalve (/day) </td>
   </tr>
   <tr>
-   <td style="text-align:center;min-width: 12em; background-color: white !important;"> Rpred </td>
-   <td style="text-align:center;min-width: 15em; background-color: white !important;"> 0 </td>
-   <td style="text-align:center;min-width: 12em; background-color: white !important;"> 0 </td>
-   <td style="text-align:center;min-width: 13em; background-color: white !important;"> real </td>
-   <td style="text-align:center;min-width: 15em; background-color: white !important;"> Mortality rate from predation of bivalve (/day) </td>
+   <td style="text-align:center;min-width: 8em; background-color: white !important;"> `Rpred` </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> real </td>
+   <td style="text-align:center;min-width: 13em; background-color: white !important;"> Mortality rate from predation of bivalve (/day) </td>
   </tr>
   <tr>
-   <td style="text-align:center;min-width: 12em; background-color: white !important;"> fDO </td>
-   <td style="text-align:center;min-width: 15em; background-color: white !important;"> 0 </td>
-   <td style="text-align:center;min-width: 12em; background-color: white !important;"> 0 </td>
-   <td style="text-align:center;min-width: 13em; background-color: white !important;"> integer </td>
-   <td style="text-align:center;min-width: 15em; background-color: white !important;"> Type of dissolved oxygen function for bivalve; 0=None or 1=XXX or 2=XXX </td>
+   <td style="text-align:center;min-width: 8em; background-color: white !important;"> `fDO` </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> integer </td>
+   <td style="text-align:center;min-width: 13em; background-color: white !important;"> Type of dissolved oxygen function for bivalve; 0=None or 1=XXX or 2=XXX </td>
   </tr>
   <tr>
-   <td style="text-align:center;min-width: 12em; background-color: white !important;"> K_BDO </td>
-   <td style="text-align:center;min-width: 15em; background-color: white !important;"> 160 </td>
-   <td style="text-align:center;min-width: 12em; background-color: white !important;"> 160 </td>
-   <td style="text-align:center;min-width: 13em; background-color: white !important;"> real </td>
-   <td style="text-align:center;min-width: 15em; background-color: white !important;"> Basal respiration rate of bivalve (mmol/m3) </td>
+   <td style="text-align:center;min-width: 8em; background-color: white !important;"> `K_BDO` </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 160 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 160 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> real </td>
+   <td style="text-align:center;min-width: 13em; background-color: white !important;"> Basal respiration rate of bivalve (mmol/m3) </td>
   </tr>
   <tr>
-   <td style="text-align:center;min-width: 12em; background-color: white !important;"> KDO </td>
-   <td style="text-align:center;min-width: 15em; background-color: white !important;"> 8 </td>
-   <td style="text-align:center;min-width: 12em; background-color: white !important;"> 8 </td>
-   <td style="text-align:center;min-width: 13em; background-color: white !important;"> real </td>
-   <td style="text-align:center;min-width: 15em; background-color: white !important;"> Half saturation constant for metabolic response to DO for bivalve (mmol/m3) </td>
+   <td style="text-align:center;min-width: 8em; background-color: white !important;"> `KDO` </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 8 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 8 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> real </td>
+   <td style="text-align:center;min-width: 13em; background-color: white !important;"> Half saturation constant for metabolic response to DO for bivalve (mmol/m3) </td>
   </tr>
   <tr>
-   <td style="text-align:center;min-width: 12em; background-color: white !important;"> GENERAL Parameters </td>
-   <td style="text-align:center;min-width: 15em; background-color: white !important;">  </td>
-   <td style="text-align:center;min-width: 12em; background-color: white !important;">  </td>
-   <td style="text-align:center;min-width: 13em; background-color: white !important;">  </td>
-   <td style="text-align:center;min-width: 15em; background-color: white !important;">  </td>
+   <td style="text-align:center;min-width: 8em; background-color: white !important;background-color: #E8EAEF !important;"> GENERAL Parameters </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;">  </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;">  </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;">  </td>
+   <td style="text-align:center;min-width: 13em; background-color: white !important;background-color: #E8EAEF !important;">  </td>
   </tr>
   <tr>
-   <td style="text-align:center;min-width: 12em; background-color: white !important;"> num_prey </td>
-   <td style="text-align:center;min-width: 15em; background-color: white !important;"> 3 </td>
-   <td style="text-align:center;min-width: 12em; background-color: white !important;"> 3 </td>
-   <td style="text-align:center;min-width: 13em; background-color: white !important;"> integer </td>
-   <td style="text-align:center;min-width: 15em; background-color: white !important;"> Number of state variables for bivalve prey </td>
+   <td style="text-align:center;min-width: 8em; background-color: white !important;"> `num_prey` </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 3 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 3 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> integer </td>
+   <td style="text-align:center;min-width: 13em; background-color: white !important;"> Number of state variables for bivalve prey </td>
   </tr>
   <tr>
-   <td style="text-align:center;min-width: 12em; background-color: white !important;"> prey(1)%bivalve_prey </td>
-   <td style="text-align:center;min-width: 15em; background-color: white !important;"> 'PHY_green' </td>
-   <td style="text-align:center;min-width: 12em; background-color: white !important;"> 'PHY_green' </td>
-   <td style="text-align:center;min-width: 13em; background-color: white !important;"> string </td>
-   <td style="text-align:center;min-width: 15em; background-color: white !important;"> State variable name of bivalve prey </td>
+   <td style="text-align:center;min-width: 8em; background-color: white !important;"> `prey(1)%bivalve_prey` </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> `PHY_green` </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> `PHY_green` </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> string </td>
+   <td style="text-align:center;min-width: 13em; background-color: white !important;"> State variable name of bivalve prey </td>
   </tr>
   <tr>
-   <td style="text-align:center;min-width: 12em; background-color: white !important;"> prey(1)%Pbiv_prey </td>
-   <td style="text-align:center;min-width: 15em; background-color: white !important;"> 1 </td>
-   <td style="text-align:center;min-width: 12em; background-color: white !important;"> 1 </td>
-   <td style="text-align:center;min-width: 13em; background-color: white !important;"> real </td>
-   <td style="text-align:center;min-width: 15em; background-color: white !important;"> Preference factors for bivalve predators grazing on prey </td>
+   <td style="text-align:center;min-width: 8em; background-color: white !important;"> `prey(1)%Pbiv_prey` </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 1 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 1 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> real </td>
+   <td style="text-align:center;min-width: 13em; background-color: white !important;"> Preference factors for bivalve predators grazing on prey </td>
   </tr>
   <tr>
-   <td style="text-align:center;min-width: 12em; background-color: white !important;"> prey(2)%bivalve_prey </td>
-   <td style="text-align:center;min-width: 15em; background-color: white !important;"> 'PHY_diatom' </td>
-   <td style="text-align:center;min-width: 12em; background-color: white !important;"> 'PHY_diatom' </td>
-   <td style="text-align:center;min-width: 13em; background-color: white !important;"> string </td>
-   <td style="text-align:center;min-width: 15em; background-color: white !important;"> State variable name of bivalve prey </td>
+   <td style="text-align:center;min-width: 8em; background-color: white !important;"> `prey(2)%bivalve_prey` </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> `PHY_diatom` </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> `PHY_diatom` </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> string </td>
+   <td style="text-align:center;min-width: 13em; background-color: white !important;"> State variable name of bivalve prey </td>
   </tr>
   <tr>
-   <td style="text-align:center;min-width: 12em; background-color: white !important;"> prey(2)%Pbiv_prey </td>
-   <td style="text-align:center;min-width: 15em; background-color: white !important;"> 1 </td>
-   <td style="text-align:center;min-width: 12em; background-color: white !important;"> 1 </td>
-   <td style="text-align:center;min-width: 13em; background-color: white !important;"> real </td>
-   <td style="text-align:center;min-width: 15em; background-color: white !important;"> Preference factors for bivalve predators grazing on prey </td>
+   <td style="text-align:center;min-width: 8em; background-color: white !important;"> `prey(2)%Pbiv_prey` </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 1 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 1 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> real </td>
+   <td style="text-align:center;min-width: 13em; background-color: white !important;"> Preference factors for bivalve predators grazing on prey </td>
   </tr>
   <tr>
-   <td style="text-align:center;min-width: 12em; background-color: white !important;"> prey(3)%bivalve_prey </td>
-   <td style="text-align:center;min-width: 15em; background-color: white !important;"> 'PHY_crypto' </td>
-   <td style="text-align:center;min-width: 12em; background-color: white !important;"> 'OGM_poc' </td>
-   <td style="text-align:center;min-width: 13em; background-color: white !important;"> string </td>
-   <td style="text-align:center;min-width: 15em; background-color: white !important;"> State variable name of bivalve prey </td>
+   <td style="text-align:center;min-width: 8em; background-color: white !important;"> `prey(3)%bivalve_prey` </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> `PHY_crypto` </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> `OGM_poc` </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> string </td>
+   <td style="text-align:center;min-width: 13em; background-color: white !important;"> State variable name of bivalve prey </td>
   </tr>
   <tr>
-   <td style="text-align:center;min-width: 12em; background-color: white !important;"> prey(3)%Pbiv_prey </td>
-   <td style="text-align:center;min-width: 15em; background-color: white !important;"> 1 </td>
-   <td style="text-align:center;min-width: 12em; background-color: white !important;"> 1 </td>
-   <td style="text-align:center;min-width: 13em; background-color: white !important;"> real </td>
-   <td style="text-align:center;min-width: 15em; background-color: white !important;"> Preference factors for bivalve predators grazing on prey </td>
+   <td style="text-align:center;min-width: 8em; background-color: white !important;"> `prey(3)%Pbiv_prey` </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 1 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 1 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> real </td>
+   <td style="text-align:center;min-width: 13em; background-color: white !important;"> Preference factors for bivalve predators grazing on prey </td>
   </tr>
 </tbody>
 </table></div>

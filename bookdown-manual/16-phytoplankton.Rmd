@@ -16,15 +16,30 @@ For each phytoplankton group, the maximum potential growth rate at 20°C is mult
 
 For each phytoplankton group, the maximum potential growth rate at 20˚C is multiplied by the minimum value of expressions for limitation by light, phosphorus, nitrogen and silica (when configured). While there may be some interaction between limiting factors, a minimum expression is likely to provide a realistic representation of growth limitation (Rhee and Gotham, 1981). 
 Therefore, photosynthesis is parameterized as the uptake of carbon, and depends on the temperature, light and nutrient dimensionless functions (adopted from Hipsey & Hamilton, 2008; Li et al., 2013).
-<center>
+
 <br>
-\begin{align}
-{f_{uptake}^{PHY_{Ca}}} &=  \underbrace{{R_{growth}^{PHY_{a}}}}_{\text{Max growth rate at 20˚C}}*\underbrace{(1-{k_{pr}^{PHY_{a}}})}_{\text{Photorespiratory loss}}*\underbrace{{\Phi_{tem}^{PHY_{a}}}(T)}_{\text{Temperature scaling}}*\underbrace{{\Phi_{str}^{PHY_{a}}}(T)}_{\text{Metabolic stress}}*\\
-&{\text{min}}\begin{Bmatrix}\underbrace{\Phi_{light}^{PHY_{a}}(I)}_{\text{Light limitation}},\underbrace{\Phi_{N}^{PHY_{a}}(NO_{3},NH_{4},PHY_{N_{a}})}_{\text{N limitation}},\underbrace{\Phi_{P}^{PHY_{a}}(PO_{4},PHY_{P_{a}})}_{\text{P limitation}},\underbrace{\Phi_{Si}^{PHY_{a}}(RSi)}_{\text{Si limitation}}\end{Bmatrix}[PHY_{C_{a}}]
+
+:::: {.bluebox data-latex=""}
+\begin{equation}
+\text{Mass Balance Equation}
 (\#eq:phyto1)
+\end{equation}
+\begin{align}
+{f_{uptake}^{PHY_{Ca}}} &=  
 \end{align}
+\begin{align}
+\underbrace{{R_{growth}^{PHY_{a}}}}_{\text{Max growth rate at 20˚C}}*\underbrace{(1-{k_{pr}^{PHY_{a}}})}_{\text{Photorespiratory loss}}*\underbrace{{\Phi_{tem}^{PHY_{a}}}(T)}_{\text{Temperature scaling}}*\underbrace{{\Phi_{str}^{PHY_{a}}}(T)}_{\text{Metabolic stress}}*
+\end{align}
+\begin{align}
+&{\text{min}}\begin{Bmatrix}\underbrace{\Phi_{light}^{PHY_{a}}(I)}_{\text{Light limitation}},\underbrace{\Phi_{N}^{PHY_{a}}(NO_{3},NH_{4},PHY_{N_{a}})}_{\text{N limitation}},\underbrace{\Phi_{P}^{PHY_{a}}(PO_{4},PHY_{P_{a}})}_{\text{P limitation}},\underbrace{\Phi_{Si}^{PHY_{a}}(RSi)}_{\text{Si limitation}}\end{Bmatrix}*
+\end{align}
+\begin{align}
+[PHY_{C_{a}}]
+\end{align}
+::::
 <br>
-</center>
+
+
 To allow for reduced growth at non-optimal temperatures, a temperature function is used where the maximum productivity occurs at a temperature $T_{OPT}$; above this productivity decreases to zero at the maximum allowable temperature, $T_{MAX}$. Below the standard temperature, $T_{STD}$ the productivity follows a simple Arrenhius scaling formulation. In order to fit a function with these restrictions the following conditions are assumed: at $T=T_{STD}$,$\ {\ \Phi}_{tem}\left(T\right)=1$ and at  $T=T_{OPT},\ \ \frac{d\Phi_{tem}\left(T\right)}{dT}=0$, and at $T=T_{MAX}$,$\ \Phi_{tem}\left(T\right)=0$. This can be numerically solved using Newton’s iterative method and can be specific for each phytoplankton group. The temperature function is calculated according to (Griffin et al. 2001):
 <center>
 <br>
@@ -105,20 +120,6 @@ f_{excr}^{{PHY_{Si}}_a}&=\hat{R}\ \left[{PHY_{Si}}_a\right]
 The salinity effect on mortality is given by various quadratic formulations, depending on the groups sensitivity to salinity (Griffin et al 2001; Robson and Hamilton, 2004). An example of the use of various salinity limitation options is shown in Figure 3.
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ###	Variable Summary
 
 #### State Variables {-}
@@ -164,6 +165,54 @@ kable(diagnostics,"html", escape = F, align = "c", caption = "Diagnostics") %>%
 
 
 ###	Parameter Summary
+
+<center>
+```{r 16-parametersummmary, echo=FALSE, message=FALSE, warning=FALSE}
+library(knitr)
+library(kableExtra)
+parameter_summary <- read.csv("tables/16-phytoplankton/parameter_summary.csv", check.names=FALSE)
+kable(parameter_summary,"html", escape = F, align = "c", caption = "Diagnostics",
+      bootstrap_options = "hover") %>%
+  kable_styling(parameter_summary, bootstrap_options = "hover", 
+                full_width = F, position = "center") %>%
+  column_spec(1, width_min = "8em") %>%
+  column_spec(2, width_min = "4em") %>%
+  column_spec(3, width_min = "4em") %>%
+  column_spec(4, width_min = "4em") %>%
+  column_spec(5, width_min = "4em") %>%
+  column_spec(6, width_min = "4em") %>%
+  column_spec(7, width_min = "4em") %>%
+  column_spec(8, width_min = "4em") %>%
+  column_spec(9, width_min = "4em") %>%
+  column_spec(10, width_min = "4em") %>%
+  column_spec(11, width_min = "4em") %>%
+  column_spec(12, width_min = "4em") %>%
+  column_spec(13, width_min = "4em") %>%
+  column_spec(14, width_min = "4em") %>%
+  column_spec(15, width_min = "4em") %>%
+  column_spec(16, width_min = "4em") %>%
+  column_spec(17, width_min = "4em") %>%
+  column_spec(18, width_min = "4em") %>%
+  column_spec(19, width_min = "4em") %>%
+  column_spec(20, width_min = "4em") %>%
+  column_spec(21, width_min = "4em") %>%
+  column_spec(22, width_min = "4em") %>%
+  column_spec(23, width_min = "4em") %>%
+  column_spec(24, width_min = "13em") %>%
+  row_spec(1:55, background = 'white') %>%
+  row_spec(1:1, background = '#E8EAEF') %>%
+  row_spec(6:6, background = '#E8EAEF') %>%
+  row_spec(13:13, background = '#E8EAEF') %>%
+  row_spec(18:18, background = '#E8EAEF') %>%
+  row_spec(24:24, background = '#E8EAEF') %>%
+  row_spec(29:29, background = '#E8EAEF') %>%
+  row_spec(42:42, background = '#E8EAEF') %>%
+  row_spec(51:51, background = '#E8EAEF') %>%
+  scroll_box(width = "725px", height = "500px",
+             fixed_thead = FALSE) 
+```
+</center>
+
 ###	Optional Module Links
 ###	Feedbacks to the Host Model
 ## Setup & Configuration

@@ -659,17 +659,28 @@
 <h3><span class="header-section-number">13.3.1</span> Process Descriptions</h3>
 <div id="photosynthesis-nutrient-uptake" class="section level4 unnumbered" number="">
 <h4>Photosynthesis &amp; Nutrient Uptake</h4>
-For each phytoplankton group, the maximum potential growth rate at 20˚C is multiplied by the minimum value of expressions for limitation by light, phosphorus, nitrogen and silica (when configured). While there may be some interaction between limiting factors, a minimum expression is likely to provide a realistic representation of growth limitation (Rhee and Gotham, 1981).
-Therefore, photosynthesis is parameterized as the uptake of carbon, and depends on the temperature, light and nutrient dimensionless functions (adopted from Hipsey &amp; Hamilton, 2008; Li et al., 2013).
-<center>
-<br>
-<span class="math display" id="eq:phyto1">\[\begin{align}
-{f_{uptake}^{PHY_{Ca}}} &amp;=  \underbrace{{R_{growth}^{PHY_{a}}}}_{\text{Max growth rate at 20˚C}}*\underbrace{(1-{k_{pr}^{PHY_{a}}})}_{\text{Photorespiratory loss}}*\underbrace{{\Phi_{tem}^{PHY_{a}}}(T)}_{\text{Temperature scaling}}*\underbrace{{\Phi_{str}^{PHY_{a}}}(T)}_{\text{Metabolic stress}}*\\
-&amp;{\text{min}}\begin{Bmatrix}\underbrace{\Phi_{light}^{PHY_{a}}(I)}_{\text{Light limitation}},\underbrace{\Phi_{N}^{PHY_{a}}(NO_{3},NH_{4},PHY_{N_{a}})}_{\text{N limitation}},\underbrace{\Phi_{P}^{PHY_{a}}(PO_{4},PHY_{P_{a}})}_{\text{P limitation}},\underbrace{\Phi_{Si}^{PHY_{a}}(RSi)}_{\text{Si limitation}}\end{Bmatrix}[PHY_{C_{a}}]
+<p>For each phytoplankton group, the maximum potential growth rate at 20˚C is multiplied by the minimum value of expressions for limitation by light, phosphorus, nitrogen and silica (when configured). While there may be some interaction between limiting factors, a minimum expression is likely to provide a realistic representation of growth limitation (Rhee and Gotham, 1981).
+Therefore, photosynthesis is parameterized as the uptake of carbon, and depends on the temperature, light and nutrient dimensionless functions (adopted from Hipsey &amp; Hamilton, 2008; Li et al., 2013).</p>
+<p><br></p>
+<div class="bluebox">
+<p><span class="math display" id="eq:phyto1">\[\begin{equation}
+\text{Mass Balance Equation}
 \tag{13.1}
+\end{equation}\]</span>
+<span class="math display">\[\begin{align}
+{f_{uptake}^{PHY_{Ca}}} &amp;=  
 \end{align}\]</span>
-<br>
-</center>
+<span class="math display">\[\begin{align}
+\underbrace{{R_{growth}^{PHY_{a}}}}_{\text{Max growth rate at 20˚C}}*\underbrace{(1-{k_{pr}^{PHY_{a}}})}_{\text{Photorespiratory loss}}*\underbrace{{\Phi_{tem}^{PHY_{a}}}(T)}_{\text{Temperature scaling}}*\underbrace{{\Phi_{str}^{PHY_{a}}}(T)}_{\text{Metabolic stress}}*
+\end{align}\]</span>
+<span class="math display">\[\begin{align}
+&amp;{\text{min}}\begin{Bmatrix}\underbrace{\Phi_{light}^{PHY_{a}}(I)}_{\text{Light limitation}},\underbrace{\Phi_{N}^{PHY_{a}}(NO_{3},NH_{4},PHY_{N_{a}})}_{\text{N limitation}},\underbrace{\Phi_{P}^{PHY_{a}}(PO_{4},PHY_{P_{a}})}_{\text{P limitation}},\underbrace{\Phi_{Si}^{PHY_{a}}(RSi)}_{\text{Si limitation}}\end{Bmatrix}*
+\end{align}\]</span>
+<span class="math display">\[\begin{align}
+[PHY_{C_{a}}]
+\end{align}\]</span></p>
+</div>
+<p><br></p>
 To allow for reduced growth at non-optimal temperatures, a temperature function is used where the maximum productivity occurs at a temperature <span class="math inline">\(T_{OPT}\)</span>; above this productivity decreases to zero at the maximum allowable temperature, <span class="math inline">\(T_{MAX}\)</span>. Below the standard temperature, <span class="math inline">\(T_{STD}\)</span> the productivity follows a simple Arrenhius scaling formulation. In order to fit a function with these restrictions the following conditions are assumed: at <span class="math inline">\(T=T_{STD}\)</span>,<span class="math inline">\(\ {\ \Phi}_{tem}\left(T\right)=1\)</span> and at <span class="math inline">\(T=T_{OPT},\ \ \frac{d\Phi_{tem}\left(T\right)}{dT}=0\)</span>, and at <span class="math inline">\(T=T_{MAX}\)</span>,<span class="math inline">\(\ \Phi_{tem}\left(T\right)=0\)</span>. This can be numerically solved using Newton’s iterative method and can be specific for each phytoplankton group. The temperature function is calculated according to (Griffin et al. 2001):
 <center>
 <br>
@@ -1154,6 +1165,4266 @@ NA
 </div>
 <div id="parameter-summary-8" class="section level3" number="13.3.3">
 <h3><span class="header-section-number">13.3.3</span> Parameter Summary</h3>
+<center>
+<div style="border: 1px solid #ddd; padding: 5px; overflow-y: scroll; height:500px; overflow-x: scroll; width:725px; ">
+<table class="table table-hover" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<caption>
+<span id="tab:16-parametersummmary">Table 13.3: </span>Diagnostics
+</caption>
+<thead>
+<tr>
+<th style="text-align:center;">
+p_name
+</th>
+<th style="text-align:center;">
+‘Peridinium’
+</th>
+<th style="text-align:center;">
+‘cyano’
+</th>
+<th style="text-align:center;">
+‘green’
+</th>
+<th style="text-align:center;">
+‘karlodinium’
+</th>
+<th style="text-align:center;">
+‘phy05’
+</th>
+<th style="text-align:center;">
+‘phy06’
+</th>
+<th style="text-align:center;">
+‘diatom’
+</th>
+<th style="text-align:center;">
+‘crypto’
+</th>
+<th style="text-align:center;">
+‘cryptophyte’
+</th>
+<th style="text-align:center;">
+‘chlorophyte’
+</th>
+<th style="text-align:center;">
+‘synechococcus’
+</th>
+<th style="text-align:center;">
+‘MICROCYSTIS’
+</th>
+<th style="text-align:center;">
+‘Cyanobacteria’
+</th>
+<th style="text-align:center;">
+‘Cyanobacteria’
+</th>
+<th style="text-align:center;">
+‘n_spumigena’
+</th>
+<th style="text-align:center;">
+‘Peridinium’
+</th>
+<th style="text-align:center;">
+‘Microcystis’
+</th>
+<th style="text-align:center;">
+‘Microcystis(1)’
+</th>
+<th style="text-align:center;">
+‘Aphanizomenon’
+</th>
+<th style="text-align:center;">
+‘Nanoplankton’
+</th>
+<th style="text-align:center;">
+‘Cayelan_Test’
+</th>
+<th style="text-align:center;">
+string
+</th>
+<th style="text-align:center;">
+Name of phytoplankton group
+</th>
+<th style="text-align:center;">
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center;min-width: 8em; background-color: white !important;background-color: #E8EAEF !important;">
+GENERAL parameters
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;">
+NA
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;">
+NA
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;">
+NA
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;">
+NA
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;">
+NA
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;">
+NA
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;">
+NA
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;">
+NA
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;">
+NA
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;">
+NA
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;">
+NA
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;">
+NA
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;">
+NA
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;">
+NA
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;">
+NA
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;">
+NA
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;">
+NA
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;">
+NA
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;">
+NA
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;">
+NA
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;">
+NA
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;">
+</td>
+<td style="text-align:center;min-width: 13em; background-color: white !important;background-color: #E8EAEF !important;">
+</td>
+<td style="text-align:center;background-color: white !important;background-color: #E8EAEF !important;">
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 8em; background-color: white !important;">
+<code>p_initial</code>
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+1.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+10.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0400
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+10.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+10.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+10.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+10.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+8.4000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+2.4000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+10.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+10.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+10.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+200.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+10.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+10.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+2.81e+00
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+102.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+2.81e+00
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+2.81e+00
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+2.81e+00
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+2.81e+00
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+real
+</td>
+<td style="text-align:center;min-width: 13em; background-color: white !important;">
+Initial concentration of phytoplankton (mmol C/m<sup>3</sup>)
+</td>
+<td style="text-align:center;background-color: white !important;">
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 8em; background-color: white !important;">
+<code>p0</code>
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0300
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0300
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0300
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0300
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0300
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0300
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0300
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0300
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0300
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0300
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0300
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0300
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+5.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0300
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0300
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+3.00e-02
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0300
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+3.00e-02
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+3.00e-02
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+3.00e-02
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+3.00e-02
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+real
+</td>
+<td style="text-align:center;min-width: 13em; background-color: white !important;">
+Minimum concentration of phytoplankton (mmol C/m3)
+</td>
+<td style="text-align:center;background-color: white !important;">
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 8em; background-color: white !important;">
+<code>w_p</code>
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+-0.0100
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+-0.1040
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+-0.1040
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.00e+00
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.00e+00
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.00e+00
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.00e+00
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.00e+00
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+real
+</td>
+<td style="text-align:center;min-width: 13em; background-color: white !important;">
+sedimentation rate (m/d)
+</td>
+<td style="text-align:center;background-color: white !important;">
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 8em; background-color: white !important;">
+<code>Xcc</code>
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+50.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+50.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+40.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+50.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+50.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+50.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+40.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+40.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+40.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+50.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+50.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+50.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+40.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+40.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+50.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+5.50e+01
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+50.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+9.20e+01
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+7.70e+01
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+8.00e+01
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+7.70e+01
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+real
+</td>
+<td style="text-align:center;min-width: 13em; background-color: white !important;">
+carbon to chlorophyll ratio (mg C/mg chla)
+</td>
+<td style="text-align:center;background-color: white !important;">
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 8em; background-color: white !important;background-color: #E8EAEF !important;">
+GROWTH parameters
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;">
+NA
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;">
+NA
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;">
+NA
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;">
+NA
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;">
+NA
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;">
+NA
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;">
+NA
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;">
+NA
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;">
+NA
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;">
+NA
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;">
+NA
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;">
+NA
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;">
+NA
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;">
+NA
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;">
+NA
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;">
+NA
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;">
+NA
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;">
+NA
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;">
+NA
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;">
+NA
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;">
+NA
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;">
+</td>
+<td style="text-align:center;min-width: 13em; background-color: white !important;background-color: #E8EAEF !important;">
+</td>
+<td style="text-align:center;background-color: white !important;background-color: #E8EAEF !important;">
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 8em; background-color: white !important;">
+<code>R_growth</code>
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+1.1000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+1.1000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.7000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+1.1000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+1.1000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+1.1000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+2.8000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+1.1000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.7000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+1.1000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+1.1000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+1.1000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.5300
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+1.1000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+1.1000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+3.50e-01
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+1.1000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+7.00e-01
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+4.10e-01
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+2.70e+00
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+4.10e-01
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+real
+</td>
+<td style="text-align:center;min-width: 13em; background-color: white !important;">
+Phyto max growth rate <span class="citation">(<span class="citeproc-not-found" data-reference-id="20C"><strong>???</strong></span>)</span> (/day)
+</td>
+<td style="text-align:center;background-color: white !important;">
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 8em; background-color: white !important;">
+<code>fT_Method</code>
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+1.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+1.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+1.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+1.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+1.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+1.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+1.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+1.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+1.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+1.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+1.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+1.00e+00
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+1.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+1.00e+00
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+1.00e+00
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.00e+00
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+1.00e+00
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+integer
+</td>
+<td style="text-align:center;min-width: 13em; background-color: white !important;">
+Specifies temperature limitation function of growth (-); 0 = no temperature limitation 1= CAEDYM style
+</td>
+<td style="text-align:center;background-color: white !important;">
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 8em; background-color: white !important;">
+<code>theta_growth</code>
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+1.0600
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+1.0600
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+1.0800
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+1.0600
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+1.0600
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+1.0600
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+1.0600
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+1.0600
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+1.0600
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+1.0600
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+1.0600
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+1.0600
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+1.0800
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+1.0600
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+1.0600
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+1.07e+00
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+1.0600
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+1.07e+00
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+1.10e+00
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+1.07e+00
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+1.10e+00
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+real
+</td>
+<td style="text-align:center;min-width: 13em; background-color: white !important;">
+Arrenhius temperature scaling for growth function (-)
+</td>
+<td style="text-align:center;background-color: white !important;">
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 8em; background-color: white !important;">
+<code>T_std</code>
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+20.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+20.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+20.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+20.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+20.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+20.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+15.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+15.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+20.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+20.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+20.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+20.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+20.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+20.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+20.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+1.90e+01
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+20.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+1.90e+01
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+2.40e+01
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+2.00e+01
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+2.40e+01
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+real
+</td>
+<td style="text-align:center;min-width: 13em; background-color: white !important;">
+Standard temperature (deg C)
+</td>
+<td style="text-align:center;background-color: white !important;">
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 8em; background-color: white !important;">
+<code>T_opt</code>
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+28.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+28.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+27.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+28.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+28.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+28.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+20.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+20.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+28.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+28.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+28.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+28.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+28.7000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+28.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+28.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+2.40e+01
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+28.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+2.60e+01
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+2.90e+01
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+2.70e+01
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+2.90e+01
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+real
+</td>
+<td style="text-align:center;min-width: 13em; background-color: white !important;">
+Optimum temperature (deg C)
+</td>
+<td style="text-align:center;background-color: white !important;">
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 8em; background-color: white !important;">
+<code>T_max</code>
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+35.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+35.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+33.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+35.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+35.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+35.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+32.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+32.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+34.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+35.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+35.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+35.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+35.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+35.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+35.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+3.20e+01
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+35.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+3.50e+01
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+3.40e+01
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+3.50e+01
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+3.40e+01
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+real
+</td>
+<td style="text-align:center;min-width: 13em; background-color: white !important;">
+Maximum temperature (deg C)
+</td>
+<td style="text-align:center;background-color: white !important;">
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 8em; background-color: white !important;background-color: #E8EAEF !important;">
+LIGHT parameters
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;">
+NA
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;">
+NA
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;">
+NA
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;">
+NA
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;">
+NA
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;">
+NA
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;">
+NA
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;">
+NA
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;">
+NA
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;">
+NA
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;">
+NA
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;">
+NA
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;">
+NA
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;">
+NA
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;">
+NA
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;">
+NA
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;">
+NA
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;">
+NA
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;">
+NA
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;">
+NA
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;">
+NA
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;">
+</td>
+<td style="text-align:center;min-width: 13em; background-color: white !important;background-color: #E8EAEF !important;">
+</td>
+<td style="text-align:center;background-color: white !important;background-color: #E8EAEF !important;">
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 8em; background-color: white !important;">
+<code>lightModel</code>
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+1.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.00e+00
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.00e+00
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.00e+00
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.00e+00
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.00e+00
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+integer
+</td>
+<td style="text-align:center;min-width: 13em; background-color: white !important;">
+Type of light response function [0 = no photoinhibition; 1 = photoinhibition]
+</td>
+<td style="text-align:center;background-color: white !important;">
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 8em; background-color: white !important;">
+<code>I_K</code>
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+25.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+25.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+25.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+25.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+25.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+25.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+10.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+10.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+25.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+25.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+25.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+25.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+228.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+25.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+25.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+1.75e+01
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+25.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+1.75e+01
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+1.75e+01
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+1.75e+01
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+1.75e+01
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+real
+</td>
+<td style="text-align:center;min-width: 13em; background-color: white !important;">
+Half saturation constant for light limitation of growth (microE/m<sup>2</sup>/s) used if lightModel=0
+</td>
+<td style="text-align:center;background-color: white !important;">
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 8em; background-color: white !important;">
+<code>I_S</code>
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+100.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+100.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+100.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+100.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+100.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+100.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+100.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+100.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+100.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+100.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+100.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+100.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+230.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+100.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+100.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+6.00e+02
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+100.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+1.50e+02
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+8.00e+01
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+4.00e+02
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+8.00e+01
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+real
+</td>
+<td style="text-align:center;min-width: 13em; background-color: white !important;">
+saturating light intensity (microE/m<sup>2</sup>/s) used if lightModel=1
+</td>
+<td style="text-align:center;background-color: white !important;">
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 8em; background-color: white !important;">
+<code>KePHY</code>
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0050
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0050
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0050
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0050
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0050
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0050
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0010
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0010
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0050
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0050
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0050
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0050
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0050
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0050
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+1.20e-04
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0050
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+1.20e-04
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+1.20e-04
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+1.20e-04
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+1.20e-04
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+real
+</td>
+<td style="text-align:center;min-width: 13em; background-color: white !important;">
+Specific attenuation coefficient ((mmol C m<sup>3-1</sup>)<sup>1</sup> m<sup>-1</sup>)
+</td>
+<td style="text-align:center;background-color: white !important;">
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 8em; background-color: white !important;background-color: #E8EAEF !important;">
+RESPIRATION parameters
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;">
+NA
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;">
+NA
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;">
+NA
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;">
+NA
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;">
+NA
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;">
+NA
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;">
+NA
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;">
+NA
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;">
+NA
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;">
+NA
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;">
+NA
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;">
+NA
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;">
+NA
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;">
+NA
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;">
+NA
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;">
+NA
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;">
+NA
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;">
+NA
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;">
+NA
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;">
+NA
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;">
+NA
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;">
+</td>
+<td style="text-align:center;min-width: 13em; background-color: white !important;background-color: #E8EAEF !important;">
+</td>
+<td style="text-align:center;background-color: white !important;background-color: #E8EAEF !important;">
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 8em; background-color: white !important;">
+<code>f_pr</code>
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0050
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0050
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0050
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0050
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0050
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0050
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0020
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0020
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0050
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0050
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0050
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0050
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0050
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0050
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0050
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+4.00e-03
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0050
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+4.00e-03
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+4.00e-03
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+4.00e-03
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+4.00e-03
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+real
+</td>
+<td style="text-align:center;min-width: 13em; background-color: white !important;">
+Fraction of primary production lost to exudation (-)
+</td>
+<td style="text-align:center;background-color: white !important;">
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 8em; background-color: white !important;">
+<code>R_resp</code>
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0800
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0800
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0120
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0800
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0800
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0800
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.1200
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.1200
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0120
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0800
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0800
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0800
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0800
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0800
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0800
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+6.60e-02
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0800
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+6.60e-02
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+6.60e-02
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+6.60e-02
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+6.60e-02
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+real
+</td>
+<td style="text-align:center;min-width: 13em; background-color: white !important;">
+Phytoplankton respiration/metabolic loss rate @ 20 (degC)
+</td>
+<td style="text-align:center;background-color: white !important;">
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 8em; background-color: white !important;">
+<code>theta_resp</code>
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+1.0500
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+1.0500
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+1.0600
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+1.0500
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+1.0500
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+1.0500
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+1.0700
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+1.0700
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+1.0500
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+1.0500
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+1.0500
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+1.0500
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+1.0500
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+1.0500
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+1.0500
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+1.05e+00
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+1.0500
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+1.05e+00
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+1.05e+00
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+1.05e+00
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+1.05e+00
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+real
+</td>
+<td style="text-align:center;min-width: 13em; background-color: white !important;">
+Arrhenius temperature scaling factor for respiration (-)
+</td>
+<td style="text-align:center;background-color: white !important;">
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 8em; background-color: white !important;">
+<code>k_fres</code>
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.6000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.6000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.6000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.6000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.6000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.6000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.6000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.6000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.6000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.6000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.6000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.6000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.6000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.6000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.6000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+2.50e-01
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.6000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+2.50e-01
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+2.50e-01
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+2.50e-01
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+2.50e-01
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+real
+</td>
+<td style="text-align:center;min-width: 13em; background-color: white !important;">
+Fraction of metabolic loss that is true respiration (-)
+</td>
+<td style="text-align:center;background-color: white !important;">
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 8em; background-color: white !important;">
+<code>k_fdom</code>
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0500
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0500
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0500
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0500
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0500
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0500
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0500
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0500
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0500
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0500
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0500
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0500
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0500
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0500
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0500
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+2.00e-01
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0500
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+2.00e-01
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+2.00e-01
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+2.00e-01
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+2.00e-01
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+real
+</td>
+<td style="text-align:center;min-width: 13em; background-color: white !important;">
+Fraction of metabolic loss that is DOM (-)
+</td>
+<td style="text-align:center;background-color: white !important;">
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 8em; background-color: white !important;background-color: #E8EAEF !important;">
+SALINITY parameters
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;">
+NA
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;">
+NA
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;">
+NA
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;">
+NA
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;">
+NA
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;">
+NA
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;">
+NA
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;">
+NA
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;">
+NA
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;">
+NA
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;">
+NA
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;">
+NA
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;">
+NA
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;">
+NA
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;">
+NA
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;">
+NA
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;">
+NA
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;">
+NA
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;">
+NA
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;">
+NA
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;">
+NA
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;">
+</td>
+<td style="text-align:center;min-width: 13em; background-color: white !important;background-color: #E8EAEF !important;">
+</td>
+<td style="text-align:center;background-color: white !important;background-color: #E8EAEF !important;">
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 8em; background-color: white !important;">
+<code>salTol</code>
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.00e+00
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.00e+00
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.00e+00
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.00e+00
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.00e+00
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+integer
+</td>
+<td style="text-align:center;min-width: 13em; background-color: white !important;">
+Type of salinity limitation function (-)
+</td>
+<td style="text-align:center;background-color: white !important;">
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 8em; background-color: white !important;">
+<code>S_bep</code>
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+2.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+2.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+2.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+2.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+2.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+2.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+2.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+2.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+2.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+2.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+2.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+2.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+2.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+2.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+2.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+2.00e+00
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+2.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+2.00e+00
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+2.00e+00
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+2.00e+00
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+2.00e+00
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+real
+</td>
+<td style="text-align:center;min-width: 13em; background-color: white !important;">
+Salinity limitation value at maximum salinity S_maxsp (-)
+</td>
+<td style="text-align:center;background-color: white !important;">
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 8em; background-color: white !important;">
+<code>S_maxsp</code>
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+35.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+35.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+35.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+35.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+35.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+35.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+35.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+35.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+35.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+35.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+35.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+35.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+35.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+35.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+35.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+3.50e+01
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+35.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+3.50e+01
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+3.50e+01
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+3.50e+01
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+3.50e+01
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+real
+</td>
+<td style="text-align:center;min-width: 13em; background-color: white !important;">
+Maximum salinity (g/kg)
+</td>
+<td style="text-align:center;background-color: white !important;">
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 8em; background-color: white !important;">
+<code>S_opt</code>
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+1.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+1.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+1.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+1.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+1.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+1.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+1.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+1.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+1.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+1.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+1.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+1.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+1.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+1.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+1.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+1.00e+00
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+1.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+1.00e+00
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+1.00e+00
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+1.00e+00
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+1.00e+00
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+real
+</td>
+<td style="text-align:center;min-width: 13em; background-color: white !important;">
+Optimal salinity (g/kg)
+</td>
+<td style="text-align:center;background-color: white !important;">
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 8em; background-color: white !important;background-color: #E8EAEF !important;">
+NITROGEN parameters
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;">
+NA
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;">
+NA
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;">
+NA
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;">
+NA
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;">
+NA
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;">
+NA
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;">
+NA
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;">
+NA
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;">
+NA
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;">
+NA
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;">
+NA
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;">
+NA
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;">
+NA
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;">
+NA
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;">
+NA
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;">
+NA
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;">
+NA
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;">
+NA
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;">
+NA
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;">
+NA
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;">
+NA
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;">
+</td>
+<td style="text-align:center;min-width: 13em; background-color: white !important;background-color: #E8EAEF !important;">
+</td>
+<td style="text-align:center;background-color: white !important;background-color: #E8EAEF !important;">
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 8em; background-color: white !important;">
+<code>simDINUptake</code>
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+1.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+1.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+1.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+1.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+1.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+1.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+1.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+1.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+1.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+1.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+1.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+1.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+1.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+1.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+1.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+1.00e+00
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+1.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+1.00e+00
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+1.00e+00
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+1.00e+00
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+1.00e+00
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+integer
+</td>
+<td style="text-align:center;min-width: 13em; background-color: white !important;">
+Simulate DIN uptake (0 = false
+</td>
+<td style="text-align:center;background-color: white !important;">
+1 = true)
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 8em; background-color: white !important;">
+<code>simDONUptake</code>
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.00e+00
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.00e+00
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.00e+00
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.00e+00
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.00e+00
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+integer
+</td>
+<td style="text-align:center;min-width: 13em; background-color: white !important;">
+Simulate DON uptake (0 = false
+</td>
+<td style="text-align:center;background-color: white !important;">
+1 = true)
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 8em; background-color: white !important;">
+<code>simNFixation</code>
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.00e+00
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.00e+00
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.00e+00
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.00e+00
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.00e+00
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+integer
+</td>
+<td style="text-align:center;min-width: 13em; background-color: white !important;">
+Simulate N fixation (0 = false
+</td>
+<td style="text-align:center;background-color: white !important;">
+1 = true)
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 8em; background-color: white !important;">
+<code>simINDynamics</code>
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+2.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+2.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+2.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+2.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+2.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+2.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+2.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+2.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+2.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+2.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+2.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+2.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+2.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+2.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+2.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+2.00e+00
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+2.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+2.00e+00
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+2.00e+00
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+2.00e+00
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+2.00e+00
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+integer
+</td>
+<td style="text-align:center;min-width: 13em; background-color: white !important;">
+Simulate internal N (0 = assumed fixed C:N
+</td>
+<td style="text-align:center;background-color: white !important;">
+2 = dynamic C:N)
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 8em; background-color: white !important;">
+<code>N_o</code>
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.2500
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.2500
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.2500
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.2500
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.2500
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.2500
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.2500
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.2500
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.2500
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.2500
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.2500
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.2500
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.2500
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.2500
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.2500
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+2.50e-01
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.2500
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+2.50e-01
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+2.50e-01
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+2.50e-01
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+2.50e-01
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+real
+</td>
+<td style="text-align:center;min-width: 13em; background-color: white !important;">
+Nitrogen concentraion below which uptake is 0 (mmol N/m<sup>3</sup>)
+</td>
+<td style="text-align:center;background-color: white !important;">
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 8em; background-color: white !important;">
+<code>K_N</code>
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+4.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+4.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+3.2100
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+4.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+4.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+4.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+3.5700
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+3.5700
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+3.2100
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+4.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+4.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+4.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+4.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+4.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+4.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+3.39e+00
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+4.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+3.39e+00
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+3.39e+00
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+3.39e+00
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+3.39e+00
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+real
+</td>
+<td style="text-align:center;min-width: 13em; background-color: white !important;">
+Half-saturation concentration of nitrogen (mmol N/m<sup>3</sup>)
+</td>
+<td style="text-align:center;background-color: white !important;">
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 8em; background-color: white !important;">
+<code>X_ncon</code>
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+232342.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0350
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0350
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0350
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0350
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0350
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0350
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0350
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0350
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0350
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0350
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0350
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0350
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0350
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0350
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+3.50e-02
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0350
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+3.50e-02
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+3.50e-02
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+3.50e-02
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+3.50e-02
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+real
+</td>
+<td style="text-align:center;min-width: 13em; background-color: white !important;">
+Constant internal nitrogen concentration (mmol N/ mmol C) used if simINDynamics = 0 or 1
+</td>
+<td style="text-align:center;background-color: white !important;">
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 8em; background-color: white !important;">
+<code>X_nmin</code>
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0200
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0200
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0200
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0200
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0200
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0200
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0200
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0200
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0200
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0200
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0200
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0200
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0200
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0200
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0200
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+3.00e-03
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0200
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+2.00e-03
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+1.70e-02
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+7.00e-03
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+1.70e-02
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+real
+</td>
+<td style="text-align:center;min-width: 13em; background-color: white !important;">
+minimum internal nitrogen concentration (mmol N/ mmol C) used if simINDynamics = 2
+</td>
+<td style="text-align:center;background-color: white !important;">
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 8em; background-color: white !important;">
+<code>X_nmax</code>
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0700
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0700
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0700
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0700
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0700
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0700
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0700
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0700
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0700
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0700
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0700
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0700
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0700
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0700
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0700
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+6.00e-03
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0700
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+5.00e-03
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+9.00e-03
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+2.80e-02
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+9.00e-03
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+real
+</td>
+<td style="text-align:center;min-width: 13em; background-color: white !important;">
+maximum internal nitrogen concentration (mmol N/ mmol C) used if simINDynamics = 2
+</td>
+<td style="text-align:center;background-color: white !important;">
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 8em; background-color: white !important;">
+<code>R_nuptake</code>
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0200
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0200
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0200
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0200
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0200
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0200
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0200
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0200
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0200
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0200
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0200
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0200
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0200
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0200
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0200
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+2.00e-02
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0200
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+2.00e-02
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+2.00e-02
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+2.00e-02
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+2.00e-02
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+real
+</td>
+<td style="text-align:center;min-width: 13em; background-color: white !important;">
+maximum nitrogen uptake rate(mmol N/m<sup>3</sup>/d) used if simINDynamics = 2
+</td>
+<td style="text-align:center;background-color: white !important;">
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 8em; background-color: white !important;">
+<code>k_nfix</code>
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.7000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.7000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.7000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.7000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.7000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.7000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.7000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.7000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.7000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.7000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.7000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.7000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.7000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.7000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.7000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+7.00e-01
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.7000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+7.00e-01
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+7.00e-01
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+7.00e-01
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+7.00e-01
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+real
+</td>
+<td style="text-align:center;min-width: 13em; background-color: white !important;">
+growth rate reduction under maximum nitrogen fixation (/day) used if simNFixation &gt;0
+</td>
+<td style="text-align:center;background-color: white !important;">
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 8em; background-color: white !important;">
+<code>R_nfix</code>
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0350
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0350
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0350
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0350
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0350
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0350
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0350
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0350
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0350
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0350
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0350
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0350
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0350
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0350
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0350
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.00e+00
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0350
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.00e+00
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+1.20e-02
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.00e+00
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+1.20e-02
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+real
+</td>
+<td style="text-align:center;min-width: 13em; background-color: white !important;">
+nitrogen fixation rate (mmol N/mmol C/day)
+</td>
+<td style="text-align:center;background-color: white !important;">
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 8em; background-color: white !important;background-color: #E8EAEF !important;">
+PHOSPHORUS parameters
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;">
+NA
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;">
+NA
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;">
+NA
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;">
+NA
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;">
+NA
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;">
+NA
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;">
+NA
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;">
+NA
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;">
+NA
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;">
+NA
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;">
+NA
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;">
+NA
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;">
+NA
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;">
+NA
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;">
+NA
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;">
+NA
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;">
+NA
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;">
+NA
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;">
+NA
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;">
+NA
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;">
+NA
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;">
+</td>
+<td style="text-align:center;min-width: 13em; background-color: white !important;background-color: #E8EAEF !important;">
+</td>
+<td style="text-align:center;background-color: white !important;background-color: #E8EAEF !important;">
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 8em; background-color: white !important;">
+<code>simDIPUptake</code>
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+1.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+1.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+1.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+1.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+1.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+1.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+1.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+1.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+1.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+1.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+1.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+1.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+1.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+1.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+1.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+1.00e+00
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+1.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+1.00e+00
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+1.00e+00
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+1.00e+00
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+1.00e+00
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+integer
+</td>
+<td style="text-align:center;min-width: 13em; background-color: white !important;">
+Simulate DIP uptake (0 = false
+</td>
+<td style="text-align:center;background-color: white !important;">
+1 = true)
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 8em; background-color: white !important;">
+<code>simIPDynamics</code>
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+2.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+2.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+2.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+2.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+2.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+2.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+2.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+2.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+2.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+2.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+2.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+2.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+2.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+2.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+2.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+2.00e+00
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+2.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+2.00e+00
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+2.00e+00
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+2.00e+00
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+2.00e+00
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+integer
+</td>
+<td style="text-align:center;min-width: 13em; background-color: white !important;">
+Simulate internal phosphorus dynamics (0 = assumed fixed C:P
+</td>
+<td style="text-align:center;background-color: white !important;">
+2 = dynamic C:P)
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 8em; background-color: white !important;">
+<code>P_0</code>
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0300
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0300
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0300
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0300
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0300
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0300
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0300
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0300
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0300
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0300
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0300
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0300
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0300
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0300
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0300
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+3.00e-02
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0300
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+3.00e-02
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+3.00e-02
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+3.00e-02
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+3.00e-02
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+real
+</td>
+<td style="text-align:center;min-width: 13em; background-color: white !important;">
+Phosphorus concentraion below which uptake is 0 (mmol P/m<sup>3</sup>)
+</td>
+<td style="text-align:center;background-color: white !important;">
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 8em; background-color: white !important;">
+<code>K_P</code>
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.1500
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.1500
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.1600
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.1500
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.1500
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.1500
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.1600
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.1600
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.1600
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.1500
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.1500
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.1500
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.1500
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.1500
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.1500
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+7.74e-05
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.1500
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+5.80e-05
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+3.87e-05
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+4.51e-05
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+3.87e-05
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+real
+</td>
+<td style="text-align:center;min-width: 13em; background-color: white !important;">
+Half-saturation concentration of phosphorus (mmol P/m<sup>3</sup>)
+</td>
+<td style="text-align:center;background-color: white !important;">
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 8em; background-color: white !important;">
+<code>X_pcon</code>
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0015
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0015
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0015
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0015
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0015
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0015
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0015
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0015
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0015
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0015
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0015
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0015
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0015
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0015
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0015
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+1.50e-03
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0015
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+1.50e-03
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+1.50e-03
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+1.50e-03
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+1.50e-03
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+real
+</td>
+<td style="text-align:center;min-width: 13em; background-color: white !important;">
+Constant internal phosphorus concentration (mmol P/ mmol C) used if simIPDynamics = 0 or 1
+</td>
+<td style="text-align:center;background-color: white !important;">
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 8em; background-color: white !important;">
+<code>X_pmin</code>
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0005
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0005
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0005
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0005
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0005
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0005
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0005
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0005
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0005
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0005
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0005
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0005
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0005
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0005
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0005
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.00e+00
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0005
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+3.00e-03
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+6.00e-03
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+3.00e-03
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+6.00e-03
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+real
+</td>
+<td style="text-align:center;min-width: 13em; background-color: white !important;">
+Minimum internal phosphorus concentration (mmol P/mmol C) used if simIPDynamics = 2
+</td>
+<td style="text-align:center;background-color: white !important;">
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 8em; background-color: white !important;">
+<code>X_pmax</code>
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0050
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0050
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0050
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0050
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0050
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0050
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0050
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0050
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0050
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0050
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0050
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0050
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0050
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0050
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0050
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+1.00e-03
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0050
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+1.90e-02
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+5.02e-01
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+1.20e-02
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+5.02e-01
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+real
+</td>
+<td style="text-align:center;min-width: 13em; background-color: white !important;">
+Maximum internal phosphorus concentration (mmol P/mmol C) used if simIPDynamics = 2
+</td>
+<td style="text-align:center;background-color: white !important;">
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 8em; background-color: white !important;">
+<code>R_puptake</code>
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0010
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0010
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0010
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0010
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0010
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0010
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0010
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0010
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0010
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0010
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0010
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0010
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0010
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0010
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0010
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+1.00e-03
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0010
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+1.00e-03
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+1.00e-03
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+1.00e-03
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+1.00e-03
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+real
+</td>
+<td style="text-align:center;min-width: 13em; background-color: white !important;">
+Maximum phosphorus uptake rate(mmol P/m<sup>3</sup>/d) used if simIPDynamics = 2
+</td>
+<td style="text-align:center;background-color: white !important;">
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 8em; background-color: white !important;background-color: #E8EAEF !important;">
+SILICA parameter
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;">
+NA
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;">
+NA
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;">
+NA
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;">
+NA
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;">
+NA
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;">
+NA
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;">
+NA
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;">
+NA
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;">
+NA
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;">
+NA
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;">
+NA
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;">
+NA
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;">
+NA
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;">
+NA
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;">
+NA
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;">
+NA
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;">
+NA
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;">
+NA
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;">
+NA
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;">
+NA
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;">
+NA
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;">
+</td>
+<td style="text-align:center;min-width: 13em; background-color: white !important;background-color: #E8EAEF !important;">
+</td>
+<td style="text-align:center;background-color: white !important;background-color: #E8EAEF !important;">
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 8em; background-color: white !important;">
+<code>simSiUptake</code>
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.00e+00
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.0000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.00e+00
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.00e+00
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.00e+00
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.00e+00
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+integer
+</td>
+<td style="text-align:center;min-width: 13em; background-color: white !important;">
+Simulate Si uptake (0 = false
+</td>
+<td style="text-align:center;background-color: white !important;">
+1 = true)
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 8em; background-color: white !important;">
+<code>Si_0</code>
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.3000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.3000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.3000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.3000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.3000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.3000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.3000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.3000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.3000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.3000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.3000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.3000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.3000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.3000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.3000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+3.00e-01
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.3000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+3.00e-01
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+3.00e-01
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+3.00e-01
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+3.00e-01
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+real
+</td>
+<td style="text-align:center;min-width: 13em; background-color: white !important;">
+Silica concentraion below which uptake is 0 (mmol Si/m<sup>3</sup>)
+</td>
+<td style="text-align:center;background-color: white !important;">
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 8em; background-color: white !important;">
+<code>K_Si</code>
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+2.5000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+2.5000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+2.5000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+2.5000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+2.5000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+2.5000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+2.5000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+2.5000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+2.5000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+2.5000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+2.5000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+2.5000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+2.5000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+2.5000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+2.5000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+2.50e+00
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+2.5000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+2.50e+00
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+2.50e+00
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+2.50e+00
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+2.50e+00
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+real
+</td>
+<td style="text-align:center;min-width: 13em; background-color: white !important;">
+Half-saturation concentration of silica (mmol Si /m3)
+</td>
+<td style="text-align:center;background-color: white !important;">
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 8em; background-color: white !important;">
+<code>X_sicon</code>
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.4000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.4000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.4000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.4000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.4000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.4000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.4000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.4000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.4000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.4000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.4000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.4000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.4000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.4000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.4000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+4.00e-01
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+0.4000
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+4.00e-01
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+4.00e-01
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+4.00e-01
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+4.00e-01
+</td>
+<td style="text-align:center;min-width: 4em; background-color: white !important;">
+real
+</td>
+<td style="text-align:center;min-width: 13em; background-color: white !important;">
+Constant interal silica concentration (mmol Si/mmol C)
+</td>
+<td style="text-align:center;background-color: white !important;">
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</center>
 </div>
 <div id="optional-module-links-8" class="section level3" number="13.3.4">
 <h3><span class="header-section-number">13.3.4</span> Optional Module Links</h3>
@@ -1169,7 +5440,7 @@ NA
 <div style="border: 1px solid #ddd; padding: 5px; overflow-y: scroll; height:500px; overflow-x: scroll; width:725px; ">
 <table class="table table-hover" style="width: auto !important; margin-left: auto; margin-right: auto;">
 <caption>
-<span id="tab:16-parameterconfig">Table 13.3: </span>Parameters and configuration
+<span id="tab:16-parameterconfig">Table 13.4: </span>Parameters and configuration
 </caption>
 <thead>
 <tr>

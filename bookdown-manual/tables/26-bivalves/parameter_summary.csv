@@ -1,57 +1,57 @@
 name, 'zebra', 'quagga',string, Name of bivalve group
 General Parameters,,,,
-initial_conc,833,833,real, Initial concentration of bivalve (mmolC/m2)
-min,8.3,8.3,real, Minimum concentration of bivalve (mmolC/m3)
-length,15,15,real, Length of bivalve (mm)
-INC,291.67,291.67,real, Ratio of internal nitrogen to carbon of bivalve (-)
-IPC,64.58,64.58,real, Ratio of internal phosphorus to carbon of bivalve (-)
+`initial_conc`,833,833,real, Initial concentration of bivalve (mmolC/m2)
+`min`,8.3,8.3,real, Minimum concentration of bivalve (mmolC/m3)
+`length`,15,15,real, Length of bivalve (mm)
+`INC`,291.67,291.67,real, Ratio of internal nitrogen to carbon of bivalve (-)
+`IPC`,64.58,64.58,real, Ratio of internal phosphorus to carbon of bivalve (-)
 FILTRATION & INGESTION Parameters,,,,
-Rgrz,1.9,0.12,real, Maximum ingestion rate of bivalve (mmol/mmol/day) (Spillman et al. 2008) Calculated from Schneider 1992 based on 15 mm mussel
-Ing,0,0,integer, Type of maximum ingestion for bivalve; 0=Enter (mmol/mmol/d) or 1=Calculate based on length
-WaI,0,0,real, Maximum standard ingestion rate of bivalve (mmol/mmol/day) (Schneider 1992)
-WbI,-0.39,-0.39,real, Exponent for weight effect on ingestion of bivalve (-) (Schneider 1992)
-fassim,0.34,0.34,real, Minimum proportion of food lost as pseudofeces for bivalve (-)
-Cmin_grz,0.05,0.05,real, Minimum prey concentration for grazing by bivalve (mmolC/m3)
-Kgrz,187.5,187.5,real, Optimum algae+POC concentration for ingestion of bivalve (mmol/m3)
-minT,4,4,real, Lower temperature for no ingestion of bivalve (degC)
-Tmin,17,17,real, Lower temperature for optimum ingestion of bivalve (degC)
-Tmax,20,20,real, Upper temperature for optimum ingestion of bivalve (degC)
-maxT,32,32,real, Upper temperature for no ingestion of bivalve (degC)
-Dmax,6333.3,6333.3,real, Upper density for optimum ingestion of bivalve (mmol/m2)
-maxD,20000,20000,real, Upper density for no ingestion of bivalve (mmol/m2)
-SSmax,20,20,real, Upper suspended solids for optimum ingestion of bivalve (mg/L)
-maxSS,100,100,real, Upper suspended solids for no ingestion of bivalve (mg/L)
+`Rgrz`,1.9,0.12,real, Maximum ingestion rate of bivalve (mmol/mmol/day) (Spillman et al. 2008) Calculated from Schneider 1992 based on 15 mm mussel
+`Ing`,0,0,integer, Type of maximum ingestion for bivalve; 0=Enter (mmol/mmol/d) or 1=Calculate based on length
+`WaI`,0,0,real, Maximum standard ingestion rate of bivalve (mmol/mmol/day) (Schneider 1992)
+`WbI`,-0.39,-0.39,real, Exponent for weight effect on ingestion of bivalve (-) (Schneider 1992)
+`fassim`,0.34,0.34,real, Minimum proportion of food lost as pseudofeces for bivalve (-)
+`Cmin_grz`,0.05,0.05,real, Minimum prey concentration for grazing by bivalve (mmolC/m3)
+`Kgrz`,187.5,187.5,real, Optimum algae+POC concentration for ingestion of bivalve (mmol/m3)
+`minT`,4,4,real, Lower temperature for no ingestion of bivalve (degC)
+`Tmin`,17,17,real, Lower temperature for optimum ingestion of bivalve (degC)
+`Tmax`,20,20,real, Upper temperature for optimum ingestion of bivalve (degC)
+`maxT`,32,32,real, Upper temperature for no ingestion of bivalve (degC)
+`Dmax`,6333.3,6333.3,real, Upper density for optimum ingestion of bivalve (mmol/m2)
+`maxD`,20000,20000,real, Upper density for no ingestion of bivalve (mmol/m2)
+`Ssmax`,20,20,real, Upper suspended solids for optimum ingestion of bivalve (mg/L)
+`maxSS`,100,100,real, Upper suspended solids for no ingestion of bivalve (mg/L)
 EXCRETION AND EGESTION Parameters,,,,
-Rexcr,0,0,real, Excretion fraction of ingestion for bivalve(-)
-Regst,0,0,real, Minimum proportion egested as feces for bivalve (-)
-gegst,0,0,real, Gamma coefficient for food availability dependence for bivalve
+`Rexcr`,0,0,real, Excretion fraction of ingestion for bivalve(-)
+`Regst`,0,0,real, Minimum proportion egested as feces for bivalve (-)
+`gegst`,0,0,real, Gamma coefficient for food availability dependence for bivalve
 RESPIRATION Parameters,,,,
-Rresp,0.01,0.01,real, Respiration rate coefficient of bivalve (/day) (Calculated from Schneider 1992 based on 15 mm mussel)
-saltfunc,0,0,integer, Type of salinity function for bivalve; 0=None or 1=Spillman et al. 2008
-minS,0,0,real, Lower salinity for no ingestion of bivalve (psu)
-Smin,0,0,real, Lower salinity for optimum ingestion of bivalve (psu)
-Smax,0,0,real, Upper salinity for optimum ingestion of bivalve (psu)
-maxS,0,0,real, Upper salinity for no ingestion of bivalve (psu)
-fR20,0,0,integer, Type of maximum respiration for bivalve; 0=Enter or 1=Calculate based on length (mm)
-War,16.759,16.759,real, Standard respiration rate of bivalve (mmol/mmol/d) (Schneider 1992)
-Wbr,-0.25,-0.25,real, Exponent for weight effect on respiration of bivalve (-)
-fR,1,1,integer, Type of respiration function for bivalve; 0=Schneider 1992 or 1=Spillman et al. 2008
-theta_resp,1.08,1.08,real, Temperature multiplier for respiration of bivalve (-)
-TmaxR,30,30,real, Upper temperature for optimum respiration of bivalve (degC)
-maxTR,43,43,real, Upper temperature for no respiration of bivalve (degC)
-Qresp,2.3,2.3,real, Respiration curve slope estimate for bivalve (-)
-SDA,0.285,0.285,real, Specific dynamic action of bivalve (-)
+`Rresp`,0.01,0.01,real, Respiration rate coefficient of bivalve (/day) (Calculated from Schneider 1992 based on 15 mm mussel)
+`saltfunc`,0,0,integer, Type of salinity function for bivalve; 0=None or 1=Spillman et al. 2008
+`minS`,0,0,real, Lower salinity for no ingestion of bivalve (psu)
+`Smin`,0,0,real, Lower salinity for optimum ingestion of bivalve (psu)
+`Smax`,0,0,real, Upper salinity for optimum ingestion of bivalve (psu)
+`maxS`,0,0,real, Upper salinity for no ingestion of bivalve (psu)
+`fR20`,0,0,integer, Type of maximum respiration for bivalve; 0=Enter or 1=Calculate based on length (mm)
+`War`,16.759,16.759,real, Standard respiration rate of bivalve (mmol/mmol/d) (Schneider 1992)
+`Wbr`,-0.25,-0.25,real, Exponent for weight effect on respiration of bivalve (-)
+`fR`,1,1,integer, Type of respiration function for bivalve; 0=Schneider 1992 or 1=Spillman et al. 2008
+`theta_resp`,1.08,1.08,real, Temperature multiplier for respiration of bivalve (-)
+`TmaxR`,30,30,real, Upper temperature for optimum respiration of bivalve (degC)
+`maxTR`,43,43,real, Upper temperature for no respiration of bivalve (degC)
+`Qresp`,2.3,2.3,real, Respiration curve slope estimate for bivalve (-)
+`SDA`,0.285,0.285,real, Specific dynamic action of bivalve (-)
 MORTALITY Parameters,,,,
-Rmort,0,0,real, Mortality rate coefficient for bivalve (/day)
-Rpred,0,0,real, Mortality rate from predation of bivalve (/day)
-fDO,0,0,integer, Type of dissolved oxygen function for bivalve; 0=None or 1=XXX or 2=XXX
-K_BDO,160,160,real, Basal respiration rate of bivalve (mmol/m3)
-KDO,8,8,real, Half saturation constant for metabolic response to DO for bivalve (mmol/m3)
+`Rmort`,0,0,real, Mortality rate coefficient for bivalve (/day)
+`Rpred`,0,0,real, Mortality rate from predation of bivalve (/day)
+`fDO`,0,0,integer, Type of dissolved oxygen function for bivalve; 0=None or 1=XXX or 2=XXX
+`K_BDO`,160,160,real, Basal respiration rate of bivalve (mmol/m3)
+`KDO`,8,8,real, Half saturation constant for metabolic response to DO for bivalve (mmol/m3)
 GENERAL Parameters,,,,
-num_prey,3,3,integer, Number of state variables for bivalve prey
-prey(1)%bivalve_prey, 'PHY_green', 'PHY_green',string, State variable name of bivalve prey
-prey(1)%Pbiv_prey,1,1,real, Preference factors for bivalve predators grazing on prey
-prey(2)%bivalve_prey, 'PHY_diatom', 'PHY_diatom',string, State variable name of bivalve prey
-prey(2)%Pbiv_prey,1,1,real, Preference factors for bivalve predators grazing on prey
-prey(3)%bivalve_prey, 'PHY_crypto', 'OGM_poc',string, State variable name of bivalve prey
-prey(3)%Pbiv_prey,1,1,real, Preference factors for bivalve predators grazing on prey
+`num_prey`,3,3,integer, Number of state variables for bivalve prey
+`prey(1)%bivalve_prey`, `PHY_green`, `PHY_green`,string, State variable name of bivalve prey
+`prey(1)%Pbiv_prey`,1,1,real, Preference factors for bivalve predators grazing on prey
+`prey(2)%bivalve_prey`, `PHY_diatom`, `PHY_diatom`,string, State variable name of bivalve prey
+`prey(2)%Pbiv_prey`,1,1,real, Preference factors for bivalve predators grazing on prey
+`prey(3)%bivalve_prey`, `PHY_crypto`, `OGM_poc`,string, State variable name of bivalve prey
+`prey(3)%Pbiv_prey`,1,1,real, Preference factors for bivalve predators grazing on prey

@@ -16,15 +16,30 @@ For each phytoplankton group, the maximum potential growth rate at 20°C is mult
 
 For each phytoplankton group, the maximum potential growth rate at 20˚C is multiplied by the minimum value of expressions for limitation by light, phosphorus, nitrogen and silica (when configured). While there may be some interaction between limiting factors, a minimum expression is likely to provide a realistic representation of growth limitation (Rhee and Gotham, 1981). 
 Therefore, photosynthesis is parameterized as the uptake of carbon, and depends on the temperature, light and nutrient dimensionless functions (adopted from Hipsey & Hamilton, 2008; Li et al., 2013).
-<center>
+
 <br>
-\begin{align}
-{f_{uptake}^{PHY_{Ca}}} &=  \underbrace{{R_{growth}^{PHY_{a}}}}_{\text{Max growth rate at 20˚C}}*\underbrace{(1-{k_{pr}^{PHY_{a}}})}_{\text{Photorespiratory loss}}*\underbrace{{\Phi_{tem}^{PHY_{a}}}(T)}_{\text{Temperature scaling}}*\underbrace{{\Phi_{str}^{PHY_{a}}}(T)}_{\text{Metabolic stress}}*\\
-&{\text{min}}\begin{Bmatrix}\underbrace{\Phi_{light}^{PHY_{a}}(I)}_{\text{Light limitation}},\underbrace{\Phi_{N}^{PHY_{a}}(NO_{3},NH_{4},PHY_{N_{a}})}_{\text{N limitation}},\underbrace{\Phi_{P}^{PHY_{a}}(PO_{4},PHY_{P_{a}})}_{\text{P limitation}},\underbrace{\Phi_{Si}^{PHY_{a}}(RSi)}_{\text{Si limitation}}\end{Bmatrix}[PHY_{C_{a}}]
+
+:::: {.bluebox data-latex=""}
+\begin{equation}
+\text{Mass Balance Equation}
 (\#eq:phyto1)
+\end{equation}
+\begin{align}
+{f_{uptake}^{PHY_{Ca}}} &=  
 \end{align}
+\begin{align}
+\underbrace{{R_{growth}^{PHY_{a}}}}_{\text{Max growth rate at 20˚C}}*\underbrace{(1-{k_{pr}^{PHY_{a}}})}_{\text{Photorespiratory loss}}*\underbrace{{\Phi_{tem}^{PHY_{a}}}(T)}_{\text{Temperature scaling}}*\underbrace{{\Phi_{str}^{PHY_{a}}}(T)}_{\text{Metabolic stress}}*
+\end{align}
+\begin{align}
+&{\text{min}}\begin{Bmatrix}\underbrace{\Phi_{light}^{PHY_{a}}(I)}_{\text{Light limitation}},\underbrace{\Phi_{N}^{PHY_{a}}(NO_{3},NH_{4},PHY_{N_{a}})}_{\text{N limitation}},\underbrace{\Phi_{P}^{PHY_{a}}(PO_{4},PHY_{P_{a}})}_{\text{P limitation}},\underbrace{\Phi_{Si}^{PHY_{a}}(RSi)}_{\text{Si limitation}}\end{Bmatrix}*
+\end{align}
+\begin{align}
+[PHY_{C_{a}}]
+\end{align}
+::::
 <br>
-</center>
+
+
 To allow for reduced growth at non-optimal temperatures, a temperature function is used where the maximum productivity occurs at a temperature $T_{OPT}$; above this productivity decreases to zero at the maximum allowable temperature, $T_{MAX}$. Below the standard temperature, $T_{STD}$ the productivity follows a simple Arrenhius scaling formulation. In order to fit a function with these restrictions the following conditions are assumed: at $T=T_{STD}$,$\ {\ \Phi}_{tem}\left(T\right)=1$ and at  $T=T_{OPT},\ \ \frac{d\Phi_{tem}\left(T\right)}{dT}=0$, and at $T=T_{MAX}$,$\ \Phi_{tem}\left(T\right)=0$. This can be numerically solved using Newton’s iterative method and can be specific for each phytoplankton group. The temperature function is calculated according to (Griffin et al. 2001):
 <center>
 <br>
@@ -103,20 +118,6 @@ f_{excr}^{{PHY_{Si}}_a}&=\hat{R}\ \left[{PHY_{Si}}_a\right]
 </center>
 
 The salinity effect on mortality is given by various quadratic formulations, depending on the groups sensitivity to salinity (Griffin et al 2001; Robson and Hamilton, 2004). An example of the use of various salinity limitation options is shown in Figure 3.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 ###	Variable Summary
@@ -301,6 +302,1529 @@ The salinity effect on mortality is given by various quadratic formulations, dep
 
 
 ###	Parameter Summary
+
+<center>
+<div style="border: 1px solid #ddd; padding: 5px; overflow-y: scroll; height:500px; overflow-x: scroll; width:725px; "><table class="table table-hover" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<caption>(\#tab:16-parametersummmary)Diagnostics</caption>
+ <thead>
+  <tr>
+   <th style="text-align:center;"> p_name </th>
+   <th style="text-align:center;"> 'Peridinium' </th>
+   <th style="text-align:center;"> 'cyano' </th>
+   <th style="text-align:center;"> 'green' </th>
+   <th style="text-align:center;"> 'karlodinium' </th>
+   <th style="text-align:center;"> 'phy05' </th>
+   <th style="text-align:center;"> 'phy06' </th>
+   <th style="text-align:center;"> 'diatom' </th>
+   <th style="text-align:center;"> 'crypto' </th>
+   <th style="text-align:center;"> 'cryptophyte' </th>
+   <th style="text-align:center;"> 'chlorophyte' </th>
+   <th style="text-align:center;"> 'synechococcus' </th>
+   <th style="text-align:center;"> 'MICROCYSTIS' </th>
+   <th style="text-align:center;"> 'Cyanobacteria' </th>
+   <th style="text-align:center;"> 'Cyanobacteria' </th>
+   <th style="text-align:center;"> 'n_spumigena' </th>
+   <th style="text-align:center;"> 'Peridinium' </th>
+   <th style="text-align:center;"> 'Microcystis' </th>
+   <th style="text-align:center;"> 'Microcystis(1)' </th>
+   <th style="text-align:center;"> 'Aphanizomenon' </th>
+   <th style="text-align:center;"> 'Nanoplankton' </th>
+   <th style="text-align:center;"> 'Cayelan_Test' </th>
+   <th style="text-align:center;"> string </th>
+   <th style="text-align:center;"> Name of phytoplankton group </th>
+   <th style="text-align:center;">  </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:center;min-width: 8em; background-color: white !important;background-color: #E8EAEF !important;"> GENERAL parameters </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;"> NA </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;"> NA </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;"> NA </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;"> NA </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;"> NA </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;"> NA </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;"> NA </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;"> NA </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;"> NA </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;"> NA </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;"> NA </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;"> NA </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;"> NA </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;"> NA </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;"> NA </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;"> NA </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;"> NA </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;"> NA </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;"> NA </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;"> NA </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;"> NA </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;">  </td>
+   <td style="text-align:center;min-width: 13em; background-color: white !important;background-color: #E8EAEF !important;">  </td>
+   <td style="text-align:center;background-color: white !important;background-color: #E8EAEF !important;">  </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;min-width: 8em; background-color: white !important;"> `p_initial` </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 1.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 10.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0400 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 10.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 10.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 10.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 10.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 8.4000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 2.4000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 10.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 10.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 10.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 200.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 10.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 10.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 2.81e+00 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 102.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 2.81e+00 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 2.81e+00 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 2.81e+00 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 2.81e+00 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> real </td>
+   <td style="text-align:center;min-width: 13em; background-color: white !important;"> Initial concentration of phytoplankton (mmol C/m^3^) </td>
+   <td style="text-align:center;background-color: white !important;">  </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;min-width: 8em; background-color: white !important;"> `p0` </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0300 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0300 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0300 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0300 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0300 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0300 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0300 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0300 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0300 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0300 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0300 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0300 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 5.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0300 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0300 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 3.00e-02 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0300 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 3.00e-02 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 3.00e-02 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 3.00e-02 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 3.00e-02 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> real </td>
+   <td style="text-align:center;min-width: 13em; background-color: white !important;"> Minimum concentration of phytoplankton (mmol C/m3) </td>
+   <td style="text-align:center;background-color: white !important;">  </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;min-width: 8em; background-color: white !important;"> `w_p` </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> -0.0100 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> -0.1040 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> -0.1040 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.00e+00 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.00e+00 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.00e+00 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.00e+00 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.00e+00 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> real </td>
+   <td style="text-align:center;min-width: 13em; background-color: white !important;"> sedimentation rate (m/d) </td>
+   <td style="text-align:center;background-color: white !important;">  </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;min-width: 8em; background-color: white !important;"> `Xcc` </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 50.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 50.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 40.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 50.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 50.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 50.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 40.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 40.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 40.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 50.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 50.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 50.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 40.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 40.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 50.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 5.50e+01 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 50.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 9.20e+01 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 7.70e+01 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 8.00e+01 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 7.70e+01 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> real </td>
+   <td style="text-align:center;min-width: 13em; background-color: white !important;"> carbon to chlorophyll ratio (mg C/mg chla) </td>
+   <td style="text-align:center;background-color: white !important;">  </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;min-width: 8em; background-color: white !important;background-color: #E8EAEF !important;"> GROWTH parameters </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;"> NA </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;"> NA </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;"> NA </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;"> NA </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;"> NA </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;"> NA </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;"> NA </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;"> NA </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;"> NA </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;"> NA </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;"> NA </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;"> NA </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;"> NA </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;"> NA </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;"> NA </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;"> NA </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;"> NA </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;"> NA </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;"> NA </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;"> NA </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;"> NA </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;">  </td>
+   <td style="text-align:center;min-width: 13em; background-color: white !important;background-color: #E8EAEF !important;">  </td>
+   <td style="text-align:center;background-color: white !important;background-color: #E8EAEF !important;">  </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;min-width: 8em; background-color: white !important;"> `R_growth` </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 1.1000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 1.1000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.7000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 1.1000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 1.1000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 1.1000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 2.8000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 1.1000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.7000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 1.1000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 1.1000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 1.1000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.5300 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 1.1000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 1.1000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 3.50e-01 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 1.1000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 7.00e-01 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 4.10e-01 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 2.70e+00 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 4.10e-01 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> real </td>
+   <td style="text-align:center;min-width: 13em; background-color: white !important;"> Phyto max growth rate @20C (/day) </td>
+   <td style="text-align:center;background-color: white !important;">  </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;min-width: 8em; background-color: white !important;"> `fT_Method` </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 1.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 1.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 1.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 1.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 1.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 1.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 1.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 1.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 1.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 1.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 1.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 1.00e+00 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 1.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 1.00e+00 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 1.00e+00 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.00e+00 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 1.00e+00 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> integer </td>
+   <td style="text-align:center;min-width: 13em; background-color: white !important;"> Specifies temperature limitation function of growth (-); 0 = no temperature limitation 1= CAEDYM style </td>
+   <td style="text-align:center;background-color: white !important;">  </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;min-width: 8em; background-color: white !important;"> `theta_growth` </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 1.0600 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 1.0600 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 1.0800 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 1.0600 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 1.0600 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 1.0600 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 1.0600 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 1.0600 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 1.0600 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 1.0600 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 1.0600 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 1.0600 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 1.0800 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 1.0600 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 1.0600 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 1.07e+00 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 1.0600 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 1.07e+00 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 1.10e+00 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 1.07e+00 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 1.10e+00 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> real </td>
+   <td style="text-align:center;min-width: 13em; background-color: white !important;"> Arrenhius temperature scaling for growth function (-) </td>
+   <td style="text-align:center;background-color: white !important;">  </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;min-width: 8em; background-color: white !important;"> `T_std` </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 20.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 20.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 20.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 20.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 20.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 20.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 15.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 15.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 20.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 20.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 20.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 20.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 20.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 20.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 20.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 1.90e+01 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 20.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 1.90e+01 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 2.40e+01 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 2.00e+01 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 2.40e+01 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> real </td>
+   <td style="text-align:center;min-width: 13em; background-color: white !important;"> Standard temperature (deg C) </td>
+   <td style="text-align:center;background-color: white !important;">  </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;min-width: 8em; background-color: white !important;"> `T_opt` </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 28.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 28.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 27.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 28.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 28.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 28.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 20.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 20.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 28.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 28.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 28.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 28.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 28.7000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 28.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 28.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 2.40e+01 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 28.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 2.60e+01 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 2.90e+01 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 2.70e+01 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 2.90e+01 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> real </td>
+   <td style="text-align:center;min-width: 13em; background-color: white !important;"> Optimum temperature (deg C) </td>
+   <td style="text-align:center;background-color: white !important;">  </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;min-width: 8em; background-color: white !important;"> `T_max` </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 35.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 35.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 33.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 35.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 35.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 35.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 32.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 32.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 34.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 35.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 35.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 35.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 35.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 35.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 35.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 3.20e+01 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 35.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 3.50e+01 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 3.40e+01 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 3.50e+01 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 3.40e+01 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> real </td>
+   <td style="text-align:center;min-width: 13em; background-color: white !important;"> Maximum temperature (deg C) </td>
+   <td style="text-align:center;background-color: white !important;">  </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;min-width: 8em; background-color: white !important;background-color: #E8EAEF !important;"> LIGHT parameters </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;"> NA </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;"> NA </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;"> NA </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;"> NA </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;"> NA </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;"> NA </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;"> NA </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;"> NA </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;"> NA </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;"> NA </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;"> NA </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;"> NA </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;"> NA </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;"> NA </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;"> NA </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;"> NA </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;"> NA </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;"> NA </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;"> NA </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;"> NA </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;"> NA </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;">  </td>
+   <td style="text-align:center;min-width: 13em; background-color: white !important;background-color: #E8EAEF !important;">  </td>
+   <td style="text-align:center;background-color: white !important;background-color: #E8EAEF !important;">  </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;min-width: 8em; background-color: white !important;"> `lightModel` </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 1.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.00e+00 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.00e+00 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.00e+00 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.00e+00 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.00e+00 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> integer </td>
+   <td style="text-align:center;min-width: 13em; background-color: white !important;"> Type of light response function [0 = no photoinhibition; 1 = photoinhibition] </td>
+   <td style="text-align:center;background-color: white !important;">  </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;min-width: 8em; background-color: white !important;"> `I_K` </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 25.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 25.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 25.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 25.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 25.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 25.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 10.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 10.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 25.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 25.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 25.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 25.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 228.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 25.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 25.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 1.75e+01 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 25.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 1.75e+01 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 1.75e+01 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 1.75e+01 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 1.75e+01 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> real </td>
+   <td style="text-align:center;min-width: 13em; background-color: white !important;"> Half saturation constant for light limitation of growth (microE/m^2^/s) used if lightModel=0 </td>
+   <td style="text-align:center;background-color: white !important;">  </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;min-width: 8em; background-color: white !important;"> `I_S` </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 100.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 100.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 100.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 100.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 100.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 100.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 100.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 100.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 100.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 100.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 100.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 100.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 230.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 100.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 100.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 6.00e+02 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 100.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 1.50e+02 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 8.00e+01 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 4.00e+02 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 8.00e+01 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> real </td>
+   <td style="text-align:center;min-width: 13em; background-color: white !important;"> saturating light intensity  (microE/m^2^/s) used if lightModel=1 </td>
+   <td style="text-align:center;background-color: white !important;">  </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;min-width: 8em; background-color: white !important;"> `KePHY` </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0050 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0050 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0050 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0050 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0050 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0050 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0010 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0010 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0050 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0050 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0050 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0050 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0050 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0050 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 1.20e-04 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0050 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 1.20e-04 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 1.20e-04 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 1.20e-04 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 1.20e-04 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> real </td>
+   <td style="text-align:center;min-width: 13em; background-color: white !important;"> Specific attenuation coefficient  ((mmol C m^3^^-1^)^1^ m^-1^) </td>
+   <td style="text-align:center;background-color: white !important;">  </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;min-width: 8em; background-color: white !important;background-color: #E8EAEF !important;"> RESPIRATION parameters </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;"> NA </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;"> NA </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;"> NA </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;"> NA </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;"> NA </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;"> NA </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;"> NA </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;"> NA </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;"> NA </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;"> NA </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;"> NA </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;"> NA </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;"> NA </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;"> NA </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;"> NA </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;"> NA </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;"> NA </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;"> NA </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;"> NA </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;"> NA </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;"> NA </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;">  </td>
+   <td style="text-align:center;min-width: 13em; background-color: white !important;background-color: #E8EAEF !important;">  </td>
+   <td style="text-align:center;background-color: white !important;background-color: #E8EAEF !important;">  </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;min-width: 8em; background-color: white !important;"> `f_pr` </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0050 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0050 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0050 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0050 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0050 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0050 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0020 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0020 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0050 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0050 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0050 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0050 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0050 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0050 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0050 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 4.00e-03 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0050 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 4.00e-03 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 4.00e-03 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 4.00e-03 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 4.00e-03 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> real </td>
+   <td style="text-align:center;min-width: 13em; background-color: white !important;"> Fraction of primary production lost to exudation (-) </td>
+   <td style="text-align:center;background-color: white !important;">  </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;min-width: 8em; background-color: white !important;"> `R_resp` </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0800 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0800 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0120 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0800 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0800 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0800 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.1200 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.1200 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0120 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0800 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0800 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0800 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0800 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0800 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0800 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 6.60e-02 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0800 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 6.60e-02 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 6.60e-02 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 6.60e-02 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 6.60e-02 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> real </td>
+   <td style="text-align:center;min-width: 13em; background-color: white !important;"> Phytoplankton respiration/metabolic loss rate @ 20 (degC) </td>
+   <td style="text-align:center;background-color: white !important;">  </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;min-width: 8em; background-color: white !important;"> `theta_resp` </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 1.0500 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 1.0500 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 1.0600 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 1.0500 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 1.0500 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 1.0500 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 1.0700 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 1.0700 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 1.0500 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 1.0500 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 1.0500 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 1.0500 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 1.0500 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 1.0500 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 1.0500 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 1.05e+00 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 1.0500 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 1.05e+00 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 1.05e+00 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 1.05e+00 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 1.05e+00 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> real </td>
+   <td style="text-align:center;min-width: 13em; background-color: white !important;"> Arrhenius temperature scaling factor for respiration (-) </td>
+   <td style="text-align:center;background-color: white !important;">  </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;min-width: 8em; background-color: white !important;"> `k_fres` </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.6000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.6000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.6000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.6000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.6000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.6000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.6000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.6000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.6000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.6000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.6000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.6000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.6000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.6000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.6000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 2.50e-01 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.6000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 2.50e-01 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 2.50e-01 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 2.50e-01 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 2.50e-01 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> real </td>
+   <td style="text-align:center;min-width: 13em; background-color: white !important;"> Fraction of metabolic loss that is true respiration (-) </td>
+   <td style="text-align:center;background-color: white !important;">  </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;min-width: 8em; background-color: white !important;"> `k_fdom` </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0500 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0500 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0500 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0500 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0500 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0500 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0500 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0500 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0500 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0500 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0500 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0500 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0500 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0500 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0500 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 2.00e-01 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0500 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 2.00e-01 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 2.00e-01 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 2.00e-01 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 2.00e-01 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> real </td>
+   <td style="text-align:center;min-width: 13em; background-color: white !important;"> Fraction of metabolic loss that is DOM (-) </td>
+   <td style="text-align:center;background-color: white !important;">  </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;min-width: 8em; background-color: white !important;background-color: #E8EAEF !important;"> SALINITY parameters </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;"> NA </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;"> NA </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;"> NA </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;"> NA </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;"> NA </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;"> NA </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;"> NA </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;"> NA </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;"> NA </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;"> NA </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;"> NA </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;"> NA </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;"> NA </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;"> NA </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;"> NA </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;"> NA </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;"> NA </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;"> NA </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;"> NA </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;"> NA </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;"> NA </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;">  </td>
+   <td style="text-align:center;min-width: 13em; background-color: white !important;background-color: #E8EAEF !important;">  </td>
+   <td style="text-align:center;background-color: white !important;background-color: #E8EAEF !important;">  </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;min-width: 8em; background-color: white !important;"> `salTol` </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.00e+00 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.00e+00 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.00e+00 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.00e+00 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.00e+00 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> integer </td>
+   <td style="text-align:center;min-width: 13em; background-color: white !important;"> Type of salinity limitation function (-) </td>
+   <td style="text-align:center;background-color: white !important;">  </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;min-width: 8em; background-color: white !important;"> `S_bep` </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 2.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 2.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 2.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 2.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 2.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 2.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 2.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 2.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 2.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 2.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 2.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 2.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 2.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 2.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 2.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 2.00e+00 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 2.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 2.00e+00 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 2.00e+00 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 2.00e+00 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 2.00e+00 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> real </td>
+   <td style="text-align:center;min-width: 13em; background-color: white !important;"> Salinity limitation value at maximum salinity S_maxsp (-) </td>
+   <td style="text-align:center;background-color: white !important;">  </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;min-width: 8em; background-color: white !important;"> `S_maxsp` </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 35.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 35.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 35.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 35.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 35.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 35.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 35.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 35.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 35.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 35.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 35.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 35.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 35.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 35.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 35.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 3.50e+01 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 35.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 3.50e+01 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 3.50e+01 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 3.50e+01 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 3.50e+01 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> real </td>
+   <td style="text-align:center;min-width: 13em; background-color: white !important;"> Maximum salinity (g/kg) </td>
+   <td style="text-align:center;background-color: white !important;">  </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;min-width: 8em; background-color: white !important;"> `S_opt` </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 1.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 1.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 1.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 1.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 1.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 1.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 1.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 1.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 1.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 1.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 1.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 1.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 1.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 1.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 1.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 1.00e+00 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 1.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 1.00e+00 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 1.00e+00 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 1.00e+00 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 1.00e+00 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> real </td>
+   <td style="text-align:center;min-width: 13em; background-color: white !important;"> Optimal salinity (g/kg) </td>
+   <td style="text-align:center;background-color: white !important;">  </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;min-width: 8em; background-color: white !important;background-color: #E8EAEF !important;"> NITROGEN parameters </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;"> NA </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;"> NA </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;"> NA </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;"> NA </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;"> NA </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;"> NA </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;"> NA </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;"> NA </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;"> NA </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;"> NA </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;"> NA </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;"> NA </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;"> NA </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;"> NA </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;"> NA </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;"> NA </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;"> NA </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;"> NA </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;"> NA </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;"> NA </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;"> NA </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;">  </td>
+   <td style="text-align:center;min-width: 13em; background-color: white !important;background-color: #E8EAEF !important;">  </td>
+   <td style="text-align:center;background-color: white !important;background-color: #E8EAEF !important;">  </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;min-width: 8em; background-color: white !important;"> `simDINUptake` </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 1.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 1.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 1.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 1.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 1.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 1.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 1.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 1.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 1.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 1.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 1.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 1.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 1.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 1.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 1.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 1.00e+00 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 1.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 1.00e+00 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 1.00e+00 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 1.00e+00 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 1.00e+00 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> integer </td>
+   <td style="text-align:center;min-width: 13em; background-color: white !important;"> Simulate DIN uptake (0 = false </td>
+   <td style="text-align:center;background-color: white !important;"> 1 = true) </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;min-width: 8em; background-color: white !important;"> `simDONUptake` </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.00e+00 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.00e+00 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.00e+00 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.00e+00 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.00e+00 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> integer </td>
+   <td style="text-align:center;min-width: 13em; background-color: white !important;"> Simulate DON uptake (0 = false </td>
+   <td style="text-align:center;background-color: white !important;"> 1 = true) </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;min-width: 8em; background-color: white !important;"> `simNFixation` </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.00e+00 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.00e+00 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.00e+00 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.00e+00 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.00e+00 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> integer </td>
+   <td style="text-align:center;min-width: 13em; background-color: white !important;"> Simulate N fixation (0 = false </td>
+   <td style="text-align:center;background-color: white !important;"> 1 = true) </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;min-width: 8em; background-color: white !important;"> `simINDynamics` </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 2.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 2.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 2.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 2.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 2.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 2.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 2.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 2.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 2.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 2.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 2.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 2.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 2.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 2.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 2.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 2.00e+00 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 2.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 2.00e+00 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 2.00e+00 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 2.00e+00 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 2.00e+00 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> integer </td>
+   <td style="text-align:center;min-width: 13em; background-color: white !important;"> Simulate internal N  (0 = assumed fixed C:N </td>
+   <td style="text-align:center;background-color: white !important;"> 2 = dynamic C:N) </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;min-width: 8em; background-color: white !important;"> `N_o` </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.2500 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.2500 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.2500 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.2500 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.2500 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.2500 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.2500 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.2500 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.2500 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.2500 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.2500 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.2500 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.2500 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.2500 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.2500 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 2.50e-01 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.2500 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 2.50e-01 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 2.50e-01 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 2.50e-01 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 2.50e-01 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> real </td>
+   <td style="text-align:center;min-width: 13em; background-color: white !important;"> Nitrogen concentraion below which uptake is 0 (mmol N/m^3^) </td>
+   <td style="text-align:center;background-color: white !important;">  </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;min-width: 8em; background-color: white !important;"> `K_N` </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 4.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 4.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 3.2100 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 4.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 4.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 4.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 3.5700 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 3.5700 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 3.2100 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 4.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 4.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 4.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 4.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 4.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 4.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 3.39e+00 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 4.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 3.39e+00 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 3.39e+00 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 3.39e+00 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 3.39e+00 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> real </td>
+   <td style="text-align:center;min-width: 13em; background-color: white !important;"> Half-saturation concentration of nitrogen (mmol N/m^3^) </td>
+   <td style="text-align:center;background-color: white !important;">  </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;min-width: 8em; background-color: white !important;"> `X_ncon` </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 232342.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0350 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0350 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0350 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0350 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0350 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0350 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0350 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0350 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0350 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0350 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0350 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0350 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0350 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0350 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 3.50e-02 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0350 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 3.50e-02 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 3.50e-02 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 3.50e-02 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 3.50e-02 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> real </td>
+   <td style="text-align:center;min-width: 13em; background-color: white !important;"> Constant internal nitrogen concentration (mmol N/ mmol C) used if simINDynamics = 0 or 1 </td>
+   <td style="text-align:center;background-color: white !important;">  </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;min-width: 8em; background-color: white !important;"> `X_nmin` </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0200 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0200 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0200 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0200 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0200 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0200 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0200 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0200 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0200 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0200 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0200 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0200 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0200 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0200 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0200 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 3.00e-03 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0200 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 2.00e-03 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 1.70e-02 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 7.00e-03 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 1.70e-02 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> real </td>
+   <td style="text-align:center;min-width: 13em; background-color: white !important;"> minimum internal nitrogen concentration (mmol N/ mmol C) used if simINDynamics = 2 </td>
+   <td style="text-align:center;background-color: white !important;">  </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;min-width: 8em; background-color: white !important;"> `X_nmax` </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0700 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0700 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0700 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0700 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0700 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0700 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0700 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0700 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0700 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0700 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0700 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0700 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0700 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0700 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0700 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 6.00e-03 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0700 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 5.00e-03 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 9.00e-03 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 2.80e-02 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 9.00e-03 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> real </td>
+   <td style="text-align:center;min-width: 13em; background-color: white !important;"> maximum internal nitrogen concentration (mmol N/ mmol C) used if simINDynamics = 2 </td>
+   <td style="text-align:center;background-color: white !important;">  </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;min-width: 8em; background-color: white !important;"> `R_nuptake` </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0200 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0200 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0200 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0200 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0200 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0200 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0200 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0200 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0200 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0200 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0200 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0200 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0200 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0200 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0200 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 2.00e-02 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0200 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 2.00e-02 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 2.00e-02 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 2.00e-02 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 2.00e-02 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> real </td>
+   <td style="text-align:center;min-width: 13em; background-color: white !important;"> maximum nitrogen uptake rate(mmol N/m^3^/d) used if simINDynamics = 2 </td>
+   <td style="text-align:center;background-color: white !important;">  </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;min-width: 8em; background-color: white !important;"> `k_nfix` </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.7000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.7000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.7000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.7000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.7000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.7000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.7000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.7000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.7000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.7000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.7000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.7000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.7000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.7000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.7000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 7.00e-01 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.7000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 7.00e-01 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 7.00e-01 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 7.00e-01 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 7.00e-01 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> real </td>
+   <td style="text-align:center;min-width: 13em; background-color: white !important;"> growth rate reduction under maximum nitrogen fixation (/day) used if simNFixation &gt;0 </td>
+   <td style="text-align:center;background-color: white !important;">  </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;min-width: 8em; background-color: white !important;"> `R_nfix` </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0350 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0350 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0350 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0350 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0350 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0350 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0350 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0350 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0350 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0350 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0350 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0350 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0350 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0350 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0350 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.00e+00 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0350 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.00e+00 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 1.20e-02 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.00e+00 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 1.20e-02 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> real </td>
+   <td style="text-align:center;min-width: 13em; background-color: white !important;"> nitrogen fixation rate (mmol N/mmol C/day) </td>
+   <td style="text-align:center;background-color: white !important;">  </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;min-width: 8em; background-color: white !important;background-color: #E8EAEF !important;"> PHOSPHORUS parameters </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;"> NA </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;"> NA </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;"> NA </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;"> NA </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;"> NA </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;"> NA </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;"> NA </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;"> NA </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;"> NA </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;"> NA </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;"> NA </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;"> NA </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;"> NA </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;"> NA </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;"> NA </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;"> NA </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;"> NA </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;"> NA </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;"> NA </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;"> NA </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;"> NA </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;">  </td>
+   <td style="text-align:center;min-width: 13em; background-color: white !important;background-color: #E8EAEF !important;">  </td>
+   <td style="text-align:center;background-color: white !important;background-color: #E8EAEF !important;">  </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;min-width: 8em; background-color: white !important;"> `simDIPUptake` </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 1.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 1.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 1.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 1.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 1.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 1.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 1.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 1.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 1.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 1.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 1.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 1.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 1.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 1.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 1.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 1.00e+00 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 1.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 1.00e+00 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 1.00e+00 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 1.00e+00 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 1.00e+00 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> integer </td>
+   <td style="text-align:center;min-width: 13em; background-color: white !important;"> Simulate DIP uptake (0 = false </td>
+   <td style="text-align:center;background-color: white !important;"> 1 = true) </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;min-width: 8em; background-color: white !important;"> `simIPDynamics` </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 2.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 2.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 2.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 2.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 2.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 2.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 2.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 2.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 2.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 2.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 2.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 2.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 2.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 2.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 2.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 2.00e+00 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 2.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 2.00e+00 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 2.00e+00 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 2.00e+00 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 2.00e+00 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> integer </td>
+   <td style="text-align:center;min-width: 13em; background-color: white !important;"> Simulate internal phosphorus dynamics (0 = assumed fixed C:P </td>
+   <td style="text-align:center;background-color: white !important;"> 2 = dynamic C:P) </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;min-width: 8em; background-color: white !important;"> `P_0` </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0300 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0300 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0300 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0300 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0300 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0300 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0300 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0300 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0300 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0300 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0300 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0300 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0300 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0300 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0300 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 3.00e-02 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0300 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 3.00e-02 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 3.00e-02 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 3.00e-02 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 3.00e-02 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> real </td>
+   <td style="text-align:center;min-width: 13em; background-color: white !important;"> Phosphorus concentraion below which uptake is 0 (mmol P/m^3^) </td>
+   <td style="text-align:center;background-color: white !important;">  </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;min-width: 8em; background-color: white !important;"> `K_P` </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.1500 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.1500 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.1600 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.1500 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.1500 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.1500 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.1600 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.1600 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.1600 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.1500 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.1500 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.1500 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.1500 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.1500 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.1500 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 7.74e-05 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.1500 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 5.80e-05 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 3.87e-05 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 4.51e-05 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 3.87e-05 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> real </td>
+   <td style="text-align:center;min-width: 13em; background-color: white !important;"> Half-saturation concentration of phosphorus (mmol P/m^3^) </td>
+   <td style="text-align:center;background-color: white !important;">  </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;min-width: 8em; background-color: white !important;"> `X_pcon` </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0015 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0015 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0015 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0015 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0015 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0015 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0015 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0015 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0015 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0015 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0015 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0015 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0015 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0015 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0015 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 1.50e-03 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0015 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 1.50e-03 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 1.50e-03 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 1.50e-03 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 1.50e-03 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> real </td>
+   <td style="text-align:center;min-width: 13em; background-color: white !important;"> Constant internal phosphorus concentration (mmol P/ mmol C) used if simIPDynamics = 0 or 1 </td>
+   <td style="text-align:center;background-color: white !important;">  </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;min-width: 8em; background-color: white !important;"> `X_pmin` </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0005 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0005 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0005 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0005 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0005 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0005 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0005 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0005 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0005 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0005 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0005 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0005 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0005 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0005 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0005 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.00e+00 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0005 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 3.00e-03 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 6.00e-03 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 3.00e-03 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 6.00e-03 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> real </td>
+   <td style="text-align:center;min-width: 13em; background-color: white !important;"> Minimum internal phosphorus concentration (mmol P/mmol C) used if simIPDynamics = 2 </td>
+   <td style="text-align:center;background-color: white !important;">  </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;min-width: 8em; background-color: white !important;"> `X_pmax` </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0050 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0050 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0050 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0050 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0050 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0050 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0050 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0050 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0050 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0050 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0050 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0050 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0050 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0050 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0050 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 1.00e-03 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0050 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 1.90e-02 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 5.02e-01 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 1.20e-02 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 5.02e-01 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> real </td>
+   <td style="text-align:center;min-width: 13em; background-color: white !important;"> Maximum internal phosphorus concentration (mmol P/mmol C) used if simIPDynamics = 2 </td>
+   <td style="text-align:center;background-color: white !important;">  </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;min-width: 8em; background-color: white !important;"> `R_puptake` </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0010 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0010 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0010 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0010 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0010 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0010 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0010 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0010 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0010 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0010 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0010 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0010 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0010 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0010 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0010 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 1.00e-03 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0010 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 1.00e-03 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 1.00e-03 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 1.00e-03 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 1.00e-03 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> real </td>
+   <td style="text-align:center;min-width: 13em; background-color: white !important;"> Maximum phosphorus uptake rate(mmol P/m^3^/d) used if simIPDynamics = 2 </td>
+   <td style="text-align:center;background-color: white !important;">  </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;min-width: 8em; background-color: white !important;background-color: #E8EAEF !important;"> SILICA parameter </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;"> NA </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;"> NA </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;"> NA </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;"> NA </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;"> NA </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;"> NA </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;"> NA </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;"> NA </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;"> NA </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;"> NA </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;"> NA </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;"> NA </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;"> NA </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;"> NA </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;"> NA </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;"> NA </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;"> NA </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;"> NA </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;"> NA </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;"> NA </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;"> NA </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;background-color: #E8EAEF !important;">  </td>
+   <td style="text-align:center;min-width: 13em; background-color: white !important;background-color: #E8EAEF !important;">  </td>
+   <td style="text-align:center;background-color: white !important;background-color: #E8EAEF !important;">  </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;min-width: 8em; background-color: white !important;"> `simSiUptake` </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.00e+00 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.0000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.00e+00 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.00e+00 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.00e+00 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.00e+00 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> integer </td>
+   <td style="text-align:center;min-width: 13em; background-color: white !important;"> Simulate Si uptake (0 = false </td>
+   <td style="text-align:center;background-color: white !important;"> 1 = true) </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;min-width: 8em; background-color: white !important;"> `Si_0` </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.3000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.3000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.3000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.3000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.3000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.3000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.3000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.3000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.3000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.3000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.3000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.3000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.3000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.3000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.3000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 3.00e-01 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.3000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 3.00e-01 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 3.00e-01 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 3.00e-01 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 3.00e-01 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> real </td>
+   <td style="text-align:center;min-width: 13em; background-color: white !important;"> Silica concentraion below which uptake is 0 (mmol Si/m^3^) </td>
+   <td style="text-align:center;background-color: white !important;">  </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;min-width: 8em; background-color: white !important;"> `K_Si` </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 2.5000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 2.5000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 2.5000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 2.5000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 2.5000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 2.5000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 2.5000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 2.5000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 2.5000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 2.5000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 2.5000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 2.5000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 2.5000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 2.5000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 2.5000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 2.50e+00 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 2.5000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 2.50e+00 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 2.50e+00 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 2.50e+00 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 2.50e+00 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> real </td>
+   <td style="text-align:center;min-width: 13em; background-color: white !important;"> Half-saturation concentration of silica (mmol Si /m3) </td>
+   <td style="text-align:center;background-color: white !important;">  </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;min-width: 8em; background-color: white !important;"> `X_sicon` </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.4000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.4000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.4000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.4000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.4000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.4000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.4000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.4000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.4000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.4000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.4000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.4000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.4000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.4000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.4000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 4.00e-01 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 0.4000 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 4.00e-01 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 4.00e-01 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 4.00e-01 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> 4.00e-01 </td>
+   <td style="text-align:center;min-width: 4em; background-color: white !important;"> real </td>
+   <td style="text-align:center;min-width: 13em; background-color: white !important;"> Constant interal silica concentration (mmol Si/mmol C) </td>
+   <td style="text-align:center;background-color: white !important;">  </td>
+  </tr>
+</tbody>
+</table></div>
+</center>
+
 ###	Optional Module Links
 ###	Feedbacks to the Host Model
 ## Setup & Configuration

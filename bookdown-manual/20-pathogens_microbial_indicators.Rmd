@@ -126,6 +126,29 @@ kable(state_variables,"html", escape = F, align = "c", caption = "State variable
 
 
 ###	Parameter Summary
+
+<center>
+```{r 20-parametersummmary, echo=FALSE, message=FALSE, warning=FALSE}
+library(knitr)
+library(kableExtra)
+parameter_summary <- read.csv("tables/20-pathogens_microbial_indicators/parameter_summary.csv", check.names=FALSE)
+kable(parameter_summary,"html", escape = F, align = "c", caption = "Diagnostics",
+      bootstrap_options = "hover") %>%
+  kable_styling(parameter_summary, bootstrap_options = "hover", 
+                full_width = F, position = "center") %>%
+  column_spec(1, width_min = "6em") %>%
+  column_spec(2, width_min = "4em") %>%
+  column_spec(3, width_min = "4em") %>%
+  column_spec(4, width_min = "4em") %>%
+  column_spec(5, width_min = "4em") %>%
+  column_spec(6, width_min = "7em") %>%
+  column_spec(7, width_min = "4em") %>%
+  row_spec(1:40, background = 'white') %>%
+  scroll_box(width = "725px", height = "500px",
+             fixed_thead = FALSE) 
+```
+</center>
+
 ###	Optional Module Links
 ###	Feedbacks to the Host Model
 ## Setup & Configuration

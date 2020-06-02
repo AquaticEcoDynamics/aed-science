@@ -14,6 +14,7 @@ The physiology of mussels are set to be size dependent, and can vary between spe
 
 #### Ingestion {-}
 Ingestion is modelled as a function of filtration rate, food availability, pseudofeces production, density, suspended solids, and salinity (Equation 2) [@schneider1992; @bierman2005; @spillman2008; @gudimov2015]. Filtration rate is based on maximum ingestion, temperature, food availability, and pseudofeces production according to the following:
+
 <center>
 <br>
 \begin{equation}
@@ -351,12 +352,18 @@ kable(parameter_summary,"html", escape = F, align = "c", caption = "Diagnostics"
       bootstrap_options = "hover") %>%
   kable_styling(parameter_summary, bootstrap_options = "hover", 
                 full_width = F, position = "center") %>%
-  column_spec(1, width_min = "12em") %>%
-  column_spec(2, width_min = "15em") %>%
-  column_spec(3, width_min = "12em") %>%
-  column_spec(4, width_min = "13em") %>%
-  column_spec(5, width_min = "15em") %>%
+  column_spec(1, width_min = "8em") %>%
+  column_spec(2, width_min = "4em") %>%
+  column_spec(3, width_min = "4em") %>%
+  column_spec(4, width_min = "4em") %>%
+  column_spec(5, width_min = "13em") %>%
   row_spec(1:56, background = 'white') %>%
+  row_spec(1:1, background = '#E8EAEF') %>%
+  row_spec(7:7, background = '#E8EAEF') %>%
+  row_spec(23:23, background = '#E8EAEF') %>%
+  row_spec(27:27, background = '#E8EAEF') %>%
+  row_spec(43:43, background = '#E8EAEF') %>%
+  row_spec(49:49, background = '#E8EAEF') %>%
   scroll_box(width = "725px", height = "500px",
              fixed_thead = FALSE) 
 ```

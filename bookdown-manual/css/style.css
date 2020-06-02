@@ -64,3 +64,14 @@ h1.title {
 .book .book-body .page-wrapper .page-inner section.normal strong {
   font-weight: 600;
 }
+
+.bluebox {
+  padding: 1em;
+  background: none;
+  color: black;
+  border: 3.5px solid rgb(20, 117, 158);;
+  border-radius: 10px;
+}
+.center {
+  text-align: center;
+}
