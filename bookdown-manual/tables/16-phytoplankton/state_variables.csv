@@ -1,0 +1,4 @@
+﻿Variable Name,Description,Units,Variable Type,Core/Optional
+`PHY_{Group}`,Phytoplanton group,"$mmol\,m^{-3}$",Pelagic,Core
+`PHY_{Group}_IN`,Internal nitrogen of phytoplakton group x,NA,NA,Optional
+`PHY_{Group}_IP`,Internal phosphorus of phytoplakton group x,NA,NA,Optional

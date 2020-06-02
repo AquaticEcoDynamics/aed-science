@@ -1,0 +1,14 @@
+﻿Variable Name,Description,Units,Variable Type,Core/Optional
+`BIV_tgrz`,Total rate of food filtration/grazing in the water column,"$mmol C\,m^{-3}\,day^{-1}$",Pelagic diagnostic,Core
+`BIV_nmp`,Net mussel production,"$mmol C\,m^{-3}\,day^{-1}$",Benthic diagnostic,Core
+`BIV_tbiv`,Total bivalve density (all groups),"$mmol C\,m^{-3}\,day^{-1}$",Benthic diagnostic,Core
+`BIV_grz`,Net bivalve filtration/grazing,"$mmol C\,m^{-3}\,day^{-1}$",Benthic diagnostic,Core
+`BIV_resp`,Net bivalve respiration,"$mmol C\,m^{-3}\,day^{-1}$",Benthic diagnostic,Core
+`BIV_mort`,Net bivalve mortality,"$mmol C\,m^{-3}\,day^{-1}$",Benthic diagnostic,Core
+`BIV_excr`,Net bivalve excretion,"$mmol C\,m^{-3}\,day^{-1}$",Benthic diagnostic,Core
+`BIV_egst`,Net bivalve egestion (faeces),"$mmol C\,m^{-3}\,day^{-1}$",Benthic diagnostic,Core
+`BIV_fT`,Bivalve temperature limitation,NA,Benthic diagnostic,Optional: `extra_diag=.true.`
+`BIV_fD`,Bivalve sediment limitation,NA,Benthic diagnostic,Optional: `extra_diag=.true.`
+`BIV_fG`,Bivalve food limitation,NA,Benthic diagnostic,Optional: `extra_diag=.true.`
+`BIV_fR`,Filtration rate,"$m^{3}\, mmol C\,m^{-2}\,day^{-1}$",Benthic diagnostic,Optional: `extra_diag=.true.`
+`BIV_pf`,Pseudofeaces production rate,$day^{-1}$,Benthic diagnostic,Optional: ` extra_diag=.true.`

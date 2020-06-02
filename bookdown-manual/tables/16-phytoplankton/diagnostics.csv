@@ -1,0 +1,18 @@
+﻿Variable Name,Description,Units,Variable Type,Core/Optional
+`PHY_tchla`,Total chlorophyll-a,"$ug\,L^{-1}$",Pelagic diagnostic,Core
+`PHY_GPP`,Gross primary production,"$mmol C\,m^{-3}\,day^{-1}$",Pelagic diagnostic,Core
+`PHY_{group}_f(I/T/S/N/P/Si)`,Phytoplankton growth limitation of light/nutrients,NA,Pelagic diagnostic,Core
+`PSED_PHY`,Phytoplankton sedimentation,"$mmol\,m^{-2}\,s^{-1}$",NA,NA
+`PHY_NCP`,Net community production,"$mmol\,m^{-3}\,day^{-1}$",NA,NA
+`PHY_NUP`,Nitrogen uptake,"$mmol\,m^{-3}\,day^{-1}$",NA,NA
+`PHY_PUP`,Phosphorus uptake,"$mmol\,m^{-3}\,day^{-1}$",NA,NA
+`PHY_CUP`,Carbon uptake,"$mmol\,m^{-3}\,day^{-1}$",NA,NA
+`PHY_PAR`,Photosynthetically active radiation,"$W\,m^{-2}$",NA,NA
+`PHY_IN`,Phytoplankton nitrogen,"$mmol\,m^{-3}$",NA,NA
+`PHY_IP`,Phytoplankton phosphorus,"$mmol\,m^{-3}$",NA,NA
+`PHY_MBP`,Microphytobenthos,"$mmol\,m^{-2}$",NA,NA
+`PHY_BPP`,Benthic productivity,"$mmol\,m^{-2}\,day^{-1}$",NA,NA
+`PHY_MPBV`,Microphytobenthos vertical ewxchange,"$mmol\,m^{-2}\,day^{-1}$",NA,NA
+`PHY_PPR`,Gross phytoplankton p/r ratio,NA,NA,NA
+`PHY_NPR`,Net phytoplankton p/r ratio,NA,NA,NA
+`PHY_{Group}_NtoP`,NA,NA,NA,NA

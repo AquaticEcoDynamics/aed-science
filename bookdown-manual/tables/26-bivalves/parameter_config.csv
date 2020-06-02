@@ -1,0 +1,21 @@
+﻿Parameter Name,Description,Units,Parameter Type,Default,Typical Range,Comment
+`num_biv`,Number of zooplankton groups,NA,Integer,NA,0-3,NA
+`the_biv`,List of ID's of groups in aed_zoo_pars.nml (len=num_phyto),NA,Integer,NA,1/3/17,NA
+`n_zones`,Number of sediment zones where bivalves will be active,NA,Integer,NA,NA,NA
+`active_zones`,The vector of sediment zones to include,NA,Integer (vector),NA,NA,NA
+`biv_tracer`,Opton to include water column tracer tracking filtration amount,NA,Boolean,.false.,NA,NA
+`biv_feedback`,Switch to enable/disable feedbacks between bivalve metabolism and water column variable concentration,NA,Boolean,.false.,NA,NA
+`dn_target_variable`,Water column variable to receive DON excretion,NA,String,NA,NA,NA
+`pn_target_variable`,Water column variable to receive PON egestion/mortality,NA,String,NA,NA,NA
+`dp_target_variable`,Water column variable to receive DOP excretion,NA,String,NA,NA,NA
+`pp_target_variable`,Water column variable to receive POP egestion/mortality,NA,String,NA,NA,NA
+`dc_target_variable`,Water column variable to receive DOC excretion,NA,String,NA,NA,NA
+`pc_target_variable`,Water column variable to receive POC egestion/mortality,NA,String,NA,NA,NA
+`do_uptake_variable`,Water column variable providing DO concentration,NA,String,NA,NA,NA
+`ss_uptake_variable`,Water column variable providing SS concentration,NA,String,NA,NA,NA
+`dbase = 'AED2/aed2_bivalve_pars.nml'`,NA,NA,String,aed2_bivalve_pars.nml,aed2/aed2_bivalve_pars.nml,NA
+`extra_diag`,Switch to enable/disable extra diagnostics to be output,NA,Boolean,.false.,NA,NA
+`biv_fixedenv`,Switch to enable/disable environmental variables to be fixed (for testing),NA,Boolean,.false.,NA,NA
+`fixed_temp`,Fixed temperature,C,Float,NA,20,NA
+`fixed_oxy`,Fixed oxygen concentration,"$mmol O_2\,m^{-3}$",Float,NA,300,NA
+`fixed_food`,Fixed food concentration,"$mmol C\,m^{-3}$",Float,NA,20,NA

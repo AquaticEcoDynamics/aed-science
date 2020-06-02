@@ -1,0 +1,3 @@
+﻿Variable Name,Description,Units,Variable Type,Core/Optional
+`BIV_{group}`,Bivalve group,"$mmol C\,m^{-2}\,day^{-1}$",Benthic,Core
+`BIV_filtfrac`,Filtered fraction of water,%,Pelagic,Optional : biv_tracer = .true.
