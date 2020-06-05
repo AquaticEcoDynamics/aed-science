@@ -2,6 +2,7 @@ bookdown::gitbook:
   includes:
     in_header: "includes/hypothesis.html"
   css: css/style.css
+  table_css: false
   highlight: tango
   config:
     toc:

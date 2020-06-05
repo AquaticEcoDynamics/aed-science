@@ -75,3 +75,29 @@ h1.title {
 .center {
   text-align: center;
 }
+
+table {
+   border: 0px solid #ccc;
+}
+ 
+th {
+  background-color: #FFFFFF;
+  color: #000000;
+}
+ 
+td {
+  background-color: #dcdcdc;
+  padding: 8px;
+}
+
+tr {
+    border-bottom: 1px solid #ccc;
+}
+
+caption { 
+caption-side: top; 
+background-color: rgb(20, 117, 158);
+color: #ffffff;
+font-weight: bold;
+} 
+

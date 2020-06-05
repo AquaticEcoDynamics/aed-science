@@ -91,14 +91,15 @@ library(knitr)
 library(kableExtra)
 state_variables <- read.csv("tables/20-pathogens_microbial_indicators/state_variables.csv", check.names=FALSE)
 kable(state_variables,"html", escape = F, align = "c", caption = "State variables") %>%
-  kable_styling(full_width = F, position = "center") %>%
+  kable_styling(full_width = F, position = "center",
+                font_size = 12) %>%
   column_spec(1, width_min = "12em") %>%
   column_spec(2, width_min = "15em") %>%
   column_spec(3, width_min = "12em") %>%
   column_spec(4, width_min = "10em") %>%
   column_spec(5, width_min = "15em") %>%
   row_spec(1:1, background = 'white') %>%
-  scroll_box(width = "725px",
+  scroll_box(width = "750px",
              fixed_thead = FALSE) 
 ```
 </center>
@@ -131,11 +132,13 @@ kable(state_variables,"html", escape = F, align = "c", caption = "State variable
 ```{r 20-parametersummmary, echo=FALSE, message=FALSE, warning=FALSE}
 library(knitr)
 library(kableExtra)
+options(kableExtra.html.bsTable = F)
 parameter_summary <- read.csv("tables/20-pathogens_microbial_indicators/parameter_summary.csv", check.names=FALSE)
 kable(parameter_summary,"html", escape = F, align = "c", caption = "Diagnostics",
       bootstrap_options = "hover") %>%
-  kable_styling(parameter_summary, bootstrap_options = "hover", 
-                full_width = F, position = "center") %>%
+  kable_styling(parameter_summary, bootstrap_options = "hover", "striped", 
+                full_width = F, position = "center",
+                font_size = 12) %>%
   column_spec(1, width_min = "6em") %>%
   column_spec(2, width_min = "4em") %>%
   column_spec(3, width_min = "4em") %>%
@@ -144,7 +147,7 @@ kable(parameter_summary,"html", escape = F, align = "c", caption = "Diagnostics"
   column_spec(6, width_min = "7em") %>%
   column_spec(7, width_min = "4em") %>%
   row_spec(1:40, background = 'white') %>%
-  scroll_box(width = "725px", height = "500px",
+  scroll_box(width = "750px", height = "500px",
              fixed_thead = FALSE) 
 ```
 </center>
@@ -162,7 +165,8 @@ parameter_config <- read.csv("tables/20-pathogens_microbial_indicators/parameter
 kable(parameter_config,"html", escape = F, align = "c", caption = "Parameters and configuration",
       bootstrap_options = "hover") %>%
   kable_styling(parameter_config, bootstrap_options = "hover", 
-                full_width = F, position = "center") %>%
+                full_width = F, position = "center",
+                font_size = 12) %>%
   column_spec(1, width_min = "12em") %>%
   column_spec(2, width_min = "15em") %>%
   column_spec(3, width_min = "12em") %>%
@@ -170,7 +174,7 @@ kable(parameter_config,"html", escape = F, align = "c", caption = "Parameters an
   column_spec(5, width_min = "10em") %>%
   column_spec(6, width_min = "10em") %>%
   row_spec(1:1, background = 'white') %>%
-  scroll_box(width = "725px",
+  scroll_box(width = "750px",
              fixed_thead = FALSE) 
 ```
 
