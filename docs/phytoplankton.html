@@ -660,12 +660,32 @@
 <h4>Photosynthesis &amp; Nutrient Uptake</h4>
 <p>For each phytoplankton group, the maximum potential growth rate at 20˚C is multiplied by the minimum value of expressions for limitation by light, phosphorus, nitrogen and silica (when configured). While there may be some interaction between limiting factors, a minimum expression is likely to provide a realistic representation of growth limitation (Rhee and Gotham, 1981).
 Therefore, photosynthesis is parameterized as the uptake of carbon, and depends on the temperature, light and nutrient dimensionless functions (adopted from Hipsey &amp; Hamilton, 2008; Li et al., 2013).</p>
+<p><br></p>
+<div class="bluebox">
+<p><span class="math display" id="eq:phyto1">\[\begin{equation}
+\text{Mass Balance Equation}
+\tag{13.1}
+\end{equation}\]</span>
+<span class="math display">\[\begin{align}
+{f_{uptake}^{PHY_{Ca}}} &amp;=  
+\end{align}\]</span>
+<span class="math display">\[\begin{align}
+\underbrace{{R_{growth}^{PHY_{a}}}}_{\text{Max growth rate at 20˚C}}*\underbrace{(1-{k_{pr}^{PHY_{a}}})}_{\text{Photorespiratory loss}}*\underbrace{{\Phi_{tem}^{PHY_{a}}}(T)}_{\text{Temperature scaling}}*\underbrace{{\Phi_{str}^{PHY_{a}}}(T)}_{\text{Metabolic stress}}*
+\end{align}\]</span>
+<span class="math display">\[\begin{align}
+&amp;{\text{min}}\begin{Bmatrix}\underbrace{\Phi_{light}^{PHY_{a}}(I)}_{\text{Light limitation}},\underbrace{\Phi_{N}^{PHY_{a}}(NO_{3},NH_{4},PHY_{N_{a}})}_{\text{N limitation}},\underbrace{\Phi_{P}^{PHY_{a}}(PO_{4},PHY_{P_{a}})}_{\text{P limitation}},\underbrace{\Phi_{Si}^{PHY_{a}}(RSi)}_{\text{Si limitation}}\end{Bmatrix}*
+\end{align}\]</span>
+<span class="math display">\[\begin{align}
+[PHY_{C_{a}}]
+\end{align}\]</span></p>
+</div>
+<p><br></p>
 To allow for reduced growth at non-optimal temperatures, a temperature function is used where the maximum productivity occurs at a temperature <span class="math inline">\(T_{OPT}\)</span>; above this productivity decreases to zero at the maximum allowable temperature, <span class="math inline">\(T_{MAX}\)</span>. Below the standard temperature, <span class="math inline">\(T_{STD}\)</span> the productivity follows a simple Arrenhius scaling formulation. In order to fit a function with these restrictions the following conditions are assumed: at <span class="math inline">\(T=T_{STD}\)</span>,<span class="math inline">\(\ {\ \Phi}_{tem}\left(T\right)=1\)</span> and at <span class="math inline">\(T=T_{OPT},\ \ \frac{d\Phi_{tem}\left(T\right)}{dT}=0\)</span>, and at <span class="math inline">\(T=T_{MAX}\)</span>,<span class="math inline">\(\ \Phi_{tem}\left(T\right)=0\)</span>. This can be numerically solved using Newton’s iterative method and can be specific for each phytoplankton group. The temperature function is calculated according to (Griffin et al. 2001):
 <center>
 <br>
 <span class="math display" id="eq:phyto2">\[\begin{equation}
-\Phi_{tem}^{{PHY}_a}\left(T\right)=\vartheta_a^{T-20}-\vartheta_a^{k\left[T-{c1}_a\right]}+{c0}_a
-\tag{13.1}
+\Phi_{tem}^{{PHY}_a}} \left(T\right)=\vartheta_a^{T-20}-\vartheta_a^{k\left[T-{c1}_a\right]}+{c0}_a
+\tag{13.2}
 \end{equation}\]</span>
 <br>
 </center>
@@ -679,7 +699,7 @@ For advanced users, an optional metabolic scaling factor can be included to redu
 <br>
 <span class="math display" id="eq:phyto3">\[\begin{equation}
 \Phi_{str}^{{PHY}_a}=\underbrace{f_{NF}^{{PHY}_a}+\left[{1-f}_{NF}^{{PHY}_a}\right]\Phi_N^{{PHY}_a}\left({NO}_3,{NH}_4,{PHY_N}_a\right)}_{N_{2}\text{ fixation growth scaling}}
-\tag{13.2}
+\tag{13.3}
 \end{equation}\]</span>
 <br>
 </center>
@@ -691,12 +711,12 @@ The uptake of nitrogen must be partitioned into uptake of NO<sub>3</sub>, NH<sub
 <br>
 <span class="math display" id="eq:phyto4">\[\begin{equation}
 {\ p}_{NH4}^{{PHY}_a}=\frac{{NO}_3\ {NH}_4}{\left({NH}_4+K_N^{{PHY}_a}\right)\left({NO}_3+K_N^{{PHY}_a}\right)}\frac{{NH}_4{\ K}_N^{{PHY}_a}}{\left({NH}_4+{NO}_3\right)\left({NO}_3+K_N^{{PHY}_a}\right)}
-\tag{13.3}
+\tag{13.4}
 \end{equation}\]</span>
 <br>
 <span class="math display" id="eq:phyto5">\[\begin{equation}
 p_{NO3}^{{PHY}_a}=1-{\ p}_{NH4}^{{PHY}_a}
-\tag{13.4}
+\tag{13.5}
 \end{equation}\]</span>
 <br>
 </center>
@@ -710,23 +730,23 @@ Nutrient losses through mortality and excretion for the internal nutrient model 
 <br>
 <span class="math display" id="eq:phyto14" id="eq:phyto13" id="eq:phyto12" id="eq:phyto11" id="eq:phyto10" id="eq:phyto9" id="eq:phyto8" id="eq:phyto7" id="eq:phyto6">\[\begin{align*}
 \hat{R}&amp;=R_{resp}^{{PHY}_a}\ \ \Phi_{sal}^{{PHY}_a}\left(S\right)\ \ \left(\vartheta_{resp}^{{PHY}_a}\right)^{T-20}
-\tag{13.5}\\
-f_{resp}^{{PHY_C}_a}&amp;=k_{fres}^{{PHY}_a}\ \hat{R}\ \left[{PHY_C}_a\right]
 \tag{13.6}\\
-f_{excr}^{{PHY_C}_a}&amp;=\left(1-k_{fres}^{{PHY}_a}\right)\ k_{fdom}^{{PHY}_a}\ \hat{R}\ \ \left[{PHY_C}_a\right]
+f_{resp}^{{PHY_C}_a}&amp;=k_{fres}^{{PHY}_a}\ \hat{R}\ \left[{PHY_C}_a\right]
 \tag{13.7}\\
-f_{mort}^{{PHY_C}_a}&amp;=\left(1-k_{fres}^{{PHY}_a}\right)\ \left({1-k}_{fdom}^{{PHY}_a}\right)\ \hat{R}\ \left[{PHY_C}_a\right]
+f_{excr}^{{PHY_C}_a}&amp;=\left(1-k_{fres}^{{PHY}_a}\right)\ k_{fdom}^{{PHY}_a}\ \hat{R}\ \ \left[{PHY_C}_a\right]
 \tag{13.8}\\
-f_{excr}^{{PHY_N}_a}&amp;=k_{fdom}^{{PHY}_a}\ \hat{R}\ \left[{PHY_N}_a\right]
+f_{mort}^{{PHY_C}_a}&amp;=\left(1-k_{fres}^{{PHY}_a}\right)\ \left({1-k}_{fdom}^{{PHY}_a}\right)\ \hat{R}\ \left[{PHY_C}_a\right]
 \tag{13.9}\\
-f_{mort}^{{PHY_N}_a}&amp;=\left(1-k_{fdom}^{{PHY}_a}\right)\ \hat{R}\ \left[{PHY_N}_a\right]
+f_{excr}^{{PHY_N}_a}&amp;=k_{fdom}^{{PHY}_a}\ \hat{R}\ \left[{PHY_N}_a\right]
 \tag{13.10}\\
-f_{excr}^{{PHY_P}_a}&amp;=k_{fdom}^{{PHY}_a}\ \hat{R}\ \left[{PHY_P}_a\right]
+f_{mort}^{{PHY_N}_a}&amp;=\left(1-k_{fdom}^{{PHY}_a}\right)\ \hat{R}\ \left[{PHY_N}_a\right]
 \tag{13.11}\\
-f_{mort}^{{PHY_P}_a}&amp;=\left(1-k_{fdom}^{{PHY}_a}\right)\ \hat{R}\ \ \left[{PHY_P}_a\right]
+f_{excr}^{{PHY_P}_a}&amp;=k_{fdom}^{{PHY}_a}\ \hat{R}\ \left[{PHY_P}_a\right]
 \tag{13.12}\\
+f_{mort}^{{PHY_P}_a}&amp;=\left(1-k_{fdom}^{{PHY}_a}\right)\ \hat{R}\ \ \left[{PHY_P}_a\right]
+\tag{13.13}\\
 f_{excr}^{{PHY_{Si}}_a}&amp;=\hat{R}\ \left[{PHY_{Si}}_a\right]
-\tag{13.13}
+\tag{13.14}
 \end{align*}\]</span>
 <br>
 </center>
