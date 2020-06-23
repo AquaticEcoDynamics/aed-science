@@ -11,7 +11,8 @@ bookdown::gitbook:
         <li class="toc-logo"><a href="https://aed.see.uwa.edu.au/research/models/aed/"><center><img src="images/aed-icon.png"></center></a></li><li><a href="./"><center>The AED Manual</center></a></li>
       after: |
         <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
-    edit: https://github.com/AquaticEcoDynamics/aed-science/tree/master/bookdown-manual/%s
+    edit: https://github.com/AquaticEcoDynamics/aed-science/blob/master/%s
+    history: https://github.com/AquaticEcoDynamics/aed-science/edit/master/%s
     download: ["pdf"]
     search: yes
     fontsettings:

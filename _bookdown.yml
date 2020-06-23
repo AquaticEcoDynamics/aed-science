@@ -1,5 +1,5 @@
 book_filename: bookdown-start
-repo: https://github.com/AquaticEcoDynamics/aed-science/%s
+repo: https://github.com/AquaticEcoDynamics/aed-science/
 output_dir: "docs"
 rmd_files: ["index.Rmd",
             "02-foreward.Rmd",
@@ -37,7 +37,6 @@ rmd_files: ["index.Rmd",
             "34-publications.Rmd",
             "35-abbreviations.Rmd",
             "36-references.Rmd"]
-history: https://github.com/AquaticEcoDynamics/aed-science/%s
 clean: [packages.bib, bookdown.bbl]
 new_session: yes
 
