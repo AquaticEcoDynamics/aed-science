@@ -13,3 +13,13 @@ github-repo: AquaticEcoDynamics/aed-science/bookdown-manual
 url: ''
 description: "Work in progress."
 ---
+
+# Welcome{-}
+
+Welcome!
+
+## How to contribute?{-}
+
+## Reproducibility{-}
+
+## Supporting the project{-}
