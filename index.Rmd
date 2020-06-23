@@ -9,7 +9,7 @@ bibliography:  ["references/pathogens.bib",
               "references/bivalves.bib"]
 biblio-style: apalike
 link-citations: yes
-github-repo: AquaticEcoDynamics/aed-science/bookdown-manual
+github-repo: AquaticEcoDynamics/aed-science/
 url: ''
 description: "Work in progress."
 ---
