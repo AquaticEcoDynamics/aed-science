@@ -2,7 +2,6 @@ book_filename: bookdown-start
 repo: https://github.com/AquaticEcoDynamics/aed-science/%s
 output_dir: "docs"
 rmd_files: ["index.Rmd",
-            "01-welcome.Rmd",
             "02-foreward.Rmd",
             "03-preface.Rmd",
             "04-intro.Rmd",
