@@ -1,7 +1,7 @@
 ---
 title: "AED2/AED2+ Manual"
 author: ""
-date: "2020-06-02"
+date: "2020-06-23"
 site: bookdown::bookdown_site
 documentclass: book
 bibliography:  ["references/pathogens.bib",
