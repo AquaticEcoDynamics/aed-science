@@ -43,7 +43,7 @@ To allow for reduced growth at non-optimal temperatures, a temperature function 
 <center>
 <br>
 \begin{equation}
-\Phi_{tem}^{{PHY}_a}} \left(T\right)=\vartheta_a^{T-20}-\vartheta_a^{k\left[T-{c1}_a\right]}+{c0}_a
+\Phi_{tem}^{{PHY}_a}\left(T\right)=\vartheta_a^{T-20}-\vartheta_a^{k\left[T-{c1}_a\right]}+{c0}_a
 (\#eq:phyto2)
 \end{equation}
 <br>
