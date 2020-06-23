@@ -85,7 +85,7 @@ where, $\alpha_C$ is the rate of organism suspension (orgs m^-2^s^-1^), which oc
 
 #### State Variables {-}
 
-<center>
+
 ```{r 20-statevariables, echo=FALSE, message=FALSE, warning=FALSE}
 library(knitr)
 library(kableExtra)
@@ -102,7 +102,7 @@ kable(state_variables,"html", escape = F, align = "c", caption = "State variable
   scroll_box(width = "750px",
              fixed_thead = FALSE) 
 ```
-</center>
+
 
 #### Diagnostics {-}
 
@@ -128,7 +128,7 @@ kable(state_variables,"html", escape = F, align = "c", caption = "State variable
 
 ###	Parameter Summary
 
-<center>
+
 ```{r 20-parametersummmary, echo=FALSE, message=FALSE, warning=FALSE}
 library(knitr)
 library(kableExtra)
@@ -150,7 +150,7 @@ kable(parameter_summary,"html", escape = F, align = "c", caption = "Diagnostics"
   scroll_box(width = "750px", height = "500px",
              fixed_thead = FALSE) 
 ```
-</center>
+
 
 ###	Optional Module Links
 ###	Feedbacks to the Host Model

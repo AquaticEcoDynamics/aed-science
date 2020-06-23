@@ -48,268 +48,9 @@ Where $S_{SOD}$ is a fixed oxygen flux across the sediment-water interface and $
 
 ### Variable Summary
 
-<table>
-<tr>
-<td> Variable Name </td> <td> Description </td> <td> Units </td> <td> Variable Type </td> <td> Core/Optional </td> 
-</tr>
-<tr>
-<td>
-```
-OXY_oxy
-```
-</td>
-<td>
-Dissolved oxygen concentration
-</td>
-<td>
-$mmol\,m^{-3}$
-</td>
-<td>
-Pelagic
-</td>
-<td>
-Core
-</td>
-</tr>
-</table>
+
 
 #### Diagnostics{-}
-<table>
-<tr>
-<td> Variable Name </td> <td> Description </td> <td> Units </td> <td> Variable Type </td> <td> Core/Optional </td> 
-</tr>
-
-<tr>
-<td>
-```
-OXY_oxysat
-```
-</td>
-<td>
-Dissolved oxygen saturation
-</td>
-<td>
-%
-</td>
-<td>
-Pelagic diagnostic
-</td>
-<td>
-Core
-</td>
-</tr>
-
-<tr>
-<td>
-```
-OXY_atm_oxy_flux
-```
-</td>
-<td>
-O2 exchange across atm/water interface
-</td>
-<td>
-$mmol\,m^{-2}\,day^{-1}$
-</td>
-<td>
-$-$
-</td>
-<td>
-$-$
-</td>
-</tr>
-
-</table>
-
-<!-- Previously from 'Parameters & Configuration' on website-->
-<table>
-<tr>
-<td> Parameter Name </td> <td> Description </td> <td> Units </td> <td> Parameter Type </td> <td> Default </td> <td> Typical Range </td> <td> Comment </td> 
-</tr>
-
-<tr>
-<td>
-```
-oxy_initial
-```
-</td>
-<td>
-Initial dissolved oxygen (DO) concentration
-</td>
-<td>
-$mmol\,m^{-3}$
-</td>
-<td>
-Float
-</td>
-<td>
-$-$
-</td>
-<td>
-0-400
-</td>
-<td>
-Note: will be overwritten by GLM or TFV IC
-</td>
-</tr>
-
-<tr>
-<td>
-```
-Fsed_oxy
-```
-</td>
-<td>
-Sediment oxygen demand (SOD)
-</td>
-<td>
-$mmol\,m^{-2}\,day^{-1}$
-</td>
-<td>
-Float
-</td>
-<td>
-$-$
-</td>
-<td>
--100
-</td>
-<td>
-Note: unused if Fsed_oxy_variable is activated via aed2_sedflux
-</td>
-</tr>
-
-<tr>
-<td>
-```
-Ksed_oxy
-```
-</td>
-<td>
-Half-saturation concentration of oxygen sediment flux
-</td>
-<td>
-$mmol\,m^{-3}$
-</td>
-<td>
-Float
-</td>
-<td>
-50
-</td>
-<td>
-10-100
-</td>
-<td>
-Changes the sensitivity of the oxygen flux to the overlying oxygen concentration
-</td>
-</tr>
-
-<tr>
-<td>
-```
-theta_sed_oxy
-```
-</td>
-<td>
-Arrhenius temperature multiplier for sediment oxygen flux
-</td>
-<td>
-$-$
-</td>
-<td>
-Float
-</td>
-<td>
-1e+00
-</td>
-<td>
-1.04 - 1.12
-</td>
-<td>
-Changes the sensitivity of the oxygen flux to the overlying temperature
-</td>
-</tr>
-
-<tr>
-<td>
-```
-Fsed_oxy_variable
-```
-</td>
-<td>
-Oxygen sediment flux variable link
-</td>
-<td>
-$-$
-</td>
-<td>
-String
-</td>
-<td>
-$-$
-</td>
-<td>
-e.g.: SDF_Fsed_oxy
-</td>
-<td>
-Will use the value supplied by the aed2_sedflux model for Fsed_oxy; use this option to allow for spatial or temperal variation
-</td>
-</tr>
-
-<tr>
-<td>
-```
-oxy_min
-```
-</td>
-<td>
-Minimum dissolved oxygen (DO) concentration
-</td>
-<td>
-$mmol\,m^{-3}$
-</td>
-<td>
-Float
-</td>
-<td>
-$-$
-</td>
-<td>
-$-$
-</td>
-<td>
-Optional variable to enforce negative number clipping
-</td>
-</tr>
-
-<tr>
-<td>
-```
-oxy_max
-```
-</td>
-<td>
-Maximum dissolved oxygen (DO) concentration
-</td>
-<td>
-$mmol\,m^{-3}$
-</td>
-<td>
-Float
-</td>
-<td>
-$-$
-</td>
-<td>
-1000
-</td>
-<td>
-Optional variable to enforce high number clipping
-</td>
-</tr>
-
-</table>
 
 ### Parameter Summary
 
@@ -339,6 +80,18 @@ An example `nml` block for the oxygen module is shown below:
 ## Case Studies & Examples
 
 ### Case Study
+
+```{r echo=FALSE, message=FALSE, warning=FALSE, width = 770, height = 385}
+library(leaflet)
+leaflet(height=385, width=770) %>%
+  setView(lng = 115.835235, lat = -31.991618, zoom = 10) %>%
+  addTiles() %>%
+  addMarkers(lng = 115.835235, lat = -31.991618, popup = "Swan River")
+```
+
+<br>
+
+
 <!-- Previously from 'Examples' on website version -->
 
 <center>

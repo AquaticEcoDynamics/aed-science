@@ -123,81 +123,84 @@ The salinity effect on mortality is given by various quadratic formulations, dep
 
 #### State Variables {-}
 
-<center>
+
 ```{r 16-statevariables, echo=FALSE, message=FALSE, warning=FALSE}
 library(knitr)
 library(kableExtra)
 state_variables <- read.csv("tables/16-phytoplankton/state_variables.csv", check.names=FALSE)
 kable(state_variables,"html", escape = F, align = "c", caption = "State variables") %>%
-  kable_styling(full_width = F, position = "center") %>%
-  column_spec(1, width_min = "12em") %>%
-  column_spec(2, width_min = "15em") %>%
-  column_spec(3, width_min = "12em") %>%
-  column_spec(4, width_min = "10em") %>%
-  column_spec(5, width_min = "15em") %>%
+  kable_styling(full_width = F, position = "center", font_size = 12) %>%
+  column_spec(1, width_min = "6em") %>%
+  column_spec(2, width_min = "6em") %>%
+  column_spec(3, width_min = "6em") %>%
+  column_spec(4, width_min = "6em") %>%
+  column_spec(5, width_min = "6em") %>%
   row_spec(1:3, background = 'white') %>%
-  scroll_box(width = "725px",
+  scroll_box(width = "770px",
              fixed_thead = FALSE) 
 ```
-</center>
+
 
 #### Diagnostics {-}
 
-<center>
+
 ```{r 16-diagnostics, echo=FALSE, message=FALSE, warning=FALSE}
 library(knitr)
 library(kableExtra)
 diagnostics <- read.csv("tables/16-phytoplankton/diagnostics.csv", check.names=FALSE)
 kable(diagnostics,"html", escape = F, align = "c", caption = "Diagnostics") %>%
   kable_styling(diagnostics, bootstrap_options = "basic", 
-                full_width = F, position = "center") %>%
-  column_spec(1, width_min = "12em") %>%
-  column_spec(2, width_min = "15em") %>%
-  column_spec(3, width_min = "12em") %>%
-  column_spec(4, width_min = "13em") %>%
-  column_spec(5, width_min = "15em") %>%
+                full_width = F, position = "center", font_size = 12) %>%
+  column_spec(1, width_min = "6em") %>%
+  column_spec(2, width_min = "6em") %>%
+  column_spec(3, width_min = "6em") %>%
+  column_spec(4, width_min = "6em") %>%
+  column_spec(5, width_min = "6em") %>%
   row_spec(1:17, background = 'white') %>%
-  scroll_box(width = "725px", height = "500px",
+  scroll_box(width = "770px", height = "500px",
              fixed_thead = FALSE) 
 ```
-</center>
+
 
 
 ###	Parameter Summary
 
-<center>
+
 ```{r 16-parametersummmary, echo=FALSE, message=FALSE, warning=FALSE}
 library(knitr)
 library(kableExtra)
-parameter_summary <- read.csv("tables/16-phytoplankton/parameter_summary.csv", check.names=FALSE)
+library(dplyr)
+library(tidyverse)
+parameter_summary <- read.csv("tables/16-phytoplankton/parameter_summary.csv", check.names=FALSE) 
+parameter_summary <- data.frame(lapply(parameter_summary, as.character), stringsAsFactors=FALSE)
 kable(parameter_summary,"html", escape = F, align = "c", caption = "Diagnostics",
       bootstrap_options = "hover") %>%
   kable_styling(parameter_summary, bootstrap_options = "hover", 
-                full_width = F, position = "center") %>%
-  column_spec(1, width_min = "8em") %>%
-  column_spec(2, width_min = "4em") %>%
-  column_spec(3, width_min = "4em") %>%
-  column_spec(4, width_min = "4em") %>%
-  column_spec(5, width_min = "4em") %>%
-  column_spec(6, width_min = "4em") %>%
-  column_spec(7, width_min = "4em") %>%
-  column_spec(8, width_min = "4em") %>%
-  column_spec(9, width_min = "4em") %>%
-  column_spec(10, width_min = "4em") %>%
-  column_spec(11, width_min = "4em") %>%
-  column_spec(12, width_min = "4em") %>%
-  column_spec(13, width_min = "4em") %>%
-  column_spec(14, width_min = "4em") %>%
-  column_spec(15, width_min = "4em") %>%
-  column_spec(16, width_min = "4em") %>%
-  column_spec(17, width_min = "4em") %>%
-  column_spec(18, width_min = "4em") %>%
-  column_spec(19, width_min = "4em") %>%
-  column_spec(20, width_min = "4em") %>%
-  column_spec(21, width_min = "4em") %>%
-  column_spec(22, width_min = "4em") %>%
-  column_spec(23, width_min = "4em") %>%
-  column_spec(24, width_min = "13em") %>%
+                full_width = F, position = "center", font_size = 12) %>%
+  column_spec(1, width_min = "6em") %>%
+  column_spec(2, width_min = "6em") %>%
+  column_spec(3, width_min = "6em") %>%
+  column_spec(4, width_min = "6em") %>%
+  column_spec(5, width_min = "6em") %>%
+  column_spec(6, width_min = "6em") %>%
+  column_spec(7, width_min = "6em") %>%
+  column_spec(8, width_min = "6em") %>%
+  column_spec(9, width_min = "6em") %>%
+  column_spec(10, width_min = "6em") %>%
+  column_spec(11, width_min = "6em") %>%
+  column_spec(12, width_min = "6em") %>%
+  column_spec(13, width_min = "6em") %>%
+  column_spec(14, width_min = "6em") %>%
+  column_spec(15, width_min = "6em") %>%
+  column_spec(16, width_min = "6em") %>%
+  column_spec(17, width_min = "6em") %>%
+  column_spec(18, width_min = "6em") %>%
+  column_spec(19, width_min = "6em") %>%
+  column_spec(20, width_min = "6em") %>%
+  column_spec(21, width_min = "6em") %>%
+  column_spec(22, width_min = "6em") %>%
+  column_spec(23, width_min = "6em") %>%
+  column_spec(24, width_min = "6em") %>%
   row_spec(1:55, background = 'white') %>%
   row_spec(1:1, background = '#E8EAEF') %>%
   row_spec(6:6, background = '#E8EAEF') %>%
@@ -207,10 +210,10 @@ kable(parameter_summary,"html", escape = F, align = "c", caption = "Diagnostics"
   row_spec(29:29, background = '#E8EAEF') %>%
   row_spec(42:42, background = '#E8EAEF') %>%
   row_spec(51:51, background = '#E8EAEF') %>%
-  scroll_box(width = "725px", height = "500px",
+  scroll_box(width = "770px", height = "500px",
              fixed_thead = FALSE) 
 ```
-</center>
+
 
 ###	Optional Module Links
 ###	Feedbacks to the Host Model
@@ -225,14 +228,16 @@ parameter_config <- read.csv("tables/16-phytoplankton/parameter_config.csv", che
 kable(parameter_config,"html", escape = F, align = "c", caption = "Parameters and configuration",
       bootstrap_options = "hover") %>%
   kable_styling(parameter_config, bootstrap_options = "hover", 
-                full_width = F, position = "center") %>%
-  column_spec(1, width_min = "12em") %>%
-  column_spec(2, width_min = "15em") %>%
-  column_spec(3, width_min = "12em") %>%
-  column_spec(4, width_min = "13em") %>%
-  column_spec(5, width_min = "10em") %>%
+                full_width = F, position = "center", font_size = 12) %>%
+  column_spec(1, width_min = "10em") %>%
+  column_spec(2, width_min = "10em") %>%
+  column_spec(3, width_min = "6em") %>%
+  column_spec(4, width_min = "6em") %>%
+  column_spec(5, width_min = "6em") %>%
+  column_spec(6, width_min = "6em") %>%
+  column_spec(7, width_min = "6em") %>%
   row_spec(1:19, background = 'white') %>%
-  scroll_box(width = "725px", height = "500px",
+  scroll_box(width = "770px", height = "500px",
              fixed_thead = FALSE) 
 ```
 
