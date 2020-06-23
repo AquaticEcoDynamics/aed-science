@@ -15,7 +15,7 @@ library(leaflet)
 leaflet() %>%
   setView(lng = 116.037, lat = -32.835, zoom = 10) %>%
   addTiles() %>%
-  addMarkers(lng = 116.037, lat = -32.835, popup = "buried treasure here")
+  addMarkers(lng = 116.037, lat = -32.835, popup = "")
 ```
 </center>
 

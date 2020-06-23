@@ -17,6 +17,16 @@ description: "Work in progress."
 # Welcome{-}
 
 Welcome!
+<br>
+<center>
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+library(leaflet)
+leaflet() %>%
+  setView(lng = 116.037, lat = -32.835, zoom = 10) %>%
+  addTiles() %>%
+  addMarkers(lng = 116.037, lat = -32.835, popup = "")
+```
+</center>
 
 ## How to contribute?{-}
 
