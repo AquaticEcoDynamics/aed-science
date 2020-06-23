@@ -17,12 +17,33 @@ For each phytoplankton group, the maximum potential growth rate at 20°C is mult
 For each phytoplankton group, the maximum potential growth rate at 20˚C is multiplied by the minimum value of expressions for limitation by light, phosphorus, nitrogen and silica (when configured). While there may be some interaction between limiting factors, a minimum expression is likely to provide a realistic representation of growth limitation (Rhee and Gotham, 1981). 
 Therefore, photosynthesis is parameterized as the uptake of carbon, and depends on the temperature, light and nutrient dimensionless functions (adopted from Hipsey & Hamilton, 2008; Li et al., 2013).
 
+<br>
+
+:::: {.bluebox data-latex=""}
+\begin{equation}
+\text{Mass Balance Equation}
+(\#eq:phyto1)
+\end{equation}
+\begin{align}
+{f_{uptake}^{PHY_{Ca}}} &=  
+\end{align}
+\begin{align}
+\underbrace{{R_{growth}^{PHY_{a}}}}_{\text{Max growth rate at 20˚C}}*\underbrace{(1-{k_{pr}^{PHY_{a}}})}_{\text{Photorespiratory loss}}*\underbrace{{\Phi_{tem}^{PHY_{a}}}(T)}_{\text{Temperature scaling}}*\underbrace{{\Phi_{str}^{PHY_{a}}}(T)}_{\text{Metabolic stress}}*
+\end{align}
+\begin{align}
+&{\text{min}}\begin{Bmatrix}\underbrace{\Phi_{light}^{PHY_{a}}(I)}_{\text{Light limitation}},\underbrace{\Phi_{N}^{PHY_{a}}(NO_{3},NH_{4},PHY_{N_{a}})}_{\text{N limitation}},\underbrace{\Phi_{P}^{PHY_{a}}(PO_{4},PHY_{P_{a}})}_{\text{P limitation}},\underbrace{\Phi_{Si}^{PHY_{a}}(RSi)}_{\text{Si limitation}}\end{Bmatrix}*
+\end{align}
+\begin{align}
+[PHY_{C_{a}}]
+\end{align}
+::::
+<br>
 
 To allow for reduced growth at non-optimal temperatures, a temperature function is used where the maximum productivity occurs at a temperature $T_{OPT}$; above this productivity decreases to zero at the maximum allowable temperature, $T_{MAX}$. Below the standard temperature, $T_{STD}$ the productivity follows a simple Arrenhius scaling formulation. In order to fit a function with these restrictions the following conditions are assumed: at $T=T_{STD}$,$\ {\ \Phi}_{tem}\left(T\right)=1$ and at  $T=T_{OPT},\ \ \frac{d\Phi_{tem}\left(T\right)}{dT}=0$, and at $T=T_{MAX}$,$\ \Phi_{tem}\left(T\right)=0$. This can be numerically solved using Newton’s iterative method and can be specific for each phytoplankton group. The temperature function is calculated according to (Griffin et al. 2001):
 <center>
 <br>
 \begin{equation}
-\Phi_{tem}^{{PHY}_a}\left(T\right)=\vartheta_a^{T-20}-\vartheta_a^{k\left[T-{c1}_a\right]}+{c0}_a
+\Phi_{tem}^{{PHY}_a}} \left(T\right)=\vartheta_a^{T-20}-\vartheta_a^{k\left[T-{c1}_a\right]}+{c0}_a
 (\#eq:phyto2)
 \end{equation}
 <br>
