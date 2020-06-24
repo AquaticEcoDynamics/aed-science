@@ -1,0 +1,20 @@
+﻿Parameter Name,Description,Units,Parameter Type,Default,Typical Range,Comment
+`geochem_file`,Link to geochem database,---,string,---,---,---
+`num_components`,number f dissolved components to be concidered,---,integer,---,---,---
+`dis_components`,list of component names,---,string,---,---,---
+`component_link`,Active variables to be used as a componenet,---,string,---,---,---
+`Fsed_gch`,sediment flux rate of dissolved components,"$mmol\,m^{-2}\,day^{-1}$",array,---,---,---
+`num_minerals`,number of particulate mineral phases to be included,---,integer,---,---,---
+`the_minerals`,list of mineral names,---,string,---,---,---
+`mineral_link`,name of any active variables to be used as a mineral,---,string,---,---,---
+`w_gch`,sedimentation rate of chosen particulate phases,"$m\,day^{-1}$",array,---,---,---
+`Riron_red`,---,---,float,---,---,---
+`Kiron_red`,---,---,float,---,---,---
+`theta_iron_red`,---,---,float,---,---,---
+`Riron_aox`,---,---,float,---,---,---
+`Riron_box`,---,---,float,---,---,---
+`theta_iron_ox`,---,---,float,---,---,---
+`simEq`,---,---,boolean,---,---,---
+`dis_initial`,---,---,array,---,---,---
+`speciesOutput`,---,---,string,---,---,---
+`min_initial`,---,---,array,---,---,---

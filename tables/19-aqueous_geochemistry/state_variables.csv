@@ -1,0 +1,2 @@
+﻿Variable Name,Description,Units,Variable Type,Core/Optional
+`GEO_{var}`,---,$mmol m^{-3}$,pelagic,configurable

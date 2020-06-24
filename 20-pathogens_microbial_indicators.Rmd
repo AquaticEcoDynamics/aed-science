@@ -99,7 +99,7 @@ kable(state_variables,"html", escape = F, align = "c", caption = "State variable
   column_spec(4, width_min = "10em") %>%
   column_spec(5, width_min = "13em") %>%
   row_spec(1:1, background = 'white') %>%
-  scroll_box(width = "750px",
+  scroll_box(width = "770px",
              fixed_thead = FALSE) 
 ```
 
@@ -147,7 +147,7 @@ kable(parameter_summary,"html", escape = F, align = "c", caption = "Diagnostics"
   column_spec(6, width_min = "7em") %>%
   column_spec(7, width_min = "4em") %>%
   row_spec(1:40, background = 'white') %>%
-  scroll_box(width = "750px", height = "500px",
+  scroll_box(width = "770px", height = "500px",
              fixed_thead = FALSE) 
 ```
 
@@ -174,7 +174,7 @@ kable(parameter_config,"html", escape = F, align = "c", caption = "Parameters an
   column_spec(5, width_min = "6em") %>%
   column_spec(6, width_min = "6em") %>%
   row_spec(1:1, background = 'white') %>%
-  scroll_box(width = "750px",
+  scroll_box(width = "770px",
              fixed_thead = FALSE) 
 ```
 
