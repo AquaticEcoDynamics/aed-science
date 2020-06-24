@@ -272,11 +272,6 @@ The operation of the simplex solver is complicated and the reader is referred to
 </table></div>
 
 ###	Parameter Summary
-###	Optional Module Links
-###	Feedbacks to the Host Model
-## Setup & Configuration
-### Setup Example
-
 <div style="border: 1px solid #ddd; padding: 5px; overflow-y: scroll; height:500px; overflow-x: scroll; width:770px; "><table class="table table-hover" style="font-size: 12px; width: auto !important; margin-left: auto; margin-right: auto;">
 <caption style="font-size: initial !important;">(\#tab:19-parameterconfig)Parameters and configuration</caption>
  <thead>
@@ -465,6 +460,12 @@ The operation of the simplex solver is complicated and the reader is referred to
 </tbody>
 </table></div>
 <br>
+
+###	Optional Module Links
+###	Feedbacks to the Host Model
+## Setup & Configuration
+### Setup Example
+
 An example `nml` block for the geochemistry module is shown below:
 
 ```{style="max-height: 500px;"}
