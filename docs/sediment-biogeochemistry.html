@@ -430,7 +430,13 @@
 <li class="chapter" data-level="20.3.4" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#optional-module-links-15"><i class="fa fa-check"></i><b>20.3.4</b> Optional Module Links</a></li>
 <li class="chapter" data-level="20.3.5" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#feedbacks-to-the-host-model-15"><i class="fa fa-check"></i><b>20.3.5</b> Feedbacks to the Host Model</a></li>
 </ul></li>
-<li class="chapter" data-level="20.4" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#setup-configuration-15"><i class="fa fa-check"></i><b>20.4</b> Setup &amp; Configuration</a></li>
+<li class="chapter" data-level="20.4" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#setup-configuration-15"><i class="fa fa-check"></i><b>20.4</b> Setup &amp; Configuration</a>
+<ul>
+<li class="chapter" data-level="20.4.1" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#implementation-withing-the-fabm-framework"><i class="fa fa-check"></i><b>20.4.1</b> Implementation withing the FABM Framework</a></li>
+<li class="chapter" data-level="20.4.2" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#program-structure"><i class="fa fa-check"></i><b>20.4.2</b> Program Structure</a></li>
+<li class="chapter" data-level="20.4.3" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#model-setup-boundary-conditions-parameter-definition"><i class="fa fa-check"></i><b>20.4.3</b> Model Setup, Boundary Conditions &amp; Parameter Definition</a></li>
+<li class="chapter" data-level="20.4.4" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#model-output-post-processing"><i class="fa fa-check"></i><b>20.4.4</b> Model Output &amp; Post-processing</a></li>
+</ul></li>
 <li class="chapter" data-level="20.5" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#case-studies-examples-15"><i class="fa fa-check"></i><b>20.5</b> Case Studies &amp; Examples</a>
 <ul>
 <li class="chapter" data-level="20.5.1" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#case-study-15"><i class="fa fa-check"></i><b>20.5.1</b> Case Study</a></li>
@@ -840,6 +846,31 @@ OA<sub>c</sub>, H<sub>2</sub> oxidation
 </tbody>
 </table>
 </div>
+<div class="figure"><span id="fig:figures-side"></span>
+<img src="images/23-sediment_biogeochemistry/image3.png" alt="Three options for different levels of complexity in organic matter breakdown, by setting the OMModel switch. a – Model in which POM breaks down directly to CO~2~ and other waste products. b – Model in which POM is first hydrolysed to DOM and then oxidised to CO~2~. c – Model in which POM is hydrolysed to DOM, which can then be fermented and oxidised." width="30%" /><img src="images/23-sediment_biogeochemistry/image4.png" alt="Three options for different levels of complexity in organic matter breakdown, by setting the OMModel switch. a – Model in which POM breaks down directly to CO~2~ and other waste products. b – Model in which POM is first hydrolysed to DOM and then oxidised to CO~2~. c – Model in which POM is hydrolysed to DOM, which can then be fermented and oxidised." width="30%" /><img src="images/23-sediment_biogeochemistry/image5.png" alt="Three options for different levels of complexity in organic matter breakdown, by setting the OMModel switch. a – Model in which POM breaks down directly to CO~2~ and other waste products. b – Model in which POM is first hydrolysed to DOM and then oxidised to CO~2~. c – Model in which POM is hydrolysed to DOM, which can then be fermented and oxidised." width="30%" />
+<p class="caption">
+Figure 20.3: Three options for different levels of complexity in organic matter breakdown, by setting the OMModel switch. a – Model in which POM breaks down directly to CO<sub>2</sub> and other waste products. b – Model in which POM is first hydrolysed to DOM and then oxidised to CO<sub>2</sub>. c – Model in which POM is hydrolysed to DOM, which can then be fermented and oxidised.
+</p>
+</div>
+<p>The terminal redox reaction pathways are the six pathways that are available in most diagenesis models, and are driven by different organic matter pools, depending on the OMModel configuration chosen from the above options (Table 5 - 2). AED CANDI allows the use of Approach 1 or 2 organic matter oxidation rate equations, as examined in detail in Paraska et al (in prep).</p>
+<p>The rate equation for the oxidation of the oxidants with any of the pools above can include any of the terms in equation 5 - 12, where <span class="math inline">\(R_{{Ox}_i}\)</span> is the reaction of an oxidant <span class="math inline">\(i\)</span> (Arndt et al. 2013) (Table 5 - 3). The kinetic rate constant <span class="math inline">\(k_{OM}\)</span> gives the maximum oxidation rate, which is different for each reactive type, but the same for each oxidation pathway. Alternatively, using OMModel 3, the kinetic rate constant is the rate of bacterial growth.</p>
+<p>The factor for terminal electron acceptor (TEA) limitation is FTEA (5 - 11), where options for Approach 1 or Approach 2 equations are available. The Monod constant for rate limitation at low oxidant concentration is <span class="math inline">\(K_{TEA}\)</span> in Approach 1 and LTEA in Approach 2. Similarly, the inhibition term <span class="math inline">\(F_{In}\)</span> (5 - 14) can be set to Approach 1 or 2 equations, or turned off entirely. The constant for inhibition until low oxidant concentrations is <span class="math inline">\(K_{In}\)</span> for Approach 1 and <span class="math inline">\(L_{IN}\)</span> for Approach 2.</p>
+<p><span class="math inline">\(F_{T}\)</span> is the thermodynamic factor, as described in chapter 3. The current version of the model includes FT only for OMModel 3, for terminal oxidation reactions and fermentation.</p>
+<p><span class="math inline">\(F_{OM}\)</span> is the organic matter concentration and may be a Monod function as in equation 5 - 8 (<span class="math inline">\(K_{OM}\)</span> is a half saturation constant and the index <span class="math inline">\(i\)</span> is the reactive phase). Using OMModels 1 and 2, <span class="math inline">\(F_{OM}\)</span> is the concentration of the substrate, rather than a Monod function. The current version of the model has switches built in for both the temperature dependence factor, <span class="math inline">\(F_{Tem}\)</span>, where values of 1 or 2 turn them off and on. However, implementation and testing of the factors has not been carried out for this version of the model. The metabolism rate at <span class="math inline">\(T_{0}\)</span> is <span class="math inline">\(R_{0}\)</span>, <span class="math inline">\(ξ\)</span> is a scaling constant (see, for example, Eldridge and Morse 2008).</p>
+</div>
+<div id="secondary-redox-reactions" class="section level4 unnumbered" number="">
+<h4>Secondary Redox Reactions</h4>
+<p>In the meta-analysis, we identified the many secondary redox reactions that have been included across the diversity of diagenesis model applications. In AED CANDI, they are all included as options, and may be turned on or off as desired (Table 5 - 4).</p>
+</div>
+<div id="equilibrium-geochemistry" class="section level4 unnumbered" number="">
+<h4>Equilibrium Geochemistry</h4>
+<p>The pH is calculated as the sum of all charged species, where any unbalanced positive charge indicates H<sup>+</sup>. The charge balance is at each time step is solved as a state variable, which is subject to advection, diffusion and bioturbation reactions.</p>
+<p>The precipitation of minerals is solved as an equilibrium reaction, dependent on the concentrations of the dissolved and solid substances, their <span class="math inline">\(K_{sp}\)</span> and ion activity product (IAP). The equations are applied in a similar manner to those in Van Cappellen and Wang (1996) and numerous other studies, but with the exact forms of the equations based on those from Tufano et al. (2009) (Table 5 - 5). A positive rate indicates precipitation and a negative rate indicates dissolution. This model applies the function to all mineral simulated, including Fe(OH)<sub>3</sub>, FeS, FeS<sub>2</sub>, FeCO<sub>3</sub>, CaCO<sub>3</sub> and MnCO<sub>3</sub>.
+This model has a process of mineral ageing, whereby iron and manganese oxides become crystalline and no longer react with organic matter, but can still undergo secondary redox reactions.</p>
+</div>
+<div id="physical-transport" class="section level4 unnumbered" number="">
+<h4>Physical Transport</h4>
+<p>The analysis from chapter 2 showed that advection and diffusion reactions (equations 5 - 102, 5 - 103) are fairly consistent in diagenesis models, and here we use the same methods (Table 5 - 8). Porosity (ϕ) is defined according to equation 5 - 104, which allows it to decrease with depth, and the solid fraction is defined from <span class="math inline">\(\phi_s=1-\phi)\)</span>. For bioturbation the model uses a diffusion coefficient that varies with depth (<span class="math inline">\(D_{B(x)}\)</span>) as a two layer function or a Gaussian decrease (Boudreau 1996). For the porewater components, diffusion coefficients are used that are based on free-solution molecular diffusion constants corrected for sediment tortuosity, <span class="math inline">\(θ\)</span>, according to equation 5 - 105.</p>
 </div>
 </div>
 <div id="variable-summary-15" class="section level3" number="20.3.2">
@@ -857,6 +888,51 @@ OA<sub>c</sub>, H<sub>2</sub> oxidation
 </div>
 <div id="setup-configuration-15" class="section level2" number="20.4">
 <h2><span class="header-section-number">20.4</span> Setup &amp; Configuration</h2>
+<p>The preceding details were an explanation of the scientific aspects of this diagenesis model, and next we turn to practical implementation.</p>
+<div id="implementation-withing-the-fabm-framework" class="section level3" number="20.4.1">
+<h3><span class="header-section-number">20.4.1</span> Implementation withing the FABM Framework</h3>
+<p>The sediment diagenesis model AED CANDI is one module of the AED library (Table 5 - 9, Hipsey et al. 2013b), which is composed of numerous model components. The FABM allows any combination of these modules, or any other model package, to be included in a model simulation and couples them to a physical model of the water column, which provides the spatial and temporal resolution, and calculates the transport processes (Figure 5 - 1). The AED library is just one set that could be used with the FABM framework, where others include the Fasham model template (based on Fasham et al. 1990) or the simple NPZD model of Burchard et al. (2005). A range of physical models and configurations is also available, depending on whether the focus is on the sediment alone, or the sediment as part of a larger environmental simulation (Figure 5 - 3). Refer <a href="http://sourceforge.net/apps/mediawiki/fabm/">here</a> for further up to date information about the FABM and available model codes.</p>
+<center>
+<div class="figure"><span id="fig:23-pic6"></span>
+<img src="images/23-sediment_biogeochemistry/image6.png" alt="Spatial resolution options available through FABM. a) Water column studies have traditionally assigned a flux to the sediment water interface without resolving the sediment chemical concentrations by depth, though they can be resolved laterally. b) The 0D water column is the method used in most sediment diagenesis studies, and use of multiple sediment zones is an option available within the FABM." width="95%" />
+<p class="caption">
+Figure 20.4: Spatial resolution options available through FABM. a) Water column studies have traditionally assigned a flux to the sediment water interface without resolving the sediment chemical concentrations by depth, though they can be resolved laterally. b) The 0D water column is the method used in most sediment diagenesis studies, and use of multiple sediment zones is an option available within the FABM.
+</p>
+</div>
+</center>
+</div>
+<div id="program-structure" class="section level3" number="20.4.2">
+<h3><span class="header-section-number">20.4.2</span> Program Structure</h3>
+<p>The general structure of the program is shown in Figure 5 - 5. The program is firstly initialised, then loops through the kinetic and equilibrium reactions for each time step and writes the resulting concentrations and rates at each depth to an output file. The kinetic reactions are solved by the VODE program (Brown et al. 1989) and the equilibrium reactions by the Simplex program.</p>
+<center>
+<div class="figure"><span id="fig:23-pic7"></span>
+<img src="images/23-sediment_biogeochemistry/image7.png" alt="The program is firstly initialised, then loops through the kinetic and equilibrium reactions for each time step and writes the resulting concentrations and rates at each depth to an output file. The kinetic reactions are solved by the VODE program (Brown et al. 1989) and the equilibrium reactions by the Simplex program." width="60%" />
+<p class="caption">
+Figure 20.5: The program is firstly initialised, then loops through the kinetic and equilibrium reactions for each time step and writes the resulting concentrations and rates at each depth to an output file. The kinetic reactions are solved by the VODE program (Brown et al. 1989) and the equilibrium reactions by the Simplex program.
+</p>
+</div>
+</center>
+</div>
+<div id="model-setup-boundary-conditions-parameter-definition" class="section level3" number="20.4.3">
+<h3><span class="header-section-number">20.4.3</span> Model Setup, Boundary Conditions &amp; Parameter Definition</h3>
+<p>The model is set up via the name list text file <code>fabm.nml</code> using the model keyword “aed_seddiagenesis” with the model configured to select the “Dynamic” option. Once this is selected, the model will search for the “&amp;aed_sedcandi” parameter block within fabm.nml.</p>
+<p>Each active sediment model within the FABM model is discretised into a user definable number of depth layers (maxnpts) that start at a thickness of a few mm at the sediment-water interface and which increase exponentially down to a pre-defined sediment depth (xl). Users must define the sediment domain physical properties as summarised in Table 5 - 10, including configuration options related to bioturbation and irrigation. The biogeochemical configuration (Table 5 - 11), rate constants (see Table 5 - 12 and Table 5 - 13) must be set according to the sub-model options described above.</p>
+<p>The initial conditions for each variable are set as a list by the “initial_vals”, which sets a constant concentration with depth in units of μmol L-1. For organic matter initial concentrations only, there are three available options for the concentration with depth, set by “OMInitMethodL”.</p>
+<p>The sediment-water interface is the uppermost layer of the sediment, for which there are three configuration options set by the parameter <code>ibc2</code>. If the user specifies <code>ibc2 = 2</code>, the concentration is a constant value set by <code>default_vals</code> in the <code>fabm.nml</code> name list. For <code>ibc2 = 1</code>, the concentration is provided by a “link_variable”, which provides the concentration from another simulated water column FABM module. If the variable name in the link list is left blank (“ ”) then AED_CANDI will assume these variables are not linked to any water column variables and default to the “default_vals” values. If <code>ibc2 = 10</code>, the concentration is provided by a user-prescribed temporally variable value read from the file <code>aed_sediment_swibc.dat</code>. This option may desirable, for example, for simulating a seasonally or daily changing boundary condition.</p>
+<p>Regardless of the ibc2 surface boundary condition option, fluxes of dissolved species occur between the sediment and water column. They are calculated from the concentration gradient at the sediment-water interface according to Fick’s Law:</p>
+<center>
+<span class="math display" id="eq:biogeochem1">\[\begin{equation}
+F = D_{0}\frac{\Delta C}{\Delta x} = \frac{D_{0}}{\delta} (C_{bw} - C_{1})
+\tag{20.1}
+\end{equation}\]</span>
+</center>
+<p>where <span class="math inline">\(D_{0}\)</span> is the diffusivity as defined above, <span class="math inline">\(\delta\)</span> is the thickness of the diffusive boundary layer at the sediment water interface and defined as the length scale of the first sediment layer, <span class="math inline">\(C_{bw}\)</span> is the bottom water concentration and <span class="math inline">\(C_{1}\)</span> is the concentration in the top sediment layer.</p>
+<p>At the bottom of the domain (<span class="math inline">\(x\)</span> = “xl”) the model can be specified to have a fixed-concentration (ibbc = 0) such that the concentration at <span class="math inline">\(xl = C_{Bot}\)</span>, or it can be specified to have a zero-derivative (ibbc = 1) defined as <span class="math inline">\(\frac{dC}{dx}=0\)</span> at <span class="math inline">\(x = xl\)</span>.</p>
+</div>
+<div id="model-output-post-processing" class="section level3" number="20.4.4">
+<h3><span class="header-section-number">20.4.4</span> Model Output &amp; Post-processing</h3>
+<p>The model output files are written for each variable as text files, giving time (in years) as the first column depth as the first row and concentrations in the other fields. These can be read in using a data processing program such as R, Matlab or Excel for analysis. Further, the model outputs the file <code>rates.sed</code> for each variable at every depth for the final time step.</p>
+</div>
 </div>
 <div id="case-studies-examples-15" class="section level2" number="20.5">
 <h2><span class="header-section-number">20.5</span> Case Studies &amp; Examples</h2>
