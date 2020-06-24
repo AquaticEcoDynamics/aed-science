@@ -34,8 +34,48 @@ knitr::include_graphics("images/23-sediment_biogeochemistry/image1.png")
 </center>
 
 ## Model Description
+
+The heart of this model is the reaction, diffusion, advection model of Berner (1980), which was implemented as the Carbon and Nutrient Diagenesis model of Boudreau (1996) and developed into Approach 1 from Chapter 2. The basic structure of this model is an adaptation of the C.CANDI code (Luff et al. 2000), which added extensions related to the geochemical aspects. Further additions to the C.CANDI code have been made to:
+- the organic matter dynamics
+- the geochemical dynamics
+- extensions for nutrients and trace metals
+
+The chemical reactions included in this model, including new features added to the model, are expanded upon below and summarised in Figure \@ref(fig:23-pic2).
+
+<center>
+```{r 23-pic2, echo=FALSE, fig.cap="AED CANDI includes chemical processes of organic matter transformation and oxidation, and reduction/oxidation, crystallisation, adsorption and precipitation reactions of inorganic by-products. Most of the processes are triggered by the input of POM at the sediment-water interface.", out.width = '85%'}
+knitr::include_graphics("images/23-sediment_biogeochemistry/image2.png")
+```
+</center>
+
 ###	Process Descriptions
+
+#### Primary Redox Reactions {-}
+
+The key chemical process that causes ongoing change in the sediment is the breakdown of organic matter. The user can decide how complex or simple the organic matter breakdown pathway should be, with three options of varying complexity for parameterising the pathways included (Figure 5 - 3). The first option (`OMModel = 1`) is a common multi-G model in which the POM phases are decomposed straight to CO~2~ and other breakdown products. Here POM is a variable that is not precisely defined, and its components (such as C, N and P) must be determined in post-processing based on a user-defined fixed stoichiometry. The second option (`OMModel = 2`) is another 2G model with both particulate and dissolved organic matter (POM and DOM) phases included and parameterisation hydrolysis of POM to DOM, and then DOM to CO~2~ and other breakdown products. The POM and DOM phases consist of three variables each, which trace the reaction and transport of carbon, nitrogen and phosphorus, thereby allowing for variable stoichiometry of organic matter to occur temporally and spatially. The third option (`OMModel = 3`) has many POM phases, which are all hydrolysed to DOM, which then undergoes fermentation and terminal metabolism, as using the mechanistic approach from Chapter 3.  This allows the carbon, nitrogen and phosphorus to be calculated precisely before and after a model run, and allows the free energies of the reaction of each phase to be included. This third option is the most detailed and mechanistic, and allows for expansion of more detailed reaction mechanisms to be included.
+
+```{r 23-OMbreakdown, echo=FALSE, message=FALSE, warning=FALSE}
+library(knitr)
+library(kableExtra)
+OM_breakdown <- read.csv("tables/23-sediment_biogeochemistry/OM_breakdown.csv", check.names=FALSE)
+kable(OM_breakdown,"html", escape = F, align = "c", caption = "Parameters and configuration",
+      bootstrap_options = "hover") %>%
+  kable_styling(OM_breakdown, bootstrap_options = "hover", 
+                full_width = F, position = "center",
+                font_size = 12) %>%
+  column_spec(1, width_max = "30em") %>%
+  column_spec(2, width_max = "30em") %>%
+  column_spec(3, width_min = "10em") %>%
+  row_spec(1:13, background = 'white') %>%
+  scroll_box(width = "770px", height = "500px",
+             fixed_thead = FALSE) 
+```
+
+
+
 ###	Variable Summary
+
+
 ###	Parameter Summary
 ###	Optional Module Links
 ###	Feedbacks to the Host Model

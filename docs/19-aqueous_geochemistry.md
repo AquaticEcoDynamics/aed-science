@@ -7,6 +7,13 @@
 
 The module allows the user to choose from a wide array of geochemical 'components' (e.g., anions, cations, metals) to simulate, and then solves for the equilibrium speciation of the solution. The module includes an advanced solver, and provides pH and other solution properties, and optional mineral or gas phases. Relevant kinetic transformations (e.g. redox reactions) between simulated components are also included. Metals may be simulated as part of the model and can also be active within the biological cycles. The module is flexible and simple in its configuration and can be used in the water column and in the sediment if the dynamic sediment diagenesis model (see Section ?) is also being simulated. The module dynamically links with the other biogeochemical processes within AED2, such that any biological activity (e.g. algal nutrient uptake and photosynthesis, microbial respiration, and nitrification) will dynamically affect the aqueous speciation and pH. Details of the equilibrium and non-equilibrium processes included are described in the adjacent tab.
 
+<center>
+<div class="figure">
+<img src="images/19-aqueous_geochemistry/image1.png" alt="Conceptual diagram highlighting key variables and interactions within the model" width="95%" />
+<p class="caption">(\#fig:19-pic1)Conceptual diagram highlighting key variables and interactions within the model</p>
+</div>
+</center>
+
 ## Model Description
 ###	Process Descriptions
 

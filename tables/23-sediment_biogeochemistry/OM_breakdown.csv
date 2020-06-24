@@ -1,0 +1,17 @@
+﻿Description,Reaction,Rate equation
+OMModel 1,,
+$POM_{Lab} \text{ oxidation}$,$POM_{\text{Lab}} \rightarrow CO_{2 \text{ space}}$,"\begin{equation}
+k_{DOMRef}{\sum R}_{{Ox}_i}
+(\#eq:biogeochem1)
+\end{equation}"
+POM~Ref~oxidation,,
+OMModel 2,,
+POM~Lab~ hydrolysis,,
+POM~Ref~ hydrolysis,,
+DOM~Lab~ oxidation ,,
+DOM~Ref~ oxidation,,
+OMModel 3,,
+POM~i~ hydrolysis,,
+D~Hyd~ fermentation,,
+D~Hyd~ oxidation ,,
+"OA~c~, H~2~ oxidation",,

@@ -35,8 +35,113 @@ The sediment model CANDI-AED presented here is implemented within the AED model 
 </center>
 
 ## Model Description
+
+The heart of this model is the reaction, diffusion, advection model of Berner (1980), which was implemented as the Carbon and Nutrient Diagenesis model of Boudreau (1996) and developed into Approach 1 from Chapter 2. The basic structure of this model is an adaptation of the C.CANDI code (Luff et al. 2000), which added extensions related to the geochemical aspects. Further additions to the C.CANDI code have been made to:
+- the organic matter dynamics
+- the geochemical dynamics
+- extensions for nutrients and trace metals
+
+The chemical reactions included in this model, including new features added to the model, are expanded upon below and summarised in Figure \@ref(fig:23-pic2).
+
+<center>
+<div class="figure">
+<img src="images/23-sediment_biogeochemistry/image2.png" alt="AED CANDI includes chemical processes of organic matter transformation and oxidation, and reduction/oxidation, crystallisation, adsorption and precipitation reactions of inorganic by-products. Most of the processes are triggered by the input of POM at the sediment-water interface." width="85%" />
+<p class="caption">(\#fig:23-pic2)AED CANDI includes chemical processes of organic matter transformation and oxidation, and reduction/oxidation, crystallisation, adsorption and precipitation reactions of inorganic by-products. Most of the processes are triggered by the input of POM at the sediment-water interface.</p>
+</div>
+</center>
+
 ###	Process Descriptions
+
+#### Primary Redox Reactions {-}
+
+The key chemical process that causes ongoing change in the sediment is the breakdown of organic matter. The user can decide how complex or simple the organic matter breakdown pathway should be, with three options of varying complexity for parameterising the pathways included (Figure 5 - 3). The first option (`OMModel = 1`) is a common multi-G model in which the POM phases are decomposed straight to CO~2~ and other breakdown products. Here POM is a variable that is not precisely defined, and its components (such as C, N and P) must be determined in post-processing based on a user-defined fixed stoichiometry. The second option (`OMModel = 2`) is another 2G model with both particulate and dissolved organic matter (POM and DOM) phases included and parameterisation hydrolysis of POM to DOM, and then DOM to CO~2~ and other breakdown products. The POM and DOM phases consist of three variables each, which trace the reaction and transport of carbon, nitrogen and phosphorus, thereby allowing for variable stoichiometry of organic matter to occur temporally and spatially. The third option (`OMModel = 3`) has many POM phases, which are all hydrolysed to DOM, which then undergoes fermentation and terminal metabolism, as using the mechanistic approach from Chapter 3.  This allows the carbon, nitrogen and phosphorus to be calculated precisely before and after a model run, and allows the free energies of the reaction of each phase to be included. This third option is the most detailed and mechanistic, and allows for expansion of more detailed reaction mechanisms to be included.
+
+<div style="border: 1px solid #ddd; padding: 5px; overflow-y: scroll; height:500px; overflow-x: scroll; width:770px; "><table class="table table-hover" style="font-size: 12px; width: auto !important; margin-left: auto; margin-right: auto;">
+<caption style="font-size: initial !important;">(\#tab:23-OMbreakdown)Parameters and configuration</caption>
+ <thead>
+  <tr>
+   <th style="text-align:center;"> Description </th>
+   <th style="text-align:center;"> Reaction </th>
+   <th style="text-align:center;"> Rate equation </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:center;max-width: 30em; background-color: white !important;"> OMModel 1 </td>
+   <td style="text-align:center;max-width: 30em; background-color: white !important;">  </td>
+   <td style="text-align:center;min-width: 10em; background-color: white !important;">  </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;max-width: 30em; background-color: white !important;"> $POM_{Lab} \text{ oxidation}$ </td>
+   <td style="text-align:center;max-width: 30em; background-color: white !important;"> $POM_{\text{Lab}} \rightarrow CO_{2 \text{ space}}$ </td>
+   <td style="text-align:center;min-width: 10em; background-color: white !important;"> \begin{equation}
+k_{DOMRef}{\sum R}_{{Ox}_i}
+(\#eq:biogeochem1)
+\end{equation} </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;max-width: 30em; background-color: white !important;"> POM~Ref~oxidation </td>
+   <td style="text-align:center;max-width: 30em; background-color: white !important;">  </td>
+   <td style="text-align:center;min-width: 10em; background-color: white !important;">  </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;max-width: 30em; background-color: white !important;"> OMModel 2 </td>
+   <td style="text-align:center;max-width: 30em; background-color: white !important;">  </td>
+   <td style="text-align:center;min-width: 10em; background-color: white !important;">  </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;max-width: 30em; background-color: white !important;"> POM~Lab~ hydrolysis </td>
+   <td style="text-align:center;max-width: 30em; background-color: white !important;">  </td>
+   <td style="text-align:center;min-width: 10em; background-color: white !important;">  </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;max-width: 30em; background-color: white !important;"> POM~Ref~ hydrolysis </td>
+   <td style="text-align:center;max-width: 30em; background-color: white !important;">  </td>
+   <td style="text-align:center;min-width: 10em; background-color: white !important;">  </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;max-width: 30em; background-color: white !important;"> DOM~Lab~ oxidation </td>
+   <td style="text-align:center;max-width: 30em; background-color: white !important;">  </td>
+   <td style="text-align:center;min-width: 10em; background-color: white !important;">  </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;max-width: 30em; background-color: white !important;"> DOM~Ref~ oxidation </td>
+   <td style="text-align:center;max-width: 30em; background-color: white !important;">  </td>
+   <td style="text-align:center;min-width: 10em; background-color: white !important;">  </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;max-width: 30em; background-color: white !important;"> OMModel 3 </td>
+   <td style="text-align:center;max-width: 30em; background-color: white !important;">  </td>
+   <td style="text-align:center;min-width: 10em; background-color: white !important;">  </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;max-width: 30em; background-color: white !important;"> POM~i~ hydrolysis </td>
+   <td style="text-align:center;max-width: 30em; background-color: white !important;">  </td>
+   <td style="text-align:center;min-width: 10em; background-color: white !important;">  </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;max-width: 30em; background-color: white !important;"> D~Hyd~ fermentation </td>
+   <td style="text-align:center;max-width: 30em; background-color: white !important;">  </td>
+   <td style="text-align:center;min-width: 10em; background-color: white !important;">  </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;max-width: 30em; background-color: white !important;"> D~Hyd~ oxidation </td>
+   <td style="text-align:center;max-width: 30em; background-color: white !important;">  </td>
+   <td style="text-align:center;min-width: 10em; background-color: white !important;">  </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;max-width: 30em; background-color: white !important;"> OA~c~, H~2~ oxidation </td>
+   <td style="text-align:center;max-width: 30em; background-color: white !important;">  </td>
+   <td style="text-align:center;min-width: 10em; background-color: white !important;">  </td>
+  </tr>
+</tbody>
+</table></div>
+
+
+
 ###	Variable Summary
+
+
 ###	Parameter Summary
 ###	Optional Module Links
 ###	Feedbacks to the Host Model
