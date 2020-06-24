@@ -16,8 +16,8 @@ The aqueous geochemistry sub-model was developed to simulate aqueous speciation 
 
 #### Aqueous Speciation & Solubility Equilibrium Control {-}
 
-The aqueous geochemistry model is conceptually similar to other equilbrium codes (e.g. ... ). The model defines geochemical reactions in terms of components. An aqueous species 
-$C$ is created as a product of reaction between components $A$ and $B$, as shown in the following example:
+The aqueous geochemistry model is conceptually similar to other equilbrium codes (e.g. ... ). The model defines geochemical reactions in terms of components. An aqueous species $C$ is created as a product of reaction between components $A$ and $B$, as shown in the following example:
+
 <center>
 \begin{equation}
 aA + bB \Longleftrightarrow cC
@@ -26,6 +26,7 @@ aA + bB \Longleftrightarrow cC
 </center>
 
 where $a$, $b$ and $c$ are the stoichiometric coefficients. The reaction shown above is able to proceed back and forward depending on the prevailing conditions of the aqueous solution. The equilibrium of the reaction is a function of the standard free energy, and from this the familiar mass-action expression is defined:
+
 <center>
 \begin{equation}
 K_C=\frac{[C]^c}{[A]^a[B]^b}
@@ -38,127 +39,162 @@ where $K_{C}$ is denoted the equilibrium constant. In any natural aquatic system
 For each component, $X_{x}$, (generally components are equivalent to elements, except for the case of elements with multiple redox states, in which case each redox state is assigned as a unique component), a set of $M$ components is defined, $X \in \{X_1, X_2, ..., X_M\}$. Combination of all the components into an aqueous solution results in numerous reactions taking place of the form of Eq. .., and we define the resultant set of aqueous species that result as: $C \in \{C_1, C_2 ..., C_N\}$, where $N$ is the total number produced.
  
 The `activity' of an aqueous species is not equivalent to its molality due to the nonideality of aqueous solutions; a species activity, \tilde{C} is related to its molality according to the activity coefficient, \gamma:
+
 <center>
 \begin{equation}
   [C_i] = \tilde{C_i} = \gamma_i C_i
 (\#eq:geochem3)
 \end{equation}
 </center>
+
 Numerous methods exist for estimating a species activity coefficient. The first is known as the *Davies* equation:
+
 <center>
 \begin{equation}
   \log \gamma_i = -c_1z_i^2\left(\frac{\sqrt{\mu}}{1+\sqrt{\mu}}-0.3\mu \right)
 (\#eq:geochem4)
 \end{equation}
 </center>
+
 and the other one used in the AED2 solution is the Debye-Huckel equation:
+
 <center>
 \begin{equation}
   \log \gamma_i = -\frac{c_1z_i^2\sqrt{\mu}}{1+c_2c_3\sqrt{\mu}} +c_4\mu
 (\#eq:geochem5)
 \end{equation}
 </center>
+
 where $z_{i}$ is the ionic charge of the $i^{\text{th}}$ species $c_{1-4}$ are constants that depend upon properties such as the temperature of the solution. The activity of a species is dependent on the ionic strength, $\mu$, a solution property defined as:
+
 <center>
 \begin{equation}
   \mu = \frac{1}{2}\sum_i^N{z_i^2\frac{C_i}{W_{aq}}}
 (\#eq:geochem6)
 \end{equation}
 </center>
+
 where $W_{aq}$ is mass of water in the aqueous phase.
 
 To numerically solve the system of equations, the total number of moles of any component is estimated by adding up the amount contained in each species:
+
 <center>
 \begin{equation}
   T_j = \sum_{i=1}^N{a_{ij}C_i} \:\:\:\:\:\:\:\:\:\:\: j=1..M
 (\#eq:geochem7)
 \end{equation}
 </center>
+
 where $))aix$ is the stoichiometric coefficient of component $x$ in species $i$. The activity of each species is calculated using the mass-action equations, which are defined more generically as:
+
 <center>
 \begin{equation}
   \tilde{C}_i = K_i \prod_{j=1}^M{\tilde{X}_j^{a_{ij}}} \:\:\:\:\:\:\: j=1..N
 (\#eq:geochem8)
 \end{equation}
 </center>
+
 Taking the logarithm of both sides of Equation above leaves:
+
 <center>
 \begin{equation}
   log \tilde{C}_i = \log K_i + \sum_{j=1}^M{a_{ij}\log \tilde{X}_j} \:\:\:\:\: j=1..N
 (\#eq:geochem9)
 \end{equation}
 </center>
+
 which can be defined in matrix notation as:
+
 <center>
 \begin{equation}
   \tilde{C}^* = K^*+A\tilde{X}^*
 (\#eq:geochem10)
 \end{equation}
 </center>
+
 where $*$ denotes a vector quantity. The solution is achieved by iterating using a Newton-Rhapson scheme, which aims to minimize the residual, $R$, between the estimated component molalities ($T$) and the known values:
+
 <center>
 \begin{equation}
   R_x = \sum_{i=1}^{N}{a_{ix}C_i-T_x}\:\:\:\:\: i=1..N
 (\#eq:geochem11)
 \end{equation}
 </center>
+
 In matrix notation:
+
 <center>
 \begin{equation}
   R=A^{-1}C-T
 (\#eq:geochem12)
 \end{equation}
 </center>
+
 The Newton-Rhapson technique iterates towards a solution by employing a derivative (termed Jacobian) matrix, $J$:
+
 \begin{equation}
   R=J \Delta X
 (\#eq:geochem13)
 \end{equation}
+
 which is solved for $\Delta X$ at each iteration. The new estimates for $X$ are then updated according to:
+
 <center>
 \begin{equation}
   X^{n+1} = X^n + \Delta X
 (\#eq:geochem14)
 \end{equation}
 </center>
+
 and the whole scheme proceeds until the solution has sufficiently converged, $R<\epsilon$, where $\epsilon$ is a pre-defined convergence criterion ($10^{-10}$ in this code). The Jacobian matrix is defined as:
+
 <center>
 \begin{equation}
   J = \frac{dR_x}{dX_k}
 (\#eq:geochem15)
 \end{equation}
 </center>
+
 which can be expanded to:
+
 <center>
 \begin{equation}
   \frac{dR_x}{dX_k} = \sum_{i=1}^{N}{a_{ik}}\frac{dC_i}{dX_k}-\frac{dT_x}{dX_k}
 (\#eq:geochem16)
 \end{equation}
 </center>
+
 using Eq. .... The derivatives are then defined according to:
+
 <center>
 \begin{equation}
   \frac{dC_i}{dX_k} = a_{ik}\frac{C_i}{X_k}
 (\#eq:geochem17)
 \end{equation}
 </center>
+
 and
+
 <center>
 \begin{equation}
   \frac{dT_x}{dX_k} = 0
 (\#eq:geochem18)
 \end{equation}
 </center>
+
 which are the substituted into Eq. .. to leave
+
 <center>
 \begin{equation}
   \frac{dR_x}{dX_k} = \sum_{i=1}^{N}{a_{ik}\:a_{ik}}\frac{C_i}{X_k}.
 (\#eq:geochem19)
 \end{equation}
 </center>
+
 Therefore for a given total number of moles of each element in each computational cell, using this scheme the model solves for the activity of each aqueous species, ionic strength and $pH$. The charge balance variable (denoted $ubalchg$) is also subject to advection and mixing as all other state variables, and importantly, an estimate of $ubalchg$ must be provided at any inflow boundaries. If this is not done, then the charge balance will be compromised, and will manifest in a poor $pH$ prediction.
 
 The Newton-Rhapson scheme described above is implemented by making use of the Simplex numerical solver (Barrodale and Roberts, 1980; Parkhurst and Appelo, 1999). This is because AED2 also allows for simulation of pure phase (i.e. non-aqueous phase) minerals. When minerals can precipitate and dissolve, properties such as the ionic strength ($MU$), activity of water ($XH_{2}O$) and charge balance ($CV$) may be non-conservative in the aqueous solution. These are therefore included as unknowns in the simplex solver, which uses the Newton-Rhapson technique to solve the following matrix:
+
 <center>
 \begin{equation}
   \begin{array}{lll}
@@ -199,6 +235,7 @@ The Newton-Rhapson scheme described above is implemented by making use of the Si
 (\#eq:geochem20)
 \end{equation}
 </center>
+
 The operation of the simplex solver is complicated and the reader is referred to Barrodale and Roberts (1980) for a detailed account. The aqueous species used in the simulations is based on those from Nordstrom et al. (1990), termed the **WATEQ4F** database.
 
 #### Redox Transformations {-}
