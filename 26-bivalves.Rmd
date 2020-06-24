@@ -301,27 +301,27 @@ where $DO$ is dissolved oxygen (mmol/m3), $K_{BDO}$ is basal respiration rate (m
 
 #### State Variables {-}
 
-<center>
+
 ```{r 26-statevariables, echo=FALSE, message=FALSE, warning=FALSE}
 library(knitr)
 library(kableExtra)
 state_variables <- read.csv("tables/26-bivalves/state_variables.csv", check.names=FALSE)
 kable(state_variables,"html", escape = F, align = "c", caption = "State variables") %>%
-  kable_styling(full_width = F, position = "center") %>%
+  kable_styling(full_width = F, position = "center", font_size =12) %>%
   column_spec(1, width_min = "12em") %>%
-  column_spec(2, width_min = "15em") %>%
+  column_spec(2, width_min = "12em") %>%
   column_spec(3, width_min = "12em") %>%
-  column_spec(4, width_min = "10em") %>%
-  column_spec(5, width_min = "15em") %>%
+  column_spec(4, width_min = "12em") %>%
+  column_spec(5, width_min = "12em") %>%
   row_spec(1:2, background = 'white') %>%
-  scroll_box(width = "725px",
+  scroll_box(width = "770px",
              fixed_thead = FALSE) 
 ```
-</center>
+
 
 #### Diagnostics {-}
 
-<center>
+
 ```{r 26-diagnostics, echo=FALSE, message=FALSE, warning=FALSE}
 library(knitr)
 library(kableExtra)
@@ -329,21 +329,21 @@ variables <- read.csv("tables/26-bivalves/diagnostics.csv", check.names=FALSE)
 kable(variables,"html", escape = F, align = "c", caption = "Diagnostics",
       bootstrap_options = "hover") %>%
   kable_styling(variables, bootstrap_options = "hover", 
-                full_width = F, position = "center") %>%
-  column_spec(1, width_min = "12em") %>%
-  column_spec(2, width_min = "15em") %>%
-  column_spec(3, width_min = "12em") %>%
-  column_spec(4, width_min = "13em") %>%
-  column_spec(5, width_min = "15em") %>%
+                full_width = F, position = "center", font_size =12) %>%
+  column_spec(1, width_min = "6em") %>%
+  column_spec(2, width_min = "6em") %>%
+  column_spec(3, width_min = "6em") %>%
+  column_spec(4, width_min = "6em") %>%
+  column_spec(5, width_min = "6em") %>%
   row_spec(1:13, background = 'white') %>%
-  scroll_box(width = "725px", height = "500px",
+  scroll_box(width = "770px", height = "500px",
              fixed_thead = FALSE) 
 ```
-</center>
+
 
 ###	Parameter Summary
 
-<center>
+
 ```{r 26-parametersummmary, echo=FALSE, message=FALSE, warning=FALSE}
 library(knitr)
 library(kableExtra)
@@ -351,12 +351,12 @@ parameter_summary <- read.csv("tables/26-bivalves/parameter_summary.csv", check.
 kable(parameter_summary,"html", escape = F, align = "c", caption = "Diagnostics",
       bootstrap_options = "hover") %>%
   kable_styling(parameter_summary, bootstrap_options = "hover", 
-                full_width = F, position = "center") %>%
-  column_spec(1, width_min = "8em") %>%
-  column_spec(2, width_min = "4em") %>%
-  column_spec(3, width_min = "4em") %>%
-  column_spec(4, width_min = "4em") %>%
-  column_spec(5, width_min = "13em") %>%
+                full_width = F, position = "center", font_size =12) %>%
+  column_spec(1, width_min = "6em") %>%
+  column_spec(2, width_min = "6em") %>%
+  column_spec(3, width_min = "6em") %>%
+  column_spec(4, width_min = "6em") %>%
+  column_spec(5, width_min = "6em") %>%
   row_spec(1:56, background = 'white') %>%
   row_spec(1:1, background = '#E8EAEF') %>%
   row_spec(7:7, background = '#E8EAEF') %>%
@@ -364,10 +364,10 @@ kable(parameter_summary,"html", escape = F, align = "c", caption = "Diagnostics"
   row_spec(27:27, background = '#E8EAEF') %>%
   row_spec(43:43, background = '#E8EAEF') %>%
   row_spec(49:49, background = '#E8EAEF') %>%
-  scroll_box(width = "725px", height = "500px",
+  scroll_box(width = "770px", height = "500px",
              fixed_thead = FALSE) 
 ```
-</center>
+
 
 ###	Optional Module Links
 ###	Feedbacks to the Host Model
@@ -382,14 +382,16 @@ parameter_config <- read.csv("tables/26-bivalves/parameter_config.csv", check.na
 kable(parameter_config,"html", escape = F, align = "c", caption = "Parameters and configuration",
       bootstrap_options = "hover") %>%
   kable_styling(parameter_config, bootstrap_options = "hover", 
-                full_width = F, position = "center") %>%
-  column_spec(1, width_min = "12em") %>%
-  column_spec(2, width_min = "15em") %>%
-  column_spec(3, width_min = "12em") %>%
-  column_spec(4, width_min = "13em") %>%
-  column_spec(5, width_min = "13em") %>%
+                full_width = F, position = "center", font_size =12) %>%
+  column_spec(1, width_min = "6em") %>%
+  column_spec(2, width_min = "6em") %>%
+  column_spec(3, width_min = "6em") %>%
+  column_spec(4, width_min = "6em") %>%
+  column_spec(5, width_min = "6em") %>%
+  column_spec(6, width_min = "6em") %>%
+  column_spec(7, width_min = "6em") %>%
   row_spec(1:20, background = 'white') %>%
-  scroll_box(width = "725px", height = "500px",
+  scroll_box(width = "770px", height = "500px",
              fixed_thead = FALSE) 
 ```
 

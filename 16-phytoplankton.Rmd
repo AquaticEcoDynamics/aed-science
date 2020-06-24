@@ -130,11 +130,11 @@ library(kableExtra)
 state_variables <- read.csv("tables/16-phytoplankton/state_variables.csv", check.names=FALSE)
 kable(state_variables,"html", escape = F, align = "c", caption = "State variables") %>%
   kable_styling(full_width = F, position = "center", font_size = 12) %>%
-  column_spec(1, width_min = "6em") %>%
-  column_spec(2, width_min = "6em") %>%
-  column_spec(3, width_min = "6em") %>%
-  column_spec(4, width_min = "6em") %>%
-  column_spec(5, width_min = "6em") %>%
+  column_spec(1, width_min = "12em") %>%
+  column_spec(2, width_min = "12em") %>%
+  column_spec(3, width_min = "12em") %>%
+  column_spec(4, width_min = "12em") %>%
+  column_spec(5, width_min = "12em") %>%
   row_spec(1:3, background = 'white') %>%
   scroll_box(width = "770px",
              fixed_thead = FALSE) 
@@ -172,7 +172,6 @@ library(kableExtra)
 library(dplyr)
 library(tidyverse)
 parameter_summary <- read.csv("tables/16-phytoplankton/parameter_summary.csv", check.names=FALSE) 
-parameter_summary <- data.frame(lapply(parameter_summary, as.character), stringsAsFactors=FALSE)
 kable(parameter_summary,"html", escape = F, align = "c", caption = "Diagnostics",
       bootstrap_options = "hover") %>%
   kable_styling(parameter_summary, bootstrap_options = "hover", 

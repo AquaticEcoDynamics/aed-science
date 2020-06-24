@@ -93,11 +93,11 @@ state_variables <- read.csv("tables/20-pathogens_microbial_indicators/state_vari
 kable(state_variables,"html", escape = F, align = "c", caption = "State variables") %>%
   kable_styling(full_width = F, position = "center",
                 font_size = 12) %>%
-  column_spec(1, width_min = "12em") %>%
-  column_spec(2, width_min = "15em") %>%
+  column_spec(1, width_min = "13em") %>%
+  column_spec(2, width_min = "12em") %>%
   column_spec(3, width_min = "12em") %>%
   column_spec(4, width_min = "10em") %>%
-  column_spec(5, width_min = "15em") %>%
+  column_spec(5, width_min = "13em") %>%
   row_spec(1:1, background = 'white') %>%
   scroll_box(width = "750px",
              fixed_thead = FALSE) 
@@ -167,12 +167,12 @@ kable(parameter_config,"html", escape = F, align = "c", caption = "Parameters an
   kable_styling(parameter_config, bootstrap_options = "hover", 
                 full_width = F, position = "center",
                 font_size = 12) %>%
-  column_spec(1, width_min = "12em") %>%
-  column_spec(2, width_min = "15em") %>%
-  column_spec(3, width_min = "12em") %>%
-  column_spec(4, width_min = "13em") %>%
-  column_spec(5, width_min = "10em") %>%
-  column_spec(6, width_min = "10em") %>%
+  column_spec(1, width_min = "14em") %>%
+  column_spec(2, width_min = "14em") %>%
+  column_spec(3, width_min = "6em") %>%
+  column_spec(4, width_min = "6em") %>%
+  column_spec(5, width_min = "6em") %>%
+  column_spec(6, width_min = "6em") %>%
   row_spec(1:1, background = 'white') %>%
   scroll_box(width = "750px",
              fixed_thead = FALSE) 
