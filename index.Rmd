@@ -6,7 +6,8 @@ site: bookdown::bookdown_site
 documentclass: book
 bibliography:  ["references/pathogens.bib",
               "references/generic_utilities_functions.bib",
-              "references/bivalves.bib"]
+              "references/bivalves.bib",
+              "references/publications.bib"]
 biblio-style: apalike
 link-citations: yes
 github-repo: AquaticEcoDynamics/aed-science/

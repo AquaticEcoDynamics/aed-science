@@ -1,1 +1,33 @@
 # Publications
+
+The following publications have applied the AED modelling library. Please edit this page by clicking the above icon if you wish to have a new publication added, or contact the authors.
+
+---
+nocite: | 
+@bruce2014, @bucak2018, @chen2018, @coletti2017, @bruce2019, @farrell2020, @fenocchi2019, @fenocchi2020, @griffith2014, @huang2018, @krinos2019, @liu2020, @snortheim2017, @subratie2017, @ward2020, @weber2017, @weng2020, @zhang2017
+...
+
+
+<details>
+
+  <summary>
+    Table \@ref(tab:16-diagnostics)
+  </summary>
+  ```{r 16-diagnostics, echo=FALSE, message=FALSE, warning=FALSE}
+library(knitr)
+library(kableExtra)
+diagnostics <- read.csv("tables/16-phytoplankton/diagnostics.csv", check.names=FALSE)
+kable(diagnostics,"html", escape = F, align = "c", caption = "Diagnostics") %>%
+  kable_styling(diagnostics, bootstrap_options = "basic", 
+                full_width = F, position = "center", font_size = 12) %>%
+  column_spec(1, width_min = "6em") %>%
+  column_spec(2, width_min = "6em") %>%
+  column_spec(3, width_min = "6em") %>%
+  column_spec(4, width_min = "6em") %>%
+  column_spec(5, width_min = "6em") %>%
+  row_spec(1:17, background = 'white') %>%
+  scroll_box(width = "770px", height = "500px",
+             fixed_thead = FALSE) 
+  ```
+
+</details>
