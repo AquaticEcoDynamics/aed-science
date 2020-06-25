@@ -1,1 +1,3 @@
-# AED Draft Manual User Guide
+# AED Manual User Guide
+
+https://aquaticecodynamics.github.io/aed-science/
