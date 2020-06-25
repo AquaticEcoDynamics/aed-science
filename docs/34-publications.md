@@ -2,11 +2,11 @@
 
 The following publications have applied the AED modelling library. Please edit this page by clicking the above icon if you wish to have a new publication added, or contact the authors.
 
-<details>
+<details open>
   <summary>
     Table \@ref(tab:34-publications)
   </summary>
-  <div style="border: 1px solid #ddd; padding: 5px; overflow-y: scroll; height:500px; overflow-x: scroll; width:770px; "><table class="table" style="font-size: 12px; width: auto !important; ">
+  <div style="border: 1px solid #ddd; padding: 5px; overflow-y: scroll; height:900px; overflow-x: scroll; width:770px; "><table class="table" style="font-size: 12px; width: auto !important; ">
   <caption style="font-size: initial !important;">(\#tab:34-publications)Publications</caption>
    <thead>
     <tr>
@@ -116,7 +116,7 @@ The following publications have applied the AED modelling library. Please edit t
   </table></div>
 </details>
 
-<details>
+<details open>
   <summary>
     *Chapter 5: Tracers & Water Algae*
   </summary>
@@ -124,11 +124,10 @@ The following publications have applied the AED modelling library. Please edit t
 </details>
 </details>
 
-<details>
+<details open>
   <summary>
     *Chapter 6: Suspended Sediment*
   </summary>
 
 </details>
-
 
