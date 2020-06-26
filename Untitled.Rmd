@@ -1,27 +1,9 @@
-# Publications
-
-The following publications have applied the AED modelling library. Please edit this page by clicking the above icon if you wish to have a new publication added, or contact the authors.
-
-<details open>
-  <summary>
-    Table \@ref(tab:34-publications)
-  </summary>
-  ```{r 34-publications, echo=FALSE, message=FALSE, warning=FALSE}
-library(knitr)
-library(kableExtra)
-publications <- read.csv("tables/34-publications/publications.csv", check.names=FALSE)
-kable(publications,"html", escape = F, align = "c", caption = "Publications") %>%
-  kable_styling(publications, bootstrap_options = "basic", 
-                full_width = F, position = "left", font_size = 12) %>%
-  column_spec(1, width_min = "6em") %>%
-  column_spec(2, width_min = "6em") %>%
-  column_spec(3, width_min = "6em") %>%
-  row_spec(1:19, background = 'white') %>%
-  scroll_box(width = "770px", height = "900px",
-             fixed_thead = FALSE) 
-  ```
-</details>
-
+---
+title: "Untitled"
+author: "Giles Knight"
+date: "26/06/2020"
+output: html_document
+---
 
 
 <head>
@@ -110,6 +92,5 @@ function openCity(evt, cityName) {
 </script>
    
 </body>
-
 
 

@@ -15,6 +15,11 @@ url: ''
 description: "Work in progress."
 ---
 
+```{r}
+knitr::opts_chunk$set(cache = F)
+```
+
+
 # Modelling Aquatic Eco-Dynamics: Overview of the AED modular simulation platform {-}
 
 ## Welcome {-}
@@ -25,17 +30,20 @@ Inspired by [**bookdown**](https://github.com/rstudio/bookdown) and the Open Dat
 
 The model platform has been applied to many diverse sites across the globe (Figure \@ref(fig:aed-sites)) and we hope it can be useful to help with your application!
 
-```{r aed-sites, echo=FALSE, message=FALSE, warning=FALSE, fig.cap="Locations of where the AED/AED2 model platform has been applied around the world"}
+```{r aed-sites, echo=FALSE, fig.cap="Locations", message=FALSE, warning=FALSE, cache=FALSE}
 library(leaflet)
 library(dplyr)
+library(htmlwidgets)
+library(htmltools)
 aed_icon  <- makeIcon(
   iconUrl = "maps/marker.png",
   iconWidth = 30, iconHeight = 30)
 
 aed_sites <- read.csv("maps/aed-sites.csv")
-leaflet(data = aed_sites,height=400, width=770) %>% addTiles() %>%
+leaflet(height=400, width=770) %>% addProviderTiles(providers$Stamen.Toner) %>%
   setView(lng = 0, lat = 0, zoom = 1) %>%
-  addMarkers(~Lon, ~Lat, popup = ~Model, icon = aed_icon) 
+  addMarkers(data = aed_sites, ~Lon, ~Lat, popup = ~Model, icon = aed_icon) 
+  
 ```
 
 ## How to Contribute?{-}

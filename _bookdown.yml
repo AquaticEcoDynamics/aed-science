@@ -38,7 +38,7 @@ rmd_files: ["index.Rmd",
             "35-abbreviations.Rmd",
             "36-references.Rmd"]
 clean: [packages.bib, bookdown.bbl]
-new_session: yes
+new_session: no
 
 
 
