@@ -2,28 +2,6 @@
 
 The following publications have applied the AED modelling library. Please edit this page by clicking the above icon if you wish to have a new publication added, or contact the authors.
 
-<details open>
-  <summary>
-    Table \@ref(tab:34-publications)
-  </summary>
-  ```{r 34-publications, echo=FALSE, message=FALSE, warning=FALSE}
-library(knitr)
-library(kableExtra)
-publications <- read.csv("tables/34-publications/publications.csv", check.names=FALSE)
-kable(publications,"html", escape = F, align = "c", caption = "Publications") %>%
-  kable_styling(publications, bootstrap_options = "basic", 
-                full_width = F, position = "left", font_size = 12) %>%
-  column_spec(1, width_min = "6em") %>%
-  column_spec(2, width_min = "6em") %>%
-  column_spec(3, width_min = "6em") %>%
-  row_spec(1:19, background = 'white') %>%
-  scroll_box(width = "770px", height = "900px",
-             fixed_thead = FALSE) 
-  ```
-</details>
-
-
-
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
@@ -33,12 +11,12 @@ body {font-family: Arial;}
 .tab {
   overflow: hidden;
   border: 1px solid #ccc;
-  background-color: #f1f1f1;
+  background-color: #2481AA;
 }
 
 /* Style the buttons inside the tab */
 .tab button {
-  background-color: inherit;
+  background-color: #2481AA;
   float: left;
   border: none;
   outline: none;
@@ -46,16 +24,18 @@ body {font-family: Arial;}
   padding: 14px 16px;
   transition: 0.3s;
   font-size: 17px;
+  color: #FFFFFF;
+  font-weight: bold;
 }
 
 /* Change background color of buttons on hover */
 .tab button:hover {
-  background-color: #ddd;
+  background-color: #2DA4D0;
 }
 
 /* Create an active/current tablink class */
 .tab button.active {
-  background-color: #ccc;
+  background-color: #1E7198;
 }
 
 /* Style the tab content */
@@ -69,28 +49,39 @@ body {font-family: Arial;}
 </head>
 <body>
 
-<h2>Tabs</h2>
-<p>Click on the buttons inside the tabbed menu:</p>
-
 <div class="tab">
-  <button class="tablinks" onclick="openCity(event, 'London')">London</button>
-  <button class="tablinks" onclick="openCity(event, 'Paris')">Paris</button>
-  <button class="tablinks" onclick="openCity(event, 'Tokyo')">Tokyo</button>
+  <button class="tablinks" onclick="openCity(event, 'London')"id="defaultOpen">Publications</button>
+  <button class="tablinks" onclick="openCity(event, 'Paris')">Tab 2</button>
+  <button class="tablinks" onclick="openCity(event, 'Tokyo')">Tab 3</button>
 </div>
 
 <div id="London" class="tabcontent">
-  <h3>London</h3>
-  <p>London is the capital city of England.</p>
+  <p>
+    ```{r 35-publications, echo=FALSE, message=FALSE, warning=FALSE}
+library(knitr)
+library(kableExtra)
+publications <- read.csv("tables/34-publications/publications.csv", check.names=FALSE)
+kable(publications,"html", escape = F, align = "c", caption = "Publications") %>%
+  kable_styling(publications, bootstrap_options = "basic", 
+                full_width = F, position = "left", font_size = 12) %>%
+  column_spec(1, width_min = "6em") %>%
+  column_spec(2, width_min = "6em") %>%
+  column_spec(3, width_min = "6em") %>%
+  row_spec(1:19, background = 'white') %>%
+  scroll_box(width = "750px", height = "900px",
+             fixed_thead = FALSE) 
+    ```
+  </p>
 </div>
 
 <div id="Paris" class="tabcontent">
-  <h3>Paris</h3>
-  <p>Paris is the capital of France.</p> 
+  <h3>Tab 2</h3>
+  <p>This is the second tab</p> 
 </div>
 
 <div id="Tokyo" class="tabcontent">
-  <h3>Tokyo</h3>
-  <p>Tokyo is the capital of Japan.</p>
+  <h3>Tab 3</h3>
+  <p>This is the third tab.</p>
 </div>
 
 <script>
@@ -107,7 +98,10 @@ function openCity(evt, cityName) {
   document.getElementById(cityName).style.display = "block";
   evt.currentTarget.className += " active";
 }
+document.getElementById("defaultOpen").click();
 </script>
+
+
    
 </body>
 

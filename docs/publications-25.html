@@ -724,14 +724,63 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <div id="publications-25" class="section level1" number="31">
 <h1><span class="header-section-number">31</span> Publications</h1>
 <p>The following publications have applied the AED modelling library. Please edit this page by clicking the above icon if you wish to have a new publication added, or contact the authors.</p>
-<details open>
-<summary>
-Table <a href="publications-25.html#tab:34-publications">31.1</a>
-</summary>
-<div style="border: 1px solid #ddd; padding: 5px; overflow-y: scroll; height:900px; overflow-x: scroll; width:770px; ">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {font-family: Arial;}
+
+/* Style the tab */
+.tab {
+  overflow: hidden;
+  border: 1px solid #ccc;
+  background-color: #2481AA;
+}
+
+/* Style the buttons inside the tab */
+.tab button {
+  background-color: #2481AA;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  transition: 0.3s;
+  font-size: 17px;
+  color: #FFFFFF;
+  font-weight: bold;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+  background-color: #2DA4D0;
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+  background-color: #1E7198;
+}
+
+/* Style the tab content */
+.tabcontent {
+  display: none;
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  border-top: none;
+}
+</style>
+</head>
+<body>
+<div class="tab">
+<p><button class="tablinks" onclick="openCity(event, 'London')"id="defaultOpen">Publications</button>
+<button class="tablinks" onclick="openCity(event, 'Paris')">Tab 2</button>
+<button class="tablinks" onclick="openCity(event, 'Tokyo')">Tab 3</button></p>
+</div>
+<div id="London" class="tabcontent">
+<p>
+<div style="border: 1px solid #ddd; padding: 5px; overflow-y: scroll; height:900px; overflow-x: scroll; width:750px; ">
 <table class="table" style="font-size: 12px; width: auto !important; ">
 <caption style="font-size: initial !important;">
-<span id="tab:34-publications">Table 31.1: </span>Publications
+<span id="tab:35-publications">Table 31.1: </span>Publications
 </caption>
 <thead>
 <tr>
@@ -960,84 +1009,22 @@ Lake
 </tbody>
 </table>
 </div>
-</details>
-<head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<style>
-body {font-family: Arial;}
-
-/* Style the tab */
-.tab {
-  overflow: hidden;
-  border: 1px solid #ccc;
-  background-color: #f1f1f1;
-}
-
-/* Style the buttons inside the tab */
-.tab button {
-  background-color: inherit;
-  float: left;
-  border: none;
-  outline: none;
-  cursor: pointer;
-  padding: 14px 16px;
-  transition: 0.3s;
-  font-size: 17px;
-}
-
-/* Change background color of buttons on hover */
-.tab button:hover {
-  background-color: #ddd;
-}
-
-/* Create an active/current tablink class */
-.tab button.active {
-  background-color: #ccc;
-}
-
-/* Style the tab content */
-.tabcontent {
-  display: none;
-  padding: 6px 12px;
-  border: 1px solid #ccc;
-  border-top: none;
-}
-</style>
-</head>
-<body>
-<h2>
-Tabs
-</h2>
-<p>
-Click on the buttons inside the tabbed menu:
-</p>
-<div class="tab">
-<p><button class="tablinks" onclick="openCity(event, 'London')">London</button>
-<button class="tablinks" onclick="openCity(event, 'Paris')">Paris</button>
-<button class="tablinks" onclick="openCity(event, 'Tokyo')">Tokyo</button></p>
-</div>
-<div id="London" class="tabcontent">
-<h3>
-London
-</h3>
-<p>
-London is the capital city of England.
 </p>
 </div>
 <div id="Paris" class="tabcontent">
 <h3>
-Paris
+Tab 2
 </h3>
 <p>
-Paris is the capital of France.
+This is the second tab
 </p>
 </div>
 <div id="Tokyo" class="tabcontent">
 <h3>
-Tokyo
+Tab 3
 </h3>
 <p>
-Tokyo is the capital of Japan.
+This is the third tab.
 </p>
 </div>
 <script>
@@ -1054,6 +1041,7 @@ function openCity(evt, cityName) {
   document.getElementById(cityName).style.display = "block";
   evt.currentTarget.className += " active";
 }
+document.getElementById("defaultOpen").click();
 </script>
 </body>
 
