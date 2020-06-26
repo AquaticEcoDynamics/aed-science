@@ -19,13 +19,19 @@ description: "Work in progress."
 
 Welcome!
 <br>
+
 <center>
 ```{r echo=FALSE, message=FALSE, warning=FALSE}
 library(leaflet)
-leaflet() %>%
-  setView(lng = 116.037, lat = -32.835, zoom = 10) %>%
-  addTiles() %>%
-  addMarkers(lng = 116.037, lat = -32.835, popup = "")
+library(dplyr)
+aed_icon  <- makeIcon(
+  iconUrl = "maps/marker.png",
+  iconWidth = 30, iconHeight = 30)
+
+aed_sites <- read.csv("maps/aed-sites.csv")
+leaflet(data = aed_sites,height=400, width=770) %>% addTiles() %>%
+  setView(lng = 0, lat = 0, zoom = 1) %>%
+  addMarkers(~Lon, ~Lat, popup = ~Model, icon = aed_icon) 
 ```
 </center>
 
