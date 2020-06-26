@@ -1,5 +1,30 @@
 # Nomenclature
 
+## Variables and Data Types 
+
+There is often confusion over the types of variables and data-types used within the modules. Standard terminology adopted in the AED system is described in Table \@ref(tab:vardatatypes).
+
+<details open>
+  <summary>
+    Table \@ref(tab:vardatatypes)
+  </summary>
+```{r vardatatypes, echo=FALSE, message=FALSE, warning=FALSE}
+library(knitr)
+library(kableExtra)
+library(hablar)
+library(dplyr)
+#options(knitr.kable.NA = '')
+var_data_types <- read.csv("tables/05-nomenclature/var_data_types.csv", check.names=FALSE) 
+kable(var_data_types, format = "html", escape = F, align = "l", col.names = NULL, caption = "Variables and data types") %>%
+  kable_styling(full_width = F) %>%
+  column_spec(1, width_min = "10em") %>%
+  column_spec(2, width_min = "10em") %>%
+  row_spec(1:7, background = 'white') %>%
+  scroll_box(width = "770px", height = "800px",
+             fixed_thead = FALSE) 
+```
+</details>
+
 ## A Note on Notation
 
 The remainder of this section presents the range of equations and parameterisations adopted by the various model approaches. For consistency, a standard mathematical notation is used.
@@ -17,4 +42,3 @@ The remainder of this section presents the range of equations and parameterisati
 - $c,\theta,\gamma…$ 		= coefficient  (various units)
 
 
-## Data Types
