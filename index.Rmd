@@ -15,13 +15,17 @@ url: ''
 description: "Work in progress."
 ---
 
-# Welcome{-}
+# Modelling Aquatic Eco-Dynamics : Overview of the AED modular simulation platform {-}
 
-Welcome!
-<br>
+## Welcome {-}
 
-<center>
-```{r echo=FALSE, message=FALSE, warning=FALSE}
+This is the online home of *Modelling Aquatic Eco-Dynamics*, a book on describing the AED/AED2 modelling platform for the simulation of aquatic ecosystem dynamics.
+
+Inspired by [**bookdown**](https://github.com/rstudio/bookdown) and the Open Data movement in ecology and the environmental sciences (eg Read et al 2015), this book is open source. This encourages a collaborative approach to model development and discussion and ensures the approaches adopted by the user-community are reproducible and publicly accessible for people worldwide. 
+
+The model platform has been applied to many diverse sites across the globe (Figure \@ref(fig:aed-sites)) and we hope it can be useful to help with your application!
+
+```{r aed-sites, echo=FALSE, message=FALSE, warning=FALSE, fig.cap="Locations of where the AED/AED2 model platform has been applied around the world"}
 library(leaflet)
 library(dplyr)
 aed_icon  <- makeIcon(
@@ -33,10 +37,49 @@ leaflet(data = aed_sites,height=400, width=770) %>% addTiles() %>%
   setView(lng = 0, lat = 0, zoom = 1) %>%
   addMarkers(~Lon, ~Lat, popup = ~Model, icon = aed_icon) 
 ```
+
+## How to Contribute?{-}
+
+You may be a new user seeking to understand how to get started, or you may interested to tailor a module to your research or management application. As modules evolve, through incremental improvements or wholesale changes, the experts working on these changes can ensure the latest information is available to the community by updating and improving this book. 
+
+**bookdown** makes editing a book as easy as editing a wiki, provided you have a GitHub account ([sign-up at github.com](https://github.com/)).
+Once logged-in to GitHub, click on the 'edit me' icon highlighted with a red ellipse in the image below.
+
+This will take you to an editable version of the the source [R Markdown](http://rmarkdown.rstudio.com/) file that generated the page you're on:
+
+<center>
+```{r edit, echo=FALSE, out.width = '100%'}
+knitr::include_graphics("images/index/edit.png")
+```
 </center>
 
-## How to contribute?{-}
+To raise an issue about the book's content (e.g. code not running) or make a feature request, check-out the [issue tracker](https://github.com/Robinlovelace/geocompr/issues). 
+
+Readers may also use the hypothes.is utility on the right margin of the book to add personal annotations and public comments on the book content.
+
+Maintainers and contributors must follow this repository’s [CODE OF CONDUCT](https://github.com/Robinlovelace/geocompr/blob/master/CODE_OF_CONDUCT.md).
 
 ## Reproducibility{-}
 
+To build the book locally, clone or download the aed-science repo, load R in root directory (e.g. by opening aed-sceince.Rproj in RStudio) and run the following lines:
+
+```{r eval=FALSE}
+
+bookdown::render_book("index.Rmd") # to build the book
+browseURL("_book/index.html") # to view it 
+
+```
+
 ## Supporting the project{-}
+
+If you find AED useful, please support it by:
+
+- Telling people about it in person
+- Communicating about the model in digital media e.g. via the [#xxxxxx hashtag](https://twitter.com/hashtag/geocompr) on Twitter (see our [Guestbook at geocompr.github.io](https://geocompr.github.io/guestbook/)) or by letting us know of [courses](https://github.com/geocompr/geocompr.github.io/edit/source/content/guestbook/index.md) using the book
+- [Citing](https://github.com/Robinlovelace/geocompr/raw/master/cite-geocompr.bib) or [linking-to](https://geocompr.robinlovelace.net/) it
+- '[Starring](https://help.github.com/articles/about-stars/)' the [geocompr GitHub repository](https://github.com/robinlovelace/geocompr)
+- Reviewing it, e.g. on Amazon or [Goodreads](https://www.goodreads.com/book/show/42780859-geocomputation-with-r)
+- Asking questions about or making suggestion on the content via [GitHub](https://github.com/Robinlovelace/geocompr/issues/372) or Twitter.
+- [Buying](https://www.amazon.com/Geocomputation-Chapman-Hall-Robin-Lovelace/dp/1138304514/) a copy
+
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License</a>.

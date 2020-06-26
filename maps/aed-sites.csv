@@ -1,47 +1,47 @@
 Model,LAKE,Country,Lat,Lon
-GLM,Alexandrina,Australia ,-35,139
-GLM,Ammersee,Germany ,48,11
-GLM,Blelham Tarn,UK ,54,-2
-GLM,Bourget,France ,45.729678,5.869579
-GLM,Cannonsville,USA ,42,-75
-GLM,Cayuga Lake,USA ,42,-76
-GLM,Como,Italy ,46,9
-GLM,Constance,Germany ,47,9
-GLM,ElGergal,Spain ,37.559757,-6.051915
-GLM,Esthwaite Water,UK ,54,-3
-GLM,Harp,Canada ,55,-62
-GLM,Iseo,Italy ,46,10
-GLM,Kinneret,Israel ,33,36
-GLM,Mendota,USA ,43,-89
-GLM,MountBold,Australia ,-35,139
-GLM,Müggelsee,Germany ,52,14
-GLM,Oneida Lake,USA ,43,-75
-GLM,Pusaino,Italy ,46,9
-GLM,Rassnitzersee,Germany ,51,12
-GLM,Rappbode Reservoir,Germany ,52,11
-GLM,Ravn,Denmark ,56,10
-GLM,Rotorua,New Zealand ,-38,176
-GLM,Stechlin,Germany ,53,13
-GLM,Tarawera,New Zealand ,-38,176
-GLM,Windermere,UK ,54,-2
-GLM,Zurich,Switzerland ,47,9
-TFV,Swan,Australia,-31.859642,115.997693
-TFV,Canning,Australia,-32.027923,115.878305
-TFV,Caboolture,Australia,-27.04711,153.127579
-TFV,Yarra,Australia,-37.81352,145.202287
-TFV,Lake Toolibin,Australia,-32.920144,117.605343
-TFV,Lake Bryde,Australia,-33.350765,118.82617
-TFV,Aire,Australia,-38.77966,143.469698
-TFV,Bass,Australia,-38.46573,145.512884
-TFV,Curdies,Australia,-38.515522,142.840847
-TFV,Kororoit,Australia,-37.856179,144.854551
-TFV,Moyne,Australia,-38.362975,142.253504
-TFV,Tarra,Australia,-38.638492,146.713496
-TFV,Werribee,Australia,-37.903224,144.655634
-TFV,Wingan,Australia,-37.5352,149.395056
-TFV,Gippsland,Australia,-38.017455,147.58628
-TFV,Hawkesbury,Australia,-33.773,150.690076
-TFV,Mealup,Australia,-32.678998,115.710688
-TFV,LowerLakes,Australia,-35.445193,139.080407
-TFV,River Murray,Australia,-35.186997,139.317542
-TFV,Peel,Australia,-32.65802,115.668749
+GLM,Alexandrina,Australia ,-35.00,139.00
+GLM,Ammersee,Germany ,48.00,11.00
+GLM,Blelham Tarn,UK ,54.00,-2.00
+GLM,Bourget,France ,45.73,5.87
+GLM,Cannonsville,USA ,42.00,-75.00
+GLM,Cayuga Lake,USA ,42.00,-76.00
+GLM,Como,Italy ,46.00,9.00
+GLM,Constance,Germany ,47.00,9.00
+GLM,ElGergal,Spain ,37.56,-6.05
+GLM,Esthwaite Water,UK ,54.00,-3.00
+GLM,Harp,Canada ,55.00,-62.00
+GLM,Iseo,Italy ,46.00,10.00
+GLM,Kinneret,Israel ,33.00,36.00
+GLM,Mendota,USA ,43.00,-89.00
+GLM,MountBold,Australia ,-35.00,139.00
+GLM,Müggelsee,Germany ,52.00,14.00
+GLM,Oneida Lake,USA ,43.00,-75.00
+GLM,Pusaino,Italy ,46.00,9.00
+GLM,Rassnitzersee,Germany ,51.00,12.00
+GLM,Rappbode Reservoir,Germany ,52.00,11.00
+GLM,Ravn,Denmark ,56.00,10.00
+GLM,Rotorua,New Zealand ,-38.00,176.00
+GLM,Stechlin,Germany ,53.00,13.00
+GLM,Tarawera,New Zealand ,-38.00,176.00
+GLM,Windermere,UK ,54.00,-2.00
+GLM,Zurich,Switzerland ,47.00,9.00
+TFV,Swan,Australia,-31.86,116.00
+TFV,Canning,Australia,-32.03,115.88
+TFV,Caboolture,Australia,-27.05,153.13
+TFV,Yarra,Australia,-37.81,145.20
+TFV,Lake Toolibin,Australia,-32.92,117.61
+TFV,Lake Bryde,Australia,-33.35,118.83
+TFV,Aire,Australia,-38.78,143.47
+TFV,Bass,Australia,-38.47,145.51
+TFV,Curdies,Australia,-38.52,142.84
+TFV,Kororoit,Australia,-37.86,144.85
+TFV,Moyne,Australia,-38.36,142.25
+TFV,Tarra,Australia,-38.64,146.71
+TFV,Werribee,Australia,-37.90,144.66
+TFV,Wingan,Australia,-37.54,149.40
+TFV,Gippsland,Australia,-38.02,147.59
+TFV,Hawkesbury,Australia,-33.77,150.69
+TFV,Mealup,Australia,-32.68,115.71
+TFV,LowerLakes,Australia,-35.45,139.08
+TFV,River Murray,Australia,-35.19,139.32
+TFV,Peel,Australia,-32.66,115.67
