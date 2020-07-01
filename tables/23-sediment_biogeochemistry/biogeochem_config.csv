@@ -1,0 +1,16 @@
+﻿Biogeochemical configuration,Unit,Description
+`Omapproach`,1/2,"Kinetic redox equations, corresponding to the approaches of chapter 2"
+`OMModel`,1/2/3,"Organic matter breakdown models, as described in Table 5 - 1, Figure 5 - 2"
+`FTem switch`,1/2,Sets reaction rate dependency on temperature
+`FT switch`,1/2,Sets reaction rate dependency on thermodynamics
+`FBio switch`,1/2,Sets reaction rate dependency on biomass concentration
+`FIN switch`,1/2,Sets reaction rate dependency on concentration of other oxidants
+`simMnFe`,T/F,Turns all Mn and Fe primary and secondary reactions on or off
+`simFeS`,T/F,Turns all FeS reactions on or off
+`simX`,T/F,Allows simulation of adsorbed metal X
+`Xname`,“X”,"Metal X: “As”, “Cu”, “Cd”, “Pb”, “Ni”, “Zn”"
+`simCaCO3`,T/F,Turns all calcite reactions on or off
+`simFeCO3`,T/F,Turns all siderite reactions on or off
+`simMnCO3`,T/F,Turns all rhodchrosite reactions on or off
+`simNPads`,T/F,Turns N and P adsorption on or off
+`rxn_mode`,0/1,Sets precipitation to: kinetic-0; IAP/K~sp~-1

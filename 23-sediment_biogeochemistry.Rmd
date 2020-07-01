@@ -138,6 +138,43 @@ The model is set up via the name list text file `fabm.nml` using the model keywo
 
 Each active sediment model within the FABM model is discretised into a user definable number of depth layers (maxnpts) that start at a thickness of a few mm at the sediment-water interface and which increase exponentially down to a pre-defined sediment depth (xl). Users must define the sediment domain physical properties as summarised in Table 5 - 10, including configuration options related to bioturbation and irrigation. The biogeochemical configuration (Table 5 - 11), rate constants (see Table 5 - 12 and Table 5 - 13) must be set according to the sub-model options described above. 
 
+```{r 23sedimentparameters, echo=FALSE, message=FALSE, warning=FALSE}
+library(knitr)
+library(kableExtra)
+sediment_parameters <- read.csv("tables/23-sediment_biogeochemistry/sediment_parameters.csv", check.names=FALSE)
+kable(sediment_parameters,"html", escape = F, align = "c", caption = "Sediment physical and transport parameters",
+      bootstrap_options = "hover") %>%
+  kable_styling(sediment_parameters, bootstrap_options = "hover", 
+                full_width = F, position = "center",
+                font_size = 12) %>%
+  column_spec(1, width_min = "15em") %>%
+  column_spec(2, width_min = "15em") %>%
+  column_spec(3, width_min = "15em") %>%
+  column_spec(4, width_min = "15em") %>%
+  row_spec(1:19, background = 'white') %>%
+  scroll_box(width = "770px", height = "500px",
+             fixed_thead = FALSE) 
+```
+
+<br>
+
+```{r 23biogeochemconfig, echo=FALSE, message=FALSE, warning=FALSE}
+library(knitr)
+library(kableExtra)
+biogeochem_config <- read.csv("tables/23-sediment_biogeochemistry/biogeochem_config.csv", check.names=FALSE)
+kable(biogeochem_config,"html", escape = F, align = "c", caption = "The major biogeochemical configuration options, which are set by the user before the model is initialised",
+      bootstrap_options = "hover") %>%
+  kable_styling(biogeochem_config, bootstrap_options = "hover", 
+                full_width = F, position = "center",
+                font_size = 12) %>%
+  column_spec(1, width_min = "15em") %>%
+  column_spec(2, width_min = "15em") %>%
+  column_spec(3, width_min = "15em") %>%
+  row_spec(1:15, background = 'white') %>%
+  scroll_box(width = "770px", height = "500px",
+             fixed_thead = FALSE) 
+```
+
 The initial conditions for each variable are set as a list by the “initial_vals”, which sets a constant concentration with depth in units of μmol L-1. For organic matter initial concentrations only, there are three available options for the concentration with depth, set by “OMInitMethodL”. 
 
 The sediment-water interface is the uppermost layer of the sediment, for which there are three configuration options set by the parameter `ibc2`. If the user specifies `ibc2 = 2`, the concentration is a constant value set by `default_vals` in the `fabm.nml` name list. For `ibc2 = 1`, the concentration is provided by a “link_variable”, which provides the concentration from another simulated water column FABM module. If the variable name in the link list is left blank (“ ”) then AED_CANDI will assume these variables are not linked to any water column variables and default to the “default_vals” values. If `ibc2 = 10`, the concentration is provided by a user-prescribed temporally variable value read from the file `aed_sediment_swibc.dat`. This option may desirable, for example, for simulating a seasonally or daily changing boundary condition. 

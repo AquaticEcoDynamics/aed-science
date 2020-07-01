@@ -988,6 +988,478 @@ Figure 20.5: The program is firstly initialised, then loops through the kinetic 
 <h3><span class="header-section-number">20.4.3</span> Model Setup, Boundary Conditions &amp; Parameter Definition</h3>
 <p>The model is set up via the name list text file <code>fabm.nml</code> using the model keyword “aed_seddiagenesis” with the model configured to select the “Dynamic” option. Once this is selected, the model will search for the “&amp;aed_sedcandi” parameter block within fabm.nml.</p>
 <p>Each active sediment model within the FABM model is discretised into a user definable number of depth layers (maxnpts) that start at a thickness of a few mm at the sediment-water interface and which increase exponentially down to a pre-defined sediment depth (xl). Users must define the sediment domain physical properties as summarised in Table 5 - 10, including configuration options related to bioturbation and irrigation. The biogeochemical configuration (Table 5 - 11), rate constants (see Table 5 - 12 and Table 5 - 13) must be set according to the sub-model options described above.</p>
+<div style="border: 1px solid #ddd; padding: 5px; overflow-y: scroll; height:500px; overflow-x: scroll; width:770px; ">
+<table class="table table-hover" style="font-size: 12px; width: auto !important; margin-left: auto; margin-right: auto;">
+<caption style="font-size: initial !important;">
+<span id="tab:23sedimentparameters">Table 20.2: </span>Sediment physical and transport parameters
+</caption>
+<thead>
+<tr>
+<th style="text-align:center;">
+Parameter name
+</th>
+<th style="text-align:center;">
+Unit
+</th>
+<th style="text-align:center;">
+Example value
+</th>
+<th style="text-align:center;">
+Description
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center;min-width: 15em; background-color: white !important;">
+<code>db0</code>
+</td>
+<td style="text-align:center;min-width: 15em; background-color: white !important;">
+cm<sup>2</sup> y<sup>-1</sup>
+</td>
+<td style="text-align:center;min-width: 15em; background-color: white !important;">
+10.00
+</td>
+<td style="text-align:center;min-width: 15em; background-color: white !important;">
+Biodiffusion coefficient at sediment-water ineterface
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 15em; background-color: white !important;">
+<code>imix</code>
+</td>
+<td style="text-align:center;min-width: 15em; background-color: white !important;">
+0/1
+</td>
+<td style="text-align:center;min-width: 15em; background-color: white !important;">
+0.00
+</td>
+<td style="text-align:center;min-width: 15em; background-color: white !important;">
+Bioturbation function: 0-Gaussian; 1 – two-layer model
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 15em; background-color: white !important;">
+<code>xs</code>
+</td>
+<td style="text-align:center;min-width: 15em; background-color: white !important;">
+cm
+</td>
+<td style="text-align:center;min-width: 15em; background-color: white !important;">
+3.00
+</td>
+<td style="text-align:center;min-width: 15em; background-color: white !important;">
+Half depth for Gaussian mixing (<code>imix - 0</code>)
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 15em; background-color: white !important;">
+<code>x1</code>
+</td>
+<td style="text-align:center;min-width: 15em; background-color: white !important;">
+cm
+</td>
+<td style="text-align:center;min-width: 15em; background-color: white !important;">
+1.00
+</td>
+<td style="text-align:center;min-width: 15em; background-color: white !important;">
+Depth at which db starts to decreacse (<code>imix -1</code>)
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 15em; background-color: white !important;">
+<code>x2</code>
+</td>
+<td style="text-align:center;min-width: 15em; background-color: white !important;">
+cm
+</td>
+<td style="text-align:center;min-width: 15em; background-color: white !important;">
+5.00
+</td>
+<td style="text-align:center;min-width: 15em; background-color: white !important;">
+Depth at which db is zero (<code>imix - 1</code>)
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 15em; background-color: white !important;">
+<code>irrig</code>
+</td>
+<td style="text-align:center;min-width: 15em; background-color: white !important;">
+0/1
+</td>
+<td style="text-align:center;min-width: 15em; background-color: white !important;">
+1.00
+</td>
+<td style="text-align:center;min-width: 15em; background-color: white !important;">
+Bioirrigation switch
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 15em; background-color: white !important;">
+<code>alpha0</code>
+</td>
+<td style="text-align:center;min-width: 15em; background-color: white !important;">
+y<sup>-1</sup>
+</td>
+<td style="text-align:center;min-width: 15em; background-color: white !important;">
+15.00
+</td>
+<td style="text-align:center;min-width: 15em; background-color: white !important;">
+Irrigation coefficient
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 15em; background-color: white !important;">
+<code>xirrig</code>
+</td>
+<td style="text-align:center;min-width: 15em; background-color: white !important;">
+cm
+</td>
+<td style="text-align:center;min-width: 15em; background-color: white !important;">
+4.00
+</td>
+<td style="text-align:center;min-width: 15em; background-color: white !important;">
+Maximum irrigation depth
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 15em; background-color: white !important;">
+<code>ventflow</code>
+</td>
+<td style="text-align:center;min-width: 15em; background-color: white !important;">
+cm y<sup>-1</sup>
+</td>
+<td style="text-align:center;min-width: 15em; background-color: white !important;">
+0.00
+</td>
+<td style="text-align:center;min-width: 15em; background-color: white !important;">
+Advective flux (positive value indicates from below)
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 15em; background-color: white !important;">
+<code>w00</code>
+</td>
+<td style="text-align:center;min-width: 15em; background-color: white !important;">
+cm y<sup>-1</sup>
+</td>
+<td style="text-align:center;min-width: 15em; background-color: white !important;">
+0.75
+</td>
+<td style="text-align:center;min-width: 15em; background-color: white !important;">
+Sediment accumulation velocity at maximum depth
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 15em; background-color: white !important;">
+<code>p0</code>
+</td>
+<td style="text-align:center;min-width: 15em; background-color: white !important;">
+</td>
+<td style="text-align:center;min-width: 15em; background-color: white !important;">
+0.90
+</td>
+<td style="text-align:center;min-width: 15em; background-color: white !important;">
+Porosity at sediment-water interface (<span class="math inline">\(\phi_{0}\)</span> in equation 5 - 104)
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 15em; background-color: white !important;">
+<code>p00</code>
+</td>
+<td style="text-align:center;min-width: 15em; background-color: white !important;">
+</td>
+<td style="text-align:center;min-width: 15em; background-color: white !important;">
+0.80
+</td>
+<td style="text-align:center;min-width: 15em; background-color: white !important;">
+Porosity at maximum depth (<span class="math inline">\(\phi_{xl}\)</span> in equation 5 - 104)
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 15em; background-color: white !important;">
+<code>bp</code>
+</td>
+<td style="text-align:center;min-width: 15em; background-color: white !important;">
+</td>
+<td style="text-align:center;min-width: 15em; background-color: white !important;">
+2.50
+</td>
+<td style="text-align:center;min-width: 15em; background-color: white !important;">
+Porosity attenuation coefficient (<span class="math inline">\(\beta\)</span> in equation 5 - 104)
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 15em; background-color: white !important;">
+<code>torteq</code>
+</td>
+<td style="text-align:center;min-width: 15em; background-color: white !important;">
+1/2/3
+</td>
+<td style="text-align:center;min-width: 15em; background-color: white !important;">
+3.00
+</td>
+<td style="text-align:center;min-width: 15em; background-color: white !important;">
+Tortuosity calculation method switch: 1-Archie; 2-Burger; 3-Weissberg
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 15em; background-color: white !important;">
+<code>an</code>
+</td>
+<td style="text-align:center;min-width: 15em; background-color: white !important;">
+</td>
+<td style="text-align:center;min-width: 15em; background-color: white !important;">
+2.14
+</td>
+<td style="text-align:center;min-width: 15em; background-color: white !important;">
+Porosity exponent for tortuosity (if Archie)
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 15em; background-color: white !important;">
+<code>aa</code>
+</td>
+<td style="text-align:center;min-width: 15em; background-color: white !important;">
+</td>
+<td style="text-align:center;min-width: 15em; background-color: white !important;">
+3.79
+</td>
+<td style="text-align:center;min-width: 15em; background-color: white !important;">
+Porosity exponent for tortuosity (if Burger)
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 15em; background-color: white !important;">
+<code>ab</code>
+</td>
+<td style="text-align:center;min-width: 15em; background-color: white !important;">
+</td>
+<td style="text-align:center;min-width: 15em; background-color: white !important;">
+2.02
+</td>
+<td style="text-align:center;min-width: 15em; background-color: white !important;">
+Porosity exponent for tortuosity (if Weissberg)
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 15em; background-color: white !important;">
+<code>xl</code>
+</td>
+<td style="text-align:center;min-width: 15em; background-color: white !important;">
+cm
+</td>
+<td style="text-align:center;min-width: 15em; background-color: white !important;">
+100.00
+</td>
+<td style="text-align:center;min-width: 15em; background-color: white !important;">
+Maximum simulation depth
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 15em; background-color: white !important;">
+<code>maxnpts</code>
+</td>
+<td style="text-align:center;min-width: 15em; background-color: white !important;">
+</td>
+<td style="text-align:center;min-width: 15em; background-color: white !important;">
+40.00
+</td>
+<td style="text-align:center;min-width: 15em; background-color: white !important;">
+Number of vertical layers
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><br></p>
+<div style="border: 1px solid #ddd; padding: 5px; overflow-y: scroll; height:500px; overflow-x: scroll; width:770px; ">
+<table class="table table-hover" style="font-size: 12px; width: auto !important; margin-left: auto; margin-right: auto;">
+<caption style="font-size: initial !important;">
+<span id="tab:23biogeochemconfig">Table 20.3: </span>The major biogeochemical configuration options, which are set by the user before the model is initialised
+</caption>
+<thead>
+<tr>
+<th style="text-align:center;">
+Biogeochemical configuration
+</th>
+<th style="text-align:center;">
+Unit
+</th>
+<th style="text-align:center;">
+Description
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center;min-width: 15em; background-color: white !important;">
+<code>Omapproach</code>
+</td>
+<td style="text-align:center;min-width: 15em; background-color: white !important;">
+1/2
+</td>
+<td style="text-align:center;min-width: 15em; background-color: white !important;">
+Kinetic redox equations, corresponding to the approaches of chapter 2
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 15em; background-color: white !important;">
+<code>OMModel</code>
+</td>
+<td style="text-align:center;min-width: 15em; background-color: white !important;">
+1/2/3
+</td>
+<td style="text-align:center;min-width: 15em; background-color: white !important;">
+Organic matter breakdown models, as described in Table 5 - 1, Figure 5 - 2
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 15em; background-color: white !important;">
+<code>FTem switch</code>
+</td>
+<td style="text-align:center;min-width: 15em; background-color: white !important;">
+1/2
+</td>
+<td style="text-align:center;min-width: 15em; background-color: white !important;">
+Sets reaction rate dependency on temperature
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 15em; background-color: white !important;">
+<code>FT switch</code>
+</td>
+<td style="text-align:center;min-width: 15em; background-color: white !important;">
+1/2
+</td>
+<td style="text-align:center;min-width: 15em; background-color: white !important;">
+Sets reaction rate dependency on thermodynamics
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 15em; background-color: white !important;">
+<code>FBio switch</code>
+</td>
+<td style="text-align:center;min-width: 15em; background-color: white !important;">
+1/2
+</td>
+<td style="text-align:center;min-width: 15em; background-color: white !important;">
+Sets reaction rate dependency on biomass concentration
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 15em; background-color: white !important;">
+<code>FIN switch</code>
+</td>
+<td style="text-align:center;min-width: 15em; background-color: white !important;">
+1/2
+</td>
+<td style="text-align:center;min-width: 15em; background-color: white !important;">
+Sets reaction rate dependency on concentration of other oxidants
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 15em; background-color: white !important;">
+<code>simMnFe</code>
+</td>
+<td style="text-align:center;min-width: 15em; background-color: white !important;">
+T/F
+</td>
+<td style="text-align:center;min-width: 15em; background-color: white !important;">
+Turns all Mn and Fe primary and secondary reactions on or off
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 15em; background-color: white !important;">
+<code>simFeS</code>
+</td>
+<td style="text-align:center;min-width: 15em; background-color: white !important;">
+T/F
+</td>
+<td style="text-align:center;min-width: 15em; background-color: white !important;">
+Turns all FeS reactions on or off
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 15em; background-color: white !important;">
+<code>simX</code>
+</td>
+<td style="text-align:center;min-width: 15em; background-color: white !important;">
+T/F
+</td>
+<td style="text-align:center;min-width: 15em; background-color: white !important;">
+Allows simulation of adsorbed metal X
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 15em; background-color: white !important;">
+<code>Xname</code>
+</td>
+<td style="text-align:center;min-width: 15em; background-color: white !important;">
+“X”
+</td>
+<td style="text-align:center;min-width: 15em; background-color: white !important;">
+Metal X: “As”, “Cu”, “Cd”, “Pb”, “Ni”, “Zn”
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 15em; background-color: white !important;">
+<code>simCaCO3</code>
+</td>
+<td style="text-align:center;min-width: 15em; background-color: white !important;">
+T/F
+</td>
+<td style="text-align:center;min-width: 15em; background-color: white !important;">
+Turns all calcite reactions on or off
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 15em; background-color: white !important;">
+<code>simFeCO3</code>
+</td>
+<td style="text-align:center;min-width: 15em; background-color: white !important;">
+T/F
+</td>
+<td style="text-align:center;min-width: 15em; background-color: white !important;">
+Turns all siderite reactions on or off
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 15em; background-color: white !important;">
+<code>simMnCO3</code>
+</td>
+<td style="text-align:center;min-width: 15em; background-color: white !important;">
+T/F
+</td>
+<td style="text-align:center;min-width: 15em; background-color: white !important;">
+Turns all rhodchrosite reactions on or off
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 15em; background-color: white !important;">
+<code>simNPads</code>
+</td>
+<td style="text-align:center;min-width: 15em; background-color: white !important;">
+T/F
+</td>
+<td style="text-align:center;min-width: 15em; background-color: white !important;">
+Turns N and P adsorption on or off
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 15em; background-color: white !important;">
+<code>rxn_mode</code>
+</td>
+<td style="text-align:center;min-width: 15em; background-color: white !important;">
+0/1
+</td>
+<td style="text-align:center;min-width: 15em; background-color: white !important;">
+Sets precipitation to: kinetic-0; IAP/K<sub>sp</sub>-1
+</td>
+</tr>
+</tbody>
+</table>
+</div>
 <p>The initial conditions for each variable are set as a list by the “initial_vals”, which sets a constant concentration with depth in units of μmol L-1. For organic matter initial concentrations only, there are three available options for the concentration with depth, set by “OMInitMethodL”.</p>
 <p>The sediment-water interface is the uppermost layer of the sediment, for which there are three configuration options set by the parameter <code>ibc2</code>. If the user specifies <code>ibc2 = 2</code>, the concentration is a constant value set by <code>default_vals</code> in the <code>fabm.nml</code> name list. For <code>ibc2 = 1</code>, the concentration is provided by a “link_variable”, which provides the concentration from another simulated water column FABM module. If the variable name in the link list is left blank (“ ”) then AED_CANDI will assume these variables are not linked to any water column variables and default to the “default_vals” values. If <code>ibc2 = 10</code>, the concentration is provided by a user-prescribed temporally variable value read from the file <code>aed_sediment_swibc.dat</code>. This option may desirable, for example, for simulating a seasonally or daily changing boundary condition.</p>
 <p>Regardless of the ibc2 surface boundary condition option, fluxes of dissolved species occur between the sediment and water column. They are calculated from the concentration gradient at the sediment-water interface according to Fick’s Law:</p>

@@ -1,0 +1,20 @@
+﻿Parameter name,Unit,Example value,Description
+`db0`,cm^2^ y^-1^,10,Biodiffusion coefficient at sediment-water ineterface
+`imix`,0/1,0,Bioturbation function: 0-Gaussian; 1 – two-layer model
+`xs`,cm,3,Half depth for Gaussian mixing (`imix - 0`)
+`x1`,cm,1,Depth at which db starts to decreacse (`imix -1`)
+`x2`,cm,5,Depth at which db is zero (`imix - 1`)
+`irrig`,0/1,1,Bioirrigation switch
+`alpha0`,y^-1^,15,Irrigation coefficient 
+`xirrig`,cm,4,Maximum irrigation depth
+`ventflow`,cm y^-1^,0,Advective flux (positive value indicates from below)
+`w00`,cm y^-1^,0.75,Sediment accumulation velocity at maximum depth
+`p0`,,0.9,Porosity at sediment-water interface ($\phi_{0}$ in equation 5 - 104)
+`p00`,,0.8,Porosity at maximum depth ($\phi_{xl}$ in equation 5 - 104)
+`bp`,,2.5,Porosity attenuation coefficient ($\beta$ in equation 5 - 104)
+`torteq`,1/2/3,3,Tortuosity calculation method switch: 1-Archie; 2-Burger; 3-Weissberg
+`an`,,2.14,Porosity exponent for tortuosity (if Archie) 
+`aa`,,3.79,Porosity exponent for tortuosity (if Burger)
+`ab`,,2.02,Porosity exponent for tortuosity (if Weissberg)
+`xl`,cm,100,Maximum simulation depth
+`maxnpts`,,40,Number of vertical layers 
