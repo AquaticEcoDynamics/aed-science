@@ -5,15 +5,6 @@ The following publications have applied the AED modelling library. Please edit t
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
-body {font-family: Arial;}
-
-/* Style the tab */
-.tab {
-  overflow: hidden;
-  border: 1px solid #ccc;
-  background-color: #2481AA;
-}
-
 /* Style the buttons inside the tab */
 .tab button {
   background-color: #2481AA;
@@ -26,24 +17,6 @@ body {font-family: Arial;}
   font-size: 17px;
   color: #FFFFFF;
   font-weight: bold;
-}
-
-/* Change background color of buttons on hover */
-.tab button:hover {
-  background-color: #2DA4D0;
-}
-
-/* Create an active/current tablink class */
-.tab button.active {
-  background-color: #1E7198;
-}
-
-/* Style the tab content */
-.tabcontent {
-  display: none;
-  padding: 6px 12px;
-  border: 1px solid #ccc;
-  border-top: none;
 }
 </style>
 </head>

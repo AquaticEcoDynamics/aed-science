@@ -1,0 +1,5 @@
+﻿Module,Description,Relevant Variables
+**MAC**: Benthic macrophytes,Simulates benthic habitat and/or growth of macrophytes such as seagrasses in specified sediment zones.,
+**MAG**: Macroalgae,Simulates benthic macroalgal growth and sloughing/detachment of macroalgae and its subsequent redistribution within the domain.,
+**BIV**: Bivalves,"A model of one or more groups of benthic filter feeders, able to assimilate C, N and P and recycle filter material back to the water column and sediment.",
+**HAB**: Habitat Quality,"A high level module that returns habitat quality metrics based on underlying water condition attributes, for example, for seagrass or crab habitat suitability at different life stages.",

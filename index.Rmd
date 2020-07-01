@@ -67,7 +67,7 @@ Readers may also use the hypothes.is utility on the right margin of the book to 
 
 Maintainers and contributors must follow this repository’s [CODE OF CONDUCT](https://github.com/Robinlovelace/geocompr/blob/master/CODE_OF_CONDUCT.md).
 
-## Reproducibility{-}
+## Editing the Book{-}
 
 To build the book locally, clone or download the aed-science repo, load R in root directory (e.g. by opening aed-sceince.Rproj in RStudio) and run the following lines:
 

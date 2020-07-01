@@ -2,11 +2,25 @@
 
 ## Library Design
 
+The AED modelling library is organised as a series of “modules” that can be connected or “linked” through specific variable dependencies. By linking modules users can simulate most aquatic biogeochemical processes relevant to nutrient cycling, oxygen dynamics, harmful algal blooms, sediment/soil biogeochemistry, vegetation, pathogens etc. Each module can work alone or combined with other modules, depending on the complexity of targeted system. 
+
+A wide array of modules are available with some operational only in water, some operational where no water is present, and some can operate under both dry and wet conditions.
+
+The current AED software is divided into 5 separate code-libraries …… 
+.Prior to the 2020 release, the model was distributed as two libraries: the first was the core AED2 library (libaed2) and the second is the advanced modules which are bundled together as AED2+ (libaed2-plus). 
+
+Currently there are 8 core modules in AED2, and 12 advanced modules in AED2+. For routine water quality assessments of lakes or estuaries, AED2 will suit most applications. For advanced users and researchers seeking to extend their simulation abilities, then AED2+ includes numerous advanced options
+
+<center>
+```{r diagram, echo=FALSE, out.width = '100%'}
+knitr::include_graphics("images/06-organisation_and_structure/image1.png")
+```
+</center>
 
 ## Model Structure
-<!-- Previously from 'Modelling within the AED framework'-->
+The philosophy of the AED/AED2 library is that biogeochemical and ecological modules have a standard class structure. State variables defined within each module are subject to transport and mass conservation, as managed by the scalar transport facility of the host hydrodynamic model (see Section 4). 
 
-The AED2 Model has ability to simulate a range of physical, chemical and biological processes, that can be generally described based as:
+Any AED module can have the ability to simulate a range of physical, chemical and biological processes, that can be generally classified as belonging to:
 
 -	Feedback of chemical or biological attributes to physical properties of water (light extinction, drag, density)
 -	Water column kinetic (time-varying) chemical / biological transformations (e.g., denitrification or algal growth)
@@ -19,6 +33,91 @@ The AED2 Model has ability to simulate a range of physical, chemical and biologi
 -	Ecohydrological dynamics and biogeochemical transformations in the exposed (dry) cells
 -	Feedbacks of soil and vegetation dynamics onto lake hydrodynamics and water balance
 
-The model is organised as a series of “modules” that can be connected or “linked” through specific variable dependencies. Relevant variables (Table 3) are described in the following sections, along with the science basis relevant to the Lower Lakes model setup. For the initial phase of the CLLMM RWQM model, only the core variables are configured, and future proposed variables are also indicated in the Table 3, denoted with an asterisk.
+A general module structure in Figure X. Specific methods available within a module include those in Table Y. Note that not all methods must be used in modules; developers must choose which methods are relevant to a specific module. The only exception is “define”, which is compulsory for all modules to configure the chosen state variables, diagnostic variables, and set the necessary parameters and options.
 
 ## Module Summary
+
+A high level overview of the simulatable modules are include in Table X below.
+
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+/* Style the buttons inside the tab */
+.tab button {
+  background-color: #2481AA;
+  float: left;
+  width: 50%;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  transition: 0.3s;
+  font-size: 17px;
+  color: #FFFFFF;
+  font-weight: bold;
+}
+</style>
+</head>
+<body>
+
+<div class="tab">
+  <button class="tablinks" onclick="opentab(event, 'AED-water')"id="defaultOpen">AED-water</button>
+  <button class="tablinks" onclick="opentab(event, 'AED-benthic')">AED-benthic</button>
+</div>
+
+<div id="AED-water" class="tabcontent">
+  <p>
+    ```{r modules, echo=FALSE, message=FALSE, warning=FALSE}
+library(knitr)
+library(kableExtra)
+publications <- read.csv("tables/06-organisation_and_structure/modules.csv", check.names=FALSE)
+kable(publications,"html", escape = F, align = "c", caption = "Modules") %>%
+  kable_styling(publications, bootstrap_options = "basic", 
+                full_width = F, position = "left", font_size = 12) %>%
+  column_spec(1, width_min = "6em") %>%
+  column_spec(2, width_min = "6em") %>%
+  column_spec(3, width_min = "6em") %>%
+  row_spec(1:8, background = 'white') %>%
+  scroll_box(width = "750px", height = "310px",
+             fixed_thead = FALSE) 
+    ```
+  </p>
+</div>
+
+<div id="AED-benthic" class="tabcontent">
+  <p>
+```{r modules2, echo=FALSE, message=FALSE, warning=FALSE}
+library(knitr)
+library(kableExtra)
+publications <- read.csv("tables/06-organisation_and_structure/modules2.csv", check.names=FALSE)
+kable(publications,"html", escape = F, align = "c", caption = "Modules") %>%
+  kable_styling(publications, bootstrap_options = "basic", 
+                full_width = F, position = "left", font_size = 12) %>%
+  column_spec(1, width_min = "6em") %>%
+  column_spec(2, width_min = "6em") %>%
+  column_spec(3, width_min = "6em") %>%
+  row_spec(1:4, background = 'white') %>%
+  scroll_box(width = "750px", height = "310px",
+             fixed_thead = FALSE) 
+```
+  </p> 
+</div>
+
+<script>
+function opentab(evt, tabName) {
+  var i, tabcontent, tablinks;
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tablinks");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" active", "");
+  }
+  document.getElementById(tabName).style.display = "block";
+  evt.currentTarget.className += " active";
+}
+document.getElementById("defaultOpen").click();
+</script>
+
+</body>

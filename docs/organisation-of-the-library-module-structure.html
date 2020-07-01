@@ -23,7 +23,7 @@
 
 
 
-<meta name="date" content="2020-06-26" />
+<meta name="date" content="2020-07-01" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -134,6 +134,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 </style>
 
 <link rel="stylesheet" href="css/style.css" type="text/css" />
+<link rel="stylesheet" href="css/tabs.css" type="text/css" />
 </head>
 
 <body>
@@ -153,7 +154,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#welcome"><i class="fa fa-check"></i>Welcome</a></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#how-to-contribute"><i class="fa fa-check"></i>How to Contribute?</a></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html#reproducibility"><i class="fa fa-check"></i>Reproducibility</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#editing-the-book"><i class="fa fa-check"></i>Editing the Book</a></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#supporting-the-project"><i class="fa fa-check"></i>Supporting the project</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="foreward.html"><a href="foreward.html"><i class="fa fa-check"></i>Foreward</a></li>
@@ -725,11 +726,19 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <h1><span class="header-section-number">3</span> Organisation of the Library &amp; Module Structure</h1>
 <div id="library-design" class="section level2" number="3.1">
 <h2><span class="header-section-number">3.1</span> Library Design</h2>
+<p>The AED modelling library is organised as a series of “modules” that can be connected or “linked” through specific variable dependencies. By linking modules users can simulate most aquatic biogeochemical processes relevant to nutrient cycling, oxygen dynamics, harmful algal blooms, sediment/soil biogeochemistry, vegetation, pathogens etc. Each module can work alone or combined with other modules, depending on the complexity of targeted system.</p>
+<p>A wide array of modules are available with some operational only in water, some operational where no water is present, and some can operate under both dry and wet conditions.</p>
+<p>The current AED software is divided into 5 separate code-libraries ……
+.Prior to the 2020 release, the model was distributed as two libraries: the first was the core AED2 library (libaed2) and the second is the advanced modules which are bundled together as AED2+ (libaed2-plus).</p>
+<p>Currently there are 8 core modules in AED2, and 12 advanced modules in AED2+. For routine water quality assessments of lakes or estuaries, AED2 will suit most applications. For advanced users and researchers seeking to extend their simulation abilities, then AED2+ includes numerous advanced options</p>
+<center>
+<img src="images/06-organisation_and_structure/image1.png" width="100%" />
+</center>
 </div>
 <div id="model-structure" class="section level2" number="3.2">
 <h2><span class="header-section-number">3.2</span> Model Structure</h2>
-<!-- Previously from 'Modelling within the AED framework'-->
-<p>The AED2 Model has ability to simulate a range of physical, chemical and biological processes, that can be generally described based as:</p>
+<p>The philosophy of the AED/AED2 library is that biogeochemical and ecological modules have a standard class structure. State variables defined within each module are subject to transport and mass conservation, as managed by the scalar transport facility of the host hydrodynamic model (see Section 4).</p>
+<p>Any AED module can have the ability to simulate a range of physical, chemical and biological processes, that can be generally classified as belonging to:</p>
 <ul>
 <li>Feedback of chemical or biological attributes to physical properties of water (light extinction, drag, density)</li>
 <li>Water column kinetic (time-varying) chemical / biological transformations (e.g., denitrification or algal growth)</li>
@@ -742,10 +751,230 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li>Ecohydrological dynamics and biogeochemical transformations in the exposed (dry) cells</li>
 <li>Feedbacks of soil and vegetation dynamics onto lake hydrodynamics and water balance</li>
 </ul>
-<p>The model is organised as a series of “modules” that can be connected or “linked” through specific variable dependencies. Relevant variables (Table 3) are described in the following sections, along with the science basis relevant to the Lower Lakes model setup. For the initial phase of the CLLMM RWQM model, only the core variables are configured, and future proposed variables are also indicated in the Table 3, denoted with an asterisk.</p>
+<p>A general module structure in Figure X. Specific methods available within a module include those in Table Y. Note that not all methods must be used in modules; developers must choose which methods are relevant to a specific module. The only exception is “define”, which is compulsory for all modules to configure the chosen state variables, diagnostic variables, and set the necessary parameters and options.</p>
 </div>
 <div id="module-summary" class="section level2" number="3.3">
 <h2><span class="header-section-number">3.3</span> Module Summary</h2>
+<p>A high level overview of the simulatable modules are include in Table X below.</p>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+/* Style the buttons inside the tab */
+.tab button {
+  background-color: #2481AA;
+  float: left;
+  width: 50%;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  transition: 0.3s;
+  font-size: 17px;
+  color: #FFFFFF;
+  font-weight: bold;
+}
+</style>
+</head>
+<body>
+<div class="tab">
+<p><button class="tablinks" onclick="opentab(event, 'AED-water')"id="defaultOpen">AED-water</button>
+<button class="tablinks" onclick="opentab(event, 'AED-benthic')">AED-benthic</button></p>
+</div>
+<div id="AED-water" class="tabcontent">
+<p>
+<div style="border: 1px solid #ddd; padding: 5px; overflow-y: scroll; height:310px; overflow-x: scroll; width:750px; ">
+<table class="table" style="font-size: 12px; width: auto !important; ">
+<caption style="font-size: initial !important;">
+<span id="tab:modules">Table 3.1: </span>Modules
+</caption>
+<thead>
+<tr>
+<th style="text-align:center;">
+Module
+</th>
+<th style="text-align:center;">
+Description
+</th>
+<th style="text-align:center;">
+Relevant Variables
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center;min-width: 6em; background-color: white !important;">
+<strong>TRC</strong>: Tracers, Suspended Soilds and Retention Time
+</td>
+<td style="text-align:center;min-width: 6em; background-color: white !important;">
+Modellers can use the aed_tracer to simulate a dissolved or particulate tracer (subject to transport processes only), or this can be optionally configured to account for decay, sedimentation and/or resuspension. This module also include an option to simulate water “retention time” where the water age increments once enters into the waterbody
+</td>
+<td style="text-align:center;min-width: 6em; background-color: white !important;">
+T
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 6em; background-color: white !important;">
+<strong>OXY</strong>: Dissolved Oxygen
+</td>
+<td style="text-align:center;min-width: 6em; background-color: white !important;">
+Dissolved oxygen (DO) dynamics are able to be simulated, accounting for atmospheric exchange and sediment oxygen demand, and through links to other modules will account for microbial use during organic matter mineralisation and nitrification, photosynthetic oxygen production and respiratory oxygen consumption, and respiration by other optional biotic components
+</td>
+<td style="text-align:center;min-width: 6em; background-color: white !important;">
+O<sub>2</sub>
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 6em; background-color: white !important;">
+<strong>NUT</strong>: Inorganic Nutrients
+</td>
+<td style="text-align:center;min-width: 6em; background-color: white !important;">
+Modules exist for simulation of inorganic nutrients including phosphorus, nitrogen and silica. These modules provide basic nutrient cycling functionality and are designed to be linked with other modules (eg OGM, PHY) in order to provide a more comprehensive depiction of nutrient cycling.
+</td>
+<td style="text-align:center;min-width: 6em; background-color: white !important;">
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 6em; background-color: white !important;">
+<strong>OGM</strong>: Organic Matter
+</td>
+<td style="text-align:center;min-width: 6em; background-color: white !important;">
+Organic matter variables cover the C, N &amp; P stored in the dissolved and particulate organic matter pools. This module optionally also supports depiction of “labile” vs “refractory” fractions of organic matter, including the breakdown and hydrolysis process, photo-degradation and mineralisation.
+</td>
+<td style="text-align:center;min-width: 6em; background-color: white !important;">
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 6em; background-color: white !important;">
+<strong>PHY</strong>: Phytoplankton
+</td>
+<td style="text-align:center;min-width: 6em; background-color: white !important;">
+Highly customisable phytoplankton module for simulating change in algae, cyano-bacteria and chl-a, including phytoplankton production/respiration, nutrient uptake, excretion, vertical movement (eg buoyancy control), and grazing effects. Benthic phytoplankton may also be optionally configured.
+</td>
+<td style="text-align:center;min-width: 6em; background-color: white !important;">
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 6em; background-color: white !important;">
+<strong>ZOO</strong>: Zooplankton
+</td>
+<td style="text-align:center;min-width: 6em; background-color: white !important;">
+Simulates different size classes of zooplankton, accounting for carbon and nutrient assimilation from grazing, carbon loss via respiration, excretion of DOM, faecal pellet production, mortality, and predation by larger organisms.
+</td>
+<td style="text-align:center;min-width: 6em; background-color: white !important;">
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 6em; background-color: white !important;">
+<strong>TOT</strong>: Totals
+</td>
+<td style="text-align:center;min-width: 6em; background-color: white !important;">
+A summary module, allowing users to “sum-up” component variables from other modules into a total, for example, to compute TN, TP or TSS.
+</td>
+<td style="text-align:center;min-width: 6em; background-color: white !important;">
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 6em; background-color: white !important;">
+<strong>SDF</strong>: Sediment Flux
+</td>
+<td style="text-align:center;min-width: 6em; background-color: white !important;">
+An interface module designed to provide spatially variable sediment flux settings to key modules (e.g., OXY, OGM, NUT), and/or link these variables to the dynamic sediment biogeochemistry model (SDG).
+</td>
+<td style="text-align:center;min-width: 6em; background-color: white !important;">
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</p>
+</div>
+<div id="AED-benthic" class="tabcontent">
+<p>
+<div style="border: 1px solid #ddd; padding: 5px; overflow-y: scroll; height:310px; overflow-x: scroll; width:750px; ">
+<table class="table" style="font-size: 12px; width: auto !important; ">
+<caption style="font-size: initial !important;">
+<span id="tab:modules2">Table 3.2: </span>Modules
+</caption>
+<thead>
+<tr>
+<th style="text-align:center;">
+Module
+</th>
+<th style="text-align:center;">
+Description
+</th>
+<th style="text-align:center;">
+Relevant Variables
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center;min-width: 6em; background-color: white !important;">
+<strong>MAC</strong>: Benthic macrophytes
+</td>
+<td style="text-align:center;min-width: 6em; background-color: white !important;">
+Simulates benthic habitat and/or growth of macrophytes such as seagrasses in specified sediment zones.
+</td>
+<td style="text-align:center;min-width: 6em; background-color: white !important;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 6em; background-color: white !important;">
+<strong>MAG</strong>: Macroalgae
+</td>
+<td style="text-align:center;min-width: 6em; background-color: white !important;">
+Simulates benthic macroalgal growth and sloughing/detachment of macroalgae and its subsequent redistribution within the domain.
+</td>
+<td style="text-align:center;min-width: 6em; background-color: white !important;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 6em; background-color: white !important;">
+<strong>BIV</strong>: Bivalves
+</td>
+<td style="text-align:center;min-width: 6em; background-color: white !important;">
+A model of one or more groups of benthic filter feeders, able to assimilate C, N and P and recycle filter material back to the water column and sediment.
+</td>
+<td style="text-align:center;min-width: 6em; background-color: white !important;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 6em; background-color: white !important;">
+<strong>HAB</strong>: Habitat Quality
+</td>
+<td style="text-align:center;min-width: 6em; background-color: white !important;">
+A high level module that returns habitat quality metrics based on underlying water condition attributes, for example, for seagrass or crab habitat suitability at different life stages.
+</td>
+<td style="text-align:center;min-width: 6em; background-color: white !important;">
+NA
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</p>
+</div>
+<script>
+function opentab(evt, tabName) {
+  var i, tabcontent, tablinks;
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tablinks");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" active", "");
+  }
+  document.getElementById(tabName).style.display = "block";
+  evt.currentTarget.className += " active";
+}
+document.getElementById("defaultOpen").click();
+</script>
+</body>
 
 </div>
 </div>

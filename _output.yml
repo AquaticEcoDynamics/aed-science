@@ -1,7 +1,7 @@
 bookdown::gitbook:
   includes:
     in_header: "includes/hypothesis.html"
-  css: css/style.css
+  css: ["css/style.css", "css/tabs.css"]
   table_css: false
   highlight: tango
   config:
