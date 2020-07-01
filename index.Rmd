@@ -40,7 +40,7 @@ aed_icon  <- makeIcon(
   iconWidth = 30, iconHeight = 30)
 
 aed_sites <- read.csv("maps/aed-sites.csv")
-leaflet(height=400, width=770) %>% addProviderTiles(providers$Esri.WorldGrayCanvas) %>%
+leaflet(height=400, width="auto") %>% addProviderTiles(providers$Esri.WorldGrayCanvas) %>%
   setView(lng = 0, lat = 0, zoom = 1) %>%
   addMarkers(data = aed_sites, ~Lon, ~Lat, popup = ~Model, icon = aed_icon) 
   
