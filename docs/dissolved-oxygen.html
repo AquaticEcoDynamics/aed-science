@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>7 Dissolved Oxygen | AED2/AED2+ Manual</title>
   <meta name="description" content="Work in progress." />
-  <meta name="generator" content="bookdown 0.19 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
   <meta property="og:title" content="7 Dissolved Oxygen | AED2/AED2+ Manual" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 
 
 
-<meta name="date" content="2020-07-01" />
+<meta name="date" content="2020-10-14" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -32,7 +32,7 @@
   
 <link rel="prev" href="suspended-sediment.html"/>
 <link rel="next" href="carbon.html"/>
-<script src="libs/header-attrs-2.2/header-attrs.js"></script>
+<script src="libs/header-attrs-2.4/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -60,6 +60,7 @@
 <script src="libs/leaflet-providers-1.9.0/leaflet-providers_1.9.0.js"></script>
 <script src="libs/leaflet-providers-plugin-2.0.3/leaflet-providers-plugin.js"></script>
 <script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
 <script src="libs/plotly-binding-4.9.2.1/plotly.js"></script>
 <script src="libs/typedarray-0.1/typedarray.min.js"></script>
 <link href="libs/crosstalk-1.1.0.1/css/crosstalk.css" rel="stylesheet" />
@@ -737,7 +738,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <div id="process-descriptions-2" class="section level3" number="7.3.1">
 <h3><span class="header-section-number">7.3.1</span> Process Descriptions</h3>
 <!-- previously from 'aed2_oxygen : oxygen solubility & atmospheric exchange' on website version-->
-<div id="oxygen-solubility-atmospheric-exchange" class="section level4 unnumbered" number="">
+<div id="oxygen-solubility-atmospheric-exchange" class="section level4 unnumbered">
 <h4>Oxygen Solubility &amp; Atmospheric Exchange</h4>
 <p>Atmospheric exchange is typically modelled based on Wanninkhof (1992) and the flux equation of Riley and Skirrow (1974) for the open water, and on Ho et al. (2011) for estuarine environments.
 <span class="math display">\[\begin{equation}
@@ -752,7 +753,7 @@ Where <span class="math inline">\(\theta_k\)</span> is temperature in degrees Ke
                             f\left(p\right)=\frac{p_H}{p_{SL}}\left[1-\frac{p_{vap}}{p_H}\right]/\left[1-\frac{p_{vap}}{p_{SL}}\right].
 \end{equation}\]</span></p>
 </div>
-<div id="aed2_oxygen-sediment-oxygen-demand" class="section level4 unnumbered" number="">
+<div id="aed2_oxygen-sediment-oxygen-demand" class="section level4 unnumbered">
 <h4>aed2_oxygen : sediment oxygen demand</h4>
 <p>Modelling sediment oxygen demand can take a variety of forms. The simplest form in AED2 is the <span class="math inline">\(SOD\)</span> varies as a function of the overlying water temperature and dissolved oxygen levels.
 <span class="math display">\[\begin{equation}
@@ -760,7 +761,7 @@ Where <span class="math inline">\(\theta_k\)</span> is temperature in degrees Ke
 \end{equation}\]</span></p>
 <p>Where <span class="math inline">\(S_{SOD}\)</span> is a fixed oxygen flux across the sediment-water interface and <span class="math inline">\(K_{DO_{SOD}}\)</span> is a half-saturation constant for the sediment oxygen demand.</p>
 </div>
-<div id="other-oxygen-sourcessinks-optional" class="section level4 unnumbered" number="">
+<div id="other-oxygen-sourcessinks-optional" class="section level4 unnumbered">
 <h4>Other oxygen sources/sinks (optional)</h4>
 <ul>
 <li>Oxygen consumption during baterial mineralisation of DOC is done in the bacteria module - aed2_bacteria;</li>
@@ -774,7 +775,7 @@ Where <span class="math inline">\(\theta_k\)</span> is temperature in degrees Ke
 </div>
 <div id="variable-summary-2" class="section level3" number="7.3.2">
 <h3><span class="header-section-number">7.3.2</span> Variable Summary</h3>
-<div id="diagnostics" class="section level4 unnumbered" number="">
+<div id="diagnostics" class="section level4 unnumbered">
 <h4>Diagnostics</h4>
 </div>
 </div>
@@ -806,8 +807,8 @@ Where <span class="math inline">\(\theta_k\)</span> is temperature in degrees Ke
 <h2><span class="header-section-number">7.5</span> Case Studies &amp; Examples</h2>
 <div id="case-study-2" class="section level3" number="7.5.1">
 <h3><span class="header-section-number">7.5.1</span> Case Study</h3>
-<div id="htmlwidget-efde927fe2511a1f15a6" style="width:770px;height:385px;" class="leaflet html-widget"></div>
-<script type="application/json" data-for="htmlwidget-efde927fe2511a1f15a6">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"setView":[[-31.991618,115.835235],10,[]],"calls":[{"method":"addTiles","args":["//{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"http://openstreetmap.org\">OpenStreetMap<\/a> contributors, <a href=\"http://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA<\/a>"}]},{"method":"addMarkers","args":[-31.991618,115.835235,null,null,null,{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},"Swan River",null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]}],"limits":{"lat":[-31.991618,-31.991618],"lng":[115.835235,115.835235]}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-09eb1c89f574032f6d27" style="width:770px;height:385px;" class="leaflet html-widget"></div>
+<script type="application/json" data-for="htmlwidget-09eb1c89f574032f6d27">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"setView":[[-31.991618,115.835235],10,[]],"calls":[{"method":"addTiles","args":["//{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"http://openstreetmap.org\">OpenStreetMap<\/a> contributors, <a href=\"http://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA<\/a>"}]},{"method":"addMarkers","args":[-31.991618,115.835235,null,null,null,{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},"Swan River",null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]}],"limits":{"lat":[-31.991618,-31.991618],"lng":[115.835235,115.835235]}},"evals":[],"jsHooks":[]}</script>
 <p><br></p>
 <!-- Previously from 'Examples' on website version -->
 <center>

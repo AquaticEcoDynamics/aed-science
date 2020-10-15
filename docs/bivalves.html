@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>23 Bivalves | AED2/AED2+ Manual</title>
   <meta name="description" content="Work in progress." />
-  <meta name="generator" content="bookdown 0.19 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
   <meta property="og:title" content="23 Bivalves | AED2/AED2+ Manual" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 
 
 
-<meta name="date" content="2020-07-01" />
+<meta name="date" content="2020-10-14" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -32,7 +32,7 @@
   
 <link rel="prev" href="macroalgae.html"/>
 <link rel="next" href="benthic-habitat-quality.html"/>
-<script src="libs/header-attrs-2.2/header-attrs.js"></script>
+<script src="libs/header-attrs-2.4/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -60,6 +60,7 @@
 <script src="libs/leaflet-providers-1.9.0/leaflet-providers_1.9.0.js"></script>
 <script src="libs/leaflet-providers-plugin-2.0.3/leaflet-providers-plugin.js"></script>
 <script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
 <script src="libs/plotly-binding-4.9.2.1/plotly.js"></script>
 <script src="libs/typedarray-0.1/typedarray.min.js"></script>
 <link href="libs/crosstalk-1.1.0.1/css/crosstalk.css" rel="stylesheet" />
@@ -737,7 +738,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">23.3</span> Model Description</h2>
 <div id="process-descriptions-18" class="section level3" number="23.3.1">
 <h3><span class="header-section-number">23.3.1</span> Process Descriptions</h3>
-<div id="ingestion" class="section level4 unnumbered" number="">
+<div id="ingestion" class="section level4 unnumbered">
 <h4>Ingestion</h4>
 <p>Ingestion is modelled as a function of filtration rate, food availability, pseudofeces production, density, suspended solids, and salinity (Equation 2) <span class="citation">(Schneider <a href="#ref-schneider1992" role="doc-biblioref">1992</a>; Bierman et al. <a href="#ref-bierman2005" role="doc-biblioref">2005</a>; Spillman et al. <a href="#ref-spillman2008" role="doc-biblioref">2008</a>; Gudimov et al. <a href="#ref-gudimov2015" role="doc-biblioref">2015</a>)</span>. Filtration rate is based on maximum ingestion, temperature, food availability, and pseudofeces production according to the following:</p>
 <center>
@@ -891,7 +892,7 @@ f(S) = 0 \text{ for } S &gt; maxS \text{ or } S &lt; minS
 <p><br></p>
 <p>where <span class="math inline">\(S\)</span> is salinity (psu), <span class="math inline">\(minS\)</span> is lower salinity for no ingestion (psu), <span class="math inline">\(Smin\)</span> is lower salinity for optimum ingestion (psu), <span class="math inline">\(Smax\)</span> is upper salinity for optimum ingestion (psu), <span class="math inline">\(maxS\)</span> is upper salinity for no ingestion (psu) <span class="citation">(Spillman et al. <a href="#ref-spillman2008" role="doc-biblioref">2008</a>)</span>.</p>
 </div>
-<div id="respiration" class="section level4 unnumbered" number="">
+<div id="respiration" class="section level4 unnumbered">
 <h4>Respiration</h4>
 <p>Respiration is modelled as a base or standard respiration rate based on weight and temperature <span class="citation">(Spillman et al. <a href="#ref-spillman2008" role="doc-biblioref">2008</a>)</span>. Respiration rate coefficient at 20°C is based on weight from length according to the following:</p>
 <center>
@@ -983,15 +984,15 @@ Y = lnQ_{R}*(Tmax_{R} – maxT_{R} + 2)
 <p>where <span class="math inline">\(T\)</span> is temperature (°C), <span class="math inline">\(Tmax_{R}\)</span> is upper temperature for optimum respiration (°C), <span class="math inline">\(maxT_{R}\)</span> is upper temperature for no respiration (°C), and <span class="math inline">\(Q_{R}\)</span> is respiration curve slope estimate (-). The maximum respiration occurs at 30°C with 43°C as the upper lethal temperature.
 The energetic cost of feeding or specific dynamic action is applied only to the portion of ingestion that is not egested <span class="citation">(Schneider <a href="#ref-schneider1992" role="doc-biblioref">1992</a>; Bierman et al. <a href="#ref-bierman2005" role="doc-biblioref">2005</a>; Gudimov et al. <a href="#ref-gudimov2015" role="doc-biblioref">2015</a>)</span>.</p>
 </div>
-<div id="excretion" class="section level4 unnumbered" number="">
+<div id="excretion" class="section level4 unnumbered">
 <h4>Excretion</h4>
 <p>Excretion is modelled as a constant fraction of assimilated food <span class="citation">(Schneider <a href="#ref-schneider1992" role="doc-biblioref">1992</a>; Bierman et al. <a href="#ref-bierman2005" role="doc-biblioref">2005</a>; Gudimov et al. <a href="#ref-gudimov2015" role="doc-biblioref">2015</a>)</span>. Excretion data for zebra and quagga mussels are limited; therefore, the excretion formulation for Mytilus edulis derived by Bayne and Newell (1983) was used <span class="citation">(Schneider <a href="#ref-schneider1992" role="doc-biblioref">1992</a>; Bierman et al. <a href="#ref-bierman2005" role="doc-biblioref">2005</a>; Gudimov et al. <a href="#ref-gudimov2015" role="doc-biblioref">2015</a>)</span>.</p>
 </div>
-<div id="egestion" class="section level4 unnumbered" number="">
+<div id="egestion" class="section level4 unnumbered">
 <h4>Egestion</h4>
 <p>Egestion is modeled as a function of ingestion <span class="citation">(Schneider <a href="#ref-schneider1992" role="doc-biblioref">1992</a>; Bierman et al. <a href="#ref-bierman2005" role="doc-biblioref">2005</a>; Gudimov et al. <a href="#ref-gudimov2015" role="doc-biblioref">2015</a>)</span>. The model follows the assumption that ingestion is directly proportional to the food content of the water for all food concentrations less than the maximum which can be ingested. For all food concentrations above this saturation value, ingestion remains constant at a maximum value (<span class="math inline">\(I_{max}\)</span>) <span class="citation">(Walz <a href="#ref-walz1978" role="doc-biblioref">1978</a>)</span>.</p>
 </div>
-<div id="mortality" class="section level4 unnumbered" number="">
+<div id="mortality" class="section level4 unnumbered">
 <h4>Mortality</h4>
 <p>Mortality is a function of dissolved oxygen and predation (Equation 7). Mortality increases with low dissolved oxygen concentrations according to the following:</p>
 <center>
@@ -1007,7 +1008,7 @@ f(DO) = 1 + K_{BDO} * \frac{K_{DO}}{K_{DO} + DO}
 </div>
 <div id="variable-summary-18" class="section level3" number="23.3.2">
 <h3><span class="header-section-number">23.3.2</span> Variable Summary</h3>
-<div id="state-variables-2" class="section level4 unnumbered" number="">
+<div id="state-variables-2" class="section level4 unnumbered">
 <h4>State Variables</h4>
 <div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:770px; ">
 <table class="table" style="font-size: 12px; width: auto !important; margin-left: auto; margin-right: auto;">
@@ -1072,7 +1073,7 @@ Optional : biv_tracer = .true.
 </table>
 </div>
 </div>
-<div id="diagnostics-3" class="section level4 unnumbered" number="">
+<div id="diagnostics-3" class="section level4 unnumbered">
 <h4>Diagnostics</h4>
 <div style="border: 1px solid #ddd; padding: 5px; overflow-y: scroll; height:500px; overflow-x: scroll; width:770px; ">
 <table class="table table-hover" style="font-size: 12px; width: auto !important; margin-left: auto; margin-right: auto;">

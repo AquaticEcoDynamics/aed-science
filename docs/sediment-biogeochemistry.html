@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>20 Sediment Biogeochemistry | AED2/AED2+ Manual</title>
   <meta name="description" content="Work in progress." />
-  <meta name="generator" content="bookdown 0.19 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
   <meta property="og:title" content="20 Sediment Biogeochemistry | AED2/AED2+ Manual" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 
 
 
-<meta name="date" content="2020-07-01" />
+<meta name="date" content="2020-10-14" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -32,7 +32,7 @@
   
 <link rel="prev" href="bioactive-particles.html"/>
 <link rel="next" href="submerged-macrophytes.html"/>
-<script src="libs/header-attrs-2.2/header-attrs.js"></script>
+<script src="libs/header-attrs-2.4/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -60,6 +60,7 @@
 <script src="libs/leaflet-providers-1.9.0/leaflet-providers_1.9.0.js"></script>
 <script src="libs/leaflet-providers-plugin-2.0.3/leaflet-providers-plugin.js"></script>
 <script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
 <script src="libs/plotly-binding-4.9.2.1/plotly.js"></script>
 <script src="libs/typedarray-0.1/typedarray.min.js"></script>
 <link href="libs/crosstalk-1.1.0.1/css/crosstalk.css" rel="stylesheet" />
@@ -770,7 +771,7 @@ Figure 20.2: AED CANDI includes chemical processes of organic matter transformat
 </center>
 <div id="process-descriptions-15" class="section level3" number="20.3.1">
 <h3><span class="header-section-number">20.3.1</span> Process Descriptions</h3>
-<div id="primary-redox-reactions" class="section level4 unnumbered" number="">
+<div id="primary-redox-reactions" class="section level4 unnumbered">
 <h4>Primary Redox Reactions</h4>
 <p>The key chemical process that causes ongoing change in the sediment is the breakdown of organic matter. The user can decide how complex or simple the organic matter breakdown pathway should be, with three options of varying complexity for parameterising the pathways included (Figure 5 - 3). The first option (<code>OMModel = 1</code>) is a common multi-G model in which the POM phases are decomposed straight to CO<sub>2</sub> and other breakdown products. Here POM is a variable that is not precisely defined, and its components (such as C, N and P) must be determined in post-processing based on a user-defined fixed stoichiometry. The second option (<code>OMModel = 2</code>) is another 2G model with both particulate and dissolved organic matter (POM and DOM) phases included and parameterisation hydrolysis of POM to DOM, and then DOM to CO<sub>2</sub> and other breakdown products. The POM and DOM phases consist of three variables each, which trace the reaction and transport of carbon, nitrogen and phosphorus, thereby allowing for variable stoichiometry of organic matter to occur temporally and spatially. The third option (<code>OMModel = 3</code>) has many POM phases, which are all hydrolysed to DOM, which then undergoes fermentation and terminal metabolism, as using the mechanistic approach from Chapter 3. This allows the carbon, nitrogen and phosphorus to be calculated precisely before and after a model run, and allows the free energies of the reaction of each phase to be included. This third option is the most detailed and mechanistic, and allows for expansion of more detailed reaction mechanisms to be included.</p>
 <div style="border: 1px solid #ddd; padding: 5px; overflow-y: scroll; height:500px; overflow-x: scroll; width:770px; ">
@@ -929,17 +930,17 @@ Figure 20.3: Three options for different levels of complexity in organic matter 
 <p><span class="math inline">\(F_{T}\)</span> is the thermodynamic factor, as described in chapter 3. The current version of the model includes FT only for OMModel 3, for terminal oxidation reactions and fermentation.</p>
 <p><span class="math inline">\(F_{OM}\)</span> is the organic matter concentration and may be a Monod function as in equation 5 - 8 (<span class="math inline">\(K_{OM}\)</span> is a half saturation constant and the index <span class="math inline">\(i\)</span> is the reactive phase). Using OMModels 1 and 2, <span class="math inline">\(F_{OM}\)</span> is the concentration of the substrate, rather than a Monod function. The current version of the model has switches built in for both the temperature dependence factor, <span class="math inline">\(F_{Tem}\)</span>, where values of 1 or 2 turn them off and on. However, implementation and testing of the factors has not been carried out for this version of the model. The metabolism rate at <span class="math inline">\(T_{0}\)</span> is <span class="math inline">\(R_{0}\)</span>, <span class="math inline">\(ξ\)</span> is a scaling constant (see, for example, Eldridge and Morse 2008).</p>
 </div>
-<div id="secondary-redox-reactions" class="section level4 unnumbered" number="">
+<div id="secondary-redox-reactions" class="section level4 unnumbered">
 <h4>Secondary Redox Reactions</h4>
 <p>In the meta-analysis, we identified the many secondary redox reactions that have been included across the diversity of diagenesis model applications. In AED CANDI, they are all included as options, and may be turned on or off as desired (Table 5 - 4).</p>
 </div>
-<div id="equilibrium-geochemistry" class="section level4 unnumbered" number="">
+<div id="equilibrium-geochemistry" class="section level4 unnumbered">
 <h4>Equilibrium Geochemistry</h4>
 <p>The pH is calculated as the sum of all charged species, where any unbalanced positive charge indicates H<sup>+</sup>. The charge balance is at each time step is solved as a state variable, which is subject to advection, diffusion and bioturbation reactions.</p>
 <p>The precipitation of minerals is solved as an equilibrium reaction, dependent on the concentrations of the dissolved and solid substances, their <span class="math inline">\(K_{sp}\)</span> and ion activity product (IAP). The equations are applied in a similar manner to those in Van Cappellen and Wang (1996) and numerous other studies, but with the exact forms of the equations based on those from Tufano et al. (2009) (Table 5 - 5). A positive rate indicates precipitation and a negative rate indicates dissolution. This model applies the function to all mineral simulated, including Fe(OH)<sub>3</sub>, FeS, FeS<sub>2</sub>, FeCO<sub>3</sub>, CaCO<sub>3</sub> and MnCO<sub>3</sub>.
 This model has a process of mineral ageing, whereby iron and manganese oxides become crystalline and no longer react with organic matter, but can still undergo secondary redox reactions.</p>
 </div>
-<div id="physical-transport" class="section level4 unnumbered" number="">
+<div id="physical-transport" class="section level4 unnumbered">
 <h4>Physical Transport</h4>
 <p>The analysis from chapter 2 showed that advection and diffusion reactions (equations 5 - 102, 5 - 103) are fairly consistent in diagenesis models, and here we use the same methods (Table 5 - 8). Porosity (ϕ) is defined according to equation 5 - 104, which allows it to decrease with depth, and the solid fraction is defined from <span class="math inline">\(\phi_s=1-\phi)\)</span>. For bioturbation the model uses a diffusion coefficient that varies with depth (<span class="math inline">\(D_{B(x)}\)</span>) as a two layer function or a Gaussian decrease (Boudreau 1996). For the porewater components, diffusion coefficients are used that are based on free-solution molecular diffusion constants corrected for sediment tortuosity, <span class="math inline">\(θ\)</span>, according to equation 5 - 105.</p>
 </div>

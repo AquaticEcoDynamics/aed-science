@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>16 Aqueous Geochemistry | AED2/AED2+ Manual</title>
   <meta name="description" content="Work in progress." />
-  <meta name="generator" content="bookdown 0.19 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
   <meta property="og:title" content="16 Aqueous Geochemistry | AED2/AED2+ Manual" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 
 
 
-<meta name="date" content="2020-07-01" />
+<meta name="date" content="2020-10-14" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -32,7 +32,7 @@
   
 <link rel="prev" href="totals.html"/>
 <link rel="next" href="pathogens-microbial-indicator-organisms.html"/>
-<script src="libs/header-attrs-2.2/header-attrs.js"></script>
+<script src="libs/header-attrs-2.4/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -60,6 +60,7 @@
 <script src="libs/leaflet-providers-1.9.0/leaflet-providers_1.9.0.js"></script>
 <script src="libs/leaflet-providers-plugin-2.0.3/leaflet-providers-plugin.js"></script>
 <script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
 <script src="libs/plotly-binding-4.9.2.1/plotly.js"></script>
 <script src="libs/typedarray-0.1/typedarray.min.js"></script>
 <link href="libs/crosstalk-1.1.0.1/css/crosstalk.css" rel="stylesheet" />
@@ -747,7 +748,7 @@ Figure 16.1: Conceptual diagram highlighting key variables and interactions with
 <h4><span class="header-section-number">16.3.1.1</span> General Approach</h4>
 <p>The aqueous geochemistry sub-model was developed to simulate aqueous speciation and solubility equilibrium control of pure-phase minerals using an approach similar to <strong>PHREEQC</strong> and as reported previously in Salmon et al (in review). Each dissolved component, <span class="math inline">\(X\)</span>, and mineral phase, <span class="math inline">\(PP\)</span>, is a state variable within the model and is mass-conserved. In addition to external loading from inflows, the model includes a configurable dissolved sediment flux term for the dissolved species and a sedimentation term for the particulates. If we remove the hydrodynamic terms (e.g., inflows/outflows, mixing) for brevity, the differential equation is defined for the dissolved state variables as:</p>
 </div>
-<div id="aqueous-speciation-solubility-equilibrium-control" class="section level4 unnumbered" number="">
+<div id="aqueous-speciation-solubility-equilibrium-control" class="section level4 unnumbered">
 <h4>Aqueous Speciation &amp; Solubility Equilibrium Control</h4>
 <p>The aqueous geochemistry model is conceptually similar to other equilbrium codes (e.g. … ). The model defines geochemical reactions in terms of components. An aqueous species <span class="math inline">\(C\)</span> is created as a product of reaction between components <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span>, as shown in the following example:</p>
 <center>
@@ -927,16 +928,16 @@ K_C=\frac{[C]^c}{[A]^a[B]^b}
 </center>
 <p>The operation of the simplex solver is complicated and the reader is referred to Barrodale and Roberts (1980) for a detailed account. The aqueous species used in the simulations is based on those from Nordstrom et al. (1990), termed the <strong>WATEQ4F</strong> database.</p>
 </div>
-<div id="redox-transformations" class="section level4 unnumbered" number="">
+<div id="redox-transformations" class="section level4 unnumbered">
 <h4>Redox Transformations</h4>
 </div>
-<div id="other-geochemistry-sourcessinks-optional" class="section level4 unnumbered" number="">
+<div id="other-geochemistry-sourcessinks-optional" class="section level4 unnumbered">
 <h4>Other Geochemistry Sources/sinks (optional)</h4>
 </div>
 </div>
 <div id="variable-summary-11" class="section level3" number="16.3.2">
 <h3><span class="header-section-number">16.3.2</span> Variable Summary</h3>
-<div id="state-vairables" class="section level4 unnumbered" number="">
+<div id="state-vairables" class="section level4 unnumbered">
 <h4>State Vairables</h4>
 <div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:770px; ">
 <table class="table" style="font-size: 12px; width: auto !important; margin-left: auto; margin-right: auto;">
