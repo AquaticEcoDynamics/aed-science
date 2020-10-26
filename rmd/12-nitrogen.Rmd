@@ -1,0 +1,312 @@
+# Nitrogen
+
+## Contributors
+
+Daniel Paraska, Louise Bruce, Peisheng Huang, Matthew Hipsey
+
+## Overview
+
+Nitrogen is fundamental to shaping water quality in aquatic ecosystems. Nitrogen is of particular interest in that exists in many redox states and there are a myriad of organic and inorganic reactions that make up the nitrogen biogeochemical system. NO~3~^-^ and NH~4~^+^ are the primary inorganic nutrients that re taken up by aquatic plants (phytoplankton and macrophytes) to build biomass as organic nitrogen. As nitrogen is a core building block of an aquatic ecosystem, aed\_nitrogen (NIT) is designed as a low-level module for managing inorganic nitrogen pools, and is able to be linked to by higher order modules associated with primary production, and organic matter breakdown.
+
+The general nitrogen redox process specifically resolved in this module is NH~4~^+^ oxidation to NO~3~^-^ by O~2~, and NO~3~^-^ is reduced to N~2~ with organic matter, releasing organic nitrogen and NH~4~^+^ in the process. Advanced options are available, in which the end result is generation of the nitrogen species N~2~O. Producing N~2~O uses more variables and reaction pathways and is not necessary for most nutrient cycling studies.
+
+Importantly, nitrogen species react with organic matter. The description of organic matter involvement in nitrogen reactions and interactions can be found in Section (OM). The uptake and use of these variables by phytoplankton and macroalgae are described in Section (PHY) and (MAG).
+
+## Model Description - Default Model
+
+### Process Descriptions
+
+In the basic nitrogen module configuration, the variables NO~3~ and NH~4~ are included and able to be modified by nitrification, denitrification, sediment release and atmospheric deposition; to use this basic functionality, ensure the parameter `simN2O` is set to 0. The main balance equations for the simulated variables are summarised as:
+
+\\begin{equation} \\frac{\\partial{NO}\_3}{\\partial t}=f\_{nitrf} - f\_{denit} + \\color{\#394E73}{f\_{atmdep}\^{NOx}}+\\color{\#8B701F}{f\_{sed}\^{NOx}} (\\\#eq:nitrogen1) \\end{equation}
+
+\\begin{equation} \\frac{\\partial{NH}\_4}{\\partial t}=f\_{denit} -f\_{nitrf} + \\color{\#394E73}{f\_{atmdep}\^{NH4}} + \\color{\#8B701F}{f\_{sed}\^{NH4}} (\\\#eq:nitrogen2) \\end{equation}
+
+#### Nitrification-denitrification reactions
+
+In an environment of high O~2~, NH~4~^+^ is oxidized by oxygen to NO~3~^-^ via nitrification. In an environment of low O~2~, NO~3~^-^ is reduced to N~2~ via the process denitrification. O~2~ limitation on the rate of the reaction is not included in the default setup, but can be chosen by the user, as described in the section below.
+
+<center>
+
+```{r nitrogen-1, echo=FALSE, fig.cap="Summary of two main reactions in the default nitrogen model.", out.width = '60%'}
+#knitr::include_graphics("images/12-nitrogen/picture1.png")
+
+```
+
+</center>
+
+#### Nitrification
+
+The rate of nitrification is assumed to vary primarily due to temperature, and also due to variation in O~2~ and pH, according to:
+
+\\begin{equation} f\_{nitrf} =R\_{nitrf}\\ \\ \\theta\_{nitrif}\^{T-20}\\ \\ {\\underbrace{\\Phi\_{O2}\^{nitrf}\\left[O\_2\\right]\\ \\ \\Phi\_{pH}\^{nitrf}\\left[pH\\right]}\_{\\text{Optional limitations}}}\\ \\ NH\_4\^+ (\\\#eq:nitrogen3) \\end{equation}
+
+Where $\theta_{nitrif}$ is a Arrhenius temperature parameter specific to nitrification, and $T$ is the temperature produced by the host model. O~2~ limitation on this rate will not be included in the setup unless a link to the oxygen module is made, as described in the section below.
+
+**Oxygen limitation on nitrification:** An extra option is to allow low O~2~ concentration to limit the nitrification rate, $f(O_{2})$. If the aed2\_oxygen module is linked to the nitrogen module, then this setting will switch on automatically. The limitation effect is calculated according to:
+
+\\begin{equation} \\Phi\_{O2}\^{nitrf}\\left[O\_2\\right]=\\ \\frac{O\_2}{O\_2+K\_{nitrif}} (\\\#eq:nitrogen4) \\end{equation}
+
+Where $K_{nitrif}$ is a half saturation constant concentration of oxygen. The purpose of this factor is to reduce the rate of nitrification as oxygen moves below a critical concentration.
+
+**pH limitation on nitrification:** The rate of nitrification can be decreased at very high and low pH values, if pH is being simulated (see Carbon and Geochemsitry). To use this function, the parameter `simNitrfpH` is set to `.TRUE.`. Around neutral pH, between the upper and lower optimum parameters, the reaction proceeds at the normal rate. Below a lower tolerance, and above an upper tolerance, the reaction is stopped entirely. Between the optimum and tolerance values, the rate is limited, in proportion to pH. The piecewise function is described as:
+
+\\begin{equation} \\Phi\_{pH}\^{nitrf}\\left[pH\\right]=\\left\\{ \\begin{array}{ll} 0,\\ \\ \\ \\ \\ pH \< 0\\\\ 0,\\ \\ \\ \\ \\ x\\geq 0\\\\ 1,\\ \\ \\ \\ \\ x\\geq 0\\\\ 0,\\ \\ \\ \\ \\ x\\geq 0\\\\ 0,\\ \\ \\ \\ \\ pH\\geq 0\\\\ \\end{array} \\right. (\\\#eq:nitrogen5) \\end{equation}
+
+The function is shown schematically in Figure \@ref(fig:nitrogen-2).
+
+<center>
+
+```{r nitrogen-2, echo=FALSE, message=FALSE, warning=FALSE, fig.cap="pH limitation on nitrification.", out.width = '100%'}
+library(ggplot2)
+library(plotly)
+library(knitr)
+
+pH <-  c(5,6,7,7.1,7.9,8,9)
+Rate <- c(0,0,0,1,1,0,0)
+
+plot_data <- data.frame(pH, Rate)
+
+plot <- ggplot(data = plot_data, aes(pH, Rate)) +
+          geom_line(colour = "red", lwd = 1.2, lineend = "round") +
+          scale_x_continuous(limits = c(4,10), breaks  = c(4,5,6,7,8,9,10))+
+          labs(x="pH", y = "Rate factor")+
+          theme_classic() +
+          theme(axis.title.x=element_text(colour = "black", size = 13),
+                axis.title.y=element_text(colour = "black", size = 13),
+                axis.text.y = element_text(colour = "black", size = 11),
+                axis.text.x = element_text(colour = "black", size = 11),
+                text = element_text(size=20))
+
+ggplotly(p = plot)
+```
+
+</center>
+
+**Light limitation on nitrification:** This process is not included in aed2 yet and it does not need to go on the website.
+
+#### Denitrification
+
+Denitrification is a heterotrophic process occurring in low oxygen environments such as anoxic bottom waters and sediments. In addition to oxygen, the rate of denitrification depends on temperature and nitrate availability. It is calculated according to:
+
+\\begin{equation} f\_{denit} =R\_{denit}\\ \\ \\theta\_{denit}\^{T-20}\\ \\ \\frac{NO\_3\^-}{NO\_3\^-+K\_{NO3}}\\ \\ \\Phi\_{O2}\^{denit}\\left[O\_2\\right]\\ \\ NO\_3\^- (\\\#eq:nitrogen6) \\end{equation}
+
+Where $R_{denit}$ is the kinetic rate constant for denitrification and $\theta_{denit}$ is a temperature parameter specific to denitrification. The Monod term in Equation /[@ref](eqn:nitrogen6) 2 slows the rate at low NO~3~^-^ concentrations, and allows it to proceed at the maximum rate `R_denit` at high NO~3~^-^ concentrations. The parameter `KNO3` is the half-saturation parameter for limiting the reaction rate and is set by the user to slow the rate at low NO~3~^-^ concentrations. This parameter should not be confused with the O~2~ limitation factor `K_denit`, mentioned below; O~2~ limitation on the rate of the reaction is not included in the default setup, but can be chosen by the user, as described in the section below.
+
+**Oxygen mediation of denitrification:** For denitrification, oxygen slows the reaction through inclusion of an inhibition function as: \\begin{equation} \\Phi\_{O2}\^{denit}\\left[O\_2\\right]=\\left\\{ \\begin{array}{ll} \\frac{K\_{denit}}{O\_{2}+K\_{denit}},\\ \\ \\ \\ \\ \\ \\ \\Theta\^{denit}\_{oxylim} = 1\\\\ e\^{(-O\_{2}/K\_{denit})},\\ \\ \\ \\Theta\^{denit}\_{oxylim} = 2\\\\ \\end{array} \\right. (\\\#eq:nitrogen7) \\end{equation}
+
+Such that the denitrification rate is inhibited by high O~2~ concentrations, using the parameter `K_denit`. This parameter is an O~2~ concentration, and should not be confused with the parameter `KNO3` which is a NO~3~^-^ concentration. To use the process shown in Equation 4, the switch `oxy_lim`, $\Theta_{oxylim}^{denit}$, set to the number 1.
+
+Alternatively, the rate of denitrification can be set to decreases exponentially at high O~2~ concentrations, also using the parameter `Kdenit`. This is the same parameter as for the inhibition function described above, but applied differently.
+
+#### Atmospheric deposition
+
+Nitrogen can be added to the surface cells of an aquatic system through two kinds of atmospheric deposition: wet and dry. These functions can be turned on by setting the parameters `simDryDeposition` and `simWetDeposition` to `.TRUE.`.
+
+\\begin{equation} f\_{atmdep}\^{NOx}=\\left[{\\underbrace{F\_{atm}\^{DIN}}\_{\\text{Dry flux}}}+{\\underbrace{R\_n\\left[t\\right]\\ {DIN}\_{atm}}\_{\\text{Wet flux}}}\\right]\\frac{{\\ k}\_{DINdepNO\_x\\ }}{\\Delta z\_{surf}} (\\\#eq:nitrogen8) \\end{equation} \\begin{equation} f\_{atmdep}\^{NH\_4}=\\left[{\\underbrace{F\_{atm}\^{DIN}}\_{\\text{Dry flux}}}\\ +\\ {\\underbrace{R\_n\\left[t\\right]\\ {DIN}\_{atm}}\_{\\text{Wet flux}}}\\right]\\frac{\\left({\\ 1-k}\_{DINdepNO\_x}\\right)}{\\Delta z\_{surf}} (\\\#eq:nitrogen9) \\end{equation}
+
+Where $\Delta z_{surf}$ is the surface layer thickness. Wet deposition adds nitrogen as a result of rain, $R_n$ (m/day), which is a variable or a boundary condition provided as an environment variable from the host model. The deposition from rain is proportional to the atmospheric nitrogen concentration `atm_din_conc`. As with dry deposition, the proportion that is assigned to NO~x~ and NH~4~^+^ is given by the same parameter `f_dindep_nox`.
+
+#### Sediment flux
+
+NO~3~^-^ and NH~4~^+^ can flux into the water column from the sediment, using the parameters $F_{sed}^{nit}$ and $F_{sed}^{amm}$, which set the maximum flux rate. The maximum flux rate is limited by temperature, using the parameters `theta_sed_nit` and `theta_sed_amm`, according to
+
+\\begin{equation} f\_{sed}\^{NOx}=F\_{sed}\^{nit}\\ \\theta\_{sednit}\^{T-20\\ }\\Phi\_{O2}\^{nit}\\left[O\_2\\right] (\\\#eq:nitrogen10) \\end{equation} \\begin{equation} f\_{sed}\^{NH4}=F\_{sed}\^{amm}\\ \\theta\_{sedamm}\^{T-20\\ }\\Phi\_{O2}\^{amm}\\left[O\_2\\right] (\\\#eq:nitrogen11) \\end{equation}
+
+This assumes that there is a higher flux at higher temperatures.
+
+**Oxygen mediation of the sediment nitrogen fluxes:** As with the nitrification reaction, the sediment flux can be changed by bottom water O~2~ concentration. If the aed2\_oxygen module is correctly linked to the nitrogen module then this setting will switch on automatically. At low O~2~ concentrations, the amount of NO~3~^-^ fluxing out of the sediment is decreased and at high O~2~ concentrations, it is set close to the `F_sed_nit`, as shown in Equation 12. This is a convenient simplification that can be tuned within this module, rather than a more complicated full set of biogeochemical reactions. The parameter `K_sed_nit` can be used to tune the NO~3~^-^ flux dependence on bottom water O~2~. A similar function can be used to tune the NH~4~^+^ flux using the parameter `K_sed_amm`, as shown in Equation 13. At high O~2~ concentrations, NH~4~^+^ flux decreases, and at low O~2~ concentrations, the flux is close to the parameter `F_{sed}^{amm}`.
+
+\\begin{equation} \\Phi\_{O2}\^{nit}\\left[O\_2\\right]=\\frac{O\_2}{K\_{sednit}+O\_2} (\\\#eq:nitrogen12) \\end{equation}
+
+\\begin{equation} \\Phi\_{O2}\^{amm}\\left[O\_2\\right]=\\frac{K\_{sed\\ amm}}{K\_{sedamm}+O\_2} (\\\#eq:nitrogen13) \\end{equation}
+
+**Advanced options:** The approach described here is the most simple and default method for capturing DIN fluxes from the sediment, and is sometimes referred to the static model. This approach can be extended to allow for spatial variability in $F_{sed}^{nit}$ and $F_{sed}^{amm}$, by engaging the link to the aed\_sedflux module, where the host models support multiple benthic cells or zones. In this case, users input spatially discrete values of $F_{sed}^{nit}$ and $F_{sed}^{amm}$.
+
+Where dynamic rates of DIN species are required to flux to/from the sediment (e.g. in response to episodic loading of organic material to the sediment, or for assessment of long-term changes in N loading), then the above expressions (Eq 10-13) are replaced instead with dynamically calculated variables in aed\_seddiagenesis, via a link created with the aed2\_sedflux module.
+
+### Variable Summary
+
+The default variables created by this module, and the optionally required linked variables needed for full functionality of this module are summarised in Table X.
+
+### Parameter Summary
+
+The default parameters and settings used by this module are summarised in Table X.
+
+### Optional Module Links
+
+### Feedbacks to the Host Model
+
+## Model Description - Adding N~2~O Reactions
+
+The basic function of the nitrogen model is described above, when the parameter `simN2O` is set to the number 0. Users may extend their model to simulate the N cycle in more detail, including resolution of intermediate N pools. Using these advanced options, there are extra reaction pathways that are not critical for resolving basic nutrient cycling processes, but are needed for calculating the concentration of the greenhouse gas N~2~O. Here, these advanced module options are outlined, for when the user sets the parameter `simN2O` to the number 1 or 2. Simulation option 1 includes N2O, using a relatively simplistic assumption that N~2~O passively "leaks out" as a by-product or is consumed during the traditional nitrification-denitrification reactions. Simulation option 2 is a more comprehensive biogeochemical depiction of N cycling between its different redox states and considering the full diversity of autotrophic and heterotrophic pathways. In addition to different N reaction pathways in these sub-models, the inclusion of additional inorganic N components is also accompanied by new process pathways for atmospheric exchange and sediment interaction.
+
+### Process Descriptions (`simN20` = 1)
+
+The `simN2O` 1 option is based on the conceptual model from Babbin et al. or Nevison. If the parameter `simN2O` is set to the number 1, N~2~O is both created and consumed through the denitrification reaction, and produced during nitrification; these rates are oxygen dependent.
+
+The main balance equation for the additional N~2~O is summarised as:
+
+\\begin{equation} \\frac{\\partial N\_{2}O}{\\partial t} = {f\_{nitp}\^{N\_{2}O}} + {f\_{denp}\^{N\_{2}O}} - {f\_{denc}\^{N\_{2}O}} + \\color{\#394E73}{f\_{atm}\^{N\_{2}O}} + \\color{\#8B701F}{f\_{sed}\^{N2O}} \\end{equation}
+
+#### Denitrification production of N~2~O
+
+All of the NO~3~^-^ consumed by denitrification is assumed to first produces N~2~O. The rate of production of N~2~O is multiplied by half because there is one mole of N~2~O produced for every two moles of NO~3~^-^ consumed. The rate of denitrification is calculated as described here, and can have different O~2~ limitations, using the parameter `use_oxy`.
+
+\\begin{equation} f\^{N\_{2}O}\_{denp} = \\frac{1}{2}f\^{NO\_{x}}\_{denit} \\end{equation}
+
+#### Denitrification consumption of N~2~O
+
+Denitrification can also consume N~2~O, when the N~2~O acts as a high energy yielding oxidant that reacts with organic matter. The organic matter reaction is described in the organic matter model page here. The rate of N~2~O consumption is calculated as shown in Equation 15. `Rn2o` is a kinetic rate constant that sets the speed of the reaction and `Kn2oc` is the parameter for the exponential O~2~ inhibition of the reaction.
+
+\\begin{equation} f\_{denc}\^{N2O}=R\_{N\_{2}O} e\^{(-O\_2/{K\_{N\_2Oc}})}\\ N\_2O \\end{equation}
+
+#### Nitrification production of N~2~O
+
+N~2~O is also produced by the O~2~ oxidation of NH~4~^+^ as:
+
+<center>
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+library(gt)
+library(tidyverse)
+library(kableExtra)
+library(rmarkdown)
+
+aed <- read.csv("/Users/gilesknight/Documents/GitHub/aed-science/tables/12-nitrogen/table1.csv", check.names=FALSE)
+
+aed %>%
+  gt() %>%
+  tab_row_group(
+    group = "Sediment Flux",
+    rows = 17:22
+  ) %>%
+  tab_row_group(
+    group = "Atmospheric Deposition",
+    rows = 12:16
+  ) %>%
+  tab_row_group(
+    group = "Nitrification/Denitrification",
+    rows = 1:11
+  ) %>%
+  tab_options(container.height = px(500),
+              container.overflow.y = TRUE,
+              container.overflow.x = TRUE,
+              table.font.size = 12,
+              column_labels.background.color = "#14759e",
+              row_group.background.color = "lightgrey",
+              column_labels.font.weight = "bold",
+              column_labels.font.size = 14) %>%
+  fmt_markdown(columns = everything())
+
+
+```
+
+</center>
+
+#### Atmospheric N~2~O Flux
+
+N~2~O fluxes from the atmosphere are calculated from the difference between water and atmospheric concentration:
+
+\\begin{equation} f\_{atm}\^{N\_{2}O}=k\_{N\_{2}O}(N\_{2}O-N\_{2}O\_{atm}) \\end{equation}
+
+Where $N_{2}O_{atm}$ is the user defined atmospheric value, and $k_{N_{2}O}$ is the piston velocity; refer to generic utility Section X for more detail using `aed2_gas_piston_velocity`, and the `n2o_piston_model` options.
+
+#### Sediment N~2~O Flux
+
+N~2~O flux from the sediment is calculated in a similar way to the fluxes of NO~3~^-^ and NH~4~^+^(Equation 22).
+
+\\begin{equation} $f_{sed}^{N2O}=F_{sed}^{n2o} \theta_{sedamm}^{T-20}\Phi_{O2}^{n2o}\left[O_2\right]$ \\end{equation}
+
+$$
+f_{sed}^{N_{2}O}=F_{sed}^{N_{2}O}\theta_{sedamm}^{T-20}\Phi_{O_{2}}^{N_{2}O}[O_2]
+$$ 
+{#eq:label}
+
+### Process Descriptions (`simN@O = 2`)
+
+The `simN2O` 2 option uses the terminology from Weissbach et al. (2017) for the names of the reaction processes, in order to avoid the ambiguity found across publications. The model processes are described as being part of either the oxidation pathway or reduction pathway.
+
+The main balance equations for the  additional simulated variables are sumamrised as:
+
+\begin{equation}
+\frac{\partial{NO}_3}{\partial t}=f_{Nitratation}-f_{Denitratation}+f_{atmdep}^{NOx}+f_{sed}^{NO3}
+\end{equation}
+\begin{equation}
+\frac{\partial{NO}_2}{\partial t}={f_{Nitritation}+f}_{Denitratation}-f_{Denitritation}+f_{sed}^{NO2}
+\end{equation}
+\begin{equation}
+\frac{\partial N_2O}{\partial t}=f_{Nitrousation}+f_{nitrous\ denitritation}-f_{denitrousation}+f_{atm}^{N2O}+f_{sed}^{N2O}
+\end{equation}
+\begin{equation}
+\frac{\partial{NH}_4}{\partial t}=f_{DNRA}+f_{NH4\ release}-f_{NH4\ \ oxidation}+f_{atmdep}^{NH4}+f_{sed}^{NH4}
+\end{equation}
+
+#### Nitrogen Oxidation Pathways
+
+In the oxidation pathway, reduced N in the form of ammonium is first oxidised to NO~2~ and N~2~O before NO~3~, as seen in Figure 1. These processes are described next.
+
+```{r nitrogen-3, echo=FALSE, fig.cap="Nitrogen oxidation pathways.", out.width = '60%'}
+
+#knitr::include_graphics("images/12-nitrogen/picture2.png")
+
+```
+
+#### Nitratation
+
+Nitratation is the production of NO~3~^- (nitr*ate*) from NO~2~^-^ by O~2~ oxidation. The rate is calculated as a second-order reaction proportional to both NO~2~^-^ and O~2~ concentrations (Equation 14). The parameter `Rno2o2` is the kinetic rate constant for the reaction.
+
+\begin{equation}
+f_{Nitratation}=R_{{NO}_2O_2}\times{NO}_2^-\times O_2
+\end{equation}
+
+#### Ammonium oxidation
+
+NH~4~^+^ is oxidized by O~2~ to both N~2~O and NO~2~^-^. The rate of NH~4~^+^ consumption is the second-order reaction proportional to both O~2~ and NH~4~^+^ concentrations (Equation 15). The parameter `Rnh4o2` is the kinetic rate constant for the reaction.
+
+\begin{equation}
+f_{Ammonium\ oxidation}=R_{{NH}_4O_2}\times{NH}_4^+\times O_2
+\end{equation}
+
+#### Nitritation
+
+Nitritation is the production of NO~2~^-^ (nitr*ite*) under conditions of high O~2~ concentration, from ammonium oxidation. It is limited by a partitioning function, in which the constant `Kpart_ammox` is the same as that for nitrousation, described below. Above a critical O~2~ concentration, this reaction pathway is favoured (Equation 16). The term R~Ammonium oxidation~ refers to the rate equation described above, rather than a kinetic constant.
+
+\begin{equation}
+f_{Nitritation}=f_{Ammonium\ oxidation}\frac{O_2}{K_{part\ ammox}^ +O_2}
+\end{equation}
+
+#### Nitrousation
+
+Nitrousation is one of two pathways that produce N~2~O using `simN2O` set to the number 2 (the other pathway is the reduction of NO~2~^-^ via nitrous denitritation). This process occurs under conditions of low O~2~ concentration, and it is inhibited by oxygen, using an inhibition function (Equation 18). The constant`Kpart_ammox` is the same as that in the nitritation process, which means that below a critical O~2~ concentration, this reaction pathway is favoured over nitritation. The reaction is multiplied by half, because for each mole of NH~4~^+^ oxidized, one mole of N~2~O is produced. The term R~Ammonium oxidation~ refers to the rate equation described above, rather than a kinetic constant.
+
+\begin{equation}
+f_{Nitrousation}=\frac{1}{2}f_{Ammonium\ oxidation}\frac{K_{part\ ammox}}{K_{part\ ammox} +O_2}
+\end{equation}
+
+#### Organic matter oxidation - nitrogen reduction reactions
+
+When the `simN2O` switch is set to 2, the complex set of N~2~O reactions is used. The details of the organic matter processes are explained on the organic matter model page here. The five nitrogen processes are explained here.
+
+#### Deammonification (anammox) pathway
+
+```{r nitrogen-4, echo=FALSE, fig.cap="Anammox pathways.", out.width = '60%'}
+
+#knitr::include_graphics("images/12-nitrogen/picture3.png")
+
+```
+
+The deammonification pathway is the oxidation of NH~4~^+^ by NO~2~^-^ to produce N~2~. It uses neither organic matter nor O~2~, although it is inhibited by the presence of O~2~. This process is sometimes referred to as anammox (anaerobic ammonium oxidation), however, Weissbach et al (2017) use the term deammonification to distinguish it from the anammox commercial bioreactor. The parameter `Rnh4no2` is the kinetic rate constant for this reaction. The parameter `Kin_deamm` is the O~2~ concentration parameter for O~2~ inhibition of this reaction. 
+
+\begin{equation}
+f_{deammonification}=R_{{NH}_4{NO}_2}\times{NO}_2^-\times{NH}_4^+\times\frac{K_{in\ deamm}}{K_{in\ deamm} +O_2}
+\end{equation}
+
+
+## Setup & Configuration
+
+## Case Studies & Examples
+
+### Case Study
+
+### Publications

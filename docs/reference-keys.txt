@@ -2,21 +2,7 @@ fig:aed-sites
 tab:vardatatypes
 tab:modules
 tab:modules2
-eq:nitrogen1
-eq:nitrogen2
-fig:nitrogen-1
-eq:nitrogen3
-eq:nitrogen4
-eq:nitrogen5
 fig:nitrogen-2
-eq:nitrogen6
-eq:nitrogen7
-eq:nitrogen8
-eq:nitrogen9
-eq:nitrogen10
-eq:nitrogen11
-eq:nitrogen12
-eq:nitrogen13
 eq:phyto1
 eq:phyto2
 eq:phyto3
@@ -108,8 +94,8 @@ tab:26-statevariables
 tab:26-diagnostics
 tab:26-parametersummmary
 tab:26-parameterconfig
-tab:unnamed-chunk-5
 tab:unnamed-chunk-6
+tab:unnamed-chunk-7
 tab:35-publications
 introduction
 nomenclature
@@ -183,7 +169,7 @@ publications-3
 nitrogen
 contributors-4
 overview-4
-model-description-4
+model-description---default-model
 process-descriptions-4
 nitrification-denitrification-reactions
 nitrification
@@ -194,6 +180,21 @@ variable-summary-4
 parameter-summary-4
 optional-module-links-4
 feedbacks-to-the-host-model-4
+model-description---adding-n2o-reactions
+process-descriptions-simn20-1
+denitrification-production-of-n2o
+denitrification-consumption-of-n2o
+nitrification-production-of-n2o
+atmospheric-n2o-flux
+sediment-n2o-flux
+process-descriptions-simno-2
+nitrogen-oxidation-pathways
+nitratation
+ammonium-oxidation
+nitritation
+nitrousation
+organic-matter-oxidation---nitrogen-reduction-reactions
+deammonification-anammox-pathway
 setup-configuration-4
 case-studies-examples-4
 case-study-4
@@ -201,7 +202,7 @@ publications-4
 phosphorous
 contributors-5
 overview-5
-model-description-5
+model-description-4
 process-descriptions-5
 variable-summary-5
 parameter-summary-5
@@ -214,7 +215,7 @@ publications-5
 silica
 contributors-6
 overview-6
-model-description-6
+model-description-5
 process-descriptions-6
 variable-summary-6
 parameter-summary-6
@@ -227,7 +228,7 @@ publications-6
 organic-matter
 contributors-7
 overview-7
-model-description-7
+model-description-6
 process-descriptions-7
 variable-summary-7
 parameter-summary-7
@@ -240,7 +241,7 @@ publications-7
 phytoplankton
 contributors-8
 overview-8
-model-description-8
+model-description-7
 process-descriptions-8
 variable-summary-8
 parameter-summary-8
@@ -254,7 +255,7 @@ publications-8
 zooplankton
 contributors-9
 overview-9
-model-description-9
+model-description-8
 process-descriptions-9
 variable-summary-9
 parameter-summary-9
@@ -267,7 +268,7 @@ publications-9
 totals
 contributors-10
 overview-10
-model-description-10
+model-description-9
 process-descriptions-10
 variable-summary-10
 parameter-summary-10
@@ -280,7 +281,7 @@ publications-10
 aqueous-geochemistry
 contributors-11
 overview-11
-model-description-11
+model-description-10
 process-descriptions-11
 general-approach
 variable-summary-11
@@ -295,7 +296,7 @@ publications-11
 pathogens-microbial-indicator-organisms
 contributors-12
 overview-12
-model-description-12
+model-description-11
 process-descriptions-12
 variable-summary-12
 parameter-summary-12
@@ -309,7 +310,7 @@ publications-12
 stable-isotopes
 contributors-13
 overview-13
-model-description-13
+model-description-12
 process-descriptions-13
 variable-summary-13
 parameter-summary-13
@@ -322,7 +323,7 @@ publications-13
 bioactive-particles
 contributors-14
 overview-14
-model-description-14
+model-description-13
 process-descriptions-14
 variable-summary-14
 parameter-summary-14
@@ -335,7 +336,7 @@ publications-14
 sediment-biogeochemistry
 contributors-15
 overview-15
-model-description-15
+model-description-14
 process-descriptions-15
 variable-summary-15
 parameter-summary-15
@@ -352,7 +353,7 @@ publications-15
 submerged-macrophytes
 contributors-16
 overview-16
-model-description-16
+model-description-15
 process-descriptions-16
 variable-summary-16
 parameter-summary-16
@@ -365,7 +366,7 @@ publications-16
 macroalgae
 contributors-17
 overview-17
-model-description-17
+model-description-16
 process-descriptions-17
 variable-summary-17
 parameter-summary-17
@@ -378,7 +379,7 @@ publications-17
 bivalves
 contributors-18
 overview-18
-model-description-18
+model-description-17
 process-descriptions-18
 variable-summary-18
 parameter-summary-18
@@ -392,7 +393,7 @@ publications-18
 benthic-habitat-quality
 contributors-19
 overview-19
-model-description-19
+model-description-18
 process-descriptions-19
 variable-summary-19
 parameter-summary-19
@@ -405,7 +406,7 @@ publications-19
 soil-hydrology
 contributors-20
 overview-20
-model-description-20
+model-description-19
 process-descriptions-20
 variable-summary-20
 parameter-summary-20
@@ -418,7 +419,7 @@ publications-20
 soil-biogeochemistry
 contributors-21
 overview-21
-model-description-21
+model-description-20
 process-descriptions-21
 variable-summary-21
 parameter-summary-21
@@ -431,7 +432,7 @@ publications-21
 acid-sulfate-soils
 contributors-22
 overview-22
-model-description-22
+model-description-21
 process-descriptions-22
 variable-summary-22
 parameter-summary-22
@@ -444,7 +445,7 @@ publications-22
 riparian-vegetation
 contributors-23
 overview-23
-model-description-23
+model-description-22
 process-descriptions-23
 variable-summary-23
 parameter-summary-23
@@ -457,7 +458,7 @@ publications-23
 riparian-habitat-quality
 contributors-24
 overview-24
-model-description-24
+model-description-23
 process-descriptions-24
 variable-summary-24
 parameter-summary-24
@@ -474,6 +475,3 @@ gas-transfer
 biological
 publications-25
 abbreviations
-model-description---default-model
-model-description---adding-n2o-reactions
-process-descriptions-simn20-1

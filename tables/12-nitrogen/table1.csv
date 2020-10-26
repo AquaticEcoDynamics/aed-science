@@ -1,0 +1,23 @@
+﻿Parameter name,Description,Unit,Parameter type,Default,Typical range
+`R_nitrif` ,Kinetic rate constant for nitrification,day<sup>-1</sup>,real,0.01,0.001-0.2
+`theta_nitrif`,Temperature dependence of nitrification,,real,1,1.05-1.12
+`R_denit`,Kinetic rate constant for denitrification,day<sup>-1</sup>,real,0.01,
+`theta_denit`,Temperature dependence of denitrification,Unitless,real,1,
+`KNO3`,Half saturation constant for NO<sub>3</sub><sup>-</sup> limitation on denitrification,mmol m<sup>-3</sup>,real,5,
+`Kdenit`,O<sub>2</sub> inhibition of denitirification or exponential reduction ,mmol m<sup>-3</sup>,real,150,
+`oxy_lim`,,,Integer,1,1 or 2
+`NITpHTolMin`,Minimum tolerance,pH unit,real,5.5,
+`NITpHOptMin`,Minimum optimum,pH unit,real,7.1,
+`NITpHOptMax`,Maximum optimum,pH unit,real,7.9,
+`NITpHTolMax`,Maximum tolerance,pH unit,real,9,
+`simDryDeposition`,Switch to turn on atmospheric deposition,,LOGICAL,TRUE,
+`simWetDeposition`,Switch to turn on rain  deposition,,LOGICAL,TRUE,
+`atm_din_dd`,Atmospheric DIN deposition rate,mmol m<sup>-2</sup> d<sup>-1</sup>,real,0,
+`atm_din_conc`,Atmospheric DIN composition,mmol m<sup>-3</sup>,real,0,
+`f_dindep_nox`,Fraction of DIN that is NO<sub>x</sub>,,real,0.5,
+`Fsed_nit`,Sediment NO<sub>3</sub><sup>-</sup> flux,,,,
+`Fsed_amm`,Sediment NH<sub>4</sub><sup>+</sup> flux,,,,
+`Ksed_nit`,Sediment NO<sub>3</sub><sup>-</sup> flux,mmol m<sup>-2</sup> d<sup>-1</sup>,real,30,
+`Ksed_amm`,Sediment NH<sub>4</sub><sup>+</sup> flux,mmol m<sup>-2</sup> d<sup>-1</sup>,real,30,
+`theta_sed_nit`,Temperature dependence on sediment NO<sub>3</sub><sup>-</sup> flux,,real,1,
+`theta_sed_amm`,Temperature dependence on sediment NH<sub>4</sub><sup>+</sup> flux,,real,1,
