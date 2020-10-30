@@ -1,0 +1,8 @@
+﻿Symbol,Variable,AED identifier,Unit,Comment
+NO<sub>3</sub><sup>-</sup>,Nitrate,`NIT_nit`,mmol m<sup>-3</sup>,"simN2O=1,2"
+NO<sub>2</sub><sup>-</sup>,Nitrite,`NIT_no2`,mmol m<sup>-3</sup>,simN2O=2 only
+N<sub>2</sub>O,Nitrous oxide,`NIT_n2o`,mmol m<sup>-3</sup>,"simN2O=1,2"
+NH<sub>4</sub><sup>+</sup>,Ammonium,`NIT_amm`,mmol m<sup>-3</sup>,"simN2O=1,2"
+N<sub>2</sub> ,Dinitrogen,`NIT_n2`,mmol m<sup>-3</sup>,not tracked
+O<sub>2</sub>,Oxygen,`OXY_oxy`,mmol m<sup>-3</sup>,
+DOC,Dissolved organic carbon,`OGM_doc`,mmol m<sup>-3</sup>,

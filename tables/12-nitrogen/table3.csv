@@ -1,0 +1,31 @@
+﻿Parameter name,Description,Unit,Parameter type,Default,Typical range,Comment
+`simN2O`,Switch to use simple or advanced N reactions,,INTEGER,1,"0, 1, 2",
+`Rn2o`,Kinetic rate constant for N<sub>2</sub>O consumption,s<sup>-1</sup>,AED_REAL,0.0015,,
+`Kn2oc`,Exponential O<sub>2</sub> inhibiting parameter for N<sub>2</sub>O consumption through denitrification,mmol m<sup>-3</sup>,AED_REAL,0.3,,
+`Knev`,O<sub>2</sub> threshold for switching on N<sub>2</sub>O production from nitrification,mmol m<sup>-3</sup>,AED_REAL,3,,
+`aa`,O<sub>2</sub> inhibition parameter,mmol m<sup>-3</sup>,AED_REAL,0.26,,
+`bb`,O<sub>2</sub> inhibition parameter,,AED_REAL,-0.0006,,
+`simN2O`,Switch to use simple or advanced N reactions,,INTEGER,2,"0, 1, 2",
+`Rno2o2`,Kinetic rate constant for nitratation,mmol<sup>-1</sup> m<sup>3</sup> s<sup>-1</sup>,AED_REAL,1,,
+`Rnh4o2`,Kinetic rate constant for nitratation,mmol<sup>-1</sup> m<sup>3</sup> s<sup>-1</sup>,AED_REAL,1,,
+`Kpart_ammox`,"Partitioning parameter for the products of ammonium oxidation, based on O<sub>2</sub> concentration",mmol m<sup>-3</sup>,AED_REAL,20,,
+`Rdom_minerl`,Kinetic rate constant for DOC mineralisation,mmol<sup>-1</sup> m<sup>3</sup> s<sup>-1</sup>,AED_REAL,0.001,,OGM
+`Kdom_minerl`,O<sub>2</sub> concentration for inhibition and limitation,mmol m<sup>-3</sup>,AED_REAL,0.886,,OGM
+`theta_minerl`,Temperature parameter,,AED_REAL,1,,OGM
+`f_an`,,,,1,,OGM
+`Klim_denitrousv,N<sub>2</sub>O concentration to limit denitrousation and to inhibit denitratation and denitritation,mmol m<sup>-3</sup>,AED_REAL,1,,
+`Kin_denitrousv`,O<sub>2</sub> concentration to inhibit denitrousation,mmol m<sup>-3</sup>,AED_REAL,0.205,,
+`Knit`,NO<sub>3</sub><sup>-</sup> concentration to limit denitratation,mmol m<sup>-3</sup>,AED_REAL,1,,
+`Kin_denitrat`,O<sub>2</sub> concentration for inhibiting denitratation,mmol m<sup>-3</sup>,AED_REAL,20,,
+`Klim_denitrit`,NO<sub>2</sub><sup>-</sup> concentration parameter that inhibits denitratation and limits denitritation,mmol m<sup>-3</sup>,AED_REAL,1,,
+`Kpart_denitrit`,Partitioning parameter for the products of denitritation,mmol m<sup>-3</sup>,AED_REAL,1,,
+`simN2O`,Switch to use simple or advanced N reactions,,INTEGER,2,"0, 1, 2",
+`Rnh4no2`,Kinetic rate constant for deammonification,mmol<sup>-1</sup> m<sup>3</sup> s<sup>-1</sup>,AED_REAL,1,,
+`Kin_deamm`,O<sub>2</sub> concentration for inhibition of deammonification,mmol m<sup>-3</sup>,AED_REAL,0.886,,
+`simN2O`,Switch to use simple or advanced N reactions,,INTEGER,1 or 2,"0, 1, 2",
+`atm_n2o`,Atmospheric N<sub>2</sub>O concentration,mmol m<sup>-3</sup> or ppm ,AED_REAL,0.32×10<sup>-6</sup>,,
+`simN2O`,Switch to use simple or advanced N reactions,,INTEGER,1 or 2,"0, 1, 2",
+`use_oxy`,,,,,,
+`Fsed_n2o`,Maximum N<sub>2</sub>O sediment flux rate,mmol m<sup>-2</sup> y<sup>-1</sup>,,0,,
+`Ksed_n2o`,O<sub>2</sub> inhibition concentration parameter,mmol m<sup>-2</sup> y<sup>-1</sup>,AED_REAL,30,,
+`theta_sed_n2o`,Temperature limiting factor for sediment N<sub>2</sub>O flux,,AED_REAL,1,,

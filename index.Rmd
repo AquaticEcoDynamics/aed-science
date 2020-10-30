@@ -7,6 +7,7 @@ documentclass: book
 bibliography:  ["references/pathogens.bib",
               "references/generic_utilities_functions.bib",
               "references/bivalves.bib",
+              "references/nitrogen.bib",
               "references/publications.bib"]
 biblio-style: apalike
 link-citations: yes
@@ -17,6 +18,7 @@ description: "Work in progress."
 
 ```{r}
 knitr::opts_chunk$set(cache = F)
+knitr::opts_knit$set(root.dir = rprojroot::find_rstudio_root_file())
 ```
 
 

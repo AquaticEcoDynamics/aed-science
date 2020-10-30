@@ -1,3 +1,8 @@
+---
+nocite: |
+  @bruce2015
+---
+
 # Nitrogen
 
 ## Contributors
@@ -29,7 +34,8 @@ In an environment of high O~2~, NH~4~^+^ is oxidized by oxygen to NO~3~^-^ via n
 <center>
 
 ```{r nitrogen-1, echo=FALSE, fig.cap="Summary of two main reactions in the default nitrogen model.", out.width = '60%'}
-#knitr::include_graphics("images/12-nitrogen/picture1.png")
+
+knitr::include_graphics("images/12-nitrogen/picture1.png")
 
 ```
 
@@ -173,7 +179,7 @@ library(tidyverse)
 library(kableExtra)
 library(rmarkdown)
 
-aed <- read.csv("/Users/gilesknight/Documents/GitHub/aed-science/tables/12-nitrogen/table1.csv", check.names=FALSE)
+aed <- read.csv("tables/12-nitrogen/table1.csv", check.names=FALSE)
 
 aed %>%
   gt() %>%
@@ -223,7 +229,7 @@ f_{sed}^{N_{2}O}=F_{sed}^{N_{2}O}\theta_{sedamm}^{T-20}\Phi_{O_{2}}^{N_{2}O}[O_2
 $$ 
 {#eq:label}
 
-### Process Descriptions (`simN@O = 2`)
+### Process Descriptions (`simN2O = 2`)
 
 The `simN2O` 2 option uses the terminology from Weissbach et al. (2017) for the names of the reaction processes, in order to avoid the ambiguity found across publications. The model processes are described as being part of either the oxidation pathway or reduction pathway.
 
@@ -246,11 +252,13 @@ The main balance equations for the  additional simulated variables are sumamrise
 
 In the oxidation pathway, reduced N in the form of ammonium is first oxidised to NO~2~ and N~2~O before NO~3~, as seen in Figure 1. These processes are described next.
 
-```{r nitrogen-3, echo=FALSE, fig.cap="Nitrogen oxidation pathways.", out.width = '60%'}
+<center>
+```{r nitrogen-3, echo=FALSE, fig.cap="Nitrogen oxidation pathways.", out.width = '80%'}
 
-#knitr::include_graphics("images/12-nitrogen/picture2.png")
+knitr::include_graphics("images/12-nitrogen/picture2.png")
 
 ```
+</center>
 
 #### Nitratation
 
@@ -290,11 +298,13 @@ When the `simN2O` switch is set to 2, the complex set of N~2~O reactions is used
 
 #### Deammonification (anammox) pathway
 
-```{r nitrogen-4, echo=FALSE, fig.cap="Anammox pathways.", out.width = '60%'}
+<center>
+```{r nitrogen-4, echo=FALSE, fig.cap="Anammox pathways.", out.width = '50%'}
 
-#knitr::include_graphics("images/12-nitrogen/picture3.png")
+knitr::include_graphics("images/12-nitrogen/picture3.png")
 
 ```
+</center>
 
 The deammonification pathway is the oxidation of NH~4~^+^ by NO~2~^-^ to produce N~2~. It uses neither organic matter nor O~2~, although it is inhibited by the presence of O~2~. This process is sometimes referred to as anammox (anaerobic ammonium oxidation), however, Weissbach et al (2017) use the term deammonification to distinguish it from the anammox commercial bioreactor. The parameter `Rnh4no2` is the kinetic rate constant for this reaction. The parameter `Kin_deamm` is the O~2~ concentration parameter for O~2~ inhibition of this reaction. 
 
@@ -302,11 +312,120 @@ The deammonification pathway is the oxidation of NH~4~^+^ by NO~2~^-^ to produce
 f_{deammonification}=R_{{NH}_4{NO}_2}\times{NO}_2^-\times{NH}_4^+\times\frac{K_{in\ deamm}}{K_{in\ deamm} +O_2}
 \end{equation}
 
+### Variable Summary
+
+#### State variables
+
+The following state variables are relevant to the nitrogen module, and dependent variables from other modules (Table x).
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+library(gt)
+library(tidyverse)
+library(kableExtra)
+library(rmarkdown)
+
+aed <- read.csv("tables/12-nitrogen/table2.csv", check.names=FALSE)
+
+aed %>%
+  gt() %>%
+  tab_row_group(
+    group = "Dependent variables",
+    rows = 6:7
+  ) %>%
+  tab_row_group(
+    group = "aed_nitrogen",
+    rows = 1:5
+  ) %>%
+  tab_options(
+              container.width = pct(100),
+              table.width = pct(100),
+              container.overflow.y = TRUE,
+              container.overflow.x = TRUE,
+              table.font.size = 12,
+              column_labels.background.color = "#14759e",
+              row_group.background.color = "lightgrey",
+              column_labels.font.weight = "bold",
+              column_labels.font.size = 14) %>%
+  fmt_markdown(columns = everything())
+
+
+```
+
+#### Diagnostics variables
+
+The following diagnostic variables are able to be output, based on the setting of `diag_level`>0 (Table x).
+
+### Parameter summary
+
+An overview of the parameters used in the nitrogen module for users selecting simN2O 1 or 2, are summarised in Table X.
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+library(gt)
+library(tidyverse)
+library(kableExtra)
+library(rmarkdown)
+
+aed <- read.csv("tables/12-nitrogen/table3.csv", check.names=FALSE)
+
+aed %>%
+  gt() %>%
+  tab_options(container.height = px(500),
+              container.width = pct(100),
+              container.overflow.y = TRUE,
+              container.overflow.x = TRUE,
+              table.font.size = 12,
+              column_labels.background.color = "#14759e",
+              row_group.background.color = "lightgrey",
+              column_labels.font.weight = "bold",
+              column_labels.font.size = 14) %>%
+  fmt_markdown(columns = everything())
+
+
+```
 
 ## Setup & Configuration
 
 ## Case Studies & Examples
 
-### Case Study
+### Case Study: Yarra River Estuary
+
+Bruce et al (2015) demonstrate the base model in a 3D model of Yarra River estuary. The model results are shown in Figure X.
+
+<center>
+```{r nitrogen-5, echo=FALSE, fig.cap="Time series data for surface (blue) and bottom (red) ammonium, nitrate, dissolved and particulate organic nitrogen for (a) Morell Bridge, (b) Scotch College, (c) Bridge Road. Crosses and asterisks represent observed data for surface and bottom concentrations respectively and solid lines simulated data.", out.width = '100%'}
+
+knitr::include_graphics("images/12-nitrogen/picture4.png")
+
+```
+</center>
+
+### Case Study: Swan River Estuary
+
+@huang2019 demonstrate the base model in a 3D model of Swan River estuary. A transect of the model results are shown in Figure X.
 
 ### Publications
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+library(gt)
+library(tidyverse)
+library(kableExtra)
+library(rmarkdown)
+
+aed <- read.csv("tables/12-nitrogen/table4.csv", check.names=FALSE)
+
+aed %>%
+  gt() %>%
+  tab_options(container.height = px(500),
+              container.width = pct(100),
+              table.width = pct(100),
+              container.overflow.y = TRUE,
+              container.overflow.x = TRUE,
+              table.font.size = 12,
+              column_labels.background.color = "#14759e",
+              row_group.background.color = "lightgrey",
+              column_labels.font.weight = "bold",
+              column_labels.font.size = 14) %>%
+  fmt_markdown(columns = everything())
+
+
+```
