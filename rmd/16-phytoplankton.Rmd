@@ -373,8 +373,8 @@ fig <- fig %>% add_trace(
 fig <- fig %>%
   layout(
     hovermode = "x unified",
-    xaxis = list(title='PAR C',hoverformat = "PAR C"), 
-    yaxis = list(title='Light limitation (fI)')
+    xaxis = list(title='Light (PAR)',hoverformat = "Light (PAR)"), 
+    yaxis = list(title='Photosynthesis (fI)')
     ) %>% 
   animation_opts(
     250, easing = "linear", redraw = FALSE
