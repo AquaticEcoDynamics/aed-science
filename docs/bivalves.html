@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>23 Bivalves | AED2/AED2+ Manual</title>
+  <title>21 Bivalves | AED2/AED2+ Manual</title>
   <meta name="description" content="Work in progress." />
-  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.21.6 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="23 Bivalves | AED2/AED2+ Manual" />
+  <meta property="og:title" content="21 Bivalves | AED2/AED2+ Manual" />
   <meta property="og:type" content="book" />
   
   
@@ -16,14 +16,14 @@
   <meta name="github-repo" content="AquaticEcoDynamics/aed-science/" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="23 Bivalves | AED2/AED2+ Manual" />
+  <meta name="twitter:title" content="21 Bivalves | AED2/AED2+ Manual" />
   
   <meta name="twitter:description" content="Work in progress." />
   
 
 
 
-<meta name="date" content="2020-10-30" />
+<meta name="date" content="2021-08-10" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -32,8 +32,8 @@
   
 <link rel="prev" href="macroalgae.html"/>
 <link rel="next" href="benthic-habitat-quality.html"/>
-<script src="libs/header-attrs-2.4/header-attrs.js"></script>
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<script src="libs/header-attrs-2.6/header-attrs.js"></script>
+<script src="libs/jquery-3.5.1/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
@@ -49,24 +49,26 @@
 
 
 
-<script src="libs/htmlwidgets-1.5.2/htmlwidgets.js"></script>
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script>
 <link href="libs/leaflet-1.3.1/leaflet.css" rel="stylesheet" />
 <script src="libs/leaflet-1.3.1/leaflet.js"></script>
 <link href="libs/leafletfix-1.0.0/leafletfix.css" rel="stylesheet" />
-<script src="libs/Proj4Leaflet-1.0.1/proj4-compressed.js"></script>
+<script src="libs/proj4-2.6.2/proj4.min.js"></script>
 <script src="libs/Proj4Leaflet-1.0.1/proj4leaflet.js"></script>
 <link href="libs/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet" />
-<script src="libs/leaflet-binding-2.0.3/leaflet.js"></script>
+<script src="libs/leaflet-binding-2.0.4.1/leaflet.js"></script>
 <script src="libs/leaflet-providers-1.9.0/leaflet-providers_1.9.0.js"></script>
-<script src="libs/leaflet-providers-plugin-2.0.3/leaflet-providers-plugin.js"></script>
+<script src="libs/leaflet-providers-plugin-2.0.4.1/leaflet-providers-plugin.js"></script>
 <script src="libs/kePrint-0.0.1/kePrint.js"></script>
 <link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
-<script src="libs/plotly-binding-4.9.2.1/plotly.js"></script>
+<script src="libs/plotly-binding-4.9.4.1/plotly.js"></script>
 <script src="libs/typedarray-0.1/typedarray.min.js"></script>
-<link href="libs/crosstalk-1.1.0.1/css/crosstalk.css" rel="stylesheet" />
-<script src="libs/crosstalk-1.1.0.1/js/crosstalk.min.js"></script>
-<link href="libs/plotly-htmlwidgets-css-1.52.2/plotly-htmlwidgets.css" rel="stylesheet" />
-<script src="libs/plotly-main-1.52.2/plotly-latest.min.js"></script>
+<link href="libs/crosstalk-1.1.1/css/crosstalk.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.1.1/js/crosstalk.min.js"></script>
+<link href="libs/plotly-htmlwidgets-css-1.57.1/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="libs/plotly-main-1.57.1/plotly-latest.min.js"></script>
 <script src="https://hypothes.is/embed.js" async></script>
   
 
@@ -75,6 +77,7 @@
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
@@ -132,6 +135,29 @@ code span.st { color: #4e9a06; } /* String */
 code span.va { color: #000000; } /* Variable */
 code span.vs { color: #4e9a06; } /* VerbatimString */
 code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
 </style>
 
 <link rel="stylesheet" href="css/style.css" type="text/css" />
@@ -232,484 +258,484 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6.5.2" data-path="suspended-sediment.html"><a href="suspended-sediment.html#publications-1"><i class="fa fa-check"></i><b>6.5.2</b> Publications</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="dissolved-oxygen.html"><a href="dissolved-oxygen.html"><i class="fa fa-check"></i><b>7</b> Dissolved Oxygen</a>
+<li class="chapter" data-level="" data-path="DO-1.html"><a href="DO-1.html"><i class="fa fa-check"></i>Dissolved Oxygen</a>
 <ul>
-<li class="chapter" data-level="7.1" data-path="dissolved-oxygen.html"><a href="dissolved-oxygen.html#contributors-2"><i class="fa fa-check"></i><b>7.1</b> Contributors</a></li>
-<li class="chapter" data-level="7.2" data-path="dissolved-oxygen.html"><a href="dissolved-oxygen.html#overview-2"><i class="fa fa-check"></i><b>7.2</b> Overview</a></li>
-<li class="chapter" data-level="7.3" data-path="dissolved-oxygen.html"><a href="dissolved-oxygen.html#model-description-2"><i class="fa fa-check"></i><b>7.3</b> Model Description</a>
+<li class="chapter" data-level="6.6" data-path="DO-1.html"><a href="DO-1.html#contributors-2"><i class="fa fa-check"></i><b>6.6</b> Contributors</a></li>
+<li class="chapter" data-level="6.7" data-path="DO-1.html"><a href="DO-1.html#overview-2"><i class="fa fa-check"></i><b>6.7</b> Overview</a></li>
+<li class="chapter" data-level="6.8" data-path="DO-1.html"><a href="DO-1.html#model-description-2"><i class="fa fa-check"></i><b>6.8</b> Model Description</a>
 <ul>
-<li class="chapter" data-level="7.3.1" data-path="dissolved-oxygen.html"><a href="dissolved-oxygen.html#process-descriptions-2"><i class="fa fa-check"></i><b>7.3.1</b> Process Descriptions</a></li>
-<li class="chapter" data-level="7.3.2" data-path="dissolved-oxygen.html"><a href="dissolved-oxygen.html#variable-summary-2"><i class="fa fa-check"></i><b>7.3.2</b> Variable Summary</a></li>
-<li class="chapter" data-level="7.3.3" data-path="dissolved-oxygen.html"><a href="dissolved-oxygen.html#parameter-summary-2"><i class="fa fa-check"></i><b>7.3.3</b> Parameter Summary</a></li>
-<li class="chapter" data-level="7.3.4" data-path="dissolved-oxygen.html"><a href="dissolved-oxygen.html#optional-module-links-2"><i class="fa fa-check"></i><b>7.3.4</b> Optional Module Links</a></li>
-<li class="chapter" data-level="7.3.5" data-path="dissolved-oxygen.html"><a href="dissolved-oxygen.html#feedbacks-to-the-host-model-2"><i class="fa fa-check"></i><b>7.3.5</b> Feedbacks to the Host Model</a></li>
+<li class="chapter" data-level="6.8.1" data-path="DO-1.html"><a href="DO-1.html#process-descriptions-2"><i class="fa fa-check"></i><b>6.8.1</b> Process Descriptions</a></li>
+<li class="chapter" data-level="6.8.2" data-path="DO-1.html"><a href="DO-1.html#variable-summary-2"><i class="fa fa-check"></i><b>6.8.2</b> Variable Summary</a></li>
+<li class="chapter" data-level="6.8.3" data-path="DO-1.html"><a href="DO-1.html#parameter-summary-2"><i class="fa fa-check"></i><b>6.8.3</b> Parameter Summary</a></li>
+<li class="chapter" data-level="6.8.4" data-path="DO-1.html"><a href="DO-1.html#optional-module-links-2"><i class="fa fa-check"></i><b>6.8.4</b> Optional Module Links</a></li>
+<li class="chapter" data-level="6.8.5" data-path="DO-1.html"><a href="DO-1.html#feedbacks-to-the-host-model-2"><i class="fa fa-check"></i><b>6.8.5</b> Feedbacks to the Host Model</a></li>
 </ul></li>
-<li class="chapter" data-level="7.4" data-path="dissolved-oxygen.html"><a href="dissolved-oxygen.html#setup-configuration-2"><i class="fa fa-check"></i><b>7.4</b> Setup &amp; Configuration</a></li>
-<li class="chapter" data-level="7.5" data-path="dissolved-oxygen.html"><a href="dissolved-oxygen.html#case-studies-examples-2"><i class="fa fa-check"></i><b>7.5</b> Case Studies &amp; Examples</a>
+<li class="chapter" data-level="6.9" data-path="DO-1.html"><a href="DO-1.html#setup-configuration-2"><i class="fa fa-check"></i><b>6.9</b> Setup &amp; Configuration</a></li>
+<li class="chapter" data-level="6.10" data-path="DO-1.html"><a href="DO-1.html#case-studies-examples-2"><i class="fa fa-check"></i><b>6.10</b> Case Studies &amp; Examples</a>
 <ul>
-<li class="chapter" data-level="7.5.1" data-path="dissolved-oxygen.html"><a href="dissolved-oxygen.html#case-study-2"><i class="fa fa-check"></i><b>7.5.1</b> Case Study</a></li>
-<li class="chapter" data-level="7.5.2" data-path="dissolved-oxygen.html"><a href="dissolved-oxygen.html#publications-2"><i class="fa fa-check"></i><b>7.5.2</b> Publications</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="8" data-path="carbon.html"><a href="carbon.html"><i class="fa fa-check"></i><b>8</b> Carbon</a>
-<ul>
-<li class="chapter" data-level="8.1" data-path="carbon.html"><a href="carbon.html#contributors-3"><i class="fa fa-check"></i><b>8.1</b> Contributors</a></li>
-<li class="chapter" data-level="8.2" data-path="carbon.html"><a href="carbon.html#overview-3"><i class="fa fa-check"></i><b>8.2</b> Overview</a></li>
-<li class="chapter" data-level="8.3" data-path="carbon.html"><a href="carbon.html#model-description-3"><i class="fa fa-check"></i><b>8.3</b> Model Description</a>
-<ul>
-<li class="chapter" data-level="8.3.1" data-path="carbon.html"><a href="carbon.html#process-descriptions-3"><i class="fa fa-check"></i><b>8.3.1</b> Process Descriptions</a></li>
-<li class="chapter" data-level="8.3.2" data-path="carbon.html"><a href="carbon.html#variable-summary-3"><i class="fa fa-check"></i><b>8.3.2</b> Variable Summary</a></li>
-<li class="chapter" data-level="8.3.3" data-path="carbon.html"><a href="carbon.html#parameter-summary-3"><i class="fa fa-check"></i><b>8.3.3</b> Parameter Summary</a></li>
-<li class="chapter" data-level="8.3.4" data-path="carbon.html"><a href="carbon.html#optional-module-links-3"><i class="fa fa-check"></i><b>8.3.4</b> Optional Module Links</a></li>
-<li class="chapter" data-level="8.3.5" data-path="carbon.html"><a href="carbon.html#feedbacks-to-the-host-model-3"><i class="fa fa-check"></i><b>8.3.5</b> Feedbacks to the Host Model</a></li>
-</ul></li>
-<li class="chapter" data-level="8.4" data-path="carbon.html"><a href="carbon.html#setup-configuration-3"><i class="fa fa-check"></i><b>8.4</b> Setup &amp; Configuration</a></li>
-<li class="chapter" data-level="8.5" data-path="carbon.html"><a href="carbon.html#case-studies-examples-3"><i class="fa fa-check"></i><b>8.5</b> Case Studies &amp; Examples</a>
-<ul>
-<li class="chapter" data-level="8.5.1" data-path="carbon.html"><a href="carbon.html#case-study-3"><i class="fa fa-check"></i><b>8.5.1</b> Case Study</a></li>
-<li class="chapter" data-level="8.5.2" data-path="carbon.html"><a href="carbon.html#publications-3"><i class="fa fa-check"></i><b>8.5.2</b> Publications</a></li>
+<li class="chapter" data-level="6.10.1" data-path="DO-1.html"><a href="DO-1.html#case-study-2"><i class="fa fa-check"></i><b>6.10.1</b> Case Study</a></li>
+<li class="chapter" data-level="6.10.2" data-path="DO-1.html"><a href="DO-1.html#publications-2"><i class="fa fa-check"></i><b>6.10.2</b> Publications</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="nitrogen.html"><a href="nitrogen.html"><i class="fa fa-check"></i><b>9</b> Nitrogen</a>
+<li class="chapter" data-level="" data-path="Carbon-1.html"><a href="Carbon-1.html"><i class="fa fa-check"></i>Carbon</a>
 <ul>
-<li class="chapter" data-level="9.1" data-path="nitrogen.html"><a href="nitrogen.html#contributors-4"><i class="fa fa-check"></i><b>9.1</b> Contributors</a></li>
-<li class="chapter" data-level="9.2" data-path="nitrogen.html"><a href="nitrogen.html#overview-4"><i class="fa fa-check"></i><b>9.2</b> Overview</a></li>
-<li class="chapter" data-level="9.3" data-path="nitrogen.html"><a href="nitrogen.html#model-description---default-model"><i class="fa fa-check"></i><b>9.3</b> Model Description - Default Model</a>
+<li class="chapter" data-level="6.11" data-path="Carbon-1.html"><a href="Carbon-1.html#contributors-3"><i class="fa fa-check"></i><b>6.11</b> Contributors</a></li>
+<li class="chapter" data-level="6.12" data-path="Carbon-1.html"><a href="Carbon-1.html#overview-3"><i class="fa fa-check"></i><b>6.12</b> Overview</a></li>
+<li class="chapter" data-level="6.13" data-path="Carbon-1.html"><a href="Carbon-1.html#model-description-3"><i class="fa fa-check"></i><b>6.13</b> Model Description</a>
 <ul>
-<li class="chapter" data-level="9.3.1" data-path="nitrogen.html"><a href="nitrogen.html#process-descriptions-4"><i class="fa fa-check"></i><b>9.3.1</b> Process Descriptions</a></li>
-<li class="chapter" data-level="9.3.2" data-path="nitrogen.html"><a href="nitrogen.html#variable-summary-4"><i class="fa fa-check"></i><b>9.3.2</b> Variable Summary</a></li>
-<li class="chapter" data-level="9.3.3" data-path="nitrogen.html"><a href="nitrogen.html#parameter-summary-4"><i class="fa fa-check"></i><b>9.3.3</b> Parameter Summary</a></li>
-<li class="chapter" data-level="9.3.4" data-path="nitrogen.html"><a href="nitrogen.html#optional-module-links-4"><i class="fa fa-check"></i><b>9.3.4</b> Optional Module Links</a></li>
-<li class="chapter" data-level="9.3.5" data-path="nitrogen.html"><a href="nitrogen.html#feedbacks-to-the-host-model-4"><i class="fa fa-check"></i><b>9.3.5</b> Feedbacks to the Host Model</a></li>
+<li class="chapter" data-level="6.13.1" data-path="Carbon-1.html"><a href="Carbon-1.html#process-descriptions-3"><i class="fa fa-check"></i><b>6.13.1</b> Process Descriptions</a></li>
+<li class="chapter" data-level="6.13.2" data-path="Carbon-1.html"><a href="Carbon-1.html#variable-summary-3"><i class="fa fa-check"></i><b>6.13.2</b> Variable Summary</a></li>
+<li class="chapter" data-level="6.13.3" data-path="Carbon-1.html"><a href="Carbon-1.html#parameter-summary-3"><i class="fa fa-check"></i><b>6.13.3</b> Parameter Summary</a></li>
+<li class="chapter" data-level="6.13.4" data-path="Carbon-1.html"><a href="Carbon-1.html#optional-module-links-3"><i class="fa fa-check"></i><b>6.13.4</b> Optional Module Links</a></li>
+<li class="chapter" data-level="6.13.5" data-path="Carbon-1.html"><a href="Carbon-1.html#feedbacks-to-the-host-model-3"><i class="fa fa-check"></i><b>6.13.5</b> Feedbacks to the Host Model</a></li>
 </ul></li>
-<li class="chapter" data-level="9.4" data-path="nitrogen.html"><a href="nitrogen.html#model-description---adding-n2o-reactions"><i class="fa fa-check"></i><b>9.4</b> Model Description - Adding N<sub>2</sub>O Reactions</a>
+<li class="chapter" data-level="6.14" data-path="Carbon-1.html"><a href="Carbon-1.html#setup-configuration-3"><i class="fa fa-check"></i><b>6.14</b> Setup &amp; Configuration</a></li>
+<li class="chapter" data-level="6.15" data-path="Carbon-1.html"><a href="Carbon-1.html#case-studies-examples-3"><i class="fa fa-check"></i><b>6.15</b> Case Studies &amp; Examples</a>
 <ul>
-<li class="chapter" data-level="9.4.1" data-path="nitrogen.html"><a href="nitrogen.html#process-descriptions-simn20-1"><i class="fa fa-check"></i><b>9.4.1</b> Process Descriptions (<code>simN20</code> = 1)</a></li>
-<li class="chapter" data-level="9.4.2" data-path="nitrogen.html"><a href="nitrogen.html#process-descriptions-simn2o-2"><i class="fa fa-check"></i><b>9.4.2</b> Process Descriptions (<code>simN2O = 2</code>)</a></li>
-<li class="chapter" data-level="9.4.3" data-path="nitrogen.html"><a href="nitrogen.html#variable-summary-5"><i class="fa fa-check"></i><b>9.4.3</b> Variable Summary</a></li>
-<li class="chapter" data-level="9.4.4" data-path="nitrogen.html"><a href="nitrogen.html#parameter-summary-5"><i class="fa fa-check"></i><b>9.4.4</b> Parameter summary</a></li>
-</ul></li>
-<li class="chapter" data-level="9.5" data-path="nitrogen.html"><a href="nitrogen.html#setup-configuration-4"><i class="fa fa-check"></i><b>9.5</b> Setup &amp; Configuration</a></li>
-<li class="chapter" data-level="9.6" data-path="nitrogen.html"><a href="nitrogen.html#case-studies-examples-4"><i class="fa fa-check"></i><b>9.6</b> Case Studies &amp; Examples</a>
-<ul>
-<li class="chapter" data-level="9.6.1" data-path="nitrogen.html"><a href="nitrogen.html#case-study-yarra-river-estuary"><i class="fa fa-check"></i><b>9.6.1</b> Case Study: Yarra River Estuary</a></li>
-<li class="chapter" data-level="9.6.2" data-path="nitrogen.html"><a href="nitrogen.html#case-study-swan-river-estuary"><i class="fa fa-check"></i><b>9.6.2</b> Case Study: Swan River Estuary</a></li>
-<li class="chapter" data-level="9.6.3" data-path="nitrogen.html"><a href="nitrogen.html#publications-4"><i class="fa fa-check"></i><b>9.6.3</b> Publications</a></li>
+<li class="chapter" data-level="6.15.1" data-path="Carbon-1.html"><a href="Carbon-1.html#case-study-3"><i class="fa fa-check"></i><b>6.15.1</b> Case Study</a></li>
+<li class="chapter" data-level="6.15.2" data-path="Carbon-1.html"><a href="Carbon-1.html#publications-3"><i class="fa fa-check"></i><b>6.15.2</b> Publications</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="phosphorous.html"><a href="phosphorous.html"><i class="fa fa-check"></i><b>10</b> Phosphorous</a>
+<li class="chapter" data-level="7" data-path="nitrogen.html"><a href="nitrogen.html"><i class="fa fa-check"></i><b>7</b> Nitrogen</a>
 <ul>
-<li class="chapter" data-level="10.1" data-path="phosphorous.html"><a href="phosphorous.html#contributors-5"><i class="fa fa-check"></i><b>10.1</b> Contributors</a></li>
-<li class="chapter" data-level="10.2" data-path="phosphorous.html"><a href="phosphorous.html#overview-5"><i class="fa fa-check"></i><b>10.2</b> Overview</a></li>
-<li class="chapter" data-level="10.3" data-path="phosphorous.html"><a href="phosphorous.html#model-description-4"><i class="fa fa-check"></i><b>10.3</b> Model Description</a>
+<li class="chapter" data-level="7.1" data-path="nitrogen.html"><a href="nitrogen.html#contributors-4"><i class="fa fa-check"></i><b>7.1</b> Contributors</a></li>
+<li class="chapter" data-level="7.2" data-path="nitrogen.html"><a href="nitrogen.html#overview-4"><i class="fa fa-check"></i><b>7.2</b> Overview</a></li>
+<li class="chapter" data-level="7.3" data-path="nitrogen.html"><a href="nitrogen.html#model-description---default-model"><i class="fa fa-check"></i><b>7.3</b> Model Description - Default Model</a>
 <ul>
-<li class="chapter" data-level="10.3.1" data-path="phosphorous.html"><a href="phosphorous.html#process-descriptions-5"><i class="fa fa-check"></i><b>10.3.1</b> Process Descriptions</a></li>
-<li class="chapter" data-level="10.3.2" data-path="phosphorous.html"><a href="phosphorous.html#variable-summary-6"><i class="fa fa-check"></i><b>10.3.2</b> Variable Summary</a></li>
-<li class="chapter" data-level="10.3.3" data-path="phosphorous.html"><a href="phosphorous.html#parameter-summary-6"><i class="fa fa-check"></i><b>10.3.3</b> Parameter Summary</a></li>
-<li class="chapter" data-level="10.3.4" data-path="phosphorous.html"><a href="phosphorous.html#optional-module-links-5"><i class="fa fa-check"></i><b>10.3.4</b> Optional Module Links</a></li>
-<li class="chapter" data-level="10.3.5" data-path="phosphorous.html"><a href="phosphorous.html#feedbacks-to-the-host-model-5"><i class="fa fa-check"></i><b>10.3.5</b> Feedbacks to the Host Model</a></li>
+<li class="chapter" data-level="7.3.1" data-path="nitrogen.html"><a href="nitrogen.html#process-descriptions-4"><i class="fa fa-check"></i><b>7.3.1</b> Process Descriptions</a></li>
+<li class="chapter" data-level="7.3.2" data-path="nitrogen.html"><a href="nitrogen.html#variable-summary-4"><i class="fa fa-check"></i><b>7.3.2</b> Variable Summary</a></li>
+<li class="chapter" data-level="7.3.3" data-path="nitrogen.html"><a href="nitrogen.html#parameter-summary-4"><i class="fa fa-check"></i><b>7.3.3</b> Parameter Summary</a></li>
+<li class="chapter" data-level="7.3.4" data-path="nitrogen.html"><a href="nitrogen.html#optional-module-links-4"><i class="fa fa-check"></i><b>7.3.4</b> Optional Module Links</a></li>
+<li class="chapter" data-level="7.3.5" data-path="nitrogen.html"><a href="nitrogen.html#feedbacks-to-the-host-model-4"><i class="fa fa-check"></i><b>7.3.5</b> Feedbacks to the Host Model</a></li>
 </ul></li>
-<li class="chapter" data-level="10.4" data-path="phosphorous.html"><a href="phosphorous.html#setup-configuration-5"><i class="fa fa-check"></i><b>10.4</b> Setup &amp; Configuration</a></li>
-<li class="chapter" data-level="10.5" data-path="phosphorous.html"><a href="phosphorous.html#case-studies-examples-5"><i class="fa fa-check"></i><b>10.5</b> Case Studies &amp; Examples</a>
+<li class="chapter" data-level="7.4" data-path="nitrogen.html"><a href="nitrogen.html#model-description---adding-n2o-reactions"><i class="fa fa-check"></i><b>7.4</b> Model Description - Adding N<sub>2</sub>O Reactions</a>
 <ul>
-<li class="chapter" data-level="10.5.1" data-path="phosphorous.html"><a href="phosphorous.html#case-study-4"><i class="fa fa-check"></i><b>10.5.1</b> Case Study</a></li>
-<li class="chapter" data-level="10.5.2" data-path="phosphorous.html"><a href="phosphorous.html#publications-5"><i class="fa fa-check"></i><b>10.5.2</b> Publications</a></li>
+<li class="chapter" data-level="7.4.1" data-path="nitrogen.html"><a href="nitrogen.html#process-descriptions-simn20-1"><i class="fa fa-check"></i><b>7.4.1</b> Process Descriptions (<code>simN20</code> = 1)</a></li>
+<li class="chapter" data-level="7.4.2" data-path="nitrogen.html"><a href="nitrogen.html#process-descriptions-simn2o-2"><i class="fa fa-check"></i><b>7.4.2</b> Process Descriptions (<code>simN2O = 2</code>)</a></li>
+<li class="chapter" data-level="7.4.3" data-path="nitrogen.html"><a href="nitrogen.html#variable-summary-5"><i class="fa fa-check"></i><b>7.4.3</b> Variable Summary</a></li>
+<li class="chapter" data-level="7.4.4" data-path="nitrogen.html"><a href="nitrogen.html#parameter-summary-5"><i class="fa fa-check"></i><b>7.4.4</b> Parameter summary</a></li>
 </ul></li>
-</ul></li>
-<li class="chapter" data-level="11" data-path="silica.html"><a href="silica.html"><i class="fa fa-check"></i><b>11</b> Silica</a>
+<li class="chapter" data-level="7.5" data-path="nitrogen.html"><a href="nitrogen.html#setup-configuration-4"><i class="fa fa-check"></i><b>7.5</b> Setup &amp; Configuration</a></li>
+<li class="chapter" data-level="7.6" data-path="nitrogen.html"><a href="nitrogen.html#case-studies-examples-4"><i class="fa fa-check"></i><b>7.6</b> Case Studies &amp; Examples</a>
 <ul>
-<li class="chapter" data-level="11.1" data-path="silica.html"><a href="silica.html#contributors-6"><i class="fa fa-check"></i><b>11.1</b> Contributors</a></li>
-<li class="chapter" data-level="11.2" data-path="silica.html"><a href="silica.html#overview-6"><i class="fa fa-check"></i><b>11.2</b> Overview</a></li>
-<li class="chapter" data-level="11.3" data-path="silica.html"><a href="silica.html#model-description-5"><i class="fa fa-check"></i><b>11.3</b> Model Description</a>
-<ul>
-<li class="chapter" data-level="11.3.1" data-path="silica.html"><a href="silica.html#process-descriptions-6"><i class="fa fa-check"></i><b>11.3.1</b> Process Descriptions</a></li>
-<li class="chapter" data-level="11.3.2" data-path="silica.html"><a href="silica.html#variable-summary-7"><i class="fa fa-check"></i><b>11.3.2</b> Variable Summary</a></li>
-<li class="chapter" data-level="11.3.3" data-path="silica.html"><a href="silica.html#parameter-summary-7"><i class="fa fa-check"></i><b>11.3.3</b> Parameter Summary</a></li>
-<li class="chapter" data-level="11.3.4" data-path="silica.html"><a href="silica.html#optional-module-links-6"><i class="fa fa-check"></i><b>11.3.4</b> Optional Module Links</a></li>
-<li class="chapter" data-level="11.3.5" data-path="silica.html"><a href="silica.html#feedbacks-to-the-host-model-6"><i class="fa fa-check"></i><b>11.3.5</b> Feedbacks to the Host Model</a></li>
-</ul></li>
-<li class="chapter" data-level="11.4" data-path="silica.html"><a href="silica.html#setup-configuration-6"><i class="fa fa-check"></i><b>11.4</b> Setup &amp; Configuration</a></li>
-<li class="chapter" data-level="11.5" data-path="silica.html"><a href="silica.html#case-studies-examples-6"><i class="fa fa-check"></i><b>11.5</b> Case Studies &amp; Examples</a>
-<ul>
-<li class="chapter" data-level="11.5.1" data-path="silica.html"><a href="silica.html#case-study-5"><i class="fa fa-check"></i><b>11.5.1</b> Case Study</a></li>
-<li class="chapter" data-level="11.5.2" data-path="silica.html"><a href="silica.html#publications-6"><i class="fa fa-check"></i><b>11.5.2</b> Publications</a></li>
+<li class="chapter" data-level="7.6.1" data-path="nitrogen.html"><a href="nitrogen.html#case-study-yarra-river-estuary"><i class="fa fa-check"></i><b>7.6.1</b> Case Study: Yarra River Estuary</a></li>
+<li class="chapter" data-level="7.6.2" data-path="nitrogen.html"><a href="nitrogen.html#case-study-swan-river-estuary"><i class="fa fa-check"></i><b>7.6.2</b> Case Study: Swan River Estuary</a></li>
+<li class="chapter" data-level="7.6.3" data-path="nitrogen.html"><a href="nitrogen.html#publications-4"><i class="fa fa-check"></i><b>7.6.3</b> Publications</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="12" data-path="organic-matter.html"><a href="organic-matter.html"><i class="fa fa-check"></i><b>12</b> Organic Matter</a>
+<li class="chapter" data-level="8" data-path="phosphorous.html"><a href="phosphorous.html"><i class="fa fa-check"></i><b>8</b> Phosphorous</a>
 <ul>
-<li class="chapter" data-level="12.1" data-path="organic-matter.html"><a href="organic-matter.html#contributors-7"><i class="fa fa-check"></i><b>12.1</b> Contributors</a></li>
-<li class="chapter" data-level="12.2" data-path="organic-matter.html"><a href="organic-matter.html#overview-7"><i class="fa fa-check"></i><b>12.2</b> Overview</a></li>
-<li class="chapter" data-level="12.3" data-path="organic-matter.html"><a href="organic-matter.html#model-description-6"><i class="fa fa-check"></i><b>12.3</b> Model Description</a>
+<li class="chapter" data-level="8.1" data-path="phosphorous.html"><a href="phosphorous.html#contributors-5"><i class="fa fa-check"></i><b>8.1</b> Contributors</a></li>
+<li class="chapter" data-level="8.2" data-path="phosphorous.html"><a href="phosphorous.html#overview-5"><i class="fa fa-check"></i><b>8.2</b> Overview</a></li>
+<li class="chapter" data-level="8.3" data-path="phosphorous.html"><a href="phosphorous.html#model-description-4"><i class="fa fa-check"></i><b>8.3</b> Model Description</a>
 <ul>
-<li class="chapter" data-level="12.3.1" data-path="organic-matter.html"><a href="organic-matter.html#process-descriptions-7"><i class="fa fa-check"></i><b>12.3.1</b> Process Descriptions</a></li>
-<li class="chapter" data-level="12.3.2" data-path="organic-matter.html"><a href="organic-matter.html#variable-summary-8"><i class="fa fa-check"></i><b>12.3.2</b> Variable Summary</a></li>
-<li class="chapter" data-level="12.3.3" data-path="organic-matter.html"><a href="organic-matter.html#parameter-summary-8"><i class="fa fa-check"></i><b>12.3.3</b> Parameter Summary</a></li>
-<li class="chapter" data-level="12.3.4" data-path="organic-matter.html"><a href="organic-matter.html#optional-module-links-7"><i class="fa fa-check"></i><b>12.3.4</b> Optional Module Links</a></li>
-<li class="chapter" data-level="12.3.5" data-path="organic-matter.html"><a href="organic-matter.html#feedbacks-to-the-host-model-7"><i class="fa fa-check"></i><b>12.3.5</b> Feedbacks to the Host Model</a></li>
+<li class="chapter" data-level="8.3.1" data-path="phosphorous.html"><a href="phosphorous.html#process-descriptions-5"><i class="fa fa-check"></i><b>8.3.1</b> Process Descriptions</a></li>
+<li class="chapter" data-level="8.3.2" data-path="phosphorous.html"><a href="phosphorous.html#variable-summary-6"><i class="fa fa-check"></i><b>8.3.2</b> Variable Summary</a></li>
+<li class="chapter" data-level="8.3.3" data-path="phosphorous.html"><a href="phosphorous.html#parameter-summary-6"><i class="fa fa-check"></i><b>8.3.3</b> Parameter Summary</a></li>
+<li class="chapter" data-level="8.3.4" data-path="phosphorous.html"><a href="phosphorous.html#optional-module-links-5"><i class="fa fa-check"></i><b>8.3.4</b> Optional Module Links</a></li>
+<li class="chapter" data-level="8.3.5" data-path="phosphorous.html"><a href="phosphorous.html#feedbacks-to-the-host-model-5"><i class="fa fa-check"></i><b>8.3.5</b> Feedbacks to the Host Model</a></li>
 </ul></li>
-<li class="chapter" data-level="12.4" data-path="organic-matter.html"><a href="organic-matter.html#setup-configuration-7"><i class="fa fa-check"></i><b>12.4</b> Setup &amp; Configuration</a></li>
-<li class="chapter" data-level="12.5" data-path="organic-matter.html"><a href="organic-matter.html#case-studies-examples-7"><i class="fa fa-check"></i><b>12.5</b> Case Studies &amp; Examples</a>
+<li class="chapter" data-level="8.4" data-path="phosphorous.html"><a href="phosphorous.html#setup-configuration-5"><i class="fa fa-check"></i><b>8.4</b> Setup &amp; Configuration</a></li>
+<li class="chapter" data-level="8.5" data-path="phosphorous.html"><a href="phosphorous.html#case-studies-examples-5"><i class="fa fa-check"></i><b>8.5</b> Case Studies &amp; Examples</a>
 <ul>
-<li class="chapter" data-level="12.5.1" data-path="organic-matter.html"><a href="organic-matter.html#case-study-6"><i class="fa fa-check"></i><b>12.5.1</b> Case Study</a></li>
-<li class="chapter" data-level="12.5.2" data-path="organic-matter.html"><a href="organic-matter.html#publications-7"><i class="fa fa-check"></i><b>12.5.2</b> Publications</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="13" data-path="phytoplankton.html"><a href="phytoplankton.html"><i class="fa fa-check"></i><b>13</b> Phytoplankton</a>
-<ul>
-<li class="chapter" data-level="13.1" data-path="phytoplankton.html"><a href="phytoplankton.html#contributors-8"><i class="fa fa-check"></i><b>13.1</b> Contributors</a></li>
-<li class="chapter" data-level="13.2" data-path="phytoplankton.html"><a href="phytoplankton.html#overview-8"><i class="fa fa-check"></i><b>13.2</b> Overview</a></li>
-<li class="chapter" data-level="13.3" data-path="phytoplankton.html"><a href="phytoplankton.html#model-description-7"><i class="fa fa-check"></i><b>13.3</b> Model Description</a>
-<ul>
-<li class="chapter" data-level="13.3.1" data-path="phytoplankton.html"><a href="phytoplankton.html#process-descriptions-8"><i class="fa fa-check"></i><b>13.3.1</b> Process Descriptions</a></li>
-<li class="chapter" data-level="13.3.2" data-path="phytoplankton.html"><a href="phytoplankton.html#variable-summary-9"><i class="fa fa-check"></i><b>13.3.2</b> Variable Summary</a></li>
-<li class="chapter" data-level="13.3.3" data-path="phytoplankton.html"><a href="phytoplankton.html#parameter-summary-9"><i class="fa fa-check"></i><b>13.3.3</b> Parameter Summary</a></li>
-<li class="chapter" data-level="13.3.4" data-path="phytoplankton.html"><a href="phytoplankton.html#optional-module-links-8"><i class="fa fa-check"></i><b>13.3.4</b> Optional Module Links</a></li>
-<li class="chapter" data-level="13.3.5" data-path="phytoplankton.html"><a href="phytoplankton.html#feedbacks-to-the-host-model-8"><i class="fa fa-check"></i><b>13.3.5</b> Feedbacks to the Host Model</a></li>
-</ul></li>
-<li class="chapter" data-level="13.4" data-path="phytoplankton.html"><a href="phytoplankton.html#setup-configuration-8"><i class="fa fa-check"></i><b>13.4</b> Setup &amp; Configuration</a>
-<ul>
-<li class="chapter" data-level="13.4.1" data-path="phytoplankton.html"><a href="phytoplankton.html#setup-example"><i class="fa fa-check"></i><b>13.4.1</b> Setup Example</a></li>
-</ul></li>
-<li class="chapter" data-level="13.5" data-path="phytoplankton.html"><a href="phytoplankton.html#case-studies-examples-8"><i class="fa fa-check"></i><b>13.5</b> Case Studies &amp; Examples</a>
-<ul>
-<li class="chapter" data-level="13.5.1" data-path="phytoplankton.html"><a href="phytoplankton.html#case-study-7"><i class="fa fa-check"></i><b>13.5.1</b> Case Study</a></li>
-<li class="chapter" data-level="13.5.2" data-path="phytoplankton.html"><a href="phytoplankton.html#publications-8"><i class="fa fa-check"></i><b>13.5.2</b> Publications</a></li>
+<li class="chapter" data-level="8.5.1" data-path="phosphorous.html"><a href="phosphorous.html#case-study-4"><i class="fa fa-check"></i><b>8.5.1</b> Case Study</a></li>
+<li class="chapter" data-level="8.5.2" data-path="phosphorous.html"><a href="phosphorous.html#publications-5"><i class="fa fa-check"></i><b>8.5.2</b> Publications</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="14" data-path="zooplankton.html"><a href="zooplankton.html"><i class="fa fa-check"></i><b>14</b> Zooplankton</a>
+<li class="chapter" data-level="9" data-path="silica.html"><a href="silica.html"><i class="fa fa-check"></i><b>9</b> Silica</a>
 <ul>
-<li class="chapter" data-level="14.1" data-path="zooplankton.html"><a href="zooplankton.html#contributors-9"><i class="fa fa-check"></i><b>14.1</b> Contributors</a></li>
-<li class="chapter" data-level="14.2" data-path="zooplankton.html"><a href="zooplankton.html#overview-9"><i class="fa fa-check"></i><b>14.2</b> Overview</a></li>
-<li class="chapter" data-level="14.3" data-path="zooplankton.html"><a href="zooplankton.html#model-description-8"><i class="fa fa-check"></i><b>14.3</b> Model Description</a>
+<li class="chapter" data-level="9.1" data-path="silica.html"><a href="silica.html#contributors-6"><i class="fa fa-check"></i><b>9.1</b> Contributors</a></li>
+<li class="chapter" data-level="9.2" data-path="silica.html"><a href="silica.html#overview-6"><i class="fa fa-check"></i><b>9.2</b> Overview</a></li>
+<li class="chapter" data-level="9.3" data-path="silica.html"><a href="silica.html#model-description-5"><i class="fa fa-check"></i><b>9.3</b> Model Description</a>
 <ul>
-<li class="chapter" data-level="14.3.1" data-path="zooplankton.html"><a href="zooplankton.html#process-descriptions-9"><i class="fa fa-check"></i><b>14.3.1</b> Process Descriptions</a></li>
-<li class="chapter" data-level="14.3.2" data-path="zooplankton.html"><a href="zooplankton.html#variable-summary-10"><i class="fa fa-check"></i><b>14.3.2</b> Variable Summary</a></li>
-<li class="chapter" data-level="14.3.3" data-path="zooplankton.html"><a href="zooplankton.html#parameter-summary-10"><i class="fa fa-check"></i><b>14.3.3</b> Parameter Summary</a></li>
-<li class="chapter" data-level="14.3.4" data-path="zooplankton.html"><a href="zooplankton.html#optional-module-links-9"><i class="fa fa-check"></i><b>14.3.4</b> Optional Module Links</a></li>
-<li class="chapter" data-level="14.3.5" data-path="zooplankton.html"><a href="zooplankton.html#feedbacks-to-the-host-model-9"><i class="fa fa-check"></i><b>14.3.5</b> Feedbacks to the Host Model</a></li>
+<li class="chapter" data-level="9.3.1" data-path="silica.html"><a href="silica.html#process-descriptions-6"><i class="fa fa-check"></i><b>9.3.1</b> Process Descriptions</a></li>
+<li class="chapter" data-level="9.3.2" data-path="silica.html"><a href="silica.html#variable-summary-7"><i class="fa fa-check"></i><b>9.3.2</b> Variable Summary</a></li>
+<li class="chapter" data-level="9.3.3" data-path="silica.html"><a href="silica.html#parameter-summary-7"><i class="fa fa-check"></i><b>9.3.3</b> Parameter Summary</a></li>
+<li class="chapter" data-level="9.3.4" data-path="silica.html"><a href="silica.html#optional-module-links-6"><i class="fa fa-check"></i><b>9.3.4</b> Optional Module Links</a></li>
+<li class="chapter" data-level="9.3.5" data-path="silica.html"><a href="silica.html#feedbacks-to-the-host-model-6"><i class="fa fa-check"></i><b>9.3.5</b> Feedbacks to the Host Model</a></li>
 </ul></li>
-<li class="chapter" data-level="14.4" data-path="zooplankton.html"><a href="zooplankton.html#setup-configuration-9"><i class="fa fa-check"></i><b>14.4</b> Setup &amp; Configuration</a></li>
-<li class="chapter" data-level="14.5" data-path="zooplankton.html"><a href="zooplankton.html#case-studies-examples-9"><i class="fa fa-check"></i><b>14.5</b> Case Studies &amp; Examples</a>
+<li class="chapter" data-level="9.4" data-path="silica.html"><a href="silica.html#setup-configuration-6"><i class="fa fa-check"></i><b>9.4</b> Setup &amp; Configuration</a></li>
+<li class="chapter" data-level="9.5" data-path="silica.html"><a href="silica.html#case-studies-examples-6"><i class="fa fa-check"></i><b>9.5</b> Case Studies &amp; Examples</a>
 <ul>
-<li class="chapter" data-level="14.5.1" data-path="zooplankton.html"><a href="zooplankton.html#case-study-8"><i class="fa fa-check"></i><b>14.5.1</b> Case Study</a></li>
-<li class="chapter" data-level="14.5.2" data-path="zooplankton.html"><a href="zooplankton.html#publications-9"><i class="fa fa-check"></i><b>14.5.2</b> Publications</a></li>
+<li class="chapter" data-level="9.5.1" data-path="silica.html"><a href="silica.html#case-study-5"><i class="fa fa-check"></i><b>9.5.1</b> Case Study</a></li>
+<li class="chapter" data-level="9.5.2" data-path="silica.html"><a href="silica.html#publications-6"><i class="fa fa-check"></i><b>9.5.2</b> Publications</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="15" data-path="totals.html"><a href="totals.html"><i class="fa fa-check"></i><b>15</b> Totals</a>
+<li class="chapter" data-level="10" data-path="organic-matter.html"><a href="organic-matter.html"><i class="fa fa-check"></i><b>10</b> Organic Matter</a>
 <ul>
-<li class="chapter" data-level="15.1" data-path="totals.html"><a href="totals.html#contributors-10"><i class="fa fa-check"></i><b>15.1</b> Contributors</a></li>
-<li class="chapter" data-level="15.2" data-path="totals.html"><a href="totals.html#overview-10"><i class="fa fa-check"></i><b>15.2</b> Overview</a></li>
-<li class="chapter" data-level="15.3" data-path="totals.html"><a href="totals.html#model-description-9"><i class="fa fa-check"></i><b>15.3</b> Model Description</a>
+<li class="chapter" data-level="10.1" data-path="organic-matter.html"><a href="organic-matter.html#contributors-7"><i class="fa fa-check"></i><b>10.1</b> Contributors</a></li>
+<li class="chapter" data-level="10.2" data-path="organic-matter.html"><a href="organic-matter.html#overview-7"><i class="fa fa-check"></i><b>10.2</b> Overview</a></li>
+<li class="chapter" data-level="10.3" data-path="organic-matter.html"><a href="organic-matter.html#model-description-6"><i class="fa fa-check"></i><b>10.3</b> Model Description</a>
 <ul>
-<li class="chapter" data-level="15.3.1" data-path="totals.html"><a href="totals.html#process-descriptions-10"><i class="fa fa-check"></i><b>15.3.1</b> Process Descriptions</a></li>
-<li class="chapter" data-level="15.3.2" data-path="totals.html"><a href="totals.html#variable-summary-11"><i class="fa fa-check"></i><b>15.3.2</b> Variable Summary</a></li>
-<li class="chapter" data-level="15.3.3" data-path="totals.html"><a href="totals.html#parameter-summary-11"><i class="fa fa-check"></i><b>15.3.3</b> Parameter Summary</a></li>
-<li class="chapter" data-level="15.3.4" data-path="totals.html"><a href="totals.html#optional-module-links-10"><i class="fa fa-check"></i><b>15.3.4</b> Optional Module Links</a></li>
-<li class="chapter" data-level="15.3.5" data-path="totals.html"><a href="totals.html#feedbacks-to-the-host-model-10"><i class="fa fa-check"></i><b>15.3.5</b> Feedbacks to the Host Model</a></li>
+<li class="chapter" data-level="10.3.1" data-path="organic-matter.html"><a href="organic-matter.html#process-descriptions-7"><i class="fa fa-check"></i><b>10.3.1</b> Process Descriptions</a></li>
+<li class="chapter" data-level="10.3.2" data-path="organic-matter.html"><a href="organic-matter.html#variable-summary-8"><i class="fa fa-check"></i><b>10.3.2</b> Variable Summary</a></li>
+<li class="chapter" data-level="10.3.3" data-path="organic-matter.html"><a href="organic-matter.html#parameter-summary-8"><i class="fa fa-check"></i><b>10.3.3</b> Parameter Summary</a></li>
+<li class="chapter" data-level="10.3.4" data-path="organic-matter.html"><a href="organic-matter.html#optional-module-links-7"><i class="fa fa-check"></i><b>10.3.4</b> Optional Module Links</a></li>
+<li class="chapter" data-level="10.3.5" data-path="organic-matter.html"><a href="organic-matter.html#feedbacks-to-the-host-model-7"><i class="fa fa-check"></i><b>10.3.5</b> Feedbacks to the Host Model</a></li>
 </ul></li>
-<li class="chapter" data-level="15.4" data-path="totals.html"><a href="totals.html#setup-configuration-10"><i class="fa fa-check"></i><b>15.4</b> Setup &amp; Configuration</a></li>
-<li class="chapter" data-level="15.5" data-path="totals.html"><a href="totals.html#case-studies-examples-10"><i class="fa fa-check"></i><b>15.5</b> Case Studies &amp; Examples</a>
+<li class="chapter" data-level="10.4" data-path="organic-matter.html"><a href="organic-matter.html#setup-configuration-7"><i class="fa fa-check"></i><b>10.4</b> Setup &amp; Configuration</a></li>
+<li class="chapter" data-level="10.5" data-path="organic-matter.html"><a href="organic-matter.html#case-studies-examples-7"><i class="fa fa-check"></i><b>10.5</b> Case Studies &amp; Examples</a>
 <ul>
-<li class="chapter" data-level="15.5.1" data-path="totals.html"><a href="totals.html#case-study-9"><i class="fa fa-check"></i><b>15.5.1</b> Case Study</a></li>
-<li class="chapter" data-level="15.5.2" data-path="totals.html"><a href="totals.html#publications-10"><i class="fa fa-check"></i><b>15.5.2</b> Publications</a></li>
+<li class="chapter" data-level="10.5.1" data-path="organic-matter.html"><a href="organic-matter.html#case-study-6"><i class="fa fa-check"></i><b>10.5.1</b> Case Study</a></li>
+<li class="chapter" data-level="10.5.2" data-path="organic-matter.html"><a href="organic-matter.html#publications-7"><i class="fa fa-check"></i><b>10.5.2</b> Publications</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="phytoplankton.html"><a href="phytoplankton.html"><i class="fa fa-check"></i><b>11</b> Phytoplankton</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="phytoplankton.html"><a href="phytoplankton.html#contributors-8"><i class="fa fa-check"></i><b>11.1</b> Contributors</a></li>
+<li class="chapter" data-level="11.2" data-path="phytoplankton.html"><a href="phytoplankton.html#overview-8"><i class="fa fa-check"></i><b>11.2</b> Overview</a></li>
+<li class="chapter" data-level="11.3" data-path="phytoplankton.html"><a href="phytoplankton.html#model-description-7"><i class="fa fa-check"></i><b>11.3</b> Model Description</a>
+<ul>
+<li class="chapter" data-level="11.3.1" data-path="phytoplankton.html"><a href="phytoplankton.html#process-descriptions-8"><i class="fa fa-check"></i><b>11.3.1</b> Process Descriptions</a></li>
+<li class="chapter" data-level="11.3.2" data-path="phytoplankton.html"><a href="phytoplankton.html#variable-summary-9"><i class="fa fa-check"></i><b>11.3.2</b> Variable Summary</a></li>
+<li class="chapter" data-level="11.3.3" data-path="phytoplankton.html"><a href="phytoplankton.html#parameter-summary-9"><i class="fa fa-check"></i><b>11.3.3</b> Parameter Summary</a></li>
+<li class="chapter" data-level="11.3.4" data-path="phytoplankton.html"><a href="phytoplankton.html#optional-module-links-8"><i class="fa fa-check"></i><b>11.3.4</b> Optional Module Links</a></li>
+<li class="chapter" data-level="11.3.5" data-path="phytoplankton.html"><a href="phytoplankton.html#feedbacks-to-the-host-model-8"><i class="fa fa-check"></i><b>11.3.5</b> Feedbacks to the Host Model</a></li>
+</ul></li>
+<li class="chapter" data-level="11.4" data-path="phytoplankton.html"><a href="phytoplankton.html#setup-configuration-8"><i class="fa fa-check"></i><b>11.4</b> Setup &amp; Configuration</a>
+<ul>
+<li class="chapter" data-level="11.4.1" data-path="phytoplankton.html"><a href="phytoplankton.html#setup-example"><i class="fa fa-check"></i><b>11.4.1</b> Setup Example</a></li>
+</ul></li>
+<li class="chapter" data-level="11.5" data-path="phytoplankton.html"><a href="phytoplankton.html#case-studies-examples-8"><i class="fa fa-check"></i><b>11.5</b> Case Studies &amp; Examples</a>
+<ul>
+<li class="chapter" data-level="11.5.1" data-path="phytoplankton.html"><a href="phytoplankton.html#case-study-7"><i class="fa fa-check"></i><b>11.5.1</b> Case Study</a></li>
+<li class="chapter" data-level="11.5.2" data-path="phytoplankton.html"><a href="phytoplankton.html#publications-8"><i class="fa fa-check"></i><b>11.5.2</b> Publications</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="zooplankton.html"><a href="zooplankton.html"><i class="fa fa-check"></i><b>12</b> Zooplankton</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="zooplankton.html"><a href="zooplankton.html#contributors-9"><i class="fa fa-check"></i><b>12.1</b> Contributors</a></li>
+<li class="chapter" data-level="12.2" data-path="zooplankton.html"><a href="zooplankton.html#overview-9"><i class="fa fa-check"></i><b>12.2</b> Overview</a></li>
+<li class="chapter" data-level="12.3" data-path="zooplankton.html"><a href="zooplankton.html#model-description-8"><i class="fa fa-check"></i><b>12.3</b> Model Description</a>
+<ul>
+<li class="chapter" data-level="12.3.1" data-path="zooplankton.html"><a href="zooplankton.html#process-descriptions-9"><i class="fa fa-check"></i><b>12.3.1</b> Process Descriptions</a></li>
+<li class="chapter" data-level="12.3.2" data-path="zooplankton.html"><a href="zooplankton.html#variable-summary-10"><i class="fa fa-check"></i><b>12.3.2</b> Variable Summary</a></li>
+<li class="chapter" data-level="12.3.3" data-path="zooplankton.html"><a href="zooplankton.html#parameter-summary-10"><i class="fa fa-check"></i><b>12.3.3</b> Parameter Summary</a></li>
+<li class="chapter" data-level="12.3.4" data-path="zooplankton.html"><a href="zooplankton.html#optional-module-links-9"><i class="fa fa-check"></i><b>12.3.4</b> Optional Module Links</a></li>
+<li class="chapter" data-level="12.3.5" data-path="zooplankton.html"><a href="zooplankton.html#feedbacks-to-the-host-model-9"><i class="fa fa-check"></i><b>12.3.5</b> Feedbacks to the Host Model</a></li>
+</ul></li>
+<li class="chapter" data-level="12.4" data-path="zooplankton.html"><a href="zooplankton.html#setup-configuration-9"><i class="fa fa-check"></i><b>12.4</b> Setup &amp; Configuration</a></li>
+<li class="chapter" data-level="12.5" data-path="zooplankton.html"><a href="zooplankton.html#case-studies-examples-9"><i class="fa fa-check"></i><b>12.5</b> Case Studies &amp; Examples</a>
+<ul>
+<li class="chapter" data-level="12.5.1" data-path="zooplankton.html"><a href="zooplankton.html#case-study-8"><i class="fa fa-check"></i><b>12.5.1</b> Case Study</a></li>
+<li class="chapter" data-level="12.5.2" data-path="zooplankton.html"><a href="zooplankton.html#publications-9"><i class="fa fa-check"></i><b>12.5.2</b> Publications</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="totals.html"><a href="totals.html"><i class="fa fa-check"></i><b>13</b> Totals</a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="totals.html"><a href="totals.html#contributors-10"><i class="fa fa-check"></i><b>13.1</b> Contributors</a></li>
+<li class="chapter" data-level="13.2" data-path="totals.html"><a href="totals.html#overview-10"><i class="fa fa-check"></i><b>13.2</b> Overview</a></li>
+<li class="chapter" data-level="13.3" data-path="totals.html"><a href="totals.html#model-description-9"><i class="fa fa-check"></i><b>13.3</b> Model Description</a>
+<ul>
+<li class="chapter" data-level="13.3.1" data-path="totals.html"><a href="totals.html#process-descriptions-10"><i class="fa fa-check"></i><b>13.3.1</b> Process Descriptions</a></li>
+<li class="chapter" data-level="13.3.2" data-path="totals.html"><a href="totals.html#variable-summary-11"><i class="fa fa-check"></i><b>13.3.2</b> Variable Summary</a></li>
+<li class="chapter" data-level="13.3.3" data-path="totals.html"><a href="totals.html#parameter-summary-11"><i class="fa fa-check"></i><b>13.3.3</b> Parameter Summary</a></li>
+<li class="chapter" data-level="13.3.4" data-path="totals.html"><a href="totals.html#optional-module-links-10"><i class="fa fa-check"></i><b>13.3.4</b> Optional Module Links</a></li>
+<li class="chapter" data-level="13.3.5" data-path="totals.html"><a href="totals.html#feedbacks-to-the-host-model-10"><i class="fa fa-check"></i><b>13.3.5</b> Feedbacks to the Host Model</a></li>
+</ul></li>
+<li class="chapter" data-level="13.4" data-path="totals.html"><a href="totals.html#setup-configuration-10"><i class="fa fa-check"></i><b>13.4</b> Setup &amp; Configuration</a></li>
+<li class="chapter" data-level="13.5" data-path="totals.html"><a href="totals.html#case-studies-examples-10"><i class="fa fa-check"></i><b>13.5</b> Case Studies &amp; Examples</a>
+<ul>
+<li class="chapter" data-level="13.5.1" data-path="totals.html"><a href="totals.html#case-study-9"><i class="fa fa-check"></i><b>13.5.1</b> Case Study</a></li>
+<li class="chapter" data-level="13.5.2" data-path="totals.html"><a href="totals.html#publications-10"><i class="fa fa-check"></i><b>13.5.2</b> Publications</a></li>
 </ul></li>
 </ul></li>
 <li class="part"><span><b>II AED+ Water Modules</b></span></li>
-<li class="chapter" data-level="16" data-path="aqueous-geochemistry.html"><a href="aqueous-geochemistry.html"><i class="fa fa-check"></i><b>16</b> Aqueous Geochemistry</a>
+<li class="chapter" data-level="14" data-path="aqueous-geochemistry.html"><a href="aqueous-geochemistry.html"><i class="fa fa-check"></i><b>14</b> Aqueous Geochemistry</a>
 <ul>
-<li class="chapter" data-level="16.1" data-path="aqueous-geochemistry.html"><a href="aqueous-geochemistry.html#contributors-11"><i class="fa fa-check"></i><b>16.1</b> Contributors</a></li>
-<li class="chapter" data-level="16.2" data-path="aqueous-geochemistry.html"><a href="aqueous-geochemistry.html#overview-11"><i class="fa fa-check"></i><b>16.2</b> Overview</a></li>
-<li class="chapter" data-level="16.3" data-path="aqueous-geochemistry.html"><a href="aqueous-geochemistry.html#model-description-10"><i class="fa fa-check"></i><b>16.3</b> Model Description</a>
+<li class="chapter" data-level="14.1" data-path="aqueous-geochemistry.html"><a href="aqueous-geochemistry.html#contributors-11"><i class="fa fa-check"></i><b>14.1</b> Contributors</a></li>
+<li class="chapter" data-level="14.2" data-path="aqueous-geochemistry.html"><a href="aqueous-geochemistry.html#overview-11"><i class="fa fa-check"></i><b>14.2</b> Overview</a></li>
+<li class="chapter" data-level="14.3" data-path="aqueous-geochemistry.html"><a href="aqueous-geochemistry.html#model-description-10"><i class="fa fa-check"></i><b>14.3</b> Model Description</a>
 <ul>
-<li class="chapter" data-level="16.3.1" data-path="aqueous-geochemistry.html"><a href="aqueous-geochemistry.html#process-descriptions-11"><i class="fa fa-check"></i><b>16.3.1</b> Process Descriptions</a></li>
-<li class="chapter" data-level="16.3.2" data-path="aqueous-geochemistry.html"><a href="aqueous-geochemistry.html#variable-summary-12"><i class="fa fa-check"></i><b>16.3.2</b> Variable Summary</a></li>
-<li class="chapter" data-level="16.3.3" data-path="aqueous-geochemistry.html"><a href="aqueous-geochemistry.html#parameter-summary-12"><i class="fa fa-check"></i><b>16.3.3</b> Parameter Summary</a></li>
-<li class="chapter" data-level="16.3.4" data-path="aqueous-geochemistry.html"><a href="aqueous-geochemistry.html#optional-module-links-11"><i class="fa fa-check"></i><b>16.3.4</b> Optional Module Links</a></li>
-<li class="chapter" data-level="16.3.5" data-path="aqueous-geochemistry.html"><a href="aqueous-geochemistry.html#feedbacks-to-the-host-model-11"><i class="fa fa-check"></i><b>16.3.5</b> Feedbacks to the Host Model</a></li>
+<li class="chapter" data-level="14.3.1" data-path="aqueous-geochemistry.html"><a href="aqueous-geochemistry.html#process-descriptions-11"><i class="fa fa-check"></i><b>14.3.1</b> Process Descriptions</a></li>
+<li class="chapter" data-level="14.3.2" data-path="aqueous-geochemistry.html"><a href="aqueous-geochemistry.html#variable-summary-12"><i class="fa fa-check"></i><b>14.3.2</b> Variable Summary</a></li>
+<li class="chapter" data-level="14.3.3" data-path="aqueous-geochemistry.html"><a href="aqueous-geochemistry.html#parameter-summary-12"><i class="fa fa-check"></i><b>14.3.3</b> Parameter Summary</a></li>
+<li class="chapter" data-level="14.3.4" data-path="aqueous-geochemistry.html"><a href="aqueous-geochemistry.html#optional-module-links-11"><i class="fa fa-check"></i><b>14.3.4</b> Optional Module Links</a></li>
+<li class="chapter" data-level="14.3.5" data-path="aqueous-geochemistry.html"><a href="aqueous-geochemistry.html#feedbacks-to-the-host-model-11"><i class="fa fa-check"></i><b>14.3.5</b> Feedbacks to the Host Model</a></li>
 </ul></li>
-<li class="chapter" data-level="16.4" data-path="aqueous-geochemistry.html"><a href="aqueous-geochemistry.html#setup-configuration-11"><i class="fa fa-check"></i><b>16.4</b> Setup &amp; Configuration</a>
+<li class="chapter" data-level="14.4" data-path="aqueous-geochemistry.html"><a href="aqueous-geochemistry.html#setup-configuration-11"><i class="fa fa-check"></i><b>14.4</b> Setup &amp; Configuration</a>
 <ul>
-<li class="chapter" data-level="16.4.1" data-path="aqueous-geochemistry.html"><a href="aqueous-geochemistry.html#setup-example-1"><i class="fa fa-check"></i><b>16.4.1</b> Setup Example</a></li>
+<li class="chapter" data-level="14.4.1" data-path="aqueous-geochemistry.html"><a href="aqueous-geochemistry.html#setup-example-1"><i class="fa fa-check"></i><b>14.4.1</b> Setup Example</a></li>
 </ul></li>
-<li class="chapter" data-level="16.5" data-path="aqueous-geochemistry.html"><a href="aqueous-geochemistry.html#case-studies-examples-11"><i class="fa fa-check"></i><b>16.5</b> Case Studies &amp; Examples</a>
+<li class="chapter" data-level="14.5" data-path="aqueous-geochemistry.html"><a href="aqueous-geochemistry.html#case-studies-examples-11"><i class="fa fa-check"></i><b>14.5</b> Case Studies &amp; Examples</a>
 <ul>
-<li class="chapter" data-level="16.5.1" data-path="aqueous-geochemistry.html"><a href="aqueous-geochemistry.html#case-study-10"><i class="fa fa-check"></i><b>16.5.1</b> Case Study</a></li>
-<li class="chapter" data-level="16.5.2" data-path="aqueous-geochemistry.html"><a href="aqueous-geochemistry.html#publications-11"><i class="fa fa-check"></i><b>16.5.2</b> Publications</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="17" data-path="pathogens-microbial-indicator-organisms.html"><a href="pathogens-microbial-indicator-organisms.html"><i class="fa fa-check"></i><b>17</b> Pathogens &amp; Microbial Indicator Organisms</a>
-<ul>
-<li class="chapter" data-level="17.1" data-path="pathogens-microbial-indicator-organisms.html"><a href="pathogens-microbial-indicator-organisms.html#contributors-12"><i class="fa fa-check"></i><b>17.1</b> Contributors</a></li>
-<li class="chapter" data-level="17.2" data-path="pathogens-microbial-indicator-organisms.html"><a href="pathogens-microbial-indicator-organisms.html#overview-12"><i class="fa fa-check"></i><b>17.2</b> Overview</a></li>
-<li class="chapter" data-level="17.3" data-path="pathogens-microbial-indicator-organisms.html"><a href="pathogens-microbial-indicator-organisms.html#model-description-11"><i class="fa fa-check"></i><b>17.3</b> Model Description</a>
-<ul>
-<li class="chapter" data-level="17.3.1" data-path="pathogens-microbial-indicator-organisms.html"><a href="pathogens-microbial-indicator-organisms.html#process-descriptions-12"><i class="fa fa-check"></i><b>17.3.1</b> Process Descriptions</a></li>
-<li class="chapter" data-level="17.3.2" data-path="pathogens-microbial-indicator-organisms.html"><a href="pathogens-microbial-indicator-organisms.html#variable-summary-13"><i class="fa fa-check"></i><b>17.3.2</b> Variable Summary</a></li>
-<li class="chapter" data-level="17.3.3" data-path="pathogens-microbial-indicator-organisms.html"><a href="pathogens-microbial-indicator-organisms.html#parameter-summary-13"><i class="fa fa-check"></i><b>17.3.3</b> Parameter Summary</a></li>
-<li class="chapter" data-level="17.3.4" data-path="pathogens-microbial-indicator-organisms.html"><a href="pathogens-microbial-indicator-organisms.html#optional-module-links-12"><i class="fa fa-check"></i><b>17.3.4</b> Optional Module Links</a></li>
-<li class="chapter" data-level="17.3.5" data-path="pathogens-microbial-indicator-organisms.html"><a href="pathogens-microbial-indicator-organisms.html#feedbacks-to-the-host-model-12"><i class="fa fa-check"></i><b>17.3.5</b> Feedbacks to the Host Model</a></li>
-</ul></li>
-<li class="chapter" data-level="17.4" data-path="pathogens-microbial-indicator-organisms.html"><a href="pathogens-microbial-indicator-organisms.html#setup-configuration-12"><i class="fa fa-check"></i><b>17.4</b> Setup &amp; Configuration</a>
-<ul>
-<li class="chapter" data-level="17.4.1" data-path="pathogens-microbial-indicator-organisms.html"><a href="pathogens-microbial-indicator-organisms.html#setup-example-2"><i class="fa fa-check"></i><b>17.4.1</b> Setup Example</a></li>
-</ul></li>
-<li class="chapter" data-level="17.5" data-path="pathogens-microbial-indicator-organisms.html"><a href="pathogens-microbial-indicator-organisms.html#case-studies-examples-12"><i class="fa fa-check"></i><b>17.5</b> Case Studies &amp; Examples</a>
-<ul>
-<li class="chapter" data-level="17.5.1" data-path="pathogens-microbial-indicator-organisms.html"><a href="pathogens-microbial-indicator-organisms.html#case-study-11"><i class="fa fa-check"></i><b>17.5.1</b> Case Study</a></li>
-<li class="chapter" data-level="17.5.2" data-path="pathogens-microbial-indicator-organisms.html"><a href="pathogens-microbial-indicator-organisms.html#publications-12"><i class="fa fa-check"></i><b>17.5.2</b> Publications</a></li>
+<li class="chapter" data-level="14.5.1" data-path="aqueous-geochemistry.html"><a href="aqueous-geochemistry.html#case-study-10"><i class="fa fa-check"></i><b>14.5.1</b> Case Study</a></li>
+<li class="chapter" data-level="14.5.2" data-path="aqueous-geochemistry.html"><a href="aqueous-geochemistry.html#publications-11"><i class="fa fa-check"></i><b>14.5.2</b> Publications</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="18" data-path="stable-isotopes.html"><a href="stable-isotopes.html"><i class="fa fa-check"></i><b>18</b> Stable Isotopes</a>
+<li class="chapter" data-level="15" data-path="pathogens-microbial-indicator-organisms.html"><a href="pathogens-microbial-indicator-organisms.html"><i class="fa fa-check"></i><b>15</b> Pathogens &amp; Microbial Indicator Organisms</a>
 <ul>
-<li class="chapter" data-level="18.1" data-path="stable-isotopes.html"><a href="stable-isotopes.html#contributors-13"><i class="fa fa-check"></i><b>18.1</b> Contributors</a></li>
-<li class="chapter" data-level="18.2" data-path="stable-isotopes.html"><a href="stable-isotopes.html#overview-13"><i class="fa fa-check"></i><b>18.2</b> Overview</a></li>
-<li class="chapter" data-level="18.3" data-path="stable-isotopes.html"><a href="stable-isotopes.html#model-description-12"><i class="fa fa-check"></i><b>18.3</b> Model Description</a>
+<li class="chapter" data-level="15.1" data-path="pathogens-microbial-indicator-organisms.html"><a href="pathogens-microbial-indicator-organisms.html#contributors-12"><i class="fa fa-check"></i><b>15.1</b> Contributors</a></li>
+<li class="chapter" data-level="15.2" data-path="pathogens-microbial-indicator-organisms.html"><a href="pathogens-microbial-indicator-organisms.html#overview-12"><i class="fa fa-check"></i><b>15.2</b> Overview</a></li>
+<li class="chapter" data-level="15.3" data-path="pathogens-microbial-indicator-organisms.html"><a href="pathogens-microbial-indicator-organisms.html#model-description-11"><i class="fa fa-check"></i><b>15.3</b> Model Description</a>
 <ul>
-<li class="chapter" data-level="18.3.1" data-path="stable-isotopes.html"><a href="stable-isotopes.html#process-descriptions-13"><i class="fa fa-check"></i><b>18.3.1</b> Process Descriptions</a></li>
-<li class="chapter" data-level="18.3.2" data-path="stable-isotopes.html"><a href="stable-isotopes.html#variable-summary-14"><i class="fa fa-check"></i><b>18.3.2</b> Variable Summary</a></li>
-<li class="chapter" data-level="18.3.3" data-path="stable-isotopes.html"><a href="stable-isotopes.html#parameter-summary-14"><i class="fa fa-check"></i><b>18.3.3</b> Parameter Summary</a></li>
-<li class="chapter" data-level="18.3.4" data-path="stable-isotopes.html"><a href="stable-isotopes.html#optional-module-links-13"><i class="fa fa-check"></i><b>18.3.4</b> Optional Module Links</a></li>
-<li class="chapter" data-level="18.3.5" data-path="stable-isotopes.html"><a href="stable-isotopes.html#feedbacks-to-the-host-model-13"><i class="fa fa-check"></i><b>18.3.5</b> Feedbacks to the Host Model</a></li>
+<li class="chapter" data-level="15.3.1" data-path="pathogens-microbial-indicator-organisms.html"><a href="pathogens-microbial-indicator-organisms.html#process-descriptions-12"><i class="fa fa-check"></i><b>15.3.1</b> Process Descriptions</a></li>
+<li class="chapter" data-level="15.3.2" data-path="pathogens-microbial-indicator-organisms.html"><a href="pathogens-microbial-indicator-organisms.html#variable-summary-13"><i class="fa fa-check"></i><b>15.3.2</b> Variable Summary</a></li>
+<li class="chapter" data-level="15.3.3" data-path="pathogens-microbial-indicator-organisms.html"><a href="pathogens-microbial-indicator-organisms.html#parameter-summary-13"><i class="fa fa-check"></i><b>15.3.3</b> Parameter Summary</a></li>
+<li class="chapter" data-level="15.3.4" data-path="pathogens-microbial-indicator-organisms.html"><a href="pathogens-microbial-indicator-organisms.html#optional-module-links-12"><i class="fa fa-check"></i><b>15.3.4</b> Optional Module Links</a></li>
+<li class="chapter" data-level="15.3.5" data-path="pathogens-microbial-indicator-organisms.html"><a href="pathogens-microbial-indicator-organisms.html#feedbacks-to-the-host-model-12"><i class="fa fa-check"></i><b>15.3.5</b> Feedbacks to the Host Model</a></li>
 </ul></li>
-<li class="chapter" data-level="18.4" data-path="stable-isotopes.html"><a href="stable-isotopes.html#setup-configuration-13"><i class="fa fa-check"></i><b>18.4</b> Setup &amp; Configuration</a></li>
-<li class="chapter" data-level="18.5" data-path="stable-isotopes.html"><a href="stable-isotopes.html#case-studies-examples-13"><i class="fa fa-check"></i><b>18.5</b> Case Studies &amp; Examples</a>
+<li class="chapter" data-level="15.4" data-path="pathogens-microbial-indicator-organisms.html"><a href="pathogens-microbial-indicator-organisms.html#setup-configuration-12"><i class="fa fa-check"></i><b>15.4</b> Setup &amp; Configuration</a>
 <ul>
-<li class="chapter" data-level="18.5.1" data-path="stable-isotopes.html"><a href="stable-isotopes.html#case-study-12"><i class="fa fa-check"></i><b>18.5.1</b> Case Study</a></li>
-<li class="chapter" data-level="18.5.2" data-path="stable-isotopes.html"><a href="stable-isotopes.html#publications-13"><i class="fa fa-check"></i><b>18.5.2</b> Publications</a></li>
+<li class="chapter" data-level="15.4.1" data-path="pathogens-microbial-indicator-organisms.html"><a href="pathogens-microbial-indicator-organisms.html#setup-example-2"><i class="fa fa-check"></i><b>15.4.1</b> Setup Example</a></li>
+</ul></li>
+<li class="chapter" data-level="15.5" data-path="pathogens-microbial-indicator-organisms.html"><a href="pathogens-microbial-indicator-organisms.html#case-studies-examples-12"><i class="fa fa-check"></i><b>15.5</b> Case Studies &amp; Examples</a>
+<ul>
+<li class="chapter" data-level="15.5.1" data-path="pathogens-microbial-indicator-organisms.html"><a href="pathogens-microbial-indicator-organisms.html#case-study-11"><i class="fa fa-check"></i><b>15.5.1</b> Case Study</a></li>
+<li class="chapter" data-level="15.5.2" data-path="pathogens-microbial-indicator-organisms.html"><a href="pathogens-microbial-indicator-organisms.html#publications-12"><i class="fa fa-check"></i><b>15.5.2</b> Publications</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="19" data-path="bioactive-particles.html"><a href="bioactive-particles.html"><i class="fa fa-check"></i><b>19</b> Bioactive Particles</a>
+<li class="chapter" data-level="16" data-path="stable-isotopes.html"><a href="stable-isotopes.html"><i class="fa fa-check"></i><b>16</b> Stable Isotopes</a>
 <ul>
-<li class="chapter" data-level="19.1" data-path="bioactive-particles.html"><a href="bioactive-particles.html#contributors-14"><i class="fa fa-check"></i><b>19.1</b> Contributors</a></li>
-<li class="chapter" data-level="19.2" data-path="bioactive-particles.html"><a href="bioactive-particles.html#overview-14"><i class="fa fa-check"></i><b>19.2</b> Overview</a></li>
-<li class="chapter" data-level="19.3" data-path="bioactive-particles.html"><a href="bioactive-particles.html#model-description-13"><i class="fa fa-check"></i><b>19.3</b> Model Description</a>
+<li class="chapter" data-level="16.1" data-path="stable-isotopes.html"><a href="stable-isotopes.html#contributors-13"><i class="fa fa-check"></i><b>16.1</b> Contributors</a></li>
+<li class="chapter" data-level="16.2" data-path="stable-isotopes.html"><a href="stable-isotopes.html#overview-13"><i class="fa fa-check"></i><b>16.2</b> Overview</a></li>
+<li class="chapter" data-level="16.3" data-path="stable-isotopes.html"><a href="stable-isotopes.html#model-description-12"><i class="fa fa-check"></i><b>16.3</b> Model Description</a>
 <ul>
-<li class="chapter" data-level="19.3.1" data-path="bioactive-particles.html"><a href="bioactive-particles.html#process-descriptions-14"><i class="fa fa-check"></i><b>19.3.1</b> Process Descriptions</a></li>
-<li class="chapter" data-level="19.3.2" data-path="bioactive-particles.html"><a href="bioactive-particles.html#variable-summary-15"><i class="fa fa-check"></i><b>19.3.2</b> Variable Summary</a></li>
-<li class="chapter" data-level="19.3.3" data-path="bioactive-particles.html"><a href="bioactive-particles.html#parameter-summary-15"><i class="fa fa-check"></i><b>19.3.3</b> Parameter Summary</a></li>
-<li class="chapter" data-level="19.3.4" data-path="bioactive-particles.html"><a href="bioactive-particles.html#optional-module-links-14"><i class="fa fa-check"></i><b>19.3.4</b> Optional Module Links</a></li>
-<li class="chapter" data-level="19.3.5" data-path="bioactive-particles.html"><a href="bioactive-particles.html#feedbacks-to-the-host-model-14"><i class="fa fa-check"></i><b>19.3.5</b> Feedbacks to the Host Model</a></li>
+<li class="chapter" data-level="16.3.1" data-path="stable-isotopes.html"><a href="stable-isotopes.html#process-descriptions-13"><i class="fa fa-check"></i><b>16.3.1</b> Process Descriptions</a></li>
+<li class="chapter" data-level="16.3.2" data-path="stable-isotopes.html"><a href="stable-isotopes.html#variable-summary-14"><i class="fa fa-check"></i><b>16.3.2</b> Variable Summary</a></li>
+<li class="chapter" data-level="16.3.3" data-path="stable-isotopes.html"><a href="stable-isotopes.html#parameter-summary-14"><i class="fa fa-check"></i><b>16.3.3</b> Parameter Summary</a></li>
+<li class="chapter" data-level="16.3.4" data-path="stable-isotopes.html"><a href="stable-isotopes.html#optional-module-links-13"><i class="fa fa-check"></i><b>16.3.4</b> Optional Module Links</a></li>
+<li class="chapter" data-level="16.3.5" data-path="stable-isotopes.html"><a href="stable-isotopes.html#feedbacks-to-the-host-model-13"><i class="fa fa-check"></i><b>16.3.5</b> Feedbacks to the Host Model</a></li>
 </ul></li>
-<li class="chapter" data-level="19.4" data-path="bioactive-particles.html"><a href="bioactive-particles.html#setup-configuration-14"><i class="fa fa-check"></i><b>19.4</b> Setup &amp; Configuration</a></li>
-<li class="chapter" data-level="19.5" data-path="bioactive-particles.html"><a href="bioactive-particles.html#case-studies-examples-14"><i class="fa fa-check"></i><b>19.5</b> Case Studies &amp; Examples</a>
+<li class="chapter" data-level="16.4" data-path="stable-isotopes.html"><a href="stable-isotopes.html#setup-configuration-13"><i class="fa fa-check"></i><b>16.4</b> Setup &amp; Configuration</a></li>
+<li class="chapter" data-level="16.5" data-path="stable-isotopes.html"><a href="stable-isotopes.html#case-studies-examples-13"><i class="fa fa-check"></i><b>16.5</b> Case Studies &amp; Examples</a>
 <ul>
-<li class="chapter" data-level="19.5.1" data-path="bioactive-particles.html"><a href="bioactive-particles.html#case-study-13"><i class="fa fa-check"></i><b>19.5.1</b> Case Study</a></li>
-<li class="chapter" data-level="19.5.2" data-path="bioactive-particles.html"><a href="bioactive-particles.html#publications-14"><i class="fa fa-check"></i><b>19.5.2</b> Publications</a></li>
+<li class="chapter" data-level="16.5.1" data-path="stable-isotopes.html"><a href="stable-isotopes.html#case-study-12"><i class="fa fa-check"></i><b>16.5.1</b> Case Study</a></li>
+<li class="chapter" data-level="16.5.2" data-path="stable-isotopes.html"><a href="stable-isotopes.html#publications-13"><i class="fa fa-check"></i><b>16.5.2</b> Publications</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="17" data-path="bioactive-particles.html"><a href="bioactive-particles.html"><i class="fa fa-check"></i><b>17</b> Bioactive Particles</a>
+<ul>
+<li class="chapter" data-level="17.1" data-path="bioactive-particles.html"><a href="bioactive-particles.html#contributors-14"><i class="fa fa-check"></i><b>17.1</b> Contributors</a></li>
+<li class="chapter" data-level="17.2" data-path="bioactive-particles.html"><a href="bioactive-particles.html#overview-14"><i class="fa fa-check"></i><b>17.2</b> Overview</a></li>
+<li class="chapter" data-level="17.3" data-path="bioactive-particles.html"><a href="bioactive-particles.html#model-description-13"><i class="fa fa-check"></i><b>17.3</b> Model Description</a>
+<ul>
+<li class="chapter" data-level="17.3.1" data-path="bioactive-particles.html"><a href="bioactive-particles.html#process-descriptions-14"><i class="fa fa-check"></i><b>17.3.1</b> Process Descriptions</a></li>
+<li class="chapter" data-level="17.3.2" data-path="bioactive-particles.html"><a href="bioactive-particles.html#variable-summary-15"><i class="fa fa-check"></i><b>17.3.2</b> Variable Summary</a></li>
+<li class="chapter" data-level="17.3.3" data-path="bioactive-particles.html"><a href="bioactive-particles.html#parameter-summary-15"><i class="fa fa-check"></i><b>17.3.3</b> Parameter Summary</a></li>
+<li class="chapter" data-level="17.3.4" data-path="bioactive-particles.html"><a href="bioactive-particles.html#optional-module-links-14"><i class="fa fa-check"></i><b>17.3.4</b> Optional Module Links</a></li>
+<li class="chapter" data-level="17.3.5" data-path="bioactive-particles.html"><a href="bioactive-particles.html#feedbacks-to-the-host-model-14"><i class="fa fa-check"></i><b>17.3.5</b> Feedbacks to the Host Model</a></li>
+</ul></li>
+<li class="chapter" data-level="17.4" data-path="bioactive-particles.html"><a href="bioactive-particles.html#setup-configuration-14"><i class="fa fa-check"></i><b>17.4</b> Setup &amp; Configuration</a></li>
+<li class="chapter" data-level="17.5" data-path="bioactive-particles.html"><a href="bioactive-particles.html#case-studies-examples-14"><i class="fa fa-check"></i><b>17.5</b> Case Studies &amp; Examples</a>
+<ul>
+<li class="chapter" data-level="17.5.1" data-path="bioactive-particles.html"><a href="bioactive-particles.html#case-study-13"><i class="fa fa-check"></i><b>17.5.1</b> Case Study</a></li>
+<li class="chapter" data-level="17.5.2" data-path="bioactive-particles.html"><a href="bioactive-particles.html#publications-14"><i class="fa fa-check"></i><b>17.5.2</b> Publications</a></li>
 </ul></li>
 </ul></li>
 <li class="part"><span><b>III AED+ Benthic Modules</b></span></li>
-<li class="chapter" data-level="20" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html"><i class="fa fa-check"></i><b>20</b> Sediment Biogeochemistry</a>
+<li class="chapter" data-level="18" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html"><i class="fa fa-check"></i><b>18</b> Sediment Biogeochemistry</a>
 <ul>
-<li class="chapter" data-level="20.1" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#contributors-15"><i class="fa fa-check"></i><b>20.1</b> Contributors</a></li>
-<li class="chapter" data-level="20.2" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#overview-15"><i class="fa fa-check"></i><b>20.2</b> Overview</a></li>
-<li class="chapter" data-level="20.3" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#model-description-14"><i class="fa fa-check"></i><b>20.3</b> Model Description</a>
+<li class="chapter" data-level="18.1" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#contributors-15"><i class="fa fa-check"></i><b>18.1</b> Contributors</a></li>
+<li class="chapter" data-level="18.2" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#overview-15"><i class="fa fa-check"></i><b>18.2</b> Overview</a></li>
+<li class="chapter" data-level="18.3" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#model-description-14"><i class="fa fa-check"></i><b>18.3</b> Model Description</a>
 <ul>
-<li class="chapter" data-level="20.3.1" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#process-descriptions-15"><i class="fa fa-check"></i><b>20.3.1</b> Process Descriptions</a></li>
-<li class="chapter" data-level="20.3.2" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#variable-summary-16"><i class="fa fa-check"></i><b>20.3.2</b> Variable Summary</a></li>
-<li class="chapter" data-level="20.3.3" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#parameter-summary-16"><i class="fa fa-check"></i><b>20.3.3</b> Parameter Summary</a></li>
-<li class="chapter" data-level="20.3.4" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#optional-module-links-15"><i class="fa fa-check"></i><b>20.3.4</b> Optional Module Links</a></li>
-<li class="chapter" data-level="20.3.5" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#feedbacks-to-the-host-model-15"><i class="fa fa-check"></i><b>20.3.5</b> Feedbacks to the Host Model</a></li>
+<li class="chapter" data-level="18.3.1" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#process-descriptions-15"><i class="fa fa-check"></i><b>18.3.1</b> Process Descriptions</a></li>
+<li class="chapter" data-level="18.3.2" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#variable-summary-16"><i class="fa fa-check"></i><b>18.3.2</b> Variable Summary</a></li>
+<li class="chapter" data-level="18.3.3" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#parameter-summary-16"><i class="fa fa-check"></i><b>18.3.3</b> Parameter Summary</a></li>
+<li class="chapter" data-level="18.3.4" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#optional-module-links-15"><i class="fa fa-check"></i><b>18.3.4</b> Optional Module Links</a></li>
+<li class="chapter" data-level="18.3.5" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#feedbacks-to-the-host-model-15"><i class="fa fa-check"></i><b>18.3.5</b> Feedbacks to the Host Model</a></li>
 </ul></li>
-<li class="chapter" data-level="20.4" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#setup-configuration-15"><i class="fa fa-check"></i><b>20.4</b> Setup &amp; Configuration</a>
+<li class="chapter" data-level="18.4" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#setup-configuration-15"><i class="fa fa-check"></i><b>18.4</b> Setup &amp; Configuration</a>
 <ul>
-<li class="chapter" data-level="20.4.1" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#implementation-withing-the-fabm-framework"><i class="fa fa-check"></i><b>20.4.1</b> Implementation withing the FABM Framework</a></li>
-<li class="chapter" data-level="20.4.2" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#program-structure"><i class="fa fa-check"></i><b>20.4.2</b> Program Structure</a></li>
-<li class="chapter" data-level="20.4.3" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#model-setup-boundary-conditions-parameter-definition"><i class="fa fa-check"></i><b>20.4.3</b> Model Setup, Boundary Conditions &amp; Parameter Definition</a></li>
-<li class="chapter" data-level="20.4.4" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#model-output-post-processing"><i class="fa fa-check"></i><b>20.4.4</b> Model Output &amp; Post-processing</a></li>
+<li class="chapter" data-level="18.4.1" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#implementation-withing-the-fabm-framework"><i class="fa fa-check"></i><b>18.4.1</b> Implementation withing the FABM Framework</a></li>
+<li class="chapter" data-level="18.4.2" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#program-structure"><i class="fa fa-check"></i><b>18.4.2</b> Program Structure</a></li>
+<li class="chapter" data-level="18.4.3" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#model-setup-boundary-conditions-parameter-definition"><i class="fa fa-check"></i><b>18.4.3</b> Model Setup, Boundary Conditions &amp; Parameter Definition</a></li>
+<li class="chapter" data-level="18.4.4" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#model-output-post-processing"><i class="fa fa-check"></i><b>18.4.4</b> Model Output &amp; Post-processing</a></li>
 </ul></li>
-<li class="chapter" data-level="20.5" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#case-studies-examples-15"><i class="fa fa-check"></i><b>20.5</b> Case Studies &amp; Examples</a>
+<li class="chapter" data-level="18.5" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#case-studies-examples-15"><i class="fa fa-check"></i><b>18.5</b> Case Studies &amp; Examples</a>
 <ul>
-<li class="chapter" data-level="20.5.1" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#case-study-14"><i class="fa fa-check"></i><b>20.5.1</b> Case Study</a></li>
-<li class="chapter" data-level="20.5.2" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#publications-15"><i class="fa fa-check"></i><b>20.5.2</b> Publications</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="21" data-path="submerged-macrophytes.html"><a href="submerged-macrophytes.html"><i class="fa fa-check"></i><b>21</b> Submerged Macrophytes</a>
-<ul>
-<li class="chapter" data-level="21.1" data-path="submerged-macrophytes.html"><a href="submerged-macrophytes.html#contributors-16"><i class="fa fa-check"></i><b>21.1</b> Contributors</a></li>
-<li class="chapter" data-level="21.2" data-path="submerged-macrophytes.html"><a href="submerged-macrophytes.html#overview-16"><i class="fa fa-check"></i><b>21.2</b> Overview</a></li>
-<li class="chapter" data-level="21.3" data-path="submerged-macrophytes.html"><a href="submerged-macrophytes.html#model-description-15"><i class="fa fa-check"></i><b>21.3</b> Model Description</a>
-<ul>
-<li class="chapter" data-level="21.3.1" data-path="submerged-macrophytes.html"><a href="submerged-macrophytes.html#process-descriptions-16"><i class="fa fa-check"></i><b>21.3.1</b> Process Descriptions</a></li>
-<li class="chapter" data-level="21.3.2" data-path="submerged-macrophytes.html"><a href="submerged-macrophytes.html#variable-summary-17"><i class="fa fa-check"></i><b>21.3.2</b> Variable Summary</a></li>
-<li class="chapter" data-level="21.3.3" data-path="submerged-macrophytes.html"><a href="submerged-macrophytes.html#parameter-summary-17"><i class="fa fa-check"></i><b>21.3.3</b> Parameter Summary</a></li>
-<li class="chapter" data-level="21.3.4" data-path="submerged-macrophytes.html"><a href="submerged-macrophytes.html#optional-module-links-16"><i class="fa fa-check"></i><b>21.3.4</b> Optional Module Links</a></li>
-<li class="chapter" data-level="21.3.5" data-path="submerged-macrophytes.html"><a href="submerged-macrophytes.html#feedbacks-to-the-host-model-16"><i class="fa fa-check"></i><b>21.3.5</b> Feedbacks to the Host Model</a></li>
-</ul></li>
-<li class="chapter" data-level="21.4" data-path="submerged-macrophytes.html"><a href="submerged-macrophytes.html#setup-configuration-16"><i class="fa fa-check"></i><b>21.4</b> Setup &amp; Configuration</a></li>
-<li class="chapter" data-level="21.5" data-path="submerged-macrophytes.html"><a href="submerged-macrophytes.html#case-studies-examples-16"><i class="fa fa-check"></i><b>21.5</b> Case Studies &amp; Examples</a>
-<ul>
-<li class="chapter" data-level="21.5.1" data-path="submerged-macrophytes.html"><a href="submerged-macrophytes.html#case-study-15"><i class="fa fa-check"></i><b>21.5.1</b> Case Study</a></li>
-<li class="chapter" data-level="21.5.2" data-path="submerged-macrophytes.html"><a href="submerged-macrophytes.html#publications-16"><i class="fa fa-check"></i><b>21.5.2</b> Publications</a></li>
+<li class="chapter" data-level="18.5.1" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#case-study-14"><i class="fa fa-check"></i><b>18.5.1</b> Case Study</a></li>
+<li class="chapter" data-level="18.5.2" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#publications-15"><i class="fa fa-check"></i><b>18.5.2</b> Publications</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="22" data-path="macroalgae.html"><a href="macroalgae.html"><i class="fa fa-check"></i><b>22</b> Macroalgae</a>
+<li class="chapter" data-level="19" data-path="submerged-macrophytes.html"><a href="submerged-macrophytes.html"><i class="fa fa-check"></i><b>19</b> Submerged Macrophytes</a>
 <ul>
-<li class="chapter" data-level="22.1" data-path="macroalgae.html"><a href="macroalgae.html#contributors-17"><i class="fa fa-check"></i><b>22.1</b> Contributors</a></li>
-<li class="chapter" data-level="22.2" data-path="macroalgae.html"><a href="macroalgae.html#overview-17"><i class="fa fa-check"></i><b>22.2</b> Overview</a></li>
-<li class="chapter" data-level="22.3" data-path="macroalgae.html"><a href="macroalgae.html#model-description-16"><i class="fa fa-check"></i><b>22.3</b> Model Description</a>
+<li class="chapter" data-level="19.1" data-path="submerged-macrophytes.html"><a href="submerged-macrophytes.html#contributors-16"><i class="fa fa-check"></i><b>19.1</b> Contributors</a></li>
+<li class="chapter" data-level="19.2" data-path="submerged-macrophytes.html"><a href="submerged-macrophytes.html#overview-16"><i class="fa fa-check"></i><b>19.2</b> Overview</a></li>
+<li class="chapter" data-level="19.3" data-path="submerged-macrophytes.html"><a href="submerged-macrophytes.html#model-description-15"><i class="fa fa-check"></i><b>19.3</b> Model Description</a>
 <ul>
-<li class="chapter" data-level="22.3.1" data-path="macroalgae.html"><a href="macroalgae.html#process-descriptions-17"><i class="fa fa-check"></i><b>22.3.1</b> Process Descriptions</a></li>
-<li class="chapter" data-level="22.3.2" data-path="macroalgae.html"><a href="macroalgae.html#variable-summary-18"><i class="fa fa-check"></i><b>22.3.2</b> Variable Summary</a></li>
-<li class="chapter" data-level="22.3.3" data-path="macroalgae.html"><a href="macroalgae.html#parameter-summary-18"><i class="fa fa-check"></i><b>22.3.3</b> Parameter Summary</a></li>
-<li class="chapter" data-level="22.3.4" data-path="macroalgae.html"><a href="macroalgae.html#optional-module-links-17"><i class="fa fa-check"></i><b>22.3.4</b> Optional Module Links</a></li>
-<li class="chapter" data-level="22.3.5" data-path="macroalgae.html"><a href="macroalgae.html#feedbacks-to-the-host-model-17"><i class="fa fa-check"></i><b>22.3.5</b> Feedbacks to the Host Model</a></li>
+<li class="chapter" data-level="19.3.1" data-path="submerged-macrophytes.html"><a href="submerged-macrophytes.html#process-descriptions-16"><i class="fa fa-check"></i><b>19.3.1</b> Process Descriptions</a></li>
+<li class="chapter" data-level="19.3.2" data-path="submerged-macrophytes.html"><a href="submerged-macrophytes.html#variable-summary-17"><i class="fa fa-check"></i><b>19.3.2</b> Variable Summary</a></li>
+<li class="chapter" data-level="19.3.3" data-path="submerged-macrophytes.html"><a href="submerged-macrophytes.html#parameter-summary-17"><i class="fa fa-check"></i><b>19.3.3</b> Parameter Summary</a></li>
+<li class="chapter" data-level="19.3.4" data-path="submerged-macrophytes.html"><a href="submerged-macrophytes.html#optional-module-links-16"><i class="fa fa-check"></i><b>19.3.4</b> Optional Module Links</a></li>
+<li class="chapter" data-level="19.3.5" data-path="submerged-macrophytes.html"><a href="submerged-macrophytes.html#feedbacks-to-the-host-model-16"><i class="fa fa-check"></i><b>19.3.5</b> Feedbacks to the Host Model</a></li>
 </ul></li>
-<li class="chapter" data-level="22.4" data-path="macroalgae.html"><a href="macroalgae.html#setup-configuration-17"><i class="fa fa-check"></i><b>22.4</b> Setup &amp; Configuration</a></li>
-<li class="chapter" data-level="22.5" data-path="macroalgae.html"><a href="macroalgae.html#case-studies-examples-17"><i class="fa fa-check"></i><b>22.5</b> Case Studies &amp; Examples</a>
+<li class="chapter" data-level="19.4" data-path="submerged-macrophytes.html"><a href="submerged-macrophytes.html#setup-configuration-16"><i class="fa fa-check"></i><b>19.4</b> Setup &amp; Configuration</a></li>
+<li class="chapter" data-level="19.5" data-path="submerged-macrophytes.html"><a href="submerged-macrophytes.html#case-studies-examples-16"><i class="fa fa-check"></i><b>19.5</b> Case Studies &amp; Examples</a>
 <ul>
-<li class="chapter" data-level="22.5.1" data-path="macroalgae.html"><a href="macroalgae.html#case-study-16"><i class="fa fa-check"></i><b>22.5.1</b> Case Study</a></li>
-<li class="chapter" data-level="22.5.2" data-path="macroalgae.html"><a href="macroalgae.html#publications-17"><i class="fa fa-check"></i><b>22.5.2</b> Publications</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="23" data-path="bivalves.html"><a href="bivalves.html"><i class="fa fa-check"></i><b>23</b> Bivalves</a>
-<ul>
-<li class="chapter" data-level="23.1" data-path="bivalves.html"><a href="bivalves.html#contributors-18"><i class="fa fa-check"></i><b>23.1</b> Contributors</a></li>
-<li class="chapter" data-level="23.2" data-path="bivalves.html"><a href="bivalves.html#overview-18"><i class="fa fa-check"></i><b>23.2</b> Overview</a></li>
-<li class="chapter" data-level="23.3" data-path="bivalves.html"><a href="bivalves.html#model-description-17"><i class="fa fa-check"></i><b>23.3</b> Model Description</a>
-<ul>
-<li class="chapter" data-level="23.3.1" data-path="bivalves.html"><a href="bivalves.html#process-descriptions-18"><i class="fa fa-check"></i><b>23.3.1</b> Process Descriptions</a></li>
-<li class="chapter" data-level="23.3.2" data-path="bivalves.html"><a href="bivalves.html#variable-summary-19"><i class="fa fa-check"></i><b>23.3.2</b> Variable Summary</a></li>
-<li class="chapter" data-level="23.3.3" data-path="bivalves.html"><a href="bivalves.html#parameter-summary-19"><i class="fa fa-check"></i><b>23.3.3</b> Parameter Summary</a></li>
-<li class="chapter" data-level="23.3.4" data-path="bivalves.html"><a href="bivalves.html#optional-module-links-18"><i class="fa fa-check"></i><b>23.3.4</b> Optional Module Links</a></li>
-<li class="chapter" data-level="23.3.5" data-path="bivalves.html"><a href="bivalves.html#feedbacks-to-the-host-model-18"><i class="fa fa-check"></i><b>23.3.5</b> Feedbacks to the Host Model</a></li>
-</ul></li>
-<li class="chapter" data-level="23.4" data-path="bivalves.html"><a href="bivalves.html#setup-configuration-18"><i class="fa fa-check"></i><b>23.4</b> Setup &amp; Configuration</a>
-<ul>
-<li class="chapter" data-level="23.4.1" data-path="bivalves.html"><a href="bivalves.html#setup-example-3"><i class="fa fa-check"></i><b>23.4.1</b> Setup Example</a></li>
-</ul></li>
-<li class="chapter" data-level="23.5" data-path="bivalves.html"><a href="bivalves.html#case-studies-examples-18"><i class="fa fa-check"></i><b>23.5</b> Case Studies &amp; Examples</a>
-<ul>
-<li class="chapter" data-level="23.5.1" data-path="bivalves.html"><a href="bivalves.html#case-study-17"><i class="fa fa-check"></i><b>23.5.1</b> Case Study</a></li>
-<li class="chapter" data-level="23.5.2" data-path="bivalves.html"><a href="bivalves.html#publications-18"><i class="fa fa-check"></i><b>23.5.2</b> Publications</a></li>
+<li class="chapter" data-level="19.5.1" data-path="submerged-macrophytes.html"><a href="submerged-macrophytes.html#case-study-15"><i class="fa fa-check"></i><b>19.5.1</b> Case Study</a></li>
+<li class="chapter" data-level="19.5.2" data-path="submerged-macrophytes.html"><a href="submerged-macrophytes.html#publications-16"><i class="fa fa-check"></i><b>19.5.2</b> Publications</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="24" data-path="benthic-habitat-quality.html"><a href="benthic-habitat-quality.html"><i class="fa fa-check"></i><b>24</b> Benthic Habitat Quality</a>
+<li class="chapter" data-level="20" data-path="macroalgae.html"><a href="macroalgae.html"><i class="fa fa-check"></i><b>20</b> Macroalgae</a>
 <ul>
-<li class="chapter" data-level="24.1" data-path="benthic-habitat-quality.html"><a href="benthic-habitat-quality.html#contributors-19"><i class="fa fa-check"></i><b>24.1</b> Contributors</a></li>
-<li class="chapter" data-level="24.2" data-path="benthic-habitat-quality.html"><a href="benthic-habitat-quality.html#overview-19"><i class="fa fa-check"></i><b>24.2</b> Overview</a></li>
-<li class="chapter" data-level="24.3" data-path="benthic-habitat-quality.html"><a href="benthic-habitat-quality.html#model-description-18"><i class="fa fa-check"></i><b>24.3</b> Model Description</a>
+<li class="chapter" data-level="20.1" data-path="macroalgae.html"><a href="macroalgae.html#contributors-17"><i class="fa fa-check"></i><b>20.1</b> Contributors</a></li>
+<li class="chapter" data-level="20.2" data-path="macroalgae.html"><a href="macroalgae.html#overview-17"><i class="fa fa-check"></i><b>20.2</b> Overview</a></li>
+<li class="chapter" data-level="20.3" data-path="macroalgae.html"><a href="macroalgae.html#model-description-16"><i class="fa fa-check"></i><b>20.3</b> Model Description</a>
 <ul>
-<li class="chapter" data-level="24.3.1" data-path="benthic-habitat-quality.html"><a href="benthic-habitat-quality.html#process-descriptions-19"><i class="fa fa-check"></i><b>24.3.1</b> Process Descriptions</a></li>
-<li class="chapter" data-level="24.3.2" data-path="benthic-habitat-quality.html"><a href="benthic-habitat-quality.html#variable-summary-20"><i class="fa fa-check"></i><b>24.3.2</b> Variable Summary</a></li>
-<li class="chapter" data-level="24.3.3" data-path="benthic-habitat-quality.html"><a href="benthic-habitat-quality.html#parameter-summary-20"><i class="fa fa-check"></i><b>24.3.3</b> Parameter Summary</a></li>
-<li class="chapter" data-level="24.3.4" data-path="benthic-habitat-quality.html"><a href="benthic-habitat-quality.html#optional-module-links-19"><i class="fa fa-check"></i><b>24.3.4</b> Optional Module Links</a></li>
-<li class="chapter" data-level="24.3.5" data-path="benthic-habitat-quality.html"><a href="benthic-habitat-quality.html#feedbacks-to-the-host-model-19"><i class="fa fa-check"></i><b>24.3.5</b> Feedbacks to the Host Model</a></li>
+<li class="chapter" data-level="20.3.1" data-path="macroalgae.html"><a href="macroalgae.html#process-descriptions-17"><i class="fa fa-check"></i><b>20.3.1</b> Process Descriptions</a></li>
+<li class="chapter" data-level="20.3.2" data-path="macroalgae.html"><a href="macroalgae.html#variable-summary-18"><i class="fa fa-check"></i><b>20.3.2</b> Variable Summary</a></li>
+<li class="chapter" data-level="20.3.3" data-path="macroalgae.html"><a href="macroalgae.html#parameter-summary-18"><i class="fa fa-check"></i><b>20.3.3</b> Parameter Summary</a></li>
+<li class="chapter" data-level="20.3.4" data-path="macroalgae.html"><a href="macroalgae.html#optional-module-links-17"><i class="fa fa-check"></i><b>20.3.4</b> Optional Module Links</a></li>
+<li class="chapter" data-level="20.3.5" data-path="macroalgae.html"><a href="macroalgae.html#feedbacks-to-the-host-model-17"><i class="fa fa-check"></i><b>20.3.5</b> Feedbacks to the Host Model</a></li>
 </ul></li>
-<li class="chapter" data-level="24.4" data-path="benthic-habitat-quality.html"><a href="benthic-habitat-quality.html#setup-configuration-19"><i class="fa fa-check"></i><b>24.4</b> Setup &amp; Configuration</a></li>
-<li class="chapter" data-level="24.5" data-path="benthic-habitat-quality.html"><a href="benthic-habitat-quality.html#case-studies-examples-19"><i class="fa fa-check"></i><b>24.5</b> Case Studies &amp; Examples</a>
+<li class="chapter" data-level="20.4" data-path="macroalgae.html"><a href="macroalgae.html#setup-configuration-17"><i class="fa fa-check"></i><b>20.4</b> Setup &amp; Configuration</a></li>
+<li class="chapter" data-level="20.5" data-path="macroalgae.html"><a href="macroalgae.html#case-studies-examples-17"><i class="fa fa-check"></i><b>20.5</b> Case Studies &amp; Examples</a>
 <ul>
-<li class="chapter" data-level="24.5.1" data-path="benthic-habitat-quality.html"><a href="benthic-habitat-quality.html#case-study-18"><i class="fa fa-check"></i><b>24.5.1</b> Case Study</a></li>
-<li class="chapter" data-level="24.5.2" data-path="benthic-habitat-quality.html"><a href="benthic-habitat-quality.html#publications-19"><i class="fa fa-check"></i><b>24.5.2</b> Publications</a></li>
+<li class="chapter" data-level="20.5.1" data-path="macroalgae.html"><a href="macroalgae.html#case-study-16"><i class="fa fa-check"></i><b>20.5.1</b> Case Study</a></li>
+<li class="chapter" data-level="20.5.2" data-path="macroalgae.html"><a href="macroalgae.html#publications-17"><i class="fa fa-check"></i><b>20.5.2</b> Publications</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="21" data-path="bivalves.html"><a href="bivalves.html"><i class="fa fa-check"></i><b>21</b> Bivalves</a>
+<ul>
+<li class="chapter" data-level="21.1" data-path="bivalves.html"><a href="bivalves.html#contributors-18"><i class="fa fa-check"></i><b>21.1</b> Contributors</a></li>
+<li class="chapter" data-level="21.2" data-path="bivalves.html"><a href="bivalves.html#overview-18"><i class="fa fa-check"></i><b>21.2</b> Overview</a></li>
+<li class="chapter" data-level="21.3" data-path="bivalves.html"><a href="bivalves.html#model-description-17"><i class="fa fa-check"></i><b>21.3</b> Model Description</a>
+<ul>
+<li class="chapter" data-level="21.3.1" data-path="bivalves.html"><a href="bivalves.html#process-descriptions-18"><i class="fa fa-check"></i><b>21.3.1</b> Process Descriptions</a></li>
+<li class="chapter" data-level="21.3.2" data-path="bivalves.html"><a href="bivalves.html#variable-summary-19"><i class="fa fa-check"></i><b>21.3.2</b> Variable Summary</a></li>
+<li class="chapter" data-level="21.3.3" data-path="bivalves.html"><a href="bivalves.html#parameter-summary-19"><i class="fa fa-check"></i><b>21.3.3</b> Parameter Summary</a></li>
+<li class="chapter" data-level="21.3.4" data-path="bivalves.html"><a href="bivalves.html#optional-module-links-18"><i class="fa fa-check"></i><b>21.3.4</b> Optional Module Links</a></li>
+<li class="chapter" data-level="21.3.5" data-path="bivalves.html"><a href="bivalves.html#feedbacks-to-the-host-model-18"><i class="fa fa-check"></i><b>21.3.5</b> Feedbacks to the Host Model</a></li>
+</ul></li>
+<li class="chapter" data-level="21.4" data-path="bivalves.html"><a href="bivalves.html#setup-configuration-18"><i class="fa fa-check"></i><b>21.4</b> Setup &amp; Configuration</a>
+<ul>
+<li class="chapter" data-level="21.4.1" data-path="bivalves.html"><a href="bivalves.html#setup-example-3"><i class="fa fa-check"></i><b>21.4.1</b> Setup Example</a></li>
+</ul></li>
+<li class="chapter" data-level="21.5" data-path="bivalves.html"><a href="bivalves.html#case-studies-examples-18"><i class="fa fa-check"></i><b>21.5</b> Case Studies &amp; Examples</a>
+<ul>
+<li class="chapter" data-level="21.5.1" data-path="bivalves.html"><a href="bivalves.html#case-study-17"><i class="fa fa-check"></i><b>21.5.1</b> Case Study</a></li>
+<li class="chapter" data-level="21.5.2" data-path="bivalves.html"><a href="bivalves.html#publications-18"><i class="fa fa-check"></i><b>21.5.2</b> Publications</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="22" data-path="benthic-habitat-quality.html"><a href="benthic-habitat-quality.html"><i class="fa fa-check"></i><b>22</b> Benthic Habitat Quality</a>
+<ul>
+<li class="chapter" data-level="22.1" data-path="benthic-habitat-quality.html"><a href="benthic-habitat-quality.html#contributors-19"><i class="fa fa-check"></i><b>22.1</b> Contributors</a></li>
+<li class="chapter" data-level="22.2" data-path="benthic-habitat-quality.html"><a href="benthic-habitat-quality.html#overview-19"><i class="fa fa-check"></i><b>22.2</b> Overview</a></li>
+<li class="chapter" data-level="22.3" data-path="benthic-habitat-quality.html"><a href="benthic-habitat-quality.html#model-description-18"><i class="fa fa-check"></i><b>22.3</b> Model Description</a>
+<ul>
+<li class="chapter" data-level="22.3.1" data-path="benthic-habitat-quality.html"><a href="benthic-habitat-quality.html#process-descriptions-19"><i class="fa fa-check"></i><b>22.3.1</b> Process Descriptions</a></li>
+<li class="chapter" data-level="22.3.2" data-path="benthic-habitat-quality.html"><a href="benthic-habitat-quality.html#variable-summary-20"><i class="fa fa-check"></i><b>22.3.2</b> Variable Summary</a></li>
+<li class="chapter" data-level="22.3.3" data-path="benthic-habitat-quality.html"><a href="benthic-habitat-quality.html#parameter-summary-20"><i class="fa fa-check"></i><b>22.3.3</b> Parameter Summary</a></li>
+<li class="chapter" data-level="22.3.4" data-path="benthic-habitat-quality.html"><a href="benthic-habitat-quality.html#optional-module-links-19"><i class="fa fa-check"></i><b>22.3.4</b> Optional Module Links</a></li>
+<li class="chapter" data-level="22.3.5" data-path="benthic-habitat-quality.html"><a href="benthic-habitat-quality.html#feedbacks-to-the-host-model-19"><i class="fa fa-check"></i><b>22.3.5</b> Feedbacks to the Host Model</a></li>
+</ul></li>
+<li class="chapter" data-level="22.4" data-path="benthic-habitat-quality.html"><a href="benthic-habitat-quality.html#setup-configuration-19"><i class="fa fa-check"></i><b>22.4</b> Setup &amp; Configuration</a></li>
+<li class="chapter" data-level="22.5" data-path="benthic-habitat-quality.html"><a href="benthic-habitat-quality.html#case-studies-examples-19"><i class="fa fa-check"></i><b>22.5</b> Case Studies &amp; Examples</a>
+<ul>
+<li class="chapter" data-level="22.5.1" data-path="benthic-habitat-quality.html"><a href="benthic-habitat-quality.html#case-study-18"><i class="fa fa-check"></i><b>22.5.1</b> Case Study</a></li>
+<li class="chapter" data-level="22.5.2" data-path="benthic-habitat-quality.html"><a href="benthic-habitat-quality.html#publications-19"><i class="fa fa-check"></i><b>22.5.2</b> Publications</a></li>
 </ul></li>
 </ul></li>
 <li class="part"><span><b>IV AED+ Riparian Modules</b></span></li>
-<li class="chapter" data-level="25" data-path="soil-hydrology.html"><a href="soil-hydrology.html"><i class="fa fa-check"></i><b>25</b> Soil Hydrology</a>
+<li class="chapter" data-level="23" data-path="soil-hydrology.html"><a href="soil-hydrology.html"><i class="fa fa-check"></i><b>23</b> Soil Hydrology</a>
 <ul>
-<li class="chapter" data-level="25.1" data-path="soil-hydrology.html"><a href="soil-hydrology.html#contributors-20"><i class="fa fa-check"></i><b>25.1</b> Contributors</a></li>
-<li class="chapter" data-level="25.2" data-path="soil-hydrology.html"><a href="soil-hydrology.html#overview-20"><i class="fa fa-check"></i><b>25.2</b> Overview</a></li>
-<li class="chapter" data-level="25.3" data-path="soil-hydrology.html"><a href="soil-hydrology.html#model-description-19"><i class="fa fa-check"></i><b>25.3</b> Model Description</a>
+<li class="chapter" data-level="23.1" data-path="soil-hydrology.html"><a href="soil-hydrology.html#contributors-20"><i class="fa fa-check"></i><b>23.1</b> Contributors</a></li>
+<li class="chapter" data-level="23.2" data-path="soil-hydrology.html"><a href="soil-hydrology.html#overview-20"><i class="fa fa-check"></i><b>23.2</b> Overview</a></li>
+<li class="chapter" data-level="23.3" data-path="soil-hydrology.html"><a href="soil-hydrology.html#model-description-19"><i class="fa fa-check"></i><b>23.3</b> Model Description</a>
 <ul>
-<li class="chapter" data-level="25.3.1" data-path="soil-hydrology.html"><a href="soil-hydrology.html#process-descriptions-20"><i class="fa fa-check"></i><b>25.3.1</b> Process Descriptions</a></li>
-<li class="chapter" data-level="25.3.2" data-path="soil-hydrology.html"><a href="soil-hydrology.html#variable-summary-21"><i class="fa fa-check"></i><b>25.3.2</b> Variable Summary</a></li>
-<li class="chapter" data-level="25.3.3" data-path="soil-hydrology.html"><a href="soil-hydrology.html#parameter-summary-21"><i class="fa fa-check"></i><b>25.3.3</b> Parameter Summary</a></li>
-<li class="chapter" data-level="25.3.4" data-path="soil-hydrology.html"><a href="soil-hydrology.html#optional-module-links-20"><i class="fa fa-check"></i><b>25.3.4</b> Optional Module Links</a></li>
-<li class="chapter" data-level="25.3.5" data-path="soil-hydrology.html"><a href="soil-hydrology.html#feedbacks-to-the-host-model-20"><i class="fa fa-check"></i><b>25.3.5</b> Feedbacks to the Host Model</a></li>
+<li class="chapter" data-level="23.3.1" data-path="soil-hydrology.html"><a href="soil-hydrology.html#process-descriptions-20"><i class="fa fa-check"></i><b>23.3.1</b> Process Descriptions</a></li>
+<li class="chapter" data-level="23.3.2" data-path="soil-hydrology.html"><a href="soil-hydrology.html#variable-summary-21"><i class="fa fa-check"></i><b>23.3.2</b> Variable Summary</a></li>
+<li class="chapter" data-level="23.3.3" data-path="soil-hydrology.html"><a href="soil-hydrology.html#parameter-summary-21"><i class="fa fa-check"></i><b>23.3.3</b> Parameter Summary</a></li>
+<li class="chapter" data-level="23.3.4" data-path="soil-hydrology.html"><a href="soil-hydrology.html#optional-module-links-20"><i class="fa fa-check"></i><b>23.3.4</b> Optional Module Links</a></li>
+<li class="chapter" data-level="23.3.5" data-path="soil-hydrology.html"><a href="soil-hydrology.html#feedbacks-to-the-host-model-20"><i class="fa fa-check"></i><b>23.3.5</b> Feedbacks to the Host Model</a></li>
 </ul></li>
-<li class="chapter" data-level="25.4" data-path="soil-hydrology.html"><a href="soil-hydrology.html#setup-configuration-20"><i class="fa fa-check"></i><b>25.4</b> Setup &amp; Configuration</a></li>
-<li class="chapter" data-level="25.5" data-path="soil-hydrology.html"><a href="soil-hydrology.html#case-studies-examples-20"><i class="fa fa-check"></i><b>25.5</b> Case Studies &amp; Examples</a>
+<li class="chapter" data-level="23.4" data-path="soil-hydrology.html"><a href="soil-hydrology.html#setup-configuration-20"><i class="fa fa-check"></i><b>23.4</b> Setup &amp; Configuration</a></li>
+<li class="chapter" data-level="23.5" data-path="soil-hydrology.html"><a href="soil-hydrology.html#case-studies-examples-20"><i class="fa fa-check"></i><b>23.5</b> Case Studies &amp; Examples</a>
 <ul>
-<li class="chapter" data-level="25.5.1" data-path="soil-hydrology.html"><a href="soil-hydrology.html#case-study-19"><i class="fa fa-check"></i><b>25.5.1</b> Case Study</a></li>
-<li class="chapter" data-level="25.5.2" data-path="soil-hydrology.html"><a href="soil-hydrology.html#publications-20"><i class="fa fa-check"></i><b>25.5.2</b> Publications</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="26" data-path="soil-biogeochemistry.html"><a href="soil-biogeochemistry.html"><i class="fa fa-check"></i><b>26</b> Soil Biogeochemistry</a>
-<ul>
-<li class="chapter" data-level="26.1" data-path="soil-biogeochemistry.html"><a href="soil-biogeochemistry.html#contributors-21"><i class="fa fa-check"></i><b>26.1</b> Contributors</a></li>
-<li class="chapter" data-level="26.2" data-path="soil-biogeochemistry.html"><a href="soil-biogeochemistry.html#overview-21"><i class="fa fa-check"></i><b>26.2</b> Overview</a></li>
-<li class="chapter" data-level="26.3" data-path="soil-biogeochemistry.html"><a href="soil-biogeochemistry.html#model-description-20"><i class="fa fa-check"></i><b>26.3</b> Model Description</a>
-<ul>
-<li class="chapter" data-level="26.3.1" data-path="soil-biogeochemistry.html"><a href="soil-biogeochemistry.html#process-descriptions-21"><i class="fa fa-check"></i><b>26.3.1</b> Process Descriptions</a></li>
-<li class="chapter" data-level="26.3.2" data-path="soil-biogeochemistry.html"><a href="soil-biogeochemistry.html#variable-summary-22"><i class="fa fa-check"></i><b>26.3.2</b> Variable Summary</a></li>
-<li class="chapter" data-level="26.3.3" data-path="soil-biogeochemistry.html"><a href="soil-biogeochemistry.html#parameter-summary-22"><i class="fa fa-check"></i><b>26.3.3</b> Parameter Summary</a></li>
-<li class="chapter" data-level="26.3.4" data-path="soil-biogeochemistry.html"><a href="soil-biogeochemistry.html#optional-module-links-21"><i class="fa fa-check"></i><b>26.3.4</b> Optional Module Links</a></li>
-<li class="chapter" data-level="26.3.5" data-path="soil-biogeochemistry.html"><a href="soil-biogeochemistry.html#feedbacks-to-the-host-model-21"><i class="fa fa-check"></i><b>26.3.5</b> Feedbacks to the Host Model</a></li>
-</ul></li>
-<li class="chapter" data-level="26.4" data-path="soil-biogeochemistry.html"><a href="soil-biogeochemistry.html#setup-configuration-21"><i class="fa fa-check"></i><b>26.4</b> Setup &amp; Configuration</a></li>
-<li class="chapter" data-level="26.5" data-path="soil-biogeochemistry.html"><a href="soil-biogeochemistry.html#case-studies-examples-21"><i class="fa fa-check"></i><b>26.5</b> Case Studies &amp; Examples</a>
-<ul>
-<li class="chapter" data-level="26.5.1" data-path="soil-biogeochemistry.html"><a href="soil-biogeochemistry.html#case-study-20"><i class="fa fa-check"></i><b>26.5.1</b> Case Study</a></li>
-<li class="chapter" data-level="26.5.2" data-path="soil-biogeochemistry.html"><a href="soil-biogeochemistry.html#publications-21"><i class="fa fa-check"></i><b>26.5.2</b> Publications</a></li>
+<li class="chapter" data-level="23.5.1" data-path="soil-hydrology.html"><a href="soil-hydrology.html#case-study-19"><i class="fa fa-check"></i><b>23.5.1</b> Case Study</a></li>
+<li class="chapter" data-level="23.5.2" data-path="soil-hydrology.html"><a href="soil-hydrology.html#publications-20"><i class="fa fa-check"></i><b>23.5.2</b> Publications</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="27" data-path="acid-sulfate-soils.html"><a href="acid-sulfate-soils.html"><i class="fa fa-check"></i><b>27</b> Acid Sulfate Soils</a>
+<li class="chapter" data-level="24" data-path="soil-biogeochemistry.html"><a href="soil-biogeochemistry.html"><i class="fa fa-check"></i><b>24</b> Soil Biogeochemistry</a>
 <ul>
-<li class="chapter" data-level="27.1" data-path="acid-sulfate-soils.html"><a href="acid-sulfate-soils.html#contributors-22"><i class="fa fa-check"></i><b>27.1</b> Contributors</a></li>
-<li class="chapter" data-level="27.2" data-path="acid-sulfate-soils.html"><a href="acid-sulfate-soils.html#overview-22"><i class="fa fa-check"></i><b>27.2</b> Overview</a></li>
-<li class="chapter" data-level="27.3" data-path="acid-sulfate-soils.html"><a href="acid-sulfate-soils.html#model-description-21"><i class="fa fa-check"></i><b>27.3</b> Model Description</a>
+<li class="chapter" data-level="24.1" data-path="soil-biogeochemistry.html"><a href="soil-biogeochemistry.html#contributors-21"><i class="fa fa-check"></i><b>24.1</b> Contributors</a></li>
+<li class="chapter" data-level="24.2" data-path="soil-biogeochemistry.html"><a href="soil-biogeochemistry.html#overview-21"><i class="fa fa-check"></i><b>24.2</b> Overview</a></li>
+<li class="chapter" data-level="24.3" data-path="soil-biogeochemistry.html"><a href="soil-biogeochemistry.html#model-description-20"><i class="fa fa-check"></i><b>24.3</b> Model Description</a>
 <ul>
-<li class="chapter" data-level="27.3.1" data-path="acid-sulfate-soils.html"><a href="acid-sulfate-soils.html#process-descriptions-22"><i class="fa fa-check"></i><b>27.3.1</b> Process Descriptions</a></li>
-<li class="chapter" data-level="27.3.2" data-path="acid-sulfate-soils.html"><a href="acid-sulfate-soils.html#variable-summary-23"><i class="fa fa-check"></i><b>27.3.2</b> Variable Summary</a></li>
-<li class="chapter" data-level="27.3.3" data-path="acid-sulfate-soils.html"><a href="acid-sulfate-soils.html#parameter-summary-23"><i class="fa fa-check"></i><b>27.3.3</b> Parameter Summary</a></li>
-<li class="chapter" data-level="27.3.4" data-path="acid-sulfate-soils.html"><a href="acid-sulfate-soils.html#optional-module-links-22"><i class="fa fa-check"></i><b>27.3.4</b> Optional Module Links</a></li>
-<li class="chapter" data-level="27.3.5" data-path="acid-sulfate-soils.html"><a href="acid-sulfate-soils.html#feedbacks-to-the-host-model-22"><i class="fa fa-check"></i><b>27.3.5</b> Feedbacks to the Host Model</a></li>
+<li class="chapter" data-level="24.3.1" data-path="soil-biogeochemistry.html"><a href="soil-biogeochemistry.html#process-descriptions-21"><i class="fa fa-check"></i><b>24.3.1</b> Process Descriptions</a></li>
+<li class="chapter" data-level="24.3.2" data-path="soil-biogeochemistry.html"><a href="soil-biogeochemistry.html#variable-summary-22"><i class="fa fa-check"></i><b>24.3.2</b> Variable Summary</a></li>
+<li class="chapter" data-level="24.3.3" data-path="soil-biogeochemistry.html"><a href="soil-biogeochemistry.html#parameter-summary-22"><i class="fa fa-check"></i><b>24.3.3</b> Parameter Summary</a></li>
+<li class="chapter" data-level="24.3.4" data-path="soil-biogeochemistry.html"><a href="soil-biogeochemistry.html#optional-module-links-21"><i class="fa fa-check"></i><b>24.3.4</b> Optional Module Links</a></li>
+<li class="chapter" data-level="24.3.5" data-path="soil-biogeochemistry.html"><a href="soil-biogeochemistry.html#feedbacks-to-the-host-model-21"><i class="fa fa-check"></i><b>24.3.5</b> Feedbacks to the Host Model</a></li>
 </ul></li>
-<li class="chapter" data-level="27.4" data-path="acid-sulfate-soils.html"><a href="acid-sulfate-soils.html#setup-configuration-22"><i class="fa fa-check"></i><b>27.4</b> Setup &amp; Configuration</a></li>
-<li class="chapter" data-level="27.5" data-path="acid-sulfate-soils.html"><a href="acid-sulfate-soils.html#case-studies-examples-22"><i class="fa fa-check"></i><b>27.5</b> Case Studies &amp; Examples</a>
+<li class="chapter" data-level="24.4" data-path="soil-biogeochemistry.html"><a href="soil-biogeochemistry.html#setup-configuration-21"><i class="fa fa-check"></i><b>24.4</b> Setup &amp; Configuration</a></li>
+<li class="chapter" data-level="24.5" data-path="soil-biogeochemistry.html"><a href="soil-biogeochemistry.html#case-studies-examples-21"><i class="fa fa-check"></i><b>24.5</b> Case Studies &amp; Examples</a>
 <ul>
-<li class="chapter" data-level="27.5.1" data-path="acid-sulfate-soils.html"><a href="acid-sulfate-soils.html#case-study-21"><i class="fa fa-check"></i><b>27.5.1</b> Case Study</a></li>
-<li class="chapter" data-level="27.5.2" data-path="acid-sulfate-soils.html"><a href="acid-sulfate-soils.html#publications-22"><i class="fa fa-check"></i><b>27.5.2</b> Publications</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="28" data-path="riparian-vegetation.html"><a href="riparian-vegetation.html"><i class="fa fa-check"></i><b>28</b> Riparian Vegetation</a>
-<ul>
-<li class="chapter" data-level="28.1" data-path="riparian-vegetation.html"><a href="riparian-vegetation.html#contributors-23"><i class="fa fa-check"></i><b>28.1</b> Contributors</a></li>
-<li class="chapter" data-level="28.2" data-path="riparian-vegetation.html"><a href="riparian-vegetation.html#overview-23"><i class="fa fa-check"></i><b>28.2</b> Overview</a></li>
-<li class="chapter" data-level="28.3" data-path="riparian-vegetation.html"><a href="riparian-vegetation.html#model-description-22"><i class="fa fa-check"></i><b>28.3</b> Model Description</a>
-<ul>
-<li class="chapter" data-level="28.3.1" data-path="riparian-vegetation.html"><a href="riparian-vegetation.html#process-descriptions-23"><i class="fa fa-check"></i><b>28.3.1</b> Process Descriptions</a></li>
-<li class="chapter" data-level="28.3.2" data-path="riparian-vegetation.html"><a href="riparian-vegetation.html#variable-summary-24"><i class="fa fa-check"></i><b>28.3.2</b> Variable Summary</a></li>
-<li class="chapter" data-level="28.3.3" data-path="riparian-vegetation.html"><a href="riparian-vegetation.html#parameter-summary-24"><i class="fa fa-check"></i><b>28.3.3</b> Parameter Summary</a></li>
-<li class="chapter" data-level="28.3.4" data-path="riparian-vegetation.html"><a href="riparian-vegetation.html#optional-module-links-23"><i class="fa fa-check"></i><b>28.3.4</b> Optional Module Links</a></li>
-<li class="chapter" data-level="28.3.5" data-path="riparian-vegetation.html"><a href="riparian-vegetation.html#feedbacks-to-the-host-model-23"><i class="fa fa-check"></i><b>28.3.5</b> Feedbacks to the Host Model</a></li>
-</ul></li>
-<li class="chapter" data-level="28.4" data-path="riparian-vegetation.html"><a href="riparian-vegetation.html#setup-configuration-23"><i class="fa fa-check"></i><b>28.4</b> Setup &amp; Configuration</a></li>
-<li class="chapter" data-level="28.5" data-path="riparian-vegetation.html"><a href="riparian-vegetation.html#case-studies-examples-23"><i class="fa fa-check"></i><b>28.5</b> Case Studies &amp; Examples</a>
-<ul>
-<li class="chapter" data-level="28.5.1" data-path="riparian-vegetation.html"><a href="riparian-vegetation.html#case-study-22"><i class="fa fa-check"></i><b>28.5.1</b> Case Study</a></li>
-<li class="chapter" data-level="28.5.2" data-path="riparian-vegetation.html"><a href="riparian-vegetation.html#publications-23"><i class="fa fa-check"></i><b>28.5.2</b> Publications</a></li>
+<li class="chapter" data-level="24.5.1" data-path="soil-biogeochemistry.html"><a href="soil-biogeochemistry.html#case-study-20"><i class="fa fa-check"></i><b>24.5.1</b> Case Study</a></li>
+<li class="chapter" data-level="24.5.2" data-path="soil-biogeochemistry.html"><a href="soil-biogeochemistry.html#publications-21"><i class="fa fa-check"></i><b>24.5.2</b> Publications</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="29" data-path="riparian-habitat-quality.html"><a href="riparian-habitat-quality.html"><i class="fa fa-check"></i><b>29</b> Riparian Habitat Quality</a>
+<li class="chapter" data-level="25" data-path="acid-sulfate-soils.html"><a href="acid-sulfate-soils.html"><i class="fa fa-check"></i><b>25</b> Acid Sulfate Soils</a>
 <ul>
-<li class="chapter" data-level="29.1" data-path="riparian-habitat-quality.html"><a href="riparian-habitat-quality.html#contributors-24"><i class="fa fa-check"></i><b>29.1</b> Contributors</a></li>
-<li class="chapter" data-level="29.2" data-path="riparian-habitat-quality.html"><a href="riparian-habitat-quality.html#overview-24"><i class="fa fa-check"></i><b>29.2</b> Overview</a></li>
-<li class="chapter" data-level="29.3" data-path="riparian-habitat-quality.html"><a href="riparian-habitat-quality.html#model-description-23"><i class="fa fa-check"></i><b>29.3</b> Model Description</a>
+<li class="chapter" data-level="25.1" data-path="acid-sulfate-soils.html"><a href="acid-sulfate-soils.html#contributors-22"><i class="fa fa-check"></i><b>25.1</b> Contributors</a></li>
+<li class="chapter" data-level="25.2" data-path="acid-sulfate-soils.html"><a href="acid-sulfate-soils.html#overview-22"><i class="fa fa-check"></i><b>25.2</b> Overview</a></li>
+<li class="chapter" data-level="25.3" data-path="acid-sulfate-soils.html"><a href="acid-sulfate-soils.html#model-description-21"><i class="fa fa-check"></i><b>25.3</b> Model Description</a>
 <ul>
-<li class="chapter" data-level="29.3.1" data-path="riparian-habitat-quality.html"><a href="riparian-habitat-quality.html#process-descriptions-24"><i class="fa fa-check"></i><b>29.3.1</b> Process Descriptions</a></li>
-<li class="chapter" data-level="29.3.2" data-path="riparian-habitat-quality.html"><a href="riparian-habitat-quality.html#variable-summary-25"><i class="fa fa-check"></i><b>29.3.2</b> Variable Summary</a></li>
-<li class="chapter" data-level="29.3.3" data-path="riparian-habitat-quality.html"><a href="riparian-habitat-quality.html#parameter-summary-25"><i class="fa fa-check"></i><b>29.3.3</b> Parameter Summary</a></li>
-<li class="chapter" data-level="29.3.4" data-path="riparian-habitat-quality.html"><a href="riparian-habitat-quality.html#optional-module-links-24"><i class="fa fa-check"></i><b>29.3.4</b> Optional Module Links</a></li>
-<li class="chapter" data-level="29.3.5" data-path="riparian-habitat-quality.html"><a href="riparian-habitat-quality.html#feedbacks-to-the-host-model-24"><i class="fa fa-check"></i><b>29.3.5</b> Feedbacks to the Host Model</a></li>
+<li class="chapter" data-level="25.3.1" data-path="acid-sulfate-soils.html"><a href="acid-sulfate-soils.html#process-descriptions-22"><i class="fa fa-check"></i><b>25.3.1</b> Process Descriptions</a></li>
+<li class="chapter" data-level="25.3.2" data-path="acid-sulfate-soils.html"><a href="acid-sulfate-soils.html#variable-summary-23"><i class="fa fa-check"></i><b>25.3.2</b> Variable Summary</a></li>
+<li class="chapter" data-level="25.3.3" data-path="acid-sulfate-soils.html"><a href="acid-sulfate-soils.html#parameter-summary-23"><i class="fa fa-check"></i><b>25.3.3</b> Parameter Summary</a></li>
+<li class="chapter" data-level="25.3.4" data-path="acid-sulfate-soils.html"><a href="acid-sulfate-soils.html#optional-module-links-22"><i class="fa fa-check"></i><b>25.3.4</b> Optional Module Links</a></li>
+<li class="chapter" data-level="25.3.5" data-path="acid-sulfate-soils.html"><a href="acid-sulfate-soils.html#feedbacks-to-the-host-model-22"><i class="fa fa-check"></i><b>25.3.5</b> Feedbacks to the Host Model</a></li>
 </ul></li>
-<li class="chapter" data-level="29.4" data-path="riparian-habitat-quality.html"><a href="riparian-habitat-quality.html#setup-configuration-24"><i class="fa fa-check"></i><b>29.4</b> Setup &amp; Configuration</a></li>
-<li class="chapter" data-level="29.5" data-path="riparian-habitat-quality.html"><a href="riparian-habitat-quality.html#case-studies-examples-24"><i class="fa fa-check"></i><b>29.5</b> Case Studies &amp; Examples</a>
+<li class="chapter" data-level="25.4" data-path="acid-sulfate-soils.html"><a href="acid-sulfate-soils.html#setup-configuration-22"><i class="fa fa-check"></i><b>25.4</b> Setup &amp; Configuration</a></li>
+<li class="chapter" data-level="25.5" data-path="acid-sulfate-soils.html"><a href="acid-sulfate-soils.html#case-studies-examples-22"><i class="fa fa-check"></i><b>25.5</b> Case Studies &amp; Examples</a>
 <ul>
-<li class="chapter" data-level="29.5.1" data-path="riparian-habitat-quality.html"><a href="riparian-habitat-quality.html#case-study-23"><i class="fa fa-check"></i><b>29.5.1</b> Case Study</a></li>
-<li class="chapter" data-level="29.5.2" data-path="riparian-habitat-quality.html"><a href="riparian-habitat-quality.html#publications-24"><i class="fa fa-check"></i><b>29.5.2</b> Publications</a></li>
+<li class="chapter" data-level="25.5.1" data-path="acid-sulfate-soils.html"><a href="acid-sulfate-soils.html#case-study-21"><i class="fa fa-check"></i><b>25.5.1</b> Case Study</a></li>
+<li class="chapter" data-level="25.5.2" data-path="acid-sulfate-soils.html"><a href="acid-sulfate-soils.html#publications-22"><i class="fa fa-check"></i><b>25.5.2</b> Publications</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="26" data-path="riparian-vegetation.html"><a href="riparian-vegetation.html"><i class="fa fa-check"></i><b>26</b> Riparian Vegetation</a>
+<ul>
+<li class="chapter" data-level="26.1" data-path="riparian-vegetation.html"><a href="riparian-vegetation.html#contributors-23"><i class="fa fa-check"></i><b>26.1</b> Contributors</a></li>
+<li class="chapter" data-level="26.2" data-path="riparian-vegetation.html"><a href="riparian-vegetation.html#overview-23"><i class="fa fa-check"></i><b>26.2</b> Overview</a></li>
+<li class="chapter" data-level="26.3" data-path="riparian-vegetation.html"><a href="riparian-vegetation.html#model-description-22"><i class="fa fa-check"></i><b>26.3</b> Model Description</a>
+<ul>
+<li class="chapter" data-level="26.3.1" data-path="riparian-vegetation.html"><a href="riparian-vegetation.html#process-descriptions-23"><i class="fa fa-check"></i><b>26.3.1</b> Process Descriptions</a></li>
+<li class="chapter" data-level="26.3.2" data-path="riparian-vegetation.html"><a href="riparian-vegetation.html#variable-summary-24"><i class="fa fa-check"></i><b>26.3.2</b> Variable Summary</a></li>
+<li class="chapter" data-level="26.3.3" data-path="riparian-vegetation.html"><a href="riparian-vegetation.html#parameter-summary-24"><i class="fa fa-check"></i><b>26.3.3</b> Parameter Summary</a></li>
+<li class="chapter" data-level="26.3.4" data-path="riparian-vegetation.html"><a href="riparian-vegetation.html#optional-module-links-23"><i class="fa fa-check"></i><b>26.3.4</b> Optional Module Links</a></li>
+<li class="chapter" data-level="26.3.5" data-path="riparian-vegetation.html"><a href="riparian-vegetation.html#feedbacks-to-the-host-model-23"><i class="fa fa-check"></i><b>26.3.5</b> Feedbacks to the Host Model</a></li>
+</ul></li>
+<li class="chapter" data-level="26.4" data-path="riparian-vegetation.html"><a href="riparian-vegetation.html#setup-configuration-23"><i class="fa fa-check"></i><b>26.4</b> Setup &amp; Configuration</a></li>
+<li class="chapter" data-level="26.5" data-path="riparian-vegetation.html"><a href="riparian-vegetation.html#case-studies-examples-23"><i class="fa fa-check"></i><b>26.5</b> Case Studies &amp; Examples</a>
+<ul>
+<li class="chapter" data-level="26.5.1" data-path="riparian-vegetation.html"><a href="riparian-vegetation.html#case-study-22"><i class="fa fa-check"></i><b>26.5.1</b> Case Study</a></li>
+<li class="chapter" data-level="26.5.2" data-path="riparian-vegetation.html"><a href="riparian-vegetation.html#publications-23"><i class="fa fa-check"></i><b>26.5.2</b> Publications</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="27" data-path="riparian-habitat-quality.html"><a href="riparian-habitat-quality.html"><i class="fa fa-check"></i><b>27</b> Riparian Habitat Quality</a>
+<ul>
+<li class="chapter" data-level="27.1" data-path="riparian-habitat-quality.html"><a href="riparian-habitat-quality.html#contributors-24"><i class="fa fa-check"></i><b>27.1</b> Contributors</a></li>
+<li class="chapter" data-level="27.2" data-path="riparian-habitat-quality.html"><a href="riparian-habitat-quality.html#overview-24"><i class="fa fa-check"></i><b>27.2</b> Overview</a></li>
+<li class="chapter" data-level="27.3" data-path="riparian-habitat-quality.html"><a href="riparian-habitat-quality.html#model-description-23"><i class="fa fa-check"></i><b>27.3</b> Model Description</a>
+<ul>
+<li class="chapter" data-level="27.3.1" data-path="riparian-habitat-quality.html"><a href="riparian-habitat-quality.html#process-descriptions-24"><i class="fa fa-check"></i><b>27.3.1</b> Process Descriptions</a></li>
+<li class="chapter" data-level="27.3.2" data-path="riparian-habitat-quality.html"><a href="riparian-habitat-quality.html#variable-summary-25"><i class="fa fa-check"></i><b>27.3.2</b> Variable Summary</a></li>
+<li class="chapter" data-level="27.3.3" data-path="riparian-habitat-quality.html"><a href="riparian-habitat-quality.html#parameter-summary-25"><i class="fa fa-check"></i><b>27.3.3</b> Parameter Summary</a></li>
+<li class="chapter" data-level="27.3.4" data-path="riparian-habitat-quality.html"><a href="riparian-habitat-quality.html#optional-module-links-24"><i class="fa fa-check"></i><b>27.3.4</b> Optional Module Links</a></li>
+<li class="chapter" data-level="27.3.5" data-path="riparian-habitat-quality.html"><a href="riparian-habitat-quality.html#feedbacks-to-the-host-model-24"><i class="fa fa-check"></i><b>27.3.5</b> Feedbacks to the Host Model</a></li>
+</ul></li>
+<li class="chapter" data-level="27.4" data-path="riparian-habitat-quality.html"><a href="riparian-habitat-quality.html#setup-configuration-24"><i class="fa fa-check"></i><b>27.4</b> Setup &amp; Configuration</a></li>
+<li class="chapter" data-level="27.5" data-path="riparian-habitat-quality.html"><a href="riparian-habitat-quality.html#case-studies-examples-24"><i class="fa fa-check"></i><b>27.5</b> Case Studies &amp; Examples</a>
+<ul>
+<li class="chapter" data-level="27.5.1" data-path="riparian-habitat-quality.html"><a href="riparian-habitat-quality.html#case-study-23"><i class="fa fa-check"></i><b>27.5.1</b> Case Study</a></li>
+<li class="chapter" data-level="27.5.2" data-path="riparian-habitat-quality.html"><a href="riparian-habitat-quality.html#publications-24"><i class="fa fa-check"></i><b>27.5.2</b> Publications</a></li>
 </ul></li>
 </ul></li>
 <li class="part"><span><b>V Supporting Material</b></span></li>
-<li class="chapter" data-level="30" data-path="generic-utilities-functions.html"><a href="generic-utilities-functions.html"><i class="fa fa-check"></i><b>30</b> Generic Utilities &amp; Functions</a>
+<li class="chapter" data-level="28" data-path="generic-utilities-functions.html"><a href="generic-utilities-functions.html"><i class="fa fa-check"></i><b>28</b> Generic Utilities &amp; Functions</a>
 <ul>
-<li class="chapter" data-level="30.1" data-path="generic-utilities-functions.html"><a href="generic-utilities-functions.html#overview-25"><i class="fa fa-check"></i><b>30.1</b> Overview</a></li>
-<li class="chapter" data-level="30.2" data-path="generic-utilities-functions.html"><a href="generic-utilities-functions.html#physico-chemical"><i class="fa fa-check"></i><b>30.2</b> Physico-chemical</a>
+<li class="chapter" data-level="28.1" data-path="generic-utilities-functions.html"><a href="generic-utilities-functions.html#overview-25"><i class="fa fa-check"></i><b>28.1</b> Overview</a></li>
+<li class="chapter" data-level="28.2" data-path="generic-utilities-functions.html"><a href="generic-utilities-functions.html#physico-chemical"><i class="fa fa-check"></i><b>28.2</b> Physico-chemical</a>
 <ul>
-<li class="chapter" data-level="30.2.1" data-path="generic-utilities-functions.html"><a href="generic-utilities-functions.html#gas-transfer"><i class="fa fa-check"></i><b>30.2.1</b> Gas Transfer</a></li>
+<li class="chapter" data-level="28.2.1" data-path="generic-utilities-functions.html"><a href="generic-utilities-functions.html#gas-transfer"><i class="fa fa-check"></i><b>28.2.1</b> Gas Transfer</a></li>
 </ul></li>
-<li class="chapter" data-level="30.3" data-path="generic-utilities-functions.html"><a href="generic-utilities-functions.html#biological"><i class="fa fa-check"></i><b>30.3</b> Biological</a></li>
+<li class="chapter" data-level="28.3" data-path="generic-utilities-functions.html"><a href="generic-utilities-functions.html#biological"><i class="fa fa-check"></i><b>28.3</b> Biological</a></li>
 </ul></li>
-<li class="chapter" data-level="31" data-path="publications-25.html"><a href="publications-25.html"><i class="fa fa-check"></i><b>31</b> Publications</a></li>
-<li class="chapter" data-level="32" data-path="abbreviations.html"><a href="abbreviations.html"><i class="fa fa-check"></i><b>32</b> Abbreviations</a></li>
+<li class="chapter" data-level="29" data-path="publications-25.html"><a href="publications-25.html"><i class="fa fa-check"></i><b>29</b> Publications</a></li>
+<li class="chapter" data-level="30" data-path="abbreviations.html"><a href="abbreviations.html"><i class="fa fa-check"></i><b>30</b> Abbreviations</a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -731,36 +757,36 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="bivalves" class="section level1" number="23">
-<h1><span class="header-section-number">23</span> Bivalves</h1>
-<div id="contributors-18" class="section level2" number="23.1">
-<h2><span class="header-section-number">23.1</span> Contributors</h2>
+<div id="bivalves" class="section level1" number="21">
+<h1><span class="header-section-number">21</span> Bivalves</h1>
+<div id="contributors-18" class="section level2" number="21.1">
+<h2><span class="header-section-number">21.1</span> Contributors</h2>
 </div>
-<div id="overview-18" class="section level2" number="23.2">
-<h2><span class="header-section-number">23.2</span> Overview</h2>
+<div id="overview-18" class="section level2" number="21.2">
+<h2><span class="header-section-number">21.2</span> Overview</h2>
 <p>Based on work in freshwater and estuarine systems a bivalve module to simulate growth, production, and (optionally) population dynamics has been incorporated into the AED2+ library.</p>
-<p>The model is originally based on an application to Oneida Lake and Lake Erie for mussels. One to several size classes of mussels are simulated based on physiological parameters assembled by <span class="citation">Schneider (<a href="#ref-schneider1992" role="doc-biblioref">1992</a>)</span> and modified by <span class="citation">Bierman et al. (<a href="#ref-bierman2005" role="doc-biblioref">2005</a>)</span> to estimate effect of mussels on Saginaw Bay, Michigan, USA; a formulation also used by <span class="citation">Gudimov et al. (<a href="#ref-gudimov2015" role="doc-biblioref">2015</a>)</span> to estimate mussel effects in Lake Simcoe, Ontario, Canada. Additionally, some model structure was taken from the <span class="citation">Spillman et al. (<a href="#ref-spillman2008" role="doc-biblioref">2008</a>)</span> model of Tapes clams in the Barbamarco Lagoon, Italy, as modified by <span class="citation">Bocaniov et al. (<a href="#ref-bocaniov2014" role="doc-biblioref">2014</a>)</span> for mussels in Lake Erie.</p>
+<p>The model is originally based on an application to Oneida Lake and Lake Erie for mussels. One to several size classes of mussels are simulated based on physiological parameters assembled by <span class="citation"><a href="#ref-schneider1992" role="doc-biblioref">Schneider</a> (<a href="#ref-schneider1992" role="doc-biblioref">1992</a>)</span> and modified by <span class="citation"><a href="#ref-bierman2005" role="doc-biblioref">Bierman et al.</a> (<a href="#ref-bierman2005" role="doc-biblioref">2005</a>)</span> to estimate effect of mussels on Saginaw Bay, Michigan, USA; a formulation also used by <span class="citation"><a href="#ref-gudimov2015" role="doc-biblioref">Gudimov et al.</a> (<a href="#ref-gudimov2015" role="doc-biblioref">2015</a>)</span> to estimate mussel effects in Lake Simcoe, Ontario, Canada. Additionally, some model structure was taken from the <span class="citation"><a href="#ref-spillman2008" role="doc-biblioref">Spillman et al.</a> (<a href="#ref-spillman2008" role="doc-biblioref">2008</a>)</span> model of Tapes clams in the Barbamarco Lagoon, Italy, as modified by <span class="citation"><a href="#ref-bocaniov2014" role="doc-biblioref">Bocaniov et al.</a> (<a href="#ref-bocaniov2014" role="doc-biblioref">2014</a>)</span> for mussels in Lake Erie.</p>
 <p>The physiology of mussels are set to be size dependent, and can vary between species (e.g., Zebra vs Quagga)(Hetherington, 2016). Three size classes of mussels can be incorporated in the model, roughly corresponding to age-0, age-1 and age&gt;1 mussels. Physiological parameters are calculated for the weight assigned to each age class, using equations in Table 4. Individual mussel mass is given in mmol C or in the case of calculations of N and P budgets, in mmol N and mmol P. The stoichiometric ratios (C:N:P) are fixed. Group mussel biomass is calculated at each time step by calculating ingestion and subtracting pseudofeces production, standard dynamic action, respiration, excretion, egestion and mortality (expressed in mmol C/mmol C/day, mmol N/mmol N/day; mmol P/mmol P/day). Several of these processes are also functions of temperature, algal+POC concentrations, salinity, suspended solids and mussel density. The effect of salinity, suspended solids and mussel density is incorporated as a multiplier of filtration rate with the multipliers having values between -0 – (no filtering) and 1 (no effect). Mussel nitrogen and phosphorus concentrations are fixed ratios of mussel carbon concentrations. Since the various input and output fluxes have variable C:N:P ratios, the excretion of nutrients is dynamically adjusted each time-step to maintain this ratio at each time step. Reproduction and larval dynamics are not simulated. There is no transfer of biomass between age groups.</p>
 </div>
-<div id="model-description-17" class="section level2" number="23.3">
-<h2><span class="header-section-number">23.3</span> Model Description</h2>
-<div id="process-descriptions-18" class="section level3" number="23.3.1">
-<h3><span class="header-section-number">23.3.1</span> Process Descriptions</h3>
+<div id="model-description-17" class="section level2" number="21.3">
+<h2><span class="header-section-number">21.3</span> Model Description</h2>
+<div id="process-descriptions-18" class="section level3" number="21.3.1">
+<h3><span class="header-section-number">21.3.1</span> Process Descriptions</h3>
 <div id="ingestion" class="section level4 unnumbered">
 <h4>Ingestion</h4>
-<p>Ingestion is modelled as a function of filtration rate, food availability, pseudofeces production, density, suspended solids, and salinity (Equation 2) <span class="citation">(Schneider <a href="#ref-schneider1992" role="doc-biblioref">1992</a>; Bierman et al. <a href="#ref-bierman2005" role="doc-biblioref">2005</a>; Spillman et al. <a href="#ref-spillman2008" role="doc-biblioref">2008</a>; Gudimov et al. <a href="#ref-gudimov2015" role="doc-biblioref">2015</a>)</span>. Filtration rate is based on maximum ingestion, temperature, food availability, and pseudofeces production according to the following:</p>
+<p>Ingestion is modelled as a function of filtration rate, food availability, pseudofeces production, density, suspended solids, and salinity (Equation 2) <span class="citation">(<a href="#ref-schneider1992" role="doc-biblioref">Schneider 1992</a>; <a href="#ref-bierman2005" role="doc-biblioref">Bierman et al. 2005</a>; <a href="#ref-spillman2008" role="doc-biblioref">Spillman et al. 2008</a>; <a href="#ref-gudimov2015" role="doc-biblioref">Gudimov et al. 2015</a>)</span>. Filtration rate is based on maximum ingestion, temperature, food availability, and pseudofeces production according to the following:</p>
 <center>
 <br>
 <span class="math display" id="eq:bivalve1">\[\begin{equation}
 FR = \frac{\frac{I_{max}*f(T)_{I}}{K_{A}}}{PF_{min}} \text{ for } [A] &lt; KA
-\tag{23.1}
+\tag{21.1}
 \end{equation}\]</span>
 </center>
 <br>
 <center>
 <span class="math display" id="eq:bivalve2">\[\begin{equation}
 FR = \frac{\frac{I_{max}*f(T)_{I}}{[A]}}{PF_{min}} \text{ for } [A] &gt; KA
-\tag{23.2}
+\tag{21.2}
 \end{equation}\]</span>
 </center>
 <p><br></p>
@@ -770,31 +796,31 @@ The maximum ingestion rate is based on weight from length according to the follo
 <br>
 <span class="math display" id="eq:bivalve3">\[\begin{equation}
 I_{max} = (a_{I} * W^{bI})
-\tag{23.3}
+\tag{21.3}
 \end{equation}\]</span>
 </center>
 <br>
 <center>
 <span class="math display" id="eq:bivalve4">\[\begin{equation}
 W = \frac{0.071}{1000} * L^{2.8}
-\tag{23.4}
+\tag{21.4}
 \end{equation}\]</span>
 </center>
 <p><br></p>
-<p>where <span class="math inline">\(Imax\)</span> is maximum ingestion rate (mmol/mmol/d), <span class="math inline">\(a_{I}\)</span> is maximum standard ingestion rate (mmol/mmol/d), <span class="math inline">\(W\)</span> is weight (g), <span class="math inline">\(bI\)</span> is exponent for weight effect on ingestion, <span class="math inline">\(L\)</span> in length (mm) <span class="citation">(Schneider <a href="#ref-schneider1992" role="doc-biblioref">1992</a>; Bierman et al. <a href="#ref-bierman2005" role="doc-biblioref">2005</a>)</span>.
-The temperature dependence function <span class="citation">(Thornton and Lessem <a href="#ref-thornton1978" role="doc-biblioref">1978</a>)</span> was fit to zebra and quagga mussel data (Hetherington et al. Submitted) with optimal ingestion from 17°C to 20°C according to the following:</p>
+<p>where <span class="math inline">\(Imax\)</span> is maximum ingestion rate (mmol/mmol/d), <span class="math inline">\(a_{I}\)</span> is maximum standard ingestion rate (mmol/mmol/d), <span class="math inline">\(W\)</span> is weight (g), <span class="math inline">\(bI\)</span> is exponent for weight effect on ingestion, <span class="math inline">\(L\)</span> in length (mm) <span class="citation">(<a href="#ref-schneider1992" role="doc-biblioref">Schneider 1992</a>; <a href="#ref-bierman2005" role="doc-biblioref">Bierman et al. 2005</a>)</span>.
+The temperature dependence function <span class="citation">(<a href="#ref-thornton1978" role="doc-biblioref">Thornton and Lessem 1978</a>)</span> was fit to zebra and quagga mussel data (Hetherington et al. Submitted) with optimal ingestion from 17°C to 20°C according to the following:</p>
 <center>
 <br>
 <span class="math display" id="eq:bivalve5">\[\begin{equation}
 f(T)_{I} = 1 \text{ for } T_{min_{I}} &lt; T &lt; T_{max_{I}}
-\tag{23.5}
+\tag{21.5}
 \end{equation}\]</span>
 </center>
 <br>
 <center>
 <span class="math display" id="eq:bivalve6">\[\begin{equation}
 f(T)_{I} = (2*\frac{Tmin_{TI}}{Tmin_{I}} - \frac{(Tmin_{TI})^2}{(Tmin_{I})^2}) / (2*\frac{Tmin_{I}-minT_{I}}{Tmin_{I}}-\frac{(Tmin_{I}-minT_{I})^2}{(Tmin_{I})^2}) \text{ for } minT_{I} &lt; T &lt; Tmin_{I}
-\tag{23.6}
+\tag{21.6}
 \end{equation}\]</span>
 </center>
 <br>
@@ -802,7 +828,7 @@ f(T)_{I} = (2*\frac{Tmin_{TI}}{Tmin_{I}} - \frac{(Tmin_{TI})^2}{(Tmin_{I})^2}) /
 <br>
 <span class="math display" id="eq:bivalve7">\[\begin{equation}
 f(T)_{I} = -\frac{(T^{2} + 2*Tmax_{I}*T–2*Tmax_{I}*maxT_{I} + maxT_{I}^{2})}{(Tmax_{I}-maxT_{I})^{2}}   \text{ for } Tmax_{I}&lt;T&lt;maxT_{I}
-\tag{23.7}
+\tag{21.7}
 \end{equation}\]</span>
 </center>
 <br>
@@ -810,19 +836,19 @@ f(T)_{I} = -\frac{(T^{2} + 2*Tmax_{I}*T–2*Tmax_{I}*maxT_{I} + maxT_{I}^{2})}{(
 <br>
 <span class="math display" id="eq:bivalve8">\[\begin{equation}
 f(T)_{I} = 0    \text{ for } T &gt; maxT_{I} \text{ or } T &lt; minT_{I}
-\tag{23.8}
+\tag{21.8}
 \end{equation}\]</span>
 </center>
 <p><br></p>
 <p>where <span class="math inline">\(T\)</span> is temperature (°C), <span class="math inline">\(minT_{I}\)</span> is lower temperature for no ingestion (°C), <span class="math inline">\(Tmin_{I}\)</span> is lower temperature for optimum ingestion (°C), <span class="math inline">\(Tmax_{I}\)</span> is upper temperature for optimum ingestion, <span class="math inline">\(maxT_{I}\)</span> is upper temperature for no ingestion (°C).
-Filtration rate is related to food concentration [<span class="citation">Walz (<a href="#ref-walz1978" role="doc-biblioref">1978</a>)</span>; <span class="citation">Sprung and Rose (<a href="#ref-sprung1988" role="doc-biblioref">1988</a>)</span>; <span class="citation">Schneider (<a href="#ref-schneider1992" role="doc-biblioref">1992</a>)</span>; <span class="citation">Bierman et al. (<a href="#ref-bierman2005" role="doc-biblioref">2005</a>)</span>). The filtration rate is maintained at a maximum value for all food values less than saturation food concentration. The filtration rate decreases as food concentrations increase above this value.
-Pseudofeces production is implicit as the difference between the mass filtered and consumed. According to <span class="citation">Walz (<a href="#ref-walz1978" role="doc-biblioref">1978</a>)</span>, pseudofeces production (66%) was approximately double the ingestion rate (34%) at high food concentrations <span class="citation">Bierman et al. (<a href="#ref-bierman2005" role="doc-biblioref">2005</a>)</span>.</p>
+Filtration rate is related to food concentration [<span class="citation"><a href="#ref-walz1978" role="doc-biblioref">Walz</a> (<a href="#ref-walz1978" role="doc-biblioref">1978</a>)</span>; <span class="citation"><a href="#ref-sprung1988" role="doc-biblioref">Sprung and Rose</a> (<a href="#ref-sprung1988" role="doc-biblioref">1988</a>)</span>; <span class="citation"><a href="#ref-schneider1992" role="doc-biblioref">Schneider</a> (<a href="#ref-schneider1992" role="doc-biblioref">1992</a>)</span>; <span class="citation"><a href="#ref-bierman2005" role="doc-biblioref">Bierman et al.</a> (<a href="#ref-bierman2005" role="doc-biblioref">2005</a>)</span>). The filtration rate is maintained at a maximum value for all food values less than saturation food concentration. The filtration rate decreases as food concentrations increase above this value.
+Pseudofeces production is implicit as the difference between the mass filtered and consumed. According to <span class="citation"><a href="#ref-walz1978" role="doc-biblioref">Walz</a> (<a href="#ref-walz1978" role="doc-biblioref">1978</a>)</span>, pseudofeces production (66%) was approximately double the ingestion rate (34%) at high food concentrations <span class="citation"><a href="#ref-bierman2005" role="doc-biblioref">Bierman et al.</a> (<a href="#ref-bierman2005" role="doc-biblioref">2005</a>)</span>.</p>
 <p>Mussel density limits ingestion above some maximum density according to the following:</p>
 <center>
 <br>
 <span class="math display" id="eq:bivalve9">\[\begin{equation}
 $f(D) = 1$                                              for $D&lt;Dmax$
-\tag{23.9}
+\tag{21.9}
 \end{equation}\]</span>
 </center>
 <br>
@@ -830,7 +856,7 @@ $f(D) = 1$                                              for $D&lt;Dmax$
 <br>
 <span class="math display" id="eq:bivalve10">\[\begin{equation}
 f(D) = \frac{-(D^{2} + 2*Dmax*D – 2*Dmax*maxD + maxD^{2})}{(Dmax – maxD)^{2}} \text{ for } D&gt;Dmax
-\tag{23.10}
+\tag{21.10}
 \end{equation}\]</span>
 </center>
 <br>
@@ -838,7 +864,7 @@ f(D) = \frac{-(D^{2} + 2*Dmax*D – 2*Dmax*maxD + maxD^{2})}{(Dmax – maxD)^{2}
 <br>
 <span class="math display" id="eq:bivalve11">\[\begin{equation}
 f(D) = 0 \text{ for } D&gt;maxD
-\tag{23.11}
+\tag{21.11}
 \end{equation}\]</span>
 </center>
 <p><br></p>
@@ -848,7 +874,7 @@ An additional function to reduce ingestion is the suspended solids function whic
 <br>
 <span class="math display" id="eq:bivalve12">\[\begin{equation}
 f(SS) = 1 \text{ for } SS&lt;SSmax
-\tag{23.12}
+\tag{21.12}
 \end{equation}\]</span>
 </center>
 <br>
@@ -856,7 +882,7 @@ f(SS) = 1 \text{ for } SS&lt;SSmax
 <br>
 <span class="math display" id="eq:bivalve13">\[\begin{equation}
 f(SS) = \frac{-(SS^{2} + 2*SSmax*SS – 2*SSmax*maxSS + maxSS^{2})}{(SSmax – maxSS)^{2}} \text{ for } SS&gt;SSmax
-\tag{23.13}
+\tag{21.13}
 \end{equation}\]</span>
 </center>
 <br>
@@ -864,17 +890,17 @@ f(SS) = \frac{-(SS^{2} + 2*SSmax*SS – 2*SSmax*maxSS + maxSS^{2})}{(SSmax – m
 <br>
 <span class="math display" id="eq:bivalve14">\[\begin{equation}
 f(SS) = 0 \text{ for } SS&gt;maxSS
-\tag{23.14}
+\tag{21.14}
 \end{equation}\]</span>
 </center>
 <p><br></p>
-<p>where <span class="math inline">\(SS\)</span> is suspended solids (mg/L), <span class="math inline">\(SSmax\)</span> is upper suspended solids for optimum ingestion (mg/L), and <span class="math inline">\(maxSS\)</span> is upper suspended solids for no ingestion (mg/L) <span class="citation">(Spillman et al. <a href="#ref-spillman2008" role="doc-biblioref">2008</a>)</span>.
+<p>where <span class="math inline">\(SS\)</span> is suspended solids (mg/L), <span class="math inline">\(SSmax\)</span> is upper suspended solids for optimum ingestion (mg/L), and <span class="math inline">\(maxSS\)</span> is upper suspended solids for no ingestion (mg/L) <span class="citation">(<a href="#ref-spillman2008" role="doc-biblioref">Spillman et al. 2008</a>)</span>.
 Along with suspended solids, salinity limits ingestion according to the following:</p>
 <center>
 <br>
 <span class="math display" id="eq:bivalve15">\[\begin{equation}
 f(S) = 1 \text{ for } Smin &lt; S &lt; Smax
-\tag{23.15}
+\tag{21.15}
 \end{equation}\]</span>
 </center>
 <br>
@@ -882,32 +908,32 @@ f(S) = 1 \text{ for } Smin &lt; S &lt; Smax
 <br>
 <span class="math display" id="eq:bivalve16">\[\begin{equation}
 f(S) = \frac{(2*(S-minS)/Smin)–(S-minS)^{2}/Smin^{2})}{(2*(Smin-minS)/Smin)–(Smin-minS)^{2}/Smin^{2})} \text{ for } minS&lt; S &lt; Smin
-\tag{23.16}
+\tag{21.16}
 \end{equation}\]</span>
 </center>
 <br>
 <span class="math display" id="eq:bivalve17">\[\begin{equation}
 f(S) = \frac{-(S^{2} + 2*Smax*S – 2*Smax*maxS + maxS^{2})}{(Smax-maxS)^{2}} \text{ for } Smax&lt;S&lt;maxS
-\tag{23.17}
+\tag{21.17}
 \end{equation}\]</span>
 <center>
 <br>
 <span class="math display" id="eq:bivalve18">\[\begin{equation}
 f(S) = 0 \text{ for } S &gt; maxS \text{ or } S &lt; minS
-\tag{23.18}
+\tag{21.18}
 \end{equation}\]</span>
 </center>
 <p><br></p>
-<p>where <span class="math inline">\(S\)</span> is salinity (psu), <span class="math inline">\(minS\)</span> is lower salinity for no ingestion (psu), <span class="math inline">\(Smin\)</span> is lower salinity for optimum ingestion (psu), <span class="math inline">\(Smax\)</span> is upper salinity for optimum ingestion (psu), <span class="math inline">\(maxS\)</span> is upper salinity for no ingestion (psu) <span class="citation">(Spillman et al. <a href="#ref-spillman2008" role="doc-biblioref">2008</a>)</span>.</p>
+<p>where <span class="math inline">\(S\)</span> is salinity (psu), <span class="math inline">\(minS\)</span> is lower salinity for no ingestion (psu), <span class="math inline">\(Smin\)</span> is lower salinity for optimum ingestion (psu), <span class="math inline">\(Smax\)</span> is upper salinity for optimum ingestion (psu), <span class="math inline">\(maxS\)</span> is upper salinity for no ingestion (psu) <span class="citation">(<a href="#ref-spillman2008" role="doc-biblioref">Spillman et al. 2008</a>)</span>.</p>
 </div>
 <div id="respiration" class="section level4 unnumbered">
 <h4>Respiration</h4>
-<p>Respiration is modelled as a base or standard respiration rate based on weight and temperature <span class="citation">(Spillman et al. <a href="#ref-spillman2008" role="doc-biblioref">2008</a>)</span>. Respiration rate coefficient at 20°C is based on weight from length according to the following:</p>
+<p>Respiration is modelled as a base or standard respiration rate based on weight and temperature <span class="citation">(<a href="#ref-spillman2008" role="doc-biblioref">Spillman et al. 2008</a>)</span>. Respiration rate coefficient at 20°C is based on weight from length according to the following:</p>
 <center>
 <br>
 <span class="math display" id="eq:bivalve19">\[\begin{equation}
 R_{20} = (a_{R} * W^{b}_{R})
-\tag{23.19}
+\tag{21.19}
 \end{equation}\]</span>
 </center>
 <br>
@@ -915,7 +941,7 @@ R_{20} = (a_{R} * W^{b}_{R})
 <br>
 <span class="math display" id="eq:bivalve20">\[\begin{equation}
 W = \frac{0.071}{1000} * L^{2.8}
-\tag{23.20}
+\tag{21.20}
 \end{equation}\]</span>
 </center>
 <p><br></p>
@@ -925,17 +951,17 @@ The respiration rate coefficient is adjusted for temperature according to the fo
 <br>
 <span class="math display" id="eq:bivalve21">\[\begin{equation}
 f(T)_{RSpillman} = \Theta_{RSpillman}^{T-20}
-\tag{23.21}
+\tag{21.21}
 \end{equation}\]</span>
 </center>
 <p><br></p>
-<p>where <span class="math inline">\(f(T)_{RSpillman}\)</span> is respiration temperature function, <span class="math inline">\(\Theta_{RSpillman}\)</span> is temperature multiplier for bivalve respiration (-), and <span class="math inline">\(T\)</span> is temperature (°C) <span class="citation">(Spillman et al. <a href="#ref-spillman2008" role="doc-biblioref">2008</a>)</span>.
+<p>where <span class="math inline">\(f(T)_{RSpillman}\)</span> is respiration temperature function, <span class="math inline">\(\Theta_{RSpillman}\)</span> is temperature multiplier for bivalve respiration (-), and <span class="math inline">\(T\)</span> is temperature (°C) <span class="citation">(<a href="#ref-spillman2008" role="doc-biblioref">Spillman et al. 2008</a>)</span>.
 Alternatively, respiration is modelled as a base or standard respiration rate based on weight and temperature in addition to the energetic cost of feeding. Respiration rate coefficient at 30°C is based on weight from length according to the following:</p>
 <center>
 <br>
 <span class="math display" id="eq:bivalve22">\[\begin{equation}
 R_{30} = (a^{R} * W^{b}_{R})
-\tag{23.22}
+\tag{21.22}
 \end{equation}\]</span>
 </center>
 <br>
@@ -943,17 +969,17 @@ R_{30} = (a^{R} * W^{b}_{R})
 <br>
 <span class="math display" id="eq:bivalve23">\[\begin{equation}
 W = \frac{0.071}{1000} * L^{2.8}
-\tag{23.23}
+\tag{21.23}
 \end{equation}\]</span>
 </center>
 <p><br></p>
-<p>where <span class="math inline">\(R_{30}\)</span> is respiration rate coefficient at 30°C (mmol/mmol/d), <span class="math inline">\(a^{R}\)</span> is standard respiration rate (mmol/mmol/d), <span class="math inline">\(W\)</span> is weight (g), <span class="math inline">\(b_{R}\)</span> is exponent for weight effect of respiration, and <span class="math inline">\(L\)</span> is length (mm) <span class="citation">(Schneider <a href="#ref-schneider1992" role="doc-biblioref">1992</a>)</span>.
-The temperature function follows <span class="citation">Schneider (<a href="#ref-schneider1992" role="doc-biblioref">1992</a>)</span> application of the model of <span class="citation">Kitchell, Stewart, and Weininger (<a href="#ref-kitchell1977" role="doc-biblioref">1977</a>)</span> to the data of <span class="citation">Jr and McMahon (<a href="#ref-alexander_jr2004" role="doc-biblioref">2004</a>)</span> according to the following:</p>
+<p>where <span class="math inline">\(R_{30}\)</span> is respiration rate coefficient at 30°C (mmol/mmol/d), <span class="math inline">\(a^{R}\)</span> is standard respiration rate (mmol/mmol/d), <span class="math inline">\(W\)</span> is weight (g), <span class="math inline">\(b_{R}\)</span> is exponent for weight effect of respiration, and <span class="math inline">\(L\)</span> is length (mm) <span class="citation">(<a href="#ref-schneider1992" role="doc-biblioref">Schneider 1992</a>)</span>.
+The temperature function follows <span class="citation"><a href="#ref-schneider1992" role="doc-biblioref">Schneider</a> (<a href="#ref-schneider1992" role="doc-biblioref">1992</a>)</span> application of the model of <span class="citation"><a href="#ref-kitchell1977" role="doc-biblioref">Kitchell, Stewart, and Weininger</a> (<a href="#ref-kitchell1977" role="doc-biblioref">1977</a>)</span> to the data of <span class="citation"><a href="#ref-alexander_jr2004" role="doc-biblioref">Jr and McMahon</a> (<a href="#ref-alexander_jr2004" role="doc-biblioref">2004</a>)</span> according to the following:</p>
 <center>
 <br>
 <span class="math display" id="eq:bivalve24">\[\begin{equation}
 f(T)_{RSchneider} = V^{X} * e^{X * (1-V)}
-\tag{23.24}
+\tag{21.24}
 \end{equation}\]</span>
 </center>
 <br>
@@ -961,7 +987,7 @@ f(T)_{RSchneider} = V^{X} * e^{X * (1-V)}
 <br>
 <span class="math display" id="eq:bivalve25">\[\begin{equation}
 V = \frac{Tmax_{R} – T}{Tmax_{R} – maxT_{R}}
-\tag{23.25}
+\tag{21.25}
 \end{equation}\]</span>
 </center>
 <br>
@@ -969,7 +995,7 @@ V = \frac{Tmax_{R} – T}{Tmax_{R} – maxT_{R}}
 <br>
 <span class="math display" id="eq:bivalve26">\[\begin{equation}
 X = (\frac{W*(1+\sqrt{1 + (\frac{40}{Y})})}{20})^2
-\tag{23.26}
+\tag{21.26}
 \end{equation}\]</span>
 </center>
 <br>
@@ -977,7 +1003,7 @@ X = (\frac{W*(1+\sqrt{1 + (\frac{40}{Y})})}{20})^2
 <br>
 <span class="math display" id="eq:bivalve27">\[\begin{equation}
 W = lnQ_{R}*(Tmax_{R} – maxT_{R})
-\tag{23.27}
+\tag{21.27}
 \end{equation}\]</span>
 </center>
 <br>
@@ -985,20 +1011,20 @@ W = lnQ_{R}*(Tmax_{R} – maxT_{R})
 <br>
 <span class="math display" id="eq:bivalve28">\[\begin{equation}
 Y = lnQ_{R}*(Tmax_{R} – maxT_{R} + 2)
-\tag{23.28}
+\tag{21.28}
 \end{equation}\]</span>
 </center>
 <p><br></p>
 <p>where <span class="math inline">\(T\)</span> is temperature (°C), <span class="math inline">\(Tmax_{R}\)</span> is upper temperature for optimum respiration (°C), <span class="math inline">\(maxT_{R}\)</span> is upper temperature for no respiration (°C), and <span class="math inline">\(Q_{R}\)</span> is respiration curve slope estimate (-). The maximum respiration occurs at 30°C with 43°C as the upper lethal temperature.
-The energetic cost of feeding or specific dynamic action is applied only to the portion of ingestion that is not egested <span class="citation">(Schneider <a href="#ref-schneider1992" role="doc-biblioref">1992</a>; Bierman et al. <a href="#ref-bierman2005" role="doc-biblioref">2005</a>; Gudimov et al. <a href="#ref-gudimov2015" role="doc-biblioref">2015</a>)</span>.</p>
+The energetic cost of feeding or specific dynamic action is applied only to the portion of ingestion that is not egested <span class="citation">(<a href="#ref-schneider1992" role="doc-biblioref">Schneider 1992</a>; <a href="#ref-bierman2005" role="doc-biblioref">Bierman et al. 2005</a>; <a href="#ref-gudimov2015" role="doc-biblioref">Gudimov et al. 2015</a>)</span>.</p>
 </div>
 <div id="excretion" class="section level4 unnumbered">
 <h4>Excretion</h4>
-<p>Excretion is modelled as a constant fraction of assimilated food <span class="citation">(Schneider <a href="#ref-schneider1992" role="doc-biblioref">1992</a>; Bierman et al. <a href="#ref-bierman2005" role="doc-biblioref">2005</a>; Gudimov et al. <a href="#ref-gudimov2015" role="doc-biblioref">2015</a>)</span>. Excretion data for zebra and quagga mussels are limited; therefore, the excretion formulation for Mytilus edulis derived by Bayne and Newell (1983) was used <span class="citation">(Schneider <a href="#ref-schneider1992" role="doc-biblioref">1992</a>; Bierman et al. <a href="#ref-bierman2005" role="doc-biblioref">2005</a>; Gudimov et al. <a href="#ref-gudimov2015" role="doc-biblioref">2015</a>)</span>.</p>
+<p>Excretion is modelled as a constant fraction of assimilated food <span class="citation">(<a href="#ref-schneider1992" role="doc-biblioref">Schneider 1992</a>; <a href="#ref-bierman2005" role="doc-biblioref">Bierman et al. 2005</a>; <a href="#ref-gudimov2015" role="doc-biblioref">Gudimov et al. 2015</a>)</span>. Excretion data for zebra and quagga mussels are limited; therefore, the excretion formulation for Mytilus edulis derived by Bayne and Newell (1983) was used <span class="citation">(<a href="#ref-schneider1992" role="doc-biblioref">Schneider 1992</a>; <a href="#ref-bierman2005" role="doc-biblioref">Bierman et al. 2005</a>; <a href="#ref-gudimov2015" role="doc-biblioref">Gudimov et al. 2015</a>)</span>.</p>
 </div>
 <div id="egestion" class="section level4 unnumbered">
 <h4>Egestion</h4>
-<p>Egestion is modeled as a function of ingestion <span class="citation">(Schneider <a href="#ref-schneider1992" role="doc-biblioref">1992</a>; Bierman et al. <a href="#ref-bierman2005" role="doc-biblioref">2005</a>; Gudimov et al. <a href="#ref-gudimov2015" role="doc-biblioref">2015</a>)</span>. The model follows the assumption that ingestion is directly proportional to the food content of the water for all food concentrations less than the maximum which can be ingested. For all food concentrations above this saturation value, ingestion remains constant at a maximum value (<span class="math inline">\(I_{max}\)</span>) <span class="citation">(Walz <a href="#ref-walz1978" role="doc-biblioref">1978</a>)</span>.</p>
+<p>Egestion is modeled as a function of ingestion <span class="citation">(<a href="#ref-schneider1992" role="doc-biblioref">Schneider 1992</a>; <a href="#ref-bierman2005" role="doc-biblioref">Bierman et al. 2005</a>; <a href="#ref-gudimov2015" role="doc-biblioref">Gudimov et al. 2015</a>)</span>. The model follows the assumption that ingestion is directly proportional to the food content of the water for all food concentrations less than the maximum which can be ingested. For all food concentrations above this saturation value, ingestion remains constant at a maximum value (<span class="math inline">\(I_{max}\)</span>) <span class="citation">(<a href="#ref-walz1978" role="doc-biblioref">Walz 1978</a>)</span>.</p>
 </div>
 <div id="mortality" class="section level4 unnumbered">
 <h4>Mortality</h4>
@@ -1007,21 +1033,21 @@ The energetic cost of feeding or specific dynamic action is applied only to the 
 <br>
 <span class="math display" id="eq:bivalve29">\[\begin{equation}
 f(DO) = 1 + K_{BDO} * \frac{K_{DO}}{K_{DO} + DO}
-\tag{23.29}
+\tag{21.29}
 \end{equation}\]</span>
 </center>
 <p><br></p>
-<p>where <span class="math inline">\(DO\)</span> is dissolved oxygen (mmol/m3), <span class="math inline">\(K_{BDO}\)</span> is basal respiration rate (mmol/m3), and <span class="math inline">\(K_{DO}\)</span> is half saturation constant for metabolic response to dissolved oxygen (mmol/m3) <span class="citation">(Spillman et al. <a href="#ref-spillman2008" role="doc-biblioref">2008</a>)</span>. A mortality rate coefficient (<span class="math inline">\(K_{MORT}\)</span>) further influences the dissolved oxygen function. Additionally, mortality from predation is a constant rate added to the effect from dissolved oxygen.</p>
+<p>where <span class="math inline">\(DO\)</span> is dissolved oxygen (mmol/m3), <span class="math inline">\(K_{BDO}\)</span> is basal respiration rate (mmol/m3), and <span class="math inline">\(K_{DO}\)</span> is half saturation constant for metabolic response to dissolved oxygen (mmol/m3) <span class="citation">(<a href="#ref-spillman2008" role="doc-biblioref">Spillman et al. 2008</a>)</span>. A mortality rate coefficient (<span class="math inline">\(K_{MORT}\)</span>) further influences the dissolved oxygen function. Additionally, mortality from predation is a constant rate added to the effect from dissolved oxygen.</p>
 </div>
 </div>
-<div id="variable-summary-19" class="section level3" number="23.3.2">
-<h3><span class="header-section-number">23.3.2</span> Variable Summary</h3>
+<div id="variable-summary-19" class="section level3" number="21.3.2">
+<h3><span class="header-section-number">21.3.2</span> Variable Summary</h3>
 <div id="state-variables-3" class="section level4 unnumbered">
 <h4>State Variables</h4>
 <div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:770px; ">
 <table class="table" style="font-size: 12px; width: auto !important; margin-left: auto; margin-right: auto;">
 <caption style="font-size: initial !important;">
-<span id="tab:26-statevariables">Table 23.1: </span>State variables
+<span id="tab:26-statevariables">Table 21.1: </span>State variables
 </caption>
 <thead>
 <tr>
@@ -1086,7 +1112,7 @@ Optional : biv_tracer = .true.
 <div style="border: 1px solid #ddd; padding: 5px; overflow-y: scroll; height:500px; overflow-x: scroll; width:770px; ">
 <table class="table table-hover" style="font-size: 12px; width: auto !important; margin-left: auto; margin-right: auto;">
 <caption style="font-size: initial !important;">
-<span id="tab:26-diagnostics">Table 23.2: </span>Diagnostics
+<span id="tab:26-diagnostics">Table 21.2: </span>Diagnostics
 </caption>
 <thead>
 <tr>
@@ -1334,12 +1360,12 @@ Optional: <code>extra_diag=.true.</code>
 </div>
 </div>
 </div>
-<div id="parameter-summary-19" class="section level3" number="23.3.3">
-<h3><span class="header-section-number">23.3.3</span> Parameter Summary</h3>
+<div id="parameter-summary-19" class="section level3" number="21.3.3">
+<h3><span class="header-section-number">21.3.3</span> Parameter Summary</h3>
 <div style="border: 1px solid #ddd; padding: 5px; overflow-y: scroll; height:500px; overflow-x: scroll; width:770px; ">
 <table class="table table-hover" style="font-size: 12px; width: auto !important; margin-left: auto; margin-right: auto;">
 <caption style="font-size: initial !important;">
-<span id="tab:26-parametersummmary">Table 23.3: </span>Diagnostics
+<span id="tab:26-parametersummmary">Table 21.3: </span>Diagnostics
 </caption>
 <thead>
 <tr>
@@ -2293,21 +2319,21 @@ Preference factors for bivalve predators grazing on prey
 </table>
 </div>
 </div>
-<div id="optional-module-links-18" class="section level3" number="23.3.4">
-<h3><span class="header-section-number">23.3.4</span> Optional Module Links</h3>
+<div id="optional-module-links-18" class="section level3" number="21.3.4">
+<h3><span class="header-section-number">21.3.4</span> Optional Module Links</h3>
 </div>
-<div id="feedbacks-to-the-host-model-18" class="section level3" number="23.3.5">
-<h3><span class="header-section-number">23.3.5</span> Feedbacks to the Host Model</h3>
+<div id="feedbacks-to-the-host-model-18" class="section level3" number="21.3.5">
+<h3><span class="header-section-number">21.3.5</span> Feedbacks to the Host Model</h3>
 </div>
 </div>
-<div id="setup-configuration-18" class="section level2" number="23.4">
-<h2><span class="header-section-number">23.4</span> Setup &amp; Configuration</h2>
-<div id="setup-example-3" class="section level3" number="23.4.1">
-<h3><span class="header-section-number">23.4.1</span> Setup Example</h3>
+<div id="setup-configuration-18" class="section level2" number="21.4">
+<h2><span class="header-section-number">21.4</span> Setup &amp; Configuration</h2>
+<div id="setup-example-3" class="section level3" number="21.4.1">
+<h3><span class="header-section-number">21.4.1</span> Setup Example</h3>
 <div style="border: 1px solid #ddd; padding: 5px; overflow-y: scroll; height:500px; overflow-x: scroll; width:770px; ">
 <table class="table table-hover" style="font-size: 12px; width: auto !important; margin-left: auto; margin-right: auto;">
 <caption style="font-size: initial !important;">
-<span id="tab:26-parameterconfig">Table 23.4: </span>Parameters and configuration
+<span id="tab:26-parameterconfig">Table 21.4: </span>Parameters and configuration
 </caption>
 <thead>
 <tr>
@@ -2819,48 +2845,48 @@ NA
  /</code></pre>
 </div>
 </div>
-<div id="case-studies-examples-18" class="section level2" number="23.5">
-<h2><span class="header-section-number">23.5</span> Case Studies &amp; Examples</h2>
-<div id="case-study-17" class="section level3" number="23.5.1">
-<h3><span class="header-section-number">23.5.1</span> Case Study</h3>
+<div id="case-studies-examples-18" class="section level2" number="21.5">
+<h2><span class="header-section-number">21.5</span> Case Studies &amp; Examples</h2>
+<div id="case-study-17" class="section level3" number="21.5.1">
+<h3><span class="header-section-number">21.5.1</span> Case Study</h3>
 </div>
-<div id="publications-18" class="section level3" number="23.5.2">
-<h3><span class="header-section-number">23.5.2</span> Publications</h3>
+<div id="publications-18" class="section level3" number="21.5.2">
+<h3><span class="header-section-number">21.5.2</span> Publications</h3>
 
 </div>
 </div>
 </div>
 <h3>References</h3>
-<div id="refs" class="references">
-<div id="ref-bierman2005">
-<p>Bierman, Victor J, Jagjit Kaur, Joseph V Depinto, Timothy J Feist, and David W Dilks. 2005. “Modeling the Role of Zebra Mussels in the Proliferation of Blue-green Algae in Saginaw Bay, Lake Huron.” <em>Journal of Great Lakes Research</em> 31 (1): 32–55. <a href="https://doi.org/10.1016/s0380-1330(05)70236-7">https://doi.org/10.1016/s0380-1330(05)70236-7</a>.</p>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-bierman2005" class="csl-entry">
+Bierman, Victor J, Jagjit Kaur, Joseph V Depinto, Timothy J Feist, and David W Dilks. 2005. <span>“<span class="nocase">Modeling the Role of Zebra Mussels in the Proliferation of Blue-green Algae in Saginaw Bay, Lake Huron</span>.”</span> <em>Journal of Great Lakes Research</em> 31 (1): 32–55. <a href="https://doi.org/10.1016/s0380-1330(05)70236-7">https://doi.org/10.1016/s0380-1330(05)70236-7</a>.
 </div>
-<div id="ref-bocaniov2014">
-<p>Bocaniov, Serghei A., Ralph E. H. Smith, Claire M. Spillman, Matthew R. Hipsey, and Luis F. Leon. 2014. “The nearshore shunt and the decline of the phytoplankton spring bloom in the Laurentian Great Lakes: insights from a three-dimensional lake model.” <em>Hydrobiologia</em> 731 (1): 151–72. <a href="https://doi.org/10.1007/s10750-013-1642-2">https://doi.org/10.1007/s10750-013-1642-2</a>.</p>
+<div id="ref-bocaniov2014" class="csl-entry">
+Bocaniov, Serghei A., Ralph E. H. Smith, Claire M. Spillman, Matthew R. Hipsey, and Luis F. Leon. 2014. <span>“<span class="nocase">The nearshore shunt and the decline of the phytoplankton spring bloom in the Laurentian Great Lakes: insights from a three-dimensional lake model</span>.”</span> <em>Hydrobiologia</em> 731 (1): 151–72. <a href="https://doi.org/10.1007/s10750-013-1642-2">https://doi.org/10.1007/s10750-013-1642-2</a>.
 </div>
-<div id="ref-gudimov2015">
-<p>Gudimov, Alexey, Dong-Kyun Kim, Joelle D Young, Michelle E Palmer, Maria Dittrich, Jennifer G Winter, Eleanor Stainsby, and George B Arhonditsis. 2015. “Examination of the role of dreissenids and macrophytes in the phosphorus dynamics of Lake Simcoe, Ontario, Canada.” <em>Ecological Informatics</em> 26: 36–53. <a href="https://doi.org/10.1016/j.ecoinf.2014.11.007">https://doi.org/10.1016/j.ecoinf.2014.11.007</a>.</p>
+<div id="ref-gudimov2015" class="csl-entry">
+Gudimov, Alexey, Dong-Kyun Kim, Joelle D Young, Michelle E Palmer, Maria Dittrich, Jennifer G Winter, Eleanor Stainsby, and George B Arhonditsis. 2015. <span>“<span class="nocase">Examination of the role of dreissenids and macrophytes in the phosphorus dynamics of Lake Simcoe, Ontario, Canada</span>.”</span> <em>Ecological Informatics</em> 26: 36–53. <a href="https://doi.org/10.1016/j.ecoinf.2014.11.007">https://doi.org/10.1016/j.ecoinf.2014.11.007</a>.
 </div>
-<div id="ref-alexander_jr2004">
-<p>Jr, James E Alexander, and Robert F McMahon. 2004. “Respiratory response to temperature and hypoxia in the zebra mussel Dreissena polymorpha.” <em>Comparative Biochemistry and Physiology Part A: Molecular &amp; Integrative Physiology</em> 137 (2): 425–34. <a href="https://doi.org/10.1016/j.cbpb.2003.11.003">https://doi.org/10.1016/j.cbpb.2003.11.003</a>.</p>
+<div id="ref-alexander_jr2004" class="csl-entry">
+Jr, James E Alexander, and Robert F McMahon. 2004. <span>“<span class="nocase">Respiratory response to temperature and hypoxia in the zebra mussel Dreissena polymorpha</span>.”</span> <em>Comparative Biochemistry and Physiology Part A: Molecular &amp; Integrative Physiology</em> 137 (2): 425–34. <a href="https://doi.org/10.1016/j.cbpb.2003.11.003">https://doi.org/10.1016/j.cbpb.2003.11.003</a>.
 </div>
-<div id="ref-kitchell1977">
-<p>Kitchell, James F, Donald J Stewart, and David Weininger. 1977. “Applications of a Bioenergetics Model to Yellow Perch ( Perca flavescens ) and Walleye ( Stizostedion vitreum vitreum ).” <em>Journal of the Fisheries Research Board of Canada</em> 34 (10): 1922–35. <a href="https://doi.org/10.1139/f77-258">https://doi.org/10.1139/f77-258</a>.</p>
+<div id="ref-kitchell1977" class="csl-entry">
+Kitchell, James F, Donald J Stewart, and David Weininger. 1977. <span>“<span class="nocase">Applications of a Bioenergetics Model to Yellow Perch ( Perca flavescens ) and Walleye ( Stizostedion vitreum vitreum )</span>.”</span> <em>Journal of the Fisheries Research Board of Canada</em> 34 (10): 1922–35. <a href="https://doi.org/10.1139/f77-258">https://doi.org/10.1139/f77-258</a>.
 </div>
-<div id="ref-schneider1992">
-<p>Schneider, Daniel W. 1992. “A Bioenergetics Model of Zebra Mussel, Dreissena polymorpha , Growth in the Great Lakes.” <em>Canadian Journal of Fisheries and Aquatic Sciences</em> 49 (7): 1406–16. <a href="https://doi.org/10.1139/f92-156">https://doi.org/10.1139/f92-156</a>.</p>
+<div id="ref-schneider1992" class="csl-entry">
+Schneider, Daniel W. 1992. <span>“<span class="nocase">A Bioenergetics Model of Zebra Mussel, Dreissena polymorpha , Growth in the Great Lakes</span>.”</span> <em>Canadian Journal of Fisheries and Aquatic Sciences</em> 49 (7): 1406–16. <a href="https://doi.org/10.1139/f92-156">https://doi.org/10.1139/f92-156</a>.
 </div>
-<div id="ref-spillman2008">
-<p>Spillman, C. M., D. P. Hamilton, M. R. Hipsey, and J. Imberger. 2008. “A spatially resolved model of seasonal variations in phytoplankton and clam (Tapes philippinarum) biomass in Barbamarco Lagoon, Italy.” <em>Estuarine, Coastal and Shelf Science</em> 79 (2): 187–203. <a href="https://doi.org/10.1016/j.ecss.2008.03.020">https://doi.org/10.1016/j.ecss.2008.03.020</a>.</p>
+<div id="ref-spillman2008" class="csl-entry">
+Spillman, C. M., D. P. Hamilton, M. R. Hipsey, and J. Imberger. 2008. <span>“<span class="nocase">A spatially resolved model of seasonal variations in phytoplankton and clam (Tapes philippinarum) biomass in Barbamarco Lagoon, Italy</span>.”</span> <em>Estuarine, Coastal and Shelf Science</em> 79 (2): 187–203. <a href="https://doi.org/10.1016/j.ecss.2008.03.020">https://doi.org/10.1016/j.ecss.2008.03.020</a>.
 </div>
-<div id="ref-sprung1988">
-<p>Sprung, Martin, and Udo Rose. 1988. “Influence of food size and food quantity on the feeding of the mussel Dreissena polymorpha.” <em>Oecologia</em> 77 (4): 526–32. <a href="https://doi.org/10.1007/bf00377269">https://doi.org/10.1007/bf00377269</a>.</p>
+<div id="ref-sprung1988" class="csl-entry">
+Sprung, Martin, and Udo Rose. 1988. <span>“<span class="nocase">Influence of food size and food quantity on the feeding of the mussel Dreissena polymorpha</span>.”</span> <em>Oecologia</em> 77 (4): 526–32. <a href="https://doi.org/10.1007/bf00377269">https://doi.org/10.1007/bf00377269</a>.
 </div>
-<div id="ref-thornton1978">
-<p>Thornton, Kent W, and Allan S Lessem. 1978. “A Temperature Algorithm for Modifying Biological Rates.” <em>Transactions of the American Fisheries Society</em> 107 (2): 284–87. <a href="https://doi.org/10.1577/1548-8659(1978)107%3C284:atafmb%3E2.0.co;2">https://doi.org/10.1577/1548-8659(1978)107&lt;284:atafmb&gt;2.0.co;2</a>.</p>
+<div id="ref-thornton1978" class="csl-entry">
+Thornton, Kent W, and Allan S Lessem. 1978. <span>“<span class="nocase">A Temperature Algorithm for Modifying Biological Rates</span>.”</span> <em>Transactions of the American Fisheries Society</em> 107 (2): 284–87. <a href="https://doi.org/10.1577/1548-8659(1978)107&lt;284:atafmb&gt;2.0.co;2">https://doi.org/10.1577/1548-8659(1978)107&lt;284:atafmb&gt;2.0.co;2</a>.
 </div>
-<div id="ref-walz1978">
-<p>Walz, N. 1978. “The energy balance of the freshwater mussel Dreissena polymorpha Pallas in laboratory experiments and in Lake Constance. I. Pattern of activity, feeding and assimilation efficiency.” <em>Archiv Für Hydrobiologie</em> 55 (1): 83–105.</p>
+<div id="ref-walz1978" class="csl-entry">
+Walz, N. 1978. <span>“<span class="nocase">The energy balance of the freshwater mussel Dreissena polymorpha Pallas in laboratory experiments and in Lake Constance. I. Pattern of activity, feeding and assimilation efficiency</span>.”</span> <em>Archiv Für Hydrobiologie</em> 55 (1): 83–105.
 </div>
 </div>
             </section>
