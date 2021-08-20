@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Preface | AED2/AED2+ Manual</title>
+  <title>Preface | The AED Manual</title>
   <meta name="description" content="Work in progress." />
-  <meta name="generator" content="bookdown 0.21.6 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Preface | AED2/AED2+ Manual" />
+  <meta property="og:title" content="Preface | The AED Manual" />
   <meta property="og:type" content="book" />
   
   
@@ -16,14 +16,14 @@
   <meta name="github-repo" content="AquaticEcoDynamics/aed-science/" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Preface | AED2/AED2+ Manual" />
+  <meta name="twitter:title" content="Preface | The AED Manual" />
   
   <meta name="twitter:description" content="Work in progress." />
   
 
 
 
-<meta name="date" content="2021-08-19" />
+<meta name="date" content="2021-08-20" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -32,7 +32,7 @@
   
 <link rel="prev" href="foreward.html"/>
 <link rel="next" href="introduction.html"/>
-<script src="libs/header-attrs-2.6/header-attrs.js"></script>
+<script src="libs/header-attrs-2.7/header-attrs.js"></script>
 <script src="libs/jquery-3.5.1/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -63,7 +63,7 @@
 <script src="libs/leaflet-providers-plugin-2.0.4.1/leaflet-providers-plugin.js"></script>
 <script src="libs/kePrint-0.0.1/kePrint.js"></script>
 <link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
-<script src="libs/plotly-binding-4.9.4.1/plotly.js"></script>
+<script src="libs/plotly-binding-4.9.3/plotly.js"></script>
 <script src="libs/typedarray-0.1/typedarray.min.js"></script>
 <link href="libs/crosstalk-1.1.1/css/crosstalk.css" rel="stylesheet" />
 <script src="libs/crosstalk-1.1.1/js/crosstalk.min.js"></script>
@@ -200,7 +200,12 @@ div.csl-indent {
 <li class="chapter" data-level="2" data-path="nomenclature.html"><a href="nomenclature.html"><i class="fa fa-check"></i><b>2</b> Nomenclature</a>
 <ul>
 <li class="chapter" data-level="2.1" data-path="nomenclature.html"><a href="nomenclature.html#variables-and-data-types"><i class="fa fa-check"></i><b>2.1</b> Variables and Data Types</a></li>
-<li class="chapter" data-level="2.2" data-path="nomenclature.html"><a href="nomenclature.html#a-note-on-notation"><i class="fa fa-check"></i><b>2.2</b> A Note on Notation</a></li>
+<li class="chapter" data-level="2.2" data-path="nomenclature.html"><a href="nomenclature.html#a-note-on-notation"><i class="fa fa-check"></i><b>2.2</b> A Note on Notation</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="nomenclature.html"><a href="nomenclature.html#general-notation"><i class="fa fa-check"></i><b>2.2.1</b> General Notation</a></li>
+<li class="chapter" data-level="2.2.2" data-path="nomenclature.html"><a href="nomenclature.html#model-domain-and-position"><i class="fa fa-check"></i><b>2.2.2</b> Model Domain and Position</a></li>
+<li class="chapter" data-level="2.2.3" data-path="nomenclature.html"><a href="nomenclature.html#transport-reference-frame"><i class="fa fa-check"></i><b>2.2.3</b> Transport Reference Frame</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="organisation-of-the-library-module-structure.html"><a href="organisation-of-the-library-module-structure.html"><i class="fa fa-check"></i><b>3</b> Organisation of the Library &amp; Module Structure</a>
 <ul>
@@ -749,7 +754,7 @@ div.csl-indent {
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">AED2/AED2+ Manual</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">The AED Manual</a>
           </h1>
         </div>
 
@@ -767,11 +772,11 @@ div.csl-indent {
 </div>
 <div id="why-aed" class="section level2 unnumbered">
 <h2>Why AED?</h2>
-<p>The AED/AED2 modelling code-base is a community-driven library of modules and algorithms for simulation of “aquatic ecodynamics” - water quality, aquatic biogeochemistry, biotic habitat and aquatic ecosystem dynamics.</p>
-<p>AED2 is suitable for a wide range water bodies, including lakes, reservoirs, wetlands, estuaries and coastal waters. It has been applied to many research and water engineering projects across the world. Users select water quality and ecosystem variables they wish to simulate and are able to customize link and dependencies between modules.</p>
+<p>The AED modelling code-base is a community-driven library of modules and algorithms for simulation of “aquatic ecodynamics” - water quality, aquatic biogeochemistry, biotic habitat and aquatic ecosystem dynamics.</p>
+<p>The AED software is unique as it is suitable for a very wide range water bodies types, including lakes, reservoirs, wetlands, ponds, estuaries and coastal waters. It has been applied to many research and water engineering projects across the world. Users select water quality and ecosystem variables they wish to simulate and are able to customize links and dependencies between modules.</p>
 <p>Each <ins>module</ins> aims to be based on state-of-the-art science sourced from a wide variety of scientific literature, making the library one of the most advanced available to aquatic ecosystem modellers.</p>
-<p>AED2 is an open-source project, and the <ins>source code</ins> is accessible and customisable for specific applications. Most modules have numerous options and alternate algorithms so users can tailor the model to their specific needs</p>
-<p>It is envisaged that the flexible nature of the model components will facilitate the model community to experiment with model structural complexity, to more easily share model innovations at the algorithm level, and support the development of common performance assessment approaches.</p>
+<p>Importantly, this software is an open-source project, and the <ins>source code</ins> is accessible and customisable for specific applications. Most modules have numerous options and alternate algorithms so users can tailor the model to their specific needs, but inevitably, users will require flexibility to embed custom algorithms or functionality.</p>
+<p>It is envisaged that the flexible nature of the model components will facilitate the model community to experiment with model structural complexity, to more easily share model innovations at the algorithm level, and support the development of common performance assessment approaches (for a discussion on model assessment, readers are referred to Hipsey et al., 2020).</p>
 </div>
 <div id="acknowledgements" class="section level2 unnumbered">
 <h2>Acknowledgements</h2>
@@ -807,6 +812,7 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": false
 },
 "fontsettings": {

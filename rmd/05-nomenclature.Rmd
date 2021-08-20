@@ -1,6 +1,6 @@
 # Nomenclature
 
-## Variables and Data Types 
+## Variables and Data Types
 
 There is often confusion over the types of variables and data-types used within the modules. Standard terminology adopted in the AED system is described in Table \@ref(tab:vardatatypes).
 
@@ -14,14 +14,14 @@ library(kableExtra)
 library(hablar)
 library(dplyr)
 #options(knitr.kable.NA = '')
-var_data_types <- read.csv("tables/05-nomenclature/var_data_types.csv", check.names=FALSE) 
+var_data_types <- read.csv("tables/05-nomenclature/var_data_types.csv", check.names=FALSE)
 kable(var_data_types, format = "html", escape = F, align = "l", col.names = NULL, caption = "Variables and data types") %>%
   kable_styling(full_width = F) %>%
   column_spec(1, width_min = "10em") %>%
   column_spec(2, width_min = "10em") %>%
   row_spec(1:7, background = 'white') %>%
   scroll_box(width = "770px", height = "800px",
-             fixed_thead = FALSE) 
+             fixed_thead = FALSE)
 ```
 </details>
 
@@ -29,16 +29,66 @@ kable(var_data_types, format = "html", escape = F, align = "l", col.names = NULL
 
 The remainder of this section presents the range of equations and parameterisations adopted by the various model approaches. For consistency, a standard mathematical notation is used.
 
+### General Notation
+
+The following symbols are used to denote commonly used variables:
+
 - $N$ = number of groups (integer)
-- $a, om, z$ = indices of various sub-groups of algae/phytoplankton, organic matter and zooplankton (integer)
+- $a, om, z$ = indices of various sub-groups, such as algae/phytoplankton, organic matter and zooplankton (integer)
 - $\chi_{C:Y}^{group}$ = the stoichiometric ratio of “$group$” between $C$ and element “$Y$”  (mmol C/mmol Y)
 - $f_{process}^{var}$ = function that returns the mass flux of “$process$” on “$var$”  (mmol var/time)
 - $R_{process}^{var}$ = the rate of “$process$” influencing the variable “$var$”  (/time)
-- $F_{process}^{var}$ = the maximum benthic areal flux of variable “var” (mmol var/area/time)
+- $F_{process}^{var}$ = the areal flux of variable “var” due to a “$process$”, applied at the sediment-water or air-water interface ($mmol \text{ var}/m^2$)
 - $p_{source}^{group}$ = the preference of “$group$” for “$source$”  (0-1)
-- $\Phi_{lim}^{group}(var)$ = dimensionless limitation or scaling function to account for the effect of “$lim$” on “$group$” (-)
+- $\Phi_{lim}^{group}[var]$ = dimensionless limitation or scaling function to account for the effect of “$lim$” on a “$group$” (-)
+- $\Phi_{lim}^{process}[var]$ = dimensionless limitation or scaling function to account for the effect of “$lim$” (limiting) "$var$" on a “$process$” (-)
 - $k^{var}$	= generic fraction related to “$var$”  (0-1)
 - $\Theta_{config}^{group}$	= switch to configure selectable model component “$config$” for “$group$” (0,1,2,…)
-- $c,\theta,\gamma…$ 		= coefficient  (various units)
+- $K_{process}^{var}$ = half-saturation constant associated with a biogeochemical “$process$”, based on the concentration of variable “$var$” ($mmol \text{ var}/m^3$)
+- $c,\theta,\gamma…$ 		= miscellaneous coefficients  (various units)
 
+### Model Domain and Position
 
+- $\Delta z$ = generic vertical thickness of a computational cell or layer
+- $\Delta z_{s}$ = vertical thickness of the surface computational cell or layer
+- $\Delta z_{b}$ = vertical thickness of the bottom computational cell or layer
+- $h$ = height above a reference point
+- $z$ = depth below water surface
+- $d$ = water depth
+- $A$ = area
+
+### Transport Reference Frame
+
+As AED is designed to be agnostic of the host model spatial domain, and the transport of AED variables is managed by the host model, this book refers to transport in a generic way.
+
+Each simulated state variable is subject to advection and turbulent mixing, plus boundary conditions, as managed by the host hydrodynamic model. The material derivative, $\frac{D}{Dt}$ is used to depict that the reactions and processes in the AED library (and as summarised in the module descriptions) are undertaken superimposed on the movement of the water being simulated by the host model. For a generic non-reactive AED variable, $C$, this is:
+<br>
+\begin{equation}
+\frac{D}{Dt}C = \frac{\partial C}{\partial t} + \mathbf{u} \cdot \nabla C
+(\#eq:nomen1)
+\end{equation}
+<br>
+where $\nabla$ is the gradient operator, which in the context of a hydrodynamic model, can be used to generically summarise the advection field:
+<br>
+\begin{equation}
+\frac{D}{Dt}C = \frac{\partial C}{\partial t} +
+u\frac{\partial C}{\partial x} + v\frac{\partial C}{\partial y} + w\frac{\partial C}{\partial z}
+(\#eq:nomen2)
+\end{equation}
+<br>
+where $u$, $v$, and $w$ are the water velocity in cartesian coordinates, $x$, $y$, and $z$ .
+
+As the AED model links with hydrodynamic models that use unstructured or non-standard computational domains, the exact transport solution and notation for a given model will necessarily be model-specific, but broadly consistent with the above.
+
+Similarly, each model will resolve diffusion and turbulent mixing between computational cells in a unique way. For this reason we simply denote the process of "mixing" using the symbol $\mathbb{M}$. For a typical RANS hydrodynamic model this would be  $\mathbf{u} \cdot \nabla^2 C$. Some models, such as the [General Lake Model](https://gmd.copernicus.org/articles/12/473/2019/) (Hipsey et al., 2019), may however adopt a "bulk mixing" model, whereby mixing is resolved using a multi-step algorithm that is not so easily summarised.
+
+The host model will also have various model-specific approaches for defining the model boundary conditions for simulated AED variables.  We therefore use the generic symbol $\mathcal{S}$ to represent sources of mass to a computational cell. $\mathcal{S}$ will be cell-specific, and would be zero for interior model cells not subject to source terms.
+
+Therefore, the rate of change of a generic AED variable in an unspecified cell can be summarised as:
+<br>
+\begin{equation}
+\frac{D}{Dt}C = \mathbb{M} + \mathcal{S} \quad \underbrace{\color{#ED7D31} \pm \color{#ED7D31} \dotsb \color{#ED7D31} f \color{#ED7D31} \dotsb}_{\text{AED terms}}
+(\#eq:nomen3)
+\end{equation}
+<br>
+where the *AED terms* on the RHS are the reaction or movement (e.g. settling) processes that are subsequently described throughout the remainder of this book.

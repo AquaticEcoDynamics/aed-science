@@ -1,5 +1,8 @@
 fig:aed-sites
 tab:vardatatypes
+eq:nomen1
+eq:nomen2
+eq:nomen3
 tab:modules
 tab:modules2
 tab:11-summary
@@ -123,6 +126,9 @@ introduction
 nomenclature
 variables-and-data-types
 a-note-on-notation
+general-notation
+model-domain-and-position
+transport-reference-frame
 organisation-of-the-library-module-structure
 library-design
 model-structure

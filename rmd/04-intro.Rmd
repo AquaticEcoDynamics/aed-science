@@ -2,7 +2,7 @@
 
 ## Scientific Overview {-}
 
-The AED modelling library (termed ‘AED’ for short) consists of numerous modules that are designed as individual model ‘components’ able to be configured in a way that facilitates custom aquatic ecosystem conceptualisations – from very simple to very complex. Think of it like a set of jigsaw pieces that connect together to build a complete picture. Users select water quality and ecosystem variables they wish to simulate and then are able to customize connections and dependencies with other modules, including support for easy customisation at an algorithm level how model components operate (e.g. photosynthesis functions, sorption algorithms etc). 
+The AED modelling library (termed ‘**AED**’ for short) consists of numerous modules that are designed as individual model ‘components’ able to be configured in a way that facilitates custom aquatic ecosystem conceptualisations – from very simple to very complex. Think of it like a set of jigsaw pieces that connect together to build a complete picture. Users select water quality and ecosystem variables they wish to simulate and then are able to customize connections and dependencies with other modules, including support for easy customisation at an algorithm level how model components operate (e.g. photosynthesis functions, sorption algorithms etc).
 
 In general, model components consider the cycling of carbon, nitrogen and phosphorus, and other relevant components such as oxygen, and are able to simulate organisms including different functional groups of phytoplankton and zooplankton, and also organic matter. Modules to support simulation of water column and sediment geochemistry, including coupled kinetic-equilibria, are also included.
 
@@ -13,11 +13,11 @@ The modules have been applied across wetlands, lakes, rivers and estuaries, by t
 
 Applications of the model include:
 
--	Hypoxia
--	Fish-kills
+-	Hypoxia in lakes or estuaries
+-	Fish-kill risks
 -	Harmful algal blooms
 -	Pathogen risk
--	Nutrient cycling 
+-	Nutrient cycling
 -	Greenhouse-gases
 -	Habitat quality
 -	Floodplain response
@@ -36,12 +36,3 @@ This is not the sought of book you read from cover to cover! The book has initia
 5) Part V: Supporting Material.
 
 The chapters within the Parts I-IV of the book typically map to a specific module within the AED code library. Each describes the scientific context of the module, provides technical descriptions for the model processes, and the provides summary information on the required module parameters, and configuration details. Where available, the modules also include case-studies to demonstrate the functionality and publications using the module that can be referred to for further information.
-
-
-
-
-
-
-
-
-

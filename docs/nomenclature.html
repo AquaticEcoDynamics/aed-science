@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>2 Nomenclature | AED2/AED2+ Manual</title>
+  <title>2 Nomenclature | The AED Manual</title>
   <meta name="description" content="Work in progress." />
-  <meta name="generator" content="bookdown 0.21.6 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="2 Nomenclature | AED2/AED2+ Manual" />
+  <meta property="og:title" content="2 Nomenclature | The AED Manual" />
   <meta property="og:type" content="book" />
   
   
@@ -16,14 +16,14 @@
   <meta name="github-repo" content="AquaticEcoDynamics/aed-science/" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="2 Nomenclature | AED2/AED2+ Manual" />
+  <meta name="twitter:title" content="2 Nomenclature | The AED Manual" />
   
   <meta name="twitter:description" content="Work in progress." />
   
 
 
 
-<meta name="date" content="2021-08-19" />
+<meta name="date" content="2021-08-20" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -32,7 +32,7 @@
   
 <link rel="prev" href="introduction.html"/>
 <link rel="next" href="organisation-of-the-library-module-structure.html"/>
-<script src="libs/header-attrs-2.6/header-attrs.js"></script>
+<script src="libs/header-attrs-2.7/header-attrs.js"></script>
 <script src="libs/jquery-3.5.1/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -63,7 +63,7 @@
 <script src="libs/leaflet-providers-plugin-2.0.4.1/leaflet-providers-plugin.js"></script>
 <script src="libs/kePrint-0.0.1/kePrint.js"></script>
 <link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
-<script src="libs/plotly-binding-4.9.4.1/plotly.js"></script>
+<script src="libs/plotly-binding-4.9.3/plotly.js"></script>
 <script src="libs/typedarray-0.1/typedarray.min.js"></script>
 <link href="libs/crosstalk-1.1.1/css/crosstalk.css" rel="stylesheet" />
 <script src="libs/crosstalk-1.1.1/js/crosstalk.min.js"></script>
@@ -200,7 +200,12 @@ div.csl-indent {
 <li class="chapter" data-level="2" data-path="nomenclature.html"><a href="nomenclature.html"><i class="fa fa-check"></i><b>2</b> Nomenclature</a>
 <ul>
 <li class="chapter" data-level="2.1" data-path="nomenclature.html"><a href="nomenclature.html#variables-and-data-types"><i class="fa fa-check"></i><b>2.1</b> Variables and Data Types</a></li>
-<li class="chapter" data-level="2.2" data-path="nomenclature.html"><a href="nomenclature.html#a-note-on-notation"><i class="fa fa-check"></i><b>2.2</b> A Note on Notation</a></li>
+<li class="chapter" data-level="2.2" data-path="nomenclature.html"><a href="nomenclature.html#a-note-on-notation"><i class="fa fa-check"></i><b>2.2</b> A Note on Notation</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="nomenclature.html"><a href="nomenclature.html#general-notation"><i class="fa fa-check"></i><b>2.2.1</b> General Notation</a></li>
+<li class="chapter" data-level="2.2.2" data-path="nomenclature.html"><a href="nomenclature.html#model-domain-and-position"><i class="fa fa-check"></i><b>2.2.2</b> Model Domain and Position</a></li>
+<li class="chapter" data-level="2.2.3" data-path="nomenclature.html"><a href="nomenclature.html#transport-reference-frame"><i class="fa fa-check"></i><b>2.2.3</b> Transport Reference Frame</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="organisation-of-the-library-module-structure.html"><a href="organisation-of-the-library-module-structure.html"><i class="fa fa-check"></i><b>3</b> Organisation of the Library &amp; Module Structure</a>
 <ul>
@@ -749,7 +754,7 @@ div.csl-indent {
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">AED2/AED2+ Manual</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">The AED Manual</a>
           </h1>
         </div>
 
@@ -836,20 +841,69 @@ An option is an integer or Boolean “switch” used to enable a feature in a mo
 <div id="a-note-on-notation" class="section level2" number="2.2">
 <h2><span class="header-section-number">2.2</span> A Note on Notation</h2>
 <p>The remainder of this section presents the range of equations and parameterisations adopted by the various model approaches. For consistency, a standard mathematical notation is used.</p>
+<div id="general-notation" class="section level3" number="2.2.1">
+<h3><span class="header-section-number">2.2.1</span> General Notation</h3>
+<p>The following symbols are used to denote commonly used variables:</p>
 <ul>
 <li><span class="math inline">\(N\)</span> = number of groups (integer)</li>
-<li><span class="math inline">\(a, om, z\)</span> = indices of various sub-groups of algae/phytoplankton, organic matter and zooplankton (integer)</li>
+<li><span class="math inline">\(a, om, z\)</span> = indices of various sub-groups, such as algae/phytoplankton, organic matter and zooplankton (integer)</li>
 <li><span class="math inline">\(\chi_{C:Y}^{group}\)</span> = the stoichiometric ratio of “<span class="math inline">\(group\)</span>” between <span class="math inline">\(C\)</span> and element “<span class="math inline">\(Y\)</span>” (mmol C/mmol Y)</li>
 <li><span class="math inline">\(f_{process}^{var}\)</span> = function that returns the mass flux of “<span class="math inline">\(process\)</span>” on “<span class="math inline">\(var\)</span>” (mmol var/time)</li>
 <li><span class="math inline">\(R_{process}^{var}\)</span> = the rate of “<span class="math inline">\(process\)</span>” influencing the variable “<span class="math inline">\(var\)</span>” (/time)</li>
-<li><span class="math inline">\(F_{process}^{var}\)</span> = the maximum benthic areal flux of variable “var” (mmol var/area/time)</li>
+<li><span class="math inline">\(F_{process}^{var}\)</span> = the areal flux of variable “var” due to a “<span class="math inline">\(process\)</span>,” applied at the sediment-water or air-water interface (<span class="math inline">\(mmol \text{ var}/m^2\)</span>)</li>
 <li><span class="math inline">\(p_{source}^{group}\)</span> = the preference of “<span class="math inline">\(group\)</span>” for “<span class="math inline">\(source\)</span>” (0-1)</li>
-<li><span class="math inline">\(\Phi_{lim}^{group}(var)\)</span> = dimensionless limitation or scaling function to account for the effect of “<span class="math inline">\(lim\)</span>” on “<span class="math inline">\(group\)</span>” (-)</li>
+<li><span class="math inline">\(\Phi_{lim}^{group}[var]\)</span> = dimensionless limitation or scaling function to account for the effect of “<span class="math inline">\(lim\)</span>” on a “<span class="math inline">\(group\)</span>” (-)</li>
+<li><span class="math inline">\(\Phi_{lim}^{process}[var]\)</span> = dimensionless limitation or scaling function to account for the effect of “<span class="math inline">\(lim\)</span>” (limiting) “<span class="math inline">\(var\)</span>” on a “<span class="math inline">\(process\)</span>” (-)</li>
 <li><span class="math inline">\(k^{var}\)</span> = generic fraction related to “<span class="math inline">\(var\)</span>” (0-1)</li>
 <li><span class="math inline">\(\Theta_{config}^{group}\)</span> = switch to configure selectable model component “<span class="math inline">\(config\)</span>” for “<span class="math inline">\(group\)</span>” (0,1,2,…)</li>
-<li><span class="math inline">\(c,\theta,\gamma…\)</span> = coefficient (various units)</li>
+<li><span class="math inline">\(K_{process}^{var}\)</span> = half-saturation constant associated with a biogeochemical “<span class="math inline">\(process\)</span>,” based on the concentration of variable “<span class="math inline">\(var\)</span>” (<span class="math inline">\(mmol \text{ var}/m^3\)</span>)</li>
+<li><span class="math inline">\(c,\theta,\gamma…\)</span> = miscellaneous coefficients (various units)</li>
 </ul>
+</div>
+<div id="model-domain-and-position" class="section level3" number="2.2.2">
+<h3><span class="header-section-number">2.2.2</span> Model Domain and Position</h3>
+<ul>
+<li><span class="math inline">\(\Delta z\)</span> = generic vertical thickness of a computational cell or layer</li>
+<li><span class="math inline">\(\Delta z_{s}\)</span> = vertical thickness of the surface computational cell or layer</li>
+<li><span class="math inline">\(\Delta z_{b}\)</span> = vertical thickness of the bottom computational cell or layer</li>
+<li><span class="math inline">\(h\)</span> = height above a reference point</li>
+<li><span class="math inline">\(z\)</span> = depth below water surface</li>
+<li><span class="math inline">\(d\)</span> = water depth</li>
+<li><span class="math inline">\(A\)</span> = area</li>
+</ul>
+</div>
+<div id="transport-reference-frame" class="section level3" number="2.2.3">
+<h3><span class="header-section-number">2.2.3</span> Transport Reference Frame</h3>
+<p>As AED is designed to be agnostic of the host model spatial domain, and the transport of AED variables is managed by the host model, this book refers to transport in a generic way.</p>
+<p>Each simulated state variable is subject to advection and turbulent mixing, plus boundary conditions, as managed by the host hydrodynamic model. The material derivative, <span class="math inline">\(\frac{D}{Dt}\)</span> is used to depict that the reactions and processes in the AED library (and as summarised in the module descriptions) are undertaken superimposed on the movement of the water being simulated by the host model. For a generic non-reactive AED variable, <span class="math inline">\(C\)</span>, this is:
+<br>
+<span class="math display" id="eq:nomen1">\[\begin{equation}
+\frac{D}{Dt}C = \frac{\partial C}{\partial t} + \mathbf{u} \cdot \nabla C
+\tag{2.1}
+\end{equation}\]</span>
+<br>
+where <span class="math inline">\(\nabla\)</span> is the gradient operator, which in the context of a hydrodynamic model, can be used to generically summarise the advection field:
+<br>
+<span class="math display" id="eq:nomen2">\[\begin{equation}
+\frac{D}{Dt}C = \frac{\partial C}{\partial t} +
+u\frac{\partial C}{\partial x} + v\frac{\partial C}{\partial y} + w\frac{\partial C}{\partial z}
+\tag{2.2}
+\end{equation}\]</span>
+<br>
+where <span class="math inline">\(u\)</span>, <span class="math inline">\(v\)</span>, and <span class="math inline">\(w\)</span> are the water velocity in cartesian coordinates, <span class="math inline">\(x\)</span>, <span class="math inline">\(y\)</span>, and <span class="math inline">\(z\)</span> .</p>
+<p>As the AED model links with hydrodynamic models that use unstructured or non-standard computational domains, the exact transport solution and notation for a given model will necessarily be model-specific, but broadly consistent with the above.</p>
+<p>Similarly, each model will resolve diffusion and turbulent mixing between computational cells in a unique way. For this reason we simply denote the process of “mixing” using the symbol <span class="math inline">\(\mathbb{M}\)</span>. For a typical RANS hydrodynamic model this would be <span class="math inline">\(\mathbf{u} \cdot \nabla^2 C\)</span>. Some models, such as the <a href="https://gmd.copernicus.org/articles/12/473/2019/">General Lake Model</a> (Hipsey et al., 2019), may however adopt a “bulk mixing” model, whereby mixing is resolved using a multi-step algorithm that is not so easily summarised.</p>
+<p>The host model will also have various model-specific approaches for defining the model boundary conditions for simulated AED variables. We therefore use the generic symbol <span class="math inline">\(\mathcal{S}\)</span> to represent sources of mass to a computational cell. <span class="math inline">\(\mathcal{S}\)</span> will be cell-specific, and would be zero for interior model cells not subject to source terms.</p>
+<p>Therefore, the rate of change of a generic AED variable in an unspecified cell can be summarised as:
+<br>
+<span class="math display" id="eq:nomen3">\[\begin{equation}
+\frac{D}{Dt}C = \mathbb{M} + \mathcal{S} \quad \underbrace{\color{#ED7D31} \pm \color{#ED7D31} \dotsb \color{#ED7D31} f \color{#ED7D31} \dotsb}_{\text{AED terms}}
+\tag{2.3}
+\end{equation}\]</span>
+<br>
+where the <em>AED terms</em> on the RHS are the reaction or movement (e.g. settling) processes that are subsequently described throughout the remainder of this book.</p>
 
+</div>
 </div>
 </div>
             </section>
@@ -881,6 +935,7 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": false
 },
 "fontsettings": {
