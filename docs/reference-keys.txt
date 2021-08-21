@@ -5,6 +5,8 @@ eq:nomen2
 eq:nomen3
 tab:modules
 tab:modules2
+eq:oxy1
+eq:oxy2
 tab:11-summary
 eq:nitrogen1
 eq:nitrogen2
@@ -169,6 +171,7 @@ setup-configuration-1
 case-studies-examples-1
 case-study-1
 publications-1
+DO_1
 contributors-2
 overview-2
 model-description-2

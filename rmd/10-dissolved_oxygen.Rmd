@@ -1,36 +1,48 @@
-# Dissolved Oxygen {#DO_1 -}
+# Dissolved Oxygen {#DO_1 }
 
 ## Contributors
 
 
-## Overview 
+## Overview
 
-Dissolved Oxygen (DO) dynamics respond to processes of atmospheric exchange, sediment oxygen demand, microbial use during organic matter mineralisation and nitrification, photosynthetic oxygen production and respiratory oxygen consumption, chemical oxygen demand, and respiration by other biotic components such as seagrass and bivalves (see table below).
+Dissolved Oxygen ($DO$ or $O_2$) is considered to be one of the most important indicators of aquatic ecosystem conditions and is commonly used in models of water quality. Eutrophication and climate change pressures are exacerbating issues of hypoxia and anoxia in waters, ranging from small wetlands, lakes, and the coastal ocean.
 
-Other processes impacting the oxygen concentration include the breakdown of DOC by aerobic heterotrophic bacteria to CO2, whereby a stoichiometrically equivalent amount of oxygen is removed. Chemical oxidation, for example processes such as nitrification or sulfide oxidation, also consume oxygen dependent on the relevant stoichiometric factor. Photosynthetic oxygen production and respiratory oxygen consumption by pelagic phytoplankton is also included and is summed over the number of simulated phytoplankton groups. Seagrass interaction with the oxygen cycle is configurable within the model.
+$O_2$ dynamics respond to processes of atmospheric exchange, sediment oxygen demand, microbial respiration during organic matter mineralisation and nitrification, photosynthetic oxygen production and respiratory oxygen consumption, chemical oxygen demand, and respiration by other biotic components such as seagrass and bivalves.
 
+The $\mathrm{AED}$ oxygen module is suitable for a wide range of waterbody types, from ponds and wetlands, to lakes estuaries and the coastal ocean.
 
 ## Model Description
+
+This module supports one state variable to capture the oxygen concentration, $O_2$. The module is a low-level module that supports the two core processes of air-water exchange, $\check{f}_{atm}^{O_2}$, and sediment-water exchange, $\hat{f}_{sed}^{O_2}$, and is designed to be linked to by other modules that interact with oxygen. The dynamics of $O_2$ can therefore be summarised as:
+
+\begin{eqnarray}
+\frac{D}{Dt}O_2 =  \color{darkgray}{ \mathbb{M} + \mathcal{S} } \quad
+&+&   \overbrace{\check{f}_{atm}^{O_2}+\hat{f}_{sed}^{O_2}}^\text{aed_oxygen} \\ (\#eq:oxy1)
+&-& \color{brown}{ f_{min}^{DOC} - f_{nitrf}^{NH_4} - f_{ch4ox}^{CH_4} - f_{h2sox}^{H_2S} - f_{feox}^{H_2S} } \\ \nonumber
+&+& \color{brown}{ f_{gpp}^{PHY}	- f_{rsp}^{PHY} - f_{rsp}^{ZOO} + \hat{f}_{gpp}^{MAC} - \hat{f}_{rsp}^{MAC} + f_{gpp}^{MAG} - f_{rsp}^{MAG} - \hat{f}_{rsp}^{BIV} } \\ \nonumber
+\end{eqnarray}
+
+where $\mathbb{M}$ and $\mathcal{S}$ refer to water mixing and boundary source terms, respectively, and the coloured $\color{brown}{f}$ terms reflect the optionally configurable contributions from other modules; these include the breakdown of $DOC$ by aerobic heterotrophic bacteria to $CO_2$, whereby a stoichiometrically equivalent amount of oxygen is removed, chemical oxidation reactions, such as nitrification or sulfide oxidation, photosynthetic oxygen production and respiratory consumption by phytoplankton, and also oxygen consumed and produced by any benthic biological groups.
 
 ### Process Descriptions
 
 <!-- previously from 'aed2_oxygen : oxygen solubility & atmospheric exchange' on website version-->
-#### Oxygen Solubility & Atmospheric Exchange {-} 
+#### Oxygen solubility & atmospheric exchange {-}
 Atmospheric exchange is typically modelled based on Wanninkhof (1992) and the flux equation of Riley and Skirrow (1974) for the open water, and on Ho et al. (2011) for estuarine environments.
 \begin{equation}
-								F_{O_2} = k_{O_2} \left(C_{air} - C_{water}\right)
+								F_{atm}^{O_2} = k_{O_2} \left({O_2}_{air} - {O_2}_{s}\right) (\#eq:oxy2)
 \end{equation}
-Where $k_{O_2} (ms^{-1})$ is the oxygen transfer coefficient, $C_{water} (gm^{-3})$ is the oxygen concentration in the surface waters near the interface and $C_{air} (gm^{-3})$ is the concentration of oxygen in the air phase near the interface. A positive flux represents input of oxygen from the atmosphere to the water. $C_{air}$ is dependent on temperature, $T$, salinity, $S$ and atmospheric pressure, $p$, as given by:
+where $k_{O_2}$ is the oxygen gas transfer velocity $(m/s)$, ${O_2}_{s} (gm^{-3})$ is the oxygen concentration in the surface waters near the air-water interface and $C_{air} (gm^{-3})$ is the concentration of oxygen in the air phase near the interface. A positive flux represents input of oxygen from the atmosphere to the water. $C_{air}$ is dependent on temperature, $T$, salinity, $S$ and atmospheric pressure, $p$, as given by:
 \begin{eqnarray}
 							C_{air}\left(T,S,p \right) &=& 1.42763\: f\left(p\right) \exp \left\{ -173.4292+249.6339 \left[\frac{100}{\theta_k}\right] + 143.3483 \ln \left[ \frac{\theta_k}{100}\right] \right. \nonumber \\ &-& \left. 21.8492 \left[\frac{\theta_k}{100}\right] + S\left(-0.033096 +0.014259 \left[\frac{\theta_k}{100}\right] -0.0017 \left[\frac{\theta_k}{100}\right]^2 \right) \right\}
 \end{eqnarray}
-Where $\theta_k$ is temperature in degrees Kelvin, salinity is expressed as parts per thousand and atmospheric pressure is in kPa. The pressure correction function, $f(p)$ varies between one and zero for the surface and high altitudes respectively: 
+where $\theta_k$ is temperature in degrees Kelvin, salinity is expressed as parts per thousand and atmospheric pressure is in kPa. The pressure correction function, $f(p)$ varies between one and zero for the surface and high altitudes respectively:
 \begin{equation}
 							f\left(p\right)=\frac{p_H}{p_{SL}}\left[1-\frac{p_{vap}}{p_H}\right]/\left[1-\frac{p_{vap}}{p_{SL}}\right].
 \end{equation}
 
 
-#### aed2_oxygen : sediment oxygen demand {-} 
+#### Sediment oxygen demand {-}
 Modelling sediment oxygen demand can take a variety of forms. The simplest form in AED2 is the $SOD$ varies as a function of the overlying water temperature and dissolved oxygen levels.
 \begin{equation}
 							f_{O_2}^{DSF}(T,DO)= S_{SOD}\:f_{SED}^{T2}(T)\:f_{SOD}^{DO1}(DO)
@@ -38,7 +50,7 @@ Modelling sediment oxygen demand can take a variety of forms. The simplest form 
 
 Where $S_{SOD}$ is a fixed oxygen flux across the sediment-water interface and $K_{DO_{SOD}}$ is a half-saturation constant for the sediment oxygen demand.
 
-#### Other oxygen sources/sinks (optional) {-} 
+#### Other oxygen sources/sinks (optional) {-}
 - Oxygen consumption during baterial mineralisation of DOC is done in the bacteria module - aed2_bacteria;
 - Oxygen consumption during nitrification is done in the nitrogen module - [aed2_nitrogen][Inorganic Nutrients: C/N/P/Si];
 - Oxygen production/consumption by phytoplankton phtosynthesis/respiration is done in the phytoplankton module - [aed2_phytoplankton][Phytoplankton];
@@ -62,17 +74,18 @@ Where $S_{SOD}$ is a fixed oxygen flux across the sediment-water interface and $
 
 
 ## Setup & Configuration
+
 <!--Previously from 'Setup Example'-->
 An example `nml` block for the oxygen module is shown below:
 ```{}
-&aed2_oxygen
-   oxy_initial = 225.0
-   Fsed_oxy = -40.0
-   Ksed_oxy = 100.0
-   theta_sed_oxy = 1.08
+&aed_oxygen
+   oxy_initial       = 225.0
+   Fsed_oxy          = -40.0
+   Ksed_oxy          = 100.0
+   theta_sed_oxy     =   1.08
 !  Fsed_oxy_variable = 'SDF_Fsed_oxy'
-   oxy_min = 0
-   oxy_max = 500
+   oxy_min           = 0
+   oxy_max           = 500
  /
 ```
 
@@ -102,9 +115,8 @@ leaflet(height=385, width=770) %>%
 
 <center>
 
-![Example 2: The total area of anoxia (<2 mg O2 / L) and hypoxia (<4 mg O2 / L) within the estuary for 2008 and 2010, comparing the model (black line) and spatially interpolated weekly profile data (shaded region).](images/oxygen_example2.png){width=75%} 
+![Example 2: The total area of anoxia (<2 mg O2 / L) and hypoxia (<4 mg O2 / L) within the estuary for 2008 and 2010, comparing the model (black line) and spatially interpolated weekly profile data (shaded region).](images/oxygen_example2.png){width=75%}
 
 </center>
 
 ### Publications
-
