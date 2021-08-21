@@ -23,7 +23,7 @@
 
 
 
-<meta name="date" content="2021-08-20" />
+<meta name="date" content="2021-08-21" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -204,7 +204,8 @@ div.csl-indent {
 <ul>
 <li class="chapter" data-level="2.2.1" data-path="nomenclature.html"><a href="nomenclature.html#general-notation"><i class="fa fa-check"></i><b>2.2.1</b> General Notation</a></li>
 <li class="chapter" data-level="2.2.2" data-path="nomenclature.html"><a href="nomenclature.html#model-domain-and-position"><i class="fa fa-check"></i><b>2.2.2</b> Model Domain and Position</a></li>
-<li class="chapter" data-level="2.2.3" data-path="nomenclature.html"><a href="nomenclature.html#transport-reference-frame"><i class="fa fa-check"></i><b>2.2.3</b> Transport Reference Frame</a></li>
+<li class="chapter" data-level="2.2.3" data-path="nomenclature.html"><a href="nomenclature.html#environmental-conditions"><i class="fa fa-check"></i><b>2.2.3</b> Environmental Conditions</a></li>
+<li class="chapter" data-level="2.2.4" data-path="nomenclature.html"><a href="nomenclature.html#transport-reference-frame"><i class="fa fa-check"></i><b>2.2.4</b> Transport Reference Frame</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="organisation-of-the-library-module-structure.html"><a href="organisation-of-the-library-module-structure.html"><i class="fa fa-check"></i><b>3</b> Organisation of the Library &amp; Module Structure</a>
@@ -795,7 +796,7 @@ div.csl-indent {
 </div>
 <div id="module-summary" class="section level2" number="3.3">
 <h2><span class="header-section-number">3.3</span> Module Summary</h2>
-<p>A high level overview of the simulatable modules are include in Table X below.</p>
+<p>A high level overview of the simulatable modules are include in Table 3.1 below.</p>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
@@ -822,7 +823,7 @@ div.csl-indent {
 </div>
 <div id="AED-water" class="tabcontent">
 <p>
-<div style="border: 1px solid #ddd; padding: 5px; overflow-y: scroll; height:310px; overflow-x: scroll; width:750px; ">
+<div style="border: 1px solid #ddd; padding: 5px; overflow-y: scroll; height:620px; overflow-x: scroll; width:750px; ">
 <table class="table" style="font-size: 12px; width: auto !important; ">
 <caption style="font-size: initial !important;">
 <span id="tab:modules">Table 3.1: </span>Modules
@@ -849,7 +850,7 @@ Relevant Variables
 Modellers can use the aed_tracer to simulate a dissolved or particulate tracer (subject to transport processes only), or this can be optionally configured to account for decay, sedimentation and/or resuspension. This module also include an option to simulate water “retention time” where the water age increments once enters into the waterbody
 </td>
 <td style="text-align:center;min-width: 6em; background-color: white !important;">
-T
+C,<span class="math inline">\(t_{ret}\)</span>
 </td>
 </tr>
 <tr>
@@ -881,6 +882,7 @@ Modules exist for simulation of inorganic nutrients including phosphorus, nitrog
 Organic matter variables cover the C, N &amp; P stored in the dissolved and particulate organic matter pools. This module optionally also supports depiction of “labile” vs “refractory” fractions of organic matter, including the breakdown and hydrolysis process, photo-degradation and mineralisation.
 </td>
 <td style="text-align:center;min-width: 6em; background-color: white !important;">
+DOM, POM
 </td>
 </tr>
 <tr>
@@ -930,7 +932,7 @@ An interface module designed to provide spatially variable sediment flux setting
 </div>
 <div id="AED-benthic" class="tabcontent">
 <p>
-<div style="border: 1px solid #ddd; padding: 5px; overflow-y: scroll; height:310px; overflow-x: scroll; width:750px; ">
+<div style="border: 1px solid #ddd; padding: 5px; overflow-y: scroll; height:620px; overflow-x: scroll; width:750px; ">
 <table class="table" style="font-size: 12px; width: auto !important; ">
 <caption style="font-size: initial !important;">
 <span id="tab:modules2">Table 3.2: </span>Modules

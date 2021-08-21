@@ -128,6 +128,7 @@ variables-and-data-types
 a-note-on-notation
 general-notation
 model-domain-and-position
+environmental-conditions
 transport-reference-frame
 organisation-of-the-library-module-structure
 library-design

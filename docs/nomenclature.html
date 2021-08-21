@@ -23,7 +23,7 @@
 
 
 
-<meta name="date" content="2021-08-20" />
+<meta name="date" content="2021-08-21" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -204,7 +204,8 @@ div.csl-indent {
 <ul>
 <li class="chapter" data-level="2.2.1" data-path="nomenclature.html"><a href="nomenclature.html#general-notation"><i class="fa fa-check"></i><b>2.2.1</b> General Notation</a></li>
 <li class="chapter" data-level="2.2.2" data-path="nomenclature.html"><a href="nomenclature.html#model-domain-and-position"><i class="fa fa-check"></i><b>2.2.2</b> Model Domain and Position</a></li>
-<li class="chapter" data-level="2.2.3" data-path="nomenclature.html"><a href="nomenclature.html#transport-reference-frame"><i class="fa fa-check"></i><b>2.2.3</b> Transport Reference Frame</a></li>
+<li class="chapter" data-level="2.2.3" data-path="nomenclature.html"><a href="nomenclature.html#environmental-conditions"><i class="fa fa-check"></i><b>2.2.3</b> Environmental Conditions</a></li>
+<li class="chapter" data-level="2.2.4" data-path="nomenclature.html"><a href="nomenclature.html#transport-reference-frame"><i class="fa fa-check"></i><b>2.2.4</b> Transport Reference Frame</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="organisation-of-the-library-module-structure.html"><a href="organisation-of-the-library-module-structure.html"><i class="fa fa-check"></i><b>3</b> Organisation of the Library &amp; Module Structure</a>
@@ -766,12 +767,12 @@ div.csl-indent {
 <h1><span class="header-section-number">2</span> Nomenclature</h1>
 <div id="variables-and-data-types" class="section level2" number="2.1">
 <h2><span class="header-section-number">2.1</span> Variables and Data Types</h2>
-<p>There is often confusion over the types of variables and data-types used within the modules. Standard terminology adopted in the AED system is described in Table <a href="nomenclature.html#tab:vardatatypes">2.1</a>.</p>
+<p>There is often confusion over the types of variables and data-types used within the modules. Standard terminology adopted in the <span class="math inline">\(\mathrm{AED}\)</span> system is described in Table <a href="nomenclature.html#tab:vardatatypes">2.1</a>.</p>
 <details open>
 <summary>
 Table <a href="nomenclature.html#tab:vardatatypes">2.1</a>
 </summary>
-<div style="border: 1px solid #ddd; padding: 5px; overflow-y: scroll; height:800px; overflow-x: scroll; width:770px; ">
+<div style="border: 1px solid #ddd; padding: 5px; overflow-y: scroll; height:900px; overflow-x: scroll; width:770px; ">
 <table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
 <caption>
 <span id="tab:vardatatypes">Table 2.1: </span>Variables and data types
@@ -779,58 +780,66 @@ Table <a href="nomenclature.html#tab:vardatatypes">2.1</a>
 <tbody>
 <tr>
 <td style="text-align:left;min-width: 10em; background-color: white !important;">
-Diagnostic variable
+<strong>State variable</strong>
 </td>
 <td style="text-align:left;min-width: 10em; background-color: white !important;">
-A diagnostic variable is a property of interest defined on the computational domain, and available to be output by the host model for plotting and post-processing. Typically, diagnostic variables include derived measure of model state, integrated values, process rates or other cell-specific attributes of interest for debugging. Importantly, diagnostic variables are not subject to transport or boundary conditions as are state variables. Diagnostic variables can be “normal” in which case they exist in all water cells, or they can be “sheet” in which case they are used for surface or benthic attributes (these are typically called 3D and 2D, respectively, though are still relevant in 1D models like GLM).
-</td>
-</tr>
-<tr>
-<td style="text-align:left;min-width: 10em; background-color: white !important;">
-Environment variable
-</td>
-<td style="text-align:left;min-width: 10em; background-color: white !important;">
-An environment variable in AED is a variable managed by the host model but is required by AED for computation of module-specific dynamics. This typically relate to predictions of the host model such as temperature, salinity and velocity, but can also include features of the domain, including benthic material type or cell thickness.
+<font size="2">A state variable is a primary variable being simulated within the cells of the computational domain, and which is subject to transport or boundary conditions as controlled by the host model. Generally, state variables are subject to solution of an Ordinary Differential Equation (ODE) to predict their time-varying conditions within AED, in addition to transport by the host. State variables can be “normal” in which case they exist in all water cells, or they can be “sheet” in which case they are used for surface or benthic attributes (these are typically called “3D” and “2D,” or “pelagic” and “benthic,” respectively, though are still relevant in 1D models like GLM).</font>
 </td>
 </tr>
 <tr>
 <td style="text-align:left;min-width: 10em; background-color: white !important;">
-Boundary condition
+<strong>Diagnostic variable</strong>
 </td>
 <td style="text-align:left;min-width: 10em; background-color: white !important;">
-A boundary condition is a driving variable external to the simulation dynamics, such as weather or flow. In most cases in AED these are handled by the host model, and passed to AED modules as environment vars (e.g. wind, solar radiation etc).
-</td>
-</tr>
-<tr>
-<td style="text-align:left;min-width: 10em; background-color: white !important;">
-Process rate
-</td>
-<td style="text-align:left;min-width: 10em; background-color: white !important;">
-A process rate in AED refers to a flux pathway, ie. a mass or energy flux connecting two variables or more variables. Generally these are units of concentration per time.
+<font size="2">A diagnostic variable is a property of interest defined on the computational domain, and available to be output by the host model for plotting and post-processing. Typically, diagnostic variables include derived measure of model state, integrated values, process rates or other cell-specific attributes of interest for debugging. Importantly, diagnostic variables are not subject to transport or boundary conditions as are state variables. Diagnostic variables can be “normal” in which case they exist in all water cells, or they can be “sheet” in which case they are used for surface or benthic attributes (these are typically called 3D and 2D, respectively, though are still relevant in 1D models like GLM).</font>
 </td>
 </tr>
 <tr>
 <td style="text-align:left;min-width: 10em; background-color: white !important;">
-Parameter - constant
+<strong>Environment variable</strong>
 </td>
 <td style="text-align:left;min-width: 10em; background-color: white !important;">
-A constant parameter is a fixed value over the course of the simulation associated with a process calculation, unit conversion etc. This will be in a variety of units. These values are not accessible outside of the specific module in which they are declared.
-</td>
-</tr>
-<tr>
-<td style="text-align:left;min-width: 10em; background-color: white !important;">
-Parameter - variable
-</td>
-<td style="text-align:left;min-width: 10em; background-color: white !important;">
-A variable parameter is a value over associated with a process calculation, or related attribute, that can vary between computational cells, and/or from time to time depending on local conditions. These values are not accessible outside of the specific module in which they are declared, unless the spatiotemporal varying parameters are also stored as “diagnostic” variables, where they can be linked to other modules and output for post-processing assessment.
+<font size="2">An environment variable in AED is a variable managed by the host model but is required by AED for computation of module-specific dynamics. This typically relate to predictions of the host model such as temperature, salinity and velocity, but can also include features of the domain, including benthic material type or cell thickness.</font>
 </td>
 </tr>
 <tr>
 <td style="text-align:left;min-width: 10em; background-color: white !important;">
-Option
+<strong>Boundary condition</strong>
 </td>
 <td style="text-align:left;min-width: 10em; background-color: white !important;">
-An option is an integer or Boolean “switch” used to enable a feature in a module, or select a specific algorithm or function
+<font size="2">A boundary condition is a driving variable external to the simulation dynamics, such as weather or flow. In most cases in AED these are handled by the host model, and passed to AED modules as environment vars (e.g. wind, solar radiation etc).</font>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;min-width: 10em; background-color: white !important;">
+<strong>Process rate</strong>
+</td>
+<td style="text-align:left;min-width: 10em; background-color: white !important;">
+<font size="2">A process rate in AED refers to a flux pathway, ie. a mass or energy flux connecting two variables or more variables. Generally these are units of concentration per time.</font>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;min-width: 10em; background-color: white !important;">
+<strong>Parameter - constant</strong>
+</td>
+<td style="text-align:left;min-width: 10em; background-color: white !important;">
+<font size="2">A constant parameter is a fixed value over the course of the simulation associated with a process calculation, unit conversion etc. This will be in a variety of units. These values are not accessible outside of the specific module in which they are declared.</font>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;min-width: 10em; background-color: white !important;">
+<strong>Parameter - variable</strong>
+</td>
+<td style="text-align:left;min-width: 10em; background-color: white !important;">
+<font size="2">A variable parameter is a value over associated with a process calculation, or related attribute, that can vary between computational cells, and/or from time to time depending on local conditions. These values are not accessible outside of the specific module in which they are declared, unless the spatiotemporal varying parameters are also stored as “diagnostic” variables, where they can be linked to other modules and output for post-processing assessment.</font>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;min-width: 10em; ">
+<strong>Option</strong>
+</td>
+<td style="text-align:left;min-width: 10em; ">
+<font size="2">An option is an integer or Boolean “switch” used to enable a feature in a module, or select a specific algorithm or function</font>
 </td>
 </tr>
 </tbody>
@@ -840,16 +849,17 @@ An option is an integer or Boolean “switch” used to enable a feature in a mo
 </div>
 <div id="a-note-on-notation" class="section level2" number="2.2">
 <h2><span class="header-section-number">2.2</span> A Note on Notation</h2>
-<p>The remainder of this section presents the range of equations and parameterisations adopted by the various model approaches. For consistency, a standard mathematical notation is used.</p>
+<p>The modules being described in this book each list the specific simulated variables and parameters, with summaries of the module specific notations. For consistency across the modules a standard mathematical notation is adopted.</p>
 <div id="general-notation" class="section level3" number="2.2.1">
 <h3><span class="header-section-number">2.2.1</span> General Notation</h3>
 <p>The following symbols are used to denote commonly used variables:</p>
 <ul>
+<li><span class="math inline">\(t\)</span> = time</li>
 <li><span class="math inline">\(N\)</span> = number of groups (integer)</li>
-<li><span class="math inline">\(a, om, z\)</span> = indices of various sub-groups, such as algae/phytoplankton, organic matter and zooplankton (integer)</li>
-<li><span class="math inline">\(\chi_{C:Y}^{group}\)</span> = the stoichiometric ratio of “<span class="math inline">\(group\)</span>” between <span class="math inline">\(C\)</span> and element “<span class="math inline">\(Y\)</span>” (mmol C/mmol Y)</li>
-<li><span class="math inline">\(f_{process}^{var}\)</span> = function that returns the mass flux of “<span class="math inline">\(process\)</span>” on “<span class="math inline">\(var\)</span>” (mmol var/time)</li>
-<li><span class="math inline">\(R_{process}^{var}\)</span> = the rate of “<span class="math inline">\(process\)</span>” influencing the variable “<span class="math inline">\(var\)</span>” (/time)</li>
+<li><span class="math inline">\(a, om, z\)</span> = indices of various biological sub-groups, such as algae/phytoplankton, organic matter and zooplankton (integer)</li>
+<li><span class="math inline">\(\chi_{C:Y}^{group}\)</span> = the stoichiometric ratio of “<span class="math inline">\(group\)</span>” between element "“<span class="math inline">\(C\)</span>”" and element “<span class="math inline">\(Y\)</span>” (<span class="math inline">\(mmol\)</span> <span class="math inline">\(C\)</span> <span class="math inline">\(/\)</span> <span class="math inline">\(mmol\)</span> <span class="math inline">\(Y\)</span>)</li>
+<li><span class="math inline">\(f_{process}^{var}\)</span> = function that returns the mass flux of “<span class="math inline">\(process\)</span>” on “<span class="math inline">\(var\)</span>” (<span class="math inline">\(mmol \text{ var}/m^3/time\)</span>)</li>
+<li><span class="math inline">\(R_{process}^{var}\)</span> = the relative rate of “<span class="math inline">\(process\)</span>” influencing the variable “<span class="math inline">\(var\)</span>” (<span class="math inline">\(/time\)</span>)</li>
 <li><span class="math inline">\(F_{process}^{var}\)</span> = the areal flux of variable “var” due to a “<span class="math inline">\(process\)</span>,” applied at the sediment-water or air-water interface (<span class="math inline">\(mmol \text{ var}/m^2\)</span>)</li>
 <li><span class="math inline">\(p_{source}^{group}\)</span> = the preference of “<span class="math inline">\(group\)</span>” for “<span class="math inline">\(source\)</span>” (0-1)</li>
 <li><span class="math inline">\(\Phi_{lim}^{group}[var]\)</span> = dimensionless limitation or scaling function to account for the effect of “<span class="math inline">\(lim\)</span>” on a “<span class="math inline">\(group\)</span>” (-)</li>
@@ -857,12 +867,14 @@ An option is an integer or Boolean “switch” used to enable a feature in a mo
 <li><span class="math inline">\(k^{var}\)</span> = generic fraction related to “<span class="math inline">\(var\)</span>” (0-1)</li>
 <li><span class="math inline">\(\Theta_{config}^{group}\)</span> = switch to configure selectable model component “<span class="math inline">\(config\)</span>” for “<span class="math inline">\(group\)</span>” (0,1,2,…)</li>
 <li><span class="math inline">\(K_{process}^{var}\)</span> = half-saturation constant associated with a biogeochemical “<span class="math inline">\(process\)</span>,” based on the concentration of variable “<span class="math inline">\(var\)</span>” (<span class="math inline">\(mmol \text{ var}/m^3\)</span>)</li>
-<li><span class="math inline">\(c,\theta,\gamma…\)</span> = miscellaneous coefficients (various units)</li>
+<li><span class="math inline">\(c,\theta,\gamma, \dotsb\)</span> = miscellaneous coefficients (various units)</li>
 </ul>
 </div>
 <div id="model-domain-and-position" class="section level3" number="2.2.2">
 <h3><span class="header-section-number">2.2.2</span> Model Domain and Position</h3>
+<p>The <span class="math inline">\(\mathrm{AED}\)</span> model links with a variety of models that have diverse approaches to discretize the spatial domain, ranging from an individual ‘box’ to a complex finite-volume mesh. The following standard descriptions are used:</p>
 <ul>
+<li><span class="math inline">\(c, sz\)</span> = indices of computational cells, or sediment zones (integer)</li>
 <li><span class="math inline">\(\Delta z\)</span> = generic vertical thickness of a computational cell or layer</li>
 <li><span class="math inline">\(\Delta z_{s}\)</span> = vertical thickness of the surface computational cell or layer</li>
 <li><span class="math inline">\(\Delta z_{b}\)</span> = vertical thickness of the bottom computational cell or layer</li>
@@ -871,11 +883,50 @@ An option is an integer or Boolean “switch” used to enable a feature in a mo
 <li><span class="math inline">\(d\)</span> = water depth</li>
 <li><span class="math inline">\(A\)</span> = area</li>
 </ul>
+<p>In the science descriptions within each module the dynamics are referred to usually at a generic point in space for convenience. However, we highlight that most variables and properties are resolved as vectors, spanning the number of cells in the computational domain. Note the following conventions:</p>
+<ul>
+<li><span class="math inline">\(C\)</span> = generic use of a variable without a specific spatial position</li>
+<li><span class="math inline">\(C_c\)</span> = denoting the value of a variable <span class="math inline">\(C\)</span> at the location of a specific cell, <span class="math inline">\(c\)</span></li>
+<li><span class="math inline">\(C_{sz}\)</span> = denoting the value of a variable <span class="math inline">\(C\)</span> at the location of a specific sediment zone, <span class="math inline">\(sz\)</span></li>
+</ul>
+<p>To highlight whether a process is particular to a certain set of cells within the domain we use:</p>
+<ul>
+<li><span class="math inline">\(f_{process}^{var}\)</span> = generic use of a function that returns the mass flux of “<span class="math inline">\(process\)</span>” on “<span class="math inline">\(var\)</span>”<br />
+</li>
+<li><span class="math inline">\(\hat{f}_{process}^{var}\)</span> = use of a function that returns the mass flux of “<span class="math inline">\(process\)</span>” on “<span class="math inline">\(var\)</span>” specific to a benthic process at the sediment-water interface</li>
+<li><span class="math inline">\(\check{f}_{process}^{var}\)</span> = use of a function that returns the mass flux of “<span class="math inline">\(process\)</span>” on “<span class="math inline">\(var\)</span>” specific to a surface process at the air-water interface</li>
+</ul>
+<p>To differentiate between a symbol that is referring to a scalar or a vector of cells we use:</p>
+<ul>
+<li><span class="math inline">\(C\)</span> = generic use of a variable without a specific spatial position</li>
+<li><span class="math inline">\(\mathbf{C}\)</span> = an array of the variable <span class="math inline">\(C\)</span> spanning the model’s 1D, 2D or 3D spatial domain</li>
+<li><span class="math inline">\(f_{process}^{var}\)</span> = generic “<span class="math inline">\(process\)</span>” within the model without a specific spatial position</li>
+<li><span class="math inline">\(\mathbf{f}_{process}^{var}\)</span> = an array of of values describing a “<span class="math inline">\(process\)</span>,” spanning the model’s 3D spatial domain</li>
+<li><span class="math inline">\(F_{process}^{var}\)</span> = generic value or constant describing an areal flux of variable “var” due to a “<span class="math inline">\(process\)</span>”</li>
+<li><span class="math inline">\(\mathbf{F}_{process}^{var}\)</span> = an array of of values describing an areal flux of variable “var” due to a “<span class="math inline">\(process\)</span>,” spanning the model’s 2D spatial domain</li>
+</ul>
 </div>
-<div id="transport-reference-frame" class="section level3" number="2.2.3">
-<h3><span class="header-section-number">2.2.3</span> Transport Reference Frame</h3>
-<p>As AED is designed to be agnostic of the host model spatial domain, and the transport of AED variables is managed by the host model, this book refers to transport in a generic way.</p>
-<p>Each simulated state variable is subject to advection and turbulent mixing, plus boundary conditions, as managed by the host hydrodynamic model. The material derivative, <span class="math inline">\(\frac{D}{Dt}\)</span> is used to depict that the reactions and processes in the AED library (and as summarised in the module descriptions) are undertaken superimposed on the movement of the water being simulated by the host model. For a generic non-reactive AED variable, <span class="math inline">\(C\)</span>, this is:
+<div id="environmental-conditions" class="section level3" number="2.2.3">
+<h3><span class="header-section-number">2.2.3</span> Environmental Conditions</h3>
+<p>As outlined in Table <a href="nomenclature.html#tab:vardatatypes">2.1</a>, <span class="math inline">\(\mathrm{AED}\)</span> refers to a specific class of variable denoted an environmental variable. These are provided to the <span class="math inline">\(\mathrm{AED}\)</span> modules from the host model - that is, they are external drivers of dynamics carried out by <span class="math inline">\(\mathrm{AED}\)</span>. Key variables referred to commonly include:</p>
+<ul>
+<li><span class="math inline">\(T\)</span> or <span class="math inline">\(T_K\)</span> = water temperature in Celsius or Kelvin, respectively (<span class="math inline">\(^{\circ}C\)</span>, <span class="math inline">\(K\)</span>)</li>
+<li><span class="math inline">\(S\)</span> = water salinity in practical salinity units (<span class="math inline">\(psu\)</span>)</li>
+<li><span class="math inline">\(I\)</span> = light intensity (<span class="math inline">\(W/m^2\)</span>)</li>
+<li><span class="math inline">\(u\)</span> = generic water velocity (<span class="math inline">\(m/s\)</span>)</li>
+<li><span class="math inline">\(\tau\)</span> = shear stress (<span class="math inline">\(N/m^2\)</span>)</li>
+</ul>
+<p>Variables outside of the water may also be referred to:</p>
+<ul>
+<li><span class="math inline">\(U\)</span> = wind speed, above the domain (<span class="math inline">\(m/s\)</span>)</li>
+<li><span class="math inline">\(T_a\)</span> = air temperature (<span class="math inline">\(^{\circ}C\)</span>)</li>
+<li><span class="math inline">\(I_0\)</span> = light intensity incident on the domain (<span class="math inline">\(W/m^2\)</span>)</li>
+</ul>
+</div>
+<div id="transport-reference-frame" class="section level3" number="2.2.4">
+<h3><span class="header-section-number">2.2.4</span> Transport Reference Frame</h3>
+<p>As <span class="math inline">\(\mathrm{AED}\)</span> is designed to be agnostic of the host model spatial domain, and the transport of <span class="math inline">\(\mathrm{AED}\)</span> variables is managed by the host model, this book refers to transport in a generic way.</p>
+<p>Each simulated state variable is subject to advection and turbulent mixing, plus boundary conditions, as managed by the host hydrodynamic model. The material derivative, <span class="math inline">\(\frac{D}{Dt}\)</span> is used to depict that the reactions and processes in the <span class="math inline">\(\mathrm{AED}\)</span> library (those summarised in the module descriptions) are undertaken superimposed on the movement of the water being simulated by the host model. For a generic non-reactive <span class="math inline">\(\mathrm{AED}\)</span> variable, <span class="math inline">\(C\)</span>, this is:
 <br>
 <span class="math display" id="eq:nomen1">\[\begin{equation}
 \frac{D}{Dt}C = \frac{\partial C}{\partial t} + \mathbf{u} \cdot \nabla C
@@ -889,19 +940,20 @@ where <span class="math inline">\(\nabla\)</span> is the gradient operator, whic
 u\frac{\partial C}{\partial x} + v\frac{\partial C}{\partial y} + w\frac{\partial C}{\partial z}
 \tag{2.2}
 \end{equation}\]</span>
-<br>
-where <span class="math inline">\(u\)</span>, <span class="math inline">\(v\)</span>, and <span class="math inline">\(w\)</span> are the water velocity in cartesian coordinates, <span class="math inline">\(x\)</span>, <span class="math inline">\(y\)</span>, and <span class="math inline">\(z\)</span> .</p>
-<p>As the AED model links with hydrodynamic models that use unstructured or non-standard computational domains, the exact transport solution and notation for a given model will necessarily be model-specific, but broadly consistent with the above.</p>
-<p>Similarly, each model will resolve diffusion and turbulent mixing between computational cells in a unique way. For this reason we simply denote the process of “mixing” using the symbol <span class="math inline">\(\mathbb{M}\)</span>. For a typical RANS hydrodynamic model this would be <span class="math inline">\(\mathbf{u} \cdot \nabla^2 C\)</span>. Some models, such as the <a href="https://gmd.copernicus.org/articles/12/473/2019/">General Lake Model</a> (Hipsey et al., 2019), may however adopt a “bulk mixing” model, whereby mixing is resolved using a multi-step algorithm that is not so easily summarised.</p>
-<p>The host model will also have various model-specific approaches for defining the model boundary conditions for simulated AED variables. We therefore use the generic symbol <span class="math inline">\(\mathcal{S}\)</span> to represent sources of mass to a computational cell. <span class="math inline">\(\mathcal{S}\)</span> will be cell-specific, and would be zero for interior model cells not subject to source terms.</p>
-<p>Therefore, the rate of change of a generic AED variable in an unspecified cell can be summarised as:
+where <span class="math inline">\(u\)</span>, <span class="math inline">\(v\)</span>, and <span class="math inline">\(w\)</span> are the water velocity in cartesian coordinates, <span class="math inline">\(x\)</span>, <span class="math inline">\(y\)</span>, and <span class="math inline">\(z\)</span>.</p>
+<p>As the <span class="math inline">\(\mathrm{AED}\)</span> model links with hydrodynamic models that use unstructured or non-standard computational domains, the exact transport solution and notation for a given model will necessarily be model-specific, but broadly consistent with the above.</p>
+<p>Similarly, each model will resolve diffusion and turbulent mixing between computational cells in a unique way. For this reason we simply denote the process of “mixing” using the symbol <span class="math inline">\(\mathbb{M}\)</span>. For a typical <a href="https://en.wikipedia.org/wiki/Reynolds-averaged_Navier–Stokes_equations">RANS</a> hydrodynamic model this would be <span class="math inline">\(\mathbf{u} \cdot \nabla^2 C\)</span>. Some models, such as the <a href="https://gmd.copernicus.org/articles/12/473/2019/">General Lake Model</a> (Hipsey et al., 2019), may however adopt a “bulk mixing” model, whereby mixing is resolved using a multi-step algorithm that is not so easily summarised.</p>
+<p>The host model will also have various model-specific approaches for defining the model boundary conditions for simulated <span class="math inline">\(\mathrm{AED}\)</span> variables. We therefore use the generic symbol <span class="math inline">\(\mathcal{S}\)</span> to represent sources of mass to a computational cell. <span class="math inline">\(\mathcal{S}\)</span> will be cell-specific, and would be zero for interior model cells not subject to source terms.</p>
+<p>Therefore, the rate of change of a generic <span class="math inline">\(\mathrm{AED}\)</span> variable in an unspecified cell can be summarised as:
 <br>
 <span class="math display" id="eq:nomen3">\[\begin{equation}
 \frac{D}{Dt}C = \mathbb{M} + \mathcal{S} \quad \underbrace{\color{#ED7D31} \pm \color{#ED7D31} \dotsb \color{#ED7D31} f \color{#ED7D31} \dotsb}_{\text{AED terms}}
 \tag{2.3}
 \end{equation}\]</span>
-<br>
 where the <em>AED terms</em> on the RHS are the reaction or movement (e.g. settling) processes that are subsequently described throughout the remainder of this book.</p>
+<p><br>
+In summary, generic notation is adopted to denote the effects of advection, mixing and boundary conditions that are managed by the host hydrodynamic model for <span class="math inline">\(\mathrm{AED}\)</span> simulated variables. Reactions, species interactions, and material or organism redistribution is the focus of the <span class="math inline">\(\mathrm{AED}\)</span> module library.
+<br></p>
 
 </div>
 </div>
