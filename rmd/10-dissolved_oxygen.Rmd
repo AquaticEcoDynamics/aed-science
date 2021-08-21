@@ -18,7 +18,7 @@ This module supports one state variable to capture the oxygen concentration, $O_
 \begin{eqnarray}
 \frac{D}{Dt}O_2 =  \color{darkgray}{ \mathbb{M} + \mathcal{S} } \quad
 &+&   \overbrace{\check{f}_{atm}^{O_2}+\hat{f}_{sed}^{O_2}}^\text{aed_oxygen} \\ (\#eq:oxy1)
-&-& \color{brown}{ f_{min}^{DOC} - f_{nitrf}^{NH_4} - f_{ch4ox}^{CH_4} - f_{h2sox}^{H_2S} - f_{feox}^{H_2S} } \\ \nonumber
+&-& \color{brown}{ f_{min}^{DOC} - f_{nitrf}^{NH_4} - f_{ch4ox}^{CH_4} - f_{h2sox}^{H_2S} - f_{feox}^{FeII} } \\ \nonumber
 &+& \color{brown}{ f_{gpp}^{PHY}	- f_{rsp}^{PHY} - f_{rsp}^{ZOO} + \hat{f}_{gpp}^{MAC} - \hat{f}_{rsp}^{MAC} + f_{gpp}^{MAG} - f_{rsp}^{MAG} - \hat{f}_{rsp}^{BIV} } \\ \nonumber
 \end{eqnarray}
 
@@ -28,54 +28,95 @@ where $\mathbb{M}$ and $\mathcal{S}$ refer to water mixing and boundary source t
 
 <!-- previously from 'aed2_oxygen : oxygen solubility & atmospheric exchange' on website version-->
 #### Oxygen solubility & atmospheric exchange {-}
-Atmospheric exchange is typically modelled based on Wanninkhof (1992) and the flux equation of Riley and Skirrow (1974) for the open water, and on Ho et al. (2011) for estuarine environments.
+Atmospheric exchange is typically modelled based on Wanninkhof (1992) and the flux equation of Riley and Skirrow (1974) for the open water, and on Ho et al. (2011) for estuarine environments. The instantaneous flux at the air-water interface, $\mathcal{F}_{atm}^{O_2}$, depends on the oxygen gradient between the air and water and the gas transfer or piston velocity, $k_{piston}$ $(m/s)$ :
 \begin{equation}
-								F_{atm}^{O_2} = k_{O_2} \left({O_2}_{air} - {O_2}_{s}\right) (\#eq:oxy2)
+								\mathcal{F}_{atm}^{O_2} = k_{piston}^{O_2} \left({O_2}_{air} - {O_2}_{s}\right) (\#eq:oxy2)
 \end{equation}
-where $k_{O_2}$ is the oxygen gas transfer velocity $(m/s)$, ${O_2}_{s} (gm^{-3})$ is the oxygen concentration in the surface waters near the air-water interface and $C_{air} (gm^{-3})$ is the concentration of oxygen in the air phase near the interface. A positive flux represents input of oxygen from the atmosphere to the water. $C_{air}$ is dependent on temperature, $T$, salinity, $S$ and atmospheric pressure, $p$, as given by:
+where ${O_2}_{s}$ is the oxygen concentration in the surface waters near the air-water interface and $C_{air}$ is the concentration of oxygen in the air phase near the interface ($mmol$ $O_2/m^3$). A positive flux represents input of oxygen from the atmosphere to the water. ${O_2}_{air}$ is dependent on temperature, $T$, salinity, $S$ and atmospheric pressure, $p$, as given by:
 \begin{eqnarray}
-							C_{air}\left(T,S,p \right) &=& 1.42763\: f\left(p\right) \exp \left\{ -173.4292+249.6339 \left[\frac{100}{\theta_k}\right] + 143.3483 \ln \left[ \frac{\theta_k}{100}\right] \right. \nonumber \\ &-& \left. 21.8492 \left[\frac{\theta_k}{100}\right] + S\left(-0.033096 +0.014259 \left[\frac{\theta_k}{100}\right] -0.0017 \left[\frac{\theta_k}{100}\right]^2 \right) \right\}
+							{O_2}_{air}\left[T,S,p \right]
+							&=& \tfrac{32}{1000} \: 1.42763 \: \Phi_{p}^{atm} \\
+							&\times&\exp \left\{ -173.4292+249.6339 \left[\frac{100}{T_K}\right] + 143.3483 \ln \left[ \frac{T_K}{100}\right] - 21.8492 \left[\tfrac{T_K}{100}\right] \right. \nonumber \\
+							&+& \left. S\left(-0.033096 +0.014259 \left[\frac{T_K}{100}\right] -0.0017 \left[\frac{T_K}{100}\right]^2 \right) \right\}
+							(\#eq:oxy3)
 \end{eqnarray}
-where $\theta_k$ is temperature in degrees Kelvin, salinity is expressed as parts per thousand and atmospheric pressure is in kPa. The pressure correction function, $f(p)$ varies between one and zero for the surface and high altitudes respectively:
+where $T_K$ is temperature in degrees Kelvin, salinity is expressed as parts per thousand and atmospheric pressure is in kPa. The pressure correction function, $\Phi_{p}^{atm}$ varies between one and zero for the surface and high altitudes respectively:
 \begin{equation}
-							f\left(p\right)=\frac{p_H}{p_{SL}}\left[1-\frac{p_{vap}}{p_H}\right]/\left[1-\frac{p_{vap}}{p_{SL}}\right].
+							\Phi_{p}^{atm}[p]=\frac{p_H}{p_{SL}}\left[1-\frac{p_{vap}}{p_H}\right]/\left[1-\frac{p_{vap}}{p_{SL}}\right].
+(\#eq:oxy4)
 \end{equation}
+where $p_H$ and $p_{SL}$ is the pressure at the altitude of the simulation domain ($H$) and at sea level, respectively.
 
+As $\mathrm{AED}$ can be applied across many types of environments, spanning the ocean to small lakes and flowing waters, users can select from a range of $k_{piston}$ options, or implement their own, to capture this process. The options of $k$ methods are listed in the [Gas Transfer] section of Chapter 30.
+
+Once the exchange flux is computed it is applied to the surface cells of the simulated domain, and the change in the $O_2$ concentration in the surface layer is:
+
+\begin{equation}
+\check{f}_{atm}^{O_2} = \frac{\mathcal{F}_{atm}^{O_2}}{\Delta z_{surf}}                          
+(\#eq:oxy6)
+\end{equation}
+where $\Delta z_{surf}$ is the surface layer thickness.
 
 #### Sediment oxygen demand {-}
-Modelling sediment oxygen demand can take a variety of forms. The simplest form in AED2 is the $SOD$ varies as a function of the overlying water temperature and dissolved oxygen levels.
+Modelling sediment oxygen demand ($SOD$) can take a variety of forms. The simplest form in AED is the "static" model whereby $SOD$ varies as a function of the overlying water temperature and bottom water dissolved oxygen concentration:
 \begin{equation}
-							f_{O_2}^{DSF}(T,DO)= S_{SOD}\:f_{SED}^{T2}(T)\:f_{SOD}^{DO1}(DO)
+  \mathcal{F}_{sed}^{O_2}[T,O_2] = F_{sed}^{oxy} \: \theta_{sod}^{T-20} \: \Phi_{sod}^{oxy}\left[O_2\right]
+	(\#eq:oxy5)
+\end{equation}
+where $F_{sed}^{oxy}$ is the maximum oxygen flux across the sediment-water interface at $20^{\circ}C$. The oxygen limitation is computed based on:
+
+\begin{equation}
+\Phi_{sod}^{oxy}\left[O_2\right]=\frac{O_2}{K_{sod}^{oxy}+O_2}
+(\#eq:oxy6)
 \end{equation}
 
-Where $S_{SOD}$ is a fixed oxygen flux across the sediment-water interface and $K_{DO_{SOD}}$ is a half-saturation constant for the sediment oxygen demand.
+where $K_{sod}^{oxy}$ is the half-saturation constant controlling the sediment oxygen demand. Once the exchange flux is computed it is applied to the bottom cells of the simulated domain, and the change in the $O_2$ concentration in the bottom layer is:
 
-#### Other oxygen sources/sinks (optional) {-}
-- Oxygen consumption during baterial mineralisation of DOC is done in the bacteria module - aed2_bacteria;
-- Oxygen consumption during nitrification is done in the nitrogen module - [aed2_nitrogen][Inorganic Nutrients: C/N/P/Si];
-- Oxygen production/consumption by phytoplankton phtosynthesis/respiration is done in the phytoplankton module - [aed2_phytoplankton][Phytoplankton];
-- Oxygen consumption due to zooplankton respiration is done in the zooplankton module - [aed2_zooplankton][Zooplankton];
-- Oxygen production/consumption by seagrass phtosynthesis/respiration is done in the bateria module - aed2_seagrass;
-- Oxygen consumption due to bivalve respiration is done in the benthic module - [aed2_benthic][Benthic Vegetation];
+\begin{equation}
+\hat{f}_{sed}^{O_2} = \frac{\mathcal{F}_{atm}^{O_2}}{\Delta z_{bot}}                          
+(\#eq:oxy6)
+\end{equation}
+where $\Delta z_{bot}$ is the bottom layer thickness.
 
-### Variable Summary
+**Spatially variable sediment fluxes**: The approach described above is the most simple and default method for capturing oxygen fluxes into the sediment, and is referred to as the static model. This approach can be extended to allow for spatial variability in $F_{sed}^{oxy}$ by engaging the link to the `aed_sedflux` module, where the host models support multiple benthic cells or zones. In this case, users input spatially discrete values of $F_{sed}^{oxy}$.
 
-
-
-#### Diagnostics{-}
-
-### Parameter Summary
+**Dynamically varying sediment flux rates**: Where dynamic rates of $O_2$ are required to flux to the sediment (e.g. in response to episodic loading of organic material to the sediment, or for assessment of long-term changes in sediment quality), then the above expressions may be replaced instead with dynamically calculated variables in `aed_seddiagenesis` via a link created with the `aed_sedflux` module.
 
 
 ### Optional Module Links
 
+Other oxygen sources/sinks are indicated in Eq \@ref(eq:oxy1). These include:
+
+- Oxygen consumption during bacterial mineralisation of DOC is done in the organic matter module - aed_organic_matter;
+- Oxygen consumption during nitrification is done in the nitrogen module - [aed_nitrogen][Inorganic Nutrients: C/N/P/Si];
+- Oxygen production/consumption by phytoplankton phtosynthesis/respiration is done in the phytoplankton module - [aed_phytoplankton][Phytoplankton];
+- Oxygen consumption due to zooplankton respiration is done in the zooplankton module - [aed_zooplankton][Zooplankton];
+- Oxygen production/consumption by seagrass phtosynthesis/respiration is done in the macrophyte module - aed_macrophyte;
+- Oxygen consumption due to bivalve respiration is done in the benthic module - [aed_bivalve][Benthic Vegetation];
+
 
 ### Feedbacks to the Host Model
+The oxygen module has no feedbacks to the host hydrodynamic model.
+
+
+### Variable Summary
+
+The default variables created by this module, and the optionally required linked variables needed for full functionality of this module are summarised in Table X. The diagnostic outputs able to be output are summarised in Table Y.
+
+#### State variables {-}
+
+
+#### Diagnostics{-}
+
+
+
+### Parameter Summary
+
+The parameters and settings used by this module are summarised in Table X
 
 
 ## Setup & Configuration
 
-<!--Previously from 'Setup Example'-->
 An example `nml` block for the oxygen module is shown below:
 ```{}
 &aed_oxygen
@@ -84,39 +125,75 @@ An example `nml` block for the oxygen module is shown below:
    Ksed_oxy          = 100.0
    theta_sed_oxy     =   1.08
 !  Fsed_oxy_variable = 'SDF_Fsed_oxy'
-   oxy_min           = 0
+   oxy_min           =   0
    oxy_max           = 500
  /
 ```
 
+Note that when users link `Fsed_oxy_variable` then `Fsed_oxy` is not required as this parameter will be set for each each sediment zone from values input via the `aed_sedflux` module. The entries `oxy_min` and `oxy_max` are optional.
 
 ## Case Studies & Examples
 
-### Case Study
+### Case Study: Swan-Canning Estuary
 
-```{r echo=FALSE, message=FALSE, warning=FALSE, width = 770, height = 385}
-library(leaflet)
-leaflet(height=385, width=770) %>%
-  setView(lng = 115.835235, lat = -31.991618, zoom = 10) %>%
-  addTiles() %>%
-  addMarkers(lng = 115.835235, lat = -31.991618, popup = "Swan River")
-```
+The Swan-Canning Estuary in Western Australia experiences hypoxia and anoxia due to the strong salt-wedge that forms within the system, and the high sediment oxygen demand. Huang et al. (2018) used the `aed_oxygen` model with the TUFLOW-FV hydrodynamic model to captured the large spatio-temporal variability in oxygen distribution.
 
 <br>
 
+<center>
+```{r echo=FALSE, message=FALSE, warning=FALSE, width = 501, height = 385}
+library(leaflet)
+leaflet(height=385, width=500) %>%
+  setView(lng = 115.835235, lat = -31.991618, zoom = 11) %>%
+  addTiles() %>%
+  addMarkers(lng = 115.835235, lat = -31.991618, popup = "Swan River")
+```
+</center>
 
-<!-- Previously from 'Examples' on website version -->
+<br>
+
+Using spatial zones with different values of `Fsed_oxy`, the simulations show very high accuracy in resolving the "dome" of low oxygen associated with the salt-wedge.
+
+<br>
 
 <center>
 
-![Example 1: Cross-section plots comparing modelled and field salinity (psu, left) and oxygen (mg/L, right) for Sep-Dec 2008 at Swan River. The field plots are based on a contouring around 20 profile data locations.](images/oxygen_example4.png){width=75%}
+![Figure 1: Cross-section plots comparing modelled and field salinity (psu, left) and $O_2$ (mg/L, right) for Sep-Dec 2008 within the Swan River. The field plots are based on contouring approx. 20 profile data locations.](images/oxygen_example4.png){width=75%}
 
 </center>
 
+The results of the model were integrated over the length of the modelled domain to demonstrate the model's performance in capturing the system-scale areal extent of hypoxia ($O_2<4\:mg/L$) and anoxia ($O_2<2\:mg/L$). Huang et al. (2018) also used the validated model to explore different remediation options based on artificial oxygenation inputs.
+
 <center>
 
-![Example 2: The total area of anoxia (<2 mg O2 / L) and hypoxia (<4 mg O2 / L) within the estuary for 2008 and 2010, comparing the model (black line) and spatially interpolated weekly profile data (shaded region).](images/oxygen_example2.png){width=75%}
+![Figure 2: The total area of anoxia (<2 mg O2 / L) and hypoxia (<4 mg O2 / L) within the estuary for 2008 and 2010, comparing the model (black line) and spatially interpolated weekly profile data (shaded region).](images/oxygen_example2.png){width=75%}
 
 </center>
 
 ### Publications
+
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+library(gt)
+library(tidyverse)
+library(kableExtra)
+library(rmarkdown)
+
+aed <- read.csv("tables/10-oxygen/oxy_pubs.csv", check.names=FALSE)
+
+aed %>%
+  gt() %>%
+  tab_options(container.height = px(500),
+              container.width = pct(100),
+              table.width = pct(100),
+              container.overflow.y = TRUE,
+              container.overflow.x = TRUE,
+              table.font.size = 12,
+              column_labels.background.color = "#14759e",
+              row_group.background.color = "lightgrey",
+              column_labels.font.weight = "bold",
+              column_labels.font.size = 14) %>%
+  fmt_markdown(columns = everything())
+
+
+```
