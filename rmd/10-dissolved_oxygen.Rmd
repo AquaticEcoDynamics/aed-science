@@ -36,8 +36,8 @@ where ${O_2}_{s}$ is the oxygen concentration in the surface waters near the air
 \begin{eqnarray}
 							{O_2}_{air}\left[T,S,p \right]
 							&=& \tfrac{32}{1000} \: 1.42763 \: \Phi_{p}^{atm} \\
-							&\times&\exp \left\{ -173.4292+249.6339 \left[\frac{100}{T_K}\right] + 143.3483 \ln \left[ \frac{T_K}{100}\right] - 21.8492 \left[\tfrac{T_K}{100}\right] \right. \nonumber \\
-							&+& \left. S\left(-0.033096 +0.014259 \left[\frac{T_K}{100}\right] -0.0017 \left[\frac{T_K}{100}\right]^2 \right) \right\}
+							&\times&\exp \left\{ -173.4292+249.6339 \left[\tfrac{100}{T_K}\right] + 143.3483 \ln \left[ \tfrac{T_K}{100}\right] - 21.8492 \left[\tfrac{T_K}{100}\right] \right. \nonumber \\
+							&+& \left. S\left(-0.033096 +0.014259 \left[\tfrac{T_K}{100}\right] -0.0017 \left[\tfrac{T_K}{100}\right]^2 \right) \right\}
 							(\#eq:oxy3)
 \end{eqnarray}
 where $T_K$ is temperature in degrees Kelvin, salinity is expressed as parts per thousand and atmospheric pressure is in kPa. The pressure correction function, $\Phi_{p}^{atm}$ varies between one and zero for the surface and high altitudes respectively:
