@@ -53,7 +53,7 @@ Once the exchange flux is computed it is applied to the surface cells of the sim
 
 \begin{equation}
 \check{f}_{atm}^{O_2} = \frac{\mathcal{F}_{atm}^{O_2}}{\Delta z_{surf}}                          
-(\#eq:oxy6)
+(\#eq:oxy5)
 \end{equation}
 where $\Delta z_{surf}$ is the surface layer thickness.
 
@@ -61,20 +61,20 @@ where $\Delta z_{surf}$ is the surface layer thickness.
 Modelling sediment oxygen demand ($SOD$) can take a variety of forms. The simplest form in AED is the "static" model whereby $SOD$ varies as a function of the overlying water temperature and bottom water dissolved oxygen concentration:
 \begin{equation}
   \mathcal{F}_{sed}^{O_2}[T,O_2] = F_{sed}^{oxy} \: \theta_{sod}^{T-20} \: \Phi_{sod}^{oxy}\left[O_2\right]
-	(\#eq:oxy5)
+	(\#eq:oxy6)
 \end{equation}
 where $F_{sed}^{oxy}$ is the maximum oxygen flux across the sediment-water interface at $20^{\circ}C$. The oxygen limitation is computed based on:
 
 \begin{equation}
 \Phi_{sod}^{oxy}\left[O_2\right]=\frac{O_2}{K_{sod}^{oxy}+O_2}
-(\#eq:oxy6)
+(\#eq:oxy7)
 \end{equation}
 
 where $K_{sod}^{oxy}$ is the half-saturation constant controlling the sediment oxygen demand. Once the exchange flux is computed it is applied to the bottom cells of the simulated domain, and the change in the $O_2$ concentration in the bottom layer is:
 
 \begin{equation}
 \hat{f}_{sed}^{O_2} = \frac{\mathcal{F}_{atm}^{O_2}}{\Delta z_{bot}}                          
-(\#eq:oxy6)
+(\#eq:oxy8)
 \end{equation}
 where $\Delta z_{bot}$ is the bottom layer thickness.
 

@@ -809,7 +809,7 @@ where <span class="math inline">\(T_K\)</span> is temperature in degrees Kelvin,
 where <span class="math inline">\(p_H\)</span> and <span class="math inline">\(p_{SL}\)</span> is the pressure at the altitude of the simulation domain (<span class="math inline">\(H\)</span>) and at sea level, respectively.</p>
 <p>As <span class="math inline">\(\mathrm{AED}\)</span> can be applied across many types of environments, spanning the ocean to small lakes and flowing waters, users can select from a range of <span class="math inline">\(k_{piston}\)</span> options, or implement their own, to capture this process. The options of <span class="math inline">\(k\)</span> methods are listed in the <a href="generic-utilities-functions.html#gas-transfer">Gas Transfer</a> section of Chapter 30.</p>
 <p>Once the exchange flux is computed it is applied to the surface cells of the simulated domain, and the change in the <span class="math inline">\(O_2\)</span> concentration in the surface layer is:</p>
-<p><span class="math display" id="eq:oxy6">\[\begin{equation}
+<p><span class="math display" id="eq:oxy5">\[\begin{equation}
 \check{f}_{atm}^{O_2} = \frac{\mathcal{F}_{atm}^{O_2}}{\Delta z_{surf}}                          
 \tag{7.5}
 \end{equation}\]</span>
@@ -818,19 +818,19 @@ where <span class="math inline">\(\Delta z_{surf}\)</span> is the surface layer 
 <div id="sediment-oxygen-demand" class="section level4 unnumbered">
 <h4>Sediment oxygen demand</h4>
 <p>Modelling sediment oxygen demand (<span class="math inline">\(SOD\)</span>) can take a variety of forms. The simplest form in AED is the “static” model whereby <span class="math inline">\(SOD\)</span> varies as a function of the overlying water temperature and bottom water dissolved oxygen concentration:
-<span class="math display" id="eq:oxy5">\[\begin{equation}
+<span class="math display" id="eq:oxy6">\[\begin{equation}
   \mathcal{F}_{sed}^{O_2}[T,O_2] = F_{sed}^{oxy} \: \theta_{sod}^{T-20} \: \Phi_{sod}^{oxy}\left[O_2\right]
     \tag{7.6}
 \end{equation}\]</span>
 where <span class="math inline">\(F_{sed}^{oxy}\)</span> is the maximum oxygen flux across the sediment-water interface at <span class="math inline">\(20^{\circ}C\)</span>. The oxygen limitation is computed based on:</p>
-<p><span class="math display" id="eq:oxy6">\[\begin{equation}
+<p><span class="math display" id="eq:oxy7">\[\begin{equation}
 \Phi_{sod}^{oxy}\left[O_2\right]=\frac{O_2}{K_{sod}^{oxy}+O_2}
-\tag{7.5}
+\tag{7.7}
 \end{equation}\]</span></p>
 <p>where <span class="math inline">\(K_{sod}^{oxy}\)</span> is the half-saturation constant controlling the sediment oxygen demand. Once the exchange flux is computed it is applied to the bottom cells of the simulated domain, and the change in the <span class="math inline">\(O_2\)</span> concentration in the bottom layer is:</p>
-<p><span class="math display" id="eq:oxy6">\[\begin{equation}
+<p><span class="math display" id="eq:oxy8">\[\begin{equation}
 \hat{f}_{sed}^{O_2} = \frac{\mathcal{F}_{atm}^{O_2}}{\Delta z_{bot}}                          
-\tag{7.5}
+\tag{7.8}
 \end{equation}\]</span>
 where <span class="math inline">\(\Delta z_{bot}\)</span> is the bottom layer thickness.</p>
 <p><strong>Spatially variable sediment fluxes</strong>: The approach described above is the most simple and default method for capturing oxygen fluxes into the sediment, and is referred to as the static model. This approach can be extended to allow for spatial variability in <span class="math inline">\(F_{sed}^{oxy}\)</span> by engaging the link to the <code>aed_sedflux</code> module, where the host models support multiple benthic cells or zones. In this case, users input spatially discrete values of <span class="math inline">\(F_{sed}^{oxy}\)</span>.</p>

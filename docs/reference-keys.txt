@@ -9,8 +9,10 @@ eq:oxy1
 eq:oxy2
 eq:oxy3
 eq:oxy4
-eq:oxy6
 eq:oxy5
+eq:oxy6
+eq:oxy7
+eq:oxy8
 tab:11-summary
 eq:nitrogen1
 eq:nitrogen2
