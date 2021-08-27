@@ -11,7 +11,7 @@ Daniel Paraska, Louise Bruce, Peisheng Huang, Matthew Hipsey
 
 ## Overview
 
-Nitrogen is fundamental to shaping water quality in aquatic ecosystems. Nitrogen is of particular interest in that exists in many redox states and there are a myriad of organic and inorganic reactions that make up the nitrogen biogeochemical system. NO~3~^-^ and NH~4~^+^ are the primary inorganic nutrients that re taken up by aquatic plants (phytoplankton and macrophytes) to build biomass as organic nitrogen. As nitrogen is a core building block of an aquatic ecosystem, aed_nitrogen (NIT) is designed as a low-level module for managing inorganic nitrogen pools, and is able to be linked to by higher order modules associated with primary production, and organic matter breakdown.
+Nitrogen is fundamental to shaping water quality in aquatic ecosystems. Nitrogen is of particular interest in that exists in many redox states and there are a myriad of organic and inorganic reactions that make up the nitrogen biogeochemical system. NO~3~^-^ and NH~4~^+^ are the primary inorganic nutrients that re taken up by aquatic plants (phytoplankton and macrophytes) to build biomass as organic nitrogen. As nitrogen is a core building block of an aquatic ecosystem, `aed_nitrogen` ($\mathrm{NIT}$) is designed as a low-level module for managing inorganic nitrogen pools, and is able to be linked to by higher order modules associated with primary production, and organic matter breakdown.
 
 The general nitrogen redox process specifically resolved in this module is NH~4~^+^ oxidation to NO~3~^-^ by O~2~, and NO~3~^-^ is reduced to N~2~ with organic matter, releasing organic nitrogen and NH~4~^+^ in the process. Advanced options are available, in which the end result is generation of the nitrogen species N~2~O. Producing N~2~O uses more variables and reaction pathways and is not necessary for most nutrient cycling studies.
 
@@ -23,22 +23,27 @@ Importantly, nitrogen species react with organic matter. The description of orga
 
 In the basic nitrogen module configuration, the variables NO~3~ and NH~4~ are included and able to be modified by nitrification, denitrification, sediment release and atmospheric deposition; to use this basic functionality, ensure the parameter `simN2O` is set to 0. The main balance equations for the simulated variables are summarised as:
 
-\begin{equation}
-\frac{\partial{NO}_3}{\partial t}=f_{nitrf} - f_{denit} + \color{\#394E73}{f_{atmdep}^{NOx}}+\color{#8B701F}{f_{sed}^{NOx}} (\#eq:nitrogen1)
-\end{equation}
+\begin{eqnarray}
+\frac{D}{Dt}NO_3 =  \color{darkgray}{ \mathbb{M} + \mathcal{S} } \quad
+&+&   \overbrace{f_{nitrf}^{NH_4} - f_{denit}^{NO_3} + \check{f}_{atmdep}^{NO_3}+\hat{f}_{sed}^{NO_3}}^\text{aed_nitrogen} \\ (\#eq:nit1)
+&-& \color{brown}{ f_{nup}^{PHY} - f_{nup}^{MAG} } \\ \nonumber
+\end{eqnarray}
 
-\begin{equation}
-\frac{\partial{NH}_4}{\partial t}=f_{denit} -f_{nitrf} + \color{\#394E73}{f_{atmdep}^{NH4}} + \color{#8B701F}{f_{sed}^{NH4}}
-(\#eq:nitrogen2)
-\end{equation}
+\begin{eqnarray}
+\frac{D}{Dt}NH_4 =  \color{darkgray}{ \mathbb{M} + \mathcal{S} } \quad
+&-&   \overbrace{  f_{nitrf}^{NH_4} + \check{f}_{atmdep}^{NH_4}+\hat{f}_{sed}^{NH_4}}^\text{aed_nitrogen} \\ (\#eq:nit2)
+&+& \color{brown}{ f_{min}^{DON} - f_{nup}^{PHY} - f_{nup}^{MAG} } \\ \nonumber
+\end{eqnarray}
 
-#### Nitrification-denitrification reactions
+where $\mathbb{M}$ and $\mathcal{S}$ refer to water mixing and boundary source terms, respectively, and the coloured $\color{brown}{f}$ terms reflect the optionally configurable contributions from other modules; these include the mineralisation of $DON$ and $N$ cycling terms associated with photosynthesis and respiration by various biotic groups.
+
+#### Nitrification and denitrification reactions
 
 In an environment of high O~2~, NH~4~^+^ is oxidized by oxygen to NO~3~^-^ via nitrification. In an environment of low O~2~, NO~3~^-^ is reduced to N~2~ via the process denitrification. O~2~ limitation on the rate of the reaction is not included in the default setup, but can be chosen by the user, as described in the section below.
 
 <center>
 
-```{r nitrogen-1, echo=FALSE, fig.cap="Summary of two main reactions in the default nitrogen model.", out.width = '60%'}
+```{r nitrogen-1, echo=FALSE, fig.cap="Summary of two main reactions in the default nitrogen model.", out.width = '40%'}
 
 knitr::include_graphics("images/12-nitrogen/picture1.png")
 
@@ -50,22 +55,22 @@ knitr::include_graphics("images/12-nitrogen/picture1.png")
 The rate of nitrification is assumed to vary primarily due to temperature, and also due to variation in O~2~ and pH, according to:
 
 \begin{equation}
-f_{nitrf} =R_{nitrf} \theta_{nitrif}^{T-20}{\underbrace{\Phi_{O2}^{nitrf}\left[O_2\right] \Phi_{pH}^{nitrf}\left[pH\right]}_{\text{Optional limitations}}} NH_4^+
+f_{nitrf}^{NH_4} =R_{nitrf} \; \theta_{nitrif}^{T-20} \; {\underbrace{\Phi_{O2}^{nitrf}\left[O_2\right] \Phi_{pH}^{nitrf}\left[pH\right]}_{\text{Optional limitations}}} \; NH_4
 (\#eq:nitrogen3)
 \end{equation}
 
 Where $\theta_{nitrif}$ is a Arrhenius temperature parameter specific to nitrification, and $T$ is the temperature produced by the host model. O~2~ limitation on this rate will not be included in the setup unless a link to the oxygen module is made, as described in the section below.
 
-**Oxygen limitation on nitrification:** An extra option is to allow low O~2~ concentration to limit the nitrification rate, $f(O_{2})$. If the [aed2_oxygen module](#DO_1) is linked to the nitrogen module, then this setting will switch on automatically. The limitation effect is calculated according to:
+**Oxygen limitation on nitrification:** An extra option is to allow low O~2~ concentration to limit the nitrification rate, $\Phi_{O_{2}}^{nitrf}\left[O_2\right]$. If the [aed_oxygen module](#DO_1) is linked to the nitrogen module, then this setting will switch on automatically. The limitation effect is calculated according to:
 
 \begin{equation}
 \Phi_{O_{2}}^{nitrf}\left[O_2\right]=\frac{O_2}{O_2+K_{nitrif}}
 (\#eq:nitrogen4)
 \end{equation}
 
-Where $K_{nitrif}$ is a half saturation constant concentration of oxygen. The purpose of this factor is to reduce the rate of nitrification as oxygen moves below a critical concentration.
+where $K_{nitrif}$ is a half saturation constant concentration of oxygen. The purpose of this factor is to reduce the rate of nitrification as oxygen moves below a critical concentration.
 
-**pH limitation on nitrification:** The rate of nitrification can be decreased at very high and low pH values, if pH is being simulated (see [Carbon](#Carbon_1) and Geochemsitry). To use this function, the parameter `simNitrfpH` is set to `.TRUE.`. Around neutral pH, between the upper and lower optimum parameters, the reaction proceeds at the normal rate. Below a lower tolerance, and above an upper tolerance, the reaction is stopped entirely. Between the optimum and tolerance values, the rate is limited, in proportion to pH. The piecewise function is described as:
+**pH limitation on nitrification:** The rate of nitrification can be decreased at very high and low pH values, if pH is being simulated (see [Carbon](#Carbon_1) and Geochemistry). To use this function, the parameter `simNitrfpH` is set to `.TRUE.`. Around neutral pH, between the upper and lower optimum parameters, the reaction proceeds at the normal rate. Below a lower tolerance, and above an upper tolerance, the reaction is stopped entirely. Between the optimum and tolerance values, the rate is limited, in proportion to pH. The piecewise function is described as:
 
 \begin{equation}
 \Phi_{pH}^{nitrf}[pH]=
@@ -110,14 +115,14 @@ ggplotly(p = plot)
 
 </center>
 
-**Light limitation on nitrification:** This process is not included in aed2 yet and it does not need to go on the website.
+**Light limitation on nitrification:** This process is not currently included and is an open area for contributions.
 
 #### Denitrification
 
 Denitrification is a heterotrophic process occurring in low oxygen environments such as anoxic bottom waters and sediments. In addition to oxygen, the rate of denitrification depends on temperature and nitrate availability. It is calculated according to:
 
 \begin{equation}
-f_{denit} =R_{denit} \theta_{denit}^{T-20}\frac{NO_3\^-}{NO_3^{-}+K_{NO3}}\Phi_{O2}^{denit}\left[O_2\right] NO_3^- (\#eq:nitrogen6)
+f_{denit}^{NO_3} = R_{denit}\; \theta_{denit}^{T-20}\; \frac{NO_3}{NO_3+K_{NO3}} \; \Phi_{O2}^{denit}\left[O_2\right] NO_3 (\#eq:nitrogen6)
 \end{equation}
 
 Where $R_{denit}$ is the kinetic rate constant for denitrification and $\theta_{denit}$ is a temperature parameter specific to denitrification. The Monod term in Equation \@ref(eq:nitrogen6) slows the rate at low NO~3~^-^ concentrations, and allows it to proceed at the maximum rate `R_denit` at high NO~3~^-^ concentrations. The parameter `KNO3` is the half-saturation parameter for limiting the reaction rate and is set by the user to slow the rate at low NO~3~^-^ concentrations. This parameter should not be confused with the O~2~ limitation factor `K_denit`, mentioned below; O~2~ limitation on the rate of the reaction is not included in the default setup, but can be chosen by the user, as described in the section below.

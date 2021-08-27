@@ -14,8 +14,8 @@ eq:oxy6
 eq:oxy7
 eq:oxy8
 tab:11-summary
-eq:nitrogen1
-eq:nitrogen2
+eq:nit1
+eq:nit2
 fig:nitrogen-1
 eq:nitrogen3
 eq:nitrogen4
@@ -208,7 +208,7 @@ contributors-4
 overview-4
 model-description---default-model
 process-descriptions-4
-nitrification-denitrification-reactions
+nitrification-and-denitrification-reactions
 nitrification
 denitrification
 atmospheric-deposition
