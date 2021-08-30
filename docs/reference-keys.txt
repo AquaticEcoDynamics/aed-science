@@ -14,6 +14,8 @@ eq:oxy6
 eq:oxy7
 eq:oxy8
 tab:11-summary
+tab:11-diagnostics
+tab:11-parameters
 eq:nit1
 eq:nit2
 fig:nitrogen-1

@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>8 Carbon | The AED Manual</title>
   <meta name="description" content="Work in progress." />
-  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.21.6 and GitBook 2.6.7" />
 
   <meta property="og:title" content="8 Carbon | The AED Manual" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 
 
 
-<meta name="date" content="2021-08-27" />
+<meta name="date" content="2021-08-30" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -32,7 +32,7 @@
   
 <link rel="prev" href="DO-1.html"/>
 <link rel="next" href="nitrogen.html"/>
-<script src="libs/header-attrs-2.7/header-attrs.js"></script>
+<script src="libs/header-attrs-2.6/header-attrs.js"></script>
 <script src="libs/jquery-3.5.1/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -63,7 +63,7 @@
 <script src="libs/leaflet-providers-plugin-2.0.4.1/leaflet-providers-plugin.js"></script>
 <script src="libs/kePrint-0.0.1/kePrint.js"></script>
 <link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
-<script src="libs/plotly-binding-4.9.3/plotly.js"></script>
+<script src="libs/plotly-binding-4.9.4.1/plotly.js"></script>
 <script src="libs/typedarray-0.1/typedarray.min.js"></script>
 <link href="libs/crosstalk-1.1.1/css/crosstalk.css" rel="stylesheet" />
 <script src="libs/crosstalk-1.1.1/js/crosstalk.min.js"></script>
@@ -778,10 +778,10 @@ div.csl-indent {
 </div>
 <div id="variable-summary-3" class="section level3" number="8.3.2">
 <h3><span class="header-section-number">8.3.2</span> Variable Summary</h3>
-<div style="border: 1px solid #ddd; padding: 5px; overflow-y: scroll; height:500px; overflow-x: scroll; width:770px; ">
+<div style="border: 1px solid #ddd; padding: 5px; overflow-y: scroll; height:350px; overflow-x: scroll; width:770px; ">
 <table class="table" style="font-size: 12px; width: auto !important; margin-left: auto; margin-right: auto;">
 <caption style="font-size: initial !important;">
-<span id="tab:11-summary">Table 8.1: </span>Carbon table
+<span id="tab:11-summary">Table 8.1: </span>Carbon - state variables
 </caption>
 <thead>
 <tr>
@@ -811,15 +811,15 @@ Comments
 <tbody>
 <tr grouplength="3">
 <td colspan="7" style="border-bottom: 1px solid;background-color: #ebebeb !important;">
-<strong>State variable</strong>
+<strong>aed_carbon</strong>
 </td>
 </tr>
 <tr>
-<td style="text-align:left;padding-left: 2em;" indentlevel="1">
+<td style="text-align:left; padding-left:  2em;" indentlevel="1">
 <code>CAR_dic</code>
 </td>
 <td style="text-align:left;">
-<span class="math display">\[DIC\]</span>
+<span class="math display">\[\mathbf{DIC}\]</span>
 </td>
 <td style="text-align:left;">
 dissolved inorganic carbon
@@ -838,11 +838,11 @@ NA
 </td>
 </tr>
 <tr>
-<td style="text-align:left;padding-left: 2em;" indentlevel="1">
+<td style="text-align:left; padding-left:  2em;" indentlevel="1">
 <code>CAR_ch4</code>
 </td>
 <td style="text-align:left;">
-<span class="math display">\[CH\]</span>
+<span class="math display">\[\mathbf{CH_4}\]</span>
 </td>
 <td style="text-align:left;">
 methane
@@ -861,18 +861,18 @@ NA
 </td>
 </tr>
 <tr>
-<td style="text-align:left;padding-left: 2em;" indentlevel="1">
+<td style="text-align:left; padding-left:  2em;" indentlevel="1">
 <code>CAR_pH</code>
 </td>
 <td style="text-align:left;">
-<span class="math display">\[pH\]</span>
+<span class="math display">\[\mathbf{pH}\]</span>
 </td>
 <td style="text-align:left;">
 pH value
 </td>
 <td style="text-align:left;">
-NA
-</td>
+<ul>
+<li></td>
 <td style="text-align:left;">
 pelagic
 </td>
@@ -883,17 +883,126 @@ pelagic
 NA
 </td>
 </tr>
-<tr grouplength="6">
+<tr grouplength="3">
 <td colspan="7" style="border-bottom: 1px solid;background-color: #ebebeb !important;">
-<strong>Diagnostics</strong>
+<strong>Dependent variables</strong>
 </td>
 </tr>
 <tr>
-<td style="text-align:left;padding-left: 2em;" indentlevel="1">
+<td style="text-align:left; padding-left:  2em;" indentlevel="1">
+<code>OXY_oxy</code>
+</td>
+<td style="text-align:left;">
+<span class="math display">\[\mathbf{O_2}\]</span>
+</td>
+<td style="text-align:left;">
+dissolved oxygen
+</td>
+<td style="text-align:left;">
+mmol O_2/m^3
+</td>
+<td style="text-align:left;">
+pelagic
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left; padding-left:  2em;" indentlevel="1">
+<code>SDF_Fsed_dic</code>
+</td>
+<td style="text-align:left;">
+<span class="math display">\[\mathbf{F}_{sed}^{dic}\]</span>
+</td>
+<td style="text-align:left;">
+sediment CO2 flux
+</td>
+<td style="text-align:left;">
+mmol C/m2/s
+</td>
+<td style="text-align:left;">
+benthic
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Read and written as /day, but internally used as /s
+</td>
+</tr>
+<tr>
+<td style="text-align:left; padding-left:  2em;" indentlevel="1">
+<code>SDF_Fsed_ch4</code>
+</td>
+<td style="text-align:left;">
+<span class="math display">\[\mathbf{F}_{sed}^{ch4}\]</span>
+</td>
+<td style="text-align:left;">
+sediment CH4 flux
+</td>
+<td style="text-align:left;">
+mmol C/m2/s
+</td>
+<td style="text-align:left;">
+benthic
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Read and written as /day, but internally used as /s
+</td>
+</tr>
+</tbody>
+</table>
+</div></li>
+</ul>
+<div style="border: 1px solid #ddd; padding: 5px; overflow-y: scroll; height:350px; overflow-x: scroll; width:770px; ">
+<table class="table" style="font-size: 12px; width: auto !important; margin-left: auto; margin-right: auto;">
+<caption style="font-size: initial !important;">
+<span id="tab:11-diagnostics">Table 8.2: </span>Carbon - diagnostics
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;font-weight: bold;color: white !important;background-color: #14759e !important;">
+AED name
+</th>
+<th style="text-align:left;font-weight: bold;color: white !important;background-color: #14759e !important;">
+Symbol
+</th>
+<th style="text-align:left;font-weight: bold;color: white !important;background-color: #14759e !important;">
+Description
+</th>
+<th style="text-align:left;font-weight: bold;color: white !important;background-color: #14759e !important;">
+Unit
+</th>
+<th style="text-align:left;font-weight: bold;color: white !important;background-color: #14759e !important;">
+Type
+</th>
+<th style="text-align:left;font-weight: bold;color: white !important;background-color: #14759e !important;">
+Typical Range
+</th>
+<th style="text-align:left;font-weight: bold;color: white !important;background-color: #14759e !important;">
+Comments
+</th>
+</tr>
+</thead>
+<tbody>
+<tr grouplength="1">
+<td colspan="7" style="border-bottom: 1px solid;background-color: #ebebeb !important;">
+<strong>diag_level = 0+</strong>
+</td>
+</tr>
+<tr>
+<td style="text-align:left; padding-left:  2em;" indentlevel="1">
 <code>CAR_pco2</code>
 </td>
 <td style="text-align:left;">
-<span class="math display">\[pCO2\]</span>
+<span class="math display">\[\mathbf{pCO_2}\]</span>
 </td>
 <td style="text-align:left;">
 partial pressure of CO2 in water
@@ -911,12 +1020,17 @@ pelagic
 NA
 </td>
 </tr>
+<tr grouplength="5">
+<td colspan="7" style="border-bottom: 1px solid;background-color: #ebebeb !important;">
+<strong>diag_level = 2+</strong>
+</td>
+</tr>
 <tr>
-<td style="text-align:left;padding-left: 2em;" indentlevel="1">
+<td style="text-align:left; padding-left:  2em;" indentlevel="1">
 <code>ox</code>
 </td>
 <td style="text-align:left;">
-<span class="math display">\[R_{ch4}\]</span>
+<span class="math display">\[\mathbf{f}_{ox}^{ch4}\]</span>
 </td>
 <td style="text-align:left;">
 methane oxidation rate
@@ -935,11 +1049,11 @@ NA
 </td>
 </tr>
 <tr>
-<td style="text-align:left;padding-left: 2em;" indentlevel="1">
+<td style="text-align:left; padding-left:  2em;" indentlevel="1">
 <code>CAR_sed_dic</code>
 </td>
 <td style="text-align:left;">
-<span class="math display">\[f_{sed}^{dic}\]</span>
+<span class="math display">\[\mathbf{F}_{sed}^{dic}\]</span>
 </td>
 <td style="text-align:left;">
 CO2 exchange across sediment/water interface
@@ -958,11 +1072,11 @@ NA
 </td>
 </tr>
 <tr>
-<td style="text-align:left;padding-left: 2em;" indentlevel="1">
+<td style="text-align:left; padding-left:  2em;" indentlevel="1">
 <code>CAR_sed_ch4</code>
 </td>
 <td style="text-align:left;">
-<span class="math display">\[f_{sed}^{ch4}\]</span>
+<span class="math display">\[\mathbf{F}_{sed}^{ch4}\]</span>
 </td>
 <td style="text-align:left;">
 CH4 exchange across sediment/water interface
@@ -981,11 +1095,11 @@ NA
 </td>
 </tr>
 <tr>
-<td style="text-align:left;padding-left: 2em;" indentlevel="1">
+<td style="text-align:left; padding-left:  2em;" indentlevel="1">
 <code>CAR_atm_co2_flux</code>
 </td>
 <td style="text-align:left;">
-NA
+<span class="math display">\[\mathbf{F}_{atm}^{dic}\]</span>
 </td>
 <td style="text-align:left;">
 CO2 exchange across atm/water interface
@@ -1004,11 +1118,11 @@ NA
 </td>
 </tr>
 <tr>
-<td style="text-align:left;padding-left: 2em;" indentlevel="1">
+<td style="text-align:left; padding-left:  2em;" indentlevel="1">
 <code>CAR_atm_ch4_flux</code>
 </td>
 <td style="text-align:left;">
-NA
+<span class="math display">\[\mathbf{F}_{atm}^{ch4}\]</span>
 </td>
 <td style="text-align:left;">
 CH4 exchange across atm/water interface
@@ -1026,20 +1140,57 @@ surface
 NA
 </td>
 </tr>
-<tr grouplength="23">
+</tbody>
+</table>
+</div>
+</div>
+<div id="parameter-summary-3" class="section level3" number="8.3.3">
+<h3><span class="header-section-number">8.3.3</span> Parameter Summary</h3>
+<div style="border: 1px solid #ddd; padding: 5px; overflow-y: scroll; height:350px; overflow-x: scroll; width:770px; ">
+<table class="table" style="font-size: 12px; width: auto !important; margin-left: auto; margin-right: auto;">
+<caption style="font-size: initial !important;">
+<span id="tab:11-parameters">Table 8.3: </span>Carbon - parameters
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;font-weight: bold;color: white !important;background-color: #14759e !important;">
+AED name
+</th>
+<th style="text-align:left;font-weight: bold;color: white !important;background-color: #14759e !important;">
+Symbol
+</th>
+<th style="text-align:left;font-weight: bold;color: white !important;background-color: #14759e !important;">
+Description
+</th>
+<th style="text-align:left;font-weight: bold;color: white !important;background-color: #14759e !important;">
+Unit
+</th>
+<th style="text-align:left;font-weight: bold;color: white !important;background-color: #14759e !important;">
+Type
+</th>
+<th style="text-align:left;font-weight: bold;color: white !important;background-color: #14759e !important;">
+Typical Range
+</th>
+<th style="text-align:left;font-weight: bold;color: white !important;background-color: #14759e !important;">
+Comments
+</th>
+</tr>
+</thead>
+<tbody>
+<tr grouplength="9">
 <td colspan="7" style="border-bottom: 1px solid;background-color: #ebebeb !important;">
-<strong>Parameter and configuration</strong>
+<strong>Initialisation</strong>
 </td>
 </tr>
 <tr>
-<td style="text-align:left;padding-left: 2em;" indentlevel="1">
+<td style="text-align:left; padding-left:  2em;" indentlevel="1">
 <code>dic_initial</code>
 </td>
 <td style="text-align:left;">
-<span class="math display">\[DIC_0\]</span>
+<span class="math display">\[DIC_{t=0}\]</span>
 </td>
 <td style="text-align:left;">
-initial DIC cooncentrations
+initial DIC cooncentration
 </td>
 <td style="text-align:left;">
 mmol C/m3
@@ -1054,15 +1205,20 @@ float
 can be overwritten by initial condition files
 </td>
 </tr>
+<tr grouplength="32">
+<td colspan="7" style="border-bottom: 1px solid;background-color: #ebebeb !important;">
+<strong>Sediment exchange</strong>
+</td>
+</tr>
 <tr>
-<td style="text-align:left;padding-left: 2em;" indentlevel="1">
+<td style="text-align:left; padding-left:  2em;" indentlevel="2">
 <code>Fsed_dic</code>
 </td>
 <td style="text-align:left;">
 <span class="math display">\[F_{sed}^{dic}\]</span>
 </td>
 <td style="text-align:left;">
-sediment CO2 flux
+sediment CO2 flux at 20C
 </td>
 <td style="text-align:left;">
 mmol C/m2/day
@@ -1078,11 +1234,11 @@ NA
 </td>
 </tr>
 <tr>
-<td style="text-align:left;padding-left: 2em;" indentlevel="1">
+<td style="text-align:left; padding-left:  2em;" indentlevel="2">
 <code>Ksed_dic</code>
 </td>
 <td style="text-align:left;">
-<span class="math display">\[K_{sed}^{dic}\]</span>
+<span class="math display">\[K_{sed-dic}^{O_2}\]</span>
 </td>
 <td style="text-align:left;">
 half-saturation oxygen concentration controlling CO2 flux
@@ -1101,18 +1257,18 @@ NA
 </td>
 </tr>
 <tr>
-<td style="text-align:left;padding-left: 2em;" indentlevel="1">
+<td style="text-align:left; padding-left:  2em;" indentlevel="2">
 <code>theta_sed_dic</code>
 </td>
 <td style="text-align:left;">
-NA
+<span class="math display">\[\theta_{sed}^{dic}\]</span>
 </td>
 <td style="text-align:left;">
 Arrhenius temperature multiplier for sediment CO2 flux
 </td>
 <td style="text-align:left;">
-NA
-</td>
+<ul>
+<li></td>
 <td style="text-align:left;">
 float
 </td>
@@ -1124,18 +1280,18 @@ NA
 </td>
 </tr>
 <tr>
-<td style="text-align:left;padding-left: 2em;" indentlevel="1">
+<td style="text-align:left; padding-left:  2em;" indentlevel="2">
 <code>pH_initial</code>
 </td>
 <td style="text-align:left;">
-NA
+<span class="math display">\[pH_{t=0}\]</span>
 </td>
 <td style="text-align:left;">
 initial pH values
 </td>
 <td style="text-align:left;">
-NA
-</td>
+<ul>
+<li></td>
 <td style="text-align:left;">
 float
 </td>
@@ -1146,12 +1302,17 @@ float
 can be overwritten by initial condition files
 </td>
 </tr>
+<tr grouplength="15">
+<td colspan="7" style="border-bottom: 1px solid;background-color: #ebebeb !important;">
+<strong>Atmospheric exchange</strong>
+</td>
+</tr>
 <tr>
-<td style="text-align:left;padding-left: 2em;" indentlevel="1">
+<td style="text-align:left; padding-left:  2em;" indentlevel="3">
 <code>atmco2</code>
 </td>
 <td style="text-align:left;">
-NA
+<span class="math display">\[pCO_2^a\]</span>
 </td>
 <td style="text-align:left;">
 atmospheric CO2 concentration
@@ -1170,11 +1331,11 @@ NA
 </td>
 </tr>
 <tr>
-<td style="text-align:left;padding-left: 2em;" indentlevel="1">
+<td style="text-align:left; padding-left:  2em;" indentlevel="3">
 <code>atmch4</code>
 </td>
 <td style="text-align:left;">
-NA
+<span class="math display">\[pCH_4^a\]</span>
 </td>
 <td style="text-align:left;">
 atmospheric CH4 concentration
@@ -1193,11 +1354,11 @@ NA
 </td>
 </tr>
 <tr>
-<td style="text-align:left;padding-left: 2em;" indentlevel="1">
+<td style="text-align:left; padding-left:  2em;" indentlevel="3">
 <code>ionic</code>
 </td>
 <td style="text-align:left;">
-NA
+<span class="math display">\[I\]</span>
 </td>
 <td style="text-align:left;">
 average ionic strength of the water column
@@ -1216,11 +1377,11 @@ NA
 </td>
 </tr>
 <tr>
-<td style="text-align:left;padding-left: 2em;" indentlevel="1">
+<td style="text-align:left; padding-left:  2em;" indentlevel="3">
 <code>ch4_initial</code>
 </td>
 <td style="text-align:left;">
-NA
+<span class="math display">\[CH_{4-t=0}\]</span>
 </td>
 <td style="text-align:left;">
 initial CH4 values
@@ -1239,11 +1400,11 @@ can be overwritten by initial condition files
 </td>
 </tr>
 <tr>
-<td style="text-align:left;padding-left: 2em;" indentlevel="1">
+<td style="text-align:left; padding-left:  2em;" indentlevel="2">
 <code>Rch4ox</code>
 </td>
 <td style="text-align:left;">
-NA
+<span class="math display">\[R_{ox}^{ch4}\]</span>
 </td>
 <td style="text-align:left;">
 maximum reaction rate of CH4 oxidatin @ 20C
@@ -1262,11 +1423,11 @@ NA
 </td>
 </tr>
 <tr>
-<td style="text-align:left;padding-left: 2em;" indentlevel="1">
+<td style="text-align:left; padding-left:  2em;" indentlevel="2">
 <code>Kch4ox</code>
 </td>
 <td style="text-align:left;">
-NA
+<span class="math display">\[K_{ch4ox}^{O_2}\]</span>
 </td>
 <td style="text-align:left;">
 half-saturation oxygen concentration for CH4 oxidation
@@ -1285,18 +1446,18 @@ NA
 </td>
 </tr>
 <tr>
-<td style="text-align:left;padding-left: 2em;" indentlevel="1">
+<td style="text-align:left; padding-left:  2em;" indentlevel="2">
 <code>vTch4ox</code>
 </td>
 <td style="text-align:left;">
-NA
+<span class="math display">\[\theta_{ox}^{ch4}\]</span>
 </td>
 <td style="text-align:left;">
 Arrhenius temperature multiplier for CH4 oxidation
 </td>
 <td style="text-align:left;">
-NA
-</td>
+<ul>
+<li></td>
 <td style="text-align:left;">
 float
 </td>
@@ -1308,11 +1469,11 @@ NA
 </td>
 </tr>
 <tr>
-<td style="text-align:left;padding-left: 2em;" indentlevel="1">
+<td style="text-align:left; padding-left:  2em;" indentlevel="2">
 <code>Fsed_ch4</code>
 </td>
 <td style="text-align:left;">
-NA
+<span class="math display">\[F_{sed}^{ch4}\]</span>
 </td>
 <td style="text-align:left;">
 sediment CH4 flux
@@ -1331,11 +1492,11 @@ NA
 </td>
 </tr>
 <tr>
-<td style="text-align:left;padding-left: 2em;" indentlevel="1">
+<td style="text-align:left; padding-left:  2em;" indentlevel="2">
 <code>Ksed_ch4</code>
 </td>
 <td style="text-align:left;">
-NA
+<span class="math display">\[K_{sed-ch4}^{O_2}\]</span>
 </td>
 <td style="text-align:left;">
 half-saturation oxygen concentration controlling CH4 flux
@@ -1354,18 +1515,18 @@ NA
 </td>
 </tr>
 <tr>
-<td style="text-align:left;padding-left: 2em;" indentlevel="1">
+<td style="text-align:left; padding-left:  2em;" indentlevel="2">
 <code>theta_sed_ch4</code>
 </td>
 <td style="text-align:left;">
-NA
+<span class="math display">\[\theta_{sed}^{ch4}\]</span>
 </td>
 <td style="text-align:left;">
 Arrhenius temperature multiplier for sediment CH4 flux
 </td>
 <td style="text-align:left;">
-NA
-</td>
+<ul>
+<li></td>
 <td style="text-align:left;">
 float
 </td>
@@ -1377,18 +1538,18 @@ NA
 </td>
 </tr>
 <tr>
-<td style="text-align:left;padding-left: 2em;" indentlevel="1">
+<td style="text-align:left; padding-left:  2em;" indentlevel="2">
 <code>methane_reactant_variable</code>
 </td>
 <td style="text-align:left;">
-NA
+<span class="math display">\[O_2\]</span>
 </td>
 <td style="text-align:left;">
 state variable to be consumed during CH4 oxidation
 </td>
 <td style="text-align:left;">
-NA
-</td>
+<ul>
+<li></td>
 <td style="text-align:left;">
 string
 </td>
@@ -1400,18 +1561,18 @@ NA
 </td>
 </tr>
 <tr>
-<td style="text-align:left;padding-left: 2em;" indentlevel="1">
+<td style="text-align:left; padding-left:  2em;" indentlevel="2">
 <code>co2_model</code>
 </td>
 <td style="text-align:left;">
-NA
+<span class="math display">\[\Theta_{co2}\]</span>
 </td>
 <td style="text-align:left;">
 selection of pCO2 model algorithms
 </td>
 <td style="text-align:left;">
-NA
-</td>
+<ul>
+<li></td>
 <td style="text-align:left;">
 integer
 </td>
@@ -1423,18 +1584,18 @@ integer
 </td>
 </tr>
 <tr>
-<td style="text-align:left;padding-left: 2em;" indentlevel="1">
+<td style="text-align:left; padding-left:  2em;" indentlevel="2">
 <code>alk_model</code>
 </td>
 <td style="text-align:left;">
-NA
+<span class="math display">\[\Theta_{TA}\]</span>
 </td>
 <td style="text-align:left;">
 selection of total alkalinity model algorithms
 </td>
 <td style="text-align:left;">
-NA
-</td>
+<ul>
+<li></td>
 <td style="text-align:left;">
 integer
 </td>
@@ -1446,11 +1607,11 @@ developed for Queensland Rivers
 </td>
 </tr>
 <tr>
-<td style="text-align:left;padding-left: 2em;" indentlevel="1">
+<td style="text-align:left; padding-left:  2em;" indentlevel="2">
 <code>co2_piston_model</code>
 </td>
 <td style="text-align:left;">
-NA
+<span class="math display">\[\Theta_{co2}^{piston}\]</span>
 </td>
 <td style="text-align:left;">
 selection of air/water CO2 flux velocity method
@@ -1465,15 +1626,15 @@ integer
 1 - 9
 </td>
 <td style="text-align:left;">
-1: Wanninkhof 1992; 2: Wanninkhof 2014; 3: Ho 2011; 4: Ho 2016; 5: Raymond 2001; 6: Borge 2004; 7: Rosentreter 2016 for CO2; 8: Rosentreter 2016 for CH4; 9: Liss 1986
+see Chapter X
 </td>
 </tr>
 <tr>
-<td style="text-align:left;padding-left: 2em;" indentlevel="1">
+<td style="text-align:left; padding-left:  2em;" indentlevel="2">
 <code>ch4_piston_model</code>
 </td>
 <td style="text-align:left;">
-NA
+<span class="math display">\[\Theta_{ch4}^{piston}\]</span>
 </td>
 <td style="text-align:left;">
 selection of air/water CH4 flux velocity method
@@ -1488,11 +1649,11 @@ integer
 1 - 9
 </td>
 <td style="text-align:left;">
-1: Wanninkhof 1992; 2: Wanninkhof 2014; 3: Ho 2011; 4: Ho 2016; 5: Raymond 2001; 6: Borge 2004; 7: Rosentreter 2016 for CO2; 8: Rosentreter 2016 for CH4; 9: Liss 1986
+see Chapter X
 </td>
 </tr>
 <tr>
-<td style="text-align:left;padding-left: 2em;" indentlevel="1">
+<td style="text-align:left; padding-left:  2em;" indentlevel="1">
 <code>carbon_pco2_link</code>
 </td>
 <td style="text-align:left;">
@@ -1515,30 +1676,30 @@ NA
 </td>
 </tr>
 <tr>
-<td style="text-align:left;padding-left: 2em;" indentlevel="1">
+<td style="text-align:left; padding-left:  2em;" indentlevel="1">
 <code>simCH4ebb</code>
 </td>
 <td style="text-align:left;">
-NA
+<span class="math display">\[\Theta_{ch4}^{ebullition}\]</span>
 </td>
 <td style="text-align:left;">
 option to activate CH4 ebullition
 </td>
 <td style="text-align:left;">
-NA
-</td>
+<ul>
+<li></td>
 <td style="text-align:left;">
 logical
 </td>
 <td style="text-align:left;">
-.true. Or .false.
+T or F
 </td>
 <td style="text-align:left;">
 NA
 </td>
 </tr>
 <tr>
-<td style="text-align:left;padding-left: 2em;" indentlevel="1">
+<td style="text-align:left; padding-left:  2em;" indentlevel="1">
 <code>Fsed_ch4_ebb</code>
 </td>
 <td style="text-align:left;">
@@ -1554,6 +1715,236 @@ mmol C/m2/day
 float
 </td>
 <td style="text-align:left;">
+0
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left; padding-left:  2em;" indentlevel="1">
+<code>ch4_bub_tau0</code>
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+mmol C/m2/day
+</td>
+<td style="text-align:left;">
+float
+</td>
+<td style="text-align:left;">
+0
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left; padding-left:  2em;" indentlevel="1">
+<code>ch4_bub_aLL</code>
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+mmol C/m2/day
+</td>
+<td style="text-align:left;">
+float
+</td>
+<td style="text-align:left;">
+0
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left; padding-left:  2em;" indentlevel="1">
+<code>ch4_bub_cLL</code>
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+mmol C/m2/day
+</td>
+<td style="text-align:left;">
+float
+</td>
+<td style="text-align:left;">
+0
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left; padding-left:  2em;" indentlevel="1">
+<code>ch4_bub_kLL</code>
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+mmol C/m2/day
+</td>
+<td style="text-align:left;">
+float
+</td>
+<td style="text-align:left;">
+0
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left; padding-left:  2em;" indentlevel="1">
+<code>ch4_bub_disf1</code>
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+mmol C/m2/day
+</td>
+<td style="text-align:left;">
+float
+</td>
+<td style="text-align:left;">
+0
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left; padding-left:  2em;" indentlevel="1">
+<code>ch4_bub_disf2</code>
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+mmol C/m2/day
+</td>
+<td style="text-align:left;">
+float
+</td>
+<td style="text-align:left;">
+0
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left; padding-left:  2em;" indentlevel="1">
+<code>ch4_bub_disdp</code>
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+mmol C/m2/day
+</td>
+<td style="text-align:left;">
+float
+</td>
+<td style="text-align:left;">
+0
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left; padding-left:  2em;" indentlevel="1">
+<code>ch4_bub_ws</code>
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+mmol C/m2/day
+</td>
+<td style="text-align:left;">
+float
+</td>
+<td style="text-align:left;">
+0
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left; padding-left:  2em;" indentlevel="1">
+<code>maxMPBProdn</code>
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+float
+</td>
+<td style="text-align:left;">
+0
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left; padding-left:  2em;" indentlevel="1">
+<code>IkMPB</code>
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
 NA
 </td>
 <td style="text-align:left;">
@@ -1562,10 +1953,15 @@ NA
 </tr>
 </tbody>
 </table>
-</div>
-</div>
-<div id="parameter-summary-3" class="section level3" number="8.3.3">
-<h3><span class="header-section-number">8.3.3</span> Parameter Summary</h3>
+</div></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul>
 </div>
 <div id="optional-module-links-3" class="section level3" number="8.3.4">
 <h3><span class="header-section-number">8.3.4</span> Optional Module Links</h3>
@@ -1617,7 +2013,6 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
-"whatsapp": false,
 "all": false
 },
 "fontsettings": {
@@ -1626,11 +2021,11 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/AquaticEcoDynamics/aed-science/blob/master/rmd/11-carbon.Rmd",
+"link": "https://github.com/AquaticEcoDynamics/aed-science/blob/master/11-carbon.Rmd",
 "text": "Edit"
 },
 "history": {
-"link": "https://github.com/AquaticEcoDynamics/aed-science/edit/master/rmd/11-carbon.Rmd",
+"link": "https://github.com/AquaticEcoDynamics/aed-science/edit/master/11-carbon.Rmd",
 "text": null
 },
 "view": {

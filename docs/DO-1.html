@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>7 Dissolved Oxygen | The AED Manual</title>
   <meta name="description" content="Work in progress." />
-  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.21.6 and GitBook 2.6.7" />
 
   <meta property="og:title" content="7 Dissolved Oxygen | The AED Manual" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 
 
 
-<meta name="date" content="2021-08-27" />
+<meta name="date" content="2021-08-30" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -32,7 +32,7 @@
   
 <link rel="prev" href="suspended-sediment.html"/>
 <link rel="next" href="Carbon-1.html"/>
-<script src="libs/header-attrs-2.7/header-attrs.js"></script>
+<script src="libs/header-attrs-2.6/header-attrs.js"></script>
 <script src="libs/jquery-3.5.1/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -63,7 +63,7 @@
 <script src="libs/leaflet-providers-plugin-2.0.4.1/leaflet-providers-plugin.js"></script>
 <script src="libs/kePrint-0.0.1/kePrint.js"></script>
 <link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
-<script src="libs/plotly-binding-4.9.3/plotly.js"></script>
+<script src="libs/plotly-binding-4.9.4.1/plotly.js"></script>
 <script src="libs/typedarray-0.1/typedarray.min.js"></script>
 <link href="libs/crosstalk-1.1.1/css/crosstalk.css" rel="stylesheet" />
 <script src="libs/crosstalk-1.1.1/js/crosstalk.min.js"></script>
@@ -889,8 +889,8 @@ where <span class="math inline">\(\Delta z_{bot}\)</span> is the bottom layer th
 <p>The Swan-Canning Estuary in Western Australia experiences hypoxia and anoxia due to the strong salt-wedge that forms within the system, and the high sediment oxygen demand. Huang et al. (2018) used the <code>aed_oxygen</code> model with the TUFLOW-FV hydrodynamic model to captured the large spatio-temporal variability in oxygen distribution.</p>
 <p><br></p>
 <center>
-<div id="htmlwidget-49cb046eda473caf6ee0" style="width:500px;height:385px;" class="leaflet html-widget"></div>
-<script type="application/json" data-for="htmlwidget-49cb046eda473caf6ee0">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"setView":[[-31.991618,115.835235],11,[]],"calls":[{"method":"addTiles","args":["//{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"http://openstreetmap.org\">OpenStreetMap<\/a> contributors, <a href=\"http://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA<\/a>"}]},{"method":"addMarkers","args":[-31.991618,115.835235,null,null,null,{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},"Swan River",null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]}],"limits":{"lat":[-31.991618,-31.991618],"lng":[115.835235,115.835235]}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-eb99333dfab6479d3bdf" style="width:500px;height:385px;" class="leaflet html-widget"></div>
+<script type="application/json" data-for="htmlwidget-eb99333dfab6479d3bdf">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"setView":[[-31.991618,115.835235],11,[]],"calls":[{"method":"addTiles","args":["//{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"http://openstreetmap.org\">OpenStreetMap<\/a> contributors, <a href=\"http://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA<\/a>"}]},{"method":"addMarkers","args":[-31.991618,115.835235,null,null,null,{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},"Swan River",null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]}],"limits":{"lat":[-31.991618,-31.991618],"lng":[115.835235,115.835235]}},"evals":[],"jsHooks":[]}</script>
 </center>
 <p><br></p>
 <p>Using spatial zones with different values of <code>Fsed_oxy</code>, the simulations show very high accuracy in resolving the “dome” of low oxygen associated with the salt-wedge.</p>
@@ -911,12 +911,11 @@ where <span class="math inline">\(\Delta z_{bot}\)</span> is the bottom layer th
 </div>
 <div id="publications-2" class="section level3" number="7.5.2">
 <h3><span class="header-section-number">7.5.2</span> Publications</h3>
-<div id="lwodkprljl" style="overflow-x:auto;overflow-y:auto;width:100%;height:500px;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#lwodkprljl .gt_table {
+#mqvykosflz .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -941,7 +940,7 @@ where <span class="math inline">\(\Delta z_{bot}\)</span> is the bottom layer th
   border-left-color: #D3D3D3;
 }
 
-#lwodkprljl .gt_heading {
+#mqvykosflz .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -953,7 +952,7 @@ where <span class="math inline">\(\Delta z_{bot}\)</span> is the bottom layer th
   border-right-color: #D3D3D3;
 }
 
-#lwodkprljl .gt_title {
+#mqvykosflz .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -963,23 +962,23 @@ where <span class="math inline">\(\Delta z_{bot}\)</span> is the bottom layer th
   border-bottom-width: 0;
 }
 
-#lwodkprljl .gt_subtitle {
+#mqvykosflz .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
   padding-top: 0;
-  padding-bottom: 6px;
+  padding-bottom: 4px;
   border-top-color: #FFFFFF;
   border-top-width: 0;
 }
 
-#lwodkprljl .gt_bottom_border {
+#mqvykosflz .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#lwodkprljl .gt_col_headings {
+#mqvykosflz .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -994,9 +993,9 @@ where <span class="math inline">\(\Delta z_{bot}\)</span> is the bottom layer th
   border-right-color: #D3D3D3;
 }
 
-#lwodkprljl .gt_col_heading {
+#mqvykosflz .gt_col_heading {
   color: #FFFFFF;
-  background-color: #14759E;
+  background-color: #14759e;
   font-size: 14px;
   font-weight: bold;
   text-transform: inherit;
@@ -1014,9 +1013,9 @@ where <span class="math inline">\(\Delta z_{bot}\)</span> is the bottom layer th
   overflow-x: hidden;
 }
 
-#lwodkprljl .gt_column_spanner_outer {
+#mqvykosflz .gt_column_spanner_outer {
   color: #FFFFFF;
-  background-color: #14759E;
+  background-color: #14759e;
   font-size: 14px;
   font-weight: bold;
   text-transform: inherit;
@@ -1026,30 +1025,30 @@ where <span class="math inline">\(\Delta z_{bot}\)</span> is the bottom layer th
   padding-right: 4px;
 }
 
-#lwodkprljl .gt_column_spanner_outer:first-child {
+#mqvykosflz .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#lwodkprljl .gt_column_spanner_outer:last-child {
+#mqvykosflz .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#lwodkprljl .gt_column_spanner {
+#mqvykosflz .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
   vertical-align: bottom;
   padding-top: 5px;
-  padding-bottom: 5px;
+  padding-bottom: 6px;
   overflow-x: hidden;
   display: inline-block;
   width: 100%;
 }
 
-#lwodkprljl .gt_group_heading {
+#mqvykosflz .gt_group_heading {
   padding: 8px;
   color: #333333;
-  background-color: #D3D3D3;
+  background-color: lightgrey;
   font-size: 100%;
   font-weight: initial;
   text-transform: inherit;
@@ -1068,10 +1067,10 @@ where <span class="math inline">\(\Delta z_{bot}\)</span> is the bottom layer th
   vertical-align: middle;
 }
 
-#lwodkprljl .gt_empty_group_heading {
+#mqvykosflz .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
-  background-color: #D3D3D3;
+  background-color: lightgrey;
   font-size: 100%;
   font-weight: initial;
   border-top-style: solid;
@@ -1083,15 +1082,15 @@ where <span class="math inline">\(\Delta z_{bot}\)</span> is the bottom layer th
   vertical-align: middle;
 }
 
-#lwodkprljl .gt_from_md > :first-child {
+#mqvykosflz .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#lwodkprljl .gt_from_md > :last-child {
+#mqvykosflz .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#lwodkprljl .gt_row {
+#mqvykosflz .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1110,7 +1109,7 @@ where <span class="math inline">\(\Delta z_{bot}\)</span> is the bottom layer th
   overflow-x: hidden;
 }
 
-#lwodkprljl .gt_stub {
+#mqvykosflz .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1122,7 +1121,7 @@ where <span class="math inline">\(\Delta z_{bot}\)</span> is the bottom layer th
   padding-left: 12px;
 }
 
-#lwodkprljl .gt_summary_row {
+#mqvykosflz .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1132,7 +1131,7 @@ where <span class="math inline">\(\Delta z_{bot}\)</span> is the bottom layer th
   padding-right: 5px;
 }
 
-#lwodkprljl .gt_first_summary_row {
+#mqvykosflz .gt_first_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1142,7 +1141,7 @@ where <span class="math inline">\(\Delta z_{bot}\)</span> is the bottom layer th
   border-top-color: #D3D3D3;
 }
 
-#lwodkprljl .gt_grand_summary_row {
+#mqvykosflz .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1152,7 +1151,7 @@ where <span class="math inline">\(\Delta z_{bot}\)</span> is the bottom layer th
   padding-right: 5px;
 }
 
-#lwodkprljl .gt_first_grand_summary_row {
+#mqvykosflz .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1162,11 +1161,11 @@ where <span class="math inline">\(\Delta z_{bot}\)</span> is the bottom layer th
   border-top-color: #D3D3D3;
 }
 
-#lwodkprljl .gt_striped {
+#mqvykosflz .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#lwodkprljl .gt_table_body {
+#mqvykosflz .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1175,7 +1174,7 @@ where <span class="math inline">\(\Delta z_{bot}\)</span> is the bottom layer th
   border-bottom-color: #D3D3D3;
 }
 
-#lwodkprljl .gt_footnotes {
+#mqvykosflz .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1189,13 +1188,13 @@ where <span class="math inline">\(\Delta z_{bot}\)</span> is the bottom layer th
   border-right-color: #D3D3D3;
 }
 
-#lwodkprljl .gt_footnote {
+#mqvykosflz .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding: 4px;
 }
 
-#lwodkprljl .gt_sourcenotes {
+#mqvykosflz .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1209,47 +1208,46 @@ where <span class="math inline">\(\Delta z_{bot}\)</span> is the bottom layer th
   border-right-color: #D3D3D3;
 }
 
-#lwodkprljl .gt_sourcenote {
+#mqvykosflz .gt_sourcenote {
   font-size: 90%;
   padding: 4px;
 }
 
-#lwodkprljl .gt_left {
+#mqvykosflz .gt_left {
   text-align: left;
 }
 
-#lwodkprljl .gt_center {
+#mqvykosflz .gt_center {
   text-align: center;
 }
 
-#lwodkprljl .gt_right {
+#mqvykosflz .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#lwodkprljl .gt_font_normal {
+#mqvykosflz .gt_font_normal {
   font-weight: normal;
 }
 
-#lwodkprljl .gt_font_bold {
+#mqvykosflz .gt_font_bold {
   font-weight: bold;
 }
 
-#lwodkprljl .gt_font_italic {
+#mqvykosflz .gt_font_italic {
   font-style: italic;
 }
 
-#lwodkprljl .gt_super {
+#mqvykosflz .gt_super {
   font-size: 65%;
 }
 
-#lwodkprljl .gt_footnote_marks {
+#mqvykosflz .gt_footnote_marks {
   font-style: italic;
-  font-weight: normal;
   font-size: 65%;
 }
 </style>
-<table class="gt_table">
+<div id="mqvykosflz" style="overflow-x:auto;overflow-y:auto;width:100%;height:500px;"><table class="gt_table">
   
   <thead class="gt_col_headings">
     <tr>
@@ -1292,8 +1290,7 @@ where <span class="math inline">\(\Delta z_{bot}\)</span> is the bottom layer th
   </tbody>
   
   
-</table>
-</div>
+</table></div>
 
 </div>
 </div>
@@ -1339,7 +1336,6 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
-"whatsapp": false,
 "all": false
 },
 "fontsettings": {
@@ -1348,11 +1344,11 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/AquaticEcoDynamics/aed-science/blob/master/rmd/10-dissolved_oxygen.Rmd",
+"link": "https://github.com/AquaticEcoDynamics/aed-science/blob/master/10-dissolved_oxygen.Rmd",
 "text": "Edit"
 },
 "history": {
-"link": "https://github.com/AquaticEcoDynamics/aed-science/edit/master/rmd/10-dissolved_oxygen.Rmd",
+"link": "https://github.com/AquaticEcoDynamics/aed-science/edit/master/10-dissolved_oxygen.Rmd",
 "text": null
 },
 "view": {
