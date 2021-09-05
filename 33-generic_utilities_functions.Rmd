@@ -1,4 +1,4 @@
-# (PART)  Supporting Material {-} 
+# (PART)  Supporting Material {-}
 
 # Generic Utilities & Functions
 
@@ -7,9 +7,9 @@
 
 ## Physico-chemical
 
-### Gas Transfer
+### Gas Transfer {#GAS}
 
-Target: review and select a few most popularly used gas exchange velocity to be used in AED modules. Note only key factors of wind speed, current speed, and water depths are considered. 
+Target: review and select a few most popularly used gas exchange velocity to be used in AED modules. Note only key factors of wind speed, current speed, and water depths are considered.
 
 Selection criteria:
 
@@ -25,7 +25,7 @@ library(kableExtra)
 table1 <- read.csv("tables/generic_utilities_functions-1.csv", check.names=FALSE)
 kable(table1,"html", escape = F, align = "c", caption = "",
       bootstrap_options = "hover") %>%
-  kable_styling(table1, bootstrap_options = "hover", 
+  kable_styling(table1, bootstrap_options = "hover",
                 full_width = F, position = "center",
                 font_size = 12) %>%
   column_spec(1, width_min = "6em") %>%
@@ -33,7 +33,7 @@ kable(table1,"html", escape = F, align = "c", caption = "",
   column_spec(3, width_min = "6em") %>%
   row_spec(1:6, background = 'white') %>%
   scroll_box(width = "770px", height = "400px",
-  fixed_thead = FALSE) 
+  fixed_thead = FALSE)
 ```
 </center>
 <br>
@@ -44,17 +44,14 @@ library(kableExtra)
 table2 <- read.csv("tables/generic_utilities_functions-2.csv", check.names=FALSE)
 kable(table2,"html", escape = F, align = "c", caption = "",
       bootstrap_options = "hover") %>%
-  kable_styling(table2, bootstrap_options = "hover", 
+  kable_styling(table2, bootstrap_options = "hover",
                 full_width = F, position = "center",
                 font_size = 12) %>%
   column_spec(1:7, width_min = "6em") %>%
   row_spec(1:8, background = 'white') %>%
   scroll_box(width = "device-width", height = "500px",
-  fixed_thead = FALSE) 
+  fixed_thead = FALSE)
 ```
 </center>
 
 ## Biological
-
-
-

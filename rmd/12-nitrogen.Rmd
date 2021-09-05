@@ -3,7 +3,7 @@ nocite: |
   @bruce2015
 ---
 
-# Inorganic Nitrogen
+# Nitrogen
 
 ## Contributors
 

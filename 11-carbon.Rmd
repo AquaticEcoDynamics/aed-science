@@ -1,12 +1,68 @@
-# Carbon {#Carbon_1 }
+# Inorganic Carbon {#Carbon_1 }
 
 ## Contributors
+
+Peisheng Huang, Kamilla Kurucz & Matthew Hipsey
+
 ## Overview
+
+Understanding carbon cycling is central to understanding food webs and how aquatic communities are structured and supported (Dodds and Whiles, 2010). Exchange of carbon between aquatic systems and the atmosphere is also fundamental in influencing climate (e.g. Cai, 2011; Borges and Abril, 2012). Accordingly, there are a wide range of applications that require simulation of carbon species.
+
+The $\mathrm{AED}$ library can be used to simulate both the organic and inorganic pools of carbon. As carbon is a core building block of an aquatic ecosystem, `aed_carbon` ($\mathrm{CAR}$) is designed as a low-level module for managing inorganic carbon pools, and is able to be linked to by higher level modules associated with organic matter cycling, primary production, and other biotic groups. In particular, organic carbon is the currency of energy exchange through food webs, and the processes for modelling organic carbon are described in Section 10 - [Organic Matter](https://aquaticecodynamics.github.io/aed-science/organic-matter.html). This chapter presents the forms of inorganic carbon and fluxes of carbon in the aquatic environment and how they are modelled in the aed_carbon module
+
 ## Model Description
+
+The core variables included in the aed_carbon module are Dissolved Inorganic Carbon (DIC) and methane (CH4).
+
+The dynamics for DIC is captured in the model when `simDIC = .true.`. The rate of change of DIC concentration as it moves with the water is calculated from local effects associated with air-water exchange ($\check{f}_{atm}^{CO_2}$), oxidation of CH4, ($f_{ox}^{CH_4}$), and sediment-water exchange ($\hat{f}_{sed}^{DIC}$), which is summarized as:
+
+\begin{eqnarray}
+\frac{D}{Dt}DIC =  \color{darkgray}{ \mathbb{M} + \mathcal{S} } \quad
+&+&   \overbrace{\check{f}_{atm}^{CO_2}+f_{ox}^{CH_4}+\hat{f}_{sed}^{DIC}  }^\text{aed_carbon} \\ (\#eq:car1)
+&+& \color{brown}{ f_{min}^{DOC} - f_{gpp}^{PHY} + f_{rsp}^{PHY} + f_{rsp}^{ZOO} } \\ \nonumber
+&-& \color{brown}{ \hat{f}_{gpp}^{MAC} + \hat{f}_{rsp}^{MAC} - f_{gpp}^{MAG} - f_{rsp}^{MAG} + \hat{f}_{rsp}^{BIV} } \\ \nonumber
+\end{eqnarray}
+
+where $\mathbb{M}$ and $\mathcal{S}$ refer to water mixing and boundary source terms, respectively, and the coloured $\color{brown}{f}$ terms reflect DIC fluxes computed by other (optionally) linked modules such as modules of organic matter ($\mathrm{OMG}$), phytoplankton ($\mathrm{PHY}$) or zooplankton ($\mathrm{ZOO}$).
+
+The dynamics for CH4 is captured in the model when `simCH4 = .true.`. CH4 is formed during the decomposition of organic material by microbial methanogenesis (e.g., Cicerone and Oremland, 1988), which requires strictly anaerobic conditions and is therefore usually restricted to be deep within aquatic sediment. Inputs to the water therefore are from sediment CH4 production, which can enter the water column either as a dissolved flux or via ebullition (bubble release), or from external sources such as wastewater discharges. Once in the water dissolved CH4 is the balance between inputs from the sediment and losses from air-water exchange and CH4 oxidation to DIC.
+
+The rate of change of CH4 concentration as it moves with the water is therefore calculated as:
+
+\begin{eqnarray}
+\frac{D}{Dt}CH_4 =  \color{darkgray}{ \mathbb{M} + \mathcal{S} } \quad
+&+&   \overbrace{\check{f}_{atm}^{CH_4}-f_{ox}^{CH_4}+\hat{f}_{sed}^{CH_4} +f_{dis}^{CH_{4-bubble}} }^\text{aed_carbon} \\ (\#eq:car2)
+\end{eqnarray}
+
+where $\check{f}_{atm}^{CH_4}$ is the air-water exchange of dissolved methane and $\hat{f}_{sed}^{CH_4}$  is the sediment diffusive release flux. Bubbles moving through the water column after release from the sediment can also dissolve, denoted $f_{dis}^{CH_{4-bubble}}$.
+
+The details of how each flux relevant to DIC and CH4 is calculated, and the associated parameter settings, are described in the next sections. For details on how to model organic carbon refer to the aed_organic_matter model.
+
+
 ###	Process Descriptions
+
+###	Optional Module Links
+
+Other carbon sources/sinks are indicated in Eq \@ref(eq:car1) for DIC. These include:
+
+-	aed_oxygen: Oxygen is used to control oxidation;
+-	aed_organic_matter: organic matters minerization can update DIC;
+-	aed_phytoplankton: phytoplankton photosynthetic production of CO2 can update DIC;
+-	aed_geochemistry: optional link to simulate the carbonate system;
+-	aed_sedflux: modules to update the sediment-water exchange
+
+
+###	Feedbacks to the Host Model
+
+The inorganic carbon module has no feedbacks to the host hydrodynamic model.
+
 ###	Variable Summary
 
-```{r 11-summary, echo=FALSE, message=FALSE, warning=FALSE}
+The default variables created by this module, and the optionally required linked variables needed for full functionality of this module are summarised in Table \@ref(tab:11-statetable). The diagnostic outputs able to be output are summarised in Table \@ref(tab:11-diagtable).
+
+#### State variables {-}
+
+```{r 11-statetable, echo=FALSE, message=FALSE, warning=FALSE}
 library(knitr)
 library(kableExtra)
 library(readxl)
@@ -23,7 +79,20 @@ for(i in seq_along(carbon$Symbol)){
     carbon$Symbol[i] <- NA
   }
 }
-
+for(i in seq_along(carbon$Unit)){
+  if(!is.na(carbon$Unit[i])==TRUE){
+    carbon$Unit[i] <- paste0("$$\\small{",carbon$Unit[i],"}$$")
+  } else {
+    carbon$Unit[i] <- NA
+  }
+}
+for(i in seq_along(carbon$Comments)){
+  if(!is.na(carbon$Comments[i])==TRUE){
+    carbon$Comments[i] <- paste0("",carbon$Comments[i],"")
+  } else {
+    carbon$Comments[i] <- " "
+  }
+}
 kbl(carbon[,3:NCOL(carbon)], caption = "Carbon - state variables", align = "l",) %>%
   pack_rows(carbonGroups[1],
             min(which(carbon$Group == carbonGroups[1])),
@@ -34,12 +103,20 @@ kbl(carbon[,3:NCOL(carbon)], caption = "Carbon - state variables", align = "l",)
             max(which(carbon$Group == carbonGroups[2])),
             background = '#ebebeb') %>%
   row_spec(0, background = "#14759e", bold = TRUE, color = "white") %>%
-  kable_styling(full_width = F,font_size = 12) %>%
-  scroll_box(width = "770px", height = "350px",
+  kable_styling(full_width = F,font_size = 11) %>%
+	column_spec(2, width_min = "7em") %>%
+	column_spec(3, width_max = "18em") %>%
+	column_spec(4, width_min = "10em") %>%
+	column_spec(5, width_min = "5em") %>%
+	column_spec(7, width_min = "10em") %>%
+	column_spec(7, width_max = "20em") %>%
+  scroll_box(width = "770px", height = "355px",
              fixed_thead = FALSE)
 ```
 
-```{r 11-diagnostics, echo=FALSE, message=FALSE, warning=FALSE}
+#### Diagnostics{-}
+
+```{r 11-diagtable, echo=FALSE, message=FALSE, warning=FALSE}
 library(knitr)
 library(kableExtra)
 library(readxl)
@@ -56,6 +133,20 @@ for(i in seq_along(carbon$Symbol)){
     carbon$Symbol[i] <- NA
   }
 }
+for(i in seq_along(carbon$Unit)){
+  if(!is.na(carbon$Unit[i])==TRUE){
+    carbon$Unit[i] <- paste0("$$\\small{",carbon$Unit[i],"}$$")
+  } else {
+    carbon$Unit[i] <- NA
+  }
+}
+for(i in seq_along(carbon$Comments)){
+  if(!is.na(carbon$Comments[i])==TRUE){
+    carbon$Comments[i] <- paste0("",carbon$Comments[i],"")
+  } else {
+    carbon$Comments[i] <- " "
+  }
+}
 
 kbl(carbon[,3:NCOL(carbon)], caption = "Carbon - diagnostics", align = "l",) %>%
   pack_rows(carbonGroups[1],
@@ -67,14 +158,21 @@ kbl(carbon[,3:NCOL(carbon)], caption = "Carbon - diagnostics", align = "l",) %>%
             max(which(carbon$Group == carbonGroups[2])),
             background = '#ebebeb') %>%
   row_spec(0, background = "#14759e", bold = TRUE, color = "white") %>%
-  kable_styling(full_width = F,font_size = 12) %>%
-  scroll_box(width = "770px", height = "350px",
+  kable_styling(full_width = F,font_size = 11) %>%
+            column_spec(2, width_min = "7em") %>%
+            column_spec(3, width_max = "18em") %>%
+            column_spec(4, width_min = "10em") %>%
+            column_spec(5, width_min = "6em") %>%
+            column_spec(7, width_min = "10em") %>%
+scroll_box(width = "770px", height = "365px",
              fixed_thead = FALSE)
 ```
 
 ###	Parameter Summary
 
-```{r 11-parameters, echo=FALSE, message=FALSE, warning=FALSE}
+The parameters and settings used by this module are summarised in Table \@ref(tab:11-parstable).
+
+```{r 11-parstable, echo=FALSE, message=FALSE, warning=FALSE}
 library(knitr)
 library(kableExtra)
 library(readxl)
@@ -88,9 +186,24 @@ for(i in seq_along(carbon$Symbol)){
   if(!is.na(carbon$Symbol[i])==TRUE){
     carbon$Symbol[i] <- paste0("$$",carbon$Symbol[i],"$$")
   } else {
-    carbon$Symbol[i] <- NA
+    carbon$Symbol[i] <- " "
   }
 }
+for(i in seq_along(carbon$Unit)){
+  if(!is.na(carbon$Unit[i])==TRUE){
+    carbon$Unit[i] <- paste0("$$\\small{",carbon$Unit[i],"}$$")
+  } else {
+    carbon$Unit[i] <- NA
+  }
+}
+for(i in seq_along(carbon$Comments)){
+  if(!is.na(carbon$Comments[i])==TRUE){
+    carbon$Comments[i] <- paste0("",carbon$Comments[i],"")
+  } else {
+    carbon$Comments[i] <- " "
+  }
+}
+
 
 kbl(carbon[,3:NCOL(carbon)], caption = "Carbon - parameters", align = "l",) %>%
   pack_rows(carbonGroups[1],
@@ -105,15 +218,36 @@ kbl(carbon[,3:NCOL(carbon)], caption = "Carbon - parameters", align = "l",) %>%
             min(which(carbon$Group == carbonGroups[3])),
             max(which(carbon$Group == carbonGroups[3])),
             background = '#ebebeb') %>%
+  pack_rows(carbonGroups[4],
+            min(which(carbon$Group == carbonGroups[4])),
+            max(which(carbon$Group == carbonGroups[4])),
+            background = '#ebebeb') %>%
+  pack_rows(carbonGroups[5],
+            min(which(carbon$Group == carbonGroups[5])),
+            max(which(carbon$Group == carbonGroups[5])),
+            background = '#ebebeb') %>%
   row_spec(0, background = "#14759e", bold = TRUE, color = "white") %>%
-  kable_styling(full_width = F,font_size = 12) %>%
-  scroll_box(width = "770px", height = "350px",
+  kable_styling(full_width = F,font_size = 11) %>%
+	column_spec(2, width_min = "7em") %>%
+	column_spec(3, width_max = "19em") %>%
+	column_spec(4, width_min = "10em") %>%
+	column_spec(5, width_min = "5em") %>%
+	column_spec(7, width_min = "10em") %>%
+  scroll_box(width = "770px", height = "650px",
              fixed_thead = FALSE)
 ```
 
-###	Optional Module Links
-###	Feedbacks to the Host Model
+<br>
+
 ## Setup & Configuration
+
+An example `aed.nml` parameter specification block for the `aed_carbon` module is shown below:
+```{}
+&aed_carbon
+...
+ /
+```
+
 ## Case Studies & Examples
 ###	Case Study
 ###	Publications
