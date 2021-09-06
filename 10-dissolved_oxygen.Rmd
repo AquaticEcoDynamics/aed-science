@@ -280,7 +280,7 @@ kbl(theSheet[,3:NCOL(theSheet)], caption = "Oxygen module parameters and configu
 	column_spec(4, width_min = "10em") %>%
 	column_spec(5, width_min = "5em") %>%
 	column_spec(7, width_min = "10em") %>%
-  scroll_box(width = "770px", height = "475px",
+  scroll_box(width = "770px", height = "500px",
              fixed_thead = FALSE)
 ```
 <br>
@@ -298,6 +298,7 @@ An example `aed.nml` parameter specification block for the `aed_oxygen` module i
    Ksed_oxy          = 100.0
    theta_sed_oxy     =   1.08
 !  Fsed_oxy_variable = 'SDF_Fsed_oxy'
+!  altitide          = 1000  
  /
 ```
 

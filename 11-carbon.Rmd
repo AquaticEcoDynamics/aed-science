@@ -25,7 +25,7 @@ The dynamics for DIC is captured in the model when `simDIC = .true.`. The rate o
 
 where $\mathbb{M}$ and $\mathcal{S}$ refer to water mixing and boundary source terms, respectively, and the coloured $\color{brown}{f}$ terms reflect DIC fluxes computed by other (optionally) linked modules such as modules of organic matter ($\mathrm{OMG}$), phytoplankton ($\mathrm{PHY}$) or zooplankton ($\mathrm{ZOO}$).
 
-The dynamics for CH4 is captured in the model when `simCH4 = .true.`. CH4 is formed during the decomposition of organic material by microbial methanogenesis (e.g., Cicerone and Oremland, 1988), which requires strictly anaerobic conditions and is therefore usually restricted to be deep within aquatic sediment. Inputs to the water therefore are from sediment CH4 production, which can enter the water column either as a dissolved flux or via ebullition (bubble release), or from external sources such as wastewater discharges. Once in the water dissolved CH4 is the balance between inputs from the sediment and losses from air-water exchange and CH4 oxidation to DIC.
+The dynamics for CH4 is captured in the model when `simCH4 = .true.`. CH4 is formed during the decomposition of organic material by microbial methanogenesis (e.g., Cicerone and Oremland, 1988), which requires strictly anaerobic conditions and is therefore usually restricted to be deep within aquatic sediment. Inputs to the water therefore are from sediment CH4 production, which can enter the water column either as a dissolved flux or via ebullition (bubble release), or from external sources such as wastewater discharges. Once in the water, dissolved CH4 is the balance between inputs from the sediment and losses from air-water exchange and CH4 oxidation to DIC.
 
 The rate of change of CH4 concentration as it moves with the water is therefore calculated as:
 
@@ -40,6 +40,149 @@ The details of how each flux relevant to DIC and CH4 is calculated, and the asso
 
 
 ###	Process Descriptions
+
+#### Carbonate buffering and pH
+
+In most circum-neutral waters the carbonate buffer system controls the pH conditions within the water. When CO2 ($CO_{2(gas)}$) is dissolved in water, it can exist in a variety of forms. Dissolved carbon dioxide, $CO_{2_{(aq)}}$, forms carbonic acid, $H_2CO_3$, and dissociates into bicarbonate, $HCO_3^-$, and carbonate, $CO_3^{2-}$, forms.
+
+\begin{eqnarray}
+CO_{2_{(aq)}} &\rightleftharpoons& CO_{2_{(gas)}}
+\\
+CO_{2_{(aq)}} + H_2O &\rightleftharpoons& H_2CO_3
+\\
+H_2CO_3 &\rightleftharpoons& H^+ + HCO_3^-
+\\
+HCO_3^- &\rightleftharpoons& H^+ + CO_3^{2-}
+\end{eqnarray}
+
+The sum of the concentrations of all these forms is the inorganic carbon concentration (DIC), and the composition of these forms depends on acidity (pH). The total $DIC$ state variable is the sum of carbonate species in a water parcel, which is conservative with respect to hydrodynamics:
+
+\begin{equation}
+DIC = [CO_{3}^{2-}]+[HCO_{3}^{-}]+[CO_{2}]+[H_2CO_{3}].
+\label{eq:DIC}
+\end{equation}
+
+
+
+To capture the interaction between carbonate species that make up DIC, each cell is treated as a closed system, as in a titration, where fluxes into and out of the system are specified, such as fluxes due to respiration, dissolved sediment fluxes, or atmospheric exchange. The changes due to these fluxes alter the CO_(2(aq))  concentration without changing the alkalinity, allowing for the speciation and pH to be recomputed at the end of the time-step.
+
+aed_carbon provides three options for modelling the bicarbonate equilibrium by switching the CO2_model options:
+
+
+The users can choose the aed_geochemistry module, or adopts the widely used CO2SYS code (Lewis and Wallace, 1998) or Butler (1982) code to calculate the partial pressure of CO2 (pCO2) and bicarbonate system. These options all lead to creation of state variables for DIC and pH, and their concentrations need to be specified in the boundary conditions. The use of each option is described in below sections.
+
+
+##### co2_model = 0
+
+This option is selected if the user wishes to defer the speciation, pCO2 and pH calculation to the geochemistry model in aed_geochemistry. In this option, `aed_carbon` creates the DIC and pH state variables, will compute the atmospheric exchange and sediment fluxes, but not update the speciation, pCO2 or pH.
+
+When using this approach, users must pay attention to correctly configure the `aed_geochemistry` model to link to DIC, pCO2 and pH within the `aed_carbon` module.
+
+TO resolve carbonate buffering that module can be setup with the following components, and species:
+
+\begin{eqnarray}
+X &\in& \{CO_3^{2-}, H^+,H_2O\}
+\\
+C &\in& \{CO_2, HCO_3^-, H_2CO_3,CO_3^{2-},H^+,OH^-\}
+\end{eqnarray}
+
+This will be solved each time the geochemical module is run. Fluxes of $CO_2$ between the atmosphere and sediment or from bioloigcal process will also be applied to the $DIC$ variable and therefore dynamically affect $pH$.
+
+For users interested in simulating calcite precipitation, then this may also be achieved by configuring the geochemistry module, and enabling Calcite as a simulated mineral component.
+
+##### co2_model = 1
+
+This option adopts the CO2SYS code (Lewis and Wallace, 1998) in which the bicarbonate system was modelled from DIC (mmol m-3) and total alkalinity (TA, mmol m-3), with water temperature (T, degrees), salinity (S, PSU) and water pressure (P, dbar) derived from the coupled hydrodynamic model, and DIC concentration derived from the aed_carbon model.
+
+There are multiple options for TA calculation methods in this code depending on the data availability and environment of the study site, which can be switched by the alk_mode option:
+
+
+For freshwaters, there is a simple freshwater alkalinity option (alk_mode = 0), whereby TA is assumed to be dominated by the carbonate alkalinity. In this option, TA is calculated from the carbonate species according to:
+
+\begin{equation}
+TA=-[H^+ ]+[HCO_3^- ]+2[CO_3^(2-) ]+[OH^-]                                             
+\end{equation}
+
+For hardwater lakes, estuaries or coastal systems, then other ions contribute significantly to the total alkalinity and the assumption above is no longer valid. However, the component ions needed for an alkalinity calculation are not always commonly available or included in the model and so approximations are needed to estimate TA. TA is a quasi-conservative parameter and it has been a popular practice in coastal modelling to predict TA from salinity (e.g. Lee et al. 2006; Alin et al., 2012; Takahashi et al., 2014), or from combination of salinity and DIC concentration (Kim and Lee, 2009; Jones et al., 2016). Accordingly, `aed_carbon` supports a few options to model the TA in coastal waters.
+
+
+
+##### co2_model = 2
+
+This option adopts the approach of Butler (1982) to model the carbonate system in freshwater environment. In a closed carbonate system, the TA, DIC and pH are related by:
+
+\begin{equation}
+ TA=DIC \frac{K_{a1}[H^+]+2K_{a1}K_{a2}}{[H^+]^2+K_{a1}[H^+]+K_{a1}K_{a2}}+  \frac{K_w}{[H^+]} -[H^+]
+\label{eq:TA}
+\end{equation}
+
+where $K_w$ is the ion product of water, $K_{a1}$ is the first acidity constant, $K_{a2}$ is the second acidity constant. $pH$ is calculated from:
+
+\begin{equation}
+pH = - \log_{10}[H^+]
+\end{equation}
+
+and $DIC$ is defined as:
+
+\begin{equation}
+DIC = [CO_{3}^{2-}]+[HCO_{3}^{-}]+[CO_{2}]+[H_2CO_{3}]
+\label{eq:DIC2}
+\end{equation}
+
+where all concentrations are in ($mmol\:C/m^3$). Note that the concentration of hydrated carbon dioxide, $[H_2CO_3]$, is considered to be negligible and is therefore omitted.
+
+The conversion between the carbon dioxide partial pressure, $pCO_2$ and carbon dioxide concentration ($molL^{-1}$) is given by:
+\begin{equation}
+[CO_2]=K_HpCO_2
+\label{eq:pCO2}
+\end{equation}
+where $K_H$ is the activity coefficient.
+
+The ionic strength of the water impacts the dissociation constants. Ionic strength, $I$, is typically defined as \citep{Butl82}:
+
+\begin{equation}
+I = 0.5 \left([Na^+]+[H^+]+[HCO_{3}^-]+4[CO_{3}^{2-}]+[H^+]/K_w \right).
+\end{equation}
+
+Rather than model this explicitly, the ionic strength is entered into the model as a constant, and is not assumed to vary significantly in space or time for a given system. From the ionic strength, an activity coefficient is defined as:
+\begin{equation}
+f = \left( \frac{I^{1/2}}{1+I^{1/2}}-0.2I \right) \left(\frac{298}{T_K} \right)^{2/3}.
+\end{equation}
+The dissociation constants are then computed following:
+\begin{eqnarray}
+\log_{10}\left(K_{H}^{i+1}\right) &=& \log_{10}\left(K_{H}^{0}\right) -bI \\
+log_{10}\left(K_{w}^{i+1}\right) &=& \log_{10}\left(K_{w}^{0}\right) +f \\
+log_{10}\left(K_{a1}^{i+1}\right) &=& \log_{10}\left(K_{a1}^{0}\right) +f+bI \\
+log_{10}\left(K_{a2}^{i+1}\right) &=& \log_{10}\left(K_{a2}^{0}\right) +2f
+\end{eqnarray}
+where $b=0.105$ \citep{Butl82}.
+
+For this system, if two of the three components (i.e. $TA$, $pH$ or $DIC$) are known the third can be determined. In AED, $pH$ and $DIC$ are tracked as state variables, and at each time step $TA$ is also computed and avalable via a diagnostic output.
+
+The carbonate speciation for a given value of $pH$ and $DIC$ is then estimated from:
+\begin{eqnarray}
+ \left[CO_{3}^{2-}\right] &=& DIC \frac{K_{a1}K_{a2}}{[H^+]^2+K_{a1}[H^+]+K_{a1}K_{a2}}, \label{eq:speciation1} \\
+ \left[HCO_{3}\right] &=& DIC \frac{K_{a1}[H^+]}{[H^+]^2+K_{a1}[H^+]+K_{a1}K_{a2}}, \label{eq:speciation2} \\
+ \left[CO_{2}\right]&=&DIC\frac{[H^+]^2}{[H^+]^2+K_{a1}[H^+]+K_{a1}K_{a2}}.
+\label{eq:speciation3}
+\end{eqnarray}
+
+Using this framework, the inorganic carbon model co2_model = 2 operates as follows:
+
+- from initial field measurements of TA and pH, calculate DIC using \ref{eq:TA}
+- calculate initial carbonate speciation using \ref{eq:speciation1}-\ref{eq:speciation3}
+- calculate partial pressure of $CO_2$ using \ref{eq:pCO2}
+- start timestep loop
+- calculate atmospheric $CO_2$ flux using \ref{eq:atmco2}
+- calculate internal $CO_2$ fluxes from phytoplankton photosynthesis/respiration, zooplankton respiration and bacterial respiration
+- calculate new DIC using \ref{eq:DIC}
+- assuming $TA$ constant, as $CO_2$ does not change the alkalinity directly, calculate new $pH$ by iteratively solving \ref{eq:TA}
+- calculate new carbonate speciation using \ref{eq:speciation1}-\ref{eq:speciation3}
+- calculate new partial pressure of $CO_2$ using \ref{eq:pCO2}
+- update new $TA$ and $DIC$ concentratino estimates
+
+#### Sediment exchange
+
 
 ###	Optional Module Links
 
@@ -110,7 +253,7 @@ kbl(carbon[,3:NCOL(carbon)], caption = "Carbon - state variables", align = "l",)
 	column_spec(5, width_min = "5em") %>%
 	column_spec(7, width_min = "10em") %>%
 	column_spec(7, width_max = "20em") %>%
-  scroll_box(width = "770px", height = "355px",
+  scroll_box(width = "770px", height = "405px",
              fixed_thead = FALSE)
 ```
 
@@ -164,7 +307,7 @@ kbl(carbon[,3:NCOL(carbon)], caption = "Carbon - diagnostics", align = "l",) %>%
             column_spec(4, width_min = "10em") %>%
             column_spec(5, width_min = "6em") %>%
             column_spec(7, width_min = "10em") %>%
-scroll_box(width = "770px", height = "365px",
+scroll_box(width = "770px", height = "520px",
              fixed_thead = FALSE)
 ```
 
@@ -226,6 +369,10 @@ kbl(carbon[,3:NCOL(carbon)], caption = "Carbon - parameters", align = "l",) %>%
             min(which(carbon$Group == carbonGroups[5])),
             max(which(carbon$Group == carbonGroups[5])),
             background = '#ebebeb') %>%
+  pack_rows(carbonGroups[6],
+            min(which(carbon$Group == carbonGroups[6])),
+            max(which(carbon$Group == carbonGroups[6])),
+            background = '#ebebeb') %>%
   row_spec(0, background = "#14759e", bold = TRUE, color = "white") %>%
   kable_styling(full_width = F,font_size = 11) %>%
 	column_spec(2, width_min = "7em") %>%
@@ -233,7 +380,7 @@ kbl(carbon[,3:NCOL(carbon)], caption = "Carbon - parameters", align = "l",) %>%
 	column_spec(4, width_min = "10em") %>%
 	column_spec(5, width_min = "5em") %>%
 	column_spec(7, width_min = "10em") %>%
-  scroll_box(width = "770px", height = "650px",
+  scroll_box(width = "770px", height = "800px",
              fixed_thead = FALSE)
 ```
 
@@ -244,8 +391,37 @@ kbl(carbon[,3:NCOL(carbon)], caption = "Carbon - parameters", align = "l",) %>%
 An example `aed.nml` parameter specification block for the `aed_carbon` module is shown below:
 ```{}
 &aed_carbon
-...
- /
+ dic_initial
+ pH_initial
+ ch4_initial
+ co2_model
+ alk_model
+ ionic
+ atmco2
+ atmch4
+ co2_piston_model
+ ch4_piston_model
+ Rch4ox
+ Kch4ox
+ vTch4ox
+ methane_reactant_variable
+ Fsed_dic
+ Ksed_dic
+ theta_sed_dic
+ Fsed_dic_variable
+ Fsed_ch4
+ Ksed_ch4
+ theta_sed_ch4
+ Fsed_ch4_variable
+ simCH4ebb
+ Fsed_ebb_variable
+ ch4_bub_aLL
+ ch4_bub_cLL
+ ch4_bub_kLL
+ ch4_bub_disf1
+ ch4_bub_disf2
+ ch4_bub_disdp
+/
 ```
 
 ## Case Studies & Examples

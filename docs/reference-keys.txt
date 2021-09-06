@@ -202,6 +202,11 @@ contributors-3
 overview-3
 model-description-3
 process-descriptions-3
+carbonate-buffering-and-ph
+co2_model-0
+co2_model-1
+co2_model-2
+sediment-exchange
 optional-module-links-3
 feedbacks-to-the-host-model-3
 variable-summary-3

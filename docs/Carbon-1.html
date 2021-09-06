@@ -23,7 +23,7 @@
 
 
 
-<meta name="date" content="2021-09-05" />
+<meta name="date" content="2021-09-06" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -785,7 +785,7 @@ div.csl-indent {
 &amp;-&amp; \color{brown}{ \hat{f}_{gpp}^{MAC} + \hat{f}_{rsp}^{MAC} - f_{gpp}^{MAG} - f_{rsp}^{MAG} + \hat{f}_{rsp}^{BIV} } \\ \nonumber
 \end{eqnarray}\]</span></p>
 <p>where <span class="math inline">\(\mathbb{M}\)</span> and <span class="math inline">\(\mathcal{S}\)</span> refer to water mixing and boundary source terms, respectively, and the coloured <span class="math inline">\(\color{brown}{f}\)</span> terms reflect DIC fluxes computed by other (optionally) linked modules such as modules of organic matter (<span class="math inline">\(\mathrm{OMG}\)</span>), phytoplankton (<span class="math inline">\(\mathrm{PHY}\)</span>) or zooplankton (<span class="math inline">\(\mathrm{ZOO}\)</span>).</p>
-<p>The dynamics for CH4 is captured in the model when <code>simCH4 = .true.</code>. CH4 is formed during the decomposition of organic material by microbial methanogenesis (e.g., Cicerone and Oremland, 1988), which requires strictly anaerobic conditions and is therefore usually restricted to be deep within aquatic sediment. Inputs to the water therefore are from sediment CH4 production, which can enter the water column either as a dissolved flux or via ebullition (bubble release), or from external sources such as wastewater discharges. Once in the water dissolved CH4 is the balance between inputs from the sediment and losses from air-water exchange and CH4 oxidation to DIC.</p>
+<p>The dynamics for CH4 is captured in the model when <code>simCH4 = .true.</code>. CH4 is formed during the decomposition of organic material by microbial methanogenesis (e.g., Cicerone and Oremland, 1988), which requires strictly anaerobic conditions and is therefore usually restricted to be deep within aquatic sediment. Inputs to the water therefore are from sediment CH4 production, which can enter the water column either as a dissolved flux or via ebullition (bubble release), or from external sources such as wastewater discharges. Once in the water, dissolved CH4 is the balance between inputs from the sediment and losses from air-water exchange and CH4 oxidation to DIC.</p>
 <p>The rate of change of CH4 concentration as it moves with the water is therefore calculated as:</p>
 <p><span class="math display" id="eq:car2">\[\begin{eqnarray}
 \frac{D}{Dt}CH_4 =  \color{darkgray}{ \mathbb{M} + \mathcal{S} } \quad
@@ -795,6 +795,115 @@ div.csl-indent {
 <p>The details of how each flux relevant to DIC and CH4 is calculated, and the associated parameter settings, are described in the next sections. For details on how to model organic carbon refer to the aed_organic_matter model.</p>
 <div id="process-descriptions-3" class="section level3" number="8.3.1">
 <h3><span class="header-section-number">8.3.1</span> Process Descriptions</h3>
+<div id="carbonate-buffering-and-ph" class="section level4" number="8.3.1.1">
+<h4><span class="header-section-number">8.3.1.1</span> Carbonate buffering and pH</h4>
+<p>In most circum-neutral waters the carbonate buffer system controls the pH conditions within the water. When CO2 (<span class="math inline">\(CO_{2(gas)}\)</span>) is dissolved in water, it can exist in a variety of forms. Dissolved carbon dioxide, <span class="math inline">\(CO_{2_{(aq)}}\)</span>, forms carbonic acid, <span class="math inline">\(H_2CO_3\)</span>, and dissociates into bicarbonate, <span class="math inline">\(HCO_3^-\)</span>, and carbonate, <span class="math inline">\(CO_3^{2-}\)</span>, forms.</p>
+<p><span class="math display">\[\begin{eqnarray}
+CO_{2_{(aq)}} &amp;\rightleftharpoons&amp; CO_{2_{(gas)}}
+\\
+CO_{2_{(aq)}} + H_2O &amp;\rightleftharpoons&amp; H_2CO_3
+\\
+H_2CO_3 &amp;\rightleftharpoons&amp; H^+ + HCO_3^-
+\\
+HCO_3^- &amp;\rightleftharpoons&amp; H^+ + CO_3^{2-}
+\end{eqnarray}\]</span></p>
+<p>The sum of the concentrations of all these forms is the inorganic carbon concentration (DIC), and the composition of these forms depends on acidity (pH). The total <span class="math inline">\(DIC\)</span> state variable is the sum of carbonate species in a water parcel, which is conservative with respect to hydrodynamics:</p>
+<p><span class="math display">\[\begin{equation}
+DIC = [CO_{3}^{2-}]+[HCO_{3}^{-}]+[CO_{2}]+[H_2CO_{3}].
+\label{eq:DIC}
+\end{equation}\]</span></p>
+<p>To capture the interaction between carbonate species that make up DIC, each cell is treated as a closed system, as in a titration, where fluxes into and out of the system are specified, such as fluxes due to respiration, dissolved sediment fluxes, or atmospheric exchange. The changes due to these fluxes alter the CO_(2(aq)) concentration without changing the alkalinity, allowing for the speciation and pH to be recomputed at the end of the time-step.</p>
+<p>aed_carbon provides three options for modelling the bicarbonate equilibrium by switching the CO2_model options:</p>
+<p>The users can choose the aed_geochemistry module, or adopts the widely used CO2SYS code (Lewis and Wallace, 1998) or Butler (1982) code to calculate the partial pressure of CO2 (pCO2) and bicarbonate system. These options all lead to creation of state variables for DIC and pH, and their concentrations need to be specified in the boundary conditions. The use of each option is described in below sections.</p>
+<div id="co2_model-0" class="section level5" number="8.3.1.1.1">
+<h5><span class="header-section-number">8.3.1.1.1</span> co2_model = 0</h5>
+<p>This option is selected if the user wishes to defer the speciation, pCO2 and pH calculation to the geochemistry model in aed_geochemistry. In this option, <code>aed_carbon</code> creates the DIC and pH state variables, will compute the atmospheric exchange and sediment fluxes, but not update the speciation, pCO2 or pH.</p>
+<p>When using this approach, users must pay attention to correctly configure the <code>aed_geochemistry</code> model to link to DIC, pCO2 and pH within the <code>aed_carbon</code> module.</p>
+<p>TO resolve carbonate buffering that module can be setup with the following components, and species:</p>
+<p><span class="math display">\[\begin{eqnarray}
+X &amp;\in&amp; \{CO_3^{2-}, H^+,H_2O\}
+\\
+C &amp;\in&amp; \{CO_2, HCO_3^-, H_2CO_3,CO_3^{2-},H^+,OH^-\}
+\end{eqnarray}\]</span></p>
+<p>This will be solved each time the geochemical module is run. Fluxes of <span class="math inline">\(CO_2\)</span> between the atmosphere and sediment or from bioloigcal process will also be applied to the <span class="math inline">\(DIC\)</span> variable and therefore dynamically affect <span class="math inline">\(pH\)</span>.</p>
+<p>For users interested in simulating calcite precipitation, then this may also be achieved by configuring the geochemistry module, and enabling Calcite as a simulated mineral component.</p>
+</div>
+<div id="co2_model-1" class="section level5" number="8.3.1.1.2">
+<h5><span class="header-section-number">8.3.1.1.2</span> co2_model = 1</h5>
+<p>This option adopts the CO2SYS code (Lewis and Wallace, 1998) in which the bicarbonate system was modelled from DIC (mmol m-3) and total alkalinity (TA, mmol m-3), with water temperature (T, degrees), salinity (S, PSU) and water pressure (P, dbar) derived from the coupled hydrodynamic model, and DIC concentration derived from the aed_carbon model.</p>
+<p>There are multiple options for TA calculation methods in this code depending on the data availability and environment of the study site, which can be switched by the alk_mode option:</p>
+<p>For freshwaters, there is a simple freshwater alkalinity option (alk_mode = 0), whereby TA is assumed to be dominated by the carbonate alkalinity. In this option, TA is calculated from the carbonate species according to:</p>
+<p><span class="math display">\[\begin{equation}
+TA=-[H^+ ]+[HCO_3^- ]+2[CO_3^(2-) ]+[OH^-]                                             
+\end{equation}\]</span></p>
+<p>For hardwater lakes, estuaries or coastal systems, then other ions contribute significantly to the total alkalinity and the assumption above is no longer valid. However, the component ions needed for an alkalinity calculation are not always commonly available or included in the model and so approximations are needed to estimate TA. TA is a quasi-conservative parameter and it has been a popular practice in coastal modelling to predict TA from salinity (e.g. Lee et al. 2006; Alin et al., 2012; Takahashi et al., 2014), or from combination of salinity and DIC concentration (Kim and Lee, 2009; Jones et al., 2016). Accordingly, <code>aed_carbon</code> supports a few options to model the TA in coastal waters.</p>
+</div>
+<div id="co2_model-2" class="section level5" number="8.3.1.1.3">
+<h5><span class="header-section-number">8.3.1.1.3</span> co2_model = 2</h5>
+<p>This option adopts the approach of Butler (1982) to model the carbonate system in freshwater environment. In a closed carbonate system, the TA, DIC and pH are related by:</p>
+<p><span class="math display">\[\begin{equation}
+ TA=DIC \frac{K_{a1}[H^+]+2K_{a1}K_{a2}}{[H^+]^2+K_{a1}[H^+]+K_{a1}K_{a2}}+  \frac{K_w}{[H^+]} -[H^+]
+\label{eq:TA}
+\end{equation}\]</span></p>
+<p>where <span class="math inline">\(K_w\)</span> is the ion product of water, <span class="math inline">\(K_{a1}\)</span> is the first acidity constant, <span class="math inline">\(K_{a2}\)</span> is the second acidity constant. <span class="math inline">\(pH\)</span> is calculated from:</p>
+<p><span class="math display">\[\begin{equation}
+pH = - \log_{10}[H^+]
+\end{equation}\]</span></p>
+<p>and <span class="math inline">\(DIC\)</span> is defined as:</p>
+<p><span class="math display">\[\begin{equation}
+DIC = [CO_{3}^{2-}]+[HCO_{3}^{-}]+[CO_{2}]+[H_2CO_{3}]
+\label{eq:DIC2}
+\end{equation}\]</span></p>
+<p>where all concentrations are in (<span class="math inline">\(mmol\:C/m^3\)</span>). Note that the concentration of hydrated carbon dioxide, <span class="math inline">\([H_2CO_3]\)</span>, is considered to be negligible and is therefore omitted.</p>
+<p>The conversion between the carbon dioxide partial pressure, <span class="math inline">\(pCO_2\)</span> and carbon dioxide concentration (<span class="math inline">\(molL^{-1}\)</span>) is given by:
+<span class="math display">\[\begin{equation}
+[CO_2]=K_HpCO_2
+\label{eq:pCO2}
+\end{equation}\]</span>
+where <span class="math inline">\(K_H\)</span> is the activity coefficient.</p>
+<p>The ionic strength of the water impacts the dissociation constants. Ionic strength, <span class="math inline">\(I\)</span>, is typically defined as :</p>
+<p><span class="math display">\[\begin{equation}
+I = 0.5 \left([Na^+]+[H^+]+[HCO_{3}^-]+4[CO_{3}^{2-}]+[H^+]/K_w \right).
+\end{equation}\]</span></p>
+<p>Rather than model this explicitly, the ionic strength is entered into the model as a constant, and is not assumed to vary significantly in space or time for a given system. From the ionic strength, an activity coefficient is defined as:
+<span class="math display">\[\begin{equation}
+f = \left( \frac{I^{1/2}}{1+I^{1/2}}-0.2I \right) \left(\frac{298}{T_K} \right)^{2/3}.
+\end{equation}\]</span>
+The dissociation constants are then computed following:
+<span class="math display">\[\begin{eqnarray}
+\log_{10}\left(K_{H}^{i+1}\right) &amp;=&amp; \log_{10}\left(K_{H}^{0}\right) -bI \\
+log_{10}\left(K_{w}^{i+1}\right) &amp;=&amp; \log_{10}\left(K_{w}^{0}\right) +f \\
+log_{10}\left(K_{a1}^{i+1}\right) &amp;=&amp; \log_{10}\left(K_{a1}^{0}\right) +f+bI \\
+log_{10}\left(K_{a2}^{i+1}\right) &amp;=&amp; \log_{10}\left(K_{a2}^{0}\right) +2f
+\end{eqnarray}\]</span>
+where <span class="math inline">\(b=0.105\)</span> .</p>
+<p>For this system, if two of the three components (i.e. <span class="math inline">\(TA\)</span>, <span class="math inline">\(pH\)</span> or <span class="math inline">\(DIC\)</span>) are known the third can be determined. In AED, <span class="math inline">\(pH\)</span> and <span class="math inline">\(DIC\)</span> are tracked as state variables, and at each time step <span class="math inline">\(TA\)</span> is also computed and avalable via a diagnostic output.</p>
+<p>The carbonate speciation for a given value of <span class="math inline">\(pH\)</span> and <span class="math inline">\(DIC\)</span> is then estimated from:
+<span class="math display">\[\begin{eqnarray}
+ \left[CO_{3}^{2-}\right] &amp;=&amp; DIC \frac{K_{a1}K_{a2}}{[H^+]^2+K_{a1}[H^+]+K_{a1}K_{a2}}, \label{eq:speciation1} \\
+ \left[HCO_{3}\right] &amp;=&amp; DIC \frac{K_{a1}[H^+]}{[H^+]^2+K_{a1}[H^+]+K_{a1}K_{a2}}, \label{eq:speciation2} \\
+ \left[CO_{2}\right]&amp;=&amp;DIC\frac{[H^+]^2}{[H^+]^2+K_{a1}[H^+]+K_{a1}K_{a2}}.
+\label{eq:speciation3}
+\end{eqnarray}\]</span></p>
+<p>Using this framework, the inorganic carbon model co2_model = 2 operates as follows:</p>
+<ul>
+<li>from initial field measurements of TA and pH, calculate DIC using </li>
+<li>calculate initial carbonate speciation using -</li>
+<li>calculate partial pressure of <span class="math inline">\(CO_2\)</span> using </li>
+<li>start timestep loop</li>
+<li>calculate atmospheric <span class="math inline">\(CO_2\)</span> flux using </li>
+<li>calculate internal <span class="math inline">\(CO_2\)</span> fluxes from phytoplankton photosynthesis/respiration, zooplankton respiration and bacterial respiration</li>
+<li>calculate new DIC using </li>
+<li>assuming <span class="math inline">\(TA\)</span> constant, as <span class="math inline">\(CO_2\)</span> does not change the alkalinity directly, calculate new <span class="math inline">\(pH\)</span> by iteratively solving </li>
+<li>calculate new carbonate speciation using -</li>
+<li>calculate new partial pressure of <span class="math inline">\(CO_2\)</span> using </li>
+<li>update new <span class="math inline">\(TA\)</span> and <span class="math inline">\(DIC\)</span> concentratino estimates</li>
+</ul>
+</div>
+</div>
+<div id="sediment-exchange" class="section level4" number="8.3.1.2">
+<h4><span class="header-section-number">8.3.1.2</span> Sediment exchange</h4>
+</div>
 </div>
 <div id="optional-module-links-3" class="section level3" number="8.3.2">
 <h3><span class="header-section-number">8.3.2</span> Optional Module Links</h3>
@@ -816,7 +925,7 @@ div.csl-indent {
 <p>The default variables created by this module, and the optionally required linked variables needed for full functionality of this module are summarised in Table <a href="Carbon-1.html#tab:11-statetable">8.1</a>. The diagnostic outputs able to be output are summarised in Table <a href="Carbon-1.html#tab:11-diagtable">8.2</a>.</p>
 <div id="state-variables-1" class="section level4 unnumbered">
 <h4>State variables</h4>
-<div style="border: 1px solid #ddd; padding: 5px; overflow-y: scroll; height:355px; overflow-x: scroll; width:770px; ">
+<div style="border: 1px solid #ddd; padding: 5px; overflow-y: scroll; height:405px; overflow-x: scroll; width:770px; ">
 <table class="table" style="font-size: 11px; width: auto !important; margin-left: auto; margin-right: auto;">
 <caption style="font-size: initial !important;">
 <span id="tab:11-statetable">Table 8.1: </span>Carbon - state variables
@@ -921,7 +1030,7 @@ pelagic
 activated when <code>simDIC=T</code>
 </td>
 </tr>
-<tr grouplength="3">
+<tr grouplength="4">
 <td colspan="7" style="border-bottom: 1px solid;background-color: #ebebeb !important;">
 <strong>Dependent variables</strong>
 </td>
@@ -995,13 +1104,36 @@ NA
 required for sediment zones; internally used as /s
 </td>
 </tr>
+<tr>
+<td style="text-align:left;padding-left: 2em;" indentlevel="1">
+<code>SDF_Fsed_ch4_ebb</code>
+</td>
+<td style="text-align:left;min-width: 7em; ">
+<span class="math display">\[\mathbf{F}_{sed}^{ch4-ebb}\]</span>
+</td>
+<td style="text-align:left;max-width: 18em; ">
+sediment <span class="math inline">\(CH_4\)</span> bubble release rate
+</td>
+<td style="text-align:left;min-width: 10em; ">
+<span class="math display">\[\small{mmol\: C/m^2/s}\]</span>
+</td>
+<td style="text-align:left;min-width: 5em; ">
+benthic
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;min-width: 10em; max-width: 20em; ">
+required for sediment zones; internally used as /s
+</td>
+</tr>
 </tbody>
 </table>
 </div>
 </div>
 <div id="diagnostics-1" class="section level4 unnumbered">
 <h4>Diagnostics</h4>
-<div style="border: 1px solid #ddd; padding: 5px; overflow-y: scroll; height:365px; overflow-x: scroll; width:770px; ">
+<div style="border: 1px solid #ddd; padding: 5px; overflow-y: scroll; height:520px; overflow-x: scroll; width:770px; ">
 <table class="table" style="font-size: 11px; width: auto !important; margin-left: auto; margin-right: auto;">
 <caption style="font-size: initial !important;">
 <span id="tab:11-diagtable">Table 8.2: </span>Carbon - diagnostics
@@ -1059,7 +1191,7 @@ pelagic
 <td style="text-align:left;min-width: 10em; ">
 </td>
 </tr>
-<tr grouplength="5">
+<tr grouplength="9">
 <td colspan="7" style="border-bottom: 1px solid;background-color: #ebebeb !important;">
 <strong>diag_level = 2+</strong>
 </td>
@@ -1174,6 +1306,94 @@ surface
 <td style="text-align:left;min-width: 10em; ">
 </td>
 </tr>
+<tr>
+<td style="text-align:left;padding-left: 2em;" indentlevel="1">
+<code>CAR_atm_ch4_ebb_flux</code>
+</td>
+<td style="text-align:left;min-width: 7em; ">
+<span class="math display">\[\mathbf{\mathcal{F}}_{atm}^{ch4-bub}\]</span>
+</td>
+<td style="text-align:left;max-width: 18em; ">
+<span class="math inline">\(CH_4\)</span> bubble flux across air-water interface
+</td>
+<td style="text-align:left;min-width: 10em; ">
+<span class="math display">\[\small{mmol\: C/m^2/d}\]</span>
+</td>
+<td style="text-align:left;min-width: 6em; ">
+surface
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;min-width: 10em; ">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;padding-left: 2em;" indentlevel="1">
+<code>CAR_sed_ch4_ebb</code>
+</td>
+<td style="text-align:left;min-width: 7em; ">
+<span class="math display">\[\mathbf{\mathcal{F}}_{sed}^{ch4-bub}\]</span>
+</td>
+<td style="text-align:left;max-width: 18em; ">
+<span class="math inline">\(CH_4\)</span> bubble flux (ebullition) across sediment-water interface
+</td>
+<td style="text-align:left;min-width: 10em; ">
+<span class="math display">\[\small{mmol\: C/m^2/d}\]</span>
+</td>
+<td style="text-align:left;min-width: 6em; ">
+benthic
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;min-width: 10em; ">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;padding-left: 2em;" indentlevel="1">
+<code>CAR_sed_ch4_ebb_3d</code>
+</td>
+<td style="text-align:left;min-width: 7em; ">
+<span class="math display">\[\mathbf{\hat{f}}_{sed}^{CH_{4-bubble}}\]</span>
+</td>
+<td style="text-align:left;max-width: 18em; ">
+<span class="math inline">\(CH_4\)</span> bubble flux (ebullition) volume flux
+</td>
+<td style="text-align:left;min-width: 10em; ">
+<span class="math display">\[\small{mmol\: C/m^3/d}\]</span>
+</td>
+<td style="text-align:left;min-width: 6em; ">
+pelagic
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;min-width: 10em; ">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;padding-left: 2em;" indentlevel="1">
+<code>CAR_ch4_ebb_df</code>
+</td>
+<td style="text-align:left;min-width: 7em; ">
+<span class="math display">\[\mathbf{f}_{dis}^{CH_{4-bubble}}\]</span>
+</td>
+<td style="text-align:left;max-width: 18em; ">
+<span class="math inline">\(CH_4\)</span> bubble dissolution
+</td>
+<td style="text-align:left;min-width: 10em; ">
+<span class="math display">\[\small{mmol\: C/m^3/d}\]</span>
+</td>
+<td style="text-align:left;min-width: 6em; ">
+pelagic
+</td>
+<td style="text-align:left;">
+0 - 1
+</td>
+<td style="text-align:left;min-width: 10em; ">
+</td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -1182,7 +1402,7 @@ surface
 <div id="parameter-summary-3" class="section level3" number="8.3.5">
 <h3><span class="header-section-number">8.3.5</span> Parameter Summary</h3>
 <p>The parameters and settings used by this module are summarised in Table <a href="Carbon-1.html#tab:11-parstable">8.3</a>.</p>
-<div style="border: 1px solid #ddd; padding: 5px; overflow-y: scroll; height:650px; overflow-x: scroll; width:770px; ">
+<div style="border: 1px solid #ddd; padding: 5px; overflow-y: scroll; height:800px; overflow-x: scroll; width:770px; ">
 <table class="table" style="font-size: 11px; width: auto !important; margin-left: auto; margin-right: auto;">
 <caption style="font-size: initial !important;">
 <span id="tab:11-parstable">Table 8.3: </span>Carbon - parameters
@@ -1367,7 +1587,7 @@ NA
 </tr>
 <tr>
 <td style="text-align:left;padding-left: 2em;" indentlevel="1">
-<code>atmco2</code>
+<code>atm_co2</code>
 </td>
 <td style="text-align:left;min-width: 7em; ">
 <span class="math display">\[pCO_2^a\]</span>
@@ -1389,7 +1609,7 @@ float
 </tr>
 <tr>
 <td style="text-align:left;padding-left: 2em;" indentlevel="1">
-<code>atmch4</code>
+<code>atm_ch4</code>
 </td>
 <td style="text-align:left;min-width: 7em; ">
 <span class="math display">\[pCH_4^a\]</span>
@@ -1468,7 +1688,7 @@ see options in the <a href="generic-utilities-functions.html#GAS">Gas Transfer</
 <span class="math display">\[R_{ox}^{ch4}\]</span>
 </td>
 <td style="text-align:left;max-width: 19em; ">
-maximum reaction rate of <span class="math inline">\(CH_4\)</span> oxidatin @ 20C
+maximum reaction rate of <span class="math inline">\(CH_4\)</span> oxidation @ <span class="math inline">\(20^{\circ}C\)</span>
 </td>
 <td style="text-align:left;min-width: 10em; ">
 <span class="math display">\[\small{/d}\]</span>
@@ -1512,7 +1732,7 @@ float
 <span class="math display">\[\theta_{ox}^{ch4}\]</span>
 </td>
 <td style="text-align:left;max-width: 19em; ">
-Arrhenius temperature multiplier for CH4 oxidation
+Arrhenius temperature multiplier for <span class="math inline">\(CH_4\)</span> oxidation
 </td>
 <td style="text-align:left;min-width: 10em; ">
 <span class="math display">\[\small{-}\]</span>
@@ -1534,7 +1754,7 @@ float
 <span class="math display">\[O_2\]</span>
 </td>
 <td style="text-align:left;max-width: 19em; ">
-state variable to be consumed during CH4 oxidation
+state variable to be consumed during <span class="math inline">\(CH_4\)</span> oxidation
 </td>
 <td style="text-align:left;min-width: 10em; ">
 <span class="math display">\[\small{-}\]</span>
@@ -1548,7 +1768,7 @@ OXY_oxy
 <td style="text-align:left;min-width: 10em; ">
 </td>
 </tr>
-<tr grouplength="18">
+<tr grouplength="8">
 <td colspan="7" style="border-bottom: 1px solid;background-color: #ebebeb !important;">
 <strong>Sediment exchange</strong>
 </td>
@@ -1561,7 +1781,7 @@ OXY_oxy
 <span class="math display">\[F_{sed}^{dic}\]</span>
 </td>
 <td style="text-align:left;max-width: 19em; ">
-sediment <span class="math inline">\(CO_2\)</span> flux @ 20C
+sediment <span class="math inline">\(CO_2\)</span> flux @ <span class="math inline">\(20^{\circ}C\)</span>
 </td>
 <td style="text-align:left;min-width: 10em; ">
 <span class="math display">\[\small{mmol\: C/m^2/d}\]</span>
@@ -1624,18 +1844,19 @@ float
 <code>Fsed_dic_variable</code>
 </td>
 <td style="text-align:left;min-width: 7em; ">
+<span class="math display">\[\mathbf{F}_{sed}^{dic}\]</span>
 </td>
 <td style="text-align:left;max-width: 19em; ">
-NA
+variable name to link to for spatially resolved sediment zones
 </td>
 <td style="text-align:left;min-width: 10em; ">
-<span class="math display">\[\small{mmol\: C/m^2/d}\]</span>
+<span class="math display">\[\small{-}\]</span>
 </td>
 <td style="text-align:left;min-width: 5em; ">
 float
 </td>
 <td style="text-align:left;">
-0
+<code>SDF_Fsed_dic</code>
 </td>
 <td style="text-align:left;min-width: 10em; ">
 </td>
@@ -1648,7 +1869,7 @@ float
 <span class="math display">\[F_{sed}^{ch4}\]</span>
 </td>
 <td style="text-align:left;max-width: 19em; ">
-sediment <span class="math inline">\(CH_4\)</span> flux
+sediment <span class="math inline">\(CH_4\)</span> flux @ <span class="math inline">\(20^{\circ}C\)</span>
 </td>
 <td style="text-align:left;min-width: 10em; ">
 <span class="math display">\[\small{mmol\: C/m^2/d}\]</span>
@@ -1711,9 +1932,10 @@ float
 <code>Fsed_ch4_variable</code>
 </td>
 <td style="text-align:left;min-width: 7em; ">
+<span class="math display">\[\mathbf{F}_{sed}^{ch4}\]</span>
 </td>
 <td style="text-align:left;max-width: 19em; ">
-NA
+variable name to link to for spatially resolved sediment zones
 </td>
 <td style="text-align:left;min-width: 10em; ">
 <span class="math display">\[\small{mmol\: C/m^2/d}\]</span>
@@ -1722,14 +1944,19 @@ NA
 float
 </td>
 <td style="text-align:left;">
-0
+<code>SDF_Fsed_ch4</code>
 </td>
 <td style="text-align:left;min-width: 10em; ">
 </td>
 </tr>
+<tr grouplength="8">
+<td colspan="7" style="border-bottom: 1px solid;background-color: #ebebeb !important;">
+<strong>Sediment ebullition</strong>
+</td>
+</tr>
 <tr>
 <td style="text-align:left;padding-left: 2em;" indentlevel="1">
-<code>simCH4ebb</code>
+<code>ebb_model</code>
 </td>
 <td style="text-align:left;min-width: 7em; ">
 <span class="math display">\[\Theta_{ch4}^{ebullition}\]</span>
@@ -1744,9 +1971,10 @@ option to activate <span class="math inline">\(CH_4\)</span> ebullition
 logical
 </td>
 <td style="text-align:left;">
-T or F
+0 , 1
 </td>
 <td style="text-align:left;min-width: 10em; ">
+0: no ebullition (default); 1: simple release model
 </td>
 </tr>
 <tr>
@@ -1754,39 +1982,19 @@ T or F
 <code>Fsed_ebb_variable</code>
 </td>
 <td style="text-align:left;min-width: 7em; ">
+<span class="math display">\[\mathbf{F}_{sed}^{ch4-ebb}\]</span>
 </td>
 <td style="text-align:left;max-width: 19em; ">
-rate of <span class="math inline">\(CH_4\)</span> ebullition
+variable name to link to for spatially resolved sediment zones
 </td>
 <td style="text-align:left;min-width: 10em; ">
-<span class="math display">\[\small{mmol\: C/m^2/d}\]</span>
+<span class="math display">\[\small{-}\]</span>
 </td>
 <td style="text-align:left;min-width: 5em; ">
 float
 </td>
 <td style="text-align:left;">
-0
-</td>
-<td style="text-align:left;min-width: 10em; ">
-</td>
-</tr>
-<tr>
-<td style="text-align:left;padding-left: 2em;" indentlevel="1">
-<code>ch4_bub_tau0</code>
-</td>
-<td style="text-align:left;min-width: 7em; ">
-</td>
-<td style="text-align:left;max-width: 19em; ">
-NA
-</td>
-<td style="text-align:left;min-width: 10em; ">
-NA
-</td>
-<td style="text-align:left;min-width: 5em; ">
-float
-</td>
-<td style="text-align:left;">
-0
+<code>SDF_Fsed_ch4_ebb</code>
 </td>
 <td style="text-align:left;min-width: 10em; ">
 </td>
@@ -1796,18 +2004,19 @@ float
 <code>ch4_bub_aLL</code>
 </td>
 <td style="text-align:left;min-width: 7em; ">
+<span class="math display">\[\bar{z}\]</span>
 </td>
 <td style="text-align:left;max-width: 19em; ">
-NA
+mean water depth
 </td>
 <td style="text-align:left;min-width: 10em; ">
-NA
+<span class="math display">\[\small{m}\]</span>
 </td>
 <td style="text-align:left;min-width: 5em; ">
 float
 </td>
 <td style="text-align:left;">
-0
+1 - 100
 </td>
 <td style="text-align:left;min-width: 10em; ">
 </td>
@@ -1817,20 +2026,22 @@ float
 <code>ch4_bub_cLL</code>
 </td>
 <td style="text-align:left;min-width: 7em; ">
+<span class="math display">\[c_{n}\]</span>
 </td>
 <td style="text-align:left;max-width: 19em; ">
-NA
+normalising constant
 </td>
 <td style="text-align:left;min-width: 10em; ">
-NA
+<span class="math display">\[\small{-}\]</span>
 </td>
 <td style="text-align:left;min-width: 5em; ">
 float
 </td>
 <td style="text-align:left;">
-0
+0.5 - 0.7
 </td>
 <td style="text-align:left;min-width: 10em; ">
+Lake Kinneret specific value
 </td>
 </tr>
 <tr>
@@ -1838,20 +2049,22 @@ float
 <code>ch4_bub_kLL</code>
 </td>
 <td style="text-align:left;min-width: 7em; ">
+<span class="math display">\[\epsilon_{reg}\]</span>
 </td>
 <td style="text-align:left;max-width: 19em; ">
-NA
+exponential factor from the depth-ebullition regression relation
 </td>
 <td style="text-align:left;min-width: 10em; ">
-NA
+<span class="math display">\[\small{-}\]</span>
 </td>
 <td style="text-align:left;min-width: 5em; ">
 float
 </td>
 <td style="text-align:left;">
-0
+-0.8 - -0.9
 </td>
 <td style="text-align:left;min-width: 10em; ">
+Lake Kinneret specific value
 </td>
 </tr>
 <tr>
@@ -1859,18 +2072,19 @@ float
 <code>ch4_bub_disf1</code>
 </td>
 <td style="text-align:left;min-width: 7em; ">
+<span class="math display">\[k_{dis}^{shallow}\]</span>
 </td>
 <td style="text-align:left;max-width: 19em; ">
-NA
+bubble dissolution fraction (surface)
 </td>
 <td style="text-align:left;min-width: 10em; ">
-NA
+<span class="math display">\[\small{-}\]</span>
 </td>
 <td style="text-align:left;min-width: 5em; ">
 float
 </td>
 <td style="text-align:left;">
-0
+0 - 1
 </td>
 <td style="text-align:left;min-width: 10em; ">
 </td>
@@ -1880,18 +2094,19 @@ float
 <code>ch4_bub_disf2</code>
 </td>
 <td style="text-align:left;min-width: 7em; ">
+<span class="math display">\[k_{dis}^{deep}\]</span>
 </td>
 <td style="text-align:left;max-width: 19em; ">
-NA
+bubble dissolution fraction (deep)
 </td>
 <td style="text-align:left;min-width: 10em; ">
-NA
+<span class="math display">\[\small{-}\]</span>
 </td>
 <td style="text-align:left;min-width: 5em; ">
 float
 </td>
 <td style="text-align:left;">
-0
+0 - 1
 </td>
 <td style="text-align:left;min-width: 10em; ">
 </td>
@@ -1901,39 +2116,19 @@ float
 <code>ch4_bub_disdp</code>
 </td>
 <td style="text-align:left;min-width: 7em; ">
+<span class="math display">\[z_{dis}^{depth}\]</span>
 </td>
 <td style="text-align:left;max-width: 19em; ">
-NA
+bubble dissolution fraction depth interface
 </td>
 <td style="text-align:left;min-width: 10em; ">
-NA
+<span class="math display">\[\small{m}\]</span>
 </td>
 <td style="text-align:left;min-width: 5em; ">
 float
 </td>
 <td style="text-align:left;">
-0
-</td>
-<td style="text-align:left;min-width: 10em; ">
-</td>
-</tr>
-<tr>
-<td style="text-align:left;padding-left: 2em;" indentlevel="1">
-<code>ch4_bub_ws</code>
-</td>
-<td style="text-align:left;min-width: 7em; ">
-</td>
-<td style="text-align:left;max-width: 19em; ">
-NA
-</td>
-<td style="text-align:left;min-width: 10em; ">
-NA
-</td>
-<td style="text-align:left;min-width: 5em; ">
-float
-</td>
-<td style="text-align:left;">
-0
+1 - 100
 </td>
 <td style="text-align:left;min-width: 10em; ">
 </td>
@@ -1948,8 +2143,37 @@ float
 <h2><span class="header-section-number">8.4</span> Setup &amp; Configuration</h2>
 <p>An example <code>aed.nml</code> parameter specification block for the <code>aed_carbon</code> module is shown below:</p>
 <pre><code>&amp;aed_carbon
-...
- /</code></pre>
+ dic_initial
+ pH_initial
+ ch4_initial
+ co2_model
+ alk_model
+ ionic
+ atmco2
+ atmch4
+ co2_piston_model
+ ch4_piston_model
+ Rch4ox
+ Kch4ox
+ vTch4ox
+ methane_reactant_variable
+ Fsed_dic
+ Ksed_dic
+ theta_sed_dic
+ Fsed_dic_variable
+ Fsed_ch4
+ Ksed_ch4
+ theta_sed_ch4
+ Fsed_ch4_variable
+ simCH4ebb
+ Fsed_ebb_variable
+ ch4_bub_aLL
+ ch4_bub_cLL
+ ch4_bub_kLL
+ ch4_bub_disf1
+ ch4_bub_disf2
+ ch4_bub_disdp
+/</code></pre>
 </div>
 <div id="case-studies-examples-3" class="section level2" number="8.5">
 <h2><span class="header-section-number">8.5</span> Case Studies &amp; Examples</h2>

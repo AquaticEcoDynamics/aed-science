@@ -23,7 +23,7 @@
 
 
 
-<meta name="date" content="2021-09-05" />
+<meta name="date" content="2021-09-06" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -1099,7 +1099,7 @@ surface
 <div id="parameter-summary-2" class="section level3" number="7.3.5">
 <h3><span class="header-section-number">7.3.5</span> Parameter Summary</h3>
 <p>The parameters and settings used by this module are summarised in Table <a href="DO-1.html#tab:10-parstable">7.3</a>.</p>
-<div style="border: 1px solid #ddd; padding: 5px; overflow-y: scroll; height:475px; overflow-x: scroll; width:770px; ">
+<div style="border: 1px solid #ddd; padding: 5px; overflow-y: scroll; height:500px; overflow-x: scroll; width:770px; ">
 <table class="table" style="font-size: 11px; width: auto !important; margin-left: auto; margin-right: auto;">
 <caption style="font-size: initial !important;">
 <span id="tab:10-parstable">Table 7.3: </span>Oxygen module parameters and configuration options
@@ -1300,7 +1300,7 @@ string
 optional link to enable spatially resolved fluxes
 </td>
 </tr>
-<tr grouplength="1">
+<tr grouplength="2">
 <td colspan="7" style="border-bottom: 1px solid;background-color: #ebebeb !important;">
 <strong>Atmospheric exchange</strong>
 </td>
@@ -1328,6 +1328,29 @@ integer
 see options in the <a href="generic-utilities-functions.html#GAS">Gas Transfer</a> section
 </td>
 </tr>
+<tr>
+<td style="text-align:left;padding-left: 2em;" indentlevel="1">
+<code>altitude</code>
+</td>
+<td style="text-align:left;min-width: 7em; ">
+<span class="math display">\[H\]</span>
+</td>
+<td style="text-align:left;max-width: 19em; ">
+altitude of site above sea level
+</td>
+<td style="text-align:left;min-width: 10em; ">
+<span class="math display">\[\small{m}\]</span>
+</td>
+<td style="text-align:left;min-width: 5em; ">
+float
+</td>
+<td style="text-align:left;">
+0 - 4000
+</td>
+<td style="text-align:left;min-width: 10em; ">
+defaults to 0; Eq <a href="DO-1.html#eq:oxy4">(7.4)</a> used for <span class="math inline">\(H \gt 1\)</span>
+</td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -1345,6 +1368,7 @@ see options in the <a href="generic-utilities-functions.html#GAS">Gas Transfer</
    Ksed_oxy          = 100.0
    theta_sed_oxy     =   1.08
 !  Fsed_oxy_variable = &#39;SDF_Fsed_oxy&#39;
+!  altitide          = 1000  
  /</code></pre>
 <p>Note that when users link <code>Fsed_oxy_variable</code> then <code>Fsed_oxy</code> is not required as this parameter will be set for each each sediment zone from values input via the <code>aed_sedflux</code> module. The entries <code>oxy_min</code> and <code>oxy_max</code> are optional.</p>
 </div>
