@@ -797,7 +797,7 @@ div.csl-indent {
 <h3><span class="header-section-number">8.3.1</span> Process Descriptions</h3>
 <div id="carbonate-buffering-and-ph" class="section level4" number="8.3.1.1">
 <h4><span class="header-section-number">8.3.1.1</span> Carbonate buffering and pH</h4>
-<p>In most circum-neutral waters the carbonate buffer system controls the pH conditions within the water. When CO2 (<span class="math inline">\(CO_{2(gas)}\)</span>) is dissolved in water, it can exist in a variety of forms. Dissolved carbon dioxide, <span class="math inline">\(CO_{2_{(aq)}}\)</span>, forms carbonic acid, <span class="math inline">\(H_2CO_3\)</span>, and dissociates into bicarbonate, <span class="math inline">\(HCO_3^-\)</span>, and carbonate, <span class="math inline">\(CO_3^{2-}\)</span>, forms.</p>
+<p>In most circum-neutral waters the carbonate buffer system controls the pH conditions within the water. When CO2 within the atmosphere (<span class="math inline">\(CO_{2(gas)}\)</span>) is dissolved in water, it can exist in a variety of forms. Initially, carbon dioxide will dissolve, <span class="math inline">\(CO_{2_{(aq)}}\)</span>, which can then form carbonic acid, <span class="math inline">\(H_2CO_3\)</span>, and dissociate into bicarbonate, <span class="math inline">\(HCO_3^-\)</span>, and carbonate, <span class="math inline">\(CO_3^{2-}\)</span>, ions.</p>
 <p><span class="math display">\[\begin{eqnarray}
 CO_{2_{(aq)}} &amp;\rightleftharpoons&amp; CO_{2_{(gas)}}
 \\
@@ -925,7 +925,7 @@ where <span class="math inline">\(b=0.105\)</span> .</p>
 <p>The default variables created by this module, and the optionally required linked variables needed for full functionality of this module are summarised in Table <a href="Carbon-1.html#tab:11-statetable">8.1</a>. The diagnostic outputs able to be output are summarised in Table <a href="Carbon-1.html#tab:11-diagtable">8.2</a>.</p>
 <div id="state-variables-1" class="section level4 unnumbered">
 <h4>State variables</h4>
-<div style="border: 1px solid #ddd; padding: 5px; overflow-y: scroll; height:405px; overflow-x: scroll; width:770px; ">
+<div style="border: 1px solid #ddd; padding: 5px; overflow-y: scroll; height:410px; overflow-x: scroll; width:770px; ">
 <table class="table" style="font-size: 11px; width: auto !important; margin-left: auto; margin-right: auto;">
 <caption style="font-size: initial !important;">
 <span id="tab:11-statetable">Table 8.1: </span>Carbon - state variables
@@ -2141,22 +2141,44 @@ float
 </div>
 <div id="setup-configuration-3" class="section level2" number="8.4">
 <h2><span class="header-section-number">8.4</span> Setup &amp; Configuration</h2>
-<p>An example <code>aed.nml</code> parameter specification block for the <code>aed_carbon</code> module is shown below:</p>
+<p>An example <code>aed.nml</code> parameter specification block for the <code>aed_carbon</code> module that is only modelling <span class="math inline">\(DIC\)</span> is shown below:</p>
+<pre><code>&amp;aed_carbon
+ dic_initial       = 1000.
+ pH_initial        = 7.5
+ ch4_initial       = -9999       ! disables CH4
+! Carbonate buffering
+ co2_model         = 1
+ alk_model         = 5
+! Atmospheric exchange
+ atmco2            = 0.000380
+ co2_piston_model  = 1
+! Sediment respiration
+ Fsed_dic          = 10.0        ! replaced by linked SDF var
+ Ksed_dic          = 100.
+ theta_sed_dic     = 1.08
+ Fsed_dic_variable = &#39;SDF_Fsed_dic&#39;
+/</code></pre>
+<p><br>
+An example <code>aed.nml</code> parameter specification block for the <code>aed_carbon</code> module that includes all options is shown below:</p>
 <pre><code>&amp;aed_carbon
  dic_initial
  pH_initial
  ch4_initial
+!
  co2_model
  alk_model
  ionic
+!
  atmco2
  atmch4
  co2_piston_model
  ch4_piston_model
+!
  Rch4ox
  Kch4ox
  vTch4ox
  methane_reactant_variable
+!
  Fsed_dic
  Ksed_dic
  theta_sed_dic
@@ -2165,7 +2187,8 @@ float
  Ksed_ch4
  theta_sed_ch4
  Fsed_ch4_variable
- simCH4ebb
+!
+ ebb_model
  Fsed_ebb_variable
  ch4_bub_aLL
  ch4_bub_cLL

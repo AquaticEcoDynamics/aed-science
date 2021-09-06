@@ -43,7 +43,7 @@ The details of how each flux relevant to DIC and CH4 is calculated, and the asso
 
 #### Carbonate buffering and pH
 
-In most circum-neutral waters the carbonate buffer system controls the pH conditions within the water. When CO2 ($CO_{2(gas)}$) is dissolved in water, it can exist in a variety of forms. Dissolved carbon dioxide, $CO_{2_{(aq)}}$, forms carbonic acid, $H_2CO_3$, and dissociates into bicarbonate, $HCO_3^-$, and carbonate, $CO_3^{2-}$, forms.
+In most circum-neutral waters the carbonate buffer system controls the pH conditions within the water. When CO2 within the atmosphere ($CO_{2(gas)}$) is dissolved in water, it can exist in a variety of forms. Initially, carbon dioxide will dissolve, $CO_{2_{(aq)}}$, which can then form carbonic acid, $H_2CO_3$, and dissociate into bicarbonate, $HCO_3^-$, and carbonate, $CO_3^{2-}$, ions.
 
 \begin{eqnarray}
 CO_{2_{(aq)}} &\rightleftharpoons& CO_{2_{(gas)}}
@@ -253,7 +253,7 @@ kbl(carbon[,3:NCOL(carbon)], caption = "Carbon - state variables", align = "l",)
 	column_spec(5, width_min = "5em") %>%
 	column_spec(7, width_min = "10em") %>%
 	column_spec(7, width_max = "20em") %>%
-  scroll_box(width = "770px", height = "405px",
+  scroll_box(width = "770px", height = "410px",
              fixed_thead = FALSE)
 ```
 
@@ -388,23 +388,48 @@ kbl(carbon[,3:NCOL(carbon)], caption = "Carbon - parameters", align = "l",) %>%
 
 ## Setup & Configuration
 
-An example `aed.nml` parameter specification block for the `aed_carbon` module is shown below:
+An example `aed.nml` parameter specification block for the `aed_carbon` module that is only modelling $DIC$ is shown below:
+```{}
+&aed_carbon
+ dic_initial       = 1000.
+ pH_initial        = 7.5
+ ch4_initial       = -9999       ! disables CH4
+! Carbonate buffering
+ co2_model         = 1
+ alk_model         = 5
+! Atmospheric exchange
+ atmco2            = 0.000380
+ co2_piston_model  = 1
+! Sediment respiration
+ Fsed_dic          = 10.0        ! replaced by linked SDF var
+ Ksed_dic          = 100.
+ theta_sed_dic     = 1.08
+ Fsed_dic_variable = 'SDF_Fsed_dic'
+/
+```
+
+<br>
+An example `aed.nml` parameter specification block for the `aed_carbon` module that includes all options is shown below:
 ```{}
 &aed_carbon
  dic_initial
  pH_initial
  ch4_initial
+!
  co2_model
  alk_model
  ionic
+!
  atmco2
  atmch4
  co2_piston_model
  ch4_piston_model
+!
  Rch4ox
  Kch4ox
  vTch4ox
  methane_reactant_variable
+!
  Fsed_dic
  Ksed_dic
  theta_sed_dic
@@ -413,7 +438,8 @@ An example `aed.nml` parameter specification block for the `aed_carbon` module i
  Ksed_ch4
  theta_sed_ch4
  Fsed_ch4_variable
- simCH4ebb
+!
+ ebb_model
  Fsed_ebb_variable
  ch4_bub_aLL
  ch4_bub_cLL
