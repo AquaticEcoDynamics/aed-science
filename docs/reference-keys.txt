@@ -18,6 +18,20 @@ tab:10-diagtable
 tab:10-parstable
 eq:car1
 eq:car2
+tab:11-alkmode
+eq:sedimentExchange5
+eq:sedimentExchange6
+eq:sedimentExchange1
+eq:sedimentExchange2
+eq:sedimentExchange3
+eq:sedimentExchange4
+eq:sedimentExchange7
+eq:sedimentExchange8
+eq:sedimentExchange9
+eq:sedimentExchange10
+eq:sedimentExchange11
+eq:sedimentExchange12
+eq:sedimentExchange13
 tab:11-statetable
 tab:11-diagtable
 tab:11-parstable
@@ -213,7 +227,7 @@ variable-summary-3
 parameter-summary-3
 setup-configuration-3
 case-studies-examples-3
-case-study-2
+carbonCaseStudy
 publications-3
 inorganic-nitrogen
 contributors-4
@@ -264,7 +278,7 @@ optional-module-links-5
 feedbacks-to-the-host-model-5
 setup-configuration-5
 case-studies-examples-5
-case-study-3
+case-study-2
 publications-5
 silica
 contributors-6
@@ -277,7 +291,7 @@ optional-module-links-6
 feedbacks-to-the-host-model-6
 setup-configuration-6
 case-studies-examples-6
-case-study-4
+case-study-3
 publications-6
 organic-matter
 contributors-7
@@ -290,7 +304,7 @@ optional-module-links-7
 feedbacks-to-the-host-model-7
 setup-configuration-7
 case-studies-examples-7
-case-study-5
+case-study-4
 publications-7
 phytoplankton
 contributors-8
@@ -304,7 +318,7 @@ feedbacks-to-the-host-model-8
 setup-configuration-8
 setup-example
 case-studies-examples-8
-case-study-6
+case-study-5
 publications-8
 zooplankton
 contributors-9
@@ -317,7 +331,7 @@ optional-module-links-9
 feedbacks-to-the-host-model-9
 setup-configuration-9
 case-studies-examples-9
-case-study-7
+case-study-6
 publications-9
 totals
 contributors-10
@@ -330,7 +344,7 @@ optional-module-links-10
 feedbacks-to-the-host-model-10
 setup-configuration-10
 case-studies-examples-10
-case-study-8
+case-study-7
 publications-10
 aqueous-geochemistry
 contributors-11
@@ -345,7 +359,7 @@ feedbacks-to-the-host-model-11
 setup-configuration-11
 setup-example-1
 case-studies-examples-11
-case-study-9
+case-study-8
 publications-11
 pathogens-microbial-indicator-organisms
 contributors-12
@@ -359,7 +373,7 @@ feedbacks-to-the-host-model-12
 setup-configuration-12
 setup-example-2
 case-studies-examples-12
-case-study-10
+case-study-9
 publications-12
 stable-isotopes
 contributors-13
@@ -372,7 +386,7 @@ optional-module-links-13
 feedbacks-to-the-host-model-13
 setup-configuration-13
 case-studies-examples-13
-case-study-11
+case-study-10
 publications-13
 bioactive-particles
 contributors-14
@@ -385,7 +399,7 @@ optional-module-links-14
 feedbacks-to-the-host-model-14
 setup-configuration-14
 case-studies-examples-14
-case-study-12
+case-study-11
 publications-14
 sediment-biogeochemistry
 contributors-15
@@ -402,7 +416,7 @@ program-structure
 model-setup-boundary-conditions-parameter-definition
 model-output-post-processing
 case-studies-examples-15
-case-study-13
+case-study-12
 publications-15
 submerged-macrophytes
 contributors-16
@@ -415,7 +429,7 @@ optional-module-links-16
 feedbacks-to-the-host-model-16
 setup-configuration-16
 case-studies-examples-16
-case-study-14
+case-study-13
 publications-16
 macroalgae
 contributors-17
@@ -428,7 +442,7 @@ optional-module-links-17
 feedbacks-to-the-host-model-17
 setup-configuration-17
 case-studies-examples-17
-case-study-15
+case-study-14
 publications-17
 bivalves
 contributors-18
@@ -442,7 +456,7 @@ feedbacks-to-the-host-model-18
 setup-configuration-18
 setup-example-3
 case-studies-examples-18
-case-study-16
+case-study-15
 publications-18
 benthic-habitat-quality
 contributors-19
@@ -455,7 +469,7 @@ optional-module-links-19
 feedbacks-to-the-host-model-19
 setup-configuration-19
 case-studies-examples-19
-case-study-17
+case-study-16
 publications-19
 soil-hydrology
 contributors-20
@@ -468,7 +482,7 @@ optional-module-links-20
 feedbacks-to-the-host-model-20
 setup-configuration-20
 case-studies-examples-20
-case-study-18
+case-study-17
 publications-20
 soil-biogeochemistry
 contributors-21
@@ -481,7 +495,7 @@ optional-module-links-21
 feedbacks-to-the-host-model-21
 setup-configuration-21
 case-studies-examples-21
-case-study-19
+case-study-18
 publications-21
 acid-sulfate-soils
 contributors-22
@@ -494,7 +508,7 @@ optional-module-links-22
 feedbacks-to-the-host-model-22
 setup-configuration-22
 case-studies-examples-22
-case-study-20
+case-study-19
 publications-22
 riparian-vegetation
 contributors-23
@@ -507,7 +521,7 @@ optional-module-links-23
 feedbacks-to-the-host-model-23
 setup-configuration-23
 case-studies-examples-23
-case-study-21
+case-study-20
 publications-23
 riparian-habitat-quality
 contributors-24
@@ -520,9 +534,9 @@ optional-module-links-24
 feedbacks-to-the-host-model-24
 setup-configuration-24
 case-studies-examples-24
-case-study-22
+case-study-21
 publications-24
-generic-utilities-functions
+genericUtilitiesFunctions
 overview-25
 physico-chemical
 GAS

@@ -92,12 +92,20 @@ For users interested in simulating calcite precipitation, then this may also be 
 
 ##### co2_model = 1
 
-This option adopts the CO2SYS code (Lewis and Wallace, 1998) in which the bicarbonate system was modelled from DIC (mmol m-3) and total alkalinity (TA, mmol m-3), with water temperature (T, degrees), salinity (S, PSU) and water pressure (P, dbar) derived from the coupled hydrodynamic model, and DIC concentration derived from the aed_carbon model.
+This option adopts the CO2SYS code (Lewis and Wallace, 1998) in which the bicarbonate system was modelled from DIC (mmol m^-3^) and total alkalinity (TA, mmol m^-3^), with water temperature (T, degrees), salinity (S, PSU) and water pressure (P, dbar) derived from the coupled hydrodynamic model, and DIC concentration derived from the aed_carbon model.
 
 There are multiple options for TA calculation methods in this code depending on the data availability and environment of the study site, which can be switched by the alk_mode option:
 
+\begin{equation}
+  \Theta_{alk\_code}^{car}=\left\{
+  \begin{array}{@{}ll@{}}
+    0, & \text{carbonate alkalinity only}\\
+    1, & \text{dependance on salinity}\\
+    2-5 & \text{dependance on salinity and DIC}\\
+  \end{array}\right.
+\end{equation} 
 
-For freshwaters, there is a simple freshwater alkalinity option (alk_mode = 0), whereby TA is assumed to be dominated by the carbonate alkalinity. In this option, TA is calculated from the carbonate species according to:
+For freshwaters, there is a simple freshwater alkalinity option (`alk_mode = 0`), whereby TA is assumed to be dominated by the carbonate alkalinity. In this option, TA is calculated from the carbonate species according to:
 
 \begin{equation}
 TA=-[H^+ ]+[HCO_3^- ]+2[CO_3^(2-) ]+[OH^-]                                             
@@ -105,7 +113,50 @@ TA=-[H^+ ]+[HCO_3^- ]+2[CO_3^(2-) ]+[OH^-]
 
 For hardwater lakes, estuaries or coastal systems, then other ions contribute significantly to the total alkalinity and the assumption above is no longer valid. However, the component ions needed for an alkalinity calculation are not always commonly available or included in the model and so approximations are needed to estimate TA. TA is a quasi-conservative parameter and it has been a popular practice in coastal modelling to predict TA from salinity (e.g. Lee et al. 2006; Alin et al., 2012; Takahashi et al., 2014), or from combination of salinity and DIC concentration (Kim and Lee, 2009; Jones et al., 2016). Accordingly, `aed_carbon` supports a few options to model the TA in coastal waters.
 
+The first alk_mode option ($\Theta_{alk\_code}^{car}=1$) approximates the TA from salinity as:
 
+\begin{equation}
+TA=a+bS                                       
+\end{equation}
+
+where $a$ and $b$ are constant coefficients, with pre-defined values of $a$=1627.4 and $b$=22.176 derived from a study case in the Caboolture River estuary. Other remaining `alk_mode` options ($\Theta_{alk\_code}^{car}=2-5$) approximate the TA from salinity and DIC concentration with a quadratic polynomial relationship as:
+
+\begin{equation}
+TA=p00+p10\ S+p01\ DIC+p20\ S^2+p11\ S\ DIC+p02\ {DIC}^2
+\end{equation}
+
+where $p00$, $p10$, $p01$, $p20$, $p11$, $p02$ are constant coefficients. For this method the available options include:
+
+-   `alk_mode=2`: constant coefficients derived from all field work in Noosa, Maroochy, and Brisbane estuaries in Australia;
+-   `alk_mode=3`: constant coefficients derived from field work in Noosa River;
+-   `alk_mode=4`: constant coefficients derived from field work in Maroochy River;
+-   `alk_mode=5`: constant coefficients derived from field work in Brisbane River;
+
+The constant coefficients in these options are provided in Table 6.1. A case study using alk_mode=5 in Brisbane River (link to case study) is given in Section 6.5. Users may wish to implement tailored alkalinity relationships as additional alk_mode options for specific study sites and use-cases.
+
+
+```{r 11-alkmode, echo=FALSE, message=FALSE, warning=FALSE}
+library(knitr)
+library(kableExtra)
+library(readxl)
+library(rmarkdown)
+library(kableExtra)
+table <- read_excel('tables/11-carbon/alk_mode_coeff.xlsx', sheet = 1)
+
+
+kbl(table, caption = "Constant coefficients in `alk_mode` options 2 - 5.", align = "l") %>% 
+  row_spec(0, background = "#14759e", bold = TRUE, color = "white") %>% 
+  kable_styling(full_width = F,font_size = 11) %>% 
+            column_spec(1, width_min = "10em") %>%
+            column_spec(2, width_min = "10em") %>%
+            column_spec(3, width_min = "10em") %>%
+            column_spec(4, width_min = "10em") %>%
+            column_spec(5, width_min = "10em") %>%
+            column_spec(6, width_min = "10em") %>%
+            column_spec(7, width_min = "10em") %>%
+scroll_box(width = "770px", 
+             fixed_thead = FALSE)
+```
 
 ##### co2_model = 2
 
@@ -183,6 +234,112 @@ Using this framework, the inorganic carbon model co2_model = 2 operates as follo
 
 #### Sediment exchange
 
+The exchange fluxes of DIC and CH4 between the sediment and overlaying water are modelled as a function of the overlying water temperature and bottom water dissolved oxygen concentration:
+
+\begin{equation}
+\mathcal{F}_{sed}^{DIC}[T,O_2]=F_{sed}^{DIC} \theta_{sed - DIC}^{T-20} \phi_{O_2}^{DIC}[O_2]
+(\#eq:sedimentExchange5)  
+\end{equation}
+
+\begin{equation}
+\mathcal{F}_{sed}^{CH_4}[T,O_2]=F_{sed}^{CH_4} \theta_{sed - CH_4}^{T-20} \phi_{O_2}^{CH_4}[O_2]
+(\#eq:sedimentExchange6)  
+\end{equation}
+
+where the parameters $F_{sed}^{DIC}$ and $F_{sed}^{CH_4}$ are the maximum flux rate across the sediment-water interface at 20°C, the  $\theta_{sed-DIC}$  and $\theta_{sed-CH_4}$  are the Arrhenius temperature multiplier for temperature control. The last item is the oxygen mediation of the fluxes. 
+
+Oxygen mediation of the inorganic carbon fluxes: The sediment flux can be changed by bottom water O~2~ concentration. If the [aed2_oxygen module](#DO_1) is correctly linked to the carbon module then this setting will switch on automatically. At low O~2~ concentrations, the amount of DIC fluxing out of the sediment is decreased and at high O~2~ concentrations, it is set close to the $F_{sed}^{DIC}$, as shown in Equation \@ref(eq:sedimentExchange). This is a convenient simplification that can be tuned within this module, rather than a more complicated full set of biogeochemical reactions. The half-saturation oxygen parameter $K_{sed-DIC}^{O_2}$ can be used to tune the DIC flux dependence on bottom water O~2~. A similar function can be used to tune the CH~4~ flux using the parameter $K_{sed-CH_4}^{O_2}$, as shown in Equation 6.22. At high O~2~ concentrations, CH~4~ flux decreases, and at low O~2~ concentrations, the flux is close to the parameter $F_{sed}^{CH_4}$.
+
+\begin{equation}
+\Phi_{O2}^{DIC}\left[O_2\right]=\frac{O_2}{O_2+K_{sed-DIC}^{O2}}
+(\#eq:sedimentExchange1)  
+\end{equation}
+
+\begin{equation}
+\Phi_{O2}^{CH_4}\left[O_2\right]=\frac{K_{sed-CH_4}^{O_2}}{O_2+K_{sed-CH_4}^{O_2}}
+(\#eq:sedimentExchange2)  
+\end{equation}
+
+Once the exchange fluxes are computed it is applied to the bottom cells of the simulated domain, and the changes in the DIC and CH~4~ concentrations in the bottom layer are:
+
+\begin{equation}
+{\hat{f}}_{sed}^{DIC}= \frac{F_{sed}^{DIC}}{\Delta z_{bot}}
+(\#eq:sedimentExchange3)  
+\end{equation}
+
+\begin{equation}
+{\hat{f}}_{sed}^{CH_4}= \frac{F_{sed}^{CH_4}}{\Delta z_{bot}}
+(\#eq:sedimentExchange4)  
+\end{equation}
+
+where $\Delta z_{bot}$ is the bottom layer thickness.
+
+**Advanced options**: The approach described above is the most simple and default method for capturing inorganic carbon fluxes from the sediment, and is referred to as the static model. This approach can be extended to allow for spatial variability in $F_{sed}^{DIC}$ and $F_{sed}^{CH_4}$, by engaging the link to the aed_sedflux module, where the host models support multiple benthic cells or zones. In this case, users input spatially discrete values of $F_{sed}^{DIC}$ and $F_{sed}^{CH4}$.
+
+Where dynamic rates of DIC and CH~4~ are required to flux to/from the sediment (e.g. in response to episodic loading of organic material to the sediment, or for assessment of long-term changes in C loading), then the above expressions (Eq \@ref(eq:sedimentExchange5) and \@ref(eq:sedimentExchange6)) are replaced instead with dynamically calculated variables in aed_seddiagenesis, via a link created with the aed_sedflux module.
+
+**Methane ebullition**
+
+Methane bubbles are formed when anoxic methane production in the sediments exceeds the rate of oxidation and diffusion. As the bubbles overcome sediment tension, they are released to the water column. The sediment bubble flux is greatly depth-dependent and is enhanced by increasing temperatures (DelSontro et al., 2010). Moreover, it has been observed that falling water levels and decreasing hydrostatic pressure also result in increased ebullition rates (Casper et al., 2000). The ebullition flux is formulated mathematically as follows:
+
+\begin{equation}
+{\hat{f}}_{sed}^{CH_{4}-bub}[T,\Delta z]=F_{sed}^{CH_{4}-bub} \theta_{sedch4-bub}^{T-20} \Phi_{\Delta z}^{CH_{4}-bub}[\Delta z]\frac{1}{\Delta z}
+(\#eq:sedimentExchange7)  
+\end{equation}
+
+The sediment bubble flux $F_{sed}^{CH_{4}-bub}$ can be set as a constant or depth-dependent flux. By setting up a link to the aed_sedflux module (`Fsed_ebb_variable = 'SDF_Fsed_ch4_ebb'`), different sediment bubble flux rates can be implemented in each sediment zone, accounting for the spatial variability of ebullition. $\Phi_{\Delta z}^{{CH}_{4-bub}}\left[\Delta z\right]$ accounts for the effect of water level fluctuations (\Delta z) on the sediment bubble flux and is calculated by adopting a site-specific regression equation from Lake [Kinneret](#carbonCaseStudy) derived by Ostrovsky et al., (2013). 
+
+\begin{equation}
+\Phi_{\Delta z}^{CH_{4}-bub}[\Delta z] = c_{n}\text{exp}\{\varepsilon_{reg}(\bar{z}-z)\} 
+(\#eq:sedimentExchange8)    
+\end{equation}
+
+Where $c_n$ is a normalising constant, $\varepsilon_{reg}$ is the exponential factor from the regression equation. 
+
+The methane bubbles released from the sediments either dissolve in the water column or are directly emitted to the atmosphere. The dissolution rate of methane bubbles can be set constant, or depth-dependent by splitting the water column into two layers and assigning different dissolution rates above (`ch4_bub_disf1`) and below (`ch4_bub_disf2`) the splitting depth (`ch4_bub_disp`). In stratified lakes, this functionality can be used to set different dissolution rates in the epilimnion and hypolimnion ($R_{diss}\left[z\right]$) to account for the effect of different thermal layers on dissolution rates. 
+
+\begin{equation}
+f_{dis}^{{CH}_{4-bub}}=R_{diss}\left[z\right]\ {\hat{f}}_{sed}^{CH_{4}-bub}
+(\#eq:sedimentExchange9)  
+\end{equation}
+
+**Methane oxidation**
+
+Aerobic oxidation is mediated by methanotrophs and is the most significant sink for dissolved methane. The metabolic rate of methanotrophs increases with increasing temperatures, hence aerobic oxidation is temperature sensitive. The aerobic oxidation rate can be described according to Michealis-Menten Kinetics as follows (Schmid et al., 2017):
+
+\begin{equation}
+f_{ox}^{{CH}_4}=\ R_{oxmax}^{{CH}_4}\  \Phi_{O2}^{ch4-ox}\left[O_2\right]\theta_{ox}^{T-20}[CH_4]                                            (\#eq:sedimentExchange10)   
+\end{equation}    
+
+where $R_{oxmax}^{{CH}_4}$ is the maximum reaction rate of methane oxidation at 20˚C (/day),  $\Phi_{O2}^{ch4-ox}\left[O_2\right]$ is the oxygen mediation of the oxidation rate, $\theta_{ox}$  is the temperature multiplier for methane oxidation, $T$ the water temperature, and $[CH_4]$ is the methane concentration in the water. 
+
+The methane oxidation rate can be changed by water O~2~ concentration. At low O~2~ concentrations, the amount of CH~4~ oxidated to DIC decreased and at high O~2~ concentrations, it is set close to the $R_{oxmax}^{{CH}_4}$, as shown in Equation \@ref(eq:sedimentExchange11): 
+
+\begin{equation}
+\Phi_{O_2}^{CH_{4}-ox}\left[O_2\right]=\frac{O_2}{O_2+K_{CH_{4}-ox}^{O_2}}
+(\#eq:sedimentExchange11)    
+\end{equation}   
+
+where O~2~ is the dissolved oxygen concentration, $K_{CH_{4}-ox}^{O_2}$ is the half saturation oxygen concentration for methane oxidation.
+
+**Air-water exchange**
+
+Carbon dioxide and methane transfer occurs across the air-water interface based on the gas solubility, the amount of turbulence at the interface and the concentration gradient between the air and water, using widely used approach introduced by Wanninkhof (1992). The air-water exchange rate of CO~2~ is modelled as:
+
+\begin{equation}
+\mathcal{F}_{atm}^{{CO}_2}=\ k_{600}^{CO_2}\ \Upsilon_{0-CO_2}({pCO}_2^w-{pCO}_2^a)
+(\#eq:sedimentExchange12)  
+\end{equation}   
+
+where the ${pCO}_2^w$ and ${pCO}_2^a$ are the partial pressure of CO~2~ in the water surface and the air (in unit of atm), respectively; $\Upsilon_{0-CO_2}$ is the solubility of CO~2~, and $k_{600}^{CO_2}$ is the air-water gas transfer velocity for CO~2~. As AED can be applied across many types of environments, spanning the ocean to small lakes and flowing waters, users can select from a range of gas exchange piston velocity models and Schmidt models, or implement their own, to capture this process. The options are listed in the ‘Gas Transfer’ section of the [‘Generic utilities & Functions’ chapter](#genericUtilitiesFunctions). The switches of the piston and Schmidt models are set via the use of $\Theta_{gas}^{piston}$ and $\Theta_{gas}^{schmidt}$, respectively (see option details in chapter 30 [Generic utilities & Functions](#genericUtilitiesFunctions)). 
+The exchange flux can then be added to or subtracted from the surface cells of an aquatic system, and the change in the CO~2~ concentration in the surface layer is:
+
+\begin{equation}
+{\check{f}}_{atm}^{{CO}_2}=\frac{F_{atm}^{CO_2}}{\Delta Z_{surf}}
+(\#eq:sedimentExchange13)
+\end{equation}
+
+where $\Delta z_{surf}$ is the surface layer thickness.
 
 ###	Optional Module Links
 
@@ -451,5 +608,5 @@ An example `aed.nml` parameter specification block for the `aed_carbon` module t
 ```
 
 ## Case Studies & Examples
-###	Case Study
+###	Case Study {#carbonCaseStudy}
 ###	Publications
