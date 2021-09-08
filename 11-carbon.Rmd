@@ -55,6 +55,35 @@ H_2CO_3 &\rightleftharpoons& H^+ + HCO_3^-
 HCO_3^- &\rightleftharpoons& H^+ + CO_3^{2-}
 \end{eqnarray}
 
+<center>
+```{r carbonPlotly, echo=FALSE, message=FALSE, warning=FALSE}
+library(seacarb)
+library(plotly)
+pH <- seq(2, 12, by = 0.1)
+res <- speciation(K1(), K2(), NULL, pH, 1)
+  
+df <- as.data.frame(res)
+
+plot_ly(df, x = pH) %>% 
+  add_trace(y = ~C1, name = 'CO<sub>2</sub>', mode = 'lines', line = list(color = '#FF2500')) %>%
+  add_trace(y = ~C2, name = 'HCO<sub>3</sub><sup>-</sup>', mode = 'lines', line = list(color = '#01A08A',dash = 'dash')) %>%
+  add_trace(y = ~C3, name = 'CO<sub>3</sub><sup>2-</sup>', mode = 'lines', line = list(color = '#F2AD00',dash = 'dot')) %>% 
+  add_trace(x=c(5.84717, 5.84717), y=c(-0.5, 1.5), mode="lines", name='pK1', opacity = 0.75, line = list(color = 'grey', width = 1.5)) %>% 
+  add_trace(x=c(8.96592, 8.96592), y=c(-0.5, 1.5), mode="lines", name='pK2', opacity = 0.75, line = list(color = 'grey', width = 1.5)) %>% 
+  layout(title = "<b>DIC speciation</b>",
+      xaxis = list(title = "pH", fixedrange = TRUE),
+      yaxis = list(title = "Relative concentration (%)", fixedrange = TRUE, range = c(0,1)),
+      margin = list(
+         l = 50,
+         r = 50,
+         b = 50,
+         t = 50,
+         pad = 4
+       )) %>% 
+  config(displayModeBar = FALSE)
+```
+</center>
+
 The sum of the concentrations of all these forms is the inorganic carbon concentration (DIC), and the composition of these forms depends on acidity (pH). The total $DIC$ state variable is the sum of carbonate species in a water parcel, which is conservative with respect to hydrodynamics:
 
 \begin{equation}
