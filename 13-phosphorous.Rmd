@@ -1,14 +1,296 @@
-# Phosphorous
+# Inorganic Phosphorus
 
 ## Contributors
 ## Overview
+
 ## Model Description
+
+This module supports one state variable to capture the dissolved phosphate concentration, $PO_4$ (also referred to as *Filterable Reactive Phosphorus*, $FRP$), and optionally users can account for sorbed phosphate, denoted $PO_4^{ads}$.
+The module is a low-level module that supports the processes shaping inorganic phosphorus dynamics and is designed to be linked to by other modules that interact with phosphate. The dynamics of $PO_4$ are summarised as:
+
+\begin{eqnarray}
+\frac{D}{Dt}PO_4 =  \color{darkgray}{ \mathbb{M} + \mathcal{S} } \quad
+&+&   \overbrace{\check{f}_{wetdep}^{frp}+\hat{f}_{sed}^{frp} - f_{sorp}^{frp} }^\text{aed_phosphorus} \\ (\#eq:phs1)
+&+& \color{brown}{ f_{min}^{DOP} - f_{gpp}^{PHY}- f_{gpp}^{MAG}  } \\ \nonumber
+\end{eqnarray}
+
+where $\mathbb{M}$ and $\mathcal{S}$ refer to water mixing and boundary source terms, respectively, and the coloured $\color{brown}{f}$ terms reflect the optionally configurable contributions from other modules; these include the breakdown of $DOP$ by aerobic heterotrophic bacteria to $PO_4$, and photosynthetic phosphate uptake by phytoplankton and macroalgae.
+
+The sorbed $PO_4$ pool is resolved as:
+
+\begin{eqnarray}
+\frac{D}{Dt}PO_4^{ads} =  \color{darkgray}{ \mathbb{M} + \mathcal{S} } \quad
+&+&   \overbrace{\check{f}_{drydep}^{pip}+\hat{f}_{resus}^{pip} + f_{sorp}^{frp} - f_{set}^{pip} }^\text{aed_phosphorus} \\ (\#eq:phs2)
+\end{eqnarray}
+
+
 ###	Process Descriptions
-###	Variable Summary
-###	Parameter Summary
+
+#### Phosphate sorption - desorption
+
+#### Atmospheric deposition
+
+#### Dissolved sediment flux
+
+#### Sedimentation and resuspension
+
+
+
 ###	Optional Module Links
+
+Other phosphate sources/sinks are indicated in Eq \@ref(eq:phs1) for $PO_4$. These include:
+
+-	aed_oxygen: Oxygen is used to control the rate of sediment release of phosphate.
+-	aed_carbon: pH can used to influence the sorption dynamics of phosphate.
+-	aed_organic_matter: organic matter minerization replenishes $PO_4$.
+-	aed_phytoplankton: phytoplankton photosynthesis consumes $PO_4$.
+-	aed_geochemistry: optional link to simulate the phosphate precipitation.
+-	aed_sedflux: modules to update the sediment-water exchange rate of $PO_4$.
+
 ###	Feedbacks to the Host Model
+
+The inorganic phosphorus module has no feedbacks to the host hydrodynamic model.
+
+###	Variable Summary
+
+The default variables created by this module, and the optionally required linked variables needed for full functionality of this module are summarised in Table \@ref(tab:13-statetable). The diagnostic outputs able to be output are summarised in Table \@ref(tab:13-diagtable).
+
+#### State variables {-}
+
+
+```{r 13-statetable, echo=FALSE, message=FALSE, warning=FALSE}
+library(knitr)
+library(kableExtra)
+library(readxl)
+library(rmarkdown)
+theSheet <- read_excel('tables/aed_variable_tables.xlsx', sheet = 8)
+theSheet <- theSheet[theSheet$Table == "State variable",]
+theSheetGroups <- unique(theSheet$Group)
+theSheet$`AED name` <- paste0("`",theSheet$`AED name`,"`")
+
+for(i in seq_along(theSheet$Symbol)){
+  if(!is.na(theSheet$Symbol[i])==TRUE){
+    theSheet$Symbol[i] <- paste0("$$",theSheet$Symbol[i],"$$")
+  } else {
+    theSheet$Symbol[i] <- NA
+  }
+}
+for(i in seq_along(theSheet$Unit)){
+  if(!is.na(theSheet$Unit[i])==TRUE){
+    theSheet$Unit[i] <- paste0("$$\\small{",theSheet$Unit[i],"}$$")
+  } else {
+    theSheet$Unit[i] <- NA
+  }
+}
+for(i in seq_along(theSheet$Comments)){
+  if(!is.na(theSheet$Comments[i])==TRUE){
+    theSheet$Comments[i] <- paste0("",theSheet$Comments[i],"")
+  } else {
+    theSheet$Comments[i] <- " "
+  }
+}
+
+kbl(theSheet[,3:NCOL(theSheet)], caption = "Phosphorus - *state* variables", align = "l",) %>%
+  pack_rows(theSheetGroups[1],
+            min(which(theSheet$Group == theSheetGroups[1])),
+            max(which(theSheet$Group == theSheetGroups[1])),
+            background = '#ebebeb') %>%
+  pack_rows(theSheetGroups[2],
+            min(which(theSheet$Group == theSheetGroups[2])),
+            max(which(theSheet$Group == theSheetGroups[2])),
+            background = '#ebebeb') %>%
+  row_spec(0, background = "#14759e", bold = TRUE, color = "white") %>%
+	kable_styling(full_width = F,font_size = 11) %>%
+	column_spec(2, width_min = "7em") %>%
+	column_spec(3, width_max = "18em") %>%
+	column_spec(4, width_min = "10em") %>%
+	column_spec(5, width_min = "5em") %>%
+	column_spec(7, width_min = "10em") %>%
+	column_spec(7, width_max = "20em") %>%
+  scroll_box(width = "770px", height = "465px",
+             fixed_thead = FALSE)
+```
+
+
+
+#### Diagnostics{-}
+
+
+
+```{r 13-diagtable, echo=FALSE, message=FALSE, warning=FALSE}
+library(knitr)
+library(kableExtra)
+library(readxl)
+library(rmarkdown)
+theSheet <- read_excel('tables/aed_variable_tables.xlsx', sheet = 8)
+theSheet <- theSheet[theSheet$Table == "Diagnostics",]
+theSheetGroups <- unique(theSheet$Group)
+theSheet$`AED name` <- paste0("`",theSheet$`AED name`,"`")
+
+for(i in seq_along(theSheet$Symbol)){
+  if(!is.na(theSheet$Symbol[i])==TRUE){
+    theSheet$Symbol[i] <- paste0("$$",theSheet$Symbol[i],"$$")
+  } else {
+    theSheet$Symbol[i] <- NA
+  }
+}
+for(i in seq_along(theSheet$Unit)){
+  if(!is.na(theSheet$Unit[i])==TRUE){
+    theSheet$Unit[i] <- paste0("$$\\small{",theSheet$Unit[i],"}$$")
+  } else {
+    theSheet$Unit[i] <- NA
+  }
+}
+for(i in seq_along(theSheet$Comments)){
+  if(!is.na(theSheet$Comments[i])==TRUE){
+    theSheet$Comments[i] <- paste0("",theSheet$Comments[i],"")
+  } else {
+    theSheet$Comments[i] <- " "
+  }
+}
+
+kbl(theSheet[,3:NCOL(theSheet)], caption = "Phosphorus - *diagnostic* variables", align = "l",) %>%
+  pack_rows(theSheetGroups[1],
+            min(which(theSheet$Group == theSheetGroups[1])),
+            max(which(theSheet$Group == theSheetGroups[1])),
+            background = '#ebebeb') %>%
+  pack_rows(theSheetGroups[2],
+            min(which(theSheet$Group == theSheetGroups[2])),
+            max(which(theSheet$Group == theSheetGroups[2])),
+            background = '#ebebeb') %>%
+  row_spec(0, background = "#14759e", bold = TRUE, color = "white") %>%
+  kable_styling(full_width = F,font_size = 11) %>%
+            column_spec(2, width_min = "7em") %>%
+	          column_spec(3, width_max = "18em") %>%
+	          column_spec(4, width_min = "10em") %>%
+	          column_spec(5, width_min = "6em") %>%
+						column_spec(7, width_min = "10em") %>%
+	          scroll_box(width = "770px", height = "245px",
+            fixed_thead = FALSE)
+```
+
+<br>
+
+
+###	Parameter Summary
+
+The parameters and settings used by this module are summarised in Table \@ref(tab:13-parstable).
+
+
+```{r 13-parstable, echo=FALSE, message=FALSE, warning=FALSE}
+library(knitr)
+library(kableExtra)
+library(readxl)
+library(rmarkdown)
+theSheet <- read_excel('tables/aed_variable_tables.xlsx', sheet = 8)
+theSheet <- theSheet[theSheet$Table == "Parameter",]
+theSheetGroups <- unique(theSheet$Group)
+theSheet$`AED name` <- paste0("`",theSheet$`AED name`,"`")
+
+for(i in seq_along(theSheet$Symbol)){
+  if(!is.na(theSheet$Symbol[i])==TRUE){
+    theSheet$Symbol[i] <- paste0("$$",theSheet$Symbol[i],"$$")
+  } else {
+    theSheet$Symbol[i] <- " "
+  }
+}
+for(i in seq_along(theSheet$Unit)){
+  if(!is.na(theSheet$Unit[i])==TRUE){
+    theSheet$Unit[i] <- paste0("$$\\small{",theSheet$Unit[i],"}$$")
+  } else {
+    theSheet$Unit[i] <- NA
+  }
+}
+for(i in seq_along(theSheet$Comments)){
+  if(!is.na(theSheet$Comments[i])==TRUE){
+    theSheet$Comments[i] <- paste0("",theSheet$Comments[i],"")
+  } else {
+    theSheet$Comments[i] <- "-"
+  }
+}
+
+kbl(theSheet[,3:NCOL(theSheet)], caption = "Phosphorus module parameters and configuration options", align = "l",) %>%
+  pack_rows(theSheetGroups[1],
+            min(which(theSheet$Group == theSheetGroups[1])),
+            max(which(theSheet$Group == theSheetGroups[1])),
+            background = '#ebebeb') %>%
+  pack_rows(theSheetGroups[2],
+            min(which(theSheet$Group == theSheetGroups[2])),
+            max(which(theSheet$Group == theSheetGroups[2])),
+            background = '#ebebeb') %>%
+  pack_rows(theSheetGroups[3],
+					  min(which(theSheet$Group == theSheetGroups[3])),
+					  max(which(theSheet$Group == theSheetGroups[3])),
+					  background = '#ebebeb') %>%
+  pack_rows(theSheetGroups[4],
+					  min(which(theSheet$Group == theSheetGroups[4])),
+					  max(which(theSheet$Group == theSheetGroups[4])),
+					  background = '#ebebeb') %>%
+  row_spec(0, background = "#14759e", bold = TRUE, color = "white") %>%
+  kable_styling(full_width = F,font_size = 11) %>%
+	column_spec(2, width_min = "7em") %>%
+	column_spec(3, width_max = "19em") %>%
+	column_spec(4, width_min = "10em") %>%
+	column_spec(5, width_min = "5em") %>%
+	column_spec(7, width_min = "10em") %>%
+  scroll_box(width = "770px", height = "1300px",
+             fixed_thead = FALSE)
+```
+<br>
+
 ## Setup & Configuration
+
+
+An example `aed.nml` parameter specification block for the `aed_phosphorus` module that is modelling dissolved and particulare (sorbed) $PO_4$ is shown below:
+```{fortran, eval = FALSE}
+  &aed_phosphorus
+    !-- Initial value
+     frp_initial          = 0.25
+    !-- Sediment flux
+     Fsed_frp             = 0.08
+     Ksed_frp             = 30.0
+     theta_sed_frp        = 1.08
+     phosphorus_reactant_variable ='OXY_oxy'
+    !-- PO4 adsorption
+     simPO4Adsorption     = .true.
+     ads_use_external_tss = .true.
+     PO4AdsorptionModel   = 1
+     Kpo4p                = 0.01
+     w_po4ads             = -0.01
+  /
+```
+
+<br>
+An example `aed.nml` parameter specification block for the `aed_phosphorus` module that includes all options is shown below:
+```{fortran, eval = FALSE}
+  &aed_phosphorus
+    !-- Initial value
+     frp_initial = 0.25
+    !-- Sediment flux
+     Fsed_frp = 0.08
+     Ksed_frp = 30.0
+     theta_sed_frp = 1.08
+     phosphorus_reactant_variable ='OXY_oxy'
+     Fsed_frp_variable ='SDF_Fsed_frp'
+    !-- PO4 adsorption
+     simPO4Adsorption = .true.
+     ads_use_external_tss = .false.
+     po4sorption_target_variable ='NCS_ss1'
+     PO4AdsorptionModel = 2
+     Kpo4p = 0.01
+     Kadsratio= 1.0
+     Qmax = 1.0
+     w_po4ads = -9999     ! Note: -9999 links PO4-ad settling to target_variable
+     ads_use_pH = .false.
+     pH_variable = 'CAR_pH'
+    !-- Atmospheric deposition
+     simDryDeposition = .false.
+     atm_pip_dd = 0.00
+     simWetDeposition = .true.
+     atm_frp_conc = 0.01
+  /
+```
+
 ## Case Studies & Examples
 ###	Case Study
 ###	Publications

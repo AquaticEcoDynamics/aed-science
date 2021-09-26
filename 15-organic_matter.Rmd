@@ -4,10 +4,207 @@
 ## Overview
 ## Model Description
 ###	Process Descriptions
-###	Variable Summary
-###	Parameter Summary
 ###	Optional Module Links
 ###	Feedbacks to the Host Model
+
+###	Variable Summary
+
+#### State variables {-}
+
+```{r 15-statetable, echo=FALSE, message=FALSE, warning=FALSE}
+library(knitr)
+library(kableExtra)
+library(readxl)
+library(rmarkdown)
+theSheet <- read_excel('tables/aed_variable_tables.xlsx', sheet = 10)
+theSheet <- theSheet[theSheet$Table == "State variable",]
+theSheetGroups <- unique(theSheet$Group)
+theSheet$`AED name` <- paste0("`",theSheet$`AED name`,"`")
+
+for(i in seq_along(theSheet$Symbol)){
+  if(!is.na(theSheet$Symbol[i])==TRUE){
+    theSheet$Symbol[i] <- paste0("$$",theSheet$Symbol[i],"$$")
+  } else {
+    theSheet$Symbol[i] <- NA
+  }
+}
+for(i in seq_along(theSheet$Unit)){
+  if(!is.na(theSheet$Unit[i])==TRUE){
+    theSheet$Unit[i] <- paste0("$$\\small{",theSheet$Unit[i],"}$$")
+  } else {
+    theSheet$Unit[i] <- NA
+  }
+}
+for(i in seq_along(theSheet$Comments)){
+  if(!is.na(theSheet$Comments[i])==TRUE){
+    theSheet$Comments[i] <- paste0("",theSheet$Comments[i],"")
+  } else {
+    theSheet$Comments[i] <- " "
+  }
+}
+
+kbl(theSheet[,3:NCOL(theSheet)], caption = "Organic Matter - *state* variables", align = "l",) %>%
+  pack_rows(theSheetGroups[1],
+            min(which(theSheet$Group == theSheetGroups[1])),
+            max(which(theSheet$Group == theSheetGroups[1])),
+            background = '#ebebeb') %>%
+  pack_rows(theSheetGroups[2],
+            min(which(theSheet$Group == theSheetGroups[2])),
+            max(which(theSheet$Group == theSheetGroups[2])),
+            background = '#ebebeb') %>%
+  row_spec(0, background = "#14759e", bold = TRUE, color = "white") %>%
+	kable_styling(full_width = F,font_size = 11) %>%
+	column_spec(2, width_min = "7em") %>%
+	column_spec(3, width_max = "18em") %>%
+	column_spec(4, width_min = "10em") %>%
+	column_spec(5, width_min = "5em") %>%
+	column_spec(7, width_min = "10em") %>%
+	column_spec(7, width_max = "20em") %>%
+  scroll_box(width = "770px", height = "1300px",
+             fixed_thead = FALSE)
+```
+
+
+#### Diagnostics{-}
+
+
+```{r 15-diagtable, echo=FALSE, message=FALSE, warning=FALSE}
+library(knitr)
+library(kableExtra)
+library(readxl)
+library(rmarkdown)
+theSheet <- read_excel('tables/aed_variable_tables.xlsx', sheet = 10)
+theSheet <- theSheet[theSheet$Table == "Diagnostics",]
+theSheetGroups <- unique(theSheet$Group)
+theSheet$`AED name` <- paste0("`",theSheet$`AED name`,"`")
+
+for(i in seq_along(theSheet$Symbol)){
+  if(!is.na(theSheet$Symbol[i])==TRUE){
+    theSheet$Symbol[i] <- paste0("$$",theSheet$Symbol[i],"$$")
+  } else {
+    theSheet$Symbol[i] <- NA
+  }
+}
+for(i in seq_along(theSheet$Unit)){
+  if(!is.na(theSheet$Unit[i])==TRUE){
+    theSheet$Unit[i] <- paste0("$$\\small{",theSheet$Unit[i],"}$$")
+  } else {
+    theSheet$Unit[i] <- NA
+  }
+}
+for(i in seq_along(theSheet$Comments)){
+  if(!is.na(theSheet$Comments[i])==TRUE){
+    theSheet$Comments[i] <- paste0("",theSheet$Comments[i],"")
+  } else {
+    theSheet$Comments[i] <- " "
+  }
+}
+
+kbl(theSheet[,3:NCOL(theSheet)], caption = "Organic Matter - *diagnostic* variables", align = "l",) %>%
+  pack_rows(theSheetGroups[1],
+            min(which(theSheet$Group == theSheetGroups[1])),
+            max(which(theSheet$Group == theSheetGroups[1])),
+            background = '#ebebeb') %>%
+  pack_rows(theSheetGroups[2],
+            min(which(theSheet$Group == theSheetGroups[2])),
+            max(which(theSheet$Group == theSheetGroups[2])),
+            background = '#ebebeb') %>%
+  pack_rows(theSheetGroups[3],
+            min(which(theSheet$Group == theSheetGroups[3])),
+            max(which(theSheet$Group == theSheetGroups[3])),
+            background = '#ebebeb') %>%
+  row_spec(0, background = "#14759e", bold = TRUE, color = "white") %>%
+  kable_styling(full_width = F,font_size = 11) %>%
+            column_spec(2, width_min = "7em") %>%
+	          column_spec(3, width_max = "18em") %>%
+	          column_spec(4, width_min = "10em") %>%
+	          column_spec(5, width_min = "6em") %>%
+						column_spec(7, width_min = "10em") %>%
+	          scroll_box(width = "770px", height = "1400px",
+            fixed_thead = FALSE)
+```
+
+<br>
+
+###	Parameter Summary
+
+
+The parameters and settings used by this module are summarised in Table \@ref(tab:15-parstable).
+
+
+```{r 15-parstable, echo=FALSE, message=FALSE, warning=FALSE}
+library(knitr)
+library(kableExtra)
+library(readxl)
+library(rmarkdown)
+theSheet <- read_excel('tables/aed_variable_tables.xlsx', sheet = 10)
+theSheet <- theSheet[theSheet$Table == "Parameter",]
+theSheetGroups <- unique(theSheet$Group)
+theSheet$`AED name` <- paste0("`",theSheet$`AED name`,"`")
+
+for(i in seq_along(theSheet$Symbol)){
+  if(!is.na(theSheet$Symbol[i])==TRUE){
+    theSheet$Symbol[i] <- paste0("$$",theSheet$Symbol[i],"$$")
+  } else {
+    theSheet$Symbol[i] <- " "
+  }
+}
+for(i in seq_along(theSheet$Unit)){
+  if(!is.na(theSheet$Unit[i])==TRUE){
+    theSheet$Unit[i] <- paste0("$$\\small{",theSheet$Unit[i],"}$$")
+  } else {
+    theSheet$Unit[i] <- NA
+  }
+}
+for(i in seq_along(theSheet$Comments)){
+  if(!is.na(theSheet$Comments[i])==TRUE){
+    theSheet$Comments[i] <- paste0("",theSheet$Comments[i],"")
+  } else {
+    theSheet$Comments[i] <- "-"
+  }
+}
+
+kbl(theSheet[,3:NCOL(theSheet)], caption = "Organic Matter module parameters and configuration options", align = "l",) %>%
+  pack_rows(theSheetGroups[1],
+            min(which(theSheet$Group == theSheetGroups[1])),
+            max(which(theSheet$Group == theSheetGroups[1])),
+            background = '#ebebeb') %>%
+  pack_rows(theSheetGroups[2],
+            min(which(theSheet$Group == theSheetGroups[2])),
+            max(which(theSheet$Group == theSheetGroups[2])),
+            background = '#ebebeb') %>%
+  pack_rows(theSheetGroups[3],
+					  min(which(theSheet$Group == theSheetGroups[3])),
+					  max(which(theSheet$Group == theSheetGroups[3])),
+					  background = '#ebebeb') %>%
+  pack_rows(theSheetGroups[4],
+					  min(which(theSheet$Group == theSheetGroups[4])),
+					  max(which(theSheet$Group == theSheetGroups[4])),
+					  background = '#ebebeb') %>%
+  pack_rows(theSheetGroups[5],
+					  min(which(theSheet$Group == theSheetGroups[5])),
+					  max(which(theSheet$Group == theSheetGroups[5])),
+					  background = '#ebebeb') %>%
+  pack_rows(theSheetGroups[6],
+  				  min(which(theSheet$Group == theSheetGroups[6])),
+  				  max(which(theSheet$Group == theSheetGroups[6])),
+  				  background = '#ebebeb') %>%
+  pack_rows(theSheetGroups[7],
+  				  min(which(theSheet$Group == theSheetGroups[7])),
+  				  max(which(theSheet$Group == theSheetGroups[7])),
+    			  background = '#ebebeb') %>%
+  row_spec(0, background = "#14759e", bold = TRUE, color = "white") %>%
+  kable_styling(full_width = F,font_size = 11) %>%
+	column_spec(2, width_min = "7em") %>%
+	column_spec(3, width_max = "19em") %>%
+	column_spec(4, width_min = "10em") %>%
+	column_spec(5, width_min = "5em") %>%
+	column_spec(7, width_min = "10em") %>%
+  scroll_box(width = "770px", height = "2800px",
+             fixed_thead = FALSE)
+```
+<br>
+
 ## Setup & Configuration
 ## Case Studies & Examples
 ###	Case Study

@@ -289,7 +289,7 @@ kbl(theSheet[,3:NCOL(theSheet)], caption = "Oxygen module parameters and configu
 ## Setup & Configuration
 
 An example `aed.nml` parameter specification block for the `aed_oxygen` module is shown below:
-```{}
+```{fortran, eval = FALSE}
 &aed_oxygen
    oxy_initial       = 250.0
 	 oxy_min           =   0
@@ -298,7 +298,7 @@ An example `aed.nml` parameter specification block for the `aed_oxygen` module i
    Ksed_oxy          = 100.0
    theta_sed_oxy     =   1.08
 !  Fsed_oxy_variable = 'SDF_Fsed_oxy'
-!  altitide          = 1000  
+!  altitude          = 1000  
  /
 ```
 

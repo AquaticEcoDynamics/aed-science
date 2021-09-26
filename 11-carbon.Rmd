@@ -61,15 +61,15 @@ library(seacarb)
 library(plotly)
 pH <- seq(2, 12, by = 0.1)
 res <- speciation(K1(), K2(), NULL, pH, 1)
-  
+
 df <- as.data.frame(res)
 
-plot_ly(df, x = pH) %>% 
+plot_ly(df, x = pH) %>%
   add_trace(y = ~C1, name = 'CO<sub>2</sub>', mode = 'lines', line = list(color = '#FF2500')) %>%
   add_trace(y = ~C2, name = 'HCO<sub>3</sub><sup>-</sup>', mode = 'lines', line = list(color = '#01A08A',dash = 'dash')) %>%
-  add_trace(y = ~C3, name = 'CO<sub>3</sub><sup>2-</sup>', mode = 'lines', line = list(color = '#F2AD00',dash = 'dot')) %>% 
-  add_trace(x=c(5.84717, 5.84717), y=c(-0.5, 1.5), mode="lines", name='pK1', opacity = 0.75, line = list(color = 'grey', width = 1.5)) %>% 
-  add_trace(x=c(8.96592, 8.96592), y=c(-0.5, 1.5), mode="lines", name='pK2', opacity = 0.75, line = list(color = 'grey', width = 1.5)) %>% 
+  add_trace(y = ~C3, name = 'CO<sub>3</sub><sup>2-</sup>', mode = 'lines', line = list(color = '#F2AD00',dash = 'dot')) %>%
+  add_trace(x=c(5.84717, 5.84717), y=c(-0.5, 1.5), mode="lines", name='pK1', opacity = 0.75, line = list(color = 'grey', width = 1.5)) %>%
+  add_trace(x=c(8.96592, 8.96592), y=c(-0.5, 1.5), mode="lines", name='pK2', opacity = 0.75, line = list(color = 'grey', width = 1.5)) %>%
   layout(title = "<b>DIC speciation</b>",
       xaxis = list(title = "pH", fixedrange = TRUE),
       yaxis = list(title = "Relative concentration (%)", fixedrange = TRUE, range = c(0,1)),
@@ -79,7 +79,7 @@ plot_ly(df, x = pH) %>%
          b = 50,
          t = 50,
          pad = 4
-       )) %>% 
+       )) %>%
   config(displayModeBar = FALSE)
 ```
 </center>
@@ -132,7 +132,7 @@ There are multiple options for TA calculation methods in this code depending on 
     1, & \text{dependance on salinity}\\
     2-5 & \text{dependance on salinity and DIC}\\
   \end{array}\right.
-\end{equation} 
+\end{equation}
 
 For freshwaters, there is a simple freshwater alkalinity option (`alk_mode = 0`), whereby TA is assumed to be dominated by the carbonate alkalinity. In this option, TA is calculated from the carbonate species according to:
 
@@ -173,9 +173,9 @@ library(kableExtra)
 table <- read_excel('tables/11-carbon/alk_mode_coeff.xlsx', sheet = 1)
 
 
-kbl(table, caption = "Constant coefficients in `alk_mode` options 2 - 5.", align = "l") %>% 
-  row_spec(0, background = "#14759e", bold = TRUE, color = "white") %>% 
-  kable_styling(full_width = F,font_size = 11) %>% 
+kbl(table, caption = "Constant coefficients in `alk_mode` options 2 - 5.", align = "l") %>%
+  row_spec(0, background = "#14759e", bold = TRUE, color = "white") %>%
+  kable_styling(full_width = F,font_size = 11) %>%
             column_spec(1, width_min = "10em") %>%
             column_spec(2, width_min = "10em") %>%
             column_spec(3, width_min = "10em") %>%
@@ -183,7 +183,7 @@ kbl(table, caption = "Constant coefficients in `alk_mode` options 2 - 5.", align
             column_spec(5, width_min = "10em") %>%
             column_spec(6, width_min = "10em") %>%
             column_spec(7, width_min = "10em") %>%
-scroll_box(width = "770px", 
+scroll_box(width = "770px",
              fixed_thead = FALSE)
 ```
 
@@ -275,7 +275,7 @@ The exchange fluxes of DIC and CH4 between the sediment and overlaying water are
 (\#eq:sedimentExchange6)  
 \end{equation}
 
-where the parameters $F_{sed}^{DIC}$ and $F_{sed}^{CH_4}$ are the maximum flux rate across the sediment-water interface at 20°C, the  $\theta_{sed-DIC}$  and $\theta_{sed-CH_4}$  are the Arrhenius temperature multiplier for temperature control. The last item is the oxygen mediation of the fluxes. 
+where the parameters $F_{sed}^{DIC}$ and $F_{sed}^{CH_4}$ are the maximum flux rate across the sediment-water interface at 20°C, the  $\theta_{sed-DIC}$  and $\theta_{sed-CH_4}$  are the Arrhenius temperature multiplier for temperature control. The last item is the oxygen mediation of the fluxes.
 
 Oxygen mediation of the inorganic carbon fluxes: The sediment flux can be changed by bottom water O~2~ concentration. If the [aed2_oxygen module](#DO_1) is correctly linked to the carbon module then this setting will switch on automatically. At low O~2~ concentrations, the amount of DIC fluxing out of the sediment is decreased and at high O~2~ concentrations, it is set close to the $F_{sed}^{DIC}$, as shown in Equation \@ref(eq:sedimentExchange). This is a convenient simplification that can be tuned within this module, rather than a more complicated full set of biogeochemical reactions. The half-saturation oxygen parameter $K_{sed-DIC}^{O_2}$ can be used to tune the DIC flux dependence on bottom water O~2~. A similar function can be used to tune the CH~4~ flux using the parameter $K_{sed-CH_4}^{O_2}$, as shown in Equation 6.22. At high O~2~ concentrations, CH~4~ flux decreases, and at low O~2~ concentrations, the flux is close to the parameter $F_{sed}^{CH_4}$.
 
@@ -316,16 +316,16 @@ Methane bubbles are formed when anoxic methane production in the sediments excee
 (\#eq:sedimentExchange7)  
 \end{equation}
 
-The sediment bubble flux $F_{sed}^{CH_{4}-bub}$ can be set as a constant or depth-dependent flux. By setting up a link to the aed_sedflux module (`Fsed_ebb_variable = 'SDF_Fsed_ch4_ebb'`), different sediment bubble flux rates can be implemented in each sediment zone, accounting for the spatial variability of ebullition. $\Phi_{\Delta z}^{{CH}_{4-bub}}\left[\Delta z\right]$ accounts for the effect of water level fluctuations (\Delta z) on the sediment bubble flux and is calculated by adopting a site-specific regression equation from Lake [Kinneret](#carbonCaseStudy) derived by Ostrovsky et al., (2013). 
+The sediment bubble flux $F_{sed}^{CH_{4}-bub}$ can be set as a constant or depth-dependent flux. By setting up a link to the aed_sedflux module (`Fsed_ebb_variable = 'SDF_Fsed_ch4_ebb'`), different sediment bubble flux rates can be implemented in each sediment zone, accounting for the spatial variability of ebullition. $\Phi_{\Delta z}^{{CH}_{4-bub}}\left[\Delta z\right]$ accounts for the effect of water level fluctuations (\Delta z) on the sediment bubble flux and is calculated by adopting a site-specific regression equation from Lake [Kinneret](#carbonCaseStudy) derived by Ostrovsky et al., (2013).
 
 \begin{equation}
-\Phi_{\Delta z}^{CH_{4}-bub}[\Delta z] = c_{n}\text{exp}\{\varepsilon_{reg}(\bar{z}-z)\} 
+\Phi_{\Delta z}^{CH_{4}-bub}[\Delta z] = c_{n}\text{exp}\{\varepsilon_{reg}(\bar{z}-z)\}
 (\#eq:sedimentExchange8)    
 \end{equation}
 
-Where $c_n$ is a normalising constant, $\varepsilon_{reg}$ is the exponential factor from the regression equation. 
+Where $c_n$ is a normalising constant, $\varepsilon_{reg}$ is the exponential factor from the regression equation.
 
-The methane bubbles released from the sediments either dissolve in the water column or are directly emitted to the atmosphere. The dissolution rate of methane bubbles can be set constant, or depth-dependent by splitting the water column into two layers and assigning different dissolution rates above (`ch4_bub_disf1`) and below (`ch4_bub_disf2`) the splitting depth (`ch4_bub_disp`). In stratified lakes, this functionality can be used to set different dissolution rates in the epilimnion and hypolimnion ($R_{diss}\left[z\right]$) to account for the effect of different thermal layers on dissolution rates. 
+The methane bubbles released from the sediments either dissolve in the water column or are directly emitted to the atmosphere. The dissolution rate of methane bubbles can be set constant, or depth-dependent by splitting the water column into two layers and assigning different dissolution rates above (`ch4_bub_disf1`) and below (`ch4_bub_disf2`) the splitting depth (`ch4_bub_disp`). In stratified lakes, this functionality can be used to set different dissolution rates in the epilimnion and hypolimnion ($R_{diss}\left[z\right]$) to account for the effect of different thermal layers on dissolution rates.
 
 \begin{equation}
 f_{dis}^{{CH}_{4-bub}}=R_{diss}\left[z\right]\ {\hat{f}}_{sed}^{CH_{4}-bub}
@@ -340,9 +340,9 @@ Aerobic oxidation is mediated by methanotrophs and is the most significant sink 
 f_{ox}^{{CH}_4}=\ R_{oxmax}^{{CH}_4}\  \Phi_{O2}^{ch4-ox}\left[O_2\right]\theta_{ox}^{T-20}[CH_4]                                            (\#eq:sedimentExchange10)   
 \end{equation}    
 
-where $R_{oxmax}^{{CH}_4}$ is the maximum reaction rate of methane oxidation at 20˚C (/day),  $\Phi_{O2}^{ch4-ox}\left[O_2\right]$ is the oxygen mediation of the oxidation rate, $\theta_{ox}$  is the temperature multiplier for methane oxidation, $T$ the water temperature, and $[CH_4]$ is the methane concentration in the water. 
+where $R_{oxmax}^{{CH}_4}$ is the maximum reaction rate of methane oxidation at 20˚C (/day),  $\Phi_{O2}^{ch4-ox}\left[O_2\right]$ is the oxygen mediation of the oxidation rate, $\theta_{ox}$  is the temperature multiplier for methane oxidation, $T$ the water temperature, and $[CH_4]$ is the methane concentration in the water.
 
-The methane oxidation rate can be changed by water O~2~ concentration. At low O~2~ concentrations, the amount of CH~4~ oxidated to DIC decreased and at high O~2~ concentrations, it is set close to the $R_{oxmax}^{{CH}_4}$, as shown in Equation \@ref(eq:sedimentExchange11): 
+The methane oxidation rate can be changed by water O~2~ concentration. At low O~2~ concentrations, the amount of CH~4~ oxidated to DIC decreased and at high O~2~ concentrations, it is set close to the $R_{oxmax}^{{CH}_4}$, as shown in Equation \@ref(eq:sedimentExchange11):
 
 \begin{equation}
 \Phi_{O_2}^{CH_{4}-ox}\left[O_2\right]=\frac{O_2}{O_2+K_{CH_{4}-ox}^{O_2}}
@@ -360,7 +360,7 @@ Carbon dioxide and methane transfer occurs across the air-water interface based 
 (\#eq:sedimentExchange12)  
 \end{equation}   
 
-where the ${pCO}_2^w$ and ${pCO}_2^a$ are the partial pressure of CO~2~ in the water surface and the air (in unit of atm), respectively; $\Upsilon_{0-CO_2}$ is the solubility of CO~2~, and $k_{600}^{CO_2}$ is the air-water gas transfer velocity for CO~2~. As AED can be applied across many types of environments, spanning the ocean to small lakes and flowing waters, users can select from a range of gas exchange piston velocity models and Schmidt models, or implement their own, to capture this process. The options are listed in the ‘Gas Transfer’ section of the [‘Generic utilities & Functions’ chapter](#genericUtilitiesFunctions). The switches of the piston and Schmidt models are set via the use of $\Theta_{gas}^{piston}$ and $\Theta_{gas}^{schmidt}$, respectively (see option details in chapter 30 [Generic utilities & Functions](#genericUtilitiesFunctions)). 
+where the ${pCO}_2^w$ and ${pCO}_2^a$ are the partial pressure of CO~2~ in the water surface and the air (in unit of atm), respectively; $\Upsilon_{0-CO_2}$ is the solubility of CO~2~, and $k_{600}^{CO_2}$ is the air-water gas transfer velocity for CO~2~. As AED can be applied across many types of environments, spanning the ocean to small lakes and flowing waters, users can select from a range of gas exchange piston velocity models and Schmidt models, or implement their own, to capture this process. The options are listed in the ‘Gas Transfer’ section of the [‘Generic utilities & Functions’ chapter](#genericUtilitiesFunctions). The switches of the piston and Schmidt models are set via the use of $\Theta_{gas}^{piston}$ and $\Theta_{gas}^{schmidt}$, respectively (see option details in chapter 30 [Generic utilities & Functions](#genericUtilitiesFunctions)).
 The exchange flux can then be added to or subtracted from the surface cells of an aquatic system, and the change in the CO~2~ concentration in the surface layer is:
 
 \begin{equation}
@@ -575,7 +575,7 @@ kbl(carbon[,3:NCOL(carbon)], caption = "Carbon - parameters", align = "l",) %>%
 ## Setup & Configuration
 
 An example `aed.nml` parameter specification block for the `aed_carbon` module that is only modelling $DIC$ is shown below:
-```{}
+```{fortran, eval = FALSE}
 &aed_carbon
  dic_initial       = 1000.
  pH_initial        = 7.5
@@ -596,7 +596,7 @@ An example `aed.nml` parameter specification block for the `aed_carbon` module t
 
 <br>
 An example `aed.nml` parameter specification block for the `aed_carbon` module that includes all options is shown below:
-```{}
+```{fortran, eval = FALSE}
 &aed_carbon
  dic_initial
  pH_initial
