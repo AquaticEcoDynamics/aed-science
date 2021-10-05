@@ -23,7 +23,7 @@
 
 
 
-<meta name="date" content="2021-09-26" />
+<meta name="date" content="2021-10-05" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -355,10 +355,10 @@ div.csl-indent {
 <li class="chapter" data-level="11.3" data-path="silica.html"><a href="silica.html#model-description-5"><i class="fa fa-check"></i><b>11.3</b> Model Description</a>
 <ul>
 <li class="chapter" data-level="11.3.1" data-path="silica.html"><a href="silica.html#process-descriptions-6"><i class="fa fa-check"></i><b>11.3.1</b> Process Descriptions</a></li>
-<li class="chapter" data-level="11.3.2" data-path="silica.html"><a href="silica.html#variable-summary-7"><i class="fa fa-check"></i><b>11.3.2</b> Variable Summary</a></li>
-<li class="chapter" data-level="11.3.3" data-path="silica.html"><a href="silica.html#parameter-summary-7"><i class="fa fa-check"></i><b>11.3.3</b> Parameter Summary</a></li>
-<li class="chapter" data-level="11.3.4" data-path="silica.html"><a href="silica.html#optional-module-links-6"><i class="fa fa-check"></i><b>11.3.4</b> Optional Module Links</a></li>
-<li class="chapter" data-level="11.3.5" data-path="silica.html"><a href="silica.html#feedbacks-to-the-host-model-6"><i class="fa fa-check"></i><b>11.3.5</b> Feedbacks to the Host Model</a></li>
+<li class="chapter" data-level="11.3.2" data-path="silica.html"><a href="silica.html#optional-module-links-6"><i class="fa fa-check"></i><b>11.3.2</b> Optional Module Links</a></li>
+<li class="chapter" data-level="11.3.3" data-path="silica.html"><a href="silica.html#feedbacks-to-the-host-model-6"><i class="fa fa-check"></i><b>11.3.3</b> Feedbacks to the Host Model</a></li>
+<li class="chapter" data-level="11.3.4" data-path="silica.html"><a href="silica.html#variable-summary-7"><i class="fa fa-check"></i><b>11.3.4</b> Variable Summary</a></li>
+<li class="chapter" data-level="11.3.5" data-path="silica.html"><a href="silica.html#parameter-summary-7"><i class="fa fa-check"></i><b>11.3.5</b> Parameter Summary</a></li>
 </ul></li>
 <li class="chapter" data-level="11.4" data-path="silica.html"><a href="silica.html#setup-configuration-6"><i class="fa fa-check"></i><b>11.4</b> Setup &amp; Configuration</a></li>
 <li class="chapter" data-level="11.5" data-path="silica.html"><a href="silica.html#case-studies-examples-6"><i class="fa fa-check"></i><b>11.5</b> Case Studies &amp; Examples</a>
@@ -776,21 +776,422 @@ div.csl-indent {
 <div id="process-descriptions-6" class="section level3" number="11.3.1">
 <h3><span class="header-section-number">11.3.1</span> Process Descriptions</h3>
 </div>
-<div id="variable-summary-7" class="section level3" number="11.3.2">
-<h3><span class="header-section-number">11.3.2</span> Variable Summary</h3>
+<div id="optional-module-links-6" class="section level3" number="11.3.2">
+<h3><span class="header-section-number">11.3.2</span> Optional Module Links</h3>
 </div>
-<div id="parameter-summary-7" class="section level3" number="11.3.3">
-<h3><span class="header-section-number">11.3.3</span> Parameter Summary</h3>
+<div id="feedbacks-to-the-host-model-6" class="section level3" number="11.3.3">
+<h3><span class="header-section-number">11.3.3</span> Feedbacks to the Host Model</h3>
+<p>The silica module has no feedbacks to the host hydrodynamic model.</p>
 </div>
-<div id="optional-module-links-6" class="section level3" number="11.3.4">
-<h3><span class="header-section-number">11.3.4</span> Optional Module Links</h3>
+<div id="variable-summary-7" class="section level3" number="11.3.4">
+<h3><span class="header-section-number">11.3.4</span> Variable Summary</h3>
+<p>The default variables created by this module, and the optionally required linked variables needed for full functionality of this module are summarised in Table <a href="silica.html#tab:14-statetable">11.1</a>. The diagnostic outputs able to be output are summarised in Table <a href="silica.html#tab:14-diagtable">11.2</a>.</p>
+<div id="state-variables-4" class="section level4 unnumbered">
+<h4>State variables</h4>
+<div style="border: 1px solid #ddd; padding: 5px; overflow-y: scroll; height:200px; overflow-x: scroll; width:770px; ">
+<table class="table" style="font-size: 11px; width: auto !important; margin-left: auto; margin-right: auto;">
+<caption style="font-size: initial !important;">
+<span id="tab:14-statetable">Table 11.1: </span>Silica - <em>state</em> variables
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;font-weight: bold;color: white !important;background-color: #14759e !important;">
+AED name
+</th>
+<th style="text-align:left;font-weight: bold;color: white !important;background-color: #14759e !important;">
+Symbol
+</th>
+<th style="text-align:left;font-weight: bold;color: white !important;background-color: #14759e !important;">
+Description
+</th>
+<th style="text-align:left;font-weight: bold;color: white !important;background-color: #14759e !important;">
+Unit
+</th>
+<th style="text-align:left;font-weight: bold;color: white !important;background-color: #14759e !important;">
+Type
+</th>
+<th style="text-align:left;font-weight: bold;color: white !important;background-color: #14759e !important;">
+Typical Range
+</th>
+<th style="text-align:left;font-weight: bold;color: white !important;background-color: #14759e !important;">
+Comments
+</th>
+</tr>
+</thead>
+<tbody>
+<tr grouplength="1">
+<td colspan="7" style="border-bottom: 1px solid;background-color: #ebebeb !important;">
+<strong>aed_silica</strong>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;padding-left: 2em;" indentlevel="1">
+<code>SIL_rsi</code>
+</td>
+<td style="text-align:left;min-width: 7em; ">
+<span class="math display">\[\mathbf{RSi}\]</span>
+</td>
+<td style="text-align:left;max-width: 18em; ">
+dissolved reactive silica concentration
+</td>
+<td style="text-align:left;min-width: 10em; ">
+<span class="math display">\[\small{mmol\:Si/m^3}\]</span>
+</td>
+<td style="text-align:left;min-width: 5em; ">
+pelagic
+</td>
+<td style="text-align:left;">
+0 - 500
+</td>
+<td style="text-align:left;min-width: 10em; max-width: 20em; ">
+.
+</td>
+</tr>
+<tr grouplength="1">
+<td colspan="7" style="border-bottom: 1px solid;background-color: #ebebeb !important;">
+<strong>Dependent variables</strong>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;padding-left: 2em;" indentlevel="1">
+<code>SDF_Fsed_rsi</code>
+</td>
+<td style="text-align:left;min-width: 7em; ">
+<span class="math display">\[\mathbf{F}_{sed}^{rsi}\]</span>
+</td>
+<td style="text-align:left;max-width: 18em; ">
+reference sediment <span class="math inline">\(RSi\)</span> flux
+</td>
+<td style="text-align:left;min-width: 10em; ">
+<span class="math display">\[\small{mmol \:Si/m^2/s}\]</span>
+</td>
+<td style="text-align:left;min-width: 5em; ">
+benthic
+</td>
+<td style="text-align:left;">
+-300 - 300
+</td>
+<td style="text-align:left;min-width: 10em; max-width: 20em; ">
+read and output as /day, but internally used as /s
+</td>
+</tr>
+</tbody>
+</table>
 </div>
-<div id="feedbacks-to-the-host-model-6" class="section level3" number="11.3.5">
-<h3><span class="header-section-number">11.3.5</span> Feedbacks to the Host Model</h3>
+</div>
+<div id="diagnostics-3" class="section level4 unnumbered">
+<h4>Diagnostics</h4>
+<div style="border: 1px solid #ddd; padding: 5px; overflow-y: scroll; height:120px; overflow-x: scroll; width:770px; ">
+<table class="table" style="font-size: 11px; width: auto !important; margin-left: auto; margin-right: auto;">
+<caption style="font-size: initial !important;">
+<span id="tab:14-diagtable">Table 11.2: </span>Silica - <em>diagnostic</em> variables
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;font-weight: bold;color: white !important;background-color: #14759e !important;">
+AED name
+</th>
+<th style="text-align:left;font-weight: bold;color: white !important;background-color: #14759e !important;">
+Symbol
+</th>
+<th style="text-align:left;font-weight: bold;color: white !important;background-color: #14759e !important;">
+Description
+</th>
+<th style="text-align:left;font-weight: bold;color: white !important;background-color: #14759e !important;">
+Unit
+</th>
+<th style="text-align:left;font-weight: bold;color: white !important;background-color: #14759e !important;">
+Type
+</th>
+<th style="text-align:left;font-weight: bold;color: white !important;background-color: #14759e !important;">
+Typical Range
+</th>
+<th style="text-align:left;font-weight: bold;color: white !important;background-color: #14759e !important;">
+Comments
+</th>
+</tr>
+</thead>
+<tbody>
+<tr grouplength="1">
+<td colspan="7" style="border-bottom: 1px solid;background-color: #ebebeb !important;">
+<strong>diag_level = 2+</strong>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;padding-left: 2em;" indentlevel="1">
+<code>SIL_sed_rsi</code>
+</td>
+<td style="text-align:left;min-width: 7em; ">
+<span class="math display">\[\mathbf{\mathcal{F}}_{sed}^{rsi}\]</span>
+</td>
+<td style="text-align:left;max-width: 18em; ">
+<span class="math inline">\(RSi\)</span> exchange across sediment-water interface
+</td>
+<td style="text-align:left;min-width: 10em; ">
+<span class="math display">\[\small{mmol\: Si/m^2/d}\]</span>
+</td>
+<td style="text-align:left;min-width: 6em; ">
+benthic
+</td>
+<td style="text-align:left;">
+0 - 50
+</td>
+<td style="text-align:left;min-width: 10em; ">
+.
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><br></p>
+</div>
+</div>
+<div id="parameter-summary-7" class="section level3" number="11.3.5">
+<h3><span class="header-section-number">11.3.5</span> Parameter Summary</h3>
+<p>The parameters and settings used by this module are summarised in Table <a href="silica.html#tab:14-parstable">11.3</a>.</p>
+<div style="border: 1px solid #ddd; padding: 5px; overflow-y: scroll; height:500px; overflow-x: scroll; width:770px; ">
+<table class="table" style="font-size: 11px; width: auto !important; margin-left: auto; margin-right: auto;">
+<caption style="font-size: initial !important;">
+<span id="tab:14-parstable">Table 11.3: </span>Silica module parameters and configuration options
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;font-weight: bold;color: white !important;background-color: #14759e !important;">
+AED name
+</th>
+<th style="text-align:left;font-weight: bold;color: white !important;background-color: #14759e !important;">
+Symbol
+</th>
+<th style="text-align:left;font-weight: bold;color: white !important;background-color: #14759e !important;">
+Description
+</th>
+<th style="text-align:left;font-weight: bold;color: white !important;background-color: #14759e !important;">
+Unit
+</th>
+<th style="text-align:left;font-weight: bold;color: white !important;background-color: #14759e !important;">
+Type
+</th>
+<th style="text-align:left;font-weight: bold;color: white !important;background-color: #14759e !important;">
+Typical Range
+</th>
+<th style="text-align:left;font-weight: bold;color: white !important;background-color: #14759e !important;">
+Comments
+</th>
+</tr>
+</thead>
+<tbody>
+<tr grouplength="3">
+<td colspan="7" style="border-bottom: 1px solid;background-color: #ebebeb !important;">
+<strong>Initialisation</strong>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;padding-left: 2em;" indentlevel="1">
+<code>rsi_initial</code>
+</td>
+<td style="text-align:left;min-width: 7em; ">
+<span class="math display">\[RSi|_{t=0}\]</span>
+</td>
+<td style="text-align:left;max-width: 19em; ">
+initial <span class="math inline">\(RSi\)</span> concentration
+</td>
+<td style="text-align:left;min-width: 10em; ">
+<span class="math display">\[\small{mmol\: Si/m^3}\]</span>
+</td>
+<td style="text-align:left;min-width: 5em; ">
+float
+</td>
+<td style="text-align:left;">
+0 - 5000
+</td>
+<td style="text-align:left;min-width: 10em; ">
+can be overwritten by initial condition files
+</td>
+</tr>
+<tr>
+<td style="text-align:left;padding-left: 2em;" indentlevel="1">
+<code>rsi_min</code>
+</td>
+<td style="text-align:left;min-width: 7em; ">
+<span class="math display">\[RSi\rfloor_{min}\]</span>
+</td>
+<td style="text-align:left;max-width: 19em; ">
+minimum <span class="math inline">\(RSi\)</span> concentration
+</td>
+<td style="text-align:left;min-width: 10em; ">
+<span class="math display">\[\small{mmol\: Si/m^3}\]</span>
+</td>
+<td style="text-align:left;min-width: 5em; ">
+float
+</td>
+<td style="text-align:left;">
+0
+</td>
+<td style="text-align:left;min-width: 10em; ">
+optional limitier
+</td>
+</tr>
+<tr>
+<td style="text-align:left;padding-left: 2em;" indentlevel="1">
+<code>rsi_max</code>
+</td>
+<td style="text-align:left;min-width: 7em; ">
+<span class="math display">\[RSi\rceil^{max}\]</span>
+</td>
+<td style="text-align:left;max-width: 19em; ">
+maximum <span class="math inline">\(RSi\)</span> concentration
+</td>
+<td style="text-align:left;min-width: 10em; ">
+<span class="math display">\[\small{mmol\: Si/m^3}\]</span>
+</td>
+<td style="text-align:left;min-width: 5em; ">
+float
+</td>
+<td style="text-align:left;">
+600
+</td>
+<td style="text-align:left;min-width: 10em; ">
+optional limitier
+</td>
+</tr>
+<tr grouplength="5">
+<td colspan="7" style="border-bottom: 1px solid;background-color: #ebebeb !important;">
+<strong>Sediment exchange</strong>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;padding-left: 2em;" indentlevel="1">
+<code>Fsed_rsi</code>
+</td>
+<td style="text-align:left;min-width: 7em; ">
+<span class="math display">\[F_{sed}^{rsi}\]</span>
+</td>
+<td style="text-align:left;max-width: 19em; ">
+reference sediment <span class="math inline">\(RSi\)</span> flux at <span class="math inline">\(20^{\circ}C\)</span>
+</td>
+<td style="text-align:left;min-width: 10em; ">
+<span class="math display">\[\small{mmol\: Si/m^2/d}\]</span>
+</td>
+<td style="text-align:left;min-width: 5em; ">
+float
+</td>
+<td style="text-align:left;">
+-300 - 300
+</td>
+<td style="text-align:left;min-width: 10em; ">
+.
+</td>
+</tr>
+<tr>
+<td style="text-align:left;padding-left: 2em;" indentlevel="1">
+<code>Ksed_rsi</code>
+</td>
+<td style="text-align:left;min-width: 7em; ">
+<span class="math display">\[K_{sed}^{rsi}\]</span>
+</td>
+<td style="text-align:left;max-width: 19em; ">
+half-saturation oxygen conc. controlling <span class="math inline">\(Si\)</span> flux
+</td>
+<td style="text-align:left;min-width: 10em; ">
+<span class="math display">\[\small{mmol\: Si/m^3}\]</span>
+</td>
+<td style="text-align:left;min-width: 5em; ">
+float
+</td>
+<td style="text-align:left;">
+20 - 100
+</td>
+<td style="text-align:left;min-width: 10em; ">
+.
+</td>
+</tr>
+<tr>
+<td style="text-align:left;padding-left: 2em;" indentlevel="1">
+<code>theta_sed_rsi</code>
+</td>
+<td style="text-align:left;min-width: 7em; ">
+<span class="math display">\[\theta_{sed}^{rsi}\]</span>
+</td>
+<td style="text-align:left;max-width: 19em; ">
+Arrhenius temperature multiplier for sediment <span class="math inline">\(Si\)</span> flux
+</td>
+<td style="text-align:left;min-width: 10em; ">
+<span class="math display">\[\small{-}\]</span>
+</td>
+<td style="text-align:left;min-width: 5em; ">
+float
+</td>
+<td style="text-align:left;">
+1.0 - 1.2
+</td>
+<td style="text-align:left;min-width: 10em; ">
+.
+</td>
+</tr>
+<tr>
+<td style="text-align:left;padding-left: 2em;" indentlevel="1">
+<code>Fsed_rsi_variable</code>
+</td>
+<td style="text-align:left;min-width: 7em; ">
+</td>
+<td style="text-align:left;max-width: 19em; ">
+variable name to link to for spatially resolved sediment zones
+</td>
+<td style="text-align:left;min-width: 10em; ">
+<span class="math display">\[\small{-}\]</span>
+</td>
+<td style="text-align:left;min-width: 5em; ">
+string
+</td>
+<td style="text-align:left;">
+<code>SDF_Fsed_rsi</code>
+</td>
+<td style="text-align:left;min-width: 10em; ">
+optional link to enable spatially resolved fluxes
+</td>
+</tr>
+<tr>
+<td style="text-align:left;padding-left: 2em;" indentlevel="1">
+<code>silica_reactant_variable</code>
+</td>
+<td style="text-align:left;min-width: 7em; ">
+<span class="math display">\[O_2\]</span>
+</td>
+<td style="text-align:left;max-width: 19em; ">
+state variable used to control <span class="math inline">\(Si\)</span> sediment release
+</td>
+<td style="text-align:left;min-width: 10em; ">
+<span class="math display">\[\small{-}\]</span>
+</td>
+<td style="text-align:left;min-width: 5em; ">
+string
+</td>
+<td style="text-align:left;">
+<code>OXY_oxy</code>
+</td>
+<td style="text-align:left;min-width: 10em; ">
+optional link for oxygen control on sediment <span class="math inline">\(Si\)</span> release
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><br></p>
 </div>
 </div>
 <div id="setup-configuration-6" class="section level2" number="11.4">
 <h2><span class="header-section-number">11.4</span> Setup &amp; Configuration</h2>
+<p>An example <code>aed.nml</code> parameter specification block for the <code>aed_silica</code> module is shown below:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode fortran"><code class="sourceCode fortranfixed"><span id="cb8-1"><a href="silica.html#cb8-1" aria-hidden="true" tabindex="-1"></a>  <span class="kw">&amp;</span>aed_silica</span>
+<span id="cb8-2"><a href="silica.html#cb8-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">!-- Initial value</span></span>
+<span id="cb8-3"><a href="silica.html#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="bu">     r</span>si_initial              <span class="kw">=</span> <span class="fl">12.5</span></span>
+<span id="cb8-4"><a href="silica.html#cb8-4" aria-hidden="true" tabindex="-1"></a>    <span class="co">!-- Sediment flux</span></span>
+<span id="cb8-5"><a href="silica.html#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="bu">     F</span>sed_rsi                 <span class="kw">=</span> <span class="fl">1.8</span></span>
+<span id="cb8-6"><a href="silica.html#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="bu">     K</span>sed_rsi                 <span class="kw">=</span> <span class="fl">50.0</span></span>
+<span id="cb8-7"><a href="silica.html#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="bu">     t</span>heta_sed_rsi            <span class="kw">=</span> <span class="fl">1.08</span></span>
+<span id="cb8-8"><a href="silica.html#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="bu">     s</span>ilica_reactant_variable <span class="kw">=</span> <span class="st">&#39;OXY_oxy&#39;</span></span>
+<span id="cb8-9"><a href="silica.html#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="bu">     F</span>sed_rsi_variable        <span class="kw">=</span> <span class="st">&#39;SDF_Fsed_rsi&#39;</span></span>
+<span id="cb8-10"><a href="silica.html#cb8-10" aria-hidden="true" tabindex="-1"></a>  <span class="kw">/</span></span></code></pre></div>
 </div>
 <div id="case-studies-examples-6" class="section level2" number="11.5">
 <h2><span class="header-section-number">11.5</span> Case Studies &amp; Examples</h2>

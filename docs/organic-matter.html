@@ -23,7 +23,7 @@
 
 
 
-<meta name="date" content="2021-09-26" />
+<meta name="date" content="2021-10-05" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -355,10 +355,10 @@ div.csl-indent {
 <li class="chapter" data-level="11.3" data-path="silica.html"><a href="silica.html#model-description-5"><i class="fa fa-check"></i><b>11.3</b> Model Description</a>
 <ul>
 <li class="chapter" data-level="11.3.1" data-path="silica.html"><a href="silica.html#process-descriptions-6"><i class="fa fa-check"></i><b>11.3.1</b> Process Descriptions</a></li>
-<li class="chapter" data-level="11.3.2" data-path="silica.html"><a href="silica.html#variable-summary-7"><i class="fa fa-check"></i><b>11.3.2</b> Variable Summary</a></li>
-<li class="chapter" data-level="11.3.3" data-path="silica.html"><a href="silica.html#parameter-summary-7"><i class="fa fa-check"></i><b>11.3.3</b> Parameter Summary</a></li>
-<li class="chapter" data-level="11.3.4" data-path="silica.html"><a href="silica.html#optional-module-links-6"><i class="fa fa-check"></i><b>11.3.4</b> Optional Module Links</a></li>
-<li class="chapter" data-level="11.3.5" data-path="silica.html"><a href="silica.html#feedbacks-to-the-host-model-6"><i class="fa fa-check"></i><b>11.3.5</b> Feedbacks to the Host Model</a></li>
+<li class="chapter" data-level="11.3.2" data-path="silica.html"><a href="silica.html#optional-module-links-6"><i class="fa fa-check"></i><b>11.3.2</b> Optional Module Links</a></li>
+<li class="chapter" data-level="11.3.3" data-path="silica.html"><a href="silica.html#feedbacks-to-the-host-model-6"><i class="fa fa-check"></i><b>11.3.3</b> Feedbacks to the Host Model</a></li>
+<li class="chapter" data-level="11.3.4" data-path="silica.html"><a href="silica.html#variable-summary-7"><i class="fa fa-check"></i><b>11.3.4</b> Variable Summary</a></li>
+<li class="chapter" data-level="11.3.5" data-path="silica.html"><a href="silica.html#parameter-summary-7"><i class="fa fa-check"></i><b>11.3.5</b> Parameter Summary</a></li>
 </ul></li>
 <li class="chapter" data-level="11.4" data-path="silica.html"><a href="silica.html#setup-configuration-6"><i class="fa fa-check"></i><b>11.4</b> Setup &amp; Configuration</a></li>
 <li class="chapter" data-level="11.5" data-path="silica.html"><a href="silica.html#case-studies-examples-6"><i class="fa fa-check"></i><b>11.5</b> Case Studies &amp; Examples</a>
@@ -784,9 +784,9 @@ div.csl-indent {
 </div>
 <div id="variable-summary-8" class="section level3" number="12.3.4">
 <h3><span class="header-section-number">12.3.4</span> Variable Summary</h3>
-<div id="state-variables-4" class="section level4 unnumbered">
+<div id="state-variables-5" class="section level4 unnumbered">
 <h4>State variables</h4>
-<div style="border: 1px solid #ddd; padding: 5px; overflow-y: scroll; height:1300px; overflow-x: scroll; width:770px; ">
+<div style="border: 1px solid #ddd; padding: 5px; overflow-y: scroll; height:1450px; overflow-x: scroll; width:770px; ">
 <table class="table" style="font-size: 11px; width: auto !important; margin-left: auto; margin-right: auto;">
 <caption style="font-size: initial !important;">
 <span id="tab:15-statetable">Table 12.1: </span>Organic Matter - <em>state</em> variables
@@ -1355,7 +1355,7 @@ required for sediment zones; internally used as /s
 <code>NCS_resus</code>
 </td>
 <td style="text-align:left;min-width: 7em; ">
-<span class="math display">\[\mathbf{f}_{resus}\]</span>
+<span class="math display">\[\mathbf{\mathcal{F}}}_{resus}\]</span>
 </td>
 <td style="text-align:left;max-width: 18em; ">
 sediment resuspension rate
@@ -1377,9 +1377,9 @@ required for POM resuspension, set via <code>resus_link</code>
 </table>
 </div>
 </div>
-<div id="diagnostics-3" class="section level4 unnumbered">
+<div id="diagnostics-4" class="section level4 unnumbered">
 <h4>Diagnostics</h4>
-<div style="border: 1px solid #ddd; padding: 5px; overflow-y: scroll; height:1400px; overflow-x: scroll; width:770px; ">
+<div style="border: 1px solid #ddd; padding: 5px; overflow-y: scroll; height:1300px; overflow-x: scroll; width:770px; ">
 <table class="table" style="font-size: 11px; width: auto !important; margin-left: auto; margin-right: auto;">
 <caption style="font-size: initial !important;">
 <span id="tab:15-diagtable">Table 12.2: </span>Organic Matter - <em>diagnostic</em> variables
@@ -1423,7 +1423,7 @@ Comments
 <span class="math display">\[\mathbf{CDOM}\]</span>
 </td>
 <td style="text-align:left;max-width: 18em; ">
-NA
+chromophoric dissolved organic matter
 </td>
 <td style="text-align:left;min-width: 10em; ">
 <span class="math display">\[\small{/m}\]</span>
@@ -1445,10 +1445,10 @@ NA
 <span class="math display">\[\mathbf{BOD5}\]</span>
 </td>
 <td style="text-align:left;max-width: 18em; ">
-NA
+biochemical oxygen demand estimate
 </td>
 <td style="text-align:left;min-width: 10em; ">
-NA
+<span class="math display">\[\small{mg\:O_2/L}\]</span>
 </td>
 <td style="text-align:left;min-width: 6em; ">
 pelagic
@@ -1472,7 +1472,7 @@ NA
 NA
 </td>
 <td style="text-align:left;max-width: 18em; ">
-NA
+sediment total organic carbon
 </td>
 <td style="text-align:left;min-width: 10em; ">
 <span class="math display">\[\small{mmol\: C/m^2}\]</span>
@@ -1494,7 +1494,7 @@ NA
 NA
 </td>
 <td style="text-align:left;max-width: 18em; ">
-NA
+sediment total organic nitrogen
 </td>
 <td style="text-align:left;min-width: 10em; ">
 <span class="math display">\[\small{mmol\: N/m^2}\]</span>
@@ -1516,7 +1516,7 @@ NA
 NA
 </td>
 <td style="text-align:left;max-width: 18em; ">
-NA
+sediment total organic phosphorus
 </td>
 <td style="text-align:left;min-width: 10em; ">
 <span class="math display">\[\small{mmol\: P/m^2}\]</span>
@@ -1543,7 +1543,7 @@ NA
 <span class="math display">\[\mathbf{f}_{hydrl}^{POC}\]</span>
 </td>
 <td style="text-align:left;max-width: 18em; ">
-NA
+computed <span class="math inline">\(POC\)</span> hydrolysis/breakdown rate
 </td>
 <td style="text-align:left;min-width: 10em; ">
 <span class="math display">\[\small{mmol\: C/m^3/d}\]</span>
@@ -1565,7 +1565,7 @@ NA
 <span class="math display">\[\mathbf{f}_{hydrl}^{PON}\]</span>
 </td>
 <td style="text-align:left;max-width: 18em; ">
-NA
+computed <span class="math inline">\(PON\)</span> hydrolysis/breakdown rate
 </td>
 <td style="text-align:left;min-width: 10em; ">
 <span class="math display">\[\small{mmol\: N/m^3/d}\]</span>
@@ -1587,7 +1587,7 @@ NA
 <span class="math display">\[\mathbf{f}_{hydrl}^{POP}\]</span>
 </td>
 <td style="text-align:left;max-width: 18em; ">
-NA
+computed <span class="math inline">\(POP\)</span> hydrolysis/breakdown rate
 </td>
 <td style="text-align:left;min-width: 10em; ">
 <span class="math display">\[\small{mmol\: P/m^3/d}\]</span>
@@ -1609,7 +1609,7 @@ NA
 <span class="math display">\[\mathbf{f}_{miner}^{DOC}\]</span>
 </td>
 <td style="text-align:left;max-width: 18em; ">
-NA
+computed <span class="math inline">\(DOC\)</span> mineralisation rate
 </td>
 <td style="text-align:left;min-width: 10em; ">
 <span class="math display">\[\small{mmol\: C/m^3/d}\]</span>
@@ -1631,7 +1631,7 @@ NA
 <span class="math display">\[\mathbf{f}_{miner}^{DON}\]</span>
 </td>
 <td style="text-align:left;max-width: 18em; ">
-NA
+computed <span class="math inline">\(DON\)</span> mineralisation rate
 </td>
 <td style="text-align:left;min-width: 10em; ">
 <span class="math display">\[\small{mmol\: N/m^3/d}\]</span>
@@ -1653,7 +1653,7 @@ NA
 <span class="math display">\[\mathbf{f}_{miner}^{DOP}\]</span>
 </td>
 <td style="text-align:left;max-width: 18em; ">
-NA
+computed <span class="math inline">\(DOP\)</span> mineralisation rate
 </td>
 <td style="text-align:left;min-width: 10em; ">
 <span class="math display">\[\small{mmol\: P/m^3/d}\]</span>
@@ -1675,7 +1675,7 @@ NA
 <span class="math display">\[\mathbf{f}_{miner}^{DOC_R}\]</span>
 </td>
 <td style="text-align:left;max-width: 18em; ">
-NA
+computed <span class="math inline">\(DOC_R\)</span> mineralisation rate
 </td>
 <td style="text-align:left;min-width: 10em; ">
 <span class="math display">\[\small{mmol\: C/m^3/d}\]</span>
@@ -1697,7 +1697,7 @@ NA
 <span class="math display">\[\mathbf{f}_{miner}^{DON_R}\]</span>
 </td>
 <td style="text-align:left;max-width: 18em; ">
-NA
+computed <span class="math inline">\(DON_R\)</span> mineralisation rate
 </td>
 <td style="text-align:left;min-width: 10em; ">
 <span class="math display">\[\small{mmol\: N/m^3/d}\]</span>
@@ -1719,7 +1719,7 @@ NA
 <span class="math display">\[\mathbf{f}_{miner}^{DOP_R}\]</span>
 </td>
 <td style="text-align:left;max-width: 18em; ">
-NA
+computed <span class="math inline">\(DOP_R\)</span> mineralisation rate
 </td>
 <td style="text-align:left;min-width: 10em; ">
 <span class="math display">\[\small{mmol\: P/m^3/d}\]</span>
@@ -1738,13 +1738,13 @@ NA
 <code>OGM_anaerobic</code>
 </td>
 <td style="text-align:left;min-width: 7em; ">
-NA
+<span class="math display">\[\mathbf{f}_{anaerobic}^{doc}\]</span>
 </td>
 <td style="text-align:left;max-width: 18em; ">
-NA
+rate of <span class="math inline">\(DOC\)</span> anaerobic mineralisation
 </td>
 <td style="text-align:left;min-width: 10em; ">
-NA
+<span class="math display">\[\small{mmol\: C/m^3/d}\]</span>
 </td>
 <td style="text-align:left;min-width: 6em; ">
 pelagic
@@ -1763,10 +1763,10 @@ NA
 <span class="math display">\[\mathbf{f}_{denit}^{no3}\]</span>
 </td>
 <td style="text-align:left;max-width: 18em; ">
-NA
+computed mineralisation rate due to denitrification
 </td>
 <td style="text-align:left;min-width: 10em; ">
-NA
+<span class="math display">\[\small{mmol\: C/m^3/d}\]</span>
 </td>
 <td style="text-align:left;min-width: 6em; ">
 pelagic
@@ -1785,7 +1785,7 @@ NA
 <span class="math display">\[\mathbf{f}_{photo}^{doc}\]</span>
 </td>
 <td style="text-align:left;max-width: 18em; ">
-NA
+computed mineralisation rate due to photolysis
 </td>
 <td style="text-align:left;min-width: 10em; ">
 <span class="math display">\[\small{mmol\: C/m^3/d}\]</span>
@@ -1797,6 +1797,7 @@ pelagic
 NA
 </td>
 <td style="text-align:left;min-width: 10em; ">
+requires <code>simPhotolysis=T</code>
 </td>
 </tr>
 <tr>
@@ -1804,10 +1805,10 @@ NA
 <code>OGM_pom_vvel</code>
 </td>
 <td style="text-align:left;min-width: 7em; ">
-NA
+<span class="math display">\[\mathbf{\omega}_{pom}\]</span>
 </td>
 <td style="text-align:left;max-width: 18em; ">
-NA
+<span class="math inline">\(POM\)</span> settling velocity
 </td>
 <td style="text-align:left;min-width: 10em; ">
 <span class="math display">\[\small{m/d}\]</span>
@@ -1826,10 +1827,10 @@ NA
 <code>OGM_cpom_vvel</code>
 </td>
 <td style="text-align:left;min-width: 7em; ">
-NA
+<span class="math display">\[\mathbf{\omega}_{cpom}\]</span>
 </td>
 <td style="text-align:left;max-width: 18em; ">
-NA
+<span class="math inline">\(CPOM\)</span> settling velocity
 </td>
 <td style="text-align:left;min-width: 10em; ">
 <span class="math display">\[\small{m/d}\]</span>
@@ -1848,10 +1849,10 @@ NA
 <code>OGM_Psed_poc</code>
 </td>
 <td style="text-align:left;min-width: 7em; ">
-<span class="math display">\[\mathbf{f}_{set}^{POC}\]</span>
+<span class="math display">\[\mathbf{\mathcal{F}}_{set}^{poc}\]</span>
 </td>
 <td style="text-align:left;max-width: 18em; ">
-NA
+<span class="math inline">\(POC\)</span> sedimentation areal flux
 </td>
 <td style="text-align:left;min-width: 10em; ">
 <span class="math display">\[\small{mmol\: C/m^2/s}\]</span>
@@ -1870,10 +1871,10 @@ NA
 <code>OGM_Psed_pon</code>
 </td>
 <td style="text-align:left;min-width: 7em; ">
-<span class="math display">\[\mathbf{f}_{set}^{PON}\]</span>
+<span class="math display">\[\mathbf{\mathcal{F}}_{set}^{pon}\]</span>
 </td>
 <td style="text-align:left;max-width: 18em; ">
-NA
+<span class="math inline">\(PON\)</span> sedimentation areal flux
 </td>
 <td style="text-align:left;min-width: 10em; ">
 <span class="math display">\[\small{mmol\: C/m^2/s}\]</span>
@@ -1892,10 +1893,10 @@ NA
 <code>OGM_Psed_pop</code>
 </td>
 <td style="text-align:left;min-width: 7em; ">
-<span class="math display">\[\mathbf{f}_{set}^{POP}\]</span>
+<span class="math display">\[\mathbf{\mathcal{F}}_{set}^{pop}\]</span>
 </td>
 <td style="text-align:left;max-width: 18em; ">
-NA
+<span class="math inline">\(POP\)</span> sedimentation areal flux
 </td>
 <td style="text-align:left;min-width: 10em; ">
 <span class="math display">\[\small{mmol\: C/m^2/s}\]</span>
@@ -1914,10 +1915,10 @@ NA
 <code>OGM_Psed_cpom</code>
 </td>
 <td style="text-align:left;min-width: 7em; ">
-<span class="math display">\[\mathbf{f}_{set}^{CPOM}\]</span>
+<span class="math display">\[\mathbf{\mathcal{F}}_{set}^{cpom}\]</span>
 </td>
 <td style="text-align:left;max-width: 18em; ">
-NA
+<span class="math inline">\(CPOM\)</span> sedimentation areal flux
 </td>
 <td style="text-align:left;min-width: 10em; ">
 <span class="math display">\[\small{mmol\: C/m^2/s}\]</span>
@@ -1936,10 +1937,10 @@ NA
 <code>OGM_swi_poc</code>
 </td>
 <td style="text-align:left;min-width: 7em; ">
-<span class="math display">\[\mathbf{\hat{f}}_{resus}^{POC}\]</span>
+<span class="math display">\[\mathbf{\mathcal{F}}_{resus}^{doc}\]</span>
 </td>
 <td style="text-align:left;max-width: 18em; ">
-NA
+<span class="math inline">\(POC\)</span> resuspension flux
 </td>
 <td style="text-align:left;min-width: 10em; ">
 <span class="math display">\[\small{mmol\: C/m^2/d}\]</span>
@@ -1958,10 +1959,10 @@ NA
 <code>OGM_swi_doc</code>
 </td>
 <td style="text-align:left;min-width: 7em; ">
-<span class="math display">\[\mathbf{F}_{dsf}^{doc}\]</span>
+<span class="math display">\[\mathbf{\mathcal{F}}_{dsf}^{doc}\]</span>
 </td>
 <td style="text-align:left;max-width: 18em; ">
-NA
+<span class="math inline">\(DOC\)</span> exchange across sediment-water interface
 </td>
 <td style="text-align:left;min-width: 10em; ">
 <span class="math display">\[\small{mmol\: C/m^2/d}\]</span>
@@ -1980,10 +1981,10 @@ NA
 <code>OGM_swi_pon</code>
 </td>
 <td style="text-align:left;min-width: 7em; ">
-<span class="math display">\[\mathbf{\hat{f}}_{resus}^{PON}\]</span>
+<span class="math display">\[\mathbf{\hat{f}}_{resus}^{pon}\]</span>
 </td>
 <td style="text-align:left;max-width: 18em; ">
-NA
+<span class="math inline">\(PON\)</span> resuspension flux
 </td>
 <td style="text-align:left;min-width: 10em; ">
 <span class="math display">\[\small{mmol\: C/m^2/d}\]</span>
@@ -2002,10 +2003,10 @@ NA
 <code>OGM_swi_don</code>
 </td>
 <td style="text-align:left;min-width: 7em; ">
-<span class="math display">\[\mathbf{F}_{dsf}^{don}\]</span>
+<span class="math display">\[\mathbf{\mathcal{F}}_{dsf}^{don}\]</span>
 </td>
 <td style="text-align:left;max-width: 18em; ">
-NA
+<span class="math inline">\(DON\)</span> exchange across sediment-water interface
 </td>
 <td style="text-align:left;min-width: 10em; ">
 <span class="math display">\[\small{mmol\: N/m^2/d}\]</span>
@@ -2024,10 +2025,10 @@ NA
 <code>OGM_swi_pop</code>
 </td>
 <td style="text-align:left;min-width: 7em; ">
-<span class="math display">\[\mathbf{\hat{f}}_{resus}^{PON}\]</span>
+<span class="math display">\[\mathbf{\hat{f}}_{resus}^{pon}\]</span>
 </td>
 <td style="text-align:left;max-width: 18em; ">
-NA
+<span class="math inline">\(POP\)</span> resuspension flux
 </td>
 <td style="text-align:left;min-width: 10em; ">
 <span class="math display">\[\small{mmol\: C/m^2/d}\]</span>
@@ -2046,10 +2047,10 @@ NA
 <code>OGM_swi_dop</code>
 </td>
 <td style="text-align:left;min-width: 7em; ">
-<span class="math display">\[\mathbf{F}_{dsf}^{dop}\]</span>
+<span class="math display">\[\mathbf{\mathcal{F}}_{dsf}^{dop}\]</span>
 </td>
 <td style="text-align:left;max-width: 18em; ">
-NA
+<span class="math inline">\(DOP\)</span> exchange across sediment-water interface
 </td>
 <td style="text-align:left;min-width: 10em; ">
 <span class="math display">\[\small{mmol\: P/m^2/d}\]</span>
@@ -2072,7 +2073,7 @@ NA
 <div id="parameter-summary-8" class="section level3" number="12.3.5">
 <h3><span class="header-section-number">12.3.5</span> Parameter Summary</h3>
 <p>The parameters and settings used by this module are summarised in Table <a href="organic-matter.html#tab:15-parstable">12.3</a>.</p>
-<div style="border: 1px solid #ddd; padding: 5px; overflow-y: scroll; height:2800px; overflow-x: scroll; width:770px; ">
+<div style="border: 1px solid #ddd; padding: 5px; overflow-y: scroll; height:3000px; overflow-x: scroll; width:770px; ">
 <table class="table" style="font-size: 11px; width: auto !important; margin-left: auto; margin-right: auto;">
 <caption style="font-size: initial !important;">
 <span id="tab:15-parstable">Table 12.3: </span>Organic Matter module parameters and configuration options
@@ -2116,7 +2117,7 @@ Comments
 <span class="math display">\[POC|_{t=0}\]</span>
 </td>
 <td style="text-align:left;max-width: 19em; ">
-initial <span class="math inline">\(POC\)</span> cooncentration
+initial <span class="math inline">\(POC\)</span> concentration
 </td>
 <td style="text-align:left;min-width: 10em; ">
 <span class="math display">\[\small{mmol\: C/m^3}\]</span>
@@ -2139,7 +2140,7 @@ can be overwritten by initial condition files
 <span class="math display">\[DOC|_{t=0}\]</span>
 </td>
 <td style="text-align:left;max-width: 19em; ">
-initial <span class="math inline">\(DOC\)</span> cooncentration
+initial <span class="math inline">\(DOC\)</span> concentration
 </td>
 <td style="text-align:left;min-width: 10em; ">
 <span class="math display">\[\small{mmol\: C/m^3}\]</span>
@@ -2162,7 +2163,7 @@ can be overwritten by initial condition files
 <span class="math display">\[PON|_{t=0}\]</span>
 </td>
 <td style="text-align:left;max-width: 19em; ">
-initial <span class="math inline">\(PON\)</span> cooncentration
+initial <span class="math inline">\(PON\)</span> concentration
 </td>
 <td style="text-align:left;min-width: 10em; ">
 <span class="math display">\[\small{mmol\: N/m^3}\]</span>
@@ -2185,7 +2186,7 @@ can be overwritten by initial condition files
 <span class="math display">\[DON|_{t=0}\]</span>
 </td>
 <td style="text-align:left;max-width: 19em; ">
-initial <span class="math inline">\(DON\)</span> cooncentration
+initial <span class="math inline">\(DON\)</span> concentration
 </td>
 <td style="text-align:left;min-width: 10em; ">
 <span class="math display">\[\small{mmol\: N/m^3}\]</span>
@@ -2208,7 +2209,7 @@ can be overwritten by initial condition files
 <span class="math display">\[POP|_{t=0}\]</span>
 </td>
 <td style="text-align:left;max-width: 19em; ">
-initial <span class="math inline">\(POP\)</span> cooncentration
+initial <span class="math inline">\(POP\)</span> concentration
 </td>
 <td style="text-align:left;min-width: 10em; ">
 <span class="math display">\[\small{mmol\: P/m^3}\]</span>
@@ -2231,7 +2232,7 @@ can be overwritten by initial condition files
 <span class="math display">\[DOP|_{t=0}\]</span>
 </td>
 <td style="text-align:left;max-width: 19em; ">
-initial <span class="math inline">\(DOP\)</span> cooncentration
+initial <span class="math inline">\(DOP\)</span> concentration
 </td>
 <td style="text-align:left;min-width: 10em; ">
 <span class="math display">\[\small{mmol\: P/m^3}\]</span>
@@ -2254,7 +2255,7 @@ can be overwritten by initial condition files
 <span class="math display">\[CPOM|_{t=0}\]</span>
 </td>
 <td style="text-align:left;max-width: 19em; ">
-initial <span class="math inline">\(CPOM\)</span> cooncentration
+initial <span class="math inline">\(CPOM\)</span> concentration
 </td>
 <td style="text-align:left;min-width: 10em; ">
 <span class="math display">\[\small{mmol\: C/m^3}\]</span>
@@ -2282,7 +2283,7 @@ can be overwritten by initial condition files
 <span class="math display">\[R_{hydrl}^{POC}\]</span>
 </td>
 <td style="text-align:left;max-width: 19em; ">
-<span class="math inline">\(POC\)</span> hydrolysis/breakdown rate
+reference <span class="math inline">\(POC\)</span> hydrolysis/breakdown rate @ <span class="math inline">\(20^{\circ}C\)</span>
 </td>
 <td style="text-align:left;min-width: 10em; ">
 <span class="math display">\[\small{/d}\]</span>
@@ -2305,7 +2306,7 @@ NA
 <span class="math display">\[R_{hydrl}^{PON}\]</span>
 </td>
 <td style="text-align:left;max-width: 19em; ">
-<span class="math inline">\(PON\)</span> hydrolysis/breakdown rate
+reference <span class="math inline">\(PON\)</span> hydrolysis/breakdown rate @ <span class="math inline">\(20^{\circ}C\)</span>
 </td>
 <td style="text-align:left;min-width: 10em; ">
 <span class="math display">\[\small{/d}\]</span>
@@ -2328,7 +2329,7 @@ NA
 <span class="math display">\[R_{hydrl}^{POP}\]</span>
 </td>
 <td style="text-align:left;max-width: 19em; ">
-<span class="math inline">\(POP\)</span> hydrolysis/breakdown rate
+reference <span class="math inline">\(POP\)</span> hydrolysis/breakdown rate @ <span class="math inline">\(20^{\circ}C\)</span>
 </td>
 <td style="text-align:left;min-width: 10em; ">
 <span class="math display">\[\small{/d}\]</span>
@@ -2397,7 +2398,7 @@ NA
 <span class="math display">\[R_{minerl}^{DOM}\]</span>
 </td>
 <td style="text-align:left;max-width: 19em; ">
-<span class="math inline">\(DOM\)</span> mineralisation rate
+reference <span class="math inline">\(DOM\)</span> mineralisation rate @ <span class="math inline">\(20^{\circ}C\)</span>
 </td>
 <td style="text-align:left;min-width: 10em; ">
 <span class="math display">\[\small{/d}\]</span>
@@ -2498,7 +2499,7 @@ mineralisation scaling fraction under anaerobic conditions
 float
 </td>
 <td style="text-align:left;">
-NA
+0 - 1
 </td>
 <td style="text-align:left;min-width: 10em; ">
 <ul>
@@ -2535,7 +2536,7 @@ NA
 <span class="math display">\[O_2\]</span>
 </td>
 <td style="text-align:left;max-width: 19em; ">
-NA
+state variable used to control aerobic mineralisation
 </td>
 <td style="text-align:left;min-width: 10em; ">
 <span class="math display">\[\small{-}\]</span>
@@ -2544,11 +2545,11 @@ NA
 string
 </td>
 <td style="text-align:left;">
-NA
+<code>OXY_oxy</code>
 </td>
 <td style="text-align:left;min-width: 10em; ">
-<ul>
-<li></td>
+optional link for oxygen consumption during mineralisation
+</td>
 </tr>
 <tr>
 <td style="text-align:left;padding-left: 2em;" indentlevel="1">
@@ -2558,7 +2559,7 @@ NA
 <span class="math display">\[NO_3\]</span>
 </td>
 <td style="text-align:left;max-width: 19em; ">
-NA
+state variable used to control nitrate reduction
 </td>
 <td style="text-align:left;min-width: 10em; ">
 <span class="math display">\[\small{-}\]</span>
@@ -2567,11 +2568,11 @@ NA
 string
 </td>
 <td style="text-align:left;">
-NA
+<code>NIT_nit</code>
 </td>
 <td style="text-align:left;min-width: 10em; ">
-<ul>
-<li></td>
+optional link for nitrate consumption during mineralisation
+</td>
 </tr>
 <tr>
 <td style="text-align:left;padding-left: 2em;" indentlevel="1">
@@ -2581,7 +2582,7 @@ NA
 <span class="math display">\[NO_2\]</span>
 </td>
 <td style="text-align:left;max-width: 19em; ">
-NA
+state variable used to control nitrite reduction
 </td>
 <td style="text-align:left;min-width: 10em; ">
 <span class="math display">\[\small{-}\]</span>
@@ -2590,11 +2591,11 @@ NA
 string
 </td>
 <td style="text-align:left;">
-NA
+<code>NIT_no2</code>
 </td>
 <td style="text-align:left;min-width: 10em; ">
-<ul>
-<li></td>
+optional link for nitrite consumption during mineralisation
+</td>
 </tr>
 <tr>
 <td style="text-align:left;padding-left: 2em;" indentlevel="1">
@@ -2604,7 +2605,7 @@ NA
 <span class="math display">\[N_2O\]</span>
 </td>
 <td style="text-align:left;max-width: 19em; ">
-NA
+state variable used to control n2o reduction
 </td>
 <td style="text-align:left;min-width: 10em; ">
 <span class="math display">\[\small{-}\]</span>
@@ -2613,11 +2614,11 @@ NA
 string
 </td>
 <td style="text-align:left;">
-NA
+<code>NIT_n2o</code>
 </td>
 <td style="text-align:left;min-width: 10em; ">
-<ul>
-<li></td>
+optional link for nitrous oxide consumption during mineralisation
+</td>
 </tr>
 <tr>
 <td style="text-align:left;padding-left: 2em;" indentlevel="1">
@@ -2627,7 +2628,7 @@ NA
 <span class="math display">\[FeIII\]</span>
 </td>
 <td style="text-align:left;max-width: 19em; ">
-NA
+state variable used to control iron reduction
 </td>
 <td style="text-align:left;min-width: 10em; ">
 <span class="math display">\[\small{-}\]</span>
@@ -2636,11 +2637,11 @@ NA
 string
 </td>
 <td style="text-align:left;">
-NA
+<code>GEO_feiii</code>
 </td>
 <td style="text-align:left;min-width: 10em; ">
-<ul>
-<li></td>
+optional link for ferrous iron consumption during mineralisation
+</td>
 </tr>
 <tr>
 <td style="text-align:left;padding-left: 2em;" indentlevel="1">
@@ -2650,7 +2651,7 @@ NA
 <span class="math display">\[SO_4\]</span>
 </td>
 <td style="text-align:left;max-width: 19em; ">
-NA
+state variable used to control sulfate reduction
 </td>
 <td style="text-align:left;min-width: 10em; ">
 <span class="math display">\[\small{-}\]</span>
@@ -2659,11 +2660,11 @@ NA
 string
 </td>
 <td style="text-align:left;">
-NA
+<code>GEO_so4</code>
 </td>
 <td style="text-align:left;min-width: 10em; ">
-<ul>
-<li></td>
+optional link for sulfate consumption during mineralisation
+</td>
 </tr>
 <tr>
 <td style="text-align:left;padding-left: 2em;" indentlevel="1">
@@ -2673,7 +2674,7 @@ NA
 <span class="math display">\[CH_4\]</span>
 </td>
 <td style="text-align:left;max-width: 19em; ">
-NA
+state variable to receive methane
 </td>
 <td style="text-align:left;min-width: 10em; ">
 <span class="math display">\[\small{-}\]</span>
@@ -2682,11 +2683,11 @@ NA
 string
 </td>
 <td style="text-align:left;">
-NA
+<code>CAR_ch4</code>
 </td>
 <td style="text-align:left;min-width: 10em; ">
-<ul>
-<li></td>
+optional link for methane production
+</td>
 </tr>
 <tr>
 <td style="text-align:left;padding-left: 2em;" indentlevel="1">
@@ -2696,7 +2697,7 @@ NA
 <span class="math display">\[DIC\]</span>
 </td>
 <td style="text-align:left;max-width: 19em; ">
-NA
+state variable to receive <span class="math inline">\(DIC\)</span>
 </td>
 <td style="text-align:left;min-width: 10em; ">
 <span class="math display">\[\small{-}\]</span>
@@ -2705,11 +2706,11 @@ NA
 string
 </td>
 <td style="text-align:left;">
-NA
+<code>CAR_dic</code>
 </td>
 <td style="text-align:left;min-width: 10em; ">
-<ul>
-<li></td>
+optional link for dic production
+</td>
 </tr>
 <tr>
 <td style="text-align:left;padding-left: 2em;" indentlevel="1">
@@ -2719,7 +2720,7 @@ NA
 <span class="math display">\[NH_4\]</span>
 </td>
 <td style="text-align:left;max-width: 19em; ">
-NA
+state variable to receive <span class="math inline">\(NH_4\)</span>
 </td>
 <td style="text-align:left;min-width: 10em; ">
 <span class="math display">\[\small{-}\]</span>
@@ -2728,11 +2729,11 @@ NA
 string
 </td>
 <td style="text-align:left;">
-NA
+<code>NIT_amm</code>
 </td>
 <td style="text-align:left;min-width: 10em; ">
-<ul>
-<li></td>
+optional link for ammonium production
+</td>
 </tr>
 <tr>
 <td style="text-align:left;padding-left: 2em;" indentlevel="1">
@@ -2742,7 +2743,7 @@ NA
 <span class="math display">\[PO_4\]</span>
 </td>
 <td style="text-align:left;max-width: 19em; ">
-NA
+state variable to receive <span class="math inline">\(PO_4\)</span>
 </td>
 <td style="text-align:left;min-width: 10em; ">
 <span class="math display">\[\small{-}\]</span>
@@ -2751,11 +2752,11 @@ NA
 string
 </td>
 <td style="text-align:left;">
-NA
+<code>PHS_frp</code>
 </td>
 <td style="text-align:left;min-width: 10em; ">
-<ul>
-<li></td>
+optional link for phosphate production
+</td>
 </tr>
 <tr grouplength="5">
 <td colspan="7" style="border-bottom: 1px solid;background-color: #ebebeb !important;">
@@ -2770,7 +2771,7 @@ NA
 <span class="math display">\[\Theta_{om}^{refrac}\]</span>
 </td>
 <td style="text-align:left;max-width: 19em; ">
-NA
+option to include refractory <span class="math inline">\(OM\)</span> pools, incl. <span class="math inline">\(DOM_R\)</span> and <span class="math inline">\(CPOM\)</span>
 </td>
 <td style="text-align:left;min-width: 10em; ">
 <span class="math display">\[\small{-}\]</span>
@@ -2779,7 +2780,7 @@ NA
 boolean
 </td>
 <td style="text-align:left;">
-NA
+T or F
 </td>
 <td style="text-align:left;min-width: 10em; ">
 <ul>
@@ -2793,7 +2794,7 @@ NA
 <span class="math display">\[R_{minerl}^{DOM_R}\]</span>
 </td>
 <td style="text-align:left;max-width: 19em; ">
-NA
+reference <span class="math inline">\(DOM_R\)</span> mineralisation rate @ <span class="math inline">\(20^{\circ}C\)</span>
 </td>
 <td style="text-align:left;min-width: 10em; ">
 <span class="math display">\[\small{/d}\]</span>
@@ -2816,7 +2817,7 @@ NA
 <span class="math display">\[R_{bdown}^{CPOM}\]</span>
 </td>
 <td style="text-align:left;max-width: 19em; ">
-NA
+reference <span class="math inline">\(CPOM\)</span> hydrolysis/breakdown rate @ <span class="math inline">\(20^{\circ}C\)</span>
 </td>
 <td style="text-align:left;min-width: 10em; ">
 <span class="math display">\[\small{/d}\]</span>
@@ -2839,7 +2840,7 @@ NA
 <span class="math display">\[\chi_{C:N}^{cpom}\]</span>
 </td>
 <td style="text-align:left;max-width: 19em; ">
-NA
+<span class="math inline">\(CPOM\)</span> nitrogen stoichiometry
 </td>
 <td style="text-align:left;min-width: 10em; ">
 <span class="math display">\[\small{mmol\:N/mmol\:C}\]</span>
@@ -2862,7 +2863,7 @@ NA
 <span class="math display">\[\chi_{C:P}^{cpom}\]</span>
 </td>
 <td style="text-align:left;max-width: 19em; ">
-NA
+<span class="math inline">\(CPOM\)</span> phosphorus stoichiometry
 </td>
 <td style="text-align:left;min-width: 10em; ">
 <span class="math display">\[\small{mmol\:P/mmol\:C}\]</span>
@@ -2890,7 +2891,7 @@ NA
 <span class="math display">\[K_e^{DOM}\]</span>
 </td>
 <td style="text-align:left;max-width: 19em; ">
-NA
+specific light attenuation coefficient for <span class="math inline">\(DOM\)</span>
 </td>
 <td style="text-align:left;min-width: 10em; ">
 <span class="math display">\[\small{/m/(mmol\:C/m^3)}\]</span>
@@ -2913,10 +2914,10 @@ NA
 <span class="math display">\[K_e^{POM}\]</span>
 </td>
 <td style="text-align:left;max-width: 19em; ">
-NA
+specific light attenuation coefficient for <span class="math inline">\(POM\)</span>
 </td>
 <td style="text-align:left;min-width: 10em; ">
-<span class="math display">\[\small{/d}\]</span>
+<span class="math display">\[\small{/m/(mmol\:C/m^3)}\]</span>
 </td>
 <td style="text-align:left;min-width: 5em; ">
 float
@@ -2936,10 +2937,10 @@ float
 <span class="math display">\[K_e^{DOM_R}\]</span>
 </td>
 <td style="text-align:left;max-width: 19em; ">
-NA
+specific light attenuation coefficient for <span class="math inline">\(DOM_R\)</span>
 </td>
 <td style="text-align:left;min-width: 10em; ">
-<span class="math display">\[\small{mmol\: O_2/m^3}\]</span>
+<span class="math display">\[\small{/m/(mmol\:C/m^3)}\]</span>
 </td>
 <td style="text-align:left;min-width: 5em; ">
 float
@@ -2959,10 +2960,10 @@ float
 <span class="math display">\[K_e^{CPOM}\]</span>
 </td>
 <td style="text-align:left;max-width: 19em; ">
-NA
+specific light attenuation coefficient for <span class="math inline">\(CPOM\)</span>
 </td>
 <td style="text-align:left;min-width: 10em; ">
-<span class="math display">\[\small{-}\]</span>
+<span class="math display">\[\small{/m/(mmol\:C/m^3)}\]</span>
 </td>
 <td style="text-align:left;min-width: 5em; ">
 float
@@ -2982,16 +2983,16 @@ float
 <span class="math display">\[\Theta_{om}^{photo}\]</span>
 </td>
 <td style="text-align:left;max-width: 19em; ">
-NA
+option to include photo-mineralisation of <span class="math inline">\(DOM_R\)</span>
 </td>
 <td style="text-align:left;min-width: 10em; ">
 <span class="math display">\[\small{-}\]</span>
 </td>
 <td style="text-align:left;min-width: 5em; ">
-integer
+boolean
 </td>
 <td style="text-align:left;">
-NA
+T or F
 </td>
 <td style="text-align:left;min-width: 10em; ">
 <ul>
@@ -3005,7 +3006,7 @@ NA
 <span class="math display">\[c_{photo}\]</span>
 </td>
 <td style="text-align:left;max-width: 19em; ">
-NA
+photolysis constant
 </td>
 <td style="text-align:left;min-width: 10em; ">
 NA
@@ -3014,7 +3015,7 @@ NA
 float
 </td>
 <td style="text-align:left;">
-NA
+7.5
 </td>
 <td style="text-align:left;min-width: 10em; ">
 <ul>
@@ -3033,7 +3034,7 @@ NA
 <span class="math display">\[\Theta_{set}^{pom}\]</span>
 </td>
 <td style="text-align:left;max-width: 19em; ">
-NA
+option to set the method of settling for <span class="math inline">\(POM\)</span> and <span class="math inline">\(CPOM\)</span>
 </td>
 <td style="text-align:left;min-width: 10em; ">
 <span class="math display">\[\small{-}\]</span>
@@ -3042,7 +3043,7 @@ NA
 integer
 </td>
 <td style="text-align:left;">
-OXY_oxy
+0, 1, 2, 3
 </td>
 <td style="text-align:left;min-width: 10em; ">
 <ul>
@@ -3056,7 +3057,7 @@ OXY_oxy
 <span class="math display">\[\omega_{pom}\]</span>
 </td>
 <td style="text-align:left;max-width: 19em; ">
-NA
+sedimentation velocity of <span class="math inline">\(POM\)</span> detrital particles
 </td>
 <td style="text-align:left;min-width: 10em; ">
 <span class="math display">\[\small{m/d}\]</span>
@@ -3068,8 +3069,8 @@ float
 NA
 </td>
 <td style="text-align:left;min-width: 10em; ">
-<ul>
-<li></td>
+used if <span class="math inline">\(\Theta_{set}^{pom}\)</span> is 1 or 2
+</td>
 </tr>
 <tr>
 <td style="text-align:left;padding-left: 2em;" indentlevel="1">
@@ -3079,7 +3080,7 @@ NA
 <span class="math display">\[d_{pom}\]</span>
 </td>
 <td style="text-align:left;max-width: 19em; ">
-NA
+diameter of <span class="math inline">\(POM\)</span> detrital particles
 </td>
 <td style="text-align:left;min-width: 10em; ">
 <span class="math display">\[\small{m}\]</span>
@@ -3091,8 +3092,8 @@ float
 NA
 </td>
 <td style="text-align:left;min-width: 10em; ">
-<ul>
-<li></td>
+used if <span class="math inline">\(\Theta_{set}^{pom}\)</span> is 3
+</td>
 </tr>
 <tr>
 <td style="text-align:left;padding-left: 2em;" indentlevel="1">
@@ -3102,7 +3103,7 @@ NA
 <span class="math display">\[\rho_{pom}\]</span>
 </td>
 <td style="text-align:left;max-width: 19em; ">
-NA
+density of <span class="math inline">\(POM\)</span> detrital particles
 </td>
 <td style="text-align:left;min-width: 10em; ">
 <span class="math display">\[\small{kg/m^3}\]</span>
@@ -3114,8 +3115,8 @@ float
 NA
 </td>
 <td style="text-align:left;min-width: 10em; ">
-<ul>
-<li></td>
+used if <span class="math inline">\(\Theta_{set}^{pom}\)</span> is 3
+</td>
 </tr>
 <tr>
 <td style="text-align:left;padding-left: 2em;" indentlevel="1">
@@ -3125,7 +3126,7 @@ NA
 <span class="math display">\[\omega_{cpom}\]</span>
 </td>
 <td style="text-align:left;max-width: 19em; ">
-NA
+sedimentation velocity of <span class="math inline">\(CPOM\)</span> particles
 </td>
 <td style="text-align:left;min-width: 10em; ">
 <span class="math display">\[\small{m/d}\]</span>
@@ -3137,8 +3138,8 @@ float
 NA
 </td>
 <td style="text-align:left;min-width: 10em; ">
-<ul>
-<li></td>
+used if <span class="math inline">\(\Theta_{set}^{pom}\)</span> is 1 or 2
+</td>
 </tr>
 <tr>
 <td style="text-align:left;padding-left: 2em;" indentlevel="1">
@@ -3148,7 +3149,7 @@ NA
 <span class="math display">\[d_{cpom}\]</span>
 </td>
 <td style="text-align:left;max-width: 19em; ">
-NA
+diameter of <span class="math inline">\(CPOM\)</span> detrital particles
 </td>
 <td style="text-align:left;min-width: 10em; ">
 <span class="math display">\[\small{m}\]</span>
@@ -3160,8 +3161,8 @@ float
 NA
 </td>
 <td style="text-align:left;min-width: 10em; ">
-<ul>
-<li></td>
+used if <span class="math inline">\(\Theta_{set}^{pom}\)</span> is 3
+</td>
 </tr>
 <tr>
 <td style="text-align:left;padding-left: 2em;" indentlevel="1">
@@ -3171,7 +3172,7 @@ NA
 <span class="math display">\[\rho_{cpom}\]</span>
 </td>
 <td style="text-align:left;max-width: 19em; ">
-NA
+density of <span class="math inline">\(CPOM\)</span> detrital particles
 </td>
 <td style="text-align:left;min-width: 10em; ">
 <span class="math display">\[\small{kg/m^3}\]</span>
@@ -3183,8 +3184,8 @@ float
 NA
 </td>
 <td style="text-align:left;min-width: 10em; ">
-<ul>
-<li></td>
+used if <span class="math inline">\(\Theta_{set}^{pom}\)</span> is 3
+</td>
 </tr>
 <tr grouplength="6">
 <td colspan="7" style="border-bottom: 1px solid;background-color: #ebebeb !important;">
@@ -3199,16 +3200,16 @@ NA
 <span class="math display">\[\Theta_{resus}^{pom}\]</span>
 </td>
 <td style="text-align:left;max-width: 19em; ">
-NA
+option to set the method of resuspension for <span class="math inline">\(POM\)</span> and <span class="math inline">\(CPOM\)</span>
 </td>
 <td style="text-align:left;min-width: 10em; ">
-<span class="math display">\[\small{mmol\: C/m^2/d}\]</span>
+<span class="math display">\[\small{-}\]</span>
 </td>
 <td style="text-align:left;min-width: 5em; ">
 integer
 </td>
 <td style="text-align:left;">
-0 - 1
+0 , 1
 </td>
 <td style="text-align:left;min-width: 10em; ">
 <ul>
@@ -3222,7 +3223,7 @@ integer
 <span class="math display">\[-\]</span>
 </td>
 <td style="text-align:left;max-width: 19em; ">
-NA
+diagnostic variable to link to for resuspension rate
 </td>
 <td style="text-align:left;min-width: 10em; ">
 <span class="math display">\[\small{-}\]</span>
@@ -3231,7 +3232,7 @@ NA
 string
 </td>
 <td style="text-align:left;">
-NA
+<code>NCS_resus</code>
 </td>
 <td style="text-align:left;min-width: 10em; ">
 <ul>
@@ -3245,7 +3246,7 @@ NA
 <span class="math display">\[c_{om}\]</span>
 </td>
 <td style="text-align:left;max-width: 19em; ">
-NA
+fraction by weight of surficial sediment organic matter
 </td>
 <td style="text-align:left;min-width: 10em; ">
 <span class="math display">\[\small{g\:OM/g\:sediment}\]</span>
@@ -3268,7 +3269,7 @@ NA
 <span class="math display">\[\chi_{OM:C}^{sed}\]</span>
 </td>
 <td style="text-align:left;max-width: 19em; ">
-NA
+stoichiometry of sedment particulate carbon
 </td>
 <td style="text-align:left;min-width: 10em; ">
 <span class="math display">\[\small{mmol\:C/g\:OM}\]</span>
@@ -3291,7 +3292,7 @@ NA
 <span class="math display">\[\chi_{OM:N}^{sed}\]</span>
 </td>
 <td style="text-align:left;max-width: 19em; ">
-NA
+stoichiometry of sedment particulate nitrogen
 </td>
 <td style="text-align:left;min-width: 10em; ">
 <span class="math display">\[\small{mmol\:N/g\:OM}\]</span>
@@ -3314,7 +3315,7 @@ NA
 <span class="math display">\[\chi_{OM:P}^{sed}\]</span>
 </td>
 <td style="text-align:left;max-width: 19em; ">
-NA
+stoichiometry of sedment particulate phosphorus
 </td>
 <td style="text-align:left;min-width: 10em; ">
 <span class="math display">\[\small{mmol\:P/g\:OM}\]</span>
@@ -3342,7 +3343,7 @@ NA
 <span class="math display">\[F_{sed}^{doc}\]</span>
 </td>
 <td style="text-align:left;max-width: 19em; ">
-NA
+reference sediment <span class="math inline">\(DOC\)</span> flux at <span class="math inline">\(20^{\circ}C\)</span>
 </td>
 <td style="text-align:left;min-width: 10em; ">
 <span class="math display">\[\small{mmol\: C/m^2/d}\]</span>
@@ -3365,7 +3366,7 @@ float
 <span class="math display">\[F_{sed}^{don}\]</span>
 </td>
 <td style="text-align:left;max-width: 19em; ">
-NA
+reference sediment <span class="math inline">\(DON\)</span> flux at <span class="math inline">\(20^{\circ}C\)</span>
 </td>
 <td style="text-align:left;min-width: 10em; ">
 <span class="math display">\[\small{mmol\: N/m^2/d}\]</span>
@@ -3388,7 +3389,7 @@ NA
 <span class="math display">\[F_{sed}^{dop}\]</span>
 </td>
 <td style="text-align:left;max-width: 19em; ">
-NA
+reference sediment <span class="math inline">\(DON\)</span> flux at <span class="math inline">\(20^{\circ}C\)</span>
 </td>
 <td style="text-align:left;min-width: 10em; ">
 <span class="math display">\[\small{mmol\: P/m^2/d}\]</span>
@@ -3411,7 +3412,7 @@ NA
 <span class="math display">\[K_{sed-dom}^{oxy}\]</span>
 </td>
 <td style="text-align:left;max-width: 19em; ">
-NA
+half-saturation oxygen conc. controlling <span class="math inline">\(DOM\)</span> sediment flux
 </td>
 <td style="text-align:left;min-width: 10em; ">
 <span class="math display">\[\small{mmol\: O_2/m^3}\]</span>
@@ -3434,7 +3435,7 @@ float
 <span class="math display">\[\theta_{sed}^{dom}\]</span>
 </td>
 <td style="text-align:left;max-width: 19em; ">
-NA
+Arrhenius temperature multiplier for sediment <span class="math inline">\(DOM\)</span> flux
 </td>
 <td style="text-align:left;min-width: 10em; ">
 <span class="math display">\[\small{-}\]</span>
@@ -3522,22 +3523,6 @@ string
 </table>
 </div>
 <br></li>
-</ul></li>
-</ul></li>
-</ul></li>
-</ul></li>
-</ul></li>
-</ul></li>
-</ul></li>
-</ul></li>
-</ul></li>
-</ul></li>
-</ul></li>
-</ul></li>
-</ul></li>
-</ul></li>
-</ul></li>
-</ul></li>
 </ul></li>
 </ul></li>
 </ul></li>

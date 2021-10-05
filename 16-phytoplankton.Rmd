@@ -14,28 +14,28 @@ For each phytoplankton group, the maximum potential growth rate at 20°C is mult
 
 #### Photosynthesis & Nutrient Uptake {-}
 
-For each phytoplankton group, the maximum potential growth rate at 20˚C is multiplied by the minimum value of expressions for limitation by light, phosphorus, nitrogen and silica (when configured). While there may be some interaction between limiting factors, a minimum expression is likely to provide a realistic representation of growth limitation (Rhee and Gotham, 1981). 
+For each phytoplankton group, the maximum potential growth rate at 20˚C is multiplied by the minimum value of expressions for limitation by light, phosphorus, nitrogen and silica (when configured). While there may be some interaction between limiting factors, a minimum expression is likely to provide a realistic representation of growth limitation (Rhee and Gotham, 1981).
 Therefore, photosynthesis is parameterized as the uptake of carbon, and depends on the temperature, light and nutrient dimensionless functions (adopted from Hipsey & Hamilton, 2008; Li et al., 2013).
 
 <br>
 
 :::: {.bluebox data-latex=""}
 \begin{equation}
-\text{Mass Balance Equation}
-(\#eq:phyto1)
-\end{equation}
-\begin{align}
-{f_{uptake}^{PHY_{Ca}}} &=  
-\end{align}
-\begin{align}
-\underbrace{{R_{growth}^{PHY_{a}}}}_{\text{Max growth rate at 20˚C}}*\underbrace{(1-{k_{pr}^{PHY_{a}}})}_{\text{Photorespiratory loss}}*\underbrace{{\Phi_{tem}^{PHY_{a}}}(T)}_{\text{Temperature scaling}}*\underbrace{{\Phi_{str}^{PHY_{a}}}(T)}_{\text{Metabolic stress}}*
-\end{align}
-\begin{align}
-&{\text{min}}\begin{Bmatrix}\underbrace{\Phi_{light}^{PHY_{a}}(I)}_{\text{Light limitation}},\underbrace{\Phi_{N}^{PHY_{a}}(NO_{3},NH_{4},PHY_{N_{a}})}_{\text{N limitation}},\underbrace{\Phi_{P}^{PHY_{a}}(PO_{4},PHY_{P_{a}})}_{\text{P limitation}},\underbrace{\Phi_{Si}^{PHY_{a}}(RSi)}_{\text{Si limitation}}\end{Bmatrix}*
-\end{align}
-\begin{align}
-[PHY_{C_{a}}]
-\end{align}
+ \text{Growth Equation}
+  (\#eq:phyto1)
+ \end{equation}
+ \begin{align}
+  {f_{uptake}^{PHY_{Ca}}} &=  
+ \end{align}
+ \begin{align}
+  \underbrace{{R_{growth}^{PHY_{a}}}}_{\text{Max growth rate at 20˚C}}*\underbrace{(1-{k_{pr}^{PHY_{a}}})}_{\text{Photorespiratory loss}}*\underbrace{{\Phi_{tem}^{PHY_{a}}}(T)}_{\text{Temperature scaling}}*\underbrace{{\Phi_{str}^{PHY_{a}}}(T)}_{\text{Metabolic stress}}*
+ \end{align}
+ \begin{align}
+  &{\text{min}}\begin{Bmatrix}\underbrace{\Phi_{light}^{PHY_{a}}(I)}_{\text{Light limitation}},\underbrace{\Phi_{N}^{PHY_{a}}(NO_{3},NH_{4},PHY_{N_{a}})}_{\text{N limitation}},\underbrace{\Phi_{P}^{PHY_{a}}(PO_{4},PHY_{P_{a}})}_{\text{P limitation}},\underbrace{\Phi_{Si}^{PHY_{a}}(RSi)}_{\text{Si limitation}}\end{Bmatrix}*
+ \end{align}
+ \begin{align}
+  [PHY_{C_{a}}]
+ \end{align}
 ::::
 <br>
 
@@ -48,15 +48,15 @@ To allow for reduced growth at non-optimal temperatures, a temperature function 
 \end{equation}
 <br>
 </center>
-Where ${c1}_a$  and ${c0}_a$  are solved numerically given input values of:  $T_a^{std}$, $T_a^{opt}$ and $T_a^{max}$.
+where ${c1}_a$  and ${c0}_a$  are solved numerically given input values of:  $T_a^{std}$, $T_a^{opt}$ and $T_a^{max}$.
 
-The level of light limitation on phytoplankton growth can be modelled as photoinhibition or non-photoinhibition. In the absence of significant photoinhibition, Webb et al. (1974) suggested a relationship for the fractional limitation of the maximum potential rate of carbon fixation for the case where light saturation behavior was absent (Talling, 1957), and the equations can be analytically integrated with respect to depth (Hipsey and Hamilton, 2008). For the case of photoinhibition, the light saturation value of maximum production (IS) is used and the net level effect can be averaged over the cell by integrating over depth. 
+The level of light limitation on phytoplankton growth can be modelled as photoinhibition or non-photoinhibition. In the absence of significant photoinhibition, Webb et al. (1974) suggested a relationship for the fractional limitation of the maximum potential rate of carbon fixation for the case where light saturation behavior was absent (Talling, 1957), and the equations can be analytically integrated with respect to depth (Hipsey and Hamilton, 2008). For the case of photoinhibition, the light saturation value of maximum production (IS) is used and the net level effect can be averaged over the cell by integrating over depth.
 The `aed_phytoplankton` module contains several light functions, including those from a recent review by Baklouti et al. (2006). The user must select the sensitivity to light according to a photosynthesis-irradiance (P-I curve) formulation and each species must be set to be either non-photoinhibited or photoinhibited according to the options in Table 9.
 
 **Table**
 
 Limitation of the photosynthetic rate may be dampened according to nitrogen or phosphorus availability, and this is either approximated using a Monod expression of the static model is chosen, or based on the internal nutrient stoichiometry if the dynamic (Droop uptake) model is selected:
-For advanced users, an optional metabolic scaling factor can be included to reduce the photosynthetic capacity of the simulated organisms, for example due to metabolic stress due to undertaking N~2~ fixation: 
+For advanced users, an optional metabolic scaling factor can be included to reduce the photosynthetic capacity of the simulated organisms, for example due to metabolic stress due to undertaking N~2~ fixation:
 <center>
 <br>
 \begin{equation}
@@ -66,7 +66,7 @@ For advanced users, an optional metabolic scaling factor can be included to redu
 <br>
 </center>
 The above discussion relates to photosynthesis and carbon uptake by the phytoplankton community. In addition users must choose one of two options to model the P, N uptake dynamics for each algal group: a constant nutrient to carbon ratio, or dynamic intracellular stores. For the first model a simple Michaelis-Menten equation is used to model nutrient limitation with a half-saturation constant for the effect of external nutrient concentrations on the growth rate.  
-The internal phosphorus and nitrogen dynamics within the phytoplankton groups can be modelled using dynamic intracellular stores that are able to regulate growth based on the model of Droop (1974). This model allows for the phytoplankton to have dynamic nutrient uptake rates with variable internal nutrient concentrations bounded by user-defined minimum and maximum values (e.g., see Li et al., 2013). 
+The internal phosphorus and nitrogen dynamics within the phytoplankton groups can be modelled using dynamic intracellular stores that are able to regulate growth based on the model of Droop (1974). This model allows for the phytoplankton to have dynamic nutrient uptake rates with variable internal nutrient concentrations bounded by user-defined minimum and maximum values (e.g., see Li et al., 2013).
 
 **Table**
 
@@ -89,7 +89,7 @@ For diatom groups, silica processes are simulated that include uptake of dissolv
 #### Respiration, Excretion & Mortality {-}
 
 Metabolic loss of nutrients from mortality and excretion is proportional to the internal nitrogen to chla ratio multiplied by the loss rate and the fraction of excretion and mortality that returns to the detrital pool. Loss terms for respiration, natural mortality and excretion are modelled with a single ‘respiration’ rate coefficient. This loss rate is then divided into the pure respiratory fraction and losses due to mortality and excretion. The constant $f_{DOM}$ is the fraction of mortality and excretion to the dissolved organic pool with the remainder into the particulate organic pool.
-Nutrient losses through mortality and excretion for the internal nutrient model are similar to the simple model described above, except that dynamically calculated internal nutrient concentrations are used. 
+Nutrient losses through mortality and excretion for the internal nutrient model are similar to the simple model described above, except that dynamically calculated internal nutrient concentrations are used.
 
 <center>
 <br>
@@ -124,6 +124,63 @@ The salinity effect on mortality is given by various quadratic formulations, dep
 #### State Variables {-}
 
 
+
+```{r 16-statetable, echo=FALSE, message=FALSE, warning=FALSE}
+library(knitr)
+library(kableExtra)
+library(readxl)
+library(rmarkdown)
+theSheet <- read_excel('tables/aed_variable_tables.xlsx', sheet = 11)
+theSheet <- theSheet[theSheet$Table == "State variable",]
+theSheetGroups <- unique(theSheet$Group)
+theSheet$`AED name` <- paste0("`",theSheet$`AED name`,"`")
+
+for(i in seq_along(theSheet$Symbol)){
+  if(!is.na(theSheet$Symbol[i])==TRUE){
+    theSheet$Symbol[i] <- paste0("$$",theSheet$Symbol[i],"$$")
+  } else {
+    theSheet$Symbol[i] <- NA
+  }
+}
+for(i in seq_along(theSheet$Unit)){
+  if(!is.na(theSheet$Unit[i])==TRUE){
+    theSheet$Unit[i] <- paste0("$$\\small{",theSheet$Unit[i],"}$$")
+  } else {
+    theSheet$Unit[i] <- NA
+  }
+}
+for(i in seq_along(theSheet$Comments)){
+  if(!is.na(theSheet$Comments[i])==TRUE){
+    theSheet$Comments[i] <- paste0("",theSheet$Comments[i],"")
+  } else {
+    theSheet$Comments[i] <- " "
+  }
+}
+
+kbl(theSheet[,3:NCOL(theSheet)], caption = "Phytoplankton - *state* variables", align = "l",) %>%
+  pack_rows(theSheetGroups[1],
+            min(which(theSheet$Group == theSheetGroups[1])),
+            max(which(theSheet$Group == theSheetGroups[1])),
+            background = '#ebebeb') %>%
+  pack_rows(theSheetGroups[2],
+            min(which(theSheet$Group == theSheetGroups[2])),
+            max(which(theSheet$Group == theSheetGroups[2])),
+            background = '#ebebeb') %>%
+  row_spec(0, background = "#14759e", bold = TRUE, color = "white") %>%
+	kable_styling(full_width = F,font_size = 11) %>%
+	column_spec(2, width_min = "7em") %>%
+	column_spec(3, width_max = "18em") %>%
+	column_spec(4, width_min = "10em") %>%
+	column_spec(5, width_min = "5em") %>%
+	column_spec(7, width_min = "10em") %>%
+	column_spec(7, width_max = "20em") %>%
+  scroll_box(width = "770px", height = "900px",
+             fixed_thead = FALSE)
+```
+
+
+<br>
+
 ```{r 16-statevariables, echo=FALSE, message=FALSE, warning=FALSE}
 library(knitr)
 library(kableExtra)
@@ -137,7 +194,7 @@ kable(state_variables,"html", escape = F, align = "c", caption = "State variable
   column_spec(5, width_min = "12em") %>%
   row_spec(1:3, background = 'white') %>%
   scroll_box(width = "770px",
-             fixed_thead = FALSE) 
+             fixed_thead = FALSE)
 ```
 
 
@@ -149,7 +206,7 @@ library(knitr)
 library(kableExtra)
 diagnostics <- read.csv("tables/16-phytoplankton/diagnostics.csv", check.names=FALSE)
 kable(diagnostics,"html", escape = F, align = "c", caption = "Diagnostics") %>%
-  kable_styling(diagnostics, bootstrap_options = "basic", 
+  kable_styling(diagnostics, bootstrap_options = "basic",
                 full_width = F, position = "center", font_size = 12) %>%
   column_spec(1, width_min = "6em") %>%
   column_spec(2, width_min = "6em") %>%
@@ -158,7 +215,7 @@ kable(diagnostics,"html", escape = F, align = "c", caption = "Diagnostics") %>%
   column_spec(5, width_min = "6em") %>%
   row_spec(1:17, background = 'white') %>%
   scroll_box(width = "770px", height = "500px",
-             fixed_thead = FALSE) 
+             fixed_thead = FALSE)
 ```
 
 
@@ -171,10 +228,10 @@ library(knitr)
 library(kableExtra)
 library(dplyr)
 library(tidyverse)
-parameter_summary <- read.csv("tables/16-phytoplankton/parameter_summary.csv", check.names=FALSE) 
+parameter_summary <- read.csv("tables/16-phytoplankton/parameter_summary.csv", check.names=FALSE)
 kable(parameter_summary,"html", escape = F, align = "c", caption = "Diagnostics",
       bootstrap_options = "hover") %>%
-  kable_styling(parameter_summary, bootstrap_options = "hover", 
+  kable_styling(parameter_summary, bootstrap_options = "hover",
                 full_width = F, position = "center", font_size = 12) %>%
   column_spec(1, width_min = "6em") %>%
   column_spec(2, width_min = "6em") %>%
@@ -210,7 +267,7 @@ kable(parameter_summary,"html", escape = F, align = "c", caption = "Diagnostics"
   row_spec(42:42, background = '#E8EAEF') %>%
   row_spec(51:51, background = '#E8EAEF') %>%
   scroll_box(width = "770px", height = "500px",
-             fixed_thead = FALSE) 
+             fixed_thead = FALSE)
 ```
 
 
@@ -226,7 +283,7 @@ library(kableExtra)
 parameter_config <- read.csv("tables/16-phytoplankton/parameter_config.csv", check.names=FALSE)
 kable(parameter_config,"html", escape = F, align = "c", caption = "Parameters and configuration",
       bootstrap_options = "hover") %>%
-  kable_styling(parameter_config, bootstrap_options = "hover", 
+  kable_styling(parameter_config, bootstrap_options = "hover",
                 full_width = F, position = "center", font_size = 12) %>%
   column_spec(1, width_min = "10em") %>%
   column_spec(2, width_min = "10em") %>%
@@ -237,7 +294,7 @@ kable(parameter_config,"html", escape = F, align = "c", caption = "Parameters an
   column_spec(7, width_min = "6em") %>%
   row_spec(1:19, background = 'white') %>%
   scroll_box(width = "770px", height = "500px",
-             fixed_thead = FALSE) 
+             fixed_thead = FALSE)
 ```
 
 <br>
@@ -346,42 +403,42 @@ fig <- plot_ly()
 fig <- fig %>% add_trace(
   case1,
   name="Case 1",
-  x = case1$par_c, 
-  y = case1$fI, 
-  frame = case1$I_K, 
+  x = case1$par_c,
+  y = case1$fI,
+  frame = case1$I_K,
   hovertemplate = 'fI: %{y:.2f}<extra></extra>',
   type = 'scatter',
   mode = 'lines')
 fig <- fig %>% add_trace(
   case3,
   name="Case 3",
-  x = case3$par_c, 
-  y = case3$fI, 
-  frame = case3$I_K, 
+  x = case3$par_c,
+  y = case3$fI,
+  frame = case3$I_K,
   hovertemplate = 'fI: %{y:.2f}<extra></extra>',
   type = 'scatter',
   mode = 'lines')
 fig <- fig %>% add_trace(
   case4,
   name="Case 4",
-  x = case4$par_c, 
-  y = case4$fI, 
-  frame = case4$I_K, 
+  x = case4$par_c,
+  y = case4$fI,
+  frame = case4$I_K,
   hovertemplate = 'fI: %{y:.2f}<extra></extra>',
   type = 'scatter',
   mode = 'lines')
 fig <- fig %>%
   layout(
     hovermode = "x unified",
-    xaxis = list(title='Light (PAR)',hoverformat = "Light (PAR)"), 
+    xaxis = list(title='Light (PAR)',hoverformat = "Light (PAR)"),
     yaxis = list(title='Photosynthesis (fI)')
-    ) %>% 
+    ) %>%
   animation_opts(
     250, easing = "linear", redraw = FALSE
-  ) %>% 
+  ) %>%
   animation_slider(
     currentvalue = list(prefix = "I_K: ")
-  ) %>% 
+  ) %>%
   config(displayModeBar = FALSE,
          displaylogo = FALSE)
 fig   

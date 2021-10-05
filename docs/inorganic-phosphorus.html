@@ -23,7 +23,7 @@
 
 
 
-<meta name="date" content="2021-09-26" />
+<meta name="date" content="2021-10-05" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -355,10 +355,10 @@ div.csl-indent {
 <li class="chapter" data-level="11.3" data-path="silica.html"><a href="silica.html#model-description-5"><i class="fa fa-check"></i><b>11.3</b> Model Description</a>
 <ul>
 <li class="chapter" data-level="11.3.1" data-path="silica.html"><a href="silica.html#process-descriptions-6"><i class="fa fa-check"></i><b>11.3.1</b> Process Descriptions</a></li>
-<li class="chapter" data-level="11.3.2" data-path="silica.html"><a href="silica.html#variable-summary-7"><i class="fa fa-check"></i><b>11.3.2</b> Variable Summary</a></li>
-<li class="chapter" data-level="11.3.3" data-path="silica.html"><a href="silica.html#parameter-summary-7"><i class="fa fa-check"></i><b>11.3.3</b> Parameter Summary</a></li>
-<li class="chapter" data-level="11.3.4" data-path="silica.html"><a href="silica.html#optional-module-links-6"><i class="fa fa-check"></i><b>11.3.4</b> Optional Module Links</a></li>
-<li class="chapter" data-level="11.3.5" data-path="silica.html"><a href="silica.html#feedbacks-to-the-host-model-6"><i class="fa fa-check"></i><b>11.3.5</b> Feedbacks to the Host Model</a></li>
+<li class="chapter" data-level="11.3.2" data-path="silica.html"><a href="silica.html#optional-module-links-6"><i class="fa fa-check"></i><b>11.3.2</b> Optional Module Links</a></li>
+<li class="chapter" data-level="11.3.3" data-path="silica.html"><a href="silica.html#feedbacks-to-the-host-model-6"><i class="fa fa-check"></i><b>11.3.3</b> Feedbacks to the Host Model</a></li>
+<li class="chapter" data-level="11.3.4" data-path="silica.html"><a href="silica.html#variable-summary-7"><i class="fa fa-check"></i><b>11.3.4</b> Variable Summary</a></li>
+<li class="chapter" data-level="11.3.5" data-path="silica.html"><a href="silica.html#parameter-summary-7"><i class="fa fa-check"></i><b>11.3.5</b> Parameter Summary</a></li>
 </ul></li>
 <li class="chapter" data-level="11.4" data-path="silica.html"><a href="silica.html#setup-configuration-6"><i class="fa fa-check"></i><b>11.4</b> Setup &amp; Configuration</a></li>
 <li class="chapter" data-level="11.5" data-path="silica.html"><a href="silica.html#case-studies-examples-6"><i class="fa fa-check"></i><b>11.5</b> Case Studies &amp; Examples</a>
@@ -1071,7 +1071,7 @@ Comments
 <code>PHS_atm_dip_flux</code>
 </td>
 <td style="text-align:left;min-width: 7em; ">
-<span class="math display">\[\mathbf{F}_{atm}^{dip}\]</span>
+<span class="math display">\[\mathbf{\mathcal{F}}_{atm}^{dip}\]</span>
 </td>
 <td style="text-align:left;max-width: 18em; ">
 <span class="math inline">\(DIP\)</span> (<span class="math inline">\(PO_4 + PO_4^{ads}\)</span>) atmospheric deposition flux
@@ -1099,7 +1099,7 @@ activated when <code>simWetDeposition=T</code> or <code>simDryDeposition=T</code
 <code>PHS_sed_frp</code>
 </td>
 <td style="text-align:left;min-width: 7em; ">
-<span class="math display">\[\mathbf{F}_{sed}^{frp}\]</span>
+<span class="math display">\[\mathbf{\mathcal{F}}_{sed}^{frp}\]</span>
 </td>
 <td style="text-align:left;max-width: 18em; ">
 <span class="math inline">\(PO_4\)</span> exchange across sediment-water interface
@@ -1244,7 +1244,7 @@ optional limitier
 <span class="math display">\[F_{sed}^{frp}\]</span>
 </td>
 <td style="text-align:left;max-width: 19em; ">
-sediment <span class="math inline">\(PO_4\)</span> flux at 20C
+sediment <span class="math inline">\(PO_4\)</span> flux at <span class="math inline">\(20^{\circ}C\)</span>
 </td>
 <td style="text-align:left;min-width: 10em; ">
 <span class="math display">\[\small{mmol\: P/m^2/d}\]</span>
@@ -1325,7 +1325,7 @@ string
 <code>OXY_oxy</code>
 </td>
 <td style="text-align:left;min-width: 10em; ">
-optional link to for oxygen control on sediment <span class="math inline">\(PO_4\)</span> release
+optional link for oxygen control on sediment <span class="math inline">\(PO_4\)</span> release
 </td>
 </tr>
 <tr>

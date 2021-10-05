@@ -60,7 +60,7 @@ kbl(theSheet[,3:NCOL(theSheet)], caption = "Organic Matter - *state* variables",
 	column_spec(5, width_min = "5em") %>%
 	column_spec(7, width_min = "10em") %>%
 	column_spec(7, width_max = "20em") %>%
-  scroll_box(width = "770px", height = "1300px",
+  scroll_box(width = "770px", height = "1450px",
              fixed_thead = FALSE)
 ```
 
@@ -120,7 +120,7 @@ kbl(theSheet[,3:NCOL(theSheet)], caption = "Organic Matter - *diagnostic* variab
 	          column_spec(4, width_min = "10em") %>%
 	          column_spec(5, width_min = "6em") %>%
 						column_spec(7, width_min = "10em") %>%
-	          scroll_box(width = "770px", height = "1400px",
+	          scroll_box(width = "770px", height = "1300px",
             fixed_thead = FALSE)
 ```
 
@@ -200,7 +200,7 @@ kbl(theSheet[,3:NCOL(theSheet)], caption = "Organic Matter module parameters and
 	column_spec(4, width_min = "10em") %>%
 	column_spec(5, width_min = "5em") %>%
 	column_spec(7, width_min = "10em") %>%
-  scroll_box(width = "770px", height = "2800px",
+  scroll_box(width = "770px", height = "3000px",
              fixed_thead = FALSE)
 ```
 <br>

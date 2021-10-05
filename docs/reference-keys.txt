@@ -61,6 +61,9 @@ eq:phs2
 tab:13-statetable
 tab:13-diagtable
 tab:13-parstable
+tab:14-statetable
+tab:14-diagtable
+tab:14-parstable
 tab:15-statetable
 tab:15-diagtable
 tab:15-parstable
@@ -78,6 +81,7 @@ eq:phyto11
 eq:phyto12
 eq:phyto13
 eq:phyto14
+tab:16-statetable
 tab:16-statevariables
 tab:16-diagnostics
 tab:16-parametersummmary
@@ -156,8 +160,8 @@ tab:26-statevariables
 tab:26-diagnostics
 tab:26-parametersummmary
 tab:26-parameterconfig
-tab:unnamed-chunk-14
 tab:unnamed-chunk-15
+tab:unnamed-chunk-16
 tab:35-publications
 introduction
 nomenclature
@@ -297,10 +301,10 @@ contributors-6
 overview-6
 model-description-5
 process-descriptions-6
-variable-summary-7
-parameter-summary-7
 optional-module-links-6
 feedbacks-to-the-host-model-6
+variable-summary-7
+parameter-summary-7
 setup-configuration-6
 case-studies-examples-6
 case-study-3

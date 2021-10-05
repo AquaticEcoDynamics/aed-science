@@ -4,11 +4,198 @@
 ## Overview
 ## Model Description
 ###	Process Descriptions
-###	Variable Summary
-###	Parameter Summary
 ###	Optional Module Links
+
 ###	Feedbacks to the Host Model
+
+The silica module has no feedbacks to the host hydrodynamic model.
+
+###	Variable Summary
+
+The default variables created by this module, and the optionally required linked variables needed for full functionality of this module are summarised in Table \@ref(tab:14-statetable). The diagnostic outputs able to be output are summarised in Table \@ref(tab:14-diagtable).
+
+#### State variables {-}
+
+```{r 14-statetable, echo=FALSE, message=FALSE, warning=FALSE}
+library(knitr)
+library(kableExtra)
+library(readxl)
+library(rmarkdown)
+theSheet <- read_excel('tables/aed_variable_tables.xlsx', sheet = 9)
+theSheet <- theSheet[theSheet$Table == "State variable",]
+theSheetGroups <- unique(theSheet$Group)
+theSheet$`AED name` <- paste0("`",theSheet$`AED name`,"`")
+
+for(i in seq_along(theSheet$Symbol)){
+  if(!is.na(theSheet$Symbol[i])==TRUE){
+    theSheet$Symbol[i] <- paste0("$$",theSheet$Symbol[i],"$$")
+  } else {
+    theSheet$Symbol[i] <- NA
+  }
+}
+for(i in seq_along(theSheet$Unit)){
+  if(!is.na(theSheet$Unit[i])==TRUE){
+    theSheet$Unit[i] <- paste0("$$\\small{",theSheet$Unit[i],"}$$")
+  } else {
+    theSheet$Unit[i] <- NA
+  }
+}
+for(i in seq_along(theSheet$Comments)){
+  if(!is.na(theSheet$Comments[i])==TRUE){
+    theSheet$Comments[i] <- paste0("",theSheet$Comments[i],"")
+  } else {
+    theSheet$Comments[i] <- " "
+  }
+}
+
+kbl(theSheet[,3:NCOL(theSheet)], caption = "Silica - *state* variables", align = "l",) %>%
+  pack_rows(theSheetGroups[1],
+            min(which(theSheet$Group == theSheetGroups[1])),
+            max(which(theSheet$Group == theSheetGroups[1])),
+            background = '#ebebeb') %>%
+  pack_rows(theSheetGroups[2],
+            min(which(theSheet$Group == theSheetGroups[2])),
+            max(which(theSheet$Group == theSheetGroups[2])),
+            background = '#ebebeb') %>%
+  row_spec(0, background = "#14759e", bold = TRUE, color = "white") %>%
+	kable_styling(full_width = F,font_size = 11) %>%
+	column_spec(2, width_min = "7em") %>%
+	column_spec(3, width_max = "18em") %>%
+	column_spec(4, width_min = "10em") %>%
+	column_spec(5, width_min = "5em") %>%
+	column_spec(7, width_min = "10em") %>%
+	column_spec(7, width_max = "20em") %>%
+  scroll_box(width = "770px", height = "200px",
+             fixed_thead = FALSE)
+```
+
+#### Diagnostics{-}
+
+```{r 14-diagtable, echo=FALSE, message=FALSE, warning=FALSE}
+library(knitr)
+library(kableExtra)
+library(readxl)
+library(rmarkdown)
+theSheet <- read_excel('tables/aed_variable_tables.xlsx', sheet = 9)
+theSheet <- theSheet[theSheet$Table == "Diagnostics",]
+theSheetGroups <- unique(theSheet$Group)
+theSheet$`AED name` <- paste0("`",theSheet$`AED name`,"`")
+
+for(i in seq_along(theSheet$Symbol)){
+  if(!is.na(theSheet$Symbol[i])==TRUE){
+    theSheet$Symbol[i] <- paste0("$$",theSheet$Symbol[i],"$$")
+  } else {
+    theSheet$Symbol[i] <- NA
+  }
+}
+for(i in seq_along(theSheet$Unit)){
+  if(!is.na(theSheet$Unit[i])==TRUE){
+    theSheet$Unit[i] <- paste0("$$\\small{",theSheet$Unit[i],"}$$")
+  } else {
+    theSheet$Unit[i] <- NA
+  }
+}
+for(i in seq_along(theSheet$Comments)){
+  if(!is.na(theSheet$Comments[i])==TRUE){
+    theSheet$Comments[i] <- paste0("",theSheet$Comments[i],"")
+  } else {
+    theSheet$Comments[i] <- " "
+  }
+}
+
+kbl(theSheet[,3:NCOL(theSheet)], caption = "Silica - *diagnostic* variables", align = "l",) %>%
+  pack_rows(theSheetGroups[1],
+            min(which(theSheet$Group == theSheetGroups[1])),
+            max(which(theSheet$Group == theSheetGroups[1])),
+            background = '#ebebeb') %>%
+  row_spec(0, background = "#14759e", bold = TRUE, color = "white") %>%
+  kable_styling(full_width = F,font_size = 11) %>%
+            column_spec(2, width_min = "7em") %>%
+	          column_spec(3, width_max = "18em") %>%
+	          column_spec(4, width_min = "10em") %>%
+	          column_spec(5, width_min = "6em") %>%
+						column_spec(7, width_min = "10em") %>%
+	          scroll_box(width = "770px", height = "120px",
+            fixed_thead = FALSE)
+```
+
+<br>
+
+
+###	Parameter Summary
+
+The parameters and settings used by this module are summarised in Table \@ref(tab:14-parstable).
+
+
+```{r 14-parstable, echo=FALSE, message=FALSE, warning=FALSE}
+library(knitr)
+library(kableExtra)
+library(readxl)
+library(rmarkdown)
+theSheet <- read_excel('tables/aed_variable_tables.xlsx', sheet = 9)
+theSheet <- theSheet[theSheet$Table == "Parameter",]
+theSheetGroups <- unique(theSheet$Group)
+theSheet$`AED name` <- paste0("`",theSheet$`AED name`,"`")
+
+for(i in seq_along(theSheet$Symbol)){
+  if(!is.na(theSheet$Symbol[i])==TRUE){
+    theSheet$Symbol[i] <- paste0("$$",theSheet$Symbol[i],"$$")
+  } else {
+    theSheet$Symbol[i] <- " "
+  }
+}
+for(i in seq_along(theSheet$Unit)){
+  if(!is.na(theSheet$Unit[i])==TRUE){
+    theSheet$Unit[i] <- paste0("$$\\small{",theSheet$Unit[i],"}$$")
+  } else {
+    theSheet$Unit[i] <- NA
+  }
+}
+for(i in seq_along(theSheet$Comments)){
+  if(!is.na(theSheet$Comments[i])==TRUE){
+    theSheet$Comments[i] <- paste0("",theSheet$Comments[i],"")
+  } else {
+    theSheet$Comments[i] <- "-"
+  }
+}
+
+kbl(theSheet[,3:NCOL(theSheet)], caption = "Silica module parameters and configuration options", align = "l",) %>%
+  pack_rows(theSheetGroups[1],
+            min(which(theSheet$Group == theSheetGroups[1])),
+            max(which(theSheet$Group == theSheetGroups[1])),
+            background = '#ebebeb') %>%
+  pack_rows(theSheetGroups[2],
+            min(which(theSheet$Group == theSheetGroups[2])),
+            max(which(theSheet$Group == theSheetGroups[2])),
+            background = '#ebebeb') %>%
+  row_spec(0, background = "#14759e", bold = TRUE, color = "white") %>%
+  kable_styling(full_width = F,font_size = 11) %>%
+	column_spec(2, width_min = "7em") %>%
+	column_spec(3, width_max = "19em") %>%
+	column_spec(4, width_min = "10em") %>%
+	column_spec(5, width_min = "5em") %>%
+	column_spec(7, width_min = "10em") %>%
+  scroll_box(width = "770px", height = "500px",
+             fixed_thead = FALSE)
+```
+<br>
+
 ## Setup & Configuration
+
+An example `aed.nml` parameter specification block for the `aed_silica` module is shown below:
+```{fortran, eval = FALSE}
+  &aed_silica
+    !-- Initial value
+     rsi_initial              = 12.5
+    !-- Sediment flux
+     Fsed_rsi                 = 1.8
+     Ksed_rsi                 = 50.0
+     theta_sed_rsi            = 1.08
+     silica_reactant_variable = 'OXY_oxy'
+     Fsed_rsi_variable        = 'SDF_Fsed_rsi'
+  /
+```
+
 ## Case Studies & Examples
 ###	Case Study
 ###	Publications
