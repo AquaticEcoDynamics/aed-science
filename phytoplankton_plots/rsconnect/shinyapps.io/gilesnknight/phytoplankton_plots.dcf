@@ -1,0 +1,12 @@
+name: phytoplankton_plots
+title: phytoplankton_plots
+username:
+account: gilesnknight
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 4948071
+bundleId: 5173502
+url: https://gilesnknight.shinyapps.io/phytoplankton_plots/
+when: 1635144542.65583
+asMultiple: FALSE
+asStatic: FALSE
