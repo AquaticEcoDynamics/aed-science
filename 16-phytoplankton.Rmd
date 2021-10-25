@@ -53,7 +53,7 @@ where ${c1}_a$  and ${c0}_a$  are solved numerically given input values of:  $T_
 The level of light limitation on phytoplankton growth can be modelled as photoinhibition or non-photoinhibition. In the absence of significant photoinhibition, Webb et al. (1974) suggested a relationship for the fractional limitation of the maximum potential rate of carbon fixation for the case where light saturation behavior was absent (Talling, 1957), and the equations can be analytically integrated with respect to depth (Hipsey and Hamilton, 2008). For the case of photoinhibition, the light saturation value of maximum production (IS) is used and the net level effect can be averaged over the cell by integrating over depth.
 The `aed_phytoplankton` module contains several light functions, including those from a recent review by Baklouti et al. (2006). The user must select the sensitivity to light according to a photosynthesis-irradiance (P-I curve) formulation and each species must be set to be either non-photoinhibited or photoinhibited according to the options in Table 9.
 
-<iframe src ="http://gilesnknight.shinyapps.io/phytoplankton_plots" height="630px" width="100%" style="border:none;">
+<iframe src ="https://gilesnknight.shinyapps.io/phytoplankton_plots" height="630px" width="100%" style="border:none;">
 </iframe>
 
 <br>
