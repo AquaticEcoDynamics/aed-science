@@ -53,131 +53,18 @@ where ${c1}_a$  and ${c0}_a$  are solved numerically given input values of:  $T_
 The level of light limitation on phytoplankton growth can be modelled as photoinhibition or non-photoinhibition. In the absence of significant photoinhibition, Webb et al. (1974) suggested a relationship for the fractional limitation of the maximum potential rate of carbon fixation for the case where light saturation behavior was absent (Talling, 1957), and the equations can be analytically integrated with respect to depth (Hipsey and Hamilton, 2008). For the case of photoinhibition, the light saturation value of maximum production (IS) is used and the net level effect can be averaged over the cell by integrating over depth.
 The `aed_phytoplankton` module contains several light functions, including those from a recent review by Baklouti et al. (2006). The user must select the sensitivity to light according to a photosynthesis-irradiance (P-I curve) formulation and each species must be set to be either non-photoinhibited or photoinhibited according to the options in Table 9.
 
-<iframe src ="https://gilesnknight.shinyapps.io/phytoplankton_plots" height="630px" width="100%" style="border:none;">
-</iframe>
-
-<br>
-
-```{r phytoplanktonPlot1, echo=FALSE, message=FALSE, warning=FALSE, fig.cap="Light limitation of pytoplankton via various model approaches.", out.width = '100%'}
-library(plotly)
-library(dplyr)
-
-#case 1
-case1 <- data.frame(
-  par_c = double(),
-  I_K = double(),
-  fI = double()
-)
-for(i in seq(10, 500, by = 10)){
-  case1_temp <- data.frame(
-    par_c = seq(0, 2000, by = 10),
-    I_K = i
-  )
-  case1_temp$fI <-  (case1_temp$par_c/case1_temp$I_K)/(1+(case1_temp$par_c/case1_temp$I_K))  
-  case1 <- bind_rows(case1,case1_temp)
-}
-
-#case 4
-case4 <- data.frame(
-  par_c = double(),
-  I_K = double(),
-  fI = double()
-)
-for(i in seq(10, 500, by = 10)){
-  case4_temp <- data.frame(
-    par_c = seq(0, 2000, by = 10),
-    I_K = i
-  )
-  case4_temp$fI <- tanh(case4_temp$par_c/case4_temp$I_K)
-  case4 <- bind_rows(case4,case4_temp)
-}
+```{r echo=FALSE,message=FALSE, warning=FALSE}
+library(knitr)
+knit_hooks$set(customcap= function(before, options, envir) {
+  if(!before) {
+    paste('<p class="caption"> (\\#fig:chunk1)',options$customcap,"</p>",sep="")
+    }
+    })
+```
 
 
-#case 3
-case3 <- data.frame(
-  par_c = double(),
-  I_K = double(),
-  fI = double()
-)
-for(i in seq(10, 500, by = 10)){
-  case3_temp <- data.frame(
-    par_c = seq(0, 2000, by = 10),
-    I_K = i
-  )
-  case3_temp$fI <- 1 - exp(-(case3_temp$par_c/case3_temp$I_K))
-  case3 <- bind_rows(case3,case3_temp)
-}
-
-# # CASE 6
-# 
-# case6 <- data.frame(
-#   par_c = double(),
-#   I_S = double(),
-#   fI = double()
-# )
-# 
-# for(i in seq(20,510, by = 10)){
-#   case6_temp <- data.frame(
-#     par_c = seq(0,2000,by=10),
-#     I_S = i
-#   )
-#   case6_temp$fI <- ((2+5)*(case6_temp$par_c/case6_temp$I_S))/(1+(5*(case6_temp$par_c/case6_temp$I_S)+((case6_temp$par_c/case6_temp$I_S)*(case6_temp$par_c/case6_temp$I_S))))
-#   case6 <- bind_rows(case6,case6_temp)
-# }
-
-#create plot
-fig <- plot_ly()
-fig <- fig %>% add_trace(
-  case1,
-  name="Case 1",
-  x = case1$par_c, 
-  y = case1$fI, 
-  frame = case1$I_K, 
-  hovertemplate = 'fI: %{y:.2f}<extra></extra>',
-  type = 'scatter',
-  mode = 'lines')
-fig <- fig %>% add_trace(
-  case3,
-  name="Case 3",
-  x = case3$par_c, 
-  y = case3$fI, 
-  frame = case3$I_K, 
-  hovertemplate = 'fI: %{y:.2f}<extra></extra>',
-  type = 'scatter',
-  mode = 'lines')
-fig <- fig %>% add_trace(
-  case4,
-  name="Case 4",
-  x = case4$par_c, 
-  y = case4$fI, 
-  frame = case4$I_K, 
-  hovertemplate = 'fI: %{y:.2f}<extra></extra>',
-  type = 'scatter',
-  mode = 'lines')
-# fig <- fig %>% add_trace(
-#   case6,
-#   name="Case 6",
-#   x = case6$par_c, 
-#   y = case6$fI, 
-#   #frame = case6$I_S, 
-#   hovertemplate = 'fI: %{y:.2f}<extra></extra>',
-#   type = 'scatter',
-#   mode = 'lines')
-fig <- fig %>%
-  layout(
-    hovermode = "x unified",
-    xaxis = list(title='Light (PAR)',hoverformat = "Light (PAR)"), 
-    yaxis = list(title='Photosynthesis (fI)')
-    ) %>% 
-  animation_opts(
-    250, easing = "linear", redraw = FALSE
-  ) %>% 
-  animation_slider(
-    currentvalue = list(prefix = "I_K: ")
-  ) %>% 
-  config(displayModeBar = FALSE,
-         displaylogo = FALSE)
-fig   
+```{r, echo=FALSE,message=FALSE, warning=FALSE, customcap="Light limitation of pytoplankton via various model approaches.", out.width = '100%'}
+htmltools::includeHTML('phytoplankton_plots/app.html')
 ```
 
 Limitation of the photosynthetic rate may be dampened according to nitrogen or phosphorus availability, and this is either approximated using a Monod expression of the static model is chosen, or based on the internal nutrient stoichiometry if the dynamic (Droop uptake) model is selected:

@@ -2,53 +2,130 @@
 library(shiny)
 library(ggplot2)
 library(ggtext)
+library(ggrepel)
+library(grid)
+
+
 ui <- fluidPage(
-        plotOutput("casePlot"),
-        sliderInput("ik_val", "I_K value:",
-                    min = 10, max = 500, value = 10, step = 10, width = '100%', animate = TRUE
-        ),
-        sliderInput("is_val", "I_S value:",
-                    min = 10, max = 500, value = 10, step = 10, width = '100%', animate = TRUE
-        ),
+  plotOutput("casePlot"),
+  tags$style(HTML(".js-irs-0 .irs-single, .js-irs-0 .irs-bar-edge, .js-irs-0 .irs-bar {background: #e41a1c;border-top: 1px solid #e41a1c;border-bottom: 1px solid #e41a1c;}")),
+  tags$style(HTML(".js-irs-1 .irs-single, .js-irs-1 .irs-bar-edge, .js-irs-1 .irs-bar {background: #377eb8;border-top: 1px solid #377eb8;border-bottom: 1px solid #377eb8;}")),
+  # tags$style(HTML(".js-irs-2 .irs-single, .js-irs-2 .irs-bar-edge, .js-irs-2 .irs-bar {background: green}")),
+  fluidRow(
+    column(6,
+           sliderInput("ik_val", "I_K value:",
+                       min = 10, max = 500, value = 250, step = 10, 
+                       width = '100%', animate = TRUE
+           )
+    ),
+    column(6,
+           sliderInput("is_val", "I_S value:",
+                       min = 10, max = 500, value = 250, step = 10, 
+                       width = '100%', animate = TRUE
+           )
+    )
+  )
 )
 
-
 server <- function(input, output) {
-    
-    par_c <- seq(0, 2000, by = 10)
-    
-    case3_fI <- reactive((1 - exp(-(par_c/input$ik_val))))
-    case4_fI <- reactive(tanh(par_c/input$ik_val))
-    case1_fI <- reactive((par_c/input$ik_val)/(1+(par_c/input$ik_val)))  
-    case6_fI <- reactive(
-        ((2+5)*(par_c/input$is_val))/(1+(5*(par_c/input$is_val)+((par_c/input$is_val)*(par_c/input$is_val))))
-    )
-
-    output$casePlot <- renderPlot({
-        ggplot()+
-            geom_line(mapping = aes(x=par_c, y = case1_fI(), colour = 'Case 1')) +
-            geom_line(mapping = aes(x=par_c, y = case3_fI(), colour = 'Case 3')) +
-            geom_line(mapping = aes(x=par_c, y = case4_fI(), colour = 'Case 4')) +
-            geom_line(mapping = aes(x=par_c, y = case6_fI(), colour = 'Case 6')) +
-            labs(x = 'Light (PAR)', y = 'Photosynthesis (fI)')+
-            ggtitle('**Light limitation of pytoplankton**')+
-            theme_light()+
-            theme(
-                axis.line = element_line(colour = 'black'),
-                axis.ticks = element_line(colour = 'black'),
-                axis.text = element_text(colour='black'),
-                legend.title = element_blank(),
-                legend.background = element_blank(),
-               # legend.position = c('top'),
-                legend.position = c(1, 1.075),
-                legend.justification = c("right", "top"),
-                legend.box.just = "right",
-                legend.direction="horizontal",
-                panel.border = element_blank(),
-                plot.title = element_markdown()
-            )
-    })
+  
+  par_c <- seq(0, 2000, by = 10)
+  eps <- 0.5
+  A  <- 5
+  extc  <- 1
+  dz  <- 1
+  
+  # CASE 1
+  case1_fI <- reactive((par_c/input$ik_val)/(1+(par_c/input$ik_val)))  
+  
+  # CASE 2
+  case2_fI <- reactive({
+    x = par_c/input$is_val
+    return(x * exp(1 - x))
+  })
+  
+  # CASE 3
+  case3_fI <- reactive((1 - exp(-(par_c/input$ik_val))))
+  
+  # CASE 4
+  case4_fI <- reactive(tanh(par_c/input$ik_val))
+  
+  # CASE 5
+  case5_fI <- reactive({
+    x = par_c/input$ik_val
+    return((exp(x*(1+eps))-1)/(exp(x*(1+eps))+1))
+  })
+  
+  # CASE 6
+  case6_fI <- reactive({
+    x  <-  par_c/input$is_val
+    fI  <-  ((2.0+A)*x)/(1+(A*x)+(x*x))
+    return(fI)
+  })
+  
+  # CASE 7
+  case7  <- reactive({
+    fI  <- (exp(1-par_c/input$is_val)-exp(1-par_c/input$is_val))/(extc*dz)
+    return(fI)
+  })
+  
+  # PLOT
+  output$casePlot <- renderPlot({
+    ggplot()+
+      geom_line(mapping = aes(x=par_c, y = case1_fI(), colour = "Case 1", linetype = 'Case 1'), size = 1.25
+      ) +
+      geom_line(mapping = aes(x=par_c, y = case2_fI(), colour = "Case 2 (*Case 7)", linetype = 'Case 2 (*Case 7)'), size = 1.25
+      ) +
+      geom_line(mapping = aes(x=par_c, y = case3_fI(), colour = "Case 3 (*Case 0)", linetype = 'Case 3 (*Case 0)'), size = 1.25
+      ) +
+      geom_line(mapping = aes(x=par_c, y = case4_fI(), colour = "Case 4", linetype = 'Case 4'), size = 1.25
+      ) +
+      geom_line(mapping = aes(x=par_c, y = case5_fI(), colour = "Case 5", linetype = 'Case 5'), size = 1.25
+      ) +
+      geom_line(mapping = aes(x=par_c, y = case6_fI(), colour = "Case 6", linetype = 'Case 6'), size = 1.25
+      ) +    
+      #geom_line(mapping = aes(x=par_c, y = case7(), colour = "Case 7", linetype = 'Case 7'), size = 1.25
+      #) +
+      scale_colour_manual(
+        name='**Model approach**', 
+        values = c("#e41a1c", "#377eb8", "#e41a1c", "#e41a1c", "#e41a1c", "#377eb8", "#377eb8"),
+        labels = c('Case 1', 'Case 2 (*Case 7)', 'Case 3 (*Case 0)','Case 4','Case 5','Case 6','Case 7')
+      ) +
+      scale_linetype_manual(
+        name='**Model approach**', 
+        values = c("solid", "solid", "dotted", "dashed", "twodash", "dashed", "dotted"),
+        labels = c('Case 1', 'Case 2 (*Case 7)', 'Case 3 (*Case 0)','Case 4','Case 5','Case 6','Case 7')
+      ) +
+      labs(x = 'Light (PAR)', y = 'Photosynthesis (fI)'
+           # colour = '**Model approach:**', linetype= '**Model approach:**'
+      )+
+      #ggtitle(' ')+ #ggtitle('**Light limitation of phytoplankton**')+
+      # geom_label_repel(mapping = aes(label=c('Case 1','Case 1','Case 1','Case 1','Case 1','Case 1')),
+      #       nudge_x = 1,
+      #       na.rm = TRUE)+
+      theme_light()+
+      theme(
+        #title.text = element_text(size=20),
+        #axis.text = element_text(size=15),
+        plot.margin=unit(c(1,0,0,0),"cm"),
+        axis.line = element_line(colour = 'black'),
+        axis.ticks = element_line(colour = 'black'),
+        axis.text = element_text(colour='black',size=15),
+        axis.title = element_text(colour='black',size=16),
+        legend.text = element_text(colour='black',size=15),
+        legend.title = element_markdown(size=16),
+        legend.background = element_blank(),
+        legend.key.width = unit(1.5, "cm"),
+        # legend.position = c('top'),
+        #legend.position = c(-0.005, 1.075),
+        legend.justification = c("left", "top"),
+        legend.box.just = "left",
+        legend.direction="vertical",
+        panel.border = element_blank(),
+        plot.title = element_markdown(size=20)
+      )
+  })
 }
 
-# Run the application 
+# RUN
 shinyApp(ui = ui, server = server)
