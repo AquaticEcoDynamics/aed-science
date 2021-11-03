@@ -4,6 +4,7 @@ library(ggplot2)
 library(ggtext)
 library(ggrepel)
 library(grid)
+library(latex2exp)
 
 
 ui <- fluidPage(
@@ -64,10 +65,10 @@ server <- function(input, output) {
   })
   
   # CASE 7
-  case7  <- reactive({
-    fI  <- (exp(1-par_c/input$is_val)-exp(1-par_c/input$is_val))/(extc*dz)
-    return(fI)
-  })
+  # case7  <- reactive({
+  #   fI  <- (exp(1-par_c/input$is_val)-exp(1-par_c/input$is_val))/(extc*dz)
+  #   return(fI)
+  # })
   
   # PLOT
   output$casePlot <- renderPlot({
@@ -83,30 +84,18 @@ server <- function(input, output) {
       geom_line(mapping = aes(x=par_c, y = case5_fI(), colour = "Case 5", linetype = 'Case 5'), size = 1.25
       ) +
       geom_line(mapping = aes(x=par_c, y = case6_fI(), colour = "Case 6", linetype = 'Case 6'), size = 1.25
-      ) +    
-      #geom_line(mapping = aes(x=par_c, y = case7(), colour = "Case 7", linetype = 'Case 7'), size = 1.25
-      #) +
+      ) + 
       scale_colour_manual(
         name='**Model approach**', 
         values = c("#e41a1c", "#377eb8", "#e41a1c", "#e41a1c", "#e41a1c", "#377eb8", "#377eb8"),
-        labels = c('Case 1', 'Case 2 (*Case 7)', 'Case 3 (*Case 0)','Case 4','Case 5','Case 6','Case 7')
-      ) +
+        labels = c('Case 1', 'Case 2 (*Case 7)', 'Case 3 (*Case 0)','Case 4','Case 5','Case 6','Case 7')) +
       scale_linetype_manual(
         name='**Model approach**', 
         values = c("solid", "solid", "dotted", "dashed", "twodash", "dashed", "dotted"),
-        labels = c('Case 1', 'Case 2 (*Case 7)', 'Case 3 (*Case 0)','Case 4','Case 5','Case 6','Case 7')
-      ) +
-      labs(x = 'Light (PAR)', y = 'Photosynthesis (fI)'
-           # colour = '**Model approach:**', linetype= '**Model approach:**'
-      )+
-      #ggtitle(' ')+ #ggtitle('**Light limitation of phytoplankton**')+
-      # geom_label_repel(mapping = aes(label=c('Case 1','Case 1','Case 1','Case 1','Case 1','Case 1')),
-      #       nudge_x = 1,
-      #       na.rm = TRUE)+
+        labels = c('Case 1', 'Case 2 (*Case 7)', 'Case 3 (*Case 0)','Case 4','Case 5','Case 6','Case 7')) +
+      labs(x = TeX('Light ($PAR$)'), y = TeX("Photosynthesis $( \\Phi_{light}^{PHY}(I) )$"))+
       theme_light()+
       theme(
-        #title.text = element_text(size=20),
-        #axis.text = element_text(size=15),
         plot.margin=unit(c(1,0,0,0),"cm"),
         axis.line = element_line(colour = 'black'),
         axis.ticks = element_line(colour = 'black'),
@@ -116,8 +105,6 @@ server <- function(input, output) {
         legend.title = element_markdown(size=16),
         legend.background = element_blank(),
         legend.key.width = unit(1.5, "cm"),
-        # legend.position = c('top'),
-        #legend.position = c(-0.005, 1.075),
         legend.justification = c("left", "top"),
         legend.box.just = "left",
         legend.direction="vertical",
