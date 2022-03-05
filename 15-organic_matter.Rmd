@@ -1,13 +1,135 @@
 # Organic Matter
 
 ## Contributors
+
 ## Overview
+
+Both the inorganic and organic, and dissolved and particulate forms of C, N and P are modelled in AED along the general degradation pathway of POM to DOM to dissolved inorganic matter (DIM). The OGM module simulates the organic material as a single or as multiple discrete pools. The inorganic carbon, nitrogen and phosphorus pools are reported in separate modules which are linked to from OGM.
+
+It is well established that both autochthonous and allochthonous sources of OM have important consequences for water quality. Reactivity of OM is known to be linked with origin, varying potentially orders of magnitude, and often including a single OM pool could be a significant over-simplification. Harvey and Mannio (2001) analysed samples from several points in a US estuary according to an uncharacterisable fraction and a few major molecular classes (carbohydrates, proteins, lipids, lignins and hydrocarbons), and identified significant changes along the estuarine gradient.
+
+Within the particulate pool, similarly there is a relatively labile POM fraction based on internal generation, and inputs from urban drains, in addition to a more refractory coarse POM pool (CPOM) that originates mainly form the forested headwaters and regions with significant intact riparian vegetation.
+
 ## Model Description
+
+A 10-pool organic matter model able to capture the variable reactivity of the OM pool and its stoichiometry is configureable within this module. Under this conceptual model the decomposition of particulate detrital material is broken down through a process of enzymatic hydrolysis that slowly converts POM to labile DOM. A small fraction, $f_{ref}$, of this material is diverted to the DOM-R pool. The bioavailable DOM material enters the bacterial terminal metabolism pathways. These are active depending on the ambient oxygen concentrations and presence of electron acceptors, and of most relevance to the reservoirs, these pathways aerobic breakdown, denitrification, sulfate reduction, and methanogenesis. In most model approaches it is assumed these communities vary in response to temperature, and are mediated using a simple oxygen dependence or limitation factor.
+
+The main dissolved organic matter pools are simulated as:
+
+\begin{eqnarray}
+\frac{D}{Dt}DOC =  \color{darkgray}{ \mathbb{M} + \mathcal{S} } \quad
+&+&   \overbrace{f_{hyd}^{POC}-f_{min}^{DOC}+\hat{f}_{sed}^{DOC}  }^\text{aed_organic_matter} \\ (\#eq:doc1)
+&+&   \color{brown}{ f_{exr}^{PHY} + f_{exr}^{ZOO} + \hat{f}_{rsp}^{MAG} + \hat{f}_{rsp}^{BIV}} \\ \nonumber
+\end{eqnarray}
+\begin{eqnarray}
+\frac{D}{Dt}DON =  \color{darkgray}{ \mathbb{M} + \mathcal{S} } \quad
+&+&   f_{hyd}^{PON}-f_{min}^{DON}+\hat{f}_{sed}^{DON}\\ (\#eq:don1)
+&+&   \color{brown}{ f_{exr}^{PHY} + f_{exr}^{ZOO} + \hat{f}_{rsp}^{MAG} + \hat{f}_{rsp}^{BIV}} \\ \nonumber
+\end{eqnarray}
+\begin{eqnarray}
+\frac{D}{Dt}DOP =  \color{darkgray}{ \mathbb{M} + \mathcal{S} } \quad
+&+&   f_{hyd}^{POP}-f_{min}^{DOP}+\hat{f}_{sed}^{DOP}\\ (\#eq:dop1)
+&+&   \color{brown}{ f_{exr}^{PHY} + f_{exr}^{ZOO} + \hat{f}_{rsp}^{MAG} + \hat{f}_{rsp}^{BIV}} \\ \nonumber
+\end{eqnarray}
+
+where $\mathbb{M}$ and $\mathcal{S}$ refer to water mixing and boundary source terms, respectively, and the coloured $\color{brown}{f}$ terms reflect DOM related fluxes computed by other (optionally) linked modules such as modules of phytoplankton ($\mathrm{PHY}$) or zooplankton ($\mathrm{ZOO}$).
+
+The main particulate organic matter pools are simulated as:
+
+\begin{eqnarray}
+\frac{D}{Dt}POC =  \color{darkgray}{ \mathbb{M} + \mathcal{S} } \quad
+&+&   \overbrace{f_{set}^{POC}-f_{hyd}^{DOC}+\hat{f}_{res}^{POC}  }^\text{aed_organic_matter} \\ (\#eq:poc1)
+&+&   \color{brown}{ f_{mor}^{PHY} + f_{egs}^{ZOO} + f_{msf}^{ZOO} + \hat{f}_{mor}^{MAG} + \hat{f}_{msf}^{BIV}} \\ \nonumber
+\end{eqnarray}
+\begin{eqnarray}
+\frac{D}{Dt}PON =  \color{darkgray}{ \mathbb{M} + \mathcal{S} } \quad
+&+&   f_{set}^{PON}-f_{hyd}^{DON}+\hat{f}_{res}^{PON}\\ (\#eq:pon1)
+&+&   \color{brown}{ f_{exr}^{PHY} + f_{exr}^{ZOO} + \hat{f}_{rsp}^{MAG} + \hat{f}_{rsp}^{BIV}} \\ \nonumber
+\end{eqnarray}
+\begin{eqnarray}
+\frac{D}{Dt}POP =  \color{darkgray}{ \mathbb{M} + \mathcal{S} } \quad
+&+&   f_{set}^{POP}-f_{hyd}^{DOP}+\hat{f}_{res}^{POP}\\ (\#eq:pop1)
+&+&   \color{brown}{ f_{exr}^{PHY} + f_{exr}^{ZOO} + \hat{f}_{rsp}^{MAG} + \hat{f}_{rsp}^{BIV}} \\ \nonumber
+\end{eqnarray}
+
+The OGM module optionally allows and extra 4 pools to specifically resolve the refractory (less reactive) organic matter material. In general we refer to the refractory DOM pool as $DOM{\text -}R$, which is broken into elemental pools, plus the $C{\text -}POM$ variables simulating coarse POM:
+
+\begin{eqnarray}
+\frac{D}{Dt}DOC{\text -}R =  \color{darkgray}{ \mathbb{M} + \mathcal{S} } \quad
+&+&   \overbrace{f_{hyd}^{POC}-f_{min}^{DOC}+\hat{f}_{sed}^{DOC}  }^\text{aed_organic_matter} \\ (\#eq:docr1)
+&+&   \color{brown}{ f_{exr}^{PHY} + f_{exr}^{ZOO} + \hat{f}_{rsp}^{MAG} + \hat{f}_{rsp}^{BIV}} \\ \nonumber
+\end{eqnarray}
+\begin{eqnarray}
+\frac{D}{Dt}DON{\text -}R =  \color{darkgray}{ \mathbb{M} + \mathcal{S} } \quad
+&+&   f_{hyd}^{PON}-f_{min}^{DON}+\hat{f}_{sed}^{DON}\\ (\#eq:donr1)
+&+&   \color{brown}{ f_{exr}^{PHY} + f_{exr}^{ZOO} + \hat{f}_{rsp}^{MAG} + \hat{f}_{rsp}^{BIV}} \\ \nonumber
+\end{eqnarray}
+\begin{eqnarray}
+\frac{D}{Dt}DOP{\text -}R =  \color{darkgray}{ \mathbb{M} + \mathcal{S} } \quad
+&+&   f_{hyd}^{POP}-f_{min}^{DOP}+\hat{f}_{sed}^{DOP}\\ (\#eq:dopr1)
+&+&   \color{brown}{ f_{exr}^{PHY} + f_{exr}^{ZOO} + \hat{f}_{rsp}^{MAG} + \hat{f}_{rsp}^{BIV}} \\ \nonumber
+\end{eqnarray}
+\begin{eqnarray}
+\frac{D}{Dt}C{\text -}POM =  \color{darkgray}{ \mathbb{M} + \mathcal{S} } \quad
+&+&   f_{set}^{CPOM}-f_{bdn}^{CPOM}+\hat{f}_{res}^{CPOM}  \\ (\#eq:cpom1)
+&+&   \color{brown}{ \check{f}_{lfl}^{VEG}} \\ \nonumber
+\end{eqnarray}
+
+The details of how each flux relevant to POC and DOC is calculated, and the associated parameter settings, are described in the next sections.
+
+
+
 ###	Process Descriptions
+
+#### Hydrolysis
+
+
+#### Mineralisation
+
+
+#### Photolysis
+
+Ultraviolet light is known to drive photochemical breakdown of chromophoric $DOM$, conceptually equivalent to the $DOM{\text -}R$ pool in Figure X. This photolysis process can take shape either as photo-transformation of complex $DOM{\text -}R$ molecules to more bioavailable molecules (ie., DOM in Figure X), or as photo-mineralisation, where by components of the DOM-R molecule are mineralised. This is modelled based on a known intensity of UV photons, which drives a stoichiometrically equivalent loss of DOM-R via the photolysis reaction, and $f_{photo}$ is introduced as an empirically defined fraction that indicates the extent to which the process transforms the DOM-R molecules to bioavailable molecules or completely mineralises them.
+
+The rate of photolysis can be computed based on the apparent quantum yield, ø¿, which varies with wavelength, the scalar photon flux density, ¡¿, and the adsorption coefficient, α¿, by integrating across the active wavelength spectrum, √415 v ́ √49?. This can be approximated for b discrete bandwidths (e.g. UV-A, UV-B, PAR) to simplify the calculation as:
+
+where $\hat{I}_b$ is the mean bandwidth intensity (mol photons m-2 s-1) computed from the light intensity at any given depth, I, ø» is the mean bandwidth quantum yield, and α» is the mean absorbance across the window of the specific bandwidth being computed. The latter two can be approximated by substituting into the following (Vähätalo et al. 2000; Vähätalo and Zepp, 2005): ø¿ =A10óF¿ and α¿ =α5exp(−] ≥−√ ).
+
+$\phi_{\lambda}=c10^{-d \lambda }$ and $\alpha_{\lambda} = \alpha_x exp(-S[x-\lambda])$
+
+
+#### CPOM breakdown
+
+Internally generated inputs of POM also include from the shedding of seagrass leaves (this happens en-mass usually associated with winds/storms) and also decomposition of macroalgae or other . These latter terms are not presently included but reserved for future development efforts.
+
+#### Sediment exchange
+
+
+
+#### Settling
+
+
+#### Resuspension
+
+
+
 ###	Optional Module Links
+
 ###	Feedbacks to the Host Model
 
+The organic matter can feedback conditions to the hydrodynamic model by modifying the light extinction coefficient. For each dissolved and particulate attribute a specific attenuation coefficient, $K_e$, is required.
+
+This total light extinction computed by the OGM model is:
+
+\begin{equation}
+K_{d_{om}} = K_{e_{doc}} DOC + K_{e_{poc}} POC +  K_{e_{cdom}}CDOM + K_{e_{cpom}}CPOM
+(\#eq:om_light_extc)
+\end{equation}
+
+
 ###	Variable Summary
+
+The default variables created by this module, and the optionally required linked variables needed for full functionality of this module are summarised in Table \@ref(tab:15-statetable). The diagnostic outputs able to be output are summarised in Table \@ref(tab:15-diagtable).
 
 #### State variables {-}
 
