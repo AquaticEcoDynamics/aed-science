@@ -723,10 +723,20 @@ div.csl-indent {
 <div id="model-description-6" class="section level2" number="12.3">
 <h2><span class="header-section-number">12.3</span> Model Description</h2>
 <p>A 10-pool organic matter model able to capture the variable reactivity of the OM pool and its stoichiometry is configureable within this module. Under this conceptual model the decomposition of particulate detrital material is broken down through a process of enzymatic hydrolysis that slowly converts POM to labile DOM. A small fraction, <span class="math inline">\(f_{ref}\)</span>, of this material is diverted to the DOM-R pool. The bioavailable DOM material enters the bacterial terminal metabolism pathways. These are active depending on the ambient oxygen concentrations and presence of electron acceptors, and of most relevance to the reservoirs, these pathways aerobic breakdown, denitrification, sulfate reduction, and methanogenesis. In most model approaches it is assumed these communities vary in response to temperature, and are mediated using a simple oxygen dependence or limitation factor.</p>
-<p>The main dissolved organic matter pools are simulated as:</p>
+<p><br></p>
+<center>
+<div class="figure"><span id="fig:15-pic1"></span><span id="fig:chunk1"></span>
+<img src="images/15-organic_matter/OM.png" alt="Schematic overview of organic matter (OM) pools and their interactions. Grey dashed line indicates optional process pathway. Different tributaries to the model must be prescribed OM pool boundary concentrations based on land-use specific ratios of POM and DOM reactivity." width="80%" />
+<p class="caption">
+Figure 12.1: Schematic overview of organic matter (OM) pools and their interactions. Grey dashed line indicates optional process pathway. Different tributaries to the model must be prescribed OM pool boundary concentrations based on land-use specific ratios of POM and DOM reactivity.
+</p>
+</div>
+</center>
+<p><br></p>
+<p>The main dissolved organic matter pool balance equations are simulated as:</p>
 <p><span class="math display" id="eq:doc1">\[\begin{eqnarray}
 \frac{D}{Dt}DOC =  \color{darkgray}{ \mathbb{M} + \mathcal{S} } \quad
-&amp;+&amp;   \overbrace{f_{hyd}^{POC}-f_{min}^{DOC}+\hat{f}_{sed}^{DOC}  }^\text{aed_organic_matter} \\ \tag{12.1}
+&amp;+&amp;   \overbrace{(1-k_{ref})\:f_{hyd}^{POC}-f_{min}^{DOC}+\hat{f}_{sed}^{DOC}  }^\text{aed_organic_matter} \\ \tag{12.1}
 &amp;+&amp;   \color{brown}{ f_{exr}^{PHY} + f_{exr}^{ZOO} + \hat{f}_{rsp}^{MAG} + \hat{f}_{rsp}^{BIV}} \\ \nonumber
 \end{eqnarray}\]</span>
 <span class="math display" id="eq:don1">\[\begin{eqnarray}
@@ -759,7 +769,7 @@ div.csl-indent {
 <p>The OGM module optionally allows and extra 4 pools to specifically resolve the refractory (less reactive) organic matter material. In general we refer to the refractory DOM pool as <span class="math inline">\(DOM{\text -}R\)</span>, which is broken into elemental pools, plus the <span class="math inline">\(C{\text -}POM\)</span> variables simulating coarse POM:</p>
 <p><span class="math display" id="eq:docr1">\[\begin{eqnarray}
 \frac{D}{Dt}DOC{\text -}R =  \color{darkgray}{ \mathbb{M} + \mathcal{S} } \quad
-&amp;+&amp;   \overbrace{f_{hyd}^{POC}-f_{min}^{DOC}+\hat{f}_{sed}^{DOC}  }^\text{aed_organic_matter} \\ \tag{12.7}
+&amp;+&amp;   \overbrace{k_{ref}\:f_{hyd}^{POC}-R^{DOMR}_{pm} +\hat{f}_{sed}^{DOCR}  }^\text{aed_organic_matter} \\ \tag{12.7}
 &amp;+&amp;   \color{brown}{ f_{exr}^{PHY} + f_{exr}^{ZOO} + \hat{f}_{rsp}^{MAG} + \hat{f}_{rsp}^{BIV}} \\ \nonumber
 \end{eqnarray}\]</span>
 <span class="math display" id="eq:donr1">\[\begin{eqnarray}
@@ -790,8 +800,10 @@ div.csl-indent {
 <h4><span class="header-section-number">12.3.1.3</span> Photolysis</h4>
 <p>Ultraviolet light is known to drive photochemical breakdown of chromophoric <span class="math inline">\(DOM\)</span>, conceptually equivalent to the <span class="math inline">\(DOM{\text -}R\)</span> pool in Figure X. This photolysis process can take shape either as photo-transformation of complex <span class="math inline">\(DOM{\text -}R\)</span> molecules to more bioavailable molecules (ie., DOM in Figure X), or as photo-mineralisation, where by components of the DOM-R molecule are mineralised. This is modelled based on a known intensity of UV photons, which drives a stoichiometrically equivalent loss of DOM-R via the photolysis reaction, and <span class="math inline">\(f_{photo}\)</span> is introduced as an empirically defined fraction that indicates the extent to which the process transforms the DOM-R molecules to bioavailable molecules or completely mineralises them.</p>
 <p>The rate of photolysis can be computed based on the apparent quantum yield, ø¿, which varies with wavelength, the scalar photon flux density, ¡¿, and the adsorption coefficient, α¿, by integrating across the active wavelength spectrum, √415 v ́ √49?. This can be approximated for b discrete bandwidths (e.g. UV-A, UV-B, PAR) to simplify the calculation as:</p>
-<p>where <span class="math inline">\(\hat{I}_b\)</span> is the mean bandwidth intensity (mol photons m-2 s-1) computed from the light intensity at any given depth, I, ø» is the mean bandwidth quantum yield, and α» is the mean absorbance across the window of the specific bandwidth being computed. The latter two can be approximated by substituting into the following (Vähätalo et al. 2000; Vähätalo and Zepp, 2005): ø¿ =A10óF¿ and α¿ =α5exp(−] ≥−√ ).</p>
-<p><span class="math inline">\(\phi_{\lambda}=c10^{-d \lambda }\)</span> and <span class="math inline">\(\alpha_{\lambda} = \alpha_x exp(-S[x-\lambda])\)</span></p>
+<p><span class="math display">\[\begin{equation}
+ R^{DOMR}_{pm} = \int_{\lambda_{min}}^{\lambda_{max}} \phi_{\lambda} \hat{I}_{\lambda} \alpha_{\lambda} d\lambda \: \approx \: \sum_{b=1}^3 \bar{\phi}_b \hat{I}_b \alpha_b
+\end{equation}\]</span></p>
+<p>where <span class="math inline">\(\hat{I}_b\)</span> is the mean bandwidth intensity (mol photons m-2 s-1) computed from the light intensity at any given depth, I, ø» is the mean bandwidth quantum yield, and <span class="math inline">\(\alpha_b\)</span> is the mean absorbance across the window of the specific bandwidth being computed. The latter two can be approximated by substituting into the following (Vähätalo et al. 2000; Vähätalo and Zepp, 2005): <span class="math inline">\(\phi_{\lambda}=c10^{-d \lambda }\)</span> and <span class="math inline">\(\alpha_{\lambda} = \alpha_x exp(-S[x-\lambda])\)</span>.</p>
 </div>
 <div id="cpom-breakdown" class="section level4" number="12.3.1.4">
 <h4><span class="header-section-number">12.3.1.4</span> CPOM breakdown</h4>

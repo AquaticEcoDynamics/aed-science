@@ -64,6 +64,7 @@ tab:13-parstable
 tab:14-statetable
 tab:14-diagtable
 tab:14-parstable
+fig:15-pic1
 eq:doc1
 eq:don1
 eq:dop1

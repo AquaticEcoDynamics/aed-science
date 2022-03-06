@@ -14,11 +14,21 @@ Within the particulate pool, similarly there is a relatively labile POM fraction
 
 A 10-pool organic matter model able to capture the variable reactivity of the OM pool and its stoichiometry is configureable within this module. Under this conceptual model the decomposition of particulate detrital material is broken down through a process of enzymatic hydrolysis that slowly converts POM to labile DOM. A small fraction, $f_{ref}$, of this material is diverted to the DOM-R pool. The bioavailable DOM material enters the bacterial terminal metabolism pathways. These are active depending on the ambient oxygen concentrations and presence of electron acceptors, and of most relevance to the reservoirs, these pathways aerobic breakdown, denitrification, sulfate reduction, and methanogenesis. In most model approaches it is assumed these communities vary in response to temperature, and are mediated using a simple oxygen dependence or limitation factor.
 
-The main dissolved organic matter pools are simulated as:
+<br>
+
+<center>
+```{r 15-pic1, echo=FALSE, fig.cap="Schematic overview of organic matter (OM) pools and their interactions. Grey dashed line indicates optional process pathway. Different tributaries to the model must be prescribed OM pool boundary concentrations based on land-use specific ratios of POM and DOM reactivity.", out.width = '80%'}
+knitr::include_graphics("images/15-organic_matter/om.png")
+```
+</center>
+
+<br>
+
+The main dissolved organic matter pool balance equations are simulated as:
 
 \begin{eqnarray}
 \frac{D}{Dt}DOC =  \color{darkgray}{ \mathbb{M} + \mathcal{S} } \quad
-&+&   \overbrace{f_{hyd}^{POC}-f_{min}^{DOC}+\hat{f}_{sed}^{DOC}  }^\text{aed_organic_matter} \\ (\#eq:doc1)
+&+&   \overbrace{(1-k_{ref})\:f_{hyd}^{POC}-f_{min}^{DOC}+\hat{f}_{sed}^{DOC}  }^\text{aed_organic_matter} \\ (\#eq:doc1)
 &+&   \color{brown}{ f_{exr}^{PHY} + f_{exr}^{ZOO} + \hat{f}_{rsp}^{MAG} + \hat{f}_{rsp}^{BIV}} \\ \nonumber
 \end{eqnarray}
 \begin{eqnarray}
@@ -56,7 +66,7 @@ The OGM module optionally allows and extra 4 pools to specifically resolve the r
 
 \begin{eqnarray}
 \frac{D}{Dt}DOC{\text -}R =  \color{darkgray}{ \mathbb{M} + \mathcal{S} } \quad
-&+&   \overbrace{f_{hyd}^{POC}-f_{min}^{DOC}+\hat{f}_{sed}^{DOC}  }^\text{aed_organic_matter} \\ (\#eq:docr1)
+&+&   \overbrace{k_{ref}\:f_{hyd}^{POC}-R^{DOMR}_{pm} +\hat{f}_{sed}^{DOCR}  }^\text{aed_organic_matter} \\ (\#eq:docr1)
 &+&   \color{brown}{ f_{exr}^{PHY} + f_{exr}^{ZOO} + \hat{f}_{rsp}^{MAG} + \hat{f}_{rsp}^{BIV}} \\ \nonumber
 \end{eqnarray}
 \begin{eqnarray}
@@ -93,9 +103,11 @@ Ultraviolet light is known to drive photochemical breakdown of chromophoric $DOM
 
 The rate of photolysis can be computed based on the apparent quantum yield, ø¿, which varies with wavelength, the scalar photon flux density, ¡¿, and the adsorption coefficient, α¿, by integrating across the active wavelength spectrum, √415 v ́ √49?. This can be approximated for b discrete bandwidths (e.g. UV-A, UV-B, PAR) to simplify the calculation as:
 
-where $\hat{I}_b$ is the mean bandwidth intensity (mol photons m-2 s-1) computed from the light intensity at any given depth, I, ø» is the mean bandwidth quantum yield, and α» is the mean absorbance across the window of the specific bandwidth being computed. The latter two can be approximated by substituting into the following (Vähätalo et al. 2000; Vähätalo and Zepp, 2005): ø¿ =A10óF¿ and α¿ =α5exp(−] ≥−√ ).
+\begin{equation}
+ R^{DOMR}_{pm} = \int_{\lambda_{min}}^{\lambda_{max}} \phi_{\lambda} \hat{I}_{\lambda} \alpha_{\lambda} d\lambda \: \approx \: \sum_{b=1}^3 \bar{\phi}_b \hat{I}_b \alpha_b
+\end{equation}
 
-$\phi_{\lambda}=c10^{-d \lambda }$ and $\alpha_{\lambda} = \alpha_x exp(-S[x-\lambda])$
+where $\hat{I}_b$ is the mean bandwidth intensity (mol photons m-2 s-1) computed from the light intensity at any given depth, I, ø» is the mean bandwidth quantum yield, and $\alpha_b$ is the mean absorbance across the window of the specific bandwidth being computed. The latter two can be approximated by substituting into the following (Vähätalo et al. 2000; Vähätalo and Zepp, 2005): $\phi_{\lambda}=c10^{-d \lambda }$ and $\alpha_{\lambda} = \alpha_x exp(-S[x-\lambda])$.
 
 
 #### CPOM breakdown
