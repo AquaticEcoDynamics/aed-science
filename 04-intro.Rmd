@@ -1,5 +1,7 @@
 # Introduction
 
+Author: Matthew R. Hipsey
+
 ## Scientific Overview {-}
 
 The AED modelling library (termed ‘**AED**’ for short) consists of numerous modules that are designed as individual model ‘components’ able to be configured in a way that facilitates custom aquatic ecosystem conceptualisations – from very simple to very complex. Think of it like a set of jigsaw pieces that connect together to build a complete picture. Users select water quality and ecosystem variables they wish to simulate and then are able to customize connections and dependencies with other modules, including support for easy customisation at an algorithm level how model components operate (e.g. photosynthesis functions, sorption algorithms etc).
@@ -9,7 +11,7 @@ In general, model components consider the cycling of carbon, nitrogen and phosph
 
 ## Application Contexts {-}
 
-The modules have been applied across wetlands, lakes, rivers and estuaries, by taking advantage of the standard coupling interface between the scientific modules and hydrodynamic drivers. Due to this flexibility the model can be applied across a range of scales and contexts. For example through a 0D box model, the 1D model GLM, or the 3D finite volume model TUFLOW-FV.
+The AED modules have been applied across wetlands, lakes, rivers and estuaries, by taking advantage of the standard coupling interface between the scientific modules and hydrodynamic drivers. Due to this flexibility, the model can be applied across a range of scales and contexts. For example, it can be coupled with a 0D box model, the 1D model GLM, or the 3D finite volume model TUFLOW-FV.
 
 Applications of the model include:
 
@@ -27,7 +29,7 @@ Applications of the model include:
 
 ## Navigating this book {-}
 
-This is not the sought of book you read from cover to cover! The book has initial introductory material in the first 4 chapters, and then is followed by 5 major sections:
+This is not the sort of book you read from cover to cover! The book has initial introductory material in the first 4 chapters, and then is followed by 5 major sections:
 
 1) Part I: AED Water - Descriptions of the core “water” modules, those relevant to simulating basic water quality in the pelagic environment.
 2) Part II: AED+ Water -  Description of the advanced “plus” water modules.

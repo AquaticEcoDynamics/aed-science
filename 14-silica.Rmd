@@ -1,6 +1,9 @@
 # Silica
 
 ## Contributors
+
+Matthew R. Hipsey
+
 ## Overview
 ## Model Description
 ###	Process Descriptions

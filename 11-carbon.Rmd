@@ -2,7 +2,7 @@
 
 ## Contributors
 
-Peisheng Huang, Kamilla Kurucz & Matthew Hipsey
+Peisheng Huang, Kamilla Kurucz, and Matthew R. Hipsey
 
 ## Overview
 

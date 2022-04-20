@@ -2,6 +2,8 @@
 
 ## Contributors
 
+Matthew R. Hipsey
+
 ## Overview
 
 Both the inorganic and organic, and dissolved and particulate forms of C, N and P are modelled in AED along the general degradation pathway of POM to DOM to dissolved inorganic matter (DIM). The OGM module simulates the organic material as a single or as multiple discrete pools. The inorganic carbon, nitrogen and phosphorus pools are reported in separate modules which are linked to from OGM.
