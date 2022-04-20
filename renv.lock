@@ -563,6 +563,18 @@
       "Hash": "ac5c6baf7822ce8732b343f14c072c4d",
       "Requirements": []
     },
+    "hablar": {
+      "Package": "hablar",
+      "Version": "0.3.0",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "58ca0f8fff30f57b9ec11fecf673f8ac",
+      "Requirements": [
+        "dplyr",
+        "lubridate",
+        "purrr"
+      ]
+    },
     "haven": {
       "Package": "haven",
       "Version": "2.4.3",
