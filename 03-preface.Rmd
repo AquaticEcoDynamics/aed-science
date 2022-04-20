@@ -4,7 +4,7 @@
 
 This book describes the scientific basis and technical details of the module within the AED library.
 
-If you’re a new user seeking to get started with water quality modelling you may have undertaken a tutorial and interested to setup your own site for the first time. Or you may have your own conceptual model and keen to build a tailored setup to simulate your site. Or you may be ready to modify a module or create a whole new module for your research or management application.
+If you are a new user seeking to get started with water quality modelling, you may have undertaken an AED tutorial and are interested to setup your own site for the first time. Or, you may have your own conceptual model and are keen to build a tailored setup to simulate your site. Or, you may be ready to modify an AED module or create a whole new module for your research or management application.
 
 Depending at what stage you are at in your model development journey, different parts of the book may be more relevant to you.
 
@@ -21,3 +21,14 @@ Importantly, this software is an open-source project, and the <ins>source code</
 It is envisaged that the flexible nature of the model components will facilitate the model community to experiment with model structural complexity, to more easily share model innovations at the algorithm level, and support the development of common performance assessment approaches (for a discussion on model assessment, readers are referred to Hipsey et al., 2020).
 
 ## Acknowledgements {-}
+
+We gratefully acknowledge financial support from the Australian Research Council 
+(Grant IDs: LP130100756, LP150100451, DP130104078, LP110100040, LP0991254, LP110200975,
+LP150100519) and the Water and Environment Group of BMT. Casper Boon, Louise Bruce, 
+David Hamilton, Peisheng Huang, and Dan Paraska as well as all members, past and present, of 
+the Aquatic EcoDynamics research group at the University of Western Australia 
+provided valuable feedback and support critical for developing the AED model. Finally,
+we thank members of the Global Lake Ecological Observatory Network (GLEON) for 
+contributing to the model, providing use cases, and sharing feedback. Cayelan Carey
+and Quinn Thomas helped with the final editing of the first version of this book 
+prior to publication.

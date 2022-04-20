@@ -1,7 +1,12 @@
 # Inorganic Phosphorus
 
 ## Contributors
+
+Matthew R. Hipsey, Peisheng Huang, and Cayelan C. Carey
+
 ## Overview
+
+Phosphorus is a limiting nutrient for phytoplankton growth and thus is fundamental to determining water quality in aquatic ecosystems. PO~4~^3-^ is the primary inorganic form of phosphorus that is taken up by microbes and aquatic plants (phytoplankton and macrophytes) to build biomass as organic phosphorus. As phosphorus is a core building block of an aquatic ecosystem, `aed_phosphorus` ($\mathrm{PHS}$) is designed as a low-level module for managing inorganic phosphorus cycling, and is able to be linked to by higher order modules associated with primary production, and organic matter breakdown.
 
 ## Model Description
 
@@ -26,11 +31,33 @@ The sorbed $PO_4$ pool is resolved as:
 
 ###	Process Descriptions
 
+In the basic phosphorus module configuration, $FRP$ is able to be modified by sorption/desorption, atmospheric deposition, and sediment release. The main balance equations for the simulated variables are summarised as:
+
 #### Phosphate sorption - desorption
 
 #### Atmospheric deposition
 
+Inorganic phosphorus can be added to the surface cells of an aquatic system through two kinds of atmospheric deposition: wet (as FRP) and dry (as sorbed FRP). These functions can be turned on by setting the parameters `simDryDeposition` and `simWetDeposition` to `.TRUE.` in the phosphorus AED module.
+
 #### Dissolved sediment flux
+
+PO~4~^3-^ can flux into the water column from the sediment, using the parameter $F_{sed}^{frp}$, which sets the maximum flux rate. The maximum flux rate is limited by temperature, using the parameter `theta_sed_frp`, according to
+
+\begin{equation}
+f_{sed}^{FRP}=F_{sed}^{frp} \theta_{sedfrp}^{T-20}\Phi_{O2}^{frp}\left[O_2\right]
+(\#eq:phs3)
+\end{equation}
+
+This assumes that there is a higher flux at higher temperatures.
+
+**Oxygen mediation of the sediment phosphorus flux:** The sediment flux can be changed by bottom water O~2~ concentration. If the [aed2_oxygen module](#DO_1) is correctly linked to the phosphorus module then this setting will switch on automatically. The parameter `K_sed_frp` can be used to tune the PO~4~^3-^ flux dependence on bottom water O~2~. At high O~2~ concentrations, PO~4~^3-^ flux decreases, and at low O~2~ concentrations, the flux is close to the parameter `F_{sed}^{frp}`, as shown by the equation below.
+
+```{=tex}
+\begin{equation}
+\Phi_{O2}^{frp}\left[O_2\right]=\frac{K_{sedfrp}}{K_{sedfrp}+O_2}
+(\#eq:phs4)
+\end{equation}
+```
 
 #### Sedimentation and resuspension
 

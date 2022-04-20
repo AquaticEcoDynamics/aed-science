@@ -1,15 +1,16 @@
 # Organisation of the Library & Module Structure
 
+Author: Matthew R. Hipsey
+
 ## Library Design
 
 The AED modelling library is organised as a series of “modules” that can be connected or “linked” through specific variable dependencies. By linking modules users can simulate most aquatic biogeochemical processes relevant to nutrient cycling, oxygen dynamics, harmful algal blooms, sediment/soil biogeochemistry, vegetation, pathogens etc. Each module can work alone or combined with other modules, depending on the complexity of targeted system.
 
 A wide array of modules are available with some operational only in water, some operational where no water is present, and some can operate under both dry and wet conditions.
 
-The current AED software is divided into 5 separate code-libraries ……
-.Prior to the 2020 release, the model was distributed as two libraries: the first was the core AED2 library (libaed2) and the second is the advanced modules which are bundled together as AED2+ (libaed2-plus).
+The current AED software is divided into 5 separate code-libraries: water, benthic, demo, dev, and riparian. Prior to the 2020 release, the model was distributed as two libraries: the first was the core AED2 library (libaed2) and the second is the advanced modules which are bundled together as AED2+ (libaed2-plus).
 
-Currently there are 8 core modules in AED2, and 12 advanced modules in AED2+. For routine water quality assessments of lakes or estuaries, AED2 will suit most applications. For advanced users and researchers seeking to extend their simulation abilities, then AED2+ includes numerous advanced options
+Currently there are 8 core modules in AED, and 12 advanced modules in AED+. For routine water quality assessments of lakes or estuaries, AED will suit most applications. For advanced users and researchers seeking to extend their simulation abilities, then AED+ includes numerous advanced options.
 
 <center>
 ```{r diagram, echo=FALSE, out.width = '100%'}
@@ -33,7 +34,7 @@ Any AED module can have the ability to simulate a range of physical, chemical an
 -	Ecohydrological dynamics and biogeochemical transformations in the exposed (dry) cells
 -	Feedbacks of soil and vegetation dynamics onto lake hydrodynamics and water balance
 
-A general module structure in Figure X. Specific methods available within a module include those in Table Y. Note that not all methods must be used in modules; developers must choose which methods are relevant to a specific module. The only exception is “define”, which is compulsory for all modules to configure the chosen state variables, diagnostic variables, and set the necessary parameters and options.
+A general module structure in the figure above. Specific methods available within a module include those shown in the table. Note that not all methods must be used in modules; developers must choose which methods are relevant to a specific module. The only exception is “define”, which is compulsory for all modules to configure the chosen state variables, diagnostic variables, and set the necessary parameters and options.
 
 ## Module Summary
 

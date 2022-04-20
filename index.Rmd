@@ -24,11 +24,11 @@ knitr::opts_knit$set(root.dir = rprojroot::find_rstudio_root_file())
 
 # Modelling Aquatic Eco-Dynamics: Overview of the AED modular simulation platform {-}
 
-## Welcome {-}
+## Welcome! {-}
 
 This is the online home of *Modelling Aquatic Eco-Dynamics*, a book on describing the AED (previously released as AED2) modelling platform for the simulation of aquatic ecosystem dynamics.
 
-Inspired by [**bookdown**](https://github.com/rstudio/bookdown) and the Open Data movement in ecology and the environmental sciences (e.g., Read et al., 2015), this book is open source. This encourages a collaborative approach to model development and discussion and ensures the approaches adopted by the user-community are reproducible and publicly accessible for people worldwide.
+Inspired by [**bookdown**](https://github.com/rstudio/bookdown) and the Open Data movement in ecology and the environmental sciences, this book is open source. This encourages a collaborative approach to model development and discussion and ensures the approaches adopted by the user community are reproducible and publicly accessible for people worldwide.
 
 The model platform has been applied to many diverse sites across the globe (Figure \@ref(fig:aed-sites)) and we hope it can be useful to help with your application!
 
@@ -48,9 +48,9 @@ leaflet(height=400, width="auto") %>% addProviderTiles(providers$Esri.WorldGrayC
 
 ```
 
-## How to Contribute?{-}
+## How to contribute?{-}
 
-You may be a new user seeking to understand how to get started, or you may interested to tailor a module to your research or management application. As modules evolve, through incremental improvements or wholesale changes, the experts working on these changes can ensure the latest information is available to the community by updating and improving this book.
+You may be a new user seeking to understand how to get started, or you may be interested in tailoring a module to your research or management application. As modules evolve, through incremental improvements or wholesale changes, the experts working on these changes can ensure the latest information is available to the community by continuously updating and improving this book.
 
 **bookdown** makes editing a book as easy as editing a wiki, provided you have a GitHub account ([sign-up at github.com](https://github.com/)).
 Once logged-in to GitHub, click on the 'edit me' icon highlighted with a red ellipse in the image below.
@@ -69,7 +69,7 @@ Readers may also use the hypothes.is utility on the right margin of the book to 
 
 Maintainers and contributors must follow this repository’s [CODE OF CONDUCT](https://github.com/Robinlovelace/geocompr/blob/master/CODE_OF_CONDUCT.md).
 
-## Editing the Book{-}
+## Editing the book{-}
 
 To build the book locally, clone or download the aed-science repo, load R in root directory (e.g. by opening aed-sceince.Rproj in RStudio) and run the following lines:
 
@@ -79,13 +79,23 @@ bookdown::render_book("index.Rmd") # to build the book
 browseURL("_book/index.html") # to view it
 
 ```
+## How to cite this book{-}
+
+Please cite this edited book and the AED model in scientific publications as: Hipsey, M.R., ed. (2022) 
+Modelling Aquatic Eco-Dynamics: Overview of the AED modular simulation platform.
+Zenodo repository. ADD ZENODO DOI LINK HERE. 
+
+If you would like to cite an individual chapter of this book (not the AED model), please
+use this format (example given for chapter 4): Hipsey, M.R. and P. Huang. (2022) Chapter 4. Dissolved 
+oxygen. Hipsey, M.R., ed. Modelling Aquatic Eco-Dynamics: Overview of the AED modular simulation platform.
+Zenodo repository. ADD ZENODO DOI LINK HERE.
 
 ## Supporting the project{-}
 
 If you find AED useful, please support it by:
 
 - Telling people about it in person
-- Communicating about the model in digital media e.g. via the [#xxxxxx hashtag](https://twitter.com/hashtag/geocompr) on Twitter (see our [Guestbook at geocompr.github.io](https://geocompr.github.io/guestbook/)) or by letting us know of [courses](https://github.com/geocompr/geocompr.github.io/edit/source/content/guestbook/index.md) using the book
+- Communicating about the model in digital media e.g. via the [#AEDmodel hashtag](https://twitter.com/hashtag/geocompr) on Twitter (see our [Guestbook at geocompr.github.io](https://geocompr.github.io/guestbook/)) or by letting us know of [courses](https://github.com/geocompr/geocompr.github.io/edit/source/content/guestbook/index.md) using the book
 - [Citing](https://github.com/Robinlovelace/geocompr/raw/master/cite-geocompr.bib) or [linking-to](https://geocompr.robinlovelace.net/) it
 - '[Starring](https://help.github.com/articles/about-stars/)' the [geocompr GitHub repository](https://github.com/robinlovelace/geocompr)
 - Reviewing it, e.g. on Amazon or [Goodreads](https://www.goodreads.com/book/show/42780859-geocomputation-with-r)

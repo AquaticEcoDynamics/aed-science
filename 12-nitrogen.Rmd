@@ -7,7 +7,7 @@ nocite: |
 
 ## Contributors
 
-Daniel Paraska, Louise Bruce, Peisheng Huang, Matthew Hipsey
+Daniel Paraska, Louise Bruce, Peisheng Huang, and Matthew R. Hipsey
 
 ## Overview
 

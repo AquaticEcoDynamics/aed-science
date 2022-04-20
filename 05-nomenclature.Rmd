@@ -1,5 +1,7 @@
 # Nomenclature
 
+Author: Matthew R. Hipsey
+
 ## Variables and Data Types
 
 There is often confusion over the types of variables and data-types used within the modules. Standard terminology adopted in the $\mathrm{AED}$ system is described in Table \@ref(tab:vardatatypes).
