@@ -198,6 +198,17 @@
         "sass"
       ]
     },
+    "cachem": {
+      "Package": "cachem",
+      "Version": "1.0.6",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "648c5b3d71e6a37e3043617489a0a0e9",
+      "Requirements": [
+        "fastmap",
+        "rlang"
+      ]
+    },
     "callr": {
       "Package": "callr",
       "Version": "3.7.0",
@@ -289,7 +300,8 @@
       "Requirements": [
         "R6",
         "htmltools",
-        "jsonlite"
+        "jsonlite",
+        "lazyeval"
       ]
     },
     "curl": {
@@ -870,6 +882,14 @@
       "Hash": "b64cdbb2b340437c4ee047a1f4c4377b",
       "Requirements": []
     },
+    "lazyeval": {
+      "Package": "lazyeval",
+      "Version": "0.2.2",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "d908914ae53b04d4c0c0fd72ecc35370",
+      "Requirements": []
+    },
     "leaflet": {
       "Package": "leaflet",
       "Version": "2.1.1",
@@ -888,6 +908,7 @@
         "png",
         "raster",
         "scales",
+        "sp",
         "viridis"
       ]
     },
@@ -1069,6 +1090,7 @@
         "htmlwidgets",
         "httr",
         "jsonlite",
+        "lazyeval",
         "magrittr",
         "promises",
         "purrr",
@@ -1169,6 +1191,7 @@
       "Hash": "70cf51235e017702ed77427797572ef0",
       "Requirements": [
         "Rcpp",
+        "sp",
         "terra"
       ]
     },
@@ -1388,6 +1411,7 @@
       "Requirements": [
         "R6",
         "bslib",
+        "cachem",
         "commonmark",
         "crayon",
         "ellipsis",
@@ -1414,6 +1438,16 @@
       "Repository": "CRAN",
       "Hash": "947e4e02a79effa5d512473e10f41797",
       "Requirements": []
+    },
+    "sp": {
+      "Package": "sp",
+      "Version": "1.4-6",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "ce8613f4e8c84ef4da9eba65b874ebe9",
+      "Requirements": [
+        "lattice"
+      ]
     },
     "stringi": {
       "Package": "stringi",
