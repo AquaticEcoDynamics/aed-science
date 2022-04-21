@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Preface | The AED Manual</title>
+  <title>Forthcoming chapters | The AED Manual</title>
   <meta name="description" content="Work in progress." />
   <meta name="generator" content="bookdown 0.26 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Preface | The AED Manual" />
+  <meta property="og:title" content="Forthcoming chapters | The AED Manual" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="Work in progress." />
   <meta name="github-repo" content="AquaticEcoDynamics/aed-science/" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Preface | The AED Manual" />
+  <meta name="twitter:title" content="Forthcoming chapters | The AED Manual" />
   
   <meta name="twitter:description" content="Work in progress." />
   
@@ -29,8 +29,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="index.html"/>
-<link rel="next" href="introduction.html"/>
+<link rel="prev" href="publications-10.html"/>
+<link rel="next" href="references.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -461,34 +461,45 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="preface" class="section level1 unnumbered hasAnchor">
-<h1>Preface<a href="preface.html#preface" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<div id="who-is-this-book-for" class="section level2 unnumbered hasAnchor">
-<h2>Who is this book for?<a href="preface.html#who-is-this-book-for" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>This book describes the scientific basis and technical details of the module within the AED library.</p>
-<p>If you are a new user seeking to get started with water quality modelling, you may have undertaken an AED tutorial and are interested to setup your own site for the first time. Or, you may have your own conceptual model and are keen to build a tailored setup to simulate your site. Or, you may be ready to modify an AED module or create a whole new module for your research or management application.</p>
-<p>Depending at what stage you are at in your model development journey, different parts of the book may be more relevant to you.</p>
+<div id="forthcoming-chapters" class="section level1 unnumbered hasAnchor">
+<h1>Forthcoming chapters<a href="forthcoming-chapters.html#forthcoming-chapters" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>A number of additional chapters describing additional AED modules
+are a work in progress, including:</p>
+<ol style="list-style-type: decimal">
+<li>Host-model coupling;</li>
+<li>Tracers and water age;</li>
+<li>Suspended sediment;</li>
+<li>Further development/expansion of silica, inorganic phosphorus, organic matter, and phytoplankton chapters;</li>
+<li>Zooplankton;</li>
+<li>Total nutrients and carbon;</li>
+<li>Stable isotopes;</li>
+<li>Bioactive particles;</li>
+<li>Submerged macrophytes;</li>
+<li>Macroalgae;</li>
+<li>Benthic habitat quality;</li>
+<li>Soil hydrology;</li>
+<li>Soil biogeochemistry;</li>
+<li>Acid sulfate soils;</li>
+<li>Riparian vegetation; and</li>
+<li>Riparian habitat quality;</li>
+</ol>
+<div id="we-invite-you-to-contribute-to-these-chapters" class="section level2 unnumbered hasAnchor">
+<h2>We invite you to contribute to these chapters!<a href="forthcoming-chapters.html#we-invite-you-to-contribute-to-these-chapters" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p><strong>bookdown</strong> makes editing a book as easy as editing a wiki, provided you have a GitHub account (<a href="https://github.com/">sign-up at github.com</a>).
+Once logged-in to GitHub, click on the ‘edit me’ icon highlighted with a red ellipse in the image below.</p>
+<p>This will take you to an editable version of the the source <a href="http://rmarkdown.rstudio.com/">R Markdown</a> file that generated the page you’re on:</p>
+<center>
+<img src="images/index/edit.png" width="100%" />
+</center>
+<p>To raise an issue about the book’s content (e.g. code not running) or make a feature request, check-out the <a href="https://github.com/Robinlovelace/geocompr/issues">issue tracker</a>.</p>
+<p>Readers may also use the hypothes.is utility on the right margin of the book to add personal annotations and public comments on the book content.</p>
+<p>Maintainers and contributors must follow this repository’s <a href="https://github.com/Robinlovelace/geocompr/blob/master/CODE_OF_CONDUCT.md">CODE OF CONDUCT</a>.</p>
 </div>
-<div id="why-aed" class="section level2 unnumbered hasAnchor">
-<h2>Why AED?<a href="preface.html#why-aed" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>The AED modelling code-base is a community-driven library of modules and algorithms for simulation of “aquatic ecodynamics” - water quality, aquatic biogeochemistry, biotic habitat and aquatic ecosystem dynamics.</p>
-<p>The AED software is unique as it is suitable for a very wide range water bodies types, including lakes, reservoirs, wetlands, ponds, estuaries and coastal waters. It has been applied to many research and water engineering projects across the world. Users select water quality and ecosystem variables they wish to simulate and are able to customize links and dependencies between modules.</p>
-<p>Each <ins>module</ins> aims to be based on state-of-the-art science sourced from a wide variety of scientific literature, making the library one of the most advanced available to aquatic ecosystem modellers.</p>
-<p>Importantly, this software is an open-source project, and the <ins>source code</ins> is accessible and customisable for specific applications. Most modules have numerous options and alternate algorithms so users can tailor the model to their specific needs, but inevitably, users will require flexibility to embed custom algorithms or functionality.</p>
-<p>It is envisaged that the flexible nature of the model components will facilitate the model community to experiment with model structural complexity, to more easily share model innovations at the algorithm level, and support the development of common performance assessment approaches (for a discussion on model assessment, readers are referred to Hipsey et al., 2020).</p>
-</div>
-<div id="acknowledgements" class="section level2 unnumbered hasAnchor">
-<h2>Acknowledgements<a href="preface.html#acknowledgements" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>We gratefully acknowledge financial support from the Australian Research Council
-(Grant IDs: LP130100756, LP150100451, DP130104078, LP110100040, LP0991254, LP110200975,
-LP150100519) and the Water and Environment Group of BMT. Casper Boon, Louise Bruce,
-David Hamilton, Peisheng Huang, and Dan Paraska as well as all members, past and present, of
-the Aquatic EcoDynamics research group at the University of Western Australia
-provided valuable feedback and support critical for developing the AED model. Finally,
-we thank members of the Global Lake Ecological Observatory Network (GLEON) for
-contributing to the model, providing use cases, and sharing feedback. Cayelan Carey
-and Quinn Thomas helped with the final editing of the first version of this book
-prior to publication.</p>
+<div id="editing-the-book-1" class="section level2 unnumbered hasAnchor">
+<h2>Editing the book<a href="forthcoming-chapters.html#editing-the-book-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>To build the book locally, clone or download the aed-science repo, load R in root directory (e.g. by opening aed-sceince.Rproj in RStudio) and run the following lines:</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="forthcoming-chapters.html#cb18-1" aria-hidden="true" tabindex="-1"></a>bookdown<span class="sc">::</span><span class="fu">render_book</span>(<span class="st">&quot;index.Rmd&quot;</span>) <span class="co"># to build the book</span></span>
+<span id="cb18-2"><a href="forthcoming-chapters.html#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="fu">browseURL</span>(<span class="st">&quot;_book/index.html&quot;</span>) <span class="co"># to view it</span></span></code></pre></div>
 
 </div>
 </div>
@@ -497,8 +508,8 @@ prior to publication.</p>
           </div>
         </div>
       </div>
-<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="introduction.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="publications-10.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="references.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -529,11 +540,11 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/AquaticEcoDynamics/aed-science/blob/master/03-preface.Rmd",
+"link": "https://github.com/AquaticEcoDynamics/aed-science/blob/master/37-forthcoming.Rmd",
 "text": "Edit"
 },
 "history": {
-"link": "https://github.com/AquaticEcoDynamics/aed-science/edit/master/03-preface.Rmd",
+"link": "https://github.com/AquaticEcoDynamics/aed-science/edit/master/37-forthcoming.Rmd",
 "text": null
 },
 "view": {
