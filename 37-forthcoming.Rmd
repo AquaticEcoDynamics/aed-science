@@ -34,7 +34,7 @@ knitr::include_graphics("images/index/edit.png")
 ```
 </center>
 
-To raise an issue about the book's content (e.g. code not running) or make a feature request, check-out the [issue tracker](https://github.com/Robinlovelace/geocompr/issues).
+To raise an issue about the book's content (e.g. code not running) or make a feature request, check-out the [issue tracker]https://github.com/AquaticEcoDynamics/aed-science/issues).
 
 Readers may also use the hypothes.is utility on the right margin of the book to add personal annotations and public comments on the book content.
 
