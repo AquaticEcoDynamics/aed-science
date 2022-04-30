@@ -327,7 +327,6 @@ model-setup-boundary-conditions-parameter-definition
 model-output-post-processing
 case-studies-examples-9
 case-study-6
-publications-8
 bivalves
 contributors-9
 overview-9
@@ -341,5 +340,5 @@ setup-configuration-9
 setup-example-2
 case-studies-examples-10
 case-study-7
+publications-8
 publications-9
-publications-10

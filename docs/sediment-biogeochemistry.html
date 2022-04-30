@@ -409,7 +409,6 @@ div.csl-indent {
 <li class="chapter" data-level="12.5" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#case-studies-examples-9"><i class="fa fa-check"></i><b>12.5</b> Case Studies &amp; Examples</a>
 <ul>
 <li class="chapter" data-level="12.5.1" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#case-study-6"><i class="fa fa-check"></i><b>12.5.1</b> Case Study</a></li>
-<li class="chapter" data-level="12.5.2" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#publications-8"><i class="fa fa-check"></i><b>12.5.2</b> Publications</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="13" data-path="bivalves.html"><a href="bivalves.html"><i class="fa fa-check"></i><b>13</b> Bivalves</a>
@@ -431,10 +430,10 @@ div.csl-indent {
 <li class="chapter" data-level="13.5" data-path="bivalves.html"><a href="bivalves.html#case-studies-examples-10"><i class="fa fa-check"></i><b>13.5</b> Case Studies &amp; Examples</a>
 <ul>
 <li class="chapter" data-level="13.5.1" data-path="bivalves.html"><a href="bivalves.html#case-study-7"><i class="fa fa-check"></i><b>13.5.1</b> Case Study</a></li>
-<li class="chapter" data-level="13.5.2" data-path="bivalves.html"><a href="bivalves.html#publications-9"><i class="fa fa-check"></i><b>13.5.2</b> Publications</a></li>
+<li class="chapter" data-level="13.5.2" data-path="bivalves.html"><a href="bivalves.html#publications-8"><i class="fa fa-check"></i><b>13.5.2</b> Publications</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="14" data-path="publications-10.html"><a href="publications-10.html"><i class="fa fa-check"></i><b>14</b> Publications</a></li>
+<li class="chapter" data-level="14" data-path="publications-9.html"><a href="publications-9.html"><i class="fa fa-check"></i><b>14</b> Publications</a></li>
 <li class="chapter" data-level="" data-path="forthcoming-chapters.html"><a href="forthcoming-chapters.html"><i class="fa fa-check"></i>Forthcoming chapters</a>
 <ul>
 <li class="chapter" data-level="" data-path="forthcoming-chapters.html"><a href="forthcoming-chapters.html#we-invite-you-to-contribute-to-these-chapters"><i class="fa fa-check"></i>We invite you to contribute to these chapters!</a></li>
@@ -717,7 +716,7 @@ Figure 12.4: The program is firstly initialised, then loops through the kinetic 
 </div>
 <div id="model-setup-boundary-conditions-parameter-definition" class="section level3 hasAnchor" number="12.4.3">
 <h3><span class="header-section-number">12.4.3</span> Model Setup, Boundary Conditions &amp; Parameter Definition<a href="sediment-biogeochemistry.html#model-setup-boundary-conditions-parameter-definition" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>The model is set up via the name list text file <code>fabm.nml</code> using the model keyword “aed_seddiagenesis” with the model configured to select the “Dynamic” option. Once this is selected, the model will search for the “&amp;aed_sedcandi” parameter block within fabm.nml.</p>
+<p>The model is set up via the name list text file <code>aed.nml</code> using the module keyword “&amp;aed_seddiagenesis” and a model namelist block termed “&amp;aed_sediment” configured to select the <code>sediment_model</code> as “Dynamic” or “Dynamic2D” option. Once this is selected, the model will search for the “&amp;aed_sedcandi” parameter block within aed.nml.</p>
 <p>Each active sediment model within this module is discretised into a user definable number of depth layers (<maxnpts>) that start at a thickness of a few mm at the sediment-water interface and which increase exponentially down to a pre-defined sediment depth (xl). Users must define the sediment domain physical properties as summarised in Table 5 - 10, including configuration options related to bioturbation and irrigation. The biogeochemical configuration (Table 5 - 11), rate constants (see Table 5 - 12 and Table 5 - 13) must be set according to the sub-model options described above.</p>
 <div style="border: 1px solid #ddd; padding: 5px; overflow-y: scroll; height:500px; overflow-x: scroll; width:770px; ">
 <table class="table table-hover" style="font-size: 12px; width: auto !important; margin-left: auto; margin-right: auto;">
@@ -1192,7 +1191,7 @@ Sets precipitation to: kinetic-0; IAP/K<sub>sp</sub>-1
 </table>
 </div>
 <p>The initial conditions for each variable are set as a list by the “initial_vals”, which sets a constant concentration with depth in units of μmol L-1. For organic matter initial concentrations only, there are three available options for the concentration with depth, set by “OMInitMethodL”.</p>
-<p>The sediment-water interface is the uppermost layer of the sediment, for which there are three configuration options set by the parameter <code>ibc2</code>. If the user specifies <code>ibc2 = 2</code>, the concentration is a constant value set by <code>default_vals</code> in the <code>fabm.nml</code> name list. For <code>ibc2 = 1</code>, the concentration is provided by a “link_variable”, which provides the concentration from another simulated water column AED module. If the variable name in the link list is left blank (“ ”) then AED-CANDI will assume these variables are not linked to any water column variables and default to the “default_vals” values. If <code>ibc2 = 10</code>, the concentration is provided by a user-prescribed temporally variable value read from the file <code>aed_sediment_swibc.dat</code>. This option may desirable, for example, for simulating a seasonally or daily changing boundary condition.</p>
+<p>The sediment-water interface is the uppermost layer of the sediment, for which there are three configuration options set by the parameter <code>ibc2</code>. If the user specifies <code>ibc2 = 2</code>, the concentration is a constant value set by <code>default_vals</code> in the <code>aed.nml</code> name list. For <code>ibc2 = 1</code>, the concentration is provided by a “link_variable”, which provides the concentration from another simulated water column AED module. If the variable name in the link list is left blank (“ ”) then AED-CANDI will assume these variables are not linked to any water column variables and default to the “default_vals” values. If <code>ibc2 = 10</code>, the concentration is provided by a user-prescribed temporally variable value read from the file <code>aed_sediment_swibc.dat</code>. This option may desirable, for example, for simulating a seasonally or daily changing boundary condition.</p>
 <p>Regardless of the ibc2 surface boundary condition option, fluxes of dissolved species occur between the sediment and water column. They are calculated from the concentration gradient at the sediment-water interface according to Fick’s Law:</p>
 <center>
 <span class="math display" id="eq:biogeochem1">\[\begin{equation}
@@ -1212,9 +1211,6 @@ F = D_{0}\frac{\Delta C}{\Delta x} = \frac{D_{0}}{\delta} (C_{bw} - C_{1})
 <h2><span class="header-section-number">12.5</span> Case Studies &amp; Examples<a href="sediment-biogeochemistry.html#case-studies-examples-9" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div id="case-study-6" class="section level3 hasAnchor" number="12.5.1">
 <h3><span class="header-section-number">12.5.1</span> Case Study<a href="sediment-biogeochemistry.html#case-study-6" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-</div>
-<div id="publications-8" class="section level3 hasAnchor" number="12.5.2">
-<h3><span class="header-section-number">12.5.2</span> Publications<a href="sediment-biogeochemistry.html#publications-8" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 
 </div>
 </div>
