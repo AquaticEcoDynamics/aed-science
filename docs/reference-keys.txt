@@ -100,6 +100,7 @@ tab:16-statevariables
 tab:16-diagnostics
 tab:16-parametersummmary
 tab:16-parameterconfig
+eq:path1
 eq:pathogen1
 eq:pathogen2
 eq:pathogen3
