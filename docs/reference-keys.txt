@@ -108,7 +108,6 @@ eq:pathogen5
 tab:20-statevariables
 tab:20-parametersummmary
 tab:20-parameterconfig
-fig:23-pic1
 fig:23-pic2
 tab:23-OMbreakdown
 eq:biogeochem1
@@ -322,7 +321,7 @@ parameter-summary-9
 optional-module-links-8
 feedbacks-to-the-host-model-8
 setup-configuration-8
-implementation-withing-the-fabm-framework
+implementation-within-the-aed-framework
 program-structure
 model-setup-boundary-conditions-parameter-definition
 model-output-post-processing
