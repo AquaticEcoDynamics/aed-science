@@ -17,22 +17,25 @@ The general balance equation for organism transport and fate is summarized in @h
 ```{=tex}
 \begin{eqnarray}
 \frac{D}{Dt}C =  \color{darkgray}{ \mathbb{M} + \mathcal{S} } \quad
-&+&   \overbrace{f_{growth}^{C} -f_{ina}^{C} - f_{set}^{C} +\hat{f}_{res}^{C}}^\text{aed_pathogen} \\ (\#eq:path1)
+&+&   \overbrace{f_{growth}^{C} -f_{mor}^{C} - f_{set}^{C} +\hat{f}_{res}^{C}}^\text{aed_pathogen} \\ (\#eq:path1)
 \end{eqnarray}
 ```
 
+where $C$ is the organic concentration (orgs m^-3^). Within the AED model framework, the transport terms are solved via hydrodynamic model transport routines and the remaining terms are simulated by the `aed_pathogens` module.
+
+The main term controlling pathogen fate is the mortality or inactivation term, $f_{mor}^{C}$:
+
 <center>
-	
 \begin{equation}
-\frac{DC}{Dt} = +C_{r}(\tau,SS_{SED},C_{SED})+[k_{g}(T,S,DOC_{L})-k_{d}(T,S,pH)-k_{l}
-(I_{0},S,DO,pH)-k_{s}(T,S,SS)-k_{p}(T)]C
-(\#eq:pathogen1)
+f_{mor}^{C} = [k_{g}(T,S,DOC_{L})-k_{d}(T,S,pH)-k_{l}(I_{0},S,DO,pH)-k_{s}(T,S,SS)-k_{p}(T)]C
+(\#eq:path2)
 \end{equation}
 </center>
 
-where $C$ is the organic concentration (orgs m^-3^). This relates organism concentration to the environmental conditions experienced that influence organism fate (including temperature, salinity, light intensity, dissolved organic carbon, oxygen and pH). This comprehensive description is usually simplified for specific applications, based on justification of the dominant processes present in any particular lake and available data for model setup and validation.
+which relates organism inactivation to the environmental conditions experienced that influence their viability (including temperature, salinity, light intensity, dissolved organic carbon, oxygen and pH). This comprehensive description is usually simplified for specific applications, based on justification of the dominant processes present in any particular waterbody and available data for model setup and validation.
 
-Within the AED model framework, the transport terms are solved via hydrodynamic model transport routines and the remaining terms are simulated by the `aed_pathogens` module. The terms for simulation of organism resuspension and inactivation are described in next.
+The terms for simulation of organism resuspension and inactivation are described in next.
+
 
 ### Process Descriptions
 
@@ -161,6 +164,7 @@ C_{r}(\tau)=\alpha_{c}\frac{(\tau - \tau_{c_{s}})}{\tau _{ref}}\frac{1}{\Delta z
 
 where, $\alpha_C$ is the rate of organism suspension (orgs m^-2^s^-1^), which occurs when the critical shear stress is exceeded in the relative computational cell.
 
++C_{r}(\tau,SS_{SED},C_{SED})+
 
 ###	Variable Summary
 
