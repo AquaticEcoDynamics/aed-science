@@ -68,9 +68,6 @@
 <script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
 <link href="libs/plotly-htmlwidgets-css-2.5.1/plotly-htmlwidgets.css" rel="stylesheet" />
 <script src="libs/plotly-main-2.5.1/plotly-latest.min.js"></script>
-<link href="libs/vis-9.1.0/vis-network.min.css" rel="stylesheet" />
-<script src="libs/vis-9.1.0/vis-network.min.js"></script>
-<script src="libs/visNetwork-binding-2.1.0/visNetwork.js"></script>
 <script src="https://hypothes.is/embed.js" async></script>
   
 
@@ -277,8 +274,7 @@ div.csl-indent {
 <li class="chapter" data-level="6.6" data-path="inorganic-nitrogen.html"><a href="inorganic-nitrogen.html#case-studies-examples-2"><i class="fa fa-check"></i><b>6.6</b> Case Studies &amp; Examples</a>
 <ul>
 <li class="chapter" data-level="6.6.1" data-path="inorganic-nitrogen.html"><a href="inorganic-nitrogen.html#case-study-yarra-river-estuary"><i class="fa fa-check"></i><b>6.6.1</b> Case Study: Yarra River Estuary</a></li>
-<li class="chapter" data-level="6.6.2" data-path="inorganic-nitrogen.html"><a href="inorganic-nitrogen.html#case-study-swan-river-estuary"><i class="fa fa-check"></i><b>6.6.2</b> Case Study: Swan River Estuary</a></li>
-<li class="chapter" data-level="6.6.3" data-path="inorganic-nitrogen.html"><a href="inorganic-nitrogen.html#publications-2"><i class="fa fa-check"></i><b>6.6.3</b> Publications</a></li>
+<li class="chapter" data-level="6.6.2" data-path="inorganic-nitrogen.html"><a href="inorganic-nitrogen.html#publications-2"><i class="fa fa-check"></i><b>6.6.2</b> Publications</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="inorganic-phosphorus.html"><a href="inorganic-phosphorus.html"><i class="fa fa-check"></i><b>7</b> Inorganic Phosphorus</a>
@@ -491,23 +487,6 @@ div.csl-indent {
 <div id="nitrification-and-denitrification-reactions" class="section level4 hasAnchor" number="6.3.1.1">
 <h4><span class="header-section-number">6.3.1.1</span> Nitrification and denitrification reactions<a href="inorganic-nitrogen.html#nitrification-and-denitrification-reactions" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>In an environment of high O<sub>2</sub>, NH<sub>4</sub><sup>+</sup> is oxidized by oxygen to NO<sub>3</sub><sup>-</sup> via nitrification. In an environment of low O<sub>2</sub>, NO<sub>3</sub><sup>-</sup> is reduced to N<sub>2</sub> via the process denitrification. O<sub>2</sub> limitation on the rate of the reaction is not included in the default setup, but can be chosen by the user, as described in the section below.</p>
-<center>
-<pre><code>## 
-## Attaching package: &#39;magrittr&#39;</code></pre>
-<pre><code>## The following object is masked from &#39;package:purrr&#39;:
-## 
-##     set_names</code></pre>
-<pre><code>## The following object is masked from &#39;package:tidyr&#39;:
-## 
-##     extract</code></pre>
-<div class="figure"><span style="display:block;" id="fig:nitrogen-1"></span>
-<div id="htmlwidget-0e020ee41c88fb528fad" style="width:100%;height:480px;" class="visNetwork html-widget"></div>
-<script type="application/json" data-for="htmlwidget-0e020ee41c88fb528fad">{"x":{"nodes":{"id":[1,2,3,4,5],"shape":["circularImage","circularImage","circularImage","circularImage","circularImage"],"image":["images/12-nitrogen/network/1.png","images/12-nitrogen/network/2.png","images/12-nitrogen/network/3.png","images/12-nitrogen/network/4.png","images/12-nitrogen/network/5.png"]},"edges":{"from":[1,2,3,4,5],"to":[2,3,4,1,3],"arrows":["to","to","to","to","from"]},"nodesToDataframe":true,"edgesToDataframe":true,"options":{"width":"100%","height":"100%","nodes":{"shape":"dot","brokenImage":"http://localhost/Images/erroe.png","shapeProperties":{"useBorderWithImage":true}},"manipulation":{"enabled":false}},"groups":null,"width":"100%","height":null,"idselection":{"enabled":false},"byselection":{"enabled":false},"main":null,"submain":null,"footer":null,"background":"rgba(0, 0, 0, 0)"},"evals":[],"jsHooks":[]}</script>
-<p class="caption">
-Figure 6.1: Summary of two main reactions in the default nitrogen model.
-</p>
-</div>
-</center>
 </div>
 <div id="nitrification" class="section level4 hasAnchor" number="6.3.1.2">
 <h4><span class="header-section-number">6.3.1.2</span> Nitrification<a href="inorganic-nitrogen.html#nitrification" class="anchor-section" aria-label="Anchor link to header"></a></h4>
@@ -536,13 +515,13 @@ f_{nitrf}^{NH_4} =R_{nitrf} \; \theta_{nitrif}^{T-20} \; {\underbrace{\Phi_{O2}^
 \right.
 \tag{6.5}
 \end{equation}\]</span>
-<p>The function is shown schematically in Figure <a href="inorganic-nitrogen.html#fig:nitrogen-2">6.2</a>.</p>
+<p>The function is shown schematically in Figure <a href="inorganic-nitrogen.html#fig:nitrogen-2">6.1</a>.</p>
 <center>
 <div class="figure"><span style="display:block;" id="fig:nitrogen-2"></span>
-<div id="htmlwidget-ced01d4cd89d34ca975e" style="width:100%;height:480px;" class="plotly html-widget"></div>
-<script type="application/json" data-for="htmlwidget-ced01d4cd89d34ca975e">{"x":{"data":[{"x":[5,6,7,7.1,7.9,8,9],"y":[0,0,0,1,1,0,0],"text":["pH: 5.0<br />Rate: 0","pH: 6.0<br />Rate: 0","pH: 7.0<br />Rate: 0","pH: 7.1<br />Rate: 1","pH: 7.9<br />Rate: 1","pH: 8.0<br />Rate: 0","pH: 9.0<br />Rate: 0"],"type":"scatter","mode":"lines","line":{"width":4.53543307086614,"color":"rgba(255,0,0,1)","dash":"solid"},"hoveron":"points","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null}],"layout":{"margin":{"t":26.2283105022831,"r":7.30593607305936,"b":45.7617268576173,"l":57.4512245745123},"plot_bgcolor":"rgba(255,255,255,1)","paper_bgcolor":"rgba(255,255,255,1)","font":{"color":"rgba(0,0,0,1)","family":"","size":26.5670402656704},"xaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[3.7,10.3],"tickmode":"array","ticktext":["4","5","6","7","8","9","10"],"tickvals":[4,5,6,7,8,9,10],"categoryorder":"array","categoryarray":["4","5","6","7","8","9","10"],"nticks":null,"ticks":"outside","tickcolor":"rgba(51,51,51,1)","ticklen":3.65296803652968,"tickwidth":0.66417600664176,"showticklabels":true,"tickfont":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187},"tickangle":-0,"showline":true,"linecolor":"rgba(0,0,0,1)","linewidth":0.66417600664176,"showgrid":false,"gridcolor":null,"gridwidth":0,"zeroline":false,"anchor":"y","title":{"text":"pH","font":{"color":"rgba(0,0,0,1)","family":"","size":17.2685761726858}},"hoverformat":".2f"},"yaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[-0.05,1.05],"tickmode":"array","ticktext":["0.00","0.25","0.50","0.75","1.00"],"tickvals":[0,0.25,0.5,0.75,1],"categoryorder":"array","categoryarray":["0.00","0.25","0.50","0.75","1.00"],"nticks":null,"ticks":"outside","tickcolor":"rgba(51,51,51,1)","ticklen":3.65296803652968,"tickwidth":0.66417600664176,"showticklabels":true,"tickfont":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187},"tickangle":-0,"showline":true,"linecolor":"rgba(0,0,0,1)","linewidth":0.66417600664176,"showgrid":false,"gridcolor":null,"gridwidth":0,"zeroline":false,"anchor":"x","title":{"text":"Rate factor","font":{"color":"rgba(0,0,0,1)","family":"","size":17.2685761726858}},"hoverformat":".2f"},"shapes":[{"type":"rect","fillcolor":null,"line":{"color":null,"width":0,"linetype":[]},"yref":"paper","xref":"paper","x0":0,"x1":1,"y0":0,"y1":1}],"showlegend":false,"legend":{"bgcolor":"rgba(255,255,255,1)","bordercolor":"transparent","borderwidth":1.88976377952756,"font":{"color":"rgba(0,0,0,1)","family":"","size":21.2536322125363}},"hovermode":"closest","barmode":"relative"},"config":{"doubleClick":"reset","modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"source":"A","attrs":{"60fa1b9da393":{"x":{},"y":{},"type":"scatter"}},"cur_data":"60fa1b9da393","visdat":{"60fa1b9da393":["function (y) ","x"]},"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-d77fda8f751504e400d3" style="width:100%;height:480px;" class="plotly html-widget"></div>
+<script type="application/json" data-for="htmlwidget-d77fda8f751504e400d3">{"x":{"data":[{"x":[5,6,7,7.1,7.9,8,9],"y":[0,0,0,1,1,0,0],"text":["pH: 5.0<br />Rate: 0","pH: 6.0<br />Rate: 0","pH: 7.0<br />Rate: 0","pH: 7.1<br />Rate: 1","pH: 7.9<br />Rate: 1","pH: 8.0<br />Rate: 0","pH: 9.0<br />Rate: 0"],"type":"scatter","mode":"lines","line":{"width":4.53543307086614,"color":"rgba(255,0,0,1)","dash":"solid"},"hoveron":"points","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null}],"layout":{"margin":{"t":26.2283105022831,"r":7.30593607305936,"b":45.7617268576173,"l":57.4512245745123},"plot_bgcolor":"rgba(255,255,255,1)","paper_bgcolor":"rgba(255,255,255,1)","font":{"color":"rgba(0,0,0,1)","family":"","size":26.5670402656704},"xaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[3.7,10.3],"tickmode":"array","ticktext":["4","5","6","7","8","9","10"],"tickvals":[4,5,6,7,8,9,10],"categoryorder":"array","categoryarray":["4","5","6","7","8","9","10"],"nticks":null,"ticks":"outside","tickcolor":"rgba(51,51,51,1)","ticklen":3.65296803652968,"tickwidth":0.66417600664176,"showticklabels":true,"tickfont":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187},"tickangle":-0,"showline":true,"linecolor":"rgba(0,0,0,1)","linewidth":0.66417600664176,"showgrid":false,"gridcolor":null,"gridwidth":0,"zeroline":false,"anchor":"y","title":{"text":"pH","font":{"color":"rgba(0,0,0,1)","family":"","size":17.2685761726858}},"hoverformat":".2f"},"yaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[-0.05,1.05],"tickmode":"array","ticktext":["0.00","0.25","0.50","0.75","1.00"],"tickvals":[0,0.25,0.5,0.75,1],"categoryorder":"array","categoryarray":["0.00","0.25","0.50","0.75","1.00"],"nticks":null,"ticks":"outside","tickcolor":"rgba(51,51,51,1)","ticklen":3.65296803652968,"tickwidth":0.66417600664176,"showticklabels":true,"tickfont":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187},"tickangle":-0,"showline":true,"linecolor":"rgba(0,0,0,1)","linewidth":0.66417600664176,"showgrid":false,"gridcolor":null,"gridwidth":0,"zeroline":false,"anchor":"x","title":{"text":"Rate factor","font":{"color":"rgba(0,0,0,1)","family":"","size":17.2685761726858}},"hoverformat":".2f"},"shapes":[{"type":"rect","fillcolor":null,"line":{"color":null,"width":0,"linetype":[]},"yref":"paper","xref":"paper","x0":0,"x1":1,"y0":0,"y1":1}],"showlegend":false,"legend":{"bgcolor":"rgba(255,255,255,1)","bordercolor":"transparent","borderwidth":1.88976377952756,"font":{"color":"rgba(0,0,0,1)","family":"","size":21.2536322125363}},"hovermode":"closest","barmode":"relative"},"config":{"doubleClick":"reset","modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"source":"A","attrs":{"799a17d4c03d":{"x":{},"y":{},"type":"scatter"}},"cur_data":"799a17d4c03d","visdat":{"799a17d4c03d":["function (y) ","x"]},"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
 <p class="caption">
-Figure 6.2: pH limitation on nitrification.
+Figure 6.1: pH limitation on nitrification.
 </p>
 </div>
 </center>
@@ -610,12 +589,12 @@ f_{sed}^{NH4}=F_{sed}^{amm} \theta_{sedamm}^{T-20}\Phi_{O2}^{amm}\left[O_2\right
 <div id="parameter-summary-2" class="section level3 hasAnchor" number="6.3.3">
 <h3><span class="header-section-number">6.3.3</span> Parameter Summary<a href="inorganic-nitrogen.html#parameter-summary-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The default parameters and settings used by this module are summarised in Table @ref(tab:nitrogen_tab1).</p>
-<div id="sldyzgzfbw" style="overflow-x:auto;overflow-y:auto;width:auto;height:500px;">
+<div id="ibfzdoqzmt" style="overflow-x:auto;overflow-y:auto;width:auto;height:500px;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#sldyzgzfbw .gt_table {
+#ibfzdoqzmt .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -640,7 +619,7 @@ f_{sed}^{NH4}=F_{sed}^{amm} \theta_{sedamm}^{T-20}\Phi_{O2}^{amm}\left[O_2\right
   border-left-color: #D3D3D3;
 }
 
-#sldyzgzfbw .gt_heading {
+#ibfzdoqzmt .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -652,7 +631,7 @@ f_{sed}^{NH4}=F_{sed}^{amm} \theta_{sedamm}^{T-20}\Phi_{O2}^{amm}\left[O_2\right
   border-right-color: #D3D3D3;
 }
 
-#sldyzgzfbw .gt_title {
+#ibfzdoqzmt .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -664,7 +643,7 @@ f_{sed}^{NH4}=F_{sed}^{amm} \theta_{sedamm}^{T-20}\Phi_{O2}^{amm}\left[O_2\right
   border-bottom-width: 0;
 }
 
-#sldyzgzfbw .gt_subtitle {
+#ibfzdoqzmt .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -676,13 +655,13 @@ f_{sed}^{NH4}=F_{sed}^{amm} \theta_{sedamm}^{T-20}\Phi_{O2}^{amm}\left[O_2\right
   border-top-width: 0;
 }
 
-#sldyzgzfbw .gt_bottom_border {
+#ibfzdoqzmt .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#sldyzgzfbw .gt_col_headings {
+#ibfzdoqzmt .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -697,7 +676,7 @@ f_{sed}^{NH4}=F_{sed}^{amm} \theta_{sedamm}^{T-20}\Phi_{O2}^{amm}\left[O_2\right
   border-right-color: #D3D3D3;
 }
 
-#sldyzgzfbw .gt_col_heading {
+#ibfzdoqzmt .gt_col_heading {
   color: #FFFFFF;
   background-color: #14759E;
   font-size: 14px;
@@ -717,7 +696,7 @@ f_{sed}^{NH4}=F_{sed}^{amm} \theta_{sedamm}^{T-20}\Phi_{O2}^{amm}\left[O_2\right
   overflow-x: hidden;
 }
 
-#sldyzgzfbw .gt_column_spanner_outer {
+#ibfzdoqzmt .gt_column_spanner_outer {
   color: #FFFFFF;
   background-color: #14759E;
   font-size: 14px;
@@ -729,15 +708,15 @@ f_{sed}^{NH4}=F_{sed}^{amm} \theta_{sedamm}^{T-20}\Phi_{O2}^{amm}\left[O_2\right
   padding-right: 4px;
 }
 
-#sldyzgzfbw .gt_column_spanner_outer:first-child {
+#ibfzdoqzmt .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#sldyzgzfbw .gt_column_spanner_outer:last-child {
+#ibfzdoqzmt .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#sldyzgzfbw .gt_column_spanner {
+#ibfzdoqzmt .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -749,7 +728,7 @@ f_{sed}^{NH4}=F_{sed}^{amm} \theta_{sedamm}^{T-20}\Phi_{O2}^{amm}\left[O_2\right
   width: 100%;
 }
 
-#sldyzgzfbw .gt_group_heading {
+#ibfzdoqzmt .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -774,7 +753,7 @@ f_{sed}^{NH4}=F_{sed}^{amm} \theta_{sedamm}^{T-20}\Phi_{O2}^{amm}\left[O_2\right
   vertical-align: middle;
 }
 
-#sldyzgzfbw .gt_empty_group_heading {
+#ibfzdoqzmt .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #D3D3D3;
@@ -789,15 +768,15 @@ f_{sed}^{NH4}=F_{sed}^{amm} \theta_{sedamm}^{T-20}\Phi_{O2}^{amm}\left[O_2\right
   vertical-align: middle;
 }
 
-#sldyzgzfbw .gt_from_md > :first-child {
+#ibfzdoqzmt .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#sldyzgzfbw .gt_from_md > :last-child {
+#ibfzdoqzmt .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#sldyzgzfbw .gt_row {
+#ibfzdoqzmt .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -816,7 +795,7 @@ f_{sed}^{NH4}=F_{sed}^{amm} \theta_{sedamm}^{T-20}\Phi_{O2}^{amm}\left[O_2\right
   overflow-x: hidden;
 }
 
-#sldyzgzfbw .gt_stub {
+#ibfzdoqzmt .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -829,7 +808,7 @@ f_{sed}^{NH4}=F_{sed}^{amm} \theta_{sedamm}^{T-20}\Phi_{O2}^{amm}\left[O_2\right
   padding-right: 5px;
 }
 
-#sldyzgzfbw .gt_stub_row_group {
+#ibfzdoqzmt .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -843,11 +822,11 @@ f_{sed}^{NH4}=F_{sed}^{amm} \theta_{sedamm}^{T-20}\Phi_{O2}^{amm}\left[O_2\right
   vertical-align: top;
 }
 
-#sldyzgzfbw .gt_row_group_first td {
+#ibfzdoqzmt .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#sldyzgzfbw .gt_summary_row {
+#ibfzdoqzmt .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -857,16 +836,16 @@ f_{sed}^{NH4}=F_{sed}^{amm} \theta_{sedamm}^{T-20}\Phi_{O2}^{amm}\left[O_2\right
   padding-right: 5px;
 }
 
-#sldyzgzfbw .gt_first_summary_row {
+#ibfzdoqzmt .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#sldyzgzfbw .gt_first_summary_row.thick {
+#ibfzdoqzmt .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#sldyzgzfbw .gt_last_summary_row {
+#ibfzdoqzmt .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -876,7 +855,7 @@ f_{sed}^{NH4}=F_{sed}^{amm} \theta_{sedamm}^{T-20}\Phi_{O2}^{amm}\left[O_2\right
   border-bottom-color: #D3D3D3;
 }
 
-#sldyzgzfbw .gt_grand_summary_row {
+#ibfzdoqzmt .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -886,7 +865,7 @@ f_{sed}^{NH4}=F_{sed}^{amm} \theta_{sedamm}^{T-20}\Phi_{O2}^{amm}\left[O_2\right
   padding-right: 5px;
 }
 
-#sldyzgzfbw .gt_first_grand_summary_row {
+#ibfzdoqzmt .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -896,11 +875,11 @@ f_{sed}^{NH4}=F_{sed}^{amm} \theta_{sedamm}^{T-20}\Phi_{O2}^{amm}\left[O_2\right
   border-top-color: #D3D3D3;
 }
 
-#sldyzgzfbw .gt_striped {
+#ibfzdoqzmt .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#sldyzgzfbw .gt_table_body {
+#ibfzdoqzmt .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -909,7 +888,7 @@ f_{sed}^{NH4}=F_{sed}^{amm} \theta_{sedamm}^{T-20}\Phi_{O2}^{amm}\left[O_2\right
   border-bottom-color: #D3D3D3;
 }
 
-#sldyzgzfbw .gt_footnotes {
+#ibfzdoqzmt .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -923,7 +902,7 @@ f_{sed}^{NH4}=F_{sed}^{amm} \theta_{sedamm}^{T-20}\Phi_{O2}^{amm}\left[O_2\right
   border-right-color: #D3D3D3;
 }
 
-#sldyzgzfbw .gt_footnote {
+#ibfzdoqzmt .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-left: 4px;
@@ -932,7 +911,7 @@ f_{sed}^{NH4}=F_{sed}^{amm} \theta_{sedamm}^{T-20}\Phi_{O2}^{amm}\left[O_2\right
   padding-right: 5px;
 }
 
-#sldyzgzfbw .gt_sourcenotes {
+#ibfzdoqzmt .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -946,7 +925,7 @@ f_{sed}^{NH4}=F_{sed}^{amm} \theta_{sedamm}^{T-20}\Phi_{O2}^{amm}\left[O_2\right
   border-right-color: #D3D3D3;
 }
 
-#sldyzgzfbw .gt_sourcenote {
+#ibfzdoqzmt .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -954,60 +933,60 @@ f_{sed}^{NH4}=F_{sed}^{amm} \theta_{sedamm}^{T-20}\Phi_{O2}^{amm}\left[O_2\right
   padding-right: 5px;
 }
 
-#sldyzgzfbw .gt_left {
+#ibfzdoqzmt .gt_left {
   text-align: left;
 }
 
-#sldyzgzfbw .gt_center {
+#ibfzdoqzmt .gt_center {
   text-align: center;
 }
 
-#sldyzgzfbw .gt_right {
+#ibfzdoqzmt .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#sldyzgzfbw .gt_font_normal {
+#ibfzdoqzmt .gt_font_normal {
   font-weight: normal;
 }
 
-#sldyzgzfbw .gt_font_bold {
+#ibfzdoqzmt .gt_font_bold {
   font-weight: bold;
 }
 
-#sldyzgzfbw .gt_font_italic {
+#ibfzdoqzmt .gt_font_italic {
   font-style: italic;
 }
 
-#sldyzgzfbw .gt_super {
+#ibfzdoqzmt .gt_super {
   font-size: 65%;
 }
 
-#sldyzgzfbw .gt_footnote_marks {
+#ibfzdoqzmt .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
   font-size: 75%;
   vertical-align: 0.4em;
 }
 
-#sldyzgzfbw .gt_asterisk {
+#ibfzdoqzmt .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#sldyzgzfbw .gt_slash_mark {
+#ibfzdoqzmt .gt_slash_mark {
   font-size: 0.7em;
   line-height: 0.7em;
   vertical-align: 0.15em;
 }
 
-#sldyzgzfbw .gt_fraction_numerator {
+#ibfzdoqzmt .gt_fraction_numerator {
   font-size: 0.6em;
   line-height: 0.6em;
   vertical-align: 0.45em;
 }
 
-#sldyzgzfbw .gt_fraction_denominator {
+#ibfzdoqzmt .gt_fraction_denominator {
   font-size: 0.6em;
   line-height: 0.6em;
   vertical-align: -0.05em;
@@ -1347,7 +1326,7 @@ f_{sed}^{N_{2}O}=F_{sed}^{N_{2}O}\theta_{sedamm}^{T-20}\Phi_{O_{2}}^{N_{2}O}[O_2
 <div class="figure"><span style="display:block;" id="fig:nitrogen-3"></span>
 <img src="images/12-nitrogen/picture2.png" alt="Nitrogen oxidation pathways." width="80%" />
 <p class="caption">
-Figure 6.3: Nitrogen oxidation pathways.
+Figure 6.2: Nitrogen oxidation pathways.
 </p>
 </div>
 </center>
@@ -1390,7 +1369,7 @@ f_{Nitrousation}=\frac{1}{2}f_{Ammonium\ oxidation}\frac{K_{part\ ammox}}{K_{par
 <div class="figure"><span style="display:block;" id="fig:nitrogen-4"></span>
 <img src="images/12-nitrogen/picture3.png" alt="Anammox pathways." width="50%" />
 <p class="caption">
-Figure 6.4: Anammox pathways.
+Figure 6.3: Anammox pathways.
 </p>
 </div>
 </center>
@@ -1405,12 +1384,12 @@ f_{deammonification}=R_{{NH}_4{NO}_2}\times{NO}_2^-\times{NH}_4^+\times\frac{K_{
 <div id="state-variables-2" class="section level4 hasAnchor" number="6.4.3.1">
 <h4><span class="header-section-number">6.4.3.1</span> State variables<a href="inorganic-nitrogen.html#state-variables-2" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>The following state variables are relevant to the nitrogen module, and dependent variables from other modules (Table x).</p>
-<div id="wqfetwlfmy" style="overflow-x:auto;overflow-y:auto;width:100%;height:auto;">
+<div id="bfewpiemun" style="overflow-x:auto;overflow-y:auto;width:100%;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#wqfetwlfmy .gt_table {
+#bfewpiemun .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -1435,7 +1414,7 @@ f_{deammonification}=R_{{NH}_4{NO}_2}\times{NO}_2^-\times{NH}_4^+\times\frac{K_{
   border-left-color: #D3D3D3;
 }
 
-#wqfetwlfmy .gt_heading {
+#bfewpiemun .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1447,7 +1426,7 @@ f_{deammonification}=R_{{NH}_4{NO}_2}\times{NO}_2^-\times{NH}_4^+\times\frac{K_{
   border-right-color: #D3D3D3;
 }
 
-#wqfetwlfmy .gt_title {
+#bfewpiemun .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1459,7 +1438,7 @@ f_{deammonification}=R_{{NH}_4{NO}_2}\times{NO}_2^-\times{NH}_4^+\times\frac{K_{
   border-bottom-width: 0;
 }
 
-#wqfetwlfmy .gt_subtitle {
+#bfewpiemun .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1471,13 +1450,13 @@ f_{deammonification}=R_{{NH}_4{NO}_2}\times{NO}_2^-\times{NH}_4^+\times\frac{K_{
   border-top-width: 0;
 }
 
-#wqfetwlfmy .gt_bottom_border {
+#bfewpiemun .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#wqfetwlfmy .gt_col_headings {
+#bfewpiemun .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1492,7 +1471,7 @@ f_{deammonification}=R_{{NH}_4{NO}_2}\times{NO}_2^-\times{NH}_4^+\times\frac{K_{
   border-right-color: #D3D3D3;
 }
 
-#wqfetwlfmy .gt_col_heading {
+#bfewpiemun .gt_col_heading {
   color: #FFFFFF;
   background-color: #14759E;
   font-size: 14px;
@@ -1512,7 +1491,7 @@ f_{deammonification}=R_{{NH}_4{NO}_2}\times{NO}_2^-\times{NH}_4^+\times\frac{K_{
   overflow-x: hidden;
 }
 
-#wqfetwlfmy .gt_column_spanner_outer {
+#bfewpiemun .gt_column_spanner_outer {
   color: #FFFFFF;
   background-color: #14759E;
   font-size: 14px;
@@ -1524,15 +1503,15 @@ f_{deammonification}=R_{{NH}_4{NO}_2}\times{NO}_2^-\times{NH}_4^+\times\frac{K_{
   padding-right: 4px;
 }
 
-#wqfetwlfmy .gt_column_spanner_outer:first-child {
+#bfewpiemun .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#wqfetwlfmy .gt_column_spanner_outer:last-child {
+#bfewpiemun .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#wqfetwlfmy .gt_column_spanner {
+#bfewpiemun .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1544,7 +1523,7 @@ f_{deammonification}=R_{{NH}_4{NO}_2}\times{NO}_2^-\times{NH}_4^+\times\frac{K_{
   width: 100%;
 }
 
-#wqfetwlfmy .gt_group_heading {
+#bfewpiemun .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1569,7 +1548,7 @@ f_{deammonification}=R_{{NH}_4{NO}_2}\times{NO}_2^-\times{NH}_4^+\times\frac{K_{
   vertical-align: middle;
 }
 
-#wqfetwlfmy .gt_empty_group_heading {
+#bfewpiemun .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #D3D3D3;
@@ -1584,15 +1563,15 @@ f_{deammonification}=R_{{NH}_4{NO}_2}\times{NO}_2^-\times{NH}_4^+\times\frac{K_{
   vertical-align: middle;
 }
 
-#wqfetwlfmy .gt_from_md > :first-child {
+#bfewpiemun .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#wqfetwlfmy .gt_from_md > :last-child {
+#bfewpiemun .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#wqfetwlfmy .gt_row {
+#bfewpiemun .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1611,7 +1590,7 @@ f_{deammonification}=R_{{NH}_4{NO}_2}\times{NO}_2^-\times{NH}_4^+\times\frac{K_{
   overflow-x: hidden;
 }
 
-#wqfetwlfmy .gt_stub {
+#bfewpiemun .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1624,7 +1603,7 @@ f_{deammonification}=R_{{NH}_4{NO}_2}\times{NO}_2^-\times{NH}_4^+\times\frac{K_{
   padding-right: 5px;
 }
 
-#wqfetwlfmy .gt_stub_row_group {
+#bfewpiemun .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1638,11 +1617,11 @@ f_{deammonification}=R_{{NH}_4{NO}_2}\times{NO}_2^-\times{NH}_4^+\times\frac{K_{
   vertical-align: top;
 }
 
-#wqfetwlfmy .gt_row_group_first td {
+#bfewpiemun .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#wqfetwlfmy .gt_summary_row {
+#bfewpiemun .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1652,16 +1631,16 @@ f_{deammonification}=R_{{NH}_4{NO}_2}\times{NO}_2^-\times{NH}_4^+\times\frac{K_{
   padding-right: 5px;
 }
 
-#wqfetwlfmy .gt_first_summary_row {
+#bfewpiemun .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#wqfetwlfmy .gt_first_summary_row.thick {
+#bfewpiemun .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#wqfetwlfmy .gt_last_summary_row {
+#bfewpiemun .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1671,7 +1650,7 @@ f_{deammonification}=R_{{NH}_4{NO}_2}\times{NO}_2^-\times{NH}_4^+\times\frac{K_{
   border-bottom-color: #D3D3D3;
 }
 
-#wqfetwlfmy .gt_grand_summary_row {
+#bfewpiemun .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1681,7 +1660,7 @@ f_{deammonification}=R_{{NH}_4{NO}_2}\times{NO}_2^-\times{NH}_4^+\times\frac{K_{
   padding-right: 5px;
 }
 
-#wqfetwlfmy .gt_first_grand_summary_row {
+#bfewpiemun .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1691,11 +1670,11 @@ f_{deammonification}=R_{{NH}_4{NO}_2}\times{NO}_2^-\times{NH}_4^+\times\frac{K_{
   border-top-color: #D3D3D3;
 }
 
-#wqfetwlfmy .gt_striped {
+#bfewpiemun .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#wqfetwlfmy .gt_table_body {
+#bfewpiemun .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1704,7 +1683,7 @@ f_{deammonification}=R_{{NH}_4{NO}_2}\times{NO}_2^-\times{NH}_4^+\times\frac{K_{
   border-bottom-color: #D3D3D3;
 }
 
-#wqfetwlfmy .gt_footnotes {
+#bfewpiemun .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1718,7 +1697,7 @@ f_{deammonification}=R_{{NH}_4{NO}_2}\times{NO}_2^-\times{NH}_4^+\times\frac{K_{
   border-right-color: #D3D3D3;
 }
 
-#wqfetwlfmy .gt_footnote {
+#bfewpiemun .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-left: 4px;
@@ -1727,7 +1706,7 @@ f_{deammonification}=R_{{NH}_4{NO}_2}\times{NO}_2^-\times{NH}_4^+\times\frac{K_{
   padding-right: 5px;
 }
 
-#wqfetwlfmy .gt_sourcenotes {
+#bfewpiemun .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1741,7 +1720,7 @@ f_{deammonification}=R_{{NH}_4{NO}_2}\times{NO}_2^-\times{NH}_4^+\times\frac{K_{
   border-right-color: #D3D3D3;
 }
 
-#wqfetwlfmy .gt_sourcenote {
+#bfewpiemun .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1749,60 +1728,60 @@ f_{deammonification}=R_{{NH}_4{NO}_2}\times{NO}_2^-\times{NH}_4^+\times\frac{K_{
   padding-right: 5px;
 }
 
-#wqfetwlfmy .gt_left {
+#bfewpiemun .gt_left {
   text-align: left;
 }
 
-#wqfetwlfmy .gt_center {
+#bfewpiemun .gt_center {
   text-align: center;
 }
 
-#wqfetwlfmy .gt_right {
+#bfewpiemun .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#wqfetwlfmy .gt_font_normal {
+#bfewpiemun .gt_font_normal {
   font-weight: normal;
 }
 
-#wqfetwlfmy .gt_font_bold {
+#bfewpiemun .gt_font_bold {
   font-weight: bold;
 }
 
-#wqfetwlfmy .gt_font_italic {
+#bfewpiemun .gt_font_italic {
   font-style: italic;
 }
 
-#wqfetwlfmy .gt_super {
+#bfewpiemun .gt_super {
   font-size: 65%;
 }
 
-#wqfetwlfmy .gt_footnote_marks {
+#bfewpiemun .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
   font-size: 75%;
   vertical-align: 0.4em;
 }
 
-#wqfetwlfmy .gt_asterisk {
+#bfewpiemun .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#wqfetwlfmy .gt_slash_mark {
+#bfewpiemun .gt_slash_mark {
   font-size: 0.7em;
   line-height: 0.7em;
   vertical-align: 0.15em;
 }
 
-#wqfetwlfmy .gt_fraction_numerator {
+#bfewpiemun .gt_fraction_numerator {
   font-size: 0.6em;
   line-height: 0.6em;
   vertical-align: 0.45em;
 }
 
-#wqfetwlfmy .gt_fraction_denominator {
+#bfewpiemun .gt_fraction_denominator {
   font-size: 0.6em;
   line-height: 0.6em;
   vertical-align: -0.05em;
@@ -1908,12 +1887,12 @@ f_{deammonification}=R_{{NH}_4{NO}_2}\times{NO}_2^-\times{NH}_4^+\times\frac{K_{
 <div id="parameter-summary-3" class="section level3 hasAnchor" number="6.4.4">
 <h3><span class="header-section-number">6.4.4</span> Parameter summary<a href="inorganic-nitrogen.html#parameter-summary-3" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>An overview of the parameters used in the nitrogen module for users selecting simN2O 1 or 2, are summarised in Table X.</p>
-<div id="mvhkihrdih" style="overflow-x:auto;overflow-y:auto;width:100%;height:500px;">
+<div id="yfqsgolkgo" style="overflow-x:auto;overflow-y:auto;width:100%;height:500px;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#mvhkihrdih .gt_table {
+#yfqsgolkgo .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -1938,7 +1917,7 @@ f_{deammonification}=R_{{NH}_4{NO}_2}\times{NO}_2^-\times{NH}_4^+\times\frac{K_{
   border-left-color: #D3D3D3;
 }
 
-#mvhkihrdih .gt_heading {
+#yfqsgolkgo .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1950,7 +1929,7 @@ f_{deammonification}=R_{{NH}_4{NO}_2}\times{NO}_2^-\times{NH}_4^+\times\frac{K_{
   border-right-color: #D3D3D3;
 }
 
-#mvhkihrdih .gt_title {
+#yfqsgolkgo .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1962,7 +1941,7 @@ f_{deammonification}=R_{{NH}_4{NO}_2}\times{NO}_2^-\times{NH}_4^+\times\frac{K_{
   border-bottom-width: 0;
 }
 
-#mvhkihrdih .gt_subtitle {
+#yfqsgolkgo .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1974,13 +1953,13 @@ f_{deammonification}=R_{{NH}_4{NO}_2}\times{NO}_2^-\times{NH}_4^+\times\frac{K_{
   border-top-width: 0;
 }
 
-#mvhkihrdih .gt_bottom_border {
+#yfqsgolkgo .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#mvhkihrdih .gt_col_headings {
+#yfqsgolkgo .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1995,7 +1974,7 @@ f_{deammonification}=R_{{NH}_4{NO}_2}\times{NO}_2^-\times{NH}_4^+\times\frac{K_{
   border-right-color: #D3D3D3;
 }
 
-#mvhkihrdih .gt_col_heading {
+#yfqsgolkgo .gt_col_heading {
   color: #FFFFFF;
   background-color: #14759E;
   font-size: 14px;
@@ -2015,7 +1994,7 @@ f_{deammonification}=R_{{NH}_4{NO}_2}\times{NO}_2^-\times{NH}_4^+\times\frac{K_{
   overflow-x: hidden;
 }
 
-#mvhkihrdih .gt_column_spanner_outer {
+#yfqsgolkgo .gt_column_spanner_outer {
   color: #FFFFFF;
   background-color: #14759E;
   font-size: 14px;
@@ -2027,15 +2006,15 @@ f_{deammonification}=R_{{NH}_4{NO}_2}\times{NO}_2^-\times{NH}_4^+\times\frac{K_{
   padding-right: 4px;
 }
 
-#mvhkihrdih .gt_column_spanner_outer:first-child {
+#yfqsgolkgo .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#mvhkihrdih .gt_column_spanner_outer:last-child {
+#yfqsgolkgo .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#mvhkihrdih .gt_column_spanner {
+#yfqsgolkgo .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -2047,7 +2026,7 @@ f_{deammonification}=R_{{NH}_4{NO}_2}\times{NO}_2^-\times{NH}_4^+\times\frac{K_{
   width: 100%;
 }
 
-#mvhkihrdih .gt_group_heading {
+#yfqsgolkgo .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2072,7 +2051,7 @@ f_{deammonification}=R_{{NH}_4{NO}_2}\times{NO}_2^-\times{NH}_4^+\times\frac{K_{
   vertical-align: middle;
 }
 
-#mvhkihrdih .gt_empty_group_heading {
+#yfqsgolkgo .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #D3D3D3;
@@ -2087,15 +2066,15 @@ f_{deammonification}=R_{{NH}_4{NO}_2}\times{NO}_2^-\times{NH}_4^+\times\frac{K_{
   vertical-align: middle;
 }
 
-#mvhkihrdih .gt_from_md > :first-child {
+#yfqsgolkgo .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#mvhkihrdih .gt_from_md > :last-child {
+#yfqsgolkgo .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#mvhkihrdih .gt_row {
+#yfqsgolkgo .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2114,7 +2093,7 @@ f_{deammonification}=R_{{NH}_4{NO}_2}\times{NO}_2^-\times{NH}_4^+\times\frac{K_{
   overflow-x: hidden;
 }
 
-#mvhkihrdih .gt_stub {
+#yfqsgolkgo .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2127,7 +2106,7 @@ f_{deammonification}=R_{{NH}_4{NO}_2}\times{NO}_2^-\times{NH}_4^+\times\frac{K_{
   padding-right: 5px;
 }
 
-#mvhkihrdih .gt_stub_row_group {
+#yfqsgolkgo .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2141,11 +2120,11 @@ f_{deammonification}=R_{{NH}_4{NO}_2}\times{NO}_2^-\times{NH}_4^+\times\frac{K_{
   vertical-align: top;
 }
 
-#mvhkihrdih .gt_row_group_first td {
+#yfqsgolkgo .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#mvhkihrdih .gt_summary_row {
+#yfqsgolkgo .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2155,16 +2134,16 @@ f_{deammonification}=R_{{NH}_4{NO}_2}\times{NO}_2^-\times{NH}_4^+\times\frac{K_{
   padding-right: 5px;
 }
 
-#mvhkihrdih .gt_first_summary_row {
+#yfqsgolkgo .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#mvhkihrdih .gt_first_summary_row.thick {
+#yfqsgolkgo .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#mvhkihrdih .gt_last_summary_row {
+#yfqsgolkgo .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2174,7 +2153,7 @@ f_{deammonification}=R_{{NH}_4{NO}_2}\times{NO}_2^-\times{NH}_4^+\times\frac{K_{
   border-bottom-color: #D3D3D3;
 }
 
-#mvhkihrdih .gt_grand_summary_row {
+#yfqsgolkgo .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2184,7 +2163,7 @@ f_{deammonification}=R_{{NH}_4{NO}_2}\times{NO}_2^-\times{NH}_4^+\times\frac{K_{
   padding-right: 5px;
 }
 
-#mvhkihrdih .gt_first_grand_summary_row {
+#yfqsgolkgo .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2194,11 +2173,11 @@ f_{deammonification}=R_{{NH}_4{NO}_2}\times{NO}_2^-\times{NH}_4^+\times\frac{K_{
   border-top-color: #D3D3D3;
 }
 
-#mvhkihrdih .gt_striped {
+#yfqsgolkgo .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#mvhkihrdih .gt_table_body {
+#yfqsgolkgo .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2207,7 +2186,7 @@ f_{deammonification}=R_{{NH}_4{NO}_2}\times{NO}_2^-\times{NH}_4^+\times\frac{K_{
   border-bottom-color: #D3D3D3;
 }
 
-#mvhkihrdih .gt_footnotes {
+#yfqsgolkgo .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2221,7 +2200,7 @@ f_{deammonification}=R_{{NH}_4{NO}_2}\times{NO}_2^-\times{NH}_4^+\times\frac{K_{
   border-right-color: #D3D3D3;
 }
 
-#mvhkihrdih .gt_footnote {
+#yfqsgolkgo .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-left: 4px;
@@ -2230,7 +2209,7 @@ f_{deammonification}=R_{{NH}_4{NO}_2}\times{NO}_2^-\times{NH}_4^+\times\frac{K_{
   padding-right: 5px;
 }
 
-#mvhkihrdih .gt_sourcenotes {
+#yfqsgolkgo .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2244,7 +2223,7 @@ f_{deammonification}=R_{{NH}_4{NO}_2}\times{NO}_2^-\times{NH}_4^+\times\frac{K_{
   border-right-color: #D3D3D3;
 }
 
-#mvhkihrdih .gt_sourcenote {
+#yfqsgolkgo .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -2252,60 +2231,60 @@ f_{deammonification}=R_{{NH}_4{NO}_2}\times{NO}_2^-\times{NH}_4^+\times\frac{K_{
   padding-right: 5px;
 }
 
-#mvhkihrdih .gt_left {
+#yfqsgolkgo .gt_left {
   text-align: left;
 }
 
-#mvhkihrdih .gt_center {
+#yfqsgolkgo .gt_center {
   text-align: center;
 }
 
-#mvhkihrdih .gt_right {
+#yfqsgolkgo .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#mvhkihrdih .gt_font_normal {
+#yfqsgolkgo .gt_font_normal {
   font-weight: normal;
 }
 
-#mvhkihrdih .gt_font_bold {
+#yfqsgolkgo .gt_font_bold {
   font-weight: bold;
 }
 
-#mvhkihrdih .gt_font_italic {
+#yfqsgolkgo .gt_font_italic {
   font-style: italic;
 }
 
-#mvhkihrdih .gt_super {
+#yfqsgolkgo .gt_super {
   font-size: 65%;
 }
 
-#mvhkihrdih .gt_footnote_marks {
+#yfqsgolkgo .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
   font-size: 75%;
   vertical-align: 0.4em;
 }
 
-#mvhkihrdih .gt_asterisk {
+#yfqsgolkgo .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#mvhkihrdih .gt_slash_mark {
+#yfqsgolkgo .gt_slash_mark {
   font-size: 0.7em;
   line-height: 0.7em;
   vertical-align: 0.15em;
 }
 
-#mvhkihrdih .gt_fraction_numerator {
+#yfqsgolkgo .gt_fraction_numerator {
   font-size: 0.6em;
   line-height: 0.6em;
   vertical-align: 0.45em;
 }
 
-#mvhkihrdih .gt_fraction_denominator {
+#yfqsgolkgo .gt_fraction_denominator {
   font-size: 0.6em;
   line-height: 0.6em;
   vertical-align: -0.05em;
@@ -2692,28 +2671,33 @@ f_{deammonification}=R_{{NH}_4{NO}_2}\times{NO}_2^-\times{NH}_4^+\times\frac{K_{
 <h2><span class="header-section-number">6.6</span> Case Studies &amp; Examples<a href="inorganic-nitrogen.html#case-studies-examples-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div id="case-study-yarra-river-estuary" class="section level3 hasAnchor" number="6.6.1">
 <h3><span class="header-section-number">6.6.1</span> Case Study: Yarra River Estuary<a href="inorganic-nitrogen.html#case-study-yarra-river-estuary" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Bruce et al (2015) demonstrate the base model in a 3D model of Yarra River estuary. The model results are shown in Figure X.</p>
+<p>Bruce et al. (2015) demonstrate the base nitrogen setup in a 3D model of Yarra River estuary, an urban riverine estuary in Melbourne, Australia, that experiences dynamic movement of a hypoxic salt-wedge based on river flow and tidal interactions.</p>
+<p><br></p>
+<center>
+<div id="htmlwidget-6f904e7d19162a45e6fe" style="width:500px;height:385px;" class="leaflet html-widget"></div>
+<script type="application/json" data-for="htmlwidget-6f904e7d19162a45e6fe">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"setView":[[-37.8525,144.9083],12,[]],"calls":[{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"https://openstreetmap.org\">OpenStreetMap<\/a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA<\/a>"}]},{"method":"addMarkers","args":[-37.8525,144.9083,null,null,null,{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},"Yarra River",null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]}],"limits":{"lat":[-37.8525,-37.8525],"lng":[144.9083,144.9083]}},"evals":[],"jsHooks":[]}</script>
+</center>
+<p><br></p>
+<p>The results of the simulation are shown in Figure X, highlighting the change in surface and bottom NH4, NO3 and organic nitrogen pools along the estuary length.</p>
 <center>
 <div class="figure"><span style="display:block;" id="fig:nitrogen-5"></span>
 <img src="images/12-nitrogen/picture4.png" alt="Time series data for surface (blue) and bottom (red) ammonium, nitrate, dissolved and particulate organic nitrogen for (a) Morell Bridge, (b) Scotch College, (c) Bridge Road. Crosses and asterisks represent observed data for surface and bottom concentrations respectively and solid lines simulated data." width="100%" />
 <p class="caption">
-Figure 6.5: Time series data for surface (blue) and bottom (red) ammonium, nitrate, dissolved and particulate organic nitrogen for (a) Morell Bridge, (b) Scotch College, (c) Bridge Road. Crosses and asterisks represent observed data for surface and bottom concentrations respectively and solid lines simulated data.
+Figure 6.4: Time series data for surface (blue) and bottom (red) ammonium, nitrate, dissolved and particulate organic nitrogen for (a) Morell Bridge, (b) Scotch College, (c) Bridge Road. Crosses and asterisks represent observed data for surface and bottom concentrations respectively and solid lines simulated data.
 </p>
 </div>
 </center>
+<!-- ### Case Study: Swan River Estuary -->
+<!-- @huang2019 demonstrate the base model in a 3D model of Swan River estuary. A transect of the model results are shown in Figure X. -->
 </div>
-<div id="case-study-swan-river-estuary" class="section level3 hasAnchor" number="6.6.2">
-<h3><span class="header-section-number">6.6.2</span> Case Study: Swan River Estuary<a href="inorganic-nitrogen.html#case-study-swan-river-estuary" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p><span class="citation">Huang et al. (<a href="#ref-huang2019" role="doc-biblioref">2019</a>)</span> demonstrate the base model in a 3D model of Swan River estuary. A transect of the model results are shown in Figure X.</p>
-</div>
-<div id="publications-2" class="section level3 hasAnchor" number="6.6.3">
-<h3><span class="header-section-number">6.6.3</span> Publications<a href="inorganic-nitrogen.html#publications-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div id="uxfowtekwt" style="overflow-x:auto;overflow-y:auto;width:100%;height:500px;">
+<div id="publications-2" class="section level3 hasAnchor" number="6.6.2">
+<h3><span class="header-section-number">6.6.2</span> Publications<a href="inorganic-nitrogen.html#publications-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="xinjzjvszt" style="overflow-x:auto;overflow-y:auto;width:100%;height:500px;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#uxfowtekwt .gt_table {
+#xinjzjvszt .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -2738,7 +2722,7 @@ Figure 6.5: Time series data for surface (blue) and bottom (red) ammonium, nitra
   border-left-color: #D3D3D3;
 }
 
-#uxfowtekwt .gt_heading {
+#xinjzjvszt .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -2750,7 +2734,7 @@ Figure 6.5: Time series data for surface (blue) and bottom (red) ammonium, nitra
   border-right-color: #D3D3D3;
 }
 
-#uxfowtekwt .gt_title {
+#xinjzjvszt .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -2762,7 +2746,7 @@ Figure 6.5: Time series data for surface (blue) and bottom (red) ammonium, nitra
   border-bottom-width: 0;
 }
 
-#uxfowtekwt .gt_subtitle {
+#xinjzjvszt .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -2774,13 +2758,13 @@ Figure 6.5: Time series data for surface (blue) and bottom (red) ammonium, nitra
   border-top-width: 0;
 }
 
-#uxfowtekwt .gt_bottom_border {
+#xinjzjvszt .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#uxfowtekwt .gt_col_headings {
+#xinjzjvszt .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2795,7 +2779,7 @@ Figure 6.5: Time series data for surface (blue) and bottom (red) ammonium, nitra
   border-right-color: #D3D3D3;
 }
 
-#uxfowtekwt .gt_col_heading {
+#xinjzjvszt .gt_col_heading {
   color: #FFFFFF;
   background-color: #14759E;
   font-size: 14px;
@@ -2815,7 +2799,7 @@ Figure 6.5: Time series data for surface (blue) and bottom (red) ammonium, nitra
   overflow-x: hidden;
 }
 
-#uxfowtekwt .gt_column_spanner_outer {
+#xinjzjvszt .gt_column_spanner_outer {
   color: #FFFFFF;
   background-color: #14759E;
   font-size: 14px;
@@ -2827,15 +2811,15 @@ Figure 6.5: Time series data for surface (blue) and bottom (red) ammonium, nitra
   padding-right: 4px;
 }
 
-#uxfowtekwt .gt_column_spanner_outer:first-child {
+#xinjzjvszt .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#uxfowtekwt .gt_column_spanner_outer:last-child {
+#xinjzjvszt .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#uxfowtekwt .gt_column_spanner {
+#xinjzjvszt .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -2847,7 +2831,7 @@ Figure 6.5: Time series data for surface (blue) and bottom (red) ammonium, nitra
   width: 100%;
 }
 
-#uxfowtekwt .gt_group_heading {
+#xinjzjvszt .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2872,7 +2856,7 @@ Figure 6.5: Time series data for surface (blue) and bottom (red) ammonium, nitra
   vertical-align: middle;
 }
 
-#uxfowtekwt .gt_empty_group_heading {
+#xinjzjvszt .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #D3D3D3;
@@ -2887,15 +2871,15 @@ Figure 6.5: Time series data for surface (blue) and bottom (red) ammonium, nitra
   vertical-align: middle;
 }
 
-#uxfowtekwt .gt_from_md > :first-child {
+#xinjzjvszt .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#uxfowtekwt .gt_from_md > :last-child {
+#xinjzjvszt .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#uxfowtekwt .gt_row {
+#xinjzjvszt .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2914,7 +2898,7 @@ Figure 6.5: Time series data for surface (blue) and bottom (red) ammonium, nitra
   overflow-x: hidden;
 }
 
-#uxfowtekwt .gt_stub {
+#xinjzjvszt .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2927,7 +2911,7 @@ Figure 6.5: Time series data for surface (blue) and bottom (red) ammonium, nitra
   padding-right: 5px;
 }
 
-#uxfowtekwt .gt_stub_row_group {
+#xinjzjvszt .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2941,11 +2925,11 @@ Figure 6.5: Time series data for surface (blue) and bottom (red) ammonium, nitra
   vertical-align: top;
 }
 
-#uxfowtekwt .gt_row_group_first td {
+#xinjzjvszt .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#uxfowtekwt .gt_summary_row {
+#xinjzjvszt .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2955,16 +2939,16 @@ Figure 6.5: Time series data for surface (blue) and bottom (red) ammonium, nitra
   padding-right: 5px;
 }
 
-#uxfowtekwt .gt_first_summary_row {
+#xinjzjvszt .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#uxfowtekwt .gt_first_summary_row.thick {
+#xinjzjvszt .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#uxfowtekwt .gt_last_summary_row {
+#xinjzjvszt .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2974,7 +2958,7 @@ Figure 6.5: Time series data for surface (blue) and bottom (red) ammonium, nitra
   border-bottom-color: #D3D3D3;
 }
 
-#uxfowtekwt .gt_grand_summary_row {
+#xinjzjvszt .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2984,7 +2968,7 @@ Figure 6.5: Time series data for surface (blue) and bottom (red) ammonium, nitra
   padding-right: 5px;
 }
 
-#uxfowtekwt .gt_first_grand_summary_row {
+#xinjzjvszt .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2994,11 +2978,11 @@ Figure 6.5: Time series data for surface (blue) and bottom (red) ammonium, nitra
   border-top-color: #D3D3D3;
 }
 
-#uxfowtekwt .gt_striped {
+#xinjzjvszt .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#uxfowtekwt .gt_table_body {
+#xinjzjvszt .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -3007,7 +2991,7 @@ Figure 6.5: Time series data for surface (blue) and bottom (red) ammonium, nitra
   border-bottom-color: #D3D3D3;
 }
 
-#uxfowtekwt .gt_footnotes {
+#xinjzjvszt .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -3021,7 +3005,7 @@ Figure 6.5: Time series data for surface (blue) and bottom (red) ammonium, nitra
   border-right-color: #D3D3D3;
 }
 
-#uxfowtekwt .gt_footnote {
+#xinjzjvszt .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-left: 4px;
@@ -3030,7 +3014,7 @@ Figure 6.5: Time series data for surface (blue) and bottom (red) ammonium, nitra
   padding-right: 5px;
 }
 
-#uxfowtekwt .gt_sourcenotes {
+#xinjzjvszt .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -3044,7 +3028,7 @@ Figure 6.5: Time series data for surface (blue) and bottom (red) ammonium, nitra
   border-right-color: #D3D3D3;
 }
 
-#uxfowtekwt .gt_sourcenote {
+#xinjzjvszt .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -3052,60 +3036,60 @@ Figure 6.5: Time series data for surface (blue) and bottom (red) ammonium, nitra
   padding-right: 5px;
 }
 
-#uxfowtekwt .gt_left {
+#xinjzjvszt .gt_left {
   text-align: left;
 }
 
-#uxfowtekwt .gt_center {
+#xinjzjvszt .gt_center {
   text-align: center;
 }
 
-#uxfowtekwt .gt_right {
+#xinjzjvszt .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#uxfowtekwt .gt_font_normal {
+#xinjzjvszt .gt_font_normal {
   font-weight: normal;
 }
 
-#uxfowtekwt .gt_font_bold {
+#xinjzjvszt .gt_font_bold {
   font-weight: bold;
 }
 
-#uxfowtekwt .gt_font_italic {
+#xinjzjvszt .gt_font_italic {
   font-style: italic;
 }
 
-#uxfowtekwt .gt_super {
+#xinjzjvszt .gt_super {
   font-size: 65%;
 }
 
-#uxfowtekwt .gt_footnote_marks {
+#xinjzjvszt .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
   font-size: 75%;
   vertical-align: 0.4em;
 }
 
-#uxfowtekwt .gt_asterisk {
+#xinjzjvszt .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#uxfowtekwt .gt_slash_mark {
+#xinjzjvszt .gt_slash_mark {
   font-size: 0.7em;
   line-height: 0.7em;
   vertical-align: 0.15em;
 }
 
-#uxfowtekwt .gt_fraction_numerator {
+#xinjzjvszt .gt_fraction_numerator {
   font-size: 0.6em;
   line-height: 0.6em;
   vertical-align: 0.45em;
 }
 
-#uxfowtekwt .gt_fraction_denominator {
+#xinjzjvszt .gt_fraction_denominator {
   font-size: 0.6em;
   line-height: 0.6em;
   vertical-align: -0.05em;
@@ -3144,9 +3128,6 @@ Figure 6.5: Time series data for surface (blue) and bottom (red) ammonium, nitra
 <div id="refs" class="references csl-bib-body hanging-indent">
 <div id="ref-bruce2015" class="csl-entry">
 Bruce, L. C., P. L. M. Cook, and M. R. Hipsey. 2015. <span>“<span class="nocase">A model of oxygen and nitrogen biogeochemical response to hydrodynamic regimes in the Yarra River estuary</span>.”</span> In, 524–30. Proceedings - 21st International Congress on Modelling and Simulation, MODSIM 2015. Modelling; Simulation Society of Australia; New Zealand Inc. (MSSANZ). <a href="https://www.scopus.com/inward/record.uri?eid=2-s2.0-85080922287\&amp;partnerID=40\&amp;md5=7abaed710fbd4e92d9ea2b4ca3fa6bb6">https://www.scopus.com/inward/record.uri?eid=2-s2.0-85080922287\&amp;partnerID=40\&amp;md5=7abaed710fbd4e92d9ea2b4ca3fa6bb6</a>.
-</div>
-<div id="ref-huang2019" class="csl-entry">
-Huang, Peisheng, Kerry Trayler, Benya Wang, Amina Saeed, Carolyn E. Oldham, Brendan Busch, and Matthew R. Hipsey. 2019. <span>“<span class="nocase">An integrated modelling system for water quality forecasting in an urban eutrophic estuary: The swan-canning estuary virtual observatory</span>.”</span> <em>Journal of Marine Systems</em> 199: 103218. <a href="https://doi.org/10.1016/j.jmarsys.2019.103218">https://doi.org/10.1016/j.jmarsys.2019.103218</a>.
 </div>
 </div>
             </section>
