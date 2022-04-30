@@ -128,7 +128,7 @@ knitr::include_graphics("images/23-sediment_biogeochemistry/image7.png")
 
 ### Model Setup, Boundary Conditions & Parameter Definition
 
-The model is set up via the name list text file `fabm.nml` using the model keyword “aed_seddiagenesis” with the model configured to select the “Dynamic” option. Once this is selected, the model will search for the “&aed_sedcandi” parameter block within fabm.nml.
+The model is set up via the name list text file `aed.nml` using the module keyword “&aed_seddiagenesis” and a model namelist block termed "&aed_sediment" configured to select the `sediment_model` as “Dynamic” or “Dynamic2D” option. Once this is selected, the model will search for the “&aed_sedcandi” parameter block within aed.nml.
 
 Each active sediment model within this module is discretised into a user definable number of depth layers (<maxnpts>) that start at a thickness of a few mm at the sediment-water interface and which increase exponentially down to a pre-defined sediment depth (xl). Users must define the sediment domain physical properties as summarised in Table 5 - 10, including configuration options related to bioturbation and irrigation. The biogeochemical configuration (Table 5 - 11), rate constants (see Table 5 - 12 and Table 5 - 13) must be set according to the sub-model options described above. 
 
@@ -171,7 +171,7 @@ kable(biogeochem_config,"html", escape = F, align = "c", caption = "The major bi
 
 The initial conditions for each variable are set as a list by the “initial_vals”, which sets a constant concentration with depth in units of μmol L-1. For organic matter initial concentrations only, there are three available options for the concentration with depth, set by “OMInitMethodL”. 
 
-The sediment-water interface is the uppermost layer of the sediment, for which there are three configuration options set by the parameter `ibc2`. If the user specifies `ibc2 = 2`, the concentration is a constant value set by `default_vals` in the `fabm.nml` name list. For `ibc2 = 1`, the concentration is provided by a “link_variable”, which provides the concentration from another simulated water column AED module. If the variable name in the link list is left blank (“ ”) then AED-CANDI will assume these variables are not linked to any water column variables and default to the “default_vals” values. If `ibc2 = 10`, the concentration is provided by a user-prescribed temporally variable value read from the file `aed_sediment_swibc.dat`. This option may desirable, for example, for simulating a seasonally or daily changing boundary condition. 
+The sediment-water interface is the uppermost layer of the sediment, for which there are three configuration options set by the parameter `ibc2`. If the user specifies `ibc2 = 2`, the concentration is a constant value set by `default_vals` in the `aed.nml` name list. For `ibc2 = 1`, the concentration is provided by a “link_variable”, which provides the concentration from another simulated water column AED module. If the variable name in the link list is left blank (“ ”) then AED-CANDI will assume these variables are not linked to any water column variables and default to the “default_vals” values. If `ibc2 = 10`, the concentration is provided by a user-prescribed temporally variable value read from the file `aed_sediment_swibc.dat`. This option may desirable, for example, for simulating a seasonally or daily changing boundary condition. 
 
 Regardless of the ibc2 surface boundary condition option, fluxes of dissolved species occur between the sediment and water column. They are calculated from the concentration gradient at the sediment-water interface according to Fick’s Law:
 
@@ -192,4 +192,3 @@ The model output files are written for each variable as text files, giving time 
 
 ## Case Studies & Examples
 ###	Case Study
-###	Publications
