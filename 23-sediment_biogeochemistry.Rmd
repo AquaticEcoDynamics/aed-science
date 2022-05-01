@@ -1,4 +1,4 @@
-# (PART) AED+ Benthic Modules {-} 
+# (PART) AED Benthic Modules {-} 
 
 # Sediment Biogeochemistry
 
