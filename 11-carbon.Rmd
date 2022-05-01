@@ -677,14 +677,13 @@ Using the AED model coupled with the 3-D model TUFLOW-FV, the dynamics of the es
 ![Figure X1: Comparison of model results (dashed lines) before and after the PEST optimization relative to the field observations (points).](images/carbon/optimization_all_v3.png){width=101%}
 </center>	
 
-	<br>
+<br>
 
 <center>
 ![Figure X2: Comparison of field observations to the 100 prior ensemble simulations and 100 posterior ensemble simulations. The light blue lines indicate the results from prior/posterior parameter sets, the light green shades indicate the 25th and 75th percentile range from the 100 ensemble simulations, and blue dots indicate the field observations.](images/carbon/CH4_DIC_prior_assemble_all_perc.png){width=101%}
 </center>
 
-	
-		<br>
+<br>
 
 <center>
 ![Figure X3: Comparing CO2 and CH4 emission rate in Brisbane River Estuary to other coastal system types as reported in Borges and Abril (2012) and Rosentreter et al. (2021). The first column showed the global emission rates of CO2 (a) and CH4 (e) from different types of coastal systems; the second column showed violin plots of CO2 emission rates from global Type 2 estuaries (b)  and CH4 emission rates from global estuaries (f); the third column the daily emissions range (one calibrated simulation) and the fourth column the annual-average emission range (averaged from 100 posterior assemble simulations) for the Brisbane River Estuary model at upstream (US), middle stream (MS) and downstream (DS).](images/carbon/compare_fluxes_stdV4_violin_range.png){width=101%}
