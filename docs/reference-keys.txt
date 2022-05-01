@@ -37,7 +37,6 @@ tab:11-diagtable
 tab:11-parstable
 eq:nit1
 eq:nit2
-fig:nitrogen-1
 eq:nitrogen3
 eq:nitrogen4
 eq:nitrogen5
@@ -101,7 +100,7 @@ tab:16-diagnostics
 tab:16-parametersummmary
 tab:16-parameterconfig
 eq:path1
-eq:pathogen1
+eq:path2
 eq:pathogen2
 eq:pathogen3
 eq:pathogen4
@@ -230,7 +229,6 @@ parameter-summary-3
 setup-configuration-2
 case-studies-examples-2
 case-study-yarra-river-estuary
-case-study-swan-river-estuary
 publications-2
 inorganic-phosphorus
 contributors-3
