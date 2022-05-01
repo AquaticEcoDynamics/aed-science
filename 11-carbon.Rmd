@@ -676,6 +676,12 @@ Using the AED model coupled with the 3-D model TUFLOW-FV, the dynamics of the es
 <center>
 ![Figure X1: Comparison of model results (dashed lines) before and after the PEST optimization relative to the field observations (points).](images/carbon/optimization_all_v3.png){width=101%}
 </center>	
+
+	<br>
+
+<center>
+![Figure X2: Comparison of field observations to the 100 prior ensemble simulations and 100 posterior ensemble simulations. The light blue lines indicate the results from prior/posterior parameter sets, the light green shades indicate the 25th and 75th percentile range from the 100 ensemble simulations, and blue dots indicate the field observations.](images/carbon/CH4_DIC_prior_assemble_all_perc.png){width=101%}
+</center>
 	
 <!--
 Using the AED model coupled with the 3-D model TUFLOW-FV, the dynamics of the estuaries were simulated for the year 2016 and compared against data from the intensive field campaigns. An example of the model capturing the different gradients in DIC and CH~4~ in the three systems is shown below.
