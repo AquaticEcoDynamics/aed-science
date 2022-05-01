@@ -203,7 +203,6 @@ kbl(theSheet[,3:NCOL(theSheet)], caption = "Organic Matter - *state* variables",
 
 #### Diagnostics{-}
 
-
 ```{r 15-diagtable, echo=FALSE, message=FALSE, warning=FALSE}
 library(knitr)
 library(kableExtra)
@@ -342,6 +341,82 @@ kbl(theSheet[,3:NCOL(theSheet)], caption = "Organic Matter module parameters and
 <br>
 
 ## Setup & Configuration
-## Case Studies & Examples
-###	Case Study
-###	Publications
+
+An example `aed.nml` parameter specification block for the `aed_organic_matter` module is shown below:
+
+```{fortran, eval = FALSE}
+&aed_organic_matter
+   !-- Initial concentrations for OM variables (mmol/m3)
+     poc_initial        =  15
+     doc_initial        =  15
+     pon_initial        =   2
+     don_initial        =   1.1
+     pop_initial        =   0.1
+     dop_initial        =   0.01
+     docr_initial       = 150.0
+     donr_initial       =   9
+     dopr_initial       =   0.15
+     cpom_initial       =   0
+   !-- Breakdown and mineralisation (basic pool)
+     Rdom_minerl        =   0.01348416
+     Rpoc_hydrol        =   0.001
+     Rpon_hydrol        =   0.001
+     Rpop_hydrol        =   0.0001
+     theta_hydrol       =   1.07
+     theta_minerl       =   1.07
+     Kpom_hydrol        =  33.66593
+     Kdom_minerl        =  22.36079
+     simDenitrification =   1
+     dom_miner_oxy_reactant_var = 'OXY_oxy'
+     doc_miner_product_variable = 'CAR_dic'
+     don_miner_product_variable = 'NIT_amm'
+     dop_miner_product_variable = 'PHS_frp'
+     dom_miner_nit_reactant_var = 'NIT_nit'
+     f_an               =   0.50
+     K_nit              =  10.0
+   !-- Refractory organic matter (optional)
+     simRPools          = .true.
+     Rdomr_minerl       =   0.001
+   !-- Coarse particulate organic matter (optional)
+     Rcpom_bdown        =   0.005
+     X_cpom_n           =   0.005
+     X_cpom_p           =   0.001
+    !-- Light related parameters
+     KeDOM              =   0.03
+     KePOM              =   0.096
+     KeDOMR             =   0.15
+     KeCPOM             =   0.00096
+     simphotolysis      = .false.
+     photo_c            =   0.75
+    !-- Particle settling parameters
+     settling           =   1
+     w_pom              =  -0.01
+     d_pom              =   1e-5
+     rho_pom            =   1.2e3
+     w_cpom             =  -0.01
+     d_cpom             =   1e-5
+     rho_cpom           =   1.4e3
+    !-- Sediment interaction parameters (basic model)
+     resuspension       =   1
+     resus_link         =  'NCS_resus'
+     sedimentOMfrac     =   0.0002
+     Xsc                =   0.5
+     Xsn                =   0.05
+     Xsp                =   0.005
+     Fsed_doc           =   1.4
+     Fsed_don           =   0.0
+     Fsed_dop           =   0.0
+     Ksed_dom           =  93.0
+     theta_sed_dom      =   1.06
+    !Fsed_doc_variable  = 'SDF_Fsed_doc'
+    !Fsed_don_variable  = 'SDF_Fsed_don'
+    !Fsed_dop_variable  = 'SDF_Fsed_dop'
+     diag_level         =  10
+/
+```
+
+Note that when users link `Fsed_doc_variable` then `Fsed_doc` is not required as this parameter will be set for each  sediment zone from values input via the `aed_sedflux` module. The numbers reported here are for example purposes and should be reviewed before use based on the users chosen site context. The entries are optional and will be [set to defaults](https://github.com/AquaticEcoDynamics/libaed-water/blob/07c1502f3e2c598ed88bd52963aa6fb01e683e82/src/aed_organic_matter.F90#L164)  if the user does not provide a specific value.
+
+<!-- ## Case Studies & Examples -->
+<!-- ###	Case Study -->
+<!-- ###	Publications -->
