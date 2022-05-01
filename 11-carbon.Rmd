@@ -669,10 +669,19 @@ leaflet(height=385, width=500) %>%
   <!-- addMarkers(lng = 153.1417, lat = -27.017, popup = "Brisbane River") -->
 <br>
 
+Using the AED model coupled with the 3-D model TUFLOW-FV, the dynamics of the estuaries were simulated for the year 2016 and compared against data from the intensive field campaigns. An example of the model with PEST parameter optimization capturing the different gradients in DIC and CH~4~ in the Brisbane River is shown below. 
+
+<br>
+
+<center>
+![Figure X1: Comparison of model results (dashed lines) before and after the PEST optimization relative to the field observations (points).](images/carbon/optimization_all_v3.png){width=101%}
+</center>	
+	
+<!--
 Using the AED model coupled with the 3-D model TUFLOW-FV, the dynamics of the estuaries were simulated for the year 2016 and compared against data from the intensive field campaigns. An example of the model capturing the different gradients in DIC and CH~4~ in the three systems is shown below.
 
 <br>
-<!--
+
 <center>
 ![Figure X: Trasect plots comparing modelled and field data for DOC (uM, 1st row), DIC (uM, 2nd row), pCO2 (uATM, 3rd row) and pCH4 (uATM, 4th row) for three estuaries in south-east Queensland: a) Brisbane river, b) Maroochy estuary, and c) Noosa estuary. Data presented for March 2016, collected by Southern Cross University Centre for Coastal Biogeochemistry.](images/carbon/seq_example1.png){width=101%}
 </center>
