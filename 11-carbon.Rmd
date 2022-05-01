@@ -1,4 +1,4 @@
-# Inorganic Carbon {#Carbon_1 }
+# Inorganic Carbon {#Carbon_1}
 
 ## Contributors
 
@@ -8,7 +8,7 @@ Peisheng Huang, Kamilla Kurucz, and Matthew R. Hipsey
 
 Understanding carbon cycling is central to understanding food webs and how aquatic communities are structured and supported (Dodds and Whiles, 2010). Exchange of carbon between aquatic systems and the atmosphere is also fundamental in influencing climate (e.g. Cai, 2011; Borges and Abril, 2012). Accordingly, there are a wide range of applications that require simulation of carbon species.
 
-The $\mathrm{AED}$ library can be used to simulate both the organic and inorganic pools of carbon. As carbon is a core building block of an aquatic ecosystem, `aed_carbon` ($\mathrm{CAR}$) is designed as a low-level module for managing inorganic carbon pools, and is able to be linked to by higher level modules associated with organic matter cycling, primary production, and other biotic groups. In particular, organic carbon is the currency of energy exchange through food webs, and the processes for modelling organic carbon are described in Section 10 - [Organic Matter](https://aquaticecodynamics.github.io/aed-science/organic-matter.html). This chapter presents the forms of inorganic carbon and fluxes of carbon in the aquatic environment and how they are modelled in the aed_carbon module
+The $\mathrm{AED}$ library can be used to simulate both the organic and inorganic pools of carbon. As carbon is a core building block of an aquatic ecosystem, `aed_carbon` ($\mathrm{CAR}$) is designed as a low-level module for managing inorganic carbon pools, and is able to be linked to by higher level modules associated with organic matter cycling, primary production, and other biotic groups. In particular, organic carbon is the currency of energy exchange through food webs, and the processes for modelling organic carbon are described in [aed_organic_matter][Organic Matter]. This chapter presents the forms of inorganic carbon and fluxes of carbon in the aquatic environment and how they are modelled in the `aed_carbon` module
 
 ## Model Description
 
@@ -148,7 +148,7 @@ The first alk_mode option ($\Theta_{alk\_code}^{car}=1$) approximates the TA fro
 TA=a+bS                                       
 \end{equation}
 
-where $a$ and $b$ are constant coefficients, with pre-defined values of $a$=1627.4 and $b$=22.176 derived from a study case in the Caboolture River estuary. Other remaining `alk_mode` options ($\Theta_{alk\_code}^{car}=2-5$) approximate the TA from salinity and DIC concentration with a quadratic polynomial relationship as:
+where $a$ and $b$ are constant coefficients, with pre-defined values of $a=1627.4$ and $b=22.176$ derived from a study case in the Caboolture River estuary. Other remaining `alk_mode` options ($\Theta_{alk\_code}^{car}=2-5$) approximate the TA from salinity and DIC concentration with a quadratic polynomial relationship as:
 
 \begin{equation}
 TA=p00+p10\ S+p01\ DIC+p20\ S^2+p11\ S\ DIC+p02\ {DIC}^2
@@ -375,10 +375,11 @@ where $\Delta z_{surf}$ is the surface layer thickness.
 Other carbon sources/sinks are indicated in Eq \@ref(eq:car1) for DIC. These include:
 
 -	aed_oxygen: Oxygen is used to control oxidation;
--	aed_organic_matter: organic matters minerization can update DIC;
--	aed_phytoplankton: phytoplankton photosynthetic production of CO2 can update DIC;
+-	aed_organic_matter: organic matter mineralisation can update DIC;
+-	aed_phytoplankton: phytoplankton photosynthetic uptake of CO2 can update DIC;
 -	aed_geochemistry: optional link to simulate the carbonate system;
--	aed_sedflux: modules to update the sediment-water exchange
+-	aed_sedflux: interface module to update the sediment-water exchange in zones;
+-	aed_seddiagenesis: an advanced sediment biogeochemistry mode can dynamically predict sediment fluxes of DIC and CH4.
 
 
 ###	Feedbacks to the Host Model
@@ -598,44 +599,82 @@ An example `aed.nml` parameter specification block for the `aed_carbon` module t
 An example `aed.nml` parameter specification block for the `aed_carbon` module that includes all options is shown below:
 ```{fortran, eval = FALSE}
 &aed_carbon
- dic_initial
- pH_initial
- ch4_initial
-!
- co2_model
- alk_model
- ionic
-!
- atmco2
- atmch4
- co2_piston_model
- ch4_piston_model
-!
- Rch4ox
- Kch4ox
- vTch4ox
- methane_reactant_variable
-!
- Fsed_dic
- Ksed_dic
- theta_sed_dic
- Fsed_dic_variable
- Fsed_ch4
- Ksed_ch4
- theta_sed_ch4
- Fsed_ch4_variable
-!
- ebb_model
- Fsed_ebb_variable
- ch4_bub_aLL
- ch4_bub_cLL
- ch4_bub_kLL
- ch4_bub_disf1
- ch4_bub_disf2
- ch4_bub_disdp
+  !-- DIC and pH --!
+   dic_initial               = 91
+   Fsed_dic                  =  0.001
+   Ksed_dic                  = 53.44356
+   theta_sed_dic             =  1.08
+  !Fsed_dic_variable         = 'SDF_Fsed_dic'
+   pH_initial                =  6.2
+   atm_co2                   =  4e-04 
+   co2_model                 =  1
+   alk_mode                  =  1
+   ionic                     =  0.1
+   co2_piston_model          =  1
+  !-- CH4 (dissolved) --!
+   ch4_initial               =  5
+   Rch4ox                    =  0.1
+   Kch4ox                    =  0.2
+   vTch4ox                   =  1.2
+   Ksed_ch4                  =  3.437
+   theta_sed_ch4             =  1.2
+   methane_reactant_variable = 'OXY_oxy'
+   atm_ch4                   =  1.76e-6
+   ch4_piston_model          =  1
+  !Fsed_ch4_variable         = 'SDF_Fsed_ch4'
+  !-- CH4 (bubbles) --!
+   ebb_model                 =  1
+   Fsed_ch4_ebb              =  0.0
+  !Fsed_ebb_variable         = 'SDF_Fsed_ch4_ebb'
+   ch4_bub_aLL               = 42.95127
+   ch4_bub_cLL               =  0.634
+   ch4_bub_kLL               = -0.8247
+   ch4_bub_disdp             = 20
+   ch4_bub_disf1             =  0.33
+   ch4_bub_disf2             =  0.07
 /
 ```
 
+<br>
+
 ## Case Studies & Examples
-###	Case Study {#carbonCaseStudy}
-###	Publications
+
+###	Case Study : South-east Queensland estuaries {#SEQCarbonCaseStudy}
+
+The `aed_carbon` model was applied to three estuaries of the Moreton Bay region in south-east Queensland, Australia.  The river and estuaries were monitored to measure dissolved inorganic carbon and methane as part of a campaign in March 2016 to understand controls on greenhouse gas emissions.
+
+<br>
+
+<center>
+```{r echo=FALSE, message=FALSE, warning=FALSE, width = 400, height = 305}
+library(leaflet)
+library(dplyr)
+library(htmlwidgets)
+library(htmltools)
+aed_icon  <- makeIcon(
+  iconUrl = "maps/marker.png",
+  iconWidth = 23, iconHeight = 23)
+
+aed_sites <- read.csv("maps/aed-sites-carbon.csv")
+
+leaflet(height=385, width=500) %>%
+  setView(lng = 153.1417, lat = -27.017, zoom = 08) %>%
+  addTiles() %>%
+  addProviderTiles(providers$Stamen.Terrain)  %>%
+  addMarkers(data = aed_sites, ~Lon, ~Lat, popup = ~Site, icon = aed_icon)
+```
+</center>
+  <!-- addMarkers(lng = 153.1417, lat = -27.387, popup = "Brisbane River Estuary") -->
+  <!-- addMarkers(lng = 153.1417, lat = -27.017, popup = "Maroochy River") -->
+  <!-- addMarkers(lng = 153.1417, lat = -27.017, popup = "Brisbane River") -->
+<br>
+
+Using the AED model coupled with the 3-D model TUFLOW-FV, the dynamics of the estuaries were simulated for the year 2016 and compared against data from the intensive field campaigns. An example of the model capturing the different gradients in DIC and CH~4~ in the three systems is shown below.
+
+<br>
+
+<center>
+![Figure X: Trasect plots comparing modelled and field data for DOC (uM, 1st row), DIC (uM, 2nd row), pCO2 (uATM, 3rd row) and pCH4 (uATM, 4th row) for three estuaries in south-east Queensland: a) Brisbane river, b) Maroochy estuary, and c) Noosa estuary. Data presented for March 2016, collected by Southern Cross University Centre for Coastal Biogeochemistry.](images/carbon/seq_example1.png){width=101%}
+</center>
+
+<!-- ###	Publications -->
