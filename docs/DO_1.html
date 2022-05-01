@@ -213,6 +213,7 @@ div.csl-indent {
 <li class="chapter" data-level="3.2" data-path="organisation-of-the-library-module-structure.html"><a href="organisation-of-the-library-module-structure.html#model-structure"><i class="fa fa-check"></i><b>3.2</b> Model Structure</a></li>
 <li class="chapter" data-level="3.3" data-path="organisation-of-the-library-module-structure.html"><a href="organisation-of-the-library-module-structure.html#module-summary"><i class="fa fa-check"></i><b>3.3</b> Module Summary</a></li>
 </ul></li>
+<li class="part"><span><b>I AED Water Modules</b></span></li>
 <li class="chapter" data-level="4" data-path="DO_1.html"><a href="DO_1.html"><i class="fa fa-check"></i><b>4</b> Dissolved Oxygen</a>
 <ul>
 <li class="chapter" data-level="4.1" data-path="DO_1.html"><a href="DO_1.html#contributors"><i class="fa fa-check"></i><b>4.1</b> Contributors</a></li>
@@ -383,7 +384,7 @@ div.csl-indent {
 <li class="chapter" data-level="11.5.2" data-path="pathogens-microbial-indicator-organisms.html"><a href="pathogens-microbial-indicator-organisms.html#publications-6"><i class="fa fa-check"></i><b>11.5.2</b> Publications</a></li>
 </ul></li>
 </ul></li>
-<li class="part"><span><b>I AED+ Benthic Modules</b></span></li>
+<li class="part"><span><b>II AED Benthic Modules</b></span></li>
 <li class="chapter" data-level="12" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html"><i class="fa fa-check"></i><b>12</b> Sediment Biogeochemistry</a>
 <ul>
 <li class="chapter" data-level="12.1" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#contributors-8"><i class="fa fa-check"></i><b>12.1</b> Contributors</a></li>
@@ -1055,9 +1056,9 @@ defaults to 0; Eq <a href="DO_1.html#eq:oxy4">(4.4)</a> used for <span class="ma
 <h2><span class="header-section-number">4.4</span> Setup &amp; Configuration<a href="DO_1.html#setup-configuration" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>An example <code>aed.nml</code> parameter specification block for the <code>aed_oxygen</code> module is shown below:</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode fortran"><code class="sourceCode fortranfixed"><span id="cb3-1"><a href="DO_1.html#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&amp;</span>aed_oxygen</span>
-<span id="cb3-2"><a href="DO_1.html#cb3-2" aria-hidden="true" tabindex="-1"></a>   oxy_initial       <span class="kw">=</span> <span class="fl">250.0</span></span>
-<span id="cb3-3"><a href="DO_1.html#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="bu">     o</span>xy_min           <span class="kw">=</span>   <span class="dv">0</span></span>
-<span id="cb3-4"><a href="DO_1.html#cb3-4" aria-hidden="true" tabindex="-1"></a>   oxy_max           <span class="kw">=</span> <span class="dv">500</span></span>
+<span id="cb3-2"><a href="DO_1.html#cb3-2" aria-hidden="true" tabindex="-1"></a>   oxy_initial       <span class="kw">=</span> <span class="fl">250.0</span> </span>
+<span id="cb3-3"><a href="DO_1.html#cb3-3" aria-hidden="true" tabindex="-1"></a>   oxy_min           <span class="kw">=</span>   <span class="dv">0</span> </span>
+<span id="cb3-4"><a href="DO_1.html#cb3-4" aria-hidden="true" tabindex="-1"></a>   oxy_max           <span class="kw">=</span> <span class="dv">500</span> </span>
 <span id="cb3-5"><a href="DO_1.html#cb3-5" aria-hidden="true" tabindex="-1"></a>   Fsed_oxy          <span class="kw">=</span> <span class="kw">-</span><span class="fl">40.0</span></span>
 <span id="cb3-6"><a href="DO_1.html#cb3-6" aria-hidden="true" tabindex="-1"></a>   Ksed_oxy          <span class="kw">=</span> <span class="fl">100.0</span></span>
 <span id="cb3-7"><a href="DO_1.html#cb3-7" aria-hidden="true" tabindex="-1"></a>   theta_sed_oxy     <span class="kw">=</span>   <span class="fl">1.08</span></span>
@@ -1073,8 +1074,8 @@ defaults to 0; Eq <a href="DO_1.html#eq:oxy4">(4.4)</a> used for <span class="ma
 <p>The Swan-Canning Estuary in Western Australia experiences hypoxia and anoxia due to the strong salt-wedge that forms within the system, and the high sediment oxygen demand. Huang et al. (2018) used the <code>aed_oxygen</code> model with the TUFLOW-FV hydrodynamic model to captured the large spatio-temporal variability in oxygen distribution.</p>
 <p><br></p>
 <center>
-<div id="htmlwidget-4a80f031795b5a08f32d" style="width:500px;height:385px;" class="leaflet html-widget"></div>
-<script type="application/json" data-for="htmlwidget-4a80f031795b5a08f32d">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"setView":[[-31.991618,115.835235],11,[]],"calls":[{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"https://openstreetmap.org\">OpenStreetMap<\/a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA<\/a>"}]},{"method":"addMarkers","args":[-31.991618,115.835235,null,null,null,{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},"Swan River",null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]}],"limits":{"lat":[-31.991618,-31.991618],"lng":[115.835235,115.835235]}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-5e56564484183cc4dc30" style="width:500px;height:385px;" class="leaflet html-widget"></div>
+<script type="application/json" data-for="htmlwidget-5e56564484183cc4dc30">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"setView":[[-31.991618,115.835235],11,[]],"calls":[{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"https://openstreetmap.org\">OpenStreetMap<\/a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA<\/a>"}]},{"method":"addProviderTiles","args":["Stamen.Terrain",null,null,{"errorTileUrl":"","noWrap":false,"detectRetina":false}]},{"method":"addMarkers","args":[-31.991618,115.835235,null,null,null,{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},"Swan River",null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]}],"limits":{"lat":[-31.991618,-31.991618],"lng":[115.835235,115.835235]}},"evals":[],"jsHooks":[]}</script>
 </center>
 <p><br></p>
 <p>Using spatial zones with different values of <code>Fsed_oxy</code>, the simulations show very high accuracy in resolving the “dome” of low oxygen associated with the salt-wedge.</p>
@@ -1089,18 +1090,18 @@ defaults to 0; Eq <a href="DO_1.html#eq:oxy4">(4.4)</a> used for <span class="ma
 <center>
 <div class="figure">
 <img src="images/oxygen_example2.png" style="width:75.0%" alt="" />
-<p class="caption">Figure 2: The total area of anoxia (&lt;2 mg O2 / L) and hypoxia (&lt;4 mg O2 / L) within the estuary for 2008 and 2010, comparing the model (black line) and spatially interpolated weekly profile data (shaded region).</p>
+<p class="caption">Figure 2: The total area of anoxia (&lt;2 mg O2 / L) and hypoxia (&lt;4 mg O2 / L) within the estuary for a) 2008 and b) 2010, comparing the model (black line) and spatially interpolated weekly profile data (shaded region).</p>
 </div>
 </center>
 </div>
 <div id="publications" class="section level3 hasAnchor" number="4.5.2">
 <h3><span class="header-section-number">4.5.2</span> Publications<a href="DO_1.html#publications" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div id="yimmpxrusk" style="overflow-x:auto;overflow-y:auto;width:100%;height:500px;">
+<div id="ywuoslkuza" style="overflow-x:auto;overflow-y:auto;width:100%;height:500px;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#yimmpxrusk .gt_table {
+#ywuoslkuza .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -1125,7 +1126,7 @@ defaults to 0; Eq <a href="DO_1.html#eq:oxy4">(4.4)</a> used for <span class="ma
   border-left-color: #D3D3D3;
 }
 
-#yimmpxrusk .gt_heading {
+#ywuoslkuza .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1137,7 +1138,7 @@ defaults to 0; Eq <a href="DO_1.html#eq:oxy4">(4.4)</a> used for <span class="ma
   border-right-color: #D3D3D3;
 }
 
-#yimmpxrusk .gt_title {
+#ywuoslkuza .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1149,7 +1150,7 @@ defaults to 0; Eq <a href="DO_1.html#eq:oxy4">(4.4)</a> used for <span class="ma
   border-bottom-width: 0;
 }
 
-#yimmpxrusk .gt_subtitle {
+#ywuoslkuza .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1161,13 +1162,13 @@ defaults to 0; Eq <a href="DO_1.html#eq:oxy4">(4.4)</a> used for <span class="ma
   border-top-width: 0;
 }
 
-#yimmpxrusk .gt_bottom_border {
+#ywuoslkuza .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#yimmpxrusk .gt_col_headings {
+#ywuoslkuza .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1182,7 +1183,7 @@ defaults to 0; Eq <a href="DO_1.html#eq:oxy4">(4.4)</a> used for <span class="ma
   border-right-color: #D3D3D3;
 }
 
-#yimmpxrusk .gt_col_heading {
+#ywuoslkuza .gt_col_heading {
   color: #FFFFFF;
   background-color: #14759E;
   font-size: 14px;
@@ -1202,7 +1203,7 @@ defaults to 0; Eq <a href="DO_1.html#eq:oxy4">(4.4)</a> used for <span class="ma
   overflow-x: hidden;
 }
 
-#yimmpxrusk .gt_column_spanner_outer {
+#ywuoslkuza .gt_column_spanner_outer {
   color: #FFFFFF;
   background-color: #14759E;
   font-size: 14px;
@@ -1214,15 +1215,15 @@ defaults to 0; Eq <a href="DO_1.html#eq:oxy4">(4.4)</a> used for <span class="ma
   padding-right: 4px;
 }
 
-#yimmpxrusk .gt_column_spanner_outer:first-child {
+#ywuoslkuza .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#yimmpxrusk .gt_column_spanner_outer:last-child {
+#ywuoslkuza .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#yimmpxrusk .gt_column_spanner {
+#ywuoslkuza .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1234,7 +1235,7 @@ defaults to 0; Eq <a href="DO_1.html#eq:oxy4">(4.4)</a> used for <span class="ma
   width: 100%;
 }
 
-#yimmpxrusk .gt_group_heading {
+#ywuoslkuza .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1259,7 +1260,7 @@ defaults to 0; Eq <a href="DO_1.html#eq:oxy4">(4.4)</a> used for <span class="ma
   vertical-align: middle;
 }
 
-#yimmpxrusk .gt_empty_group_heading {
+#ywuoslkuza .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #D3D3D3;
@@ -1274,15 +1275,15 @@ defaults to 0; Eq <a href="DO_1.html#eq:oxy4">(4.4)</a> used for <span class="ma
   vertical-align: middle;
 }
 
-#yimmpxrusk .gt_from_md > :first-child {
+#ywuoslkuza .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#yimmpxrusk .gt_from_md > :last-child {
+#ywuoslkuza .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#yimmpxrusk .gt_row {
+#ywuoslkuza .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1301,7 +1302,7 @@ defaults to 0; Eq <a href="DO_1.html#eq:oxy4">(4.4)</a> used for <span class="ma
   overflow-x: hidden;
 }
 
-#yimmpxrusk .gt_stub {
+#ywuoslkuza .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1314,7 +1315,7 @@ defaults to 0; Eq <a href="DO_1.html#eq:oxy4">(4.4)</a> used for <span class="ma
   padding-right: 5px;
 }
 
-#yimmpxrusk .gt_stub_row_group {
+#ywuoslkuza .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1328,11 +1329,11 @@ defaults to 0; Eq <a href="DO_1.html#eq:oxy4">(4.4)</a> used for <span class="ma
   vertical-align: top;
 }
 
-#yimmpxrusk .gt_row_group_first td {
+#ywuoslkuza .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#yimmpxrusk .gt_summary_row {
+#ywuoslkuza .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1342,16 +1343,16 @@ defaults to 0; Eq <a href="DO_1.html#eq:oxy4">(4.4)</a> used for <span class="ma
   padding-right: 5px;
 }
 
-#yimmpxrusk .gt_first_summary_row {
+#ywuoslkuza .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#yimmpxrusk .gt_first_summary_row.thick {
+#ywuoslkuza .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#yimmpxrusk .gt_last_summary_row {
+#ywuoslkuza .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1361,7 +1362,7 @@ defaults to 0; Eq <a href="DO_1.html#eq:oxy4">(4.4)</a> used for <span class="ma
   border-bottom-color: #D3D3D3;
 }
 
-#yimmpxrusk .gt_grand_summary_row {
+#ywuoslkuza .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1371,7 +1372,7 @@ defaults to 0; Eq <a href="DO_1.html#eq:oxy4">(4.4)</a> used for <span class="ma
   padding-right: 5px;
 }
 
-#yimmpxrusk .gt_first_grand_summary_row {
+#ywuoslkuza .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1381,11 +1382,11 @@ defaults to 0; Eq <a href="DO_1.html#eq:oxy4">(4.4)</a> used for <span class="ma
   border-top-color: #D3D3D3;
 }
 
-#yimmpxrusk .gt_striped {
+#ywuoslkuza .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#yimmpxrusk .gt_table_body {
+#ywuoslkuza .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1394,7 +1395,7 @@ defaults to 0; Eq <a href="DO_1.html#eq:oxy4">(4.4)</a> used for <span class="ma
   border-bottom-color: #D3D3D3;
 }
 
-#yimmpxrusk .gt_footnotes {
+#ywuoslkuza .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1408,7 +1409,7 @@ defaults to 0; Eq <a href="DO_1.html#eq:oxy4">(4.4)</a> used for <span class="ma
   border-right-color: #D3D3D3;
 }
 
-#yimmpxrusk .gt_footnote {
+#ywuoslkuza .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-left: 4px;
@@ -1417,7 +1418,7 @@ defaults to 0; Eq <a href="DO_1.html#eq:oxy4">(4.4)</a> used for <span class="ma
   padding-right: 5px;
 }
 
-#yimmpxrusk .gt_sourcenotes {
+#ywuoslkuza .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1431,7 +1432,7 @@ defaults to 0; Eq <a href="DO_1.html#eq:oxy4">(4.4)</a> used for <span class="ma
   border-right-color: #D3D3D3;
 }
 
-#yimmpxrusk .gt_sourcenote {
+#ywuoslkuza .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1439,60 +1440,60 @@ defaults to 0; Eq <a href="DO_1.html#eq:oxy4">(4.4)</a> used for <span class="ma
   padding-right: 5px;
 }
 
-#yimmpxrusk .gt_left {
+#ywuoslkuza .gt_left {
   text-align: left;
 }
 
-#yimmpxrusk .gt_center {
+#ywuoslkuza .gt_center {
   text-align: center;
 }
 
-#yimmpxrusk .gt_right {
+#ywuoslkuza .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#yimmpxrusk .gt_font_normal {
+#ywuoslkuza .gt_font_normal {
   font-weight: normal;
 }
 
-#yimmpxrusk .gt_font_bold {
+#ywuoslkuza .gt_font_bold {
   font-weight: bold;
 }
 
-#yimmpxrusk .gt_font_italic {
+#ywuoslkuza .gt_font_italic {
   font-style: italic;
 }
 
-#yimmpxrusk .gt_super {
+#ywuoslkuza .gt_super {
   font-size: 65%;
 }
 
-#yimmpxrusk .gt_footnote_marks {
+#ywuoslkuza .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
   font-size: 75%;
   vertical-align: 0.4em;
 }
 
-#yimmpxrusk .gt_asterisk {
+#ywuoslkuza .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#yimmpxrusk .gt_slash_mark {
+#ywuoslkuza .gt_slash_mark {
   font-size: 0.7em;
   line-height: 0.7em;
   vertical-align: 0.15em;
 }
 
-#yimmpxrusk .gt_fraction_numerator {
+#ywuoslkuza .gt_fraction_numerator {
   font-size: 0.6em;
   line-height: 0.6em;
   vertical-align: 0.45em;
 }
 
-#yimmpxrusk .gt_fraction_denominator {
+#ywuoslkuza .gt_fraction_denominator {
   font-size: 0.6em;
   line-height: 0.6em;
   vertical-align: -0.05em;
