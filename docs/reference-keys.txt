@@ -35,6 +35,7 @@ eq:sedimentExchange13
 tab:11-statetable
 tab:11-diagtable
 tab:11-parstable
+fig:Kinneret-pic1
 eq:nit1
 eq:nit2
 eq:nitrogen3
