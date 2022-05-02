@@ -669,6 +669,7 @@ leaflet(height=385, width=500) %>%
   <!-- addMarkers(lng = 153.1417, lat = -27.017, popup = "Brisbane River") -->
 <br>
 
+	<!--
 Using the AED model coupled with the 3-D model TUFLOW-FV, the dynamics of the estuaries were simulated for the year 2016 and compared against data from the intensive field campaigns. An example of the model with PEST parameter optimization capturing the different gradients in DIC and CH~4~ in the Brisbane River is shown below. 
 
 <br>
@@ -691,7 +692,8 @@ Using the AED model coupled with the 3-D model TUFLOW-FV, the dynamics of the es
 	
 
 Using the AED model coupled with the 3-D model TUFLOW-FV, the dynamics of the estuaries were simulated for the year 2016 and compared against data from the intensive field campaigns. An example of the model capturing the different gradients in DIC and CH~4~ in the three systems is shown below.
-
+-->
+	
 <br>
 
 <center>
