@@ -161,7 +161,7 @@ where $p00$, $p10$, $p01$, $p20$, $p11$, $p02$ are constant coefficients. For th
 -   `alk_mode=4`: constant coefficients derived from field work in Maroochy River;
 -   `alk_mode=5`: constant coefficients derived from field work in Brisbane River;
 
-The constant coefficients in these options are provided in Table 6.1. A case study using alk_mode=5 in Brisbane River (link to case study) is given in Section 6.5. Users may wish to implement tailored alkalinity relationships as additional alk_mode options for specific study sites and use-cases.
+The constant coefficients in these options are provided in Table \@ref(tab:11-alkmode). A case study using alk_mode=5 in Brisbane River (link to case study) is given in Section 5.5. Users may wish to implement tailored alkalinity relationships as additional alk_mode options for specific study sites and use-cases.
 
 
 ```{r 11-alkmode, echo=FALSE, message=FALSE, warning=FALSE}
