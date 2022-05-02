@@ -710,14 +710,14 @@ The aed_carbon model was applied to Lake Kinneret, a deep subtropical lake in Is
 	
 <center>
 	
-![Figure X: The observed vs. simulated dissolved methane concentrations (mmol/m3) at 1 m, 10 m, 20 m, 30 m, 35 m and 38-39 m depths in Lake Kinneret. The rhombus symbols represent the observed and the solid lines represent the simulated methane concentrations. Data consisting of dissolved methane concentrations in Lake Kinneret was extracted from Schmid et al., 2017, using WebPlotDigitizer (http://arohatgi.info/WebPlotDigitizer )](images/carbon/methane.pdf){width=101%}
+![Figure X: The observed vs. simulated dissolved methane concentrations (mmol/m^-3^) at 1 m, 10 m, 20 m, 30 m, 35 m and 38-39 m depths in Lake Kinneret. The rhombus symbols represent the observed and the solid lines represent the simulated methane concentrations. Data consisting of dissolved methane concentrations in Lake Kinneret was extracted from Schmid et al., 2017, using WebPlotDigitizer (http://arohatgi.info/WebPlotDigitizer )](images/carbon/methane.pdf){width=101%}
 </center>
 	
 <br>
 	
 <center>
 	
-![Figure X: The sources and sinks of methane (mol 106) in Lake Kinneret. The sources and sinks of dissolved methane (stacked) are presented on Figure 2a and include the dissolution of bubbles (“dissolution”), sediment diffusive flux (“sed_flux”), aerobic oxidation (“oxid”) and gas exchange at the water-air interface on the secondary axis (“sed_flux”). The sources and sinks of ebullition (stacked) in Lake Kinneret are presented on Figure 2b and include the sediment bubble flux (“sed_ebb”), the dissolution of bubbles (“dissolution”) and the atmospheric ebullition flux (“atm_ebb”)] (images/carbon/budget.pdf){width=101%}
+![Figure X: The sources and sinks of methane (mol 10^-6^) in Lake Kinneret. The sources and sinks of dissolved methane (stacked) are presented on Figure 2a and include the dissolution of bubbles (“dissolution”), sediment diffusive flux (“sed_flux”), aerobic oxidation (“oxid”) and gas exchange at the water-air interface on the secondary axis (“sed_flux”). The sources and sinks of ebullition (stacked) in Lake Kinneret are presented on Figure 2b and include the sediment bubble flux (“sed_ebb”), the dissolution of bubbles (“dissolution”) and the atmospheric ebullition flux (“atm_ebb”)] (images/carbon/budget.pdf){width=101%}
 	
 <br>
 
