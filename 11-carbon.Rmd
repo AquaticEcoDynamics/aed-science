@@ -691,20 +691,13 @@ Using the AED model coupled with the 3-D model TUFLOW-FV, the dynamics of the es
 </center>
 	
 
-Using the AED model coupled with the 3-D model TUFLOW-FV, the dynamics of the estuaries were simulated for the year 2016 and compared against data from the intensive field campaigns. An example of the model capturing the different gradients in DIC and CH~4~ in the three systems is shown below.
--->
-	
-<br>
-
-<center>
-![Figure X: Trasect plots comparing modelled and field data for DOC (uM, 1st row), DIC (uM, 2nd row), pCO2 (uATM, 3rd row) and pCH4 (uATM, 4th row) for three estuaries in south-east Queensland: a) Brisbane river, b) Maroochy estuary, and c) Noosa estuary. Data presented for March 2016, collected by Southern Cross University Centre for Coastal Biogeochemistry.](images/carbon/seq_example1.png){width=101%}
-</center>
+Using the AED model coupled with the 3-D model TUFLOW-FV, the dynamics of the estuaries were simulated for the year 2016 and compared against data from the intensive field campaigns. An example of the model capturing the different gradients in DIC and CH~4~ in the three systems is shown in Figure \@ref(fig:Queensland-pic1).
 	
 <br>
 	
 <center>
 ```{r Queensland-pic1, echo=FALSE, fig.cap="Trasect plots comparing modelled and field data for DOC (uM, 1st row), DIC (uM, 2nd row), pCO2 (uATM, 3rd row) and pCH4 (uATM, 4th row) for three estuaries in south-east Queensland: a) Brisbane river, b) Maroochy estuary, and c) Noosa estuary. Data presented for March 2016, collected by Southern Cross University Centre for Coastal Biogeochemistry.", out.width = '100%'}
-knitr::include_graphics("images/carbon/methane.png")
+knitr::include_graphics("images/carbon/seq_example1.png.png")
 ```	
 </center>
 
