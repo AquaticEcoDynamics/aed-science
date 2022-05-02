@@ -1413,49 +1413,49 @@ float
 <div id="setup-configuration-3" class="section level2 hasAnchor" number="7.4">
 <h2><span class="header-section-number">7.4</span> Setup &amp; Configuration<a href="inorganic-phosphorus.html#setup-configuration-3" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>An example <code>aed.nml</code> parameter specification block for the <code>aed_phosphorus</code> module that is modelling dissolved and particulare (sorbed) <span class="math inline">\(PO_4\)</span> is shown below:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode fortran"><code class="sourceCode fortranfixed"><span id="cb6-1"><a href="inorganic-phosphorus.html#cb6-1" aria-hidden="true" tabindex="-1"></a>  <span class="kw">&amp;</span>aed_phosphorus</span>
-<span id="cb6-2"><a href="inorganic-phosphorus.html#cb6-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">!-- Initial value</span></span>
-<span id="cb6-3"><a href="inorganic-phosphorus.html#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="bu">     f</span>rp_initial          <span class="kw">=</span> <span class="fl">0.25</span></span>
-<span id="cb6-4"><a href="inorganic-phosphorus.html#cb6-4" aria-hidden="true" tabindex="-1"></a>    <span class="co">!-- Sediment flux</span></span>
-<span id="cb6-5"><a href="inorganic-phosphorus.html#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="bu">     F</span>sed_frp             <span class="kw">=</span> <span class="fl">0.08</span></span>
-<span id="cb6-6"><a href="inorganic-phosphorus.html#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="bu">     K</span>sed_frp             <span class="kw">=</span> <span class="fl">30.0</span></span>
-<span id="cb6-7"><a href="inorganic-phosphorus.html#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="bu">     t</span>heta_sed_frp        <span class="kw">=</span> <span class="fl">1.08</span></span>
-<span id="cb6-8"><a href="inorganic-phosphorus.html#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="bu">     p</span>hosphorus_reactant_variable <span class="kw">=</span><span class="st">&#39;OXY_oxy&#39;</span></span>
-<span id="cb6-9"><a href="inorganic-phosphorus.html#cb6-9" aria-hidden="true" tabindex="-1"></a>    <span class="co">!-- PO4 adsorption</span></span>
-<span id="cb6-10"><a href="inorganic-phosphorus.html#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="bu">     s</span>imPO4Adsorption     <span class="kw">=</span> <span class="cn">.true.</span></span>
-<span id="cb6-11"><a href="inorganic-phosphorus.html#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="bu">     a</span>ds_use_external_tss <span class="kw">=</span> <span class="cn">.true.</span></span>
-<span id="cb6-12"><a href="inorganic-phosphorus.html#cb6-12" aria-hidden="true" tabindex="-1"></a><span class="bu">     P</span>O4AdsorptionModel   <span class="kw">=</span> <span class="dv">1</span></span>
-<span id="cb6-13"><a href="inorganic-phosphorus.html#cb6-13" aria-hidden="true" tabindex="-1"></a><span class="bu">     K</span>po4p                <span class="kw">=</span> <span class="fl">0.01</span></span>
-<span id="cb6-14"><a href="inorganic-phosphorus.html#cb6-14" aria-hidden="true" tabindex="-1"></a><span class="bu">     w</span>_po4ads             <span class="kw">=</span> <span class="kw">-</span><span class="fl">0.01</span></span>
-<span id="cb6-15"><a href="inorganic-phosphorus.html#cb6-15" aria-hidden="true" tabindex="-1"></a>  <span class="kw">/</span></span></code></pre></div>
-<p><br>
-An example <code>aed.nml</code> parameter specification block for the <code>aed_phosphorus</code> module that includes all options is shown below:</p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode fortran"><code class="sourceCode fortranfixed"><span id="cb7-1"><a href="inorganic-phosphorus.html#cb7-1" aria-hidden="true" tabindex="-1"></a>  <span class="kw">&amp;</span>aed_phosphorus</span>
 <span id="cb7-2"><a href="inorganic-phosphorus.html#cb7-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">!-- Initial value</span></span>
-<span id="cb7-3"><a href="inorganic-phosphorus.html#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="bu">     f</span>rp_initial <span class="kw">=</span> <span class="fl">0.25</span></span>
+<span id="cb7-3"><a href="inorganic-phosphorus.html#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="bu">     f</span>rp_initial          <span class="kw">=</span> <span class="fl">0.25</span></span>
 <span id="cb7-4"><a href="inorganic-phosphorus.html#cb7-4" aria-hidden="true" tabindex="-1"></a>    <span class="co">!-- Sediment flux</span></span>
-<span id="cb7-5"><a href="inorganic-phosphorus.html#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="bu">     F</span>sed_frp <span class="kw">=</span> <span class="fl">0.08</span></span>
-<span id="cb7-6"><a href="inorganic-phosphorus.html#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="bu">     K</span>sed_frp <span class="kw">=</span> <span class="fl">30.0</span></span>
-<span id="cb7-7"><a href="inorganic-phosphorus.html#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="bu">     t</span>heta_sed_frp <span class="kw">=</span> <span class="fl">1.08</span></span>
+<span id="cb7-5"><a href="inorganic-phosphorus.html#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="bu">     F</span>sed_frp             <span class="kw">=</span> <span class="fl">0.08</span></span>
+<span id="cb7-6"><a href="inorganic-phosphorus.html#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="bu">     K</span>sed_frp             <span class="kw">=</span> <span class="fl">30.0</span></span>
+<span id="cb7-7"><a href="inorganic-phosphorus.html#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="bu">     t</span>heta_sed_frp        <span class="kw">=</span> <span class="fl">1.08</span></span>
 <span id="cb7-8"><a href="inorganic-phosphorus.html#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="bu">     p</span>hosphorus_reactant_variable <span class="kw">=</span><span class="st">&#39;OXY_oxy&#39;</span></span>
-<span id="cb7-9"><a href="inorganic-phosphorus.html#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="bu">     F</span>sed_frp_variable <span class="kw">=</span><span class="st">&#39;SDF_Fsed_frp&#39;</span></span>
-<span id="cb7-10"><a href="inorganic-phosphorus.html#cb7-10" aria-hidden="true" tabindex="-1"></a>    <span class="co">!-- PO4 adsorption</span></span>
-<span id="cb7-11"><a href="inorganic-phosphorus.html#cb7-11" aria-hidden="true" tabindex="-1"></a><span class="bu">     s</span>imPO4Adsorption <span class="kw">=</span> <span class="cn">.true.</span></span>
-<span id="cb7-12"><a href="inorganic-phosphorus.html#cb7-12" aria-hidden="true" tabindex="-1"></a><span class="bu">     a</span>ds_use_external_tss <span class="kw">=</span> <span class="cn">.false.</span></span>
-<span id="cb7-13"><a href="inorganic-phosphorus.html#cb7-13" aria-hidden="true" tabindex="-1"></a><span class="bu">     p</span>o4sorption_target_variable <span class="kw">=</span><span class="st">&#39;NCS_ss1&#39;</span></span>
-<span id="cb7-14"><a href="inorganic-phosphorus.html#cb7-14" aria-hidden="true" tabindex="-1"></a><span class="bu">     P</span>O4AdsorptionModel <span class="kw">=</span> <span class="dv">2</span></span>
-<span id="cb7-15"><a href="inorganic-phosphorus.html#cb7-15" aria-hidden="true" tabindex="-1"></a><span class="bu">     K</span>po4p <span class="kw">=</span> <span class="fl">0.01</span></span>
-<span id="cb7-16"><a href="inorganic-phosphorus.html#cb7-16" aria-hidden="true" tabindex="-1"></a><span class="bu">     K</span>adsratio<span class="kw">=</span> <span class="fl">1.0</span></span>
-<span id="cb7-17"><a href="inorganic-phosphorus.html#cb7-17" aria-hidden="true" tabindex="-1"></a><span class="bu">     Q</span>max <span class="kw">=</span> <span class="fl">1.0</span></span>
-<span id="cb7-18"><a href="inorganic-phosphorus.html#cb7-18" aria-hidden="true" tabindex="-1"></a><span class="bu">     w</span>_po4ads <span class="kw">=</span> <span class="kw">-</span><span class="dv">9999</span>     <span class="co">! Note: -9999 links PO4-ad settling to target_variable</span></span>
-<span id="cb7-19"><a href="inorganic-phosphorus.html#cb7-19" aria-hidden="true" tabindex="-1"></a><span class="bu">     a</span>ds_use_pH <span class="kw">=</span> <span class="cn">.false.</span></span>
-<span id="cb7-20"><a href="inorganic-phosphorus.html#cb7-20" aria-hidden="true" tabindex="-1"></a><span class="bu">     p</span>H_variable <span class="kw">=</span> <span class="st">&#39;CAR_pH&#39;</span></span>
-<span id="cb7-21"><a href="inorganic-phosphorus.html#cb7-21" aria-hidden="true" tabindex="-1"></a>    <span class="co">!-- Atmospheric deposition</span></span>
-<span id="cb7-22"><a href="inorganic-phosphorus.html#cb7-22" aria-hidden="true" tabindex="-1"></a><span class="bu">     s</span>imDryDeposition <span class="kw">=</span> <span class="cn">.false.</span></span>
-<span id="cb7-23"><a href="inorganic-phosphorus.html#cb7-23" aria-hidden="true" tabindex="-1"></a><span class="bu">     a</span>tm_pip_dd <span class="kw">=</span> <span class="fl">0.00</span></span>
-<span id="cb7-24"><a href="inorganic-phosphorus.html#cb7-24" aria-hidden="true" tabindex="-1"></a><span class="bu">     s</span>imWetDeposition <span class="kw">=</span> <span class="cn">.true.</span></span>
-<span id="cb7-25"><a href="inorganic-phosphorus.html#cb7-25" aria-hidden="true" tabindex="-1"></a><span class="bu">     a</span>tm_frp_conc <span class="kw">=</span> <span class="fl">0.01</span></span>
-<span id="cb7-26"><a href="inorganic-phosphorus.html#cb7-26" aria-hidden="true" tabindex="-1"></a>  <span class="kw">/</span></span></code></pre></div>
+<span id="cb7-9"><a href="inorganic-phosphorus.html#cb7-9" aria-hidden="true" tabindex="-1"></a>    <span class="co">!-- PO4 adsorption</span></span>
+<span id="cb7-10"><a href="inorganic-phosphorus.html#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="bu">     s</span>imPO4Adsorption     <span class="kw">=</span> <span class="cn">.true.</span></span>
+<span id="cb7-11"><a href="inorganic-phosphorus.html#cb7-11" aria-hidden="true" tabindex="-1"></a><span class="bu">     a</span>ds_use_external_tss <span class="kw">=</span> <span class="cn">.true.</span></span>
+<span id="cb7-12"><a href="inorganic-phosphorus.html#cb7-12" aria-hidden="true" tabindex="-1"></a><span class="bu">     P</span>O4AdsorptionModel   <span class="kw">=</span> <span class="dv">1</span></span>
+<span id="cb7-13"><a href="inorganic-phosphorus.html#cb7-13" aria-hidden="true" tabindex="-1"></a><span class="bu">     K</span>po4p                <span class="kw">=</span> <span class="fl">0.01</span></span>
+<span id="cb7-14"><a href="inorganic-phosphorus.html#cb7-14" aria-hidden="true" tabindex="-1"></a><span class="bu">     w</span>_po4ads             <span class="kw">=</span> <span class="kw">-</span><span class="fl">0.01</span></span>
+<span id="cb7-15"><a href="inorganic-phosphorus.html#cb7-15" aria-hidden="true" tabindex="-1"></a>  <span class="kw">/</span></span></code></pre></div>
+<p><br>
+An example <code>aed.nml</code> parameter specification block for the <code>aed_phosphorus</code> module that includes all options is shown below:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode fortran"><code class="sourceCode fortranfixed"><span id="cb8-1"><a href="inorganic-phosphorus.html#cb8-1" aria-hidden="true" tabindex="-1"></a>  <span class="kw">&amp;</span>aed_phosphorus</span>
+<span id="cb8-2"><a href="inorganic-phosphorus.html#cb8-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">!-- Initial value</span></span>
+<span id="cb8-3"><a href="inorganic-phosphorus.html#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="bu">     f</span>rp_initial <span class="kw">=</span> <span class="fl">0.25</span></span>
+<span id="cb8-4"><a href="inorganic-phosphorus.html#cb8-4" aria-hidden="true" tabindex="-1"></a>    <span class="co">!-- Sediment flux</span></span>
+<span id="cb8-5"><a href="inorganic-phosphorus.html#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="bu">     F</span>sed_frp <span class="kw">=</span> <span class="fl">0.08</span></span>
+<span id="cb8-6"><a href="inorganic-phosphorus.html#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="bu">     K</span>sed_frp <span class="kw">=</span> <span class="fl">30.0</span></span>
+<span id="cb8-7"><a href="inorganic-phosphorus.html#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="bu">     t</span>heta_sed_frp <span class="kw">=</span> <span class="fl">1.08</span></span>
+<span id="cb8-8"><a href="inorganic-phosphorus.html#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="bu">     p</span>hosphorus_reactant_variable <span class="kw">=</span><span class="st">&#39;OXY_oxy&#39;</span></span>
+<span id="cb8-9"><a href="inorganic-phosphorus.html#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="bu">     F</span>sed_frp_variable <span class="kw">=</span><span class="st">&#39;SDF_Fsed_frp&#39;</span></span>
+<span id="cb8-10"><a href="inorganic-phosphorus.html#cb8-10" aria-hidden="true" tabindex="-1"></a>    <span class="co">!-- PO4 adsorption</span></span>
+<span id="cb8-11"><a href="inorganic-phosphorus.html#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="bu">     s</span>imPO4Adsorption <span class="kw">=</span> <span class="cn">.true.</span></span>
+<span id="cb8-12"><a href="inorganic-phosphorus.html#cb8-12" aria-hidden="true" tabindex="-1"></a><span class="bu">     a</span>ds_use_external_tss <span class="kw">=</span> <span class="cn">.false.</span></span>
+<span id="cb8-13"><a href="inorganic-phosphorus.html#cb8-13" aria-hidden="true" tabindex="-1"></a><span class="bu">     p</span>o4sorption_target_variable <span class="kw">=</span><span class="st">&#39;NCS_ss1&#39;</span></span>
+<span id="cb8-14"><a href="inorganic-phosphorus.html#cb8-14" aria-hidden="true" tabindex="-1"></a><span class="bu">     P</span>O4AdsorptionModel <span class="kw">=</span> <span class="dv">2</span></span>
+<span id="cb8-15"><a href="inorganic-phosphorus.html#cb8-15" aria-hidden="true" tabindex="-1"></a><span class="bu">     K</span>po4p <span class="kw">=</span> <span class="fl">0.01</span></span>
+<span id="cb8-16"><a href="inorganic-phosphorus.html#cb8-16" aria-hidden="true" tabindex="-1"></a><span class="bu">     K</span>adsratio<span class="kw">=</span> <span class="fl">1.0</span></span>
+<span id="cb8-17"><a href="inorganic-phosphorus.html#cb8-17" aria-hidden="true" tabindex="-1"></a><span class="bu">     Q</span>max <span class="kw">=</span> <span class="fl">1.0</span></span>
+<span id="cb8-18"><a href="inorganic-phosphorus.html#cb8-18" aria-hidden="true" tabindex="-1"></a><span class="bu">     w</span>_po4ads <span class="kw">=</span> <span class="kw">-</span><span class="dv">9999</span>     <span class="co">! Note: -9999 links PO4-ad settling to target_variable</span></span>
+<span id="cb8-19"><a href="inorganic-phosphorus.html#cb8-19" aria-hidden="true" tabindex="-1"></a><span class="bu">     a</span>ds_use_pH <span class="kw">=</span> <span class="cn">.false.</span></span>
+<span id="cb8-20"><a href="inorganic-phosphorus.html#cb8-20" aria-hidden="true" tabindex="-1"></a><span class="bu">     p</span>H_variable <span class="kw">=</span> <span class="st">&#39;CAR_pH&#39;</span></span>
+<span id="cb8-21"><a href="inorganic-phosphorus.html#cb8-21" aria-hidden="true" tabindex="-1"></a>    <span class="co">!-- Atmospheric deposition</span></span>
+<span id="cb8-22"><a href="inorganic-phosphorus.html#cb8-22" aria-hidden="true" tabindex="-1"></a><span class="bu">     s</span>imDryDeposition <span class="kw">=</span> <span class="cn">.false.</span></span>
+<span id="cb8-23"><a href="inorganic-phosphorus.html#cb8-23" aria-hidden="true" tabindex="-1"></a><span class="bu">     a</span>tm_pip_dd <span class="kw">=</span> <span class="fl">0.00</span></span>
+<span id="cb8-24"><a href="inorganic-phosphorus.html#cb8-24" aria-hidden="true" tabindex="-1"></a><span class="bu">     s</span>imWetDeposition <span class="kw">=</span> <span class="cn">.true.</span></span>
+<span id="cb8-25"><a href="inorganic-phosphorus.html#cb8-25" aria-hidden="true" tabindex="-1"></a><span class="bu">     a</span>tm_frp_conc <span class="kw">=</span> <span class="fl">0.01</span></span>
+<span id="cb8-26"><a href="inorganic-phosphorus.html#cb8-26" aria-hidden="true" tabindex="-1"></a>  <span class="kw">/</span></span></code></pre></div>
 </div>
 <div id="case-studies-examples-3" class="section level2 hasAnchor" number="7.5">
 <h2><span class="header-section-number">7.5</span> Case Studies &amp; Examples<a href="inorganic-phosphorus.html#case-studies-examples-3" class="anchor-section" aria-label="Anchor link to header"></a></h2>
