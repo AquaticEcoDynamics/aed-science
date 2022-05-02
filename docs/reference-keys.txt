@@ -103,6 +103,7 @@ eq:phyto14
 tab:16-statetable
 tab:16-diagtable
 tab:16-parstable
+tab:16-configtable
 fig:19-pic1
 eq:geochem1
 eq:geochem2
