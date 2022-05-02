@@ -704,20 +704,20 @@ Using the AED model coupled with the 3-D model TUFLOW-FV, the dynamics of the es
 
 ###	Case Study : Lake Kinneret {#SEQCarbonCaseStudy}
 	
-The aed_carbon model was applied to Lake Kinneret, a deep subtropical lake in Israel. Using the AED model coupled with the General Lake Model, the dynamics of Lake Kinneret were simulated from 01/01/1998 until 23/02/2002. Dissolved methane concentrations were calibrated using the glmtools R package and were compared against observations (Figure 1). Ebullition was simulated using a site-specific algorithm and the sources and sinks of both dissolved methane and methane bubbles are presented on Figure 2. 
+The aed_carbon model was applied to Lake Kinneret, a deep subtropical lake in Israel. Using the AED model coupled with the General Lake Model, the dynamics of Lake Kinneret were simulated from 01/01/1998 until 23/02/2002. Dissolved methane concentrations were calibrated using the glmtools R package and were compared against observations (Figure X). Ebullition was simulated using a site-specific algorithm and the sources and sinks of both dissolved methane and methane bubbles are presented on Figure X. 
 
 <br>
 	
 <center>
 	
-![Figure X: The observed vs. simulated dissolved methane concentrations (mmol/m^3^) at 1 m, 10 m, 20 m, 30 m, 35 m and 38-39 m depths in Lake Kinneret. The rhombus symbols represent the observed and the solid lines represent the simulated methane concentrations. Data consisting of dissolved methane concentrations in Lake Kinneret was extracted from Schmid et al., 2017, using WebPlotDigitizer (http://arohatgi.info/WebPlotDigitizer )](images/carbon/methane.pdf){width=101%}
+![Figure X: The observed vs. simulated dissolved methane concentrations (mmol/m^3^) at 1 m, 10 m, 20 m, 30 m, 35 m and 38-39 m depths in Lake Kinneret. The rhombus symbols represent the observed and the solid lines represent the simulated methane concentrations. Data consisting of dissolved methane concentrations in Lake Kinneret was extracted from Schmid et al., 2017, using WebPlotDigitizer (http://arohatgi.info/WebPlotDigitizer )](images/carbon/methane.png){width=101%}
 </center>
 	
 <br>
 	
 <center>
 	
-![Figure X: The sources and sinks of methane (mol 10^6^) in Lake Kinneret. The sources and sinks of dissolved methane (stacked) are presented on Figure 2a and include the dissolution of bubbles (“dissolution”), sediment diffusive flux (“sed_flux”), aerobic oxidation (“oxid”) and gas exchange at the water-air interface on the secondary axis (“sed_flux”). The sources and sinks of ebullition (stacked) in Lake Kinneret are presented on Figure 2b and include the sediment bubble flux (“sed_ebb”), the dissolution of bubbles (“dissolution”) and the atmospheric ebullition flux (“atm_ebb”)] (images/carbon/budget.png){width=101%}
+![Figure X: The sources and sinks of methane (mol 10^6^) in Lake Kinneret. The sources and sinks of dissolved methane (stacked) are presented in the first figure and include the dissolution of bubbles (“dissolution”), sediment diffusive flux (“sed_flux”), aerobic oxidation (“oxid”) and gas exchange at the water-air interface on the secondary axis (“sed_flux”). The sources and sinks of ebullition (stacked) in Lake Kinneret are presented in the second figure and include the sediment bubble flux (“sed_ebb”), the dissolution of bubbles (“dissolution”) and the atmospheric ebullition flux (“atm_ebb”)] (images/carbon/budget.png){width=101%}
 	
 <br>
 
