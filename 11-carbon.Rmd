@@ -717,11 +717,12 @@ The aed_carbon model was applied to Lake Kinneret, a deep subtropical lake in Is
 	
 <center>
 	
-![Figure X: The sources and sinks of methane (mol 10^6^) in Lake Kinneret. The sources and sinks of dissolved methane (stacked) are presented in the first figure and include the dissolution of bubbles (“dissolution”), sediment diffusive flux (“sed_flux”), aerobic oxidation (“oxid”) and gas exchange at the water-air interface on the secondary axis (“sed_flux”). The sources and sinks of ebullition (stacked) in Lake Kinneret are presented in the second figure and include the sediment bubble flux (“sed_ebb”), the dissolution of bubbles (“dissolution”) and the atmospheric ebullition flux (“atm_ebb”).] 
-(images/carbon/budget.png){width=101%}
+![Figure X: The sources and sinks of methane (mol 10^6^) in Lake Kinneret. The sources and sinks of dissolved methane (stacked) are presented in the first figure and include the dissolution of bubbles (“dissolution”), sediment diffusive flux (“sed_flux”), aerobic oxidation (“oxid”) and gas exchange at the water-air interface on the secondary axis (“sed_flux”). The sources and sinks of ebullition (stacked) in Lake Kinneret are presented in the second figure and include the sediment bubble flux (“sed_ebb”), the dissolution of bubbles (“dissolution”) and the atmospheric ebullition flux (“atm_ebb”).](images/carbon/budget.png){width=101%}
 </center>
 	
 <br>
+	
+
 
 	
 <!-- ###	Publications -->
