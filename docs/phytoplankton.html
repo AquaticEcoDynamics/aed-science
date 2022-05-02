@@ -3528,72 +3528,72 @@ used if <span class="math inline">\(\Theta_{set}^{phy}\)</span> is 4
 <!--              fixed_thead = FALSE) -->
 <!-- ``` -->
 <p>An example <code>aed.nml</code> configuration block for the <code>aed_phytoplankton</code> module that includes a single simulated group plus microphytobenthos (MPB) and resuspension effects, and doesn’t consider Si limitation, is shown below:</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode fortran"><code class="sourceCode fortranfixed"><span id="cb11-1"><a href="phytoplankton.html#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&amp;</span>aed_phytoplankton</span>
-<span id="cb11-2"><a href="phytoplankton.html#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="co">!-- Configure phytoplankton groups to simulate</span></span>
-<span id="cb11-3"><a href="phytoplankton.html#cb11-3" aria-hidden="true" tabindex="-1"></a>  num_phytos   <span class="kw">=</span>    <span class="dv">1</span></span>
-<span id="cb11-4"><a href="phytoplankton.html#cb11-4" aria-hidden="true" tabindex="-1"></a>  the_phytos   <span class="kw">=</span>    <span class="dv">1</span></span>
-<span id="cb11-5"><a href="phytoplankton.html#cb11-5" aria-hidden="true" tabindex="-1"></a>  settling     <span class="kw">=</span>    <span class="dv">1</span></span>
-<span id="cb11-6"><a href="phytoplankton.html#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="co">!-- Benthic phytoplankton group (microphytobenthos)</span></span>
-<span id="cb11-7"><a href="phytoplankton.html#cb11-7" aria-hidden="true" tabindex="-1"></a>  do_mpb       <span class="kw">=</span>    <span class="dv">1</span></span>
-<span id="cb11-8"><a href="phytoplankton.html#cb11-8" aria-hidden="true" tabindex="-1"></a>  R_mpbg       <span class="kw">=</span>    <span class="fl">0.5</span></span>
-<span id="cb11-9"><a href="phytoplankton.html#cb11-9" aria-hidden="true" tabindex="-1"></a>  R_mpbr       <span class="kw">=</span>    <span class="fl">0.05</span></span>
-<span id="cb11-10"><a href="phytoplankton.html#cb11-10" aria-hidden="true" tabindex="-1"></a>  I_Kmpb       <span class="kw">=</span>  <span class="fl">100.</span></span>
-<span id="cb11-11"><a href="phytoplankton.html#cb11-11" aria-hidden="true" tabindex="-1"></a>  mpb_max      <span class="kw">=</span> <span class="fl">2000.</span></span>
-<span id="cb11-12"><a href="phytoplankton.html#cb11-12" aria-hidden="true" tabindex="-1"></a>  resuspension <span class="kw">=</span>    <span class="fl">0.45</span></span>
-<span id="cb11-13"><a href="phytoplankton.html#cb11-13" aria-hidden="true" tabindex="-1"></a>  n_zones      <span class="kw">=</span>    <span class="dv">4</span></span>
-<span id="cb11-14"><a href="phytoplankton.html#cb11-14" aria-hidden="true" tabindex="-1"></a>  active_zones <span class="kw">=</span>    <span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span></span>
-<span id="cb11-15"><a href="phytoplankton.html#cb11-15" aria-hidden="true" tabindex="-1"></a>  resus_link   <span class="kw">=</span> <span class="st">&#39;NCS_resus&#39;</span></span>
-<span id="cb11-16"><a href="phytoplankton.html#cb11-16" aria-hidden="true" tabindex="-1"></a><span class="co">!-- Set link variables to other modules</span></span>
-<span id="cb11-17"><a href="phytoplankton.html#cb11-17" aria-hidden="true" tabindex="-1"></a>  p_excretion_target_variable  <span class="kw">=</span><span class="st">&#39;OGM_dop&#39;</span></span>
-<span id="cb11-18"><a href="phytoplankton.html#cb11-18" aria-hidden="true" tabindex="-1"></a>  n_excretion_target_variable  <span class="kw">=</span><span class="st">&#39;OGM_don&#39;</span></span>
-<span id="cb11-19"><a href="phytoplankton.html#cb11-19" aria-hidden="true" tabindex="-1"></a>  c_excretion_target_variable  <span class="kw">=</span><span class="st">&#39;OGM_doc&#39;</span></span>
-<span id="cb11-20"><a href="phytoplankton.html#cb11-20" aria-hidden="true" tabindex="-1"></a>  si_excretion_target_variable <span class="kw">=</span><span class="st">&#39;&#39;</span></span>
-<span id="cb11-21"><a href="phytoplankton.html#cb11-21" aria-hidden="true" tabindex="-1"></a>  p_mortality_target_variable  <span class="kw">=</span><span class="st">&#39;OGM_pop&#39;</span></span>
-<span id="cb11-22"><a href="phytoplankton.html#cb11-22" aria-hidden="true" tabindex="-1"></a>  n_mortality_target_variable  <span class="kw">=</span><span class="st">&#39;OGM_pon&#39;</span></span>
-<span id="cb11-23"><a href="phytoplankton.html#cb11-23" aria-hidden="true" tabindex="-1"></a>  c_mortality_target_variable  <span class="kw">=</span><span class="st">&#39;OGM_poc&#39;</span></span>
-<span id="cb11-24"><a href="phytoplankton.html#cb11-24" aria-hidden="true" tabindex="-1"></a>  si_mortality_target_variable <span class="kw">=</span><span class="st">&#39;&#39;</span></span>
-<span id="cb11-25"><a href="phytoplankton.html#cb11-25" aria-hidden="true" tabindex="-1"></a>  p1_uptake_target_variable    <span class="kw">=</span><span class="st">&#39;PHS_frp&#39;</span></span>
-<span id="cb11-26"><a href="phytoplankton.html#cb11-26" aria-hidden="true" tabindex="-1"></a>  n1_uptake_target_variable    <span class="kw">=</span><span class="st">&#39;NIT_nit&#39;</span></span>
-<span id="cb11-27"><a href="phytoplankton.html#cb11-27" aria-hidden="true" tabindex="-1"></a>  n2_uptake_target_variable    <span class="kw">=</span><span class="st">&#39;NIT_amm&#39;</span></span>
-<span id="cb11-28"><a href="phytoplankton.html#cb11-28" aria-hidden="true" tabindex="-1"></a>  si_uptake_target_variable    <span class="kw">=</span><span class="st">&#39;&#39;</span></span>
-<span id="cb11-29"><a href="phytoplankton.html#cb11-29" aria-hidden="true" tabindex="-1"></a>  do_uptake_target_variable    <span class="kw">=</span><span class="st">&#39;OXY_oxy&#39;</span></span>
-<span id="cb11-30"><a href="phytoplankton.html#cb11-30" aria-hidden="true" tabindex="-1"></a>  c_uptake_target_variable     <span class="kw">=</span><span class="st">&#39;&#39;</span></span>
-<span id="cb11-31"><a href="phytoplankton.html#cb11-31" aria-hidden="true" tabindex="-1"></a><span class="co">!-- General options</span></span>
-<span id="cb11-32"><a href="phytoplankton.html#cb11-32" aria-hidden="true" tabindex="-1"></a>  dbase <span class="kw">=</span> <span class="st">&#39;../External/AED/aed_phyto_pars.nml&#39;</span></span>
-<span id="cb11-33"><a href="phytoplankton.html#cb11-33" aria-hidden="true" tabindex="-1"></a>  diag_level <span class="kw">=</span> <span class="dv">1</span></span>
-<span id="cb11-34"><a href="phytoplankton.html#cb11-34" aria-hidden="true" tabindex="-1"></a><span class="kw">/</span></span></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode fortran"><code class="sourceCode fortranfixed"><span id="cb12-1"><a href="phytoplankton.html#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&amp;</span>aed_phytoplankton</span>
+<span id="cb12-2"><a href="phytoplankton.html#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="co">!-- Configure phytoplankton groups to simulate</span></span>
+<span id="cb12-3"><a href="phytoplankton.html#cb12-3" aria-hidden="true" tabindex="-1"></a>  num_phytos   <span class="kw">=</span>    <span class="dv">1</span></span>
+<span id="cb12-4"><a href="phytoplankton.html#cb12-4" aria-hidden="true" tabindex="-1"></a>  the_phytos   <span class="kw">=</span>    <span class="dv">1</span></span>
+<span id="cb12-5"><a href="phytoplankton.html#cb12-5" aria-hidden="true" tabindex="-1"></a>  settling     <span class="kw">=</span>    <span class="dv">1</span></span>
+<span id="cb12-6"><a href="phytoplankton.html#cb12-6" aria-hidden="true" tabindex="-1"></a><span class="co">!-- Benthic phytoplankton group (microphytobenthos)</span></span>
+<span id="cb12-7"><a href="phytoplankton.html#cb12-7" aria-hidden="true" tabindex="-1"></a>  do_mpb       <span class="kw">=</span>    <span class="dv">1</span></span>
+<span id="cb12-8"><a href="phytoplankton.html#cb12-8" aria-hidden="true" tabindex="-1"></a>  R_mpbg       <span class="kw">=</span>    <span class="fl">0.5</span></span>
+<span id="cb12-9"><a href="phytoplankton.html#cb12-9" aria-hidden="true" tabindex="-1"></a>  R_mpbr       <span class="kw">=</span>    <span class="fl">0.05</span></span>
+<span id="cb12-10"><a href="phytoplankton.html#cb12-10" aria-hidden="true" tabindex="-1"></a>  I_Kmpb       <span class="kw">=</span>  <span class="fl">100.</span></span>
+<span id="cb12-11"><a href="phytoplankton.html#cb12-11" aria-hidden="true" tabindex="-1"></a>  mpb_max      <span class="kw">=</span> <span class="fl">2000.</span></span>
+<span id="cb12-12"><a href="phytoplankton.html#cb12-12" aria-hidden="true" tabindex="-1"></a>  resuspension <span class="kw">=</span>    <span class="fl">0.45</span></span>
+<span id="cb12-13"><a href="phytoplankton.html#cb12-13" aria-hidden="true" tabindex="-1"></a>  n_zones      <span class="kw">=</span>    <span class="dv">4</span></span>
+<span id="cb12-14"><a href="phytoplankton.html#cb12-14" aria-hidden="true" tabindex="-1"></a>  active_zones <span class="kw">=</span>    <span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span></span>
+<span id="cb12-15"><a href="phytoplankton.html#cb12-15" aria-hidden="true" tabindex="-1"></a>  resus_link   <span class="kw">=</span> <span class="st">&#39;NCS_resus&#39;</span></span>
+<span id="cb12-16"><a href="phytoplankton.html#cb12-16" aria-hidden="true" tabindex="-1"></a><span class="co">!-- Set link variables to other modules</span></span>
+<span id="cb12-17"><a href="phytoplankton.html#cb12-17" aria-hidden="true" tabindex="-1"></a>  p_excretion_target_variable  <span class="kw">=</span><span class="st">&#39;OGM_dop&#39;</span></span>
+<span id="cb12-18"><a href="phytoplankton.html#cb12-18" aria-hidden="true" tabindex="-1"></a>  n_excretion_target_variable  <span class="kw">=</span><span class="st">&#39;OGM_don&#39;</span></span>
+<span id="cb12-19"><a href="phytoplankton.html#cb12-19" aria-hidden="true" tabindex="-1"></a>  c_excretion_target_variable  <span class="kw">=</span><span class="st">&#39;OGM_doc&#39;</span></span>
+<span id="cb12-20"><a href="phytoplankton.html#cb12-20" aria-hidden="true" tabindex="-1"></a>  si_excretion_target_variable <span class="kw">=</span><span class="st">&#39;&#39;</span></span>
+<span id="cb12-21"><a href="phytoplankton.html#cb12-21" aria-hidden="true" tabindex="-1"></a>  p_mortality_target_variable  <span class="kw">=</span><span class="st">&#39;OGM_pop&#39;</span></span>
+<span id="cb12-22"><a href="phytoplankton.html#cb12-22" aria-hidden="true" tabindex="-1"></a>  n_mortality_target_variable  <span class="kw">=</span><span class="st">&#39;OGM_pon&#39;</span></span>
+<span id="cb12-23"><a href="phytoplankton.html#cb12-23" aria-hidden="true" tabindex="-1"></a>  c_mortality_target_variable  <span class="kw">=</span><span class="st">&#39;OGM_poc&#39;</span></span>
+<span id="cb12-24"><a href="phytoplankton.html#cb12-24" aria-hidden="true" tabindex="-1"></a>  si_mortality_target_variable <span class="kw">=</span><span class="st">&#39;&#39;</span></span>
+<span id="cb12-25"><a href="phytoplankton.html#cb12-25" aria-hidden="true" tabindex="-1"></a>  p1_uptake_target_variable    <span class="kw">=</span><span class="st">&#39;PHS_frp&#39;</span></span>
+<span id="cb12-26"><a href="phytoplankton.html#cb12-26" aria-hidden="true" tabindex="-1"></a>  n1_uptake_target_variable    <span class="kw">=</span><span class="st">&#39;NIT_nit&#39;</span></span>
+<span id="cb12-27"><a href="phytoplankton.html#cb12-27" aria-hidden="true" tabindex="-1"></a>  n2_uptake_target_variable    <span class="kw">=</span><span class="st">&#39;NIT_amm&#39;</span></span>
+<span id="cb12-28"><a href="phytoplankton.html#cb12-28" aria-hidden="true" tabindex="-1"></a>  si_uptake_target_variable    <span class="kw">=</span><span class="st">&#39;&#39;</span></span>
+<span id="cb12-29"><a href="phytoplankton.html#cb12-29" aria-hidden="true" tabindex="-1"></a>  do_uptake_target_variable    <span class="kw">=</span><span class="st">&#39;OXY_oxy&#39;</span></span>
+<span id="cb12-30"><a href="phytoplankton.html#cb12-30" aria-hidden="true" tabindex="-1"></a>  c_uptake_target_variable     <span class="kw">=</span><span class="st">&#39;&#39;</span></span>
+<span id="cb12-31"><a href="phytoplankton.html#cb12-31" aria-hidden="true" tabindex="-1"></a><span class="co">!-- General options</span></span>
+<span id="cb12-32"><a href="phytoplankton.html#cb12-32" aria-hidden="true" tabindex="-1"></a>  dbase <span class="kw">=</span> <span class="st">&#39;../External/AED/aed_phyto_pars.nml&#39;</span></span>
+<span id="cb12-33"><a href="phytoplankton.html#cb12-33" aria-hidden="true" tabindex="-1"></a>  diag_level <span class="kw">=</span> <span class="dv">1</span></span>
+<span id="cb12-34"><a href="phytoplankton.html#cb12-34" aria-hidden="true" tabindex="-1"></a><span class="kw">/</span></span></code></pre></div>
 <p><br></p>
 <p>Note that when simulating benthic phytoplankton, the bottom zones in the model to be active must be selected.</p>
 <p>Another example <code>aed.nml</code> block for the phytoplankton module that includes no benthic (bottom) phytoplankton, and three different groups is shown below:</p>
 <p><br></p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode fortran"><code class="sourceCode fortranfixed"><span id="cb12-1"><a href="phytoplankton.html#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&amp;</span>aed_phytoplankton</span>
-<span id="cb12-2"><a href="phytoplankton.html#cb12-2" aria-hidden="true" tabindex="-1"></a> <span class="co">!-- Configure phytoplankton groups to simulate</span></span>
-<span id="cb12-3"><a href="phytoplankton.html#cb12-3" aria-hidden="true" tabindex="-1"></a>   num_phytos <span class="kw">=</span> <span class="dv">3</span>       </span>
-<span id="cb12-4"><a href="phytoplankton.html#cb12-4" aria-hidden="true" tabindex="-1"></a>   the_phytos <span class="kw">=</span> <span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>          <span class="co">! cyanos,greens,diatoms</span></span>
-<span id="cb12-5"><a href="phytoplankton.html#cb12-5" aria-hidden="true" tabindex="-1"></a>   settling   <span class="kw">=</span> <span class="dv">3</span>,<span class="dv">1</span>,<span class="dv">1</span>          <span class="co">! approach to settling/migration</span></span>
-<span id="cb12-6"><a href="phytoplankton.html#cb12-6" aria-hidden="true" tabindex="-1"></a> <span class="co">!-- Benthic phytoplankton group (microphytobenthos)</span></span>
-<span id="cb12-7"><a href="phytoplankton.html#cb12-7" aria-hidden="true" tabindex="-1"></a>   do_mpb     <span class="kw">=</span> <span class="dv">0</span></span>
-<span id="cb12-8"><a href="phytoplankton.html#cb12-8" aria-hidden="true" tabindex="-1"></a> <span class="co">!-- Set link variables to other modules</span></span>
-<span id="cb12-9"><a href="phytoplankton.html#cb12-9" aria-hidden="true" tabindex="-1"></a>   p_excretion_target_variable <span class="kw">=</span><span class="st">&#39;OGM_dop&#39;</span></span>
-<span id="cb12-10"><a href="phytoplankton.html#cb12-10" aria-hidden="true" tabindex="-1"></a>   n_excretion_target_variable <span class="kw">=</span><span class="st">&#39;OGM_don&#39;</span></span>
-<span id="cb12-11"><a href="phytoplankton.html#cb12-11" aria-hidden="true" tabindex="-1"></a>   c_excretion_target_variable <span class="kw">=</span><span class="st">&#39;OGM_doc&#39;</span></span>
-<span id="cb12-12"><a href="phytoplankton.html#cb12-12" aria-hidden="true" tabindex="-1"></a>   si_excretion_target_variable<span class="kw">=</span><span class="st">&#39;&#39;</span></span>
-<span id="cb12-13"><a href="phytoplankton.html#cb12-13" aria-hidden="true" tabindex="-1"></a>   p_mortality_target_variable <span class="kw">=</span><span class="st">&#39;OGM_pop&#39;</span></span>
-<span id="cb12-14"><a href="phytoplankton.html#cb12-14" aria-hidden="true" tabindex="-1"></a>   n_mortality_target_variable <span class="kw">=</span><span class="st">&#39;OGM_pon&#39;</span></span>
-<span id="cb12-15"><a href="phytoplankton.html#cb12-15" aria-hidden="true" tabindex="-1"></a>   c_mortality_target_variable <span class="kw">=</span><span class="st">&#39;OGM_poc&#39;</span></span>
-<span id="cb12-16"><a href="phytoplankton.html#cb12-16" aria-hidden="true" tabindex="-1"></a>   si_mortality_target_variable<span class="kw">=</span><span class="st">&#39;&#39;</span></span>
-<span id="cb12-17"><a href="phytoplankton.html#cb12-17" aria-hidden="true" tabindex="-1"></a>   p1_uptake_target_variable   <span class="kw">=</span><span class="st">&#39;PHS_frp&#39;</span></span>
-<span id="cb12-18"><a href="phytoplankton.html#cb12-18" aria-hidden="true" tabindex="-1"></a>   n1_uptake_target_variable   <span class="kw">=</span><span class="st">&#39;NIT_amm&#39;</span></span>
-<span id="cb12-19"><a href="phytoplankton.html#cb12-19" aria-hidden="true" tabindex="-1"></a>   n2_uptake_target_variable   <span class="kw">=</span><span class="st">&#39;NIT_nit&#39;</span></span>
-<span id="cb12-20"><a href="phytoplankton.html#cb12-20" aria-hidden="true" tabindex="-1"></a>   si_uptake_target_variable   <span class="kw">=</span><span class="st">&#39;SIL_rsi&#39;</span></span>
-<span id="cb12-21"><a href="phytoplankton.html#cb12-21" aria-hidden="true" tabindex="-1"></a>   do_uptake_target_variable   <span class="kw">=</span><span class="st">&#39;OXY_oxy&#39;</span></span>
-<span id="cb12-22"><a href="phytoplankton.html#cb12-22" aria-hidden="true" tabindex="-1"></a>   c_uptake_target_variable    <span class="kw">=</span><span class="st">&#39;CAR_dic&#39;</span></span>
-<span id="cb12-23"><a href="phytoplankton.html#cb12-23" aria-hidden="true" tabindex="-1"></a> <span class="co">!-- General options</span></span>
-<span id="cb12-24"><a href="phytoplankton.html#cb12-24" aria-hidden="true" tabindex="-1"></a>   dbase      <span class="kw">=</span> <span class="st">&#39;aed/aed_phyto_pars.csv&#39;</span> </span>
-<span id="cb12-25"><a href="phytoplankton.html#cb12-25" aria-hidden="true" tabindex="-1"></a>   diag_level <span class="kw">=</span>   <span class="dv">10</span></span>
-<span id="cb12-26"><a href="phytoplankton.html#cb12-26" aria-hidden="true" tabindex="-1"></a>   min_rho    <span class="kw">=</span>  <span class="fl">900.0</span></span>
-<span id="cb12-27"><a href="phytoplankton.html#cb12-27" aria-hidden="true" tabindex="-1"></a>   max_rho    <span class="kw">=</span> <span class="fl">1200.0</span></span>
-<span id="cb12-28"><a href="phytoplankton.html#cb12-28" aria-hidden="true" tabindex="-1"></a><span class="kw">/</span></span></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode fortran"><code class="sourceCode fortranfixed"><span id="cb13-1"><a href="phytoplankton.html#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&amp;</span>aed_phytoplankton</span>
+<span id="cb13-2"><a href="phytoplankton.html#cb13-2" aria-hidden="true" tabindex="-1"></a> <span class="co">!-- Configure phytoplankton groups to simulate</span></span>
+<span id="cb13-3"><a href="phytoplankton.html#cb13-3" aria-hidden="true" tabindex="-1"></a>   num_phytos <span class="kw">=</span> <span class="dv">3</span>       </span>
+<span id="cb13-4"><a href="phytoplankton.html#cb13-4" aria-hidden="true" tabindex="-1"></a>   the_phytos <span class="kw">=</span> <span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>          <span class="co">! cyanos,greens,diatoms</span></span>
+<span id="cb13-5"><a href="phytoplankton.html#cb13-5" aria-hidden="true" tabindex="-1"></a>   settling   <span class="kw">=</span> <span class="dv">3</span>,<span class="dv">1</span>,<span class="dv">1</span>          <span class="co">! approach to settling/migration</span></span>
+<span id="cb13-6"><a href="phytoplankton.html#cb13-6" aria-hidden="true" tabindex="-1"></a> <span class="co">!-- Benthic phytoplankton group (microphytobenthos)</span></span>
+<span id="cb13-7"><a href="phytoplankton.html#cb13-7" aria-hidden="true" tabindex="-1"></a>   do_mpb     <span class="kw">=</span> <span class="dv">0</span></span>
+<span id="cb13-8"><a href="phytoplankton.html#cb13-8" aria-hidden="true" tabindex="-1"></a> <span class="co">!-- Set link variables to other modules</span></span>
+<span id="cb13-9"><a href="phytoplankton.html#cb13-9" aria-hidden="true" tabindex="-1"></a>   p_excretion_target_variable <span class="kw">=</span><span class="st">&#39;OGM_dop&#39;</span></span>
+<span id="cb13-10"><a href="phytoplankton.html#cb13-10" aria-hidden="true" tabindex="-1"></a>   n_excretion_target_variable <span class="kw">=</span><span class="st">&#39;OGM_don&#39;</span></span>
+<span id="cb13-11"><a href="phytoplankton.html#cb13-11" aria-hidden="true" tabindex="-1"></a>   c_excretion_target_variable <span class="kw">=</span><span class="st">&#39;OGM_doc&#39;</span></span>
+<span id="cb13-12"><a href="phytoplankton.html#cb13-12" aria-hidden="true" tabindex="-1"></a>   si_excretion_target_variable<span class="kw">=</span><span class="st">&#39;&#39;</span></span>
+<span id="cb13-13"><a href="phytoplankton.html#cb13-13" aria-hidden="true" tabindex="-1"></a>   p_mortality_target_variable <span class="kw">=</span><span class="st">&#39;OGM_pop&#39;</span></span>
+<span id="cb13-14"><a href="phytoplankton.html#cb13-14" aria-hidden="true" tabindex="-1"></a>   n_mortality_target_variable <span class="kw">=</span><span class="st">&#39;OGM_pon&#39;</span></span>
+<span id="cb13-15"><a href="phytoplankton.html#cb13-15" aria-hidden="true" tabindex="-1"></a>   c_mortality_target_variable <span class="kw">=</span><span class="st">&#39;OGM_poc&#39;</span></span>
+<span id="cb13-16"><a href="phytoplankton.html#cb13-16" aria-hidden="true" tabindex="-1"></a>   si_mortality_target_variable<span class="kw">=</span><span class="st">&#39;&#39;</span></span>
+<span id="cb13-17"><a href="phytoplankton.html#cb13-17" aria-hidden="true" tabindex="-1"></a>   p1_uptake_target_variable   <span class="kw">=</span><span class="st">&#39;PHS_frp&#39;</span></span>
+<span id="cb13-18"><a href="phytoplankton.html#cb13-18" aria-hidden="true" tabindex="-1"></a>   n1_uptake_target_variable   <span class="kw">=</span><span class="st">&#39;NIT_amm&#39;</span></span>
+<span id="cb13-19"><a href="phytoplankton.html#cb13-19" aria-hidden="true" tabindex="-1"></a>   n2_uptake_target_variable   <span class="kw">=</span><span class="st">&#39;NIT_nit&#39;</span></span>
+<span id="cb13-20"><a href="phytoplankton.html#cb13-20" aria-hidden="true" tabindex="-1"></a>   si_uptake_target_variable   <span class="kw">=</span><span class="st">&#39;SIL_rsi&#39;</span></span>
+<span id="cb13-21"><a href="phytoplankton.html#cb13-21" aria-hidden="true" tabindex="-1"></a>   do_uptake_target_variable   <span class="kw">=</span><span class="st">&#39;OXY_oxy&#39;</span></span>
+<span id="cb13-22"><a href="phytoplankton.html#cb13-22" aria-hidden="true" tabindex="-1"></a>   c_uptake_target_variable    <span class="kw">=</span><span class="st">&#39;CAR_dic&#39;</span></span>
+<span id="cb13-23"><a href="phytoplankton.html#cb13-23" aria-hidden="true" tabindex="-1"></a> <span class="co">!-- General options</span></span>
+<span id="cb13-24"><a href="phytoplankton.html#cb13-24" aria-hidden="true" tabindex="-1"></a>   dbase      <span class="kw">=</span> <span class="st">&#39;aed/aed_phyto_pars.csv&#39;</span> </span>
+<span id="cb13-25"><a href="phytoplankton.html#cb13-25" aria-hidden="true" tabindex="-1"></a>   diag_level <span class="kw">=</span>   <span class="dv">10</span></span>
+<span id="cb13-26"><a href="phytoplankton.html#cb13-26" aria-hidden="true" tabindex="-1"></a>   min_rho    <span class="kw">=</span>  <span class="fl">900.0</span></span>
+<span id="cb13-27"><a href="phytoplankton.html#cb13-27" aria-hidden="true" tabindex="-1"></a>   max_rho    <span class="kw">=</span> <span class="fl">1200.0</span></span>
+<span id="cb13-28"><a href="phytoplankton.html#cb13-28" aria-hidden="true" tabindex="-1"></a><span class="kw">/</span></span></code></pre></div>
 <p><br></p>
 <p>The numbers reported here are for example purposes and should be reviewed before use based on the users chosen site context.</p>
 <p><br></p>
