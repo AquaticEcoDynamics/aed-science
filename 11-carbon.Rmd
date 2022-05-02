@@ -699,6 +699,10 @@ Using the AED model coupled with the 3-D model TUFLOW-FV, the dynamics of the es
 <center>
 ![Figure X: Trasect plots comparing modelled and field data for DOC (uM, 1st row), DIC (uM, 2nd row), pCO2 (uATM, 3rd row) and pCH4 (uATM, 4th row) for three estuaries in south-east Queensland: a) Brisbane river, b) Maroochy estuary, and c) Noosa estuary. Data presented for March 2016, collected by Southern Cross University Centre for Coastal Biogeochemistry.](images/carbon/seq_example1.png){width=101%}
 </center>
+	
+	<center>
+![Figure X: Trasect plots comparing modelled and field data for DOC (uM, 1st row), DIC (uM, 2nd row), pCO2 (uATM, 3rd row) and pCH4 (uATM, 4th row) for three estuaries in south-east Queensland: a) Brisbane river, b) Maroochy estuary, and c) Noosa estuary. Data presented for March 2016, collected by Southern Cross University Centre for Coastal Biogeochemistry.](images/carbon/methane.pdf){width=101%}
+</center>
 
 	
 <!-- ###	Publications -->
