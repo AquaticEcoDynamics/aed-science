@@ -684,7 +684,7 @@ knitr::include_graphics("images/carbon/seq_example1.png")
 
 ###	Case Study : Lake Kinneret {#SEQCarbonCaseStudy}
 	
-The aed_carbon model was applied to Lake Kinneret, a deep subtropical lake in Israel. Using the AED model coupled with the General Lake Model, the dynamics of Lake Kinneret (Figure \@ref(fig:kinneret-map) were simulated from 01/01/1998 until 23/02/2002.
+The aed_carbon model was applied to Lake Kinneret, a deep subtropical lake in Israel. Using the AED model coupled with the General Lake Model, the dynamics of Lake Kinneret (Figure \@ref(fig:kinneret-map)) were simulated from 01/01/1998 until 23/02/2002.
 	
 <br>
 
