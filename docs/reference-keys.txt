@@ -18,6 +18,7 @@ tab:10-diagtable
 tab:10-parstable
 eq:car1
 eq:car2
+fig:carbonPlotly
 tab:11-alkmode
 eq:sedimentExchange5
 eq:sedimentExchange6
