@@ -93,7 +93,7 @@ DIC = [CO_{3}^{2-}]+[HCO_{3}^{-}]+[CO_{2}]+[H_2CO_{3}].
 
 
 
-To capture the interaction between carbonate species that make up DIC, each cell is treated as a closed system, as in a titration, where fluxes into and out of the system are specified, such as fluxes due to respiration, dissolved sediment fluxes, or atmospheric exchange. The changes due to these fluxes alter the CO_(2(aq))  concentration without changing the alkalinity, allowing for the speciation and pH to be recomputed at the end of the time-step.
+To capture the interaction between carbonate species that make up DIC, each cell is treated as a closed system, as in a titration, where fluxes into and out of the system are specified, such as fluxes due to respiration, dissolved sediment fluxes, or atmospheric exchange. The changes due to these fluxes alter the $CO_{2_{(aq)}}$ concentration without changing the alkalinity, allowing for the speciation and pH to be recomputed at the end of the time-step.
 
 aed_carbon provides three options for modelling the bicarbonate equilibrium by switching the CO2_model options:
 
@@ -107,7 +107,7 @@ This option is selected if the user wishes to defer the speciation, pCO2 and pH 
 
 When using this approach, users must pay attention to correctly configure the `aed_geochemistry` model to link to DIC, pCO2 and pH within the `aed_carbon` module.
 
-TO resolve carbonate buffering that module can be setup with the following components, and species:
+To resolve carbonate buffering that module can be setup with the following components, and species:
 
 \begin{eqnarray}
 X &\in& \{CO_3^{2-}, H^+,H_2O\}
@@ -161,7 +161,7 @@ where $p00$, $p10$, $p01$, $p20$, $p11$, $p02$ are constant coefficients. For th
 -   `alk_mode=4`: constant coefficients derived from field work in Maroochy River;
 -   `alk_mode=5`: constant coefficients derived from field work in Brisbane River;
 
-The constant coefficients in these options are provided in Table \@ref(tab:11-alkmode). A case study using alk_mode=5 in Brisbane River (link to case study) is given in Section \@ref(SEQCarbonCaseStudy). Users may wish to implement tailored alkalinity relationships as additional alk_mode options for specific study sites and use-cases.
+The constant coefficients in these options are provided in Table \@ref(tab:11-alkmode). A case study using alk_mode=5 in Brisbane River is given in Section \@ref(SEQCarbonCaseStudy). Users may wish to implement tailored alkalinity relationships as additional alk_mode options for specific study sites and use-cases.
 
 
 ```{r 11-alkmode, echo=FALSE, message=FALSE, warning=FALSE}
