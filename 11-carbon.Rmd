@@ -646,7 +646,7 @@ The `aed_carbon` model was applied to three estuaries of the Moreton Bay region 
 <br>
 
 <center>
-```{r echo=FALSE, message=FALSE, warning=FALSE, width = 400, height = 305}
+```{r sitemapQ, fig.cap="Map of the three estuaries in the Moreton Bay region in south-east Australia", echo=FALSE, message=FALSE, warning=FALSE, width = 400, height = 305}
 library(leaflet)
 library(dplyr)
 library(htmlwidgets)
