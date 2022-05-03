@@ -176,9 +176,9 @@ The phytoplankton module can feedback conditions to the hydrodynamic model by mo
 This total light extinction computed by the PHY model is:
 
 \begin{equation}
-K_{d_{phy}} = K_{e_{PHY}} PHY_a \\ (\#eq:phy_light_extc)
+K_{d}^{phy} = \sum_{a}K_{e_{PHY_a}} PHY_a 
 \end{equation}
-
+<!-- \\ (\#eq:phy_light_extc) -->
 <br>
 
 ###	Variable Summary
@@ -292,14 +292,14 @@ kbl(theSheet[,3:NCOL(theSheet)], caption = "Phytoplankton - *diagnostic* variabl
             min(which(theSheet$Group == theSheetGroups[3])),
             max(which(theSheet$Group == theSheetGroups[3])),
             background = '#ebebeb') %>%
-  row_spec(0, background = "#14759e", bold = TRUE, color = "white") %>%
+  row_spec(0, background = "#00796b", bold = TRUE, color = "white") %>%
   kable_styling(full_width = F,font_size = 11) %>%
             column_spec(2, width_min = "7em") %>%
 	          column_spec(3, width_max = "18em") %>%
 	          column_spec(4, width_min = "10em") %>%
 	          column_spec(5, width_min = "6em") %>%
 						column_spec(7, width_min = "10em") %>%
-	          scroll_box(width = "770px", height = "1600px",
+	          scroll_box(width = "770px", height = "1900px",
             fixed_thead = FALSE)
 ```
 
@@ -403,7 +403,7 @@ kbl(theSheet[,3:NCOL(theSheet)], caption = "Phytoplankton group-specific paramet
   				  min(which(theSheet$Group == theSheetGroups[9])),
   				  max(which(theSheet$Group == theSheetGroups[9])),
     			  background = '#ebebeb') %>%
-  row_spec(0, background = "#14759e", bold = TRUE, color = "white") %>%
+  row_spec(0, background = "#e64a19", bold = TRUE, color = "white") %>%
   kable_styling(full_width = F,font_size = 11) %>%
 	column_spec(2, width_min = "7em") %>%
 	column_spec(3, width_max = "19em") %>%
@@ -467,14 +467,14 @@ kbl(theSheet[,3:NCOL(theSheet)], caption = "Phytoplankton group-specific paramet
 					  min(which(theSheet$Group == theSheetGroups[4])),
 					  max(which(theSheet$Group == theSheetGroups[4])),
 					  background = '#ebebeb') %>%
-  row_spec(0, background = "#14759e", bold = TRUE, color = "white") %>%
+  row_spec(0, background = "#ff7043", bold = TRUE, color = "white") %>%
   kable_styling(full_width = F,font_size = 11) %>%
 	column_spec(2, width_min = "7em") %>%
 	column_spec(3, width_max = "19em") %>%
 	column_spec(4, width_min = "10em") %>%
 	column_spec(5, width_min = "5em") %>%
 	column_spec(7, width_min = "10em") %>%
-  scroll_box(width = "770px", height = "800px",
+  scroll_box(width = "770px", height = "1500px",
              fixed_thead = FALSE)
 ```
 <br>
@@ -668,6 +668,8 @@ Falling Creek Reservoir (FCR) is a water supply reservoir in Virginia.
 <center>
 ![Figure X: Example outputs from the FCR GLM-AED model, showing a) the total chl-a concentration depth profiles, and b) the change in  biomass of the indivdual simulated groups.](images/phytoplankton/fcr_phyto_example1.png){width=90%}
 </center>
+
+<br>
 
 An example GLM-AED simulation for FCR is available in the GLM example simulations provided on GitHub. 
 
