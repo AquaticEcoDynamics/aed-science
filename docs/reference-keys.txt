@@ -38,6 +38,7 @@ tab:11-diagtable
 tab:11-parstable
 fig:sitemapQ
 fig:Queensland-pic1
+fig:kinneret-map
 fig:Kinneret-pic1
 fig:Kinneret-pic2
 eq:nit1
