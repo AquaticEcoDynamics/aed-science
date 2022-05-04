@@ -61,6 +61,7 @@ To build the book locally, clone or download this `aed-science` repo, load R in 
 bookdown::render_book("index.Rmd") # to build the book
 browseURL("_book/index.html") # to view it
 ```
+Any changes and additions can be included within the book by completing a pull-request.
 
 ## Supporting the AED model project
 
