@@ -2,6 +2,7 @@
 
 [![AED](https://img.shields.io/badge/AED-2.0-brightgreen)](https://aquatic.science.uwa.edu.au/research/models/AED/quickstart.html)
 [![GPLv3 license](https://img.shields.io/badge/License-GPLv3-blue.svg)](http://perso.crans.org/besson/LICENSE.html)
+[![DOI](https://zenodo.org/badge/248450415.svg)](https://zenodo.org/badge/latestdoi/248450415)
 
 This repository is the main documentation of the AED aquatic ecosystem modelling library, developed in R bookdown.
 
