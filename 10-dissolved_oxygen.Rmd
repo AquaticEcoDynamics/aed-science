@@ -1,3 +1,5 @@
+# (PART)  AED Water Modules{-} 
+
 # Dissolved Oxygen {#DO_1}
 
 ## Contributors
@@ -97,6 +99,7 @@ Other oxygen sources/sinks are indicated in Eq \@ref(eq:oxy1). These include:
 
 
 ### Feedbacks to the Host Model
+
 The oxygen module has no feedbacks to the host hydrodynamic model.
 
 
@@ -291,9 +294,9 @@ kbl(theSheet[,3:NCOL(theSheet)], caption = "Oxygen module parameters and configu
 An example `aed.nml` parameter specification block for the `aed_oxygen` module is shown below:
 ```{fortran, eval = FALSE}
 &aed_oxygen
-   oxy_initial       = 250.0
-	 oxy_min           =   0
-   oxy_max           = 500
+   oxy_initial       = 250.0 
+   oxy_min           =   0 
+   oxy_max           = 500 
    Fsed_oxy          = -40.0
    Ksed_oxy          = 100.0
    theta_sed_oxy     =   1.08
@@ -318,6 +321,7 @@ library(leaflet)
 leaflet(height=385, width=500) %>%
   setView(lng = 115.835235, lat = -31.991618, zoom = 11) %>%
   addTiles() %>%
+  addProviderTiles(providers$Stamen.Terrain)  %>%
   addMarkers(lng = 115.835235, lat = -31.991618, popup = "Swan River")
 ```
 </center>
@@ -338,7 +342,7 @@ The results of the model were integrated over the length of the modelled domain 
 
 <center>
 
-![Figure 2: The total area of anoxia (<2 mg O2 / L) and hypoxia (<4 mg O2 / L) within the estuary for 2008 and 2010, comparing the model (black line) and spatially interpolated weekly profile data (shaded region).](images/oxygen_example2.png){width=75%}
+![Figure 2: The total area of anoxia (<2 mg O2 / L) and hypoxia (<4 mg O2 / L) within the estuary for a) 2008 and b) 2010, comparing the model (black line) and spatially interpolated weekly profile data (shaded region).](images/oxygen_example2.png){width=75%}
 
 </center>
 

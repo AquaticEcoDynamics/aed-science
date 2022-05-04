@@ -1,9 +1,12 @@
 # Pathogens & Microbial Indicator Organisms
 
 ## Contributors
+
+Matthew R. Hipsey
+
 ## Overview
 
-Understanding the fate and transport of pathogenic and indicator microbes within drinking water reservoirs is critical for managers to effectively reduce risk. Over the past decade several advances have been made for the simulating organism dynamics using coupled hydrodynamic-organism fate models. These have generally been used for simulating coliform bacteria [@hipsey2008], with applications also reported for Cryptosporidium [@hipsey2004] and viruses [@sokolova2012] . In general, these models simulate organism concentrations within water bodies by accounting for external loading, advection and mixing process that occur within the lake interior, organism inactivation and sedimentation. The purpose of this document is to firstly synthesize relevant information from empirical and prior modelling studies to justify the necessary model required for reservoir systems, and secondly to summarise the implementation of the pathogen module within the AED2 model framework.
+Understanding the fate and transport of pathogenic and indicator microbes within drinking water reservoirs, rivers and coastal waters is critical for environmental managers to effectively reduce public health risks. Over the past decade several advances have been made for the simulating organism dynamics using coupled hydrodynamic-organism fate models [@hipsey2008]. These have generally been used for simulating coliform bacteria (Madani et al. 2022), with applications also reported for other organisms such as Cryptosporidium [@hipsey2004] and viruses [@sokolova2012]. In general, these models simulate organism concentrations within water bodies by accounting for external loading (e.g. from stormwater or wastewater inputs), advection and mixing process that occur within the interior of the water body, organism inactivation and sedimentation. This chapter describes the basis for the AED pathogen model based on relevant information from empirical and prior modelling studies, and then summarises the setup requirements of the pathogen module within the AED model framework.
 
 ## Model Description
 
@@ -11,19 +14,30 @@ Understanding the fate and transport of pathogenic and indicator microbes within
 
 The general balance equation for organism transport and fate is summarized in @hipsey2008 as:
 
+```{=tex}
+\begin{eqnarray}
+\frac{D}{Dt}C =  \color{darkgray}{ \mathbb{M} + \mathcal{S} } \quad
+&+&   \overbrace{f_{growth}^{C} -f_{mor}^{C} - f_{set}^{C} +\hat{f}_{res}^{C}}^\text{aed_pathogen} \\ (\#eq:path1)
+\end{eqnarray}
+```
+
+where $C$ is the organic concentration (orgs m^-3^). Within the AED model framework, the transport terms are solved via hydrodynamic model transport routines and the remaining terms are simulated by the `aed_pathogens` module.
+
+The main term controlling pathogen fate is the mortality or inactivation term, $f_{mor}^{C}$:
+
 <center>
 \begin{equation}
-\frac{DC}{Dt} = +C_{r}(\tau,SS_{SED},C_{SED})+[k_{g}(T,S,DOC_{L})-k_{d}(T,S,pH)-k_{l}
-(I_{0},S,DO,pH)-k_{s}(T,S,SS)-k_{p}(T)]C
-(\#eq:pathogen1)
+f_{mor}^{C} = [k_{g}(T,S,DOC_{L})-k_{d}(T,S,pH)-k_{l}(I_{0},S,DO,pH)-k_{s}(T,S,SS)-k_{p}(T)]C
+(\#eq:path2)
 \end{equation}
 </center>
 
-where $C$ is the organic concentration (orgs m^-3^). This relates organism concentration to the environmental conditions experienced that influence organism fate (including temperature, salinity, light intensity, dissolved organic carbon, oxygen and pH). This comprehensive description is usually simplified for specific applications, based on justification of the dominant processes present in any particular lake and available data for model setup and validation.
+which relates organism inactivation to the environmental conditions experienced that influence their viability (including temperature, salinity, light intensity, dissolved organic carbon, oxygen and pH). This comprehensive description is usually simplified for specific applications, based on justification of the dominant processes present in any particular waterbody and available data for model setup and validation.
 
-Within the AED model framework, the transport terms are solved via hydrodynamic model transport routines and the remaining terms are simulated by the `aed_pathogens` module. The terms for simulation of organism resuspension and inactivation are described in next.
+The terms for simulation of organism resuspension and inactivation are described in next.
 
-###	Process Descriptions
+
+### Process Descriptions
 
 
 
@@ -39,6 +53,76 @@ k_{d}(T) = k_{d_{20}}\vartheta _{M}^{T-20}
 </center>
 
 where $k_{d_{20}}$ is the rate of mortality in the dark at 20C and in freshwater. Since the AED2 implementation of the model to be applied with NPD does not include protozoan grazing as a separate term (as in Eq 1), the grazing effect needs to be embodied within the $k_{d_{20}}$ term. This effectively assumes a constant grazing pressure over time, and if chosen to be a low value this will essentially ensure conservative estimate of the die-off due to grazing. Empirical data from Wivenhoe dam shows the presence of native micro-organisms can increase the background die-off rate by 1.1-3.0x (eg Table 5 in @sidhu2012).
+
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+library(ggplot2)
+library(plotly)
+
+
+#### functions####
+a_plot <- function(x) {
+  0.341*1.107^(x-20)
+}
+
+b_plot <- function(x) {
+  0.709*1.056^(x-20)
+}
+
+c_plot <- function(x) {
+  0.482*1.111^(x-20)
+}
+
+d_plot <- function(x) {
+  0.454*1.044^(x-20)
+}
+
+e_plot <- function(x) {
+  0.342*1.102^(x-20)
+}
+
+f_plot <- function(x) {
+  0.164*1.010^(x-20)
+}
+
+
+#### plot ####
+
+plot <- ggplot(data.frame(x = c(0, 40)), aes(x = x)) +
+  geom_path(aes(colour="Total Coliforms\n(0.341, 1.107)"), stat="function", fun=a_plot) +
+  geom_path(aes(colour="Faecal Coliforms\n(0.709, 1.056)"), stat="function", fun=b_plot) +
+  geom_path(aes(colour="<i>E.coli</i>\n(0.482, 1.111)"), stat="function", fun=c_plot) +
+  geom_path(aes(colour="Enterococci\n(0.454, 1.044)"), stat="function", fun=d_plot) +
+  geom_path(aes(colour="F+RNA Phages\n(0.342, 1.102)"), stat="function", fun=e_plot) +
+  geom_path(aes(colour="Somatic Coliphages\n(0.164,1.010)"), stat="function", fun=f_plot) +
+  xlab("Temperature (˚C)") + ylab('k<sub>d</sub>(T,0,7)(day<sup>-1</sup>)')
+
+plot <- plot + scale_color_discrete(name="Organism Group",
+                                    labels=c("Total Coliforms (0.341, 1.107)",
+                                             "Faecal Coliforms (0.709, 1.056)",
+                                             "E.coli (0.482,1.111)",
+                                             "Enterococci (0.454, 1.044)",
+                                             "F+RNA Phages (0.342, 1.102)",
+                                             "Somatic Coliphages (0.164, 1.010)"))+
+              theme(legend.title = element_text(color = "black", size = 8),
+              legend.text = element_text(color = "black", size = 8),
+              legend.position="right") +
+              theme_bw()
+
+interactive <- ggplotly(plot) %>%
+  layout(legend = list(x = 1.0, y =1.0))
+interactive
+
+
+#              breaks=c("a_plot", "b_plot", "c_plot", "d_plot", "e_plot", "f_plot"),
+#              labels=c("Total Coliforms (0.341, 1.107)", "Faecal Coliforms (0.709, 1.056)",
+#                       "E.coli (0.482,1.111)", "Enterococci (0.454, 1.044)",
+ #                      "F+RNA Phages (0.342, 1.102)", "Somatic Coliphages (0.164, 1.010)")
+
+
+#+ ylab(bquote(k[d]~'(T,0,7)'~'('~day^-1~')'))
+
+```
 
 #### Sunlight Inactivation {-}
 Depending on the clarity of the water, the light climate of the lake can be a dominant factor influencing organism viability and this has been observed empirically in Wivenhoe Dam by @sidhu2012. Different organism types experience different sensitivity to different light bandwidths, with most organisms sensitive to UV-B and UV-A and some sensitive to light in the visible spectrum [@sinton2007]. @hipsey2008 formulated a multiple band-width model for organisms that included direct and indirect mechanisms for sunlight mediated inactivation by accounting for the effect of salinity, oxygen and pH on free radical formation. Here we use a simplified form that accounts only for direct sunlight denaturation as the indirect mechanism is more specific to MS2 phage relative to rotavirus for example [@verbyla2015]. The implemented expression is therefore:
@@ -80,6 +164,7 @@ C_{r}(\tau)=\alpha_{c}\frac{(\tau - \tau_{c_{s}})}{\tau _{ref}}\frac{1}{\Delta z
 
 where, $\alpha_C$ is the rate of organism suspension (orgs m^-2^s^-1^), which occurs when the critical shear stress is exceeded in the relative computational cell.
 
++C_{r}(\tau,SS_{SED},C_{SED})+
 
 ###	Variable Summary
 
@@ -339,75 +424,6 @@ pd = 	   'crypto',	      0.0,	            4.0,	           35.0,	        0.008,	 
 ## Case Studies & Examples
 ###	Case Study
 
-
-```{r echo=FALSE, message=FALSE, warning=FALSE}
-library(ggplot2)
-library(plotly)
-
-
-#### functions####
-a_plot <- function(x) {
-  0.341*1.107^(x-20)
-}
-
-b_plot <- function(x) {
-  0.709*1.056^(x-20)
-}
-
-c_plot <- function(x) {
-  0.482*1.111^(x-20)
-}
-
-d_plot <- function(x) {
-  0.454*1.044^(x-20)
-}
-
-e_plot <- function(x) {
-  0.342*1.102^(x-20)
-}
-
-f_plot <- function(x) {
-  0.164*1.010^(x-20)
-}
-
-
-#### plot ####
-
-plot <- ggplot(data.frame(x = c(0, 40)), aes(x = x)) +
-  geom_path(aes(colour="Total Coliforms\n(0.341, 1.107)"), stat="function", fun=a_plot) +
-  geom_path(aes(colour="Faecal Coliforms\n(0.709, 1.056)"), stat="function", fun=b_plot) +
-  geom_path(aes(colour="<i>E.coli</i>\n(0.482, 1.111)"), stat="function", fun=c_plot) +
-  geom_path(aes(colour="Enterococci\n(0.454, 1.044)"), stat="function", fun=d_plot) +
-  geom_path(aes(colour="F+RNA Phages\n(0.342, 1.102)"), stat="function", fun=e_plot) +
-  geom_path(aes(colour="Somatic Coliphages\n(0.164,1.010)"), stat="function", fun=f_plot) +
-  xlab("Temperature (˚C)") + ylab('k<sub>d</sub>(T,0,7)(day<sup>-1</sup>)')
-
-plot <- plot + scale_color_discrete(name="Organism Group",
-                                    labels=c("Total Coliforms (0.341, 1.107)",
-                                             "Faecal Coliforms (0.709, 1.056)",
-                                             "E.coli (0.482,1.111)",
-                                             "Enterococci (0.454, 1.044)",
-                                             "F+RNA Phages (0.342, 1.102)",
-                                             "Somatic Coliphages (0.164, 1.010)"))+
-              theme(legend.title = element_text(color = "black", size = 8),
-              legend.text = element_text(color = "black", size = 8),
-              legend.position="right") +
-              theme_bw()
-
-interactive <- ggplotly(plot) %>%
-  layout(legend = list(x = 1.0, y =1.0))
-interactive
-
-
-#              breaks=c("a_plot", "b_plot", "c_plot", "d_plot", "e_plot", "f_plot"),
-#              labels=c("Total Coliforms (0.341, 1.107)", "Faecal Coliforms (0.709, 1.056)",
-#                       "E.coli (0.482,1.111)", "Enterococci (0.454, 1.044)",
- #                      "F+RNA Phages (0.342, 1.102)", "Somatic Coliphages (0.164, 1.010)")
-
-
-#+ ylab(bquote(k[d]~'(T,0,7)'~'('~day^-1~')'))
-
-```
 
 
 ###	Publications

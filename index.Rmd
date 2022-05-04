@@ -58,7 +58,7 @@ Once logged-in to GitHub, click on the 'edit me' icon highlighted with a red ell
 This will take you to an editable version of the the source [R Markdown](http://rmarkdown.rstudio.com/) file that generated the page you're on:
 
 <center>
-```{r edit, echo=FALSE, out.width = '100%'}
+```{r editting, echo=FALSE, out.width = '100%'}
 knitr::include_graphics("images/index/edit.png")
 ```
 </center>

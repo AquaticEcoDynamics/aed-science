@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>2 Nomenclature | The AED Manual</title>
+  <meta name="description" content="Work in progress." />
+  <meta name="generator" content="bookdown 0.26 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="2 Nomenclature | The AED Manual" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="Work in progress." />
+  <meta name="github-repo" content="AquaticEcoDynamics/aed-science/" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="2 Nomenclature | The AED Manual" />
+  
+  <meta name="twitter:description" content="Work in progress." />
+  
+
+
+
+<meta name="date" content="2022-05-04" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="introduction.html"/>
+<link rel="next" href="organisation-of-the-library-module-structure.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script>
+<link href="libs/leaflet-1.3.1/leaflet.css" rel="stylesheet" />
+<script src="libs/leaflet-1.3.1/leaflet.js"></script>
+<link href="libs/leafletfix-1.0.0/leafletfix.css" rel="stylesheet" />
+<script src="libs/proj4-2.6.2/proj4.min.js"></script>
+<script src="libs/Proj4Leaflet-1.0.1/proj4leaflet.js"></script>
+<link href="libs/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet" />
+<script src="libs/leaflet-binding-2.1.1/leaflet.js"></script>
+<script src="libs/leaflet-providers-1.9.0/leaflet-providers_1.9.0.js"></script>
+<script src="libs/leaflet-providers-plugin-2.1.1/leaflet-providers-plugin.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+<script src="libs/plotly-binding-4.10.0/plotly.js"></script>
+<script src="libs/typedarray-0.1/typedarray.min.js"></script>
+<link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
+<link href="libs/plotly-htmlwidgets-css-2.5.1/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="libs/plotly-main-2.5.1/plotly-latest.min.js"></script>
+<script src="https://hypothes.is/embed.js" async></script>
+  
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  background-color: #f8f8f8; }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ef2929; } /* Alert */
+code span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #c4a000; } /* Attribute */
+code span.bn { color: #0000cf; } /* BaseN */
+code span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4e9a06; } /* Char */
+code span.cn { color: #000000; } /* Constant */
+code span.co { color: #8f5902; font-style: italic; } /* Comment */
+code span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
+code span.dt { color: #204a87; } /* DataType */
+code span.dv { color: #0000cf; } /* DecVal */
+code span.er { color: #a40000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #0000cf; } /* Float */
+code span.fu { color: #000000; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #204a87; font-weight: bold; } /* Keyword */
+code span.op { color: #ce5c00; font-weight: bold; } /* Operator */
+code span.ot { color: #8f5902; } /* Other */
+code span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
+code span.sc { color: #000000; } /* SpecialChar */
+code span.ss { color: #4e9a06; } /* SpecialString */
+code span.st { color: #4e9a06; } /* String */
+code span.va { color: #000000; } /* Variable */
+code span.vs { color: #4e9a06; } /* VerbatimString */
+code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="css/style.css" type="text/css" />
+<link rel="stylesheet" href="css/tabs.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="toc-logo"><a href="http://aed.see.uwa.edu.au/research/models/aed/"><center><img src="images/aed-icon.png" width="90"></center></a></li><li><a href="./"><center>The AED Manual</center></a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Modelling Aquatic Eco-Dynamics: Overview of the AED modular simulation platform</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#welcome"><i class="fa fa-check"></i>Welcome!</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#how-to-contribute"><i class="fa fa-check"></i>How to contribute?</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#editing-the-book"><i class="fa fa-check"></i>Editing the book</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#how-to-cite-this-book"><i class="fa fa-check"></i>How to cite this book</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#supporting-the-project"><i class="fa fa-check"></i>Supporting the project</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="preface.html"><a href="preface.html"><i class="fa fa-check"></i>Preface</a>
+<ul>
+<li class="chapter" data-level="" data-path="preface.html"><a href="preface.html#who-is-this-book-for"><i class="fa fa-check"></i>Who is this book for?</a></li>
+<li class="chapter" data-level="" data-path="preface.html"><a href="preface.html#why-aed"><i class="fa fa-check"></i>Why AED?</a></li>
+<li class="chapter" data-level="" data-path="preface.html"><a href="preface.html#acknowledgements"><i class="fa fa-check"></i>Acknowledgements</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>1</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="" data-path="introduction.html"><a href="introduction.html#scientific-overview"><i class="fa fa-check"></i>Scientific Overview</a></li>
+<li class="chapter" data-level="" data-path="introduction.html"><a href="introduction.html#application-contexts"><i class="fa fa-check"></i>Application Contexts</a></li>
+<li class="chapter" data-level="" data-path="introduction.html"><a href="introduction.html#navigating-this-book"><i class="fa fa-check"></i>Navigating this book</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="nomenclature.html"><a href="nomenclature.html"><i class="fa fa-check"></i><b>2</b> Nomenclature</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="nomenclature.html"><a href="nomenclature.html#variables-and-data-types"><i class="fa fa-check"></i><b>2.1</b> Variables and Data Types</a></li>
+<li class="chapter" data-level="2.2" data-path="nomenclature.html"><a href="nomenclature.html#a-note-on-notation"><i class="fa fa-check"></i><b>2.2</b> A Note on Notation</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="nomenclature.html"><a href="nomenclature.html#general-notation"><i class="fa fa-check"></i><b>2.2.1</b> General Notation</a></li>
+<li class="chapter" data-level="2.2.2" data-path="nomenclature.html"><a href="nomenclature.html#model-domain-and-position"><i class="fa fa-check"></i><b>2.2.2</b> Model Domain and Position</a></li>
+<li class="chapter" data-level="2.2.3" data-path="nomenclature.html"><a href="nomenclature.html#environmental-conditions"><i class="fa fa-check"></i><b>2.2.3</b> Environmental Conditions</a></li>
+<li class="chapter" data-level="2.2.4" data-path="nomenclature.html"><a href="nomenclature.html#transport-reference-frame"><i class="fa fa-check"></i><b>2.2.4</b> Transport Reference Frame</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="organisation-of-the-library-module-structure.html"><a href="organisation-of-the-library-module-structure.html"><i class="fa fa-check"></i><b>3</b> Organisation of the Library &amp; Module Structure</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="organisation-of-the-library-module-structure.html"><a href="organisation-of-the-library-module-structure.html#library-design"><i class="fa fa-check"></i><b>3.1</b> Library Design</a></li>
+<li class="chapter" data-level="3.2" data-path="organisation-of-the-library-module-structure.html"><a href="organisation-of-the-library-module-structure.html#model-structure"><i class="fa fa-check"></i><b>3.2</b> Model Structure</a></li>
+<li class="chapter" data-level="3.3" data-path="organisation-of-the-library-module-structure.html"><a href="organisation-of-the-library-module-structure.html#module-summary"><i class="fa fa-check"></i><b>3.3</b> Module Summary</a></li>
+</ul></li>
+<li class="part"><span><b>I AED Water Modules</b></span></li>
+<li class="chapter" data-level="4" data-path="DO_1.html"><a href="DO_1.html"><i class="fa fa-check"></i><b>4</b> Dissolved Oxygen</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="DO_1.html"><a href="DO_1.html#contributors"><i class="fa fa-check"></i><b>4.1</b> Contributors</a></li>
+<li class="chapter" data-level="4.2" data-path="DO_1.html"><a href="DO_1.html#overview"><i class="fa fa-check"></i><b>4.2</b> Overview</a></li>
+<li class="chapter" data-level="4.3" data-path="DO_1.html"><a href="DO_1.html#model-description"><i class="fa fa-check"></i><b>4.3</b> Model Description</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="DO_1.html"><a href="DO_1.html#process-descriptions"><i class="fa fa-check"></i><b>4.3.1</b> Process Descriptions</a></li>
+<li class="chapter" data-level="4.3.2" data-path="DO_1.html"><a href="DO_1.html#optional-module-links"><i class="fa fa-check"></i><b>4.3.2</b> Optional Module Links</a></li>
+<li class="chapter" data-level="4.3.3" data-path="DO_1.html"><a href="DO_1.html#feedbacks-to-the-host-model"><i class="fa fa-check"></i><b>4.3.3</b> Feedbacks to the Host Model</a></li>
+<li class="chapter" data-level="4.3.4" data-path="DO_1.html"><a href="DO_1.html#variable-summary"><i class="fa fa-check"></i><b>4.3.4</b> Variable Summary</a></li>
+<li class="chapter" data-level="4.3.5" data-path="DO_1.html"><a href="DO_1.html#parameter-summary"><i class="fa fa-check"></i><b>4.3.5</b> Parameter Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="DO_1.html"><a href="DO_1.html#setup-configuration"><i class="fa fa-check"></i><b>4.4</b> Setup &amp; Configuration</a></li>
+<li class="chapter" data-level="4.5" data-path="DO_1.html"><a href="DO_1.html#case-studies-examples"><i class="fa fa-check"></i><b>4.5</b> Case Studies &amp; Examples</a>
+<ul>
+<li class="chapter" data-level="4.5.1" data-path="DO_1.html"><a href="DO_1.html#case-study-swan-canning-estuary"><i class="fa fa-check"></i><b>4.5.1</b> Case Study: Swan-Canning Estuary</a></li>
+<li class="chapter" data-level="4.5.2" data-path="DO_1.html"><a href="DO_1.html#publications"><i class="fa fa-check"></i><b>4.5.2</b> Publications</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="Carbon_1.html"><a href="Carbon_1.html"><i class="fa fa-check"></i><b>5</b> Inorganic Carbon</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="Carbon_1.html"><a href="Carbon_1.html#contributors-1"><i class="fa fa-check"></i><b>5.1</b> Contributors</a></li>
+<li class="chapter" data-level="5.2" data-path="Carbon_1.html"><a href="Carbon_1.html#overview-1"><i class="fa fa-check"></i><b>5.2</b> Overview</a></li>
+<li class="chapter" data-level="5.3" data-path="Carbon_1.html"><a href="Carbon_1.html#model-description-1"><i class="fa fa-check"></i><b>5.3</b> Model Description</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="Carbon_1.html"><a href="Carbon_1.html#process-descriptions-1"><i class="fa fa-check"></i><b>5.3.1</b> Process Descriptions</a></li>
+<li class="chapter" data-level="5.3.2" data-path="Carbon_1.html"><a href="Carbon_1.html#optional-module-links-1"><i class="fa fa-check"></i><b>5.3.2</b> Optional Module Links</a></li>
+<li class="chapter" data-level="5.3.3" data-path="Carbon_1.html"><a href="Carbon_1.html#feedbacks-to-the-host-model-1"><i class="fa fa-check"></i><b>5.3.3</b> Feedbacks to the Host Model</a></li>
+<li class="chapter" data-level="5.3.4" data-path="Carbon_1.html"><a href="Carbon_1.html#variable-summary-1"><i class="fa fa-check"></i><b>5.3.4</b> Variable Summary</a></li>
+<li class="chapter" data-level="5.3.5" data-path="Carbon_1.html"><a href="Carbon_1.html#parameter-summary-1"><i class="fa fa-check"></i><b>5.3.5</b> Parameter Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="Carbon_1.html"><a href="Carbon_1.html#setup-configuration-1"><i class="fa fa-check"></i><b>5.4</b> Setup &amp; Configuration</a></li>
+<li class="chapter" data-level="5.5" data-path="Carbon_1.html"><a href="Carbon_1.html#case-studies-examples-1"><i class="fa fa-check"></i><b>5.5</b> Case Studies &amp; Examples</a>
+<ul>
+<li class="chapter" data-level="5.5.1" data-path="Carbon_1.html"><a href="Carbon_1.html#SEQCarbonCaseStudy"><i class="fa fa-check"></i><b>5.5.1</b> Case Study : South-east Queensland estuaries</a></li>
+<li class="chapter" data-level="5.5.2" data-path="Carbon_1.html"><a href="Carbon_1.html#SEQCarbonCaseStudy"><i class="fa fa-check"></i><b>5.5.2</b> Case Study : Lake Kinneret</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="inorganic-nitrogen.html"><a href="inorganic-nitrogen.html"><i class="fa fa-check"></i><b>6</b> Inorganic Nitrogen</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="inorganic-nitrogen.html"><a href="inorganic-nitrogen.html#contributors-2"><i class="fa fa-check"></i><b>6.1</b> Contributors</a></li>
+<li class="chapter" data-level="6.2" data-path="inorganic-nitrogen.html"><a href="inorganic-nitrogen.html#overview-2"><i class="fa fa-check"></i><b>6.2</b> Overview</a></li>
+<li class="chapter" data-level="6.3" data-path="inorganic-nitrogen.html"><a href="inorganic-nitrogen.html#model-description---default-model"><i class="fa fa-check"></i><b>6.3</b> Model Description - Default Model</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="inorganic-nitrogen.html"><a href="inorganic-nitrogen.html#process-descriptions-2"><i class="fa fa-check"></i><b>6.3.1</b> Process Descriptions</a></li>
+<li class="chapter" data-level="6.3.2" data-path="inorganic-nitrogen.html"><a href="inorganic-nitrogen.html#variable-summary-2"><i class="fa fa-check"></i><b>6.3.2</b> Variable Summary</a></li>
+<li class="chapter" data-level="6.3.3" data-path="inorganic-nitrogen.html"><a href="inorganic-nitrogen.html#parameter-summary-2"><i class="fa fa-check"></i><b>6.3.3</b> Parameter Summary</a></li>
+<li class="chapter" data-level="6.3.4" data-path="inorganic-nitrogen.html"><a href="inorganic-nitrogen.html#optional-module-links-2"><i class="fa fa-check"></i><b>6.3.4</b> Optional Module Links</a></li>
+<li class="chapter" data-level="6.3.5" data-path="inorganic-nitrogen.html"><a href="inorganic-nitrogen.html#feedbacks-to-the-host-model-2"><i class="fa fa-check"></i><b>6.3.5</b> Feedbacks to the Host Model</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="inorganic-nitrogen.html"><a href="inorganic-nitrogen.html#model-description---adding-n2o-reactions"><i class="fa fa-check"></i><b>6.4</b> Model Description - Adding N<sub>2</sub>O Reactions</a>
+<ul>
+<li class="chapter" data-level="6.4.1" data-path="inorganic-nitrogen.html"><a href="inorganic-nitrogen.html#process-descriptions-simn20-1"><i class="fa fa-check"></i><b>6.4.1</b> Process Descriptions (<code>simN20</code> = 1)</a></li>
+<li class="chapter" data-level="6.4.2" data-path="inorganic-nitrogen.html"><a href="inorganic-nitrogen.html#process-descriptions-simn2o-2"><i class="fa fa-check"></i><b>6.4.2</b> Process Descriptions (<code>simN2O = 2</code>)</a></li>
+<li class="chapter" data-level="6.4.3" data-path="inorganic-nitrogen.html"><a href="inorganic-nitrogen.html#variable-summary-3"><i class="fa fa-check"></i><b>6.4.3</b> Variable Summary</a></li>
+<li class="chapter" data-level="6.4.4" data-path="inorganic-nitrogen.html"><a href="inorganic-nitrogen.html#parameter-summary-3"><i class="fa fa-check"></i><b>6.4.4</b> Parameter summary</a></li>
+<li class="chapter" data-level="6.4.5" data-path="inorganic-nitrogen.html"><a href="inorganic-nitrogen.html#optional-module-links-3"><i class="fa fa-check"></i><b>6.4.5</b> Optional Module Links</a></li>
+<li class="chapter" data-level="6.4.6" data-path="inorganic-nitrogen.html"><a href="inorganic-nitrogen.html#feedbacks-to-the-host-model-3"><i class="fa fa-check"></i><b>6.4.6</b> Feedbacks to the Host Model</a></li>
+</ul></li>
+<li class="chapter" data-level="6.5" data-path="inorganic-nitrogen.html"><a href="inorganic-nitrogen.html#setup-configuration-2"><i class="fa fa-check"></i><b>6.5</b> Setup &amp; Configuration</a></li>
+<li class="chapter" data-level="6.6" data-path="inorganic-nitrogen.html"><a href="inorganic-nitrogen.html#case-studies-examples-2"><i class="fa fa-check"></i><b>6.6</b> Case Studies &amp; Examples</a>
+<ul>
+<li class="chapter" data-level="6.6.1" data-path="inorganic-nitrogen.html"><a href="inorganic-nitrogen.html#case-study-yarra-river-estuary"><i class="fa fa-check"></i><b>6.6.1</b> Case Study: Yarra River Estuary</a></li>
+<li class="chapter" data-level="6.6.2" data-path="inorganic-nitrogen.html"><a href="inorganic-nitrogen.html#publications-1"><i class="fa fa-check"></i><b>6.6.2</b> Publications</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="inorganic-phosphorus.html"><a href="inorganic-phosphorus.html"><i class="fa fa-check"></i><b>7</b> Inorganic Phosphorus</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="inorganic-phosphorus.html"><a href="inorganic-phosphorus.html#contributors-3"><i class="fa fa-check"></i><b>7.1</b> Contributors</a></li>
+<li class="chapter" data-level="7.2" data-path="inorganic-phosphorus.html"><a href="inorganic-phosphorus.html#overview-3"><i class="fa fa-check"></i><b>7.2</b> Overview</a></li>
+<li class="chapter" data-level="7.3" data-path="inorganic-phosphorus.html"><a href="inorganic-phosphorus.html#model-description-2"><i class="fa fa-check"></i><b>7.3</b> Model Description</a>
+<ul>
+<li class="chapter" data-level="7.3.1" data-path="inorganic-phosphorus.html"><a href="inorganic-phosphorus.html#process-descriptions-3"><i class="fa fa-check"></i><b>7.3.1</b> Process Descriptions</a></li>
+<li class="chapter" data-level="7.3.2" data-path="inorganic-phosphorus.html"><a href="inorganic-phosphorus.html#optional-module-links-4"><i class="fa fa-check"></i><b>7.3.2</b> Optional Module Links</a></li>
+<li class="chapter" data-level="7.3.3" data-path="inorganic-phosphorus.html"><a href="inorganic-phosphorus.html#feedbacks-to-the-host-model-4"><i class="fa fa-check"></i><b>7.3.3</b> Feedbacks to the Host Model</a></li>
+<li class="chapter" data-level="7.3.4" data-path="inorganic-phosphorus.html"><a href="inorganic-phosphorus.html#variable-summary-4"><i class="fa fa-check"></i><b>7.3.4</b> Variable Summary</a></li>
+<li class="chapter" data-level="7.3.5" data-path="inorganic-phosphorus.html"><a href="inorganic-phosphorus.html#parameter-summary-4"><i class="fa fa-check"></i><b>7.3.5</b> Parameter Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="inorganic-phosphorus.html"><a href="inorganic-phosphorus.html#setup-configuration-3"><i class="fa fa-check"></i><b>7.4</b> Setup &amp; Configuration</a></li>
+<li class="chapter" data-level="7.5" data-path="inorganic-phosphorus.html"><a href="inorganic-phosphorus.html#case-studies-examples-3"><i class="fa fa-check"></i><b>7.5</b> Case Studies &amp; Examples</a>
+<ul>
+<li class="chapter" data-level="7.5.1" data-path="inorganic-phosphorus.html"><a href="inorganic-phosphorus.html#case-study"><i class="fa fa-check"></i><b>7.5.1</b> Case Study</a></li>
+<li class="chapter" data-level="7.5.2" data-path="inorganic-phosphorus.html"><a href="inorganic-phosphorus.html#publications-2"><i class="fa fa-check"></i><b>7.5.2</b> Publications</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="silica.html"><a href="silica.html"><i class="fa fa-check"></i><b>8</b> Silica</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="silica.html"><a href="silica.html#contributors-4"><i class="fa fa-check"></i><b>8.1</b> Contributors</a></li>
+<li class="chapter" data-level="8.2" data-path="silica.html"><a href="silica.html#overview-4"><i class="fa fa-check"></i><b>8.2</b> Overview</a></li>
+<li class="chapter" data-level="8.3" data-path="silica.html"><a href="silica.html#model-description-3"><i class="fa fa-check"></i><b>8.3</b> Model Description</a>
+<ul>
+<li class="chapter" data-level="8.3.1" data-path="silica.html"><a href="silica.html#process-descriptions-4"><i class="fa fa-check"></i><b>8.3.1</b> Process Descriptions</a></li>
+<li class="chapter" data-level="8.3.2" data-path="silica.html"><a href="silica.html#optional-module-links-5"><i class="fa fa-check"></i><b>8.3.2</b> Optional Module Links</a></li>
+<li class="chapter" data-level="8.3.3" data-path="silica.html"><a href="silica.html#feedbacks-to-the-host-model-5"><i class="fa fa-check"></i><b>8.3.3</b> Feedbacks to the Host Model</a></li>
+<li class="chapter" data-level="8.3.4" data-path="silica.html"><a href="silica.html#variable-summary-5"><i class="fa fa-check"></i><b>8.3.4</b> Variable Summary</a></li>
+<li class="chapter" data-level="8.3.5" data-path="silica.html"><a href="silica.html#parameter-summary-5"><i class="fa fa-check"></i><b>8.3.5</b> Parameter Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="8.4" data-path="silica.html"><a href="silica.html#setup-configuration-4"><i class="fa fa-check"></i><b>8.4</b> Setup &amp; Configuration</a></li>
+<li class="chapter" data-level="8.5" data-path="silica.html"><a href="silica.html#case-studies-examples-4"><i class="fa fa-check"></i><b>8.5</b> Case Studies &amp; Examples</a>
+<ul>
+<li class="chapter" data-level="8.5.1" data-path="silica.html"><a href="silica.html#case-study-1"><i class="fa fa-check"></i><b>8.5.1</b> Case Study</a></li>
+<li class="chapter" data-level="8.5.2" data-path="silica.html"><a href="silica.html#publications-3"><i class="fa fa-check"></i><b>8.5.2</b> Publications</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="OGM_1.html"><a href="OGM_1.html"><i class="fa fa-check"></i><b>9</b> Organic Matter</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="OGM_1.html"><a href="OGM_1.html#contributors-5"><i class="fa fa-check"></i><b>9.1</b> Contributors</a></li>
+<li class="chapter" data-level="9.2" data-path="OGM_1.html"><a href="OGM_1.html#overview-5"><i class="fa fa-check"></i><b>9.2</b> Overview</a></li>
+<li class="chapter" data-level="9.3" data-path="OGM_1.html"><a href="OGM_1.html#model-description-4"><i class="fa fa-check"></i><b>9.3</b> Model Description</a>
+<ul>
+<li class="chapter" data-level="9.3.1" data-path="OGM_1.html"><a href="OGM_1.html#process-descriptions-5"><i class="fa fa-check"></i><b>9.3.1</b> Process Descriptions</a></li>
+<li class="chapter" data-level="9.3.2" data-path="OGM_1.html"><a href="OGM_1.html#optional-module-links-6"><i class="fa fa-check"></i><b>9.3.2</b> Optional Module Links</a></li>
+<li class="chapter" data-level="9.3.3" data-path="OGM_1.html"><a href="OGM_1.html#feedbacks-to-the-host-model-6"><i class="fa fa-check"></i><b>9.3.3</b> Feedbacks to the Host Model</a></li>
+<li class="chapter" data-level="9.3.4" data-path="OGM_1.html"><a href="OGM_1.html#variable-summary-6"><i class="fa fa-check"></i><b>9.3.4</b> Variable Summary</a></li>
+<li class="chapter" data-level="9.3.5" data-path="OGM_1.html"><a href="OGM_1.html#parameter-summary-6"><i class="fa fa-check"></i><b>9.3.5</b> Parameter Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="9.4" data-path="OGM_1.html"><a href="OGM_1.html#setup-configuration-5"><i class="fa fa-check"></i><b>9.4</b> Setup &amp; Configuration</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="phytoplankton.html"><a href="phytoplankton.html"><i class="fa fa-check"></i><b>10</b> Phytoplankton</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="phytoplankton.html"><a href="phytoplankton.html#contributors-6"><i class="fa fa-check"></i><b>10.1</b> Contributors</a></li>
+<li class="chapter" data-level="10.2" data-path="phytoplankton.html"><a href="phytoplankton.html#overview-6"><i class="fa fa-check"></i><b>10.2</b> Overview</a></li>
+<li class="chapter" data-level="10.3" data-path="phytoplankton.html"><a href="phytoplankton.html#model-description-5"><i class="fa fa-check"></i><b>10.3</b> Model Description</a>
+<ul>
+<li class="chapter" data-level="10.3.1" data-path="phytoplankton.html"><a href="phytoplankton.html#process-descriptions-6"><i class="fa fa-check"></i><b>10.3.1</b> Process Descriptions</a></li>
+<li class="chapter" data-level="10.3.2" data-path="phytoplankton.html"><a href="phytoplankton.html#optional-module-links-7"><i class="fa fa-check"></i><b>10.3.2</b> Optional Module Links</a></li>
+<li class="chapter" data-level="10.3.3" data-path="phytoplankton.html"><a href="phytoplankton.html#feedbacks-to-the-host-model-7"><i class="fa fa-check"></i><b>10.3.3</b> Feedbacks to the Host Model</a></li>
+<li class="chapter" data-level="10.3.4" data-path="phytoplankton.html"><a href="phytoplankton.html#variable-summary-7"><i class="fa fa-check"></i><b>10.3.4</b> Variable Summary</a></li>
+<li class="chapter" data-level="10.3.5" data-path="phytoplankton.html"><a href="phytoplankton.html#parameter-and-option-summary"><i class="fa fa-check"></i><b>10.3.5</b> Parameter and Option Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="10.4" data-path="phytoplankton.html"><a href="phytoplankton.html#setup-configuration-6"><i class="fa fa-check"></i><b>10.4</b> Setup &amp; Configuration</a>
+<ul>
+<li class="chapter" data-level="10.4.1" data-path="phytoplankton.html"><a href="phytoplankton.html#setup-example"><i class="fa fa-check"></i><b>10.4.1</b> Setup Example</a></li>
+</ul></li>
+<li class="chapter" data-level="10.5" data-path="phytoplankton.html"><a href="phytoplankton.html#case-studies-examples-5"><i class="fa fa-check"></i><b>10.5</b> Case Studies &amp; Examples</a>
+<ul>
+<li class="chapter" data-level="10.5.1" data-path="phytoplankton.html"><a href="phytoplankton.html#case-study-falling-creek-reservoir"><i class="fa fa-check"></i><b>10.5.1</b> Case Study : Falling Creek Reservoir</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="aqueous-geochemistry.html"><a href="aqueous-geochemistry.html"><i class="fa fa-check"></i><b>11</b> Aqueous Geochemistry</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="aqueous-geochemistry.html"><a href="aqueous-geochemistry.html#contributors-7"><i class="fa fa-check"></i><b>11.1</b> Contributors</a></li>
+<li class="chapter" data-level="11.2" data-path="aqueous-geochemistry.html"><a href="aqueous-geochemistry.html#overview-7"><i class="fa fa-check"></i><b>11.2</b> Overview</a></li>
+<li class="chapter" data-level="11.3" data-path="aqueous-geochemistry.html"><a href="aqueous-geochemistry.html#model-description-6"><i class="fa fa-check"></i><b>11.3</b> Model Description</a>
+<ul>
+<li class="chapter" data-level="11.3.1" data-path="aqueous-geochemistry.html"><a href="aqueous-geochemistry.html#process-descriptions-7"><i class="fa fa-check"></i><b>11.3.1</b> Process Descriptions</a></li>
+<li class="chapter" data-level="11.3.2" data-path="aqueous-geochemistry.html"><a href="aqueous-geochemistry.html#variable-summary-8"><i class="fa fa-check"></i><b>11.3.2</b> Variable Summary</a></li>
+<li class="chapter" data-level="11.3.3" data-path="aqueous-geochemistry.html"><a href="aqueous-geochemistry.html#parameter-summary-7"><i class="fa fa-check"></i><b>11.3.3</b> Parameter Summary</a></li>
+<li class="chapter" data-level="11.3.4" data-path="aqueous-geochemistry.html"><a href="aqueous-geochemistry.html#optional-module-links-8"><i class="fa fa-check"></i><b>11.3.4</b> Optional Module Links</a></li>
+<li class="chapter" data-level="11.3.5" data-path="aqueous-geochemistry.html"><a href="aqueous-geochemistry.html#feedbacks-to-the-host-model-8"><i class="fa fa-check"></i><b>11.3.5</b> Feedbacks to the Host Model</a></li>
+</ul></li>
+<li class="chapter" data-level="11.4" data-path="aqueous-geochemistry.html"><a href="aqueous-geochemistry.html#setup-configuration-7"><i class="fa fa-check"></i><b>11.4</b> Setup &amp; Configuration</a>
+<ul>
+<li class="chapter" data-level="11.4.1" data-path="aqueous-geochemistry.html"><a href="aqueous-geochemistry.html#setup-example-1"><i class="fa fa-check"></i><b>11.4.1</b> Setup Example</a></li>
+</ul></li>
+<li class="chapter" data-level="11.5" data-path="aqueous-geochemistry.html"><a href="aqueous-geochemistry.html#case-studies-examples-6"><i class="fa fa-check"></i><b>11.5</b> Case Studies &amp; Examples</a>
+<ul>
+<li class="chapter" data-level="11.5.1" data-path="aqueous-geochemistry.html"><a href="aqueous-geochemistry.html#case-study-2"><i class="fa fa-check"></i><b>11.5.1</b> Case Study</a></li>
+<li class="chapter" data-level="11.5.2" data-path="aqueous-geochemistry.html"><a href="aqueous-geochemistry.html#publications-4"><i class="fa fa-check"></i><b>11.5.2</b> Publications</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="pathogens-microbial-indicator-organisms.html"><a href="pathogens-microbial-indicator-organisms.html"><i class="fa fa-check"></i><b>12</b> Pathogens &amp; Microbial Indicator Organisms</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="pathogens-microbial-indicator-organisms.html"><a href="pathogens-microbial-indicator-organisms.html#contributors-8"><i class="fa fa-check"></i><b>12.1</b> Contributors</a></li>
+<li class="chapter" data-level="12.2" data-path="pathogens-microbial-indicator-organisms.html"><a href="pathogens-microbial-indicator-organisms.html#overview-8"><i class="fa fa-check"></i><b>12.2</b> Overview</a></li>
+<li class="chapter" data-level="12.3" data-path="pathogens-microbial-indicator-organisms.html"><a href="pathogens-microbial-indicator-organisms.html#model-description-7"><i class="fa fa-check"></i><b>12.3</b> Model Description</a>
+<ul>
+<li class="chapter" data-level="12.3.1" data-path="pathogens-microbial-indicator-organisms.html"><a href="pathogens-microbial-indicator-organisms.html#process-descriptions-8"><i class="fa fa-check"></i><b>12.3.1</b> Process Descriptions</a></li>
+<li class="chapter" data-level="12.3.2" data-path="pathogens-microbial-indicator-organisms.html"><a href="pathogens-microbial-indicator-organisms.html#variable-summary-9"><i class="fa fa-check"></i><b>12.3.2</b> Variable Summary</a></li>
+<li class="chapter" data-level="12.3.3" data-path="pathogens-microbial-indicator-organisms.html"><a href="pathogens-microbial-indicator-organisms.html#parameter-summary-8"><i class="fa fa-check"></i><b>12.3.3</b> Parameter Summary</a></li>
+<li class="chapter" data-level="12.3.4" data-path="pathogens-microbial-indicator-organisms.html"><a href="pathogens-microbial-indicator-organisms.html#optional-module-links-9"><i class="fa fa-check"></i><b>12.3.4</b> Optional Module Links</a></li>
+<li class="chapter" data-level="12.3.5" data-path="pathogens-microbial-indicator-organisms.html"><a href="pathogens-microbial-indicator-organisms.html#feedbacks-to-the-host-model-9"><i class="fa fa-check"></i><b>12.3.5</b> Feedbacks to the Host Model</a></li>
+</ul></li>
+<li class="chapter" data-level="12.4" data-path="pathogens-microbial-indicator-organisms.html"><a href="pathogens-microbial-indicator-organisms.html#setup-configuration-8"><i class="fa fa-check"></i><b>12.4</b> Setup &amp; Configuration</a>
+<ul>
+<li class="chapter" data-level="12.4.1" data-path="pathogens-microbial-indicator-organisms.html"><a href="pathogens-microbial-indicator-organisms.html#setup-example-2"><i class="fa fa-check"></i><b>12.4.1</b> Setup Example</a></li>
+</ul></li>
+<li class="chapter" data-level="12.5" data-path="pathogens-microbial-indicator-organisms.html"><a href="pathogens-microbial-indicator-organisms.html#case-studies-examples-7"><i class="fa fa-check"></i><b>12.5</b> Case Studies &amp; Examples</a>
+<ul>
+<li class="chapter" data-level="12.5.1" data-path="pathogens-microbial-indicator-organisms.html"><a href="pathogens-microbial-indicator-organisms.html#case-study-3"><i class="fa fa-check"></i><b>12.5.1</b> Case Study</a></li>
+<li class="chapter" data-level="12.5.2" data-path="pathogens-microbial-indicator-organisms.html"><a href="pathogens-microbial-indicator-organisms.html#publications-5"><i class="fa fa-check"></i><b>12.5.2</b> Publications</a></li>
+</ul></li>
+</ul></li>
+<li class="part"><span><b>II AED Benthic Modules</b></span></li>
+<li class="chapter" data-level="13" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html"><i class="fa fa-check"></i><b>13</b> Sediment Biogeochemistry</a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#contributors-9"><i class="fa fa-check"></i><b>13.1</b> Contributors</a></li>
+<li class="chapter" data-level="13.2" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#overview-9"><i class="fa fa-check"></i><b>13.2</b> Overview</a></li>
+<li class="chapter" data-level="13.3" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#model-description-8"><i class="fa fa-check"></i><b>13.3</b> Model Description</a>
+<ul>
+<li class="chapter" data-level="13.3.1" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#process-descriptions-9"><i class="fa fa-check"></i><b>13.3.1</b> Process Descriptions</a></li>
+<li class="chapter" data-level="13.3.2" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#variable-summary-10"><i class="fa fa-check"></i><b>13.3.2</b> Variable Summary</a></li>
+<li class="chapter" data-level="13.3.3" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#parameter-summary-9"><i class="fa fa-check"></i><b>13.3.3</b> Parameter Summary</a></li>
+<li class="chapter" data-level="13.3.4" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#optional-module-links-10"><i class="fa fa-check"></i><b>13.3.4</b> Optional Module Links</a></li>
+<li class="chapter" data-level="13.3.5" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#feedbacks-to-the-host-model-10"><i class="fa fa-check"></i><b>13.3.5</b> Feedbacks to the Host Model</a></li>
+</ul></li>
+<li class="chapter" data-level="13.4" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#setup-configuration-9"><i class="fa fa-check"></i><b>13.4</b> Setup &amp; Configuration</a>
+<ul>
+<li class="chapter" data-level="13.4.1" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#implementation-within-the-aed-framework"><i class="fa fa-check"></i><b>13.4.1</b> Implementation within the AED framework</a></li>
+<li class="chapter" data-level="13.4.2" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#program-structure"><i class="fa fa-check"></i><b>13.4.2</b> Program Structure</a></li>
+<li class="chapter" data-level="13.4.3" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#model-setup-boundary-conditions-parameter-definition"><i class="fa fa-check"></i><b>13.4.3</b> Model Setup, Boundary Conditions &amp; Parameter Definition</a></li>
+<li class="chapter" data-level="13.4.4" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#model-output-post-processing"><i class="fa fa-check"></i><b>13.4.4</b> Model Output &amp; Post-processing</a></li>
+</ul></li>
+<li class="chapter" data-level="13.5" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#case-studies-examples-8"><i class="fa fa-check"></i><b>13.5</b> Case Studies &amp; Examples</a>
+<ul>
+<li class="chapter" data-level="13.5.1" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#case-study-4"><i class="fa fa-check"></i><b>13.5.1</b> Case Study</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="bivalves.html"><a href="bivalves.html"><i class="fa fa-check"></i><b>14</b> Bivalves</a>
+<ul>
+<li class="chapter" data-level="14.1" data-path="bivalves.html"><a href="bivalves.html#contributors-10"><i class="fa fa-check"></i><b>14.1</b> Contributors</a></li>
+<li class="chapter" data-level="14.2" data-path="bivalves.html"><a href="bivalves.html#overview-10"><i class="fa fa-check"></i><b>14.2</b> Overview</a></li>
+<li class="chapter" data-level="14.3" data-path="bivalves.html"><a href="bivalves.html#model-description-9"><i class="fa fa-check"></i><b>14.3</b> Model Description</a>
+<ul>
+<li class="chapter" data-level="14.3.1" data-path="bivalves.html"><a href="bivalves.html#process-descriptions-10"><i class="fa fa-check"></i><b>14.3.1</b> Process Descriptions</a></li>
+<li class="chapter" data-level="14.3.2" data-path="bivalves.html"><a href="bivalves.html#variable-summary-11"><i class="fa fa-check"></i><b>14.3.2</b> Variable Summary</a></li>
+<li class="chapter" data-level="14.3.3" data-path="bivalves.html"><a href="bivalves.html#parameter-summary-10"><i class="fa fa-check"></i><b>14.3.3</b> Parameter Summary</a></li>
+<li class="chapter" data-level="14.3.4" data-path="bivalves.html"><a href="bivalves.html#optional-module-links-11"><i class="fa fa-check"></i><b>14.3.4</b> Optional Module Links</a></li>
+<li class="chapter" data-level="14.3.5" data-path="bivalves.html"><a href="bivalves.html#feedbacks-to-the-host-model-11"><i class="fa fa-check"></i><b>14.3.5</b> Feedbacks to the Host Model</a></li>
+</ul></li>
+<li class="chapter" data-level="14.4" data-path="bivalves.html"><a href="bivalves.html#setup-configuration-10"><i class="fa fa-check"></i><b>14.4</b> Setup &amp; Configuration</a>
+<ul>
+<li class="chapter" data-level="14.4.1" data-path="bivalves.html"><a href="bivalves.html#setup-example-3"><i class="fa fa-check"></i><b>14.4.1</b> Setup Example</a></li>
+</ul></li>
+<li class="chapter" data-level="14.5" data-path="bivalves.html"><a href="bivalves.html#case-studies-examples-9"><i class="fa fa-check"></i><b>14.5</b> Case Studies &amp; Examples</a>
+<ul>
+<li class="chapter" data-level="14.5.1" data-path="bivalves.html"><a href="bivalves.html#case-study-5"><i class="fa fa-check"></i><b>14.5.1</b> Case Study</a></li>
+<li class="chapter" data-level="14.5.2" data-path="bivalves.html"><a href="bivalves.html#publications-6"><i class="fa fa-check"></i><b>14.5.2</b> Publications</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="publications-7.html"><a href="publications-7.html"><i class="fa fa-check"></i><b>15</b> Publications</a></li>
+<li class="chapter" data-level="" data-path="forthcoming-chapters.html"><a href="forthcoming-chapters.html"><i class="fa fa-check"></i>Forthcoming chapters</a>
+<ul>
+<li class="chapter" data-level="" data-path="forthcoming-chapters.html"><a href="forthcoming-chapters.html#we-invite-you-to-contribute-to-these-chapters"><i class="fa fa-check"></i>We invite you to contribute to these chapters!</a></li>
+<li class="chapter" data-level="" data-path="forthcoming-chapters.html"><a href="forthcoming-chapters.html#editing-the-book-1"><i class="fa fa-check"></i>Editing the book</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">The AED Manual</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="nomenclature" class="section level1 hasAnchor" number="2">
+<h1><span class="header-section-number">2</span> Nomenclature<a href="nomenclature.html#nomenclature" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>Author: Matthew R. Hipsey</p>
+<div id="variables-and-data-types" class="section level2 hasAnchor" number="2.1">
+<h2><span class="header-section-number">2.1</span> Variables and Data Types<a href="nomenclature.html#variables-and-data-types" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>There is often confusion over the types of variables and data-types used within the modules. Standard terminology adopted in the <span class="math inline">\(\mathrm{AED}\)</span> system is described in Table <a href="nomenclature.html#tab:vardatatypes">2.1</a>.</p>
+<details open>
+<summary>
+Table <a href="nomenclature.html#tab:vardatatypes">2.1</a>
+</summary>
+<div style="border: 1px solid #ddd; padding: 5px; overflow-y: scroll; height:980px; overflow-x: scroll; width:770px; ">
+<table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<caption>
+<span id="tab:vardatatypes">Table 2.1: </span>Variables and data types
+</caption>
+<tbody>
+<tr>
+<td style="text-align:left;min-width: 10em; background-color: white !important;">
+<strong>State variable</strong>
+</td>
+<td style="text-align:left;min-width: 10em; background-color: white !important;">
+<font size="2">A state variable is a primary variable being simulated within the cells of the computational domain, and which is subject to transport or boundary conditions as controlled by the host model. Generally, state variables are subject to solution of an Ordinary Differential Equation (ODE) to predict their time-varying conditions within AED, in addition to transport by the host. State variables can be “normal” in which case they exist in all water cells, or they can be “sheet” in which case they are used for surface or benthic attributes (these are typically called “3D” and “2D”, or “pelagic” and “benthic”, respectively, though are still relevant in 1D models like GLM).</font>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;min-width: 10em; background-color: white !important;">
+<strong>Diagnostic variable</strong>
+</td>
+<td style="text-align:left;min-width: 10em; background-color: white !important;">
+<font size="2">A diagnostic variable is a property of interest defined on the computational domain, and available to be output by the host model for plotting and post-processing. Typically, diagnostic variables include derived measure of model state, integrated values, process rates or other cell-specific attributes of interest for debugging. Importantly, diagnostic variables are not subject to transport or boundary conditions as are state variables. Diagnostic variables can be “normal” in which case they exist in all water cells, or they can be “sheet” in which case they are used for surface or benthic attributes (these are typically called 3D and 2D, respectively, though are still relevant in 1D models like GLM).</font>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;min-width: 10em; background-color: white !important;">
+<strong>Environment variable</strong>
+</td>
+<td style="text-align:left;min-width: 10em; background-color: white !important;">
+<font size="2">An environment variable in AED is a variable managed by the host model but is required by AED for computation of module-specific dynamics. This typically relate to predictions of the host model such as temperature, salinity and velocity, but can also include features of the domain, including benthic material type or cell thickness.</font>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;min-width: 10em; background-color: white !important;">
+<strong>Boundary condition</strong>
+</td>
+<td style="text-align:left;min-width: 10em; background-color: white !important;">
+<font size="2">A boundary condition is a driving variable external to the simulation dynamics, such as weather or flow. In most cases in AED these are handled by the host model, and passed to AED modules as environment vars (e.g. wind, solar radiation etc).</font>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;min-width: 10em; background-color: white !important;">
+<strong>Process rate</strong>
+</td>
+<td style="text-align:left;min-width: 10em; background-color: white !important;">
+<font size="2">A process rate in AED refers to a flux pathway, ie. a mass or energy flux connecting two variables or more variables. Generally these are units of concentration per time.</font>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;min-width: 10em; background-color: white !important;">
+<strong>Parameter - constant</strong>
+</td>
+<td style="text-align:left;min-width: 10em; background-color: white !important;">
+<font size="2">A constant parameter is a fixed value over the course of the simulation associated with a process calculation, unit conversion etc. This will be in a variety of units. These values are not accessible outside of the specific module in which they are declared.</font>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;min-width: 10em; background-color: white !important;">
+<strong>Parameter - variable</strong>
+</td>
+<td style="text-align:left;min-width: 10em; background-color: white !important;">
+<font size="2">A variable parameter is a value over associated with a process calculation, or related attribute, that can vary between computational cells, and/or from time to time depending on local conditions. These values are not accessible outside of the specific module in which they are declared, unless the spatiotemporal varying parameters are also stored as “diagnostic” variables, where they can be linked to other modules and output for post-processing assessment.</font>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;min-width: 10em; ">
+<strong>Option</strong>
+</td>
+<td style="text-align:left;min-width: 10em; ">
+<font size="2">An option is an integer or Boolean “switch” used to enable a feature in a module, or select a specific algorithm or function</font>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</details>
+</div>
+<div id="a-note-on-notation" class="section level2 hasAnchor" number="2.2">
+<h2><span class="header-section-number">2.2</span> A Note on Notation<a href="nomenclature.html#a-note-on-notation" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The modules being described in this book each list the specific simulated variables and parameters, with summaries of the module specific notations. For consistency across the modules a standard mathematical notation is adopted.</p>
+<div id="general-notation" class="section level3 hasAnchor" number="2.2.1">
+<h3><span class="header-section-number">2.2.1</span> General Notation<a href="nomenclature.html#general-notation" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The following symbols are used to denote commonly used variables:</p>
+<ul>
+<li><span class="math inline">\(t\)</span> = time</li>
+<li><span class="math inline">\(N\)</span> = number of groups (integer)</li>
+<li><span class="math inline">\(a, om, z\)</span> = indices of various biological sub-groups, such as algae/phytoplankton, organic matter and zooplankton (integer)</li>
+<li><span class="math inline">\(\chi_{C:Y}^{group}\)</span> = the stoichiometric ratio of “<span class="math inline">\(group\)</span>” between element ““<span class="math inline">\(C\)</span>”” and element “<span class="math inline">\(Y\)</span>” (<span class="math inline">\(mmol\)</span> <span class="math inline">\(C\)</span> <span class="math inline">\(/\)</span> <span class="math inline">\(mmol\)</span> <span class="math inline">\(Y\)</span>)</li>
+<li><span class="math inline">\(f_{process}^{var}\)</span> = function that returns the mass flux of “<span class="math inline">\(process\)</span>” on “<span class="math inline">\(var\)</span>” (<span class="math inline">\(mmol \text{ var}/m^3/time\)</span>)</li>
+<li><span class="math inline">\(R_{process}^{var}\)</span> = the relative rate of “<span class="math inline">\(process\)</span>” influencing the variable “<span class="math inline">\(var\)</span>” (<span class="math inline">\(/time\)</span>)</li>
+<li><span class="math inline">\(F_{process}^{var}\)</span> = the areal flux of variable “var” due to a “<span class="math inline">\(process\)</span>”, applied at the sediment-water or air-water interface (<span class="math inline">\(mmol \text{ var}/m^2\)</span>)</li>
+<li><span class="math inline">\(p_{source}^{group}\)</span> = the preference of “<span class="math inline">\(group\)</span>” for “<span class="math inline">\(source\)</span>” (0-1)</li>
+<li><span class="math inline">\(\Phi_{lim}^{group}[var]\)</span> = dimensionless limitation or scaling function to account for the effect of “<span class="math inline">\(lim\)</span>” on a “<span class="math inline">\(group\)</span>” (-)</li>
+<li><span class="math inline">\(\Phi_{lim}^{process}[var]\)</span> = dimensionless limitation or scaling function to account for the effect of “<span class="math inline">\(lim\)</span>” (limiting) “<span class="math inline">\(var\)</span>” on a “<span class="math inline">\(process\)</span>” (-)</li>
+<li><span class="math inline">\(k^{var}\)</span> = generic fraction related to “<span class="math inline">\(var\)</span>” (0-1)</li>
+<li><span class="math inline">\(\Theta_{config}^{group}\)</span> = switch to configure selectable model component “<span class="math inline">\(config\)</span>” for “<span class="math inline">\(group\)</span>” (0,1,2,…)</li>
+<li><span class="math inline">\(K_{process}^{var}\)</span> = half-saturation constant associated with a biogeochemical “<span class="math inline">\(process\)</span>”, based on the concentration of variable “<span class="math inline">\(var\)</span>” (<span class="math inline">\(mmol \text{ var}/m^3\)</span>)</li>
+<li><span class="math inline">\(c,\theta,\gamma, \dotsb\)</span> = miscellaneous coefficients (various units)</li>
+</ul>
+</div>
+<div id="model-domain-and-position" class="section level3 hasAnchor" number="2.2.2">
+<h3><span class="header-section-number">2.2.2</span> Model Domain and Position<a href="nomenclature.html#model-domain-and-position" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The <span class="math inline">\(\mathrm{AED}\)</span> model links with a variety of models that have diverse approaches to discretize the spatial domain, ranging from an individual ‘box’ to a complex finite-volume mesh. The following standard descriptions are used:</p>
+<ul>
+<li><span class="math inline">\(c, sz\)</span> = indices of computational cells, or sediment zones (integer)</li>
+<li><span class="math inline">\(\Delta z\)</span> = generic vertical thickness of a computational cell or layer</li>
+<li><span class="math inline">\(\Delta z_{s}\)</span> = vertical thickness of the surface computational cell or layer</li>
+<li><span class="math inline">\(\Delta z_{b}\)</span> = vertical thickness of the bottom computational cell or layer</li>
+<li><span class="math inline">\(h\)</span> = height above a reference point</li>
+<li><span class="math inline">\(z\)</span> = depth below water surface</li>
+<li><span class="math inline">\(d\)</span> = water depth</li>
+<li><span class="math inline">\(A\)</span> = area</li>
+</ul>
+<p>In the science descriptions within each module the dynamics are referred to usually at a generic point in space for convenience. However, we highlight that most variables and properties are resolved as vectors, spanning the number of cells in the computational domain. Note the following conventions:</p>
+<ul>
+<li><span class="math inline">\(C\)</span> = generic use of a variable without a specific spatial position</li>
+<li><span class="math inline">\(C_c\)</span> = denoting the value of a variable <span class="math inline">\(C\)</span> at the location of a specific cell, <span class="math inline">\(c\)</span></li>
+<li><span class="math inline">\(C_{sz}\)</span> = denoting the value of a variable <span class="math inline">\(C\)</span> at the location of a specific sediment zone, <span class="math inline">\(sz\)</span></li>
+</ul>
+<p>To highlight whether a process is particular to a certain set of cells within the domain we use:</p>
+<ul>
+<li><span class="math inline">\(f_{process}^{var}\)</span> = generic use of a function that returns the mass flux of “<span class="math inline">\(process\)</span>” on “<span class="math inline">\(var\)</span>”<br />
+</li>
+<li><span class="math inline">\(\hat{f}_{process}^{var}\)</span> = use of a function that returns the mass flux of “<span class="math inline">\(process\)</span>” on “<span class="math inline">\(var\)</span>” specific to a benthic process at the sediment-water interface</li>
+<li><span class="math inline">\(\check{f}_{process}^{var}\)</span> = use of a function that returns the mass flux of “<span class="math inline">\(process\)</span>” on “<span class="math inline">\(var\)</span>” specific to a surface process at the air-water interface</li>
+</ul>
+<p>To differentiate between a symbol that is referring to a scalar or a vector of cells we use:</p>
+<ul>
+<li><span class="math inline">\(C\)</span> = generic use of a variable without a specific spatial position</li>
+<li><span class="math inline">\(\mathbf{C}\)</span> = an array of the variable <span class="math inline">\(C\)</span> spanning the model’s 1D, 2D or 3D spatial domain</li>
+<li><span class="math inline">\(f_{process}^{var}\)</span> = generic “<span class="math inline">\(process\)</span>” within the model without a specific spatial position</li>
+<li><span class="math inline">\(\mathbf{f}_{process}^{var}\)</span> = an array of of values describing a “<span class="math inline">\(process\)</span>”, spanning the model’s 3D spatial domain</li>
+<li><span class="math inline">\(F_{process}^{var}\)</span> = generic value or constant describing an areal flux of variable “var” due to a “<span class="math inline">\(process\)</span>”</li>
+<li><span class="math inline">\(\mathbf{F}_{process}^{var}\)</span> = an array of of values describing an areal flux of variable “var” due to a “<span class="math inline">\(process\)</span>”, spanning the model’s 2D spatial domain</li>
+</ul>
+</div>
+<div id="environmental-conditions" class="section level3 hasAnchor" number="2.2.3">
+<h3><span class="header-section-number">2.2.3</span> Environmental Conditions<a href="nomenclature.html#environmental-conditions" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>As outlined in Table <a href="nomenclature.html#tab:vardatatypes">2.1</a>, <span class="math inline">\(\mathrm{AED}\)</span> refers to a specific class of variable denoted an environmental variable. These are provided to the <span class="math inline">\(\mathrm{AED}\)</span> modules from the host model - that is, they are external drivers of dynamics carried out by <span class="math inline">\(\mathrm{AED}\)</span>. Key variables referred to commonly include:</p>
+<ul>
+<li><span class="math inline">\(T\)</span> or <span class="math inline">\(T_K\)</span> = water temperature in Celsius or Kelvin, respectively (<span class="math inline">\(^{\circ}C\)</span>, <span class="math inline">\(K\)</span>)</li>
+<li><span class="math inline">\(S\)</span> = water salinity in practical salinity units (<span class="math inline">\(psu\)</span>)</li>
+<li><span class="math inline">\(I\)</span> = light intensity (<span class="math inline">\(W/m^2\)</span>)</li>
+<li><span class="math inline">\(u\)</span> = generic water velocity (<span class="math inline">\(m/s\)</span>)</li>
+<li><span class="math inline">\(\tau\)</span> = shear stress (<span class="math inline">\(N/m^2\)</span>)</li>
+</ul>
+<p>Variables outside of the water may also be referred to:</p>
+<ul>
+<li><span class="math inline">\(U\)</span> = wind speed, above the domain (<span class="math inline">\(m/s\)</span>)</li>
+<li><span class="math inline">\(T_a\)</span> = air temperature (<span class="math inline">\(^{\circ}C\)</span>)</li>
+<li><span class="math inline">\(I_0\)</span> = light intensity incident on the domain (<span class="math inline">\(W/m^2\)</span>)</li>
+</ul>
+</div>
+<div id="transport-reference-frame" class="section level3 hasAnchor" number="2.2.4">
+<h3><span class="header-section-number">2.2.4</span> Transport Reference Frame<a href="nomenclature.html#transport-reference-frame" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>As <span class="math inline">\(\mathrm{AED}\)</span> is designed to be agnostic of the host model spatial domain, and the transport of <span class="math inline">\(\mathrm{AED}\)</span> variables is managed by the host model, this book refers to transport in a generic way.</p>
+<p>Each simulated state variable is subject to advection and turbulent mixing, plus boundary conditions, as managed by the host hydrodynamic model. The material derivative, <span class="math inline">\(\frac{D}{Dt}\)</span> is used to depict that the reactions and processes in the <span class="math inline">\(\mathrm{AED}\)</span> library (those summarised in the module descriptions) are undertaken superimposed on the movement of the water being simulated by the host model. For a generic non-reactive <span class="math inline">\(\mathrm{AED}\)</span> variable, <span class="math inline">\(C\)</span>, this is:
+<br>
+<span class="math display" id="eq:nomen1">\[\begin{equation}
+\frac{D}{Dt}C = \frac{\partial C}{\partial t} + \mathbf{u} \cdot \nabla C
+\tag{2.1}
+\end{equation}\]</span>
+<br>
+where <span class="math inline">\(\nabla\)</span> is the gradient operator, which in the context of a hydrodynamic model, can be used to generically summarise the advection field:
+<br>
+<span class="math display" id="eq:nomen2">\[\begin{equation}
+\frac{D}{Dt}C = \frac{\partial C}{\partial t} +
+u\frac{\partial C}{\partial x} + v\frac{\partial C}{\partial y} + w\frac{\partial C}{\partial z}
+\tag{2.2}
+\end{equation}\]</span>
+where <span class="math inline">\(u\)</span>, <span class="math inline">\(v\)</span>, and <span class="math inline">\(w\)</span> are the water velocity in cartesian coordinates, <span class="math inline">\(x\)</span>, <span class="math inline">\(y\)</span>, and <span class="math inline">\(z\)</span>.</p>
+<p>As the <span class="math inline">\(\mathrm{AED}\)</span> model links with hydrodynamic models that use unstructured or non-standard computational domains, the exact transport solution and notation for a given model will necessarily be model-specific, but broadly consistent with the above.</p>
+<p>Similarly, each model will resolve diffusion and turbulent mixing between computational cells in a unique way. For this reason we simply denote the process of “mixing” using the symbol <span class="math inline">\(\mathbb{M}\)</span>. For a typical <a href="https://en.wikipedia.org/wiki/Reynolds-averaged_Navier–Stokes_equations">RANS</a> hydrodynamic model this would be <span class="math inline">\(\mathbf{u} \cdot \nabla^2 C\)</span>. Some models, such as the <a href="https://gmd.copernicus.org/articles/12/473/2019/">General Lake Model</a> (Hipsey et al., 2019), may however adopt a “bulk mixing” model, whereby mixing is resolved using a multi-step algorithm that is not so easily summarised.</p>
+<p>The host model will also have various model-specific approaches for defining the model boundary conditions for simulated <span class="math inline">\(\mathrm{AED}\)</span> variables. We therefore use the generic symbol <span class="math inline">\(\mathcal{S}\)</span> to represent sources of mass to a computational cell. <span class="math inline">\(\mathcal{S}\)</span> will be cell-specific, and would be zero for interior model cells not subject to source terms.</p>
+<p>Therefore, the rate of change of a generic <span class="math inline">\(\mathrm{AED}\)</span> variable in an unspecified cell can be summarised as:
+<br>
+<span class="math display" id="eq:nomen3">\[\begin{equation}
+\frac{D}{Dt}C = \mathbb{M} + \mathcal{S} \quad \underbrace{\color{#ED7D31} \pm \color{#ED7D31} \dotsb \color{#ED7D31} f \color{#ED7D31} \dotsb}_{\text{AED terms}}
+\tag{2.3}
+\end{equation}\]</span>
+where the <em>AED terms</em> on the RHS are the reaction or movement (e.g. settling) processes that are subsequently described throughout the remainder of this book.</p>
+<p><br>
+In summary, generic notation is adopted to denote the effects of advection, mixing and boundary conditions that are managed by the host hydrodynamic model for <span class="math inline">\(\mathrm{AED}\)</span> simulated variables. Reactions, species interactions, and material or organism redistribution is the focus of the <span class="math inline">\(\mathrm{AED}\)</span> module library.
+<br></p>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="introduction.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="organisation-of-the-library-module-structure.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": true,
+"facebook": false,
+"twitter": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": false
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/AquaticEcoDynamics/aed-science/blob/master/05-nomenclature.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": "https://github.com/AquaticEcoDynamics/aed-science/edit/master/05-nomenclature.Rmd",
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["aed_science.pdf"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "section"
+},
+"info": true
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

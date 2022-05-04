@@ -31,9 +31,15 @@ The sorbed $PO_4$ pool is resolved as:
 
 ###	Process Descriptions
 
-In the basic phosphorus module configuration, $FRP$ is able to be modified by sorption/desorption, atmospheric deposition, and sediment release. The main balance equations for the simulated variables are summarised as:
+In the basic phosphorus module configuration, $FRP$ and  $FRP-ads$ are able to be modified by sorption/desorption, atmospheric deposition (wet and dry fall), dissolved sediment release and settling and resuspension of adsorbed phosphorus. The specific  equations for these processes are summarised below.
 
 #### Phosphate sorption - desorption
+
+If the user optionally chooses to include an adsorbed PO4 pool, then the model allows for simulation of partitioning between the dissolved pool and a selected sorbent. The sorption processes is assumed to be at equilibrium within a modelled time-step and so is not included as a kinetic term in the model ODE solution (as suggested in Eq X), but rather is solved and applied at the end of the time-step integration. 
+
+The amount of PO4 that can sorb onto the chosen particle group can be computed based on one of several sorption equation options.
+
+For reporting, the term $f_{sorp}^{frp}$ is computed as .../dt. 
 
 #### Atmospheric deposition
 
@@ -50,7 +56,7 @@ f_{sed}^{FRP}=F_{sed}^{frp} \theta_{sedfrp}^{T-20}\Phi_{O2}^{frp}\left[O_2\right
 
 This assumes that there is a higher flux at higher temperatures.
 
-**Oxygen mediation of the sediment phosphorus flux:** The sediment flux can be changed by bottom water O~2~ concentration. If the [aed2_oxygen module](#DO_1) is correctly linked to the phosphorus module then this setting will switch on automatically. The parameter `K_sed_frp` can be used to tune the PO~4~^3-^ flux dependence on bottom water O~2~. At high O~2~ concentrations, PO~4~^3-^ flux decreases, and at low O~2~ concentrations, the flux is close to the parameter `F_{sed}^{frp}`, as shown by the equation below.
+**Oxygen mediation of the sediment phosphorus flux:** The sediment flux can be changed by bottom water O~2~ concentration. If the [aed_oxygen module](#DO_1) is correctly linked to the phosphorus module then this setting will switch on automatically. The parameter `K_sed_frp` can be used to tune the PO~4~^3-^ flux dependence on bottom water O~2~. At high O~2~ concentrations, PO~4~^3-^ flux decreases, and at low O~2~ concentrations, the flux is close to the parameter `F_{sed}^{frp}`, as shown by the equation below.
 
 ```{=tex}
 \begin{equation}

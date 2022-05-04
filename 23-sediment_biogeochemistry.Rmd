@@ -1,4 +1,4 @@
-# (PART) AED+ Benthic Modules {-} 
+# (PART) AED Benthic Modules {-} 
 
 # Sediment Biogeochemistry
 
@@ -23,15 +23,10 @@ The model developed as part of this research aimed to address these challenges b
 -	simulate adsorbed metals and nutrients
 -	simulate calcium, iron and manganese carbonates
 -	connect the boundary to either another model, a programmed file or a fixed concentration
-Therefore the numerical model presented in this chapter has many optional features and alternative parameterisations for key processes, without mandating their inclusion in the calculations or enforcing a fixed model structure. To facilitate the coupling, the model is implemented with the “Framework for Aquatic Biogeochemical Models” (FABM), which is a new object-oriented model software framework by Bruggeman and Bolding (2014). Through the definition of a generic architecture for configuring and coupling both benthic and pelagic models, the FABM has been designed to couple a wide range of ecological and biogeochemical models from various developers with numerous different hydrodynamic models (Trolle et al. 2011). To date the FABM has been applied with the 1D lake hydrodynamic model GLM (Hipsey et al. 2014), and the unstructured mesh model TUFLOW-FV (Bruce et al. 2014).
+Therefore the numerical model presented in this chapter has many optional features and alternative parameterisations for key processes, without mandating their inclusion in the calculations or enforcing a fixed model structure. 
 
-The sediment model CANDI-AED presented here is implemented within the AED model library within the FABM (Hipsey et al. 2013b), however, it is able to couple with one or more of the FABM model libraries (Figure \@ref(fig:23-pic1)). Through the model coupling approach it may be applied with any of the hydrodynamic models listed above, or alternatively, run in isolation. This document provides a complete scientific description of the model and describes attributes of the model associated with its practical implementation and operation. An application of the model framework is subsequently demonstrated. 
+The sediment model CANDI-AED presented here is implemented as an optionally configurable module i the AED model library. Through the model coupling approach it may be applied with any of the hydrodynamic models linked to AED, or alternatively, options to run in isolation are also possible. This chapter provides a  scientific description of the model and describes attributes of the model associated with its practical implementation and operation. An case-study of the model framework is also demonstrated. 
 
-<center>
-```{r 23-pic1, echo=FALSE, fig.cap="Schematic of the framework of aquatic biogeochemical models. The new diagenesis model code AED CANDI fits into the category of multilayer 1D diagenesis models, coupled to other biogeochemical and physical models (Trolle et al. 2011)", out.width = '75%'}
-knitr::include_graphics("images/23-sediment_biogeochemistry/image1.png")
-```
-</center>
 
 ## Model Description
 
@@ -112,12 +107,11 @@ The analysis from chapter 2 showed that advection and diffusion reactions (equat
 
 The preceding details were an explanation of the scientific aspects of this diagenesis model, and next we turn to practical implementation.
 
-### Implementation withing the FABM Framework
+### Implementation within the AED framework
 
-The sediment diagenesis model AED CANDI is one module of the AED library (Table 5 - 9, Hipsey et al. 2013b), which is composed of numerous model components. The FABM allows any combination of these modules, or any other model package, to be included in a model simulation and couples them to a physical model of the water column, which provides the spatial and temporal resolution, and calculates the transport processes (Figure 5 - 1). The AED library is just one set that could be used with the FABM framework, where others include the Fasham model template (based on Fasham et al. 1990) or the simple NPZD model of Burchard et al. (2005). A range of physical models and configurations is also available, depending on whether the focus is on the sediment alone, or the sediment as part of a larger environmental simulation (Figure 5 - 3). Refer [here](http://sourceforge.net/apps/mediawiki/fabm/) for further up to date information about the FABM and available model codes.
-
+The sediment diagenesis model AED CANDI is one module of the AED library, which is composed of numerous model components. The model allows any combination of these modules, or any other model package, to be included in a model simulation and couples them to a physical model of the water column, which provides the spatial and temporal resolution, and calculates the transport processes (Figure 5 - 1). 
 <center>
-```{r 23-pic6, echo=FALSE, fig.cap="Spatial resolution options available through FABM. a) Water column studies have traditionally assigned a flux to the sediment water interface without resolving the sediment chemical concentrations by depth, though they can be resolved laterally. b) The 0D water column is the method used in most sediment diagenesis studies, and use of multiple sediment zones is an option available within the FABM.", out.width = '95%'}
+```{r 23-pic6, echo=FALSE, fig.cap="Spatial resolution options available through AED. a) Water column studies have traditionally assigned a flux to the sediment water interface without resolving the sediment chemical concentrations by depth, though they can be resolved laterally. b) The 0D water column is the method used in most sediment diagenesis studies, and use of multiple sediment zones is an option available within AED.", out.width = '95%'}
 knitr::include_graphics("images/23-sediment_biogeochemistry/image6.png")
 ```
 </center>
@@ -134,9 +128,9 @@ knitr::include_graphics("images/23-sediment_biogeochemistry/image7.png")
 
 ### Model Setup, Boundary Conditions & Parameter Definition
 
-The model is set up via the name list text file `fabm.nml` using the model keyword “aed_seddiagenesis” with the model configured to select the “Dynamic” option. Once this is selected, the model will search for the “&aed_sedcandi” parameter block within fabm.nml.
+The model is set up via the name list text file `aed.nml` using the module keyword “&aed_seddiagenesis” and a model namelist block termed "&aed_sediment" configured to select the `sediment_model` as “Dynamic” or “Dynamic2D” option. Once this is selected, the model will search for the “&aed_sedcandi” parameter block within aed.nml.
 
-Each active sediment model within the FABM model is discretised into a user definable number of depth layers (maxnpts) that start at a thickness of a few mm at the sediment-water interface and which increase exponentially down to a pre-defined sediment depth (xl). Users must define the sediment domain physical properties as summarised in Table 5 - 10, including configuration options related to bioturbation and irrigation. The biogeochemical configuration (Table 5 - 11), rate constants (see Table 5 - 12 and Table 5 - 13) must be set according to the sub-model options described above. 
+Each active sediment model within this module is discretised into a user definable number of depth layers (<maxnpts>) that start at a thickness of a few mm at the sediment-water interface and which increase exponentially down to a pre-defined sediment depth (xl). Users must define the sediment domain physical properties as summarised in Table 5 - 10, including configuration options related to bioturbation and irrigation. The biogeochemical configuration (Table 5 - 11), rate constants (see Table 5 - 12 and Table 5 - 13) must be set according to the sub-model options described above. 
 
 ```{r 23sedimentparameters, echo=FALSE, message=FALSE, warning=FALSE}
 library(knitr)
@@ -177,7 +171,7 @@ kable(biogeochem_config,"html", escape = F, align = "c", caption = "The major bi
 
 The initial conditions for each variable are set as a list by the “initial_vals”, which sets a constant concentration with depth in units of μmol L-1. For organic matter initial concentrations only, there are three available options for the concentration with depth, set by “OMInitMethodL”. 
 
-The sediment-water interface is the uppermost layer of the sediment, for which there are three configuration options set by the parameter `ibc2`. If the user specifies `ibc2 = 2`, the concentration is a constant value set by `default_vals` in the `fabm.nml` name list. For `ibc2 = 1`, the concentration is provided by a “link_variable”, which provides the concentration from another simulated water column FABM module. If the variable name in the link list is left blank (“ ”) then AED_CANDI will assume these variables are not linked to any water column variables and default to the “default_vals” values. If `ibc2 = 10`, the concentration is provided by a user-prescribed temporally variable value read from the file `aed_sediment_swibc.dat`. This option may desirable, for example, for simulating a seasonally or daily changing boundary condition. 
+The sediment-water interface is the uppermost layer of the sediment, for which there are three configuration options set by the parameter `ibc2`. If the user specifies `ibc2 = 2`, the concentration is a constant value set by `default_vals` in the `aed.nml` name list. For `ibc2 = 1`, the concentration is provided by a “link_variable”, which provides the concentration from another simulated water column AED module. If the variable name in the link list is left blank (“ ”) then AED-CANDI will assume these variables are not linked to any water column variables and default to the “default_vals” values. If `ibc2 = 10`, the concentration is provided by a user-prescribed temporally variable value read from the file `aed_sediment_swibc.dat`. This option may desirable, for example, for simulating a seasonally or daily changing boundary condition. 
 
 Regardless of the ibc2 surface boundary condition option, fluxes of dissolved species occur between the sediment and water column. They are calculated from the concentration gradient at the sediment-water interface according to Fick’s Law:
 
@@ -198,4 +192,3 @@ The model output files are written for each variable as text files, giving time 
 
 ## Case Studies & Examples
 ###	Case Study
-###	Publications
