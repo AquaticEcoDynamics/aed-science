@@ -50,7 +50,7 @@ To raise an issue about the book's content (e.g. code not running) or make a fea
 
 Readers may also use the **hypothes.is** utility on the right margin of the book to add personal annotations and public comments on the book content.
 
-Maintainers and contributors must follow this repository’s [CODE OF CONDUCT](https://github.com/Robinlovelace/geocompr/blob/master/CODE_OF_CONDUCT.md).
+Maintainers and contributors must follow this repository’s [CODE OF CONDUCT](https://github.com/AquaticEcoDynamics/aed-science/blob/master/CODE_OF_CONDUCT.md).
 
 
 ## Editing the book
