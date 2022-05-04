@@ -28,12 +28,12 @@ The model can be used in a wide range of spatial contexts – including with 0D,
 Please cite this edited book and the AED model in scientific publications as: 
 
 Hipsey, M.R., (ed.). 2022. Modelling Aquatic Eco-Dynamics: Overview of the AED modular simulation platform.
-Zenodo repository. DOI: 10.5281/zenodo.xxxxxx. 
+Zenodo. https://doi.org/10.5281/zenodo.6516222. 
 
 If you would like to cite an individual chapter of this book (not the AED model), please
-use this format (example given for chapter 4): 
+use this format (example given for Chapter 4): 
 
-Hipsey, M.R. and P. Huang, 2022. Chapter 4: Dissolved oxygen. In: Hipsey, M.R. (ed.) Modelling Aquatic Eco-Dynamics: Overview of the AED modular simulation platform. Zenodo repository. DOI: 10.5281/zenodo.xxxxxx.
+Hipsey, M.R. and P. Huang, 2022. Chapter 4: Dissolved oxygen. In: Hipsey, M.R. (ed.) Modelling Aquatic Eco-Dynamics: Overview of the AED modular simulation platform. Zenodo. https://doi.org/10.5281/zenodo.6516222. 
 
 
 ## How to contribute to AED?
