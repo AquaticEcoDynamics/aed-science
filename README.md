@@ -18,6 +18,8 @@ The [AED modelling code-base](https://github.com/AquaticEcoDynamics/libaed-water
 
 The model can be used in a wide range of spatial contexts – including with 0D, 1D, 2D and 3D models that are able to simulate the aquatic environment (termed 'host' models). The model has been applied to many diverse aquatic environments across the globe, and this book provides assistance to users in getting started, or advanced users looking to customise their simulation.
 
+This document summarises the mathematical basis for the balance equations and interactions between the modules. In addition a summary of parameter values for lake, river and estuary environments are also summarized from a range of sources.
+
 
 ## How to cite the AED model and this documentation
 
