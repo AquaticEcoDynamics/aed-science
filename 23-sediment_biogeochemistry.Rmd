@@ -97,12 +97,17 @@ This model has a process of mineral ageing, whereby iron and manganese oxides be
 
 The analysis from chapter 2 showed that advection and diffusion reactions (equations 5 - 102, 5 - 103) are fairly consistent in diagenesis models, and here we use the same methods (Table 5 - 8). Porosity (ϕ) is defined according to equation 5 - 104, which allows it to decrease with depth, and the solid fraction is defined from $\phi_s=1-\phi)$. For bioturbation the model uses a diffusion coefficient that varies with depth ($D_{B(x)}$) as a two layer function or a Gaussian decrease (Boudreau 1996). For the porewater components, diffusion coefficients are used that are based on free-solution molecular diffusion constants corrected for sediment tortuosity, $θ$, according to equation 5 - 105.
 
-###	Variable Summary
+<!-- ###	Variable Summary -->
 
+<!-- ###	Parameter Summary -->
 
-###	Parameter Summary
-###	Optional Module Links
+<!-- ###	Optional Module Links -->
+
 ###	Feedbacks to the Host Model
+
+The inorganic carbon module has no feedbacks to the host hydrodynamic model.
+
+
 ## Setup & Configuration
 
 The preceding details were an explanation of the scientific aspects of this diagenesis model, and next we turn to practical implementation.
@@ -186,9 +191,75 @@ where $D_{0}$ is the diffusivity as defined above, $\delta$ is the thickness of 
 
 At the bottom of the domain ($x$ = “xl”) the model can be specified to have a fixed-concentration (ibbc = 0) such that the concentration at $xl = C_{Bot}$, or it can be specified to have a zero-derivative (ibbc = 1) defined as $\frac{dC}{dx}=0$ at $x = xl$.
 
+
+### Setup example
+
+An example `aed.nml` configuration block for the `aed_seddiagenesis` module that includes multiple active sediment zones, plus microphytobenthos (MPB) and seagrass links, is shown below:
+
+<br>
+
+```{fortran, eval = FALSE}
+!###############################################################################
+! aed_seddiagenesis
+!-------------------------------------------------------------------------------
+&aed_sediment
+   sediment_model    = 'DYNAMIC'    ! engages the CANDI-AED model
+   mpb_link_variable = 'PHY_mpb'    ! use to set link for MPB
+   mag_link_variable = 'MA2_mag'    ! use to set link for macroalgae inputs
+   mac_link_variable = 'MAC_mac'    ! use to set link for macrophyte root inputs
+   swi_link_variable = 'NCS_swi'    ! use to set link for variable w00
+/
+&aed_sed_candi
+  !-- Time settings --!
+   spinup_days     =  90
+   spinup_dt       =   0.25
+   driver_dt       = 900     
+   substep         =   8       
+  !-- Zones details --!
+   n_zones         = 5
+   active_zones    = 104,103, 53, 23, 12,11
+   zone_types      =   5, 3, 3, 1, 1
+  !-- General setup options  --!
+   dbase           = './AED/aed_candi_params.csv'
+   vars_files      = './AED/aed_sdg_vars.csv'
+   geochem_file    = './AED/aed_geochem_pars.dat'
+  !-- Boundary Conditions  --!
+   swibc_mode      = 0      ! previously ibc2
+   deepbc_mode     = 1      ! previously ibbc
+   swibc_file      = './AED/aed_sediment_swibc.dat'
+   deepbc_file     = './AED/aed_sediment_deepbc.dat'
+   swibc_filevars  = '' ! 'oxy', 'nit', 'amm', 'frp', 'poml'   ! from_bc_file
+   deepbc_filevars = '' ! ,OXY_oxy,                            ! use_deep_bc
+   flux_scale      = 1
+  !-- Initial Conditions  --!
+   SolidInitialUnit= 'mmolLsolid'
+   OMInitMethodL   = 'LI_I'
+   OM_topL         = 1
+   OM_minL         = 0.9
+   OM_cfL          = 0.6
+   InitMinDepthL   = 99
+   OMInitMethodR   = 'LI_I'
+   OM_topR         = 1
+   OM_minR         = 0.3
+   OM_cfR          = 0.6
+   InitMinDepthR   = 50
+   POMVR           = 0.3
+  !-- Outputs  --!
+   diag_level         = 10
+   output_profiles    =  .TRUE.
+   morevariables      = 'Rgpp','Rrsp','FO2','f_an'
+   output_diag_vars   = 'mpb','oxy','amm','docl','pocl','docr'
+   n_ddpths           = 2
+   output_diag_depths = 1.0, 5.0  ! cm below swi
+/
+```
+
+<br>
+
+
 ### Model Output & Post-processing
 
-The model output files are written for each variable as text files, giving time (in years) as the first column depth as the first row and concentrations in the other fields. These can be read in using a data processing program such as R, Matlab or Excel for analysis. Further, the model outputs the file `rates.sed` for each variable at every depth for the final time step. 
+As with other modules, the NetCDF files include the model outputs (see Table above). In addition, the module also writes output files for each variable as text files, giving time (in years) as the first column depth as the first row and concentrations in the other fields. These can be read in using a data processing program such as R, Matlab or Excel for analysis. Further, the model outputs the file `rates.sed` for each variable at every depth for the final time step. 
 
-## Case Studies & Examples
-###	Case Study
+<!-- ## Case Studies & Examples -->
+<!-- ###	Case Study -->
