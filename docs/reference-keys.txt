@@ -140,6 +140,8 @@ tab:20-statevariables
 tab:20-parametersummmary
 tab:20-parameterconfig
 fig:23-pic2
+eq:sdg-1
+eq:sdg-2
 fig:figures-side
 fig:dev-pics2
 fig:23-pic6
