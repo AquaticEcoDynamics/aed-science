@@ -4,14 +4,14 @@
 
 Matthew R. Hipsey
 
-## Overview
-## Model Description
-###	Process Descriptions
-###	Optional Module Links
+<!-- ## Overview -->
+<!-- ## Model Description -->
+<!-- ###	Process Descriptions -->
+<!-- ###	Optional Module Links -->
 
-###	Feedbacks to the Host Model
+<!-- ###	Feedbacks to the Host Model -->
 
-The silica module has no feedbacks to the host hydrodynamic model.
+<!-- The silica module has no feedbacks to the host hydrodynamic model. -->
 
 ###	Variable Summary
 
@@ -199,6 +199,6 @@ An example `aed.nml` parameter specification block for the `aed_silica` module i
   /
 ```
 
-## Case Studies & Examples
-###	Case Study
-###	Publications
+<!-- ## Case Studies & Examples -->
+<!-- ###	Case Study -->
+<!-- ###	Publications -->

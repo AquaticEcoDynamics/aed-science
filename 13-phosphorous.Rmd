@@ -324,6 +324,6 @@ An example `aed.nml` parameter specification block for the `aed_phosphorus` modu
   /
 ```
 
-## Case Studies & Examples
-###	Case Study
-###	Publications
+<!-- ## Case Studies & Examples -->
+<!-- ###	Case Study -->
+<!-- ###	Publications -->

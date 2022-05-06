@@ -1,11 +1,12 @@
-<!-- # (PART)  AED+ Water Modules{-}  -->
-
 # Aqueous Geochemistry
 
 ## Contributors
+
+Matthew R. Hipsey and S. Ursula Salmon
+
 ## Overview
 
-The module allows the user to choose from a wide array of geochemical 'components' (e.g., anions, cations, metals) to simulate, and then solves for the equilibrium speciation of the solution. The module includes an advanced solver, and provides pH and other solution properties, and optional mineral or gas phases. Relevant kinetic transformations (e.g. redox reactions) between simulated components are also included. Metals may be simulated as part of the model and can also be active within the biological cycles. The module is flexible and simple in its configuration and can be used in the water column and in the sediment if the dynamic sediment diagenesis model (see Section ?) is also being simulated. The module dynamically links with the other biogeochemical processes within AED2, such that any biological activity (e.g. algal nutrient uptake and photosynthesis, microbial respiration, and nitrification) will dynamically affect the aqueous speciation and pH. Details of the equilibrium and non-equilibrium processes included are described in the adjacent tab.
+The module allows the user to choose from a wide array of geochemical 'components' (e.g., anions, cations, metals) to simulate, and then solves for the equilibrium speciation of the solution. The module includes an advanced solver, and provides pH and other solution properties, and optional mineral or gas phases. Relevant kinetic transformations (e.g. redox reactions) between simulated components are also included. Metals may be simulated as part of the model and can also be active within the biological cycles. The module is flexible and simple in its configuration and can be used in the water column and in the sediment if the dynamic sediment diagenesis model (see Section ?) is also being simulated. The module dynamically links with the other biogeochemical processes within AED, such that any biological activity (e.g. algal nutrient uptake and photosynthesis, microbial respiration, and nitrification) will dynamically affect the aqueous speciation and pH. Details of the equilibrium and non-equilibrium processes included are described in the adjacent tab.
 
 <center>
 ```{r 19-pic1, echo=FALSE, fig.cap="Conceptual diagram highlighting key variables and interactions within the model", out.width = '95%'}
@@ -14,15 +15,16 @@ knitr::include_graphics("images/19-aqueous_geochemistry/image1.png")
 </center>
 
 ## Model Description
-###	Process Descriptions
-
-#### General Approach
 
 The aqueous geochemistry sub-model was developed to simulate aqueous speciation and solubility equilibrium control of pure-phase minerals using an approach similar to **PHREEQC** and as reported previously in Salmon et al (in review). Each dissolved component, $X$, and mineral phase, $PP$, is a state variable within the model and is mass-conserved. In addition to external loading from inflows, the model includes a configurable dissolved sediment flux term for the dissolved species and a sedimentation term for the particulates. If we remove the hydrodynamic terms (e.g., inflows/outflows, mixing) for brevity, the differential equation is defined for the dissolved state variables as:
 
+
+###	Process Descriptions
+
+
 #### Aqueous Speciation & Solubility Equilibrium Control {-}
 
-The aqueous geochemistry model is conceptually similar to other equilbrium codes (e.g. ... ). The model defines geochemical reactions in terms of components. An aqueous species $C$ is created as a product of reaction between components $A$ and $B$, as shown in the following example:
+The aqueous geochemistry model is conceptually similar to other equilbrium codes. The model defines geochemical reactions in terms of components. An aqueous species $C$ is created as a product of reaction between components $A$ and $B$, as shown in the following example:
 
 <center>
 \begin{equation}
@@ -244,16 +246,17 @@ The Newton-Rhapson scheme described above is implemented by making use of the Si
 
 The operation of the simplex solver is complicated and the reader is referred to Barrodale and Roberts (1980) for a detailed account. The aqueous species used in the simulations is based on those from Nordstrom et al. (1990), termed the **WATEQ4F** database.
 
-#### Redox Transformations {-}
 
-#### Other Geochemistry Sources/sinks (optional) {-}
+<!-- #### Redox Transformations {-} -->
+
+<!-- #### Other Geochemistry Sources/sinks (optional) {-} -->
 
 
 
 
 ###	Variable Summary
 
-#### State Vairables {-}
+#### State Variables {-}
 
 ```{r 19-statevariables, echo=FALSE, message=FALSE, warning=FALSE}
 library(knitr)
@@ -289,20 +292,23 @@ kable(parameter_config,"html", escape = F, align = "c", caption = "Parameters an
   column_spec(6, width_min = "6em") %>%
   column_spec(7, width_min = "6em") %>%
   row_spec(1:19, background = 'white') %>%
-  scroll_box(width = "770px", height = "500px",
+  scroll_box(width = "770px", height = "550px",
              fixed_thead = FALSE) 
 ```
 <br>
 
-###	Optional Module Links
-###	Feedbacks to the Host Model
+<!-- ###	Optional Module Links -->
+<!-- ###	Feedbacks to the Host Model -->
+
+
 ## Setup & Configuration
+
 ### Setup Example
 
 An example `nml` block for the geochemistry module is shown below:
 
-```{style="max-height: 500px;"}
-&aed2_geochemistry
+```{fortran, eval = FALSE}
+&aed_geochemistry
    geochem_file   = '../External/AED2/aed2_geochem_pars.dat'
    !-- dissolved components
      num_components = 10
@@ -329,6 +335,18 @@ An example `nml` block for the geochemistry module is shown below:
   /
 ```
 
-## Case Studies & Examples
-###	Case Study
-###	Publications
+
+
+<br>
+
+
+```{block2, gch-text, type='rmdnote'}
+In addition to adding the above code block to `aed.nml`, users must also supply a valid AED geochemistry reaction database file (`aed_geochem_pars`). This file must be supplied in the specified `DAT` format. 
+```
+
+<br>
+
+
+<!-- ## Case Studies & Examples -->
+<!-- ###	Case Study -->
+<!-- ###	Publications -->
