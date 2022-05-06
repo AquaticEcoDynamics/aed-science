@@ -8,11 +8,16 @@ Daniel Paraska, Matthew R. Hipsey
 
 ## Overview
 
-Sediment diagenesis models are highly complex environmental reactive transport modelling tools. The meta-analysis by Paraska et al. (2014) discussed the history of their evolution to these complex configurations, in which the original models of Boudreau (1996), Van Cappellen and Wang (1996) and Soetaert et al. (1996) were taken up and applied in many contexts by new modellers, who added new features and extended their capabilities, or discarded old features as required. The meta-analysis also identified the major challenges associated with developing new sediment diagenesis models. Here, the AED modelling package for sediment biogeochemistry is presented, CANDI-AED, which is an extension of the Approach 1 models, but reengineered and augmented with new model approaches and capabilities as a way to address some of these challenges. 
+This module is a sediment reactive transport model, based on a 1D approximation of the sediment and pore-water profiles. Each active sediment zone (or column) is discretized into a user defineable number of layers that start at thicknesses of around 1mm at the sediment-water interface and increase exponentially down to a pre-defined sediment depth. The model resolves in each layer both physical (e.g. pore-water diffusion or bioturbation) and chemical (e.g., redox transformations) processes.
+
+Under some conditions, the sediment stores can release nutrients to the water column, while under other conditions, the sediment can remove nutrients over the long-term through burial, and the surface layers can remove nitrogen through processes like denitrification. The fine balance that controls the conditions under which the sediment will store, release or remove nutrients is largely governed by the aerobic state of the sediment pore water, and the amount of reactive organic matter fuelling the reactions. The depth-resolved sediment model accounts for mixing from the hydrodynamic model into the upper sediment layers and then calculates whether organic matter is consumed aerobically, through denitrification or deeper down, through sulfate reduction or even methanogenesis.
+
+Sediment early-diagenesis models are highly complex environmental reactive transport simulation tools. The meta-analysis by Paraska et al. (2014) discussed the history of their evolution to these complex configurations, in which the original models of Boudreau (1996), Van Cappellen and Wang (1996) and Soetaert et al. (1996) were taken up and applied in many contexts by new modellers, who added new features and extended their capabilities, or discarded old features as required. The meta-analysis also identified the major challenges associated with developing new sediment diagenesis models. Here, the AED modelling package for sediment biogeochemistry is presented, CANDI-AED, which is an extension of the Approach 1 models, but reengineered and augmented with new model approaches and capabilities as a way to address some of these challenges. 
 
 Paraska et al. (2015) outlined the significance and uncertainty associated with different parameterisation approaches of organic matter dynamics. In these cases, simulations were run to test the significance of different theoretical approaches and model structural assumptions, using an idealised model setup with only primary oxidation reactions and no physical processes or spatial resolution. The true impact of these different model approaches within a spatially-resolved model, accounting for all of the advection, diffusion and secondary reaction processes, however, is yet to be determined and it is unclear whether some formulations may suit some application contexts better than others. Therefore there is a need for a fully flexible model structure that can include these different organic matter breakdown parameterisations and allow users to assess critically the alternative approaches. In addition, other aspects related to secondary redox reactions, mineral reactions, precipitation and adsorption should similarly be subject to comparative assessments.
 
 The model included in AED aimed to address challenges of building a generic and full-featured, open-source model code with the flexibility to do the following:
+
 -	set different kinetic rate equation approaches
 -	set different organic matter pools and breakdown processes
 -	use standard inhibition or thermodynamic limits on primary oxidation
@@ -20,6 +25,7 @@ The model included in AED aimed to address challenges of building a generic and 
 -	simulate adsorbed metals and nutrients
 -	simulate calcium, iron and manganese carbonates
 -	connect the boundary to either another model, a programmed file or a fixed concentration
+
 Therefore the numerical model presented in this module has many optional features and alternative parameterisations for key processes, without mandating their inclusion in the calculations or enforcing a fixed model structure.
 
 The sediment model CANDI-AED presented here is implemented as an optionally configurable module in the AED model library. Through the model coupling approach it may be applied with any of the hydrodynamic models linked to AED, or alternatively, options to run in isolation are also possible. This chapter provides a scientific description of the model and describes attributes of the model associated with its practical implementation and operation. 
@@ -28,13 +34,17 @@ The sediment model CANDI-AED presented here is implemented as an optionally conf
 
 ## Model Description
 
-The heart of this model is the reaction, diffusion, advection model of Berner (1980), which was implemented as the Carbon and Nutrient Diagenesis model of Boudreau (1996), later further developed as the C.CANDI code (Luff et al. 2000). The CANDI-AED implementation however has evolved from the original code, and including extensions related to the treatment of organic matter, the simulation of the geochemical conditions known to influence the diagenetic equations, extensions for nutrients and trace metals, and dynamics at the sediment -watre interface (SWI). However, the core organic matter breakdown equations (and their numerical solution) remains similar as the original descriptions presented in Boudreau (1996), and to other similar sediment models. An overview of the model is shown in Figure \@ref(fig:23-pic2).
+The heart of this model is the reaction, diffusion, advection model of Berner (1980), which was implemented as the Carbon and Nutrient Diagenesis model of Boudreau (1996), later further developed as the C.CANDI code (Luff et al. 2000). The CANDI-AED implementation however has evolved from the original code, and including extensions related to the treatment of organic matter, the simulation of the geochemical conditions known to influence the diagenetic equations, extensions for nutrients and trace metals, and dynamics at the sediment-water interface (SWI). However, the core organic matter breakdown equations (and their numerical solution) remains similar as the original descriptions presented in Boudreau (1996), and to other similar sediment models. An overview of the model is shown in Figure \@ref(fig:23-pic2).
 
 <center>
 ```{r 23-pic2, echo=FALSE, fig.cap="AED CANDI includes chemical processes of organic matter transformation and oxidation, and reduction/oxidation, crystallisation, adsorption and precipitation reactions of inorganic by-products. Most of the processes are triggered by the input of POM at the sediment-water interface.", out.width = '85%'}
 knitr::include_graphics("images/23-sediment_biogeochemistry/image2.png")
 ```
 </center>
+
+<br>
+
+In addition to physical processes, the CANDI-AED model considers two types of chemical reactions - the slow, kinetically controlled reactions, and the fast thermodynamically based equilibrium reactions. The latter are simulated in the sediment through appropriate configuration of the geochemistry reactions; the configuration of the equilibrium model will apply to both the water and each of the sediment layers. The kinetically controlled reactions are mostly microbially-mediated and include the reactions for organic matter breakdown and eventual oxidation, the re-oxidation of various by-products and the dynamics of the metal sulfides. These are outlined in further detail in the next sections.
 
 ###	Process Descriptions
 
@@ -44,22 +54,24 @@ The key chemical process that causes ongoing change in the sediment is the break
 
 <br>
 
-```{r 23-OMbreakdown, echo=FALSE, message=FALSE, warning=FALSE}
-library(knitr)
-library(kableExtra)
-OM_breakdown <- read.csv("tables/23-sediment_biogeochemistry/OM_breakdown.csv", check.names=FALSE)
-kable(OM_breakdown,"html", escape = F, align = "c", caption = "Parameters and configuration",
-      bootstrap_options = "hover") %>%
-  kable_styling(OM_breakdown, bootstrap_options = "hover", 
-                full_width = F, position = "center",
-                font_size = 12) %>%
-  column_spec(1, width_max = "30em") %>%
-  column_spec(2, width_max = "30em") %>%
-  column_spec(3, width_min = "10em") %>%
-  row_spec(1:13, background = 'white') %>%
-  scroll_box(width = "770px", height = "500px",
-             fixed_thead = FALSE) 
-```
+
+<!-- ```{r 23-OMbreakdown, echo=FALSE, message=FALSE, warning=FALSE} -->
+<!-- library(knitr) -->
+<!-- library(kableExtra) -->
+<!-- OM_breakdown <- read.csv("tables/23-sediment_biogeochemistry/OM_breakdown.csv", check.names=FALSE) -->
+<!-- kable(OM_breakdown,"html", escape = F, align = "c", caption = "Parameters and configuration", -->
+<!--       bootstrap_options = "hover") %>% -->
+<!--   kable_styling(OM_breakdown, bootstrap_options = "hover",  -->
+<!--                 full_width = F, position = "center", -->
+<!--                 font_size = 12) %>% -->
+<!--   column_spec(1, width_max = "30em") %>% -->
+<!--   column_spec(2, width_max = "30em") %>% -->
+<!--   column_spec(3, width_min = "10em") %>% -->
+<!--   row_spec(1:13, background = 'white') %>% -->
+<!--   scroll_box(width = "770px", height = "500px", -->
+<!--              fixed_thead = FALSE)  -->
+<!-- ``` -->
+
 
 ```{r, figures-side, echo=FALSE, fig.cap="Three options for different levels of complexity in organic matter breakdown, by setting the OMModel switch. a – Model in which POM breaks down directly to CO~2~ and other waste products. b – Model in which POM is first hydrolysed to DOM and then oxidised to CO~2~. c – Model in which POM is hydrolysed to DOM, which can then be fermented and oxidised.", fig.show="hold", out.width="30%"}
 knitr::include_graphics("images/23-sediment_biogeochemistry/image3.png")
@@ -128,7 +140,7 @@ $F_{OM}$ is the organic matter concentration and may be a Monod function as in e
 
 #### Secondary Redox Reactions {-}
 
-In tParaska et al (2014), many secondary redox reactions were identified that have been included across the diversity of diagenesis model applications. In CANDI-AED, they are all included as options, and may be turned on or off as desired (Table x).
+In Paraska et al (2014), many secondary redox reactions were identified that have been included across the diversity of diagenesis model applications. In CANDI-AED, they are all included as options, and may be turned on or off as desired (Table x).
 
 #### Equilibrium Geochemistry {-}
 
@@ -139,6 +151,70 @@ The precipitation of minerals is solved as an equilibrium reaction, dependent on
 #### Physical Transport {-}
 
 Advection and diffusion reactions are fairly consistent in diagenesis models, and CANDI-AED adopts the approach of Boudreau (1996). Porosity ($\phi$) is defined according to equation x, which allows it to decrease with depth, and the solid fraction is defined from $\phi_s=1-\phi)$. For bioturbation the model uses a diffusion coefficient that varies with depth ($D_{B(x)}$) as a two layer function or a Gaussian decrease (Boudreau 1996). For the porewater components, diffusion coefficients are used that are based on free-solution molecular diffusion constants corrected for sediment tortuosity, $θ$, according to equation x.
+
+### Implementation within the AED framework
+
+The sediment diagenesis model CANDI-AED can be used within the AED framework in various ways. This includes a) how teh SDG module links to other modules in simulating water variables, and b) how the module operates within the simulated domain.
+
+####	Sediment-water coupling {-}
+
+The sediment and hydrodynamic models are coupled at the sediment-water interface. The AED model setup has separate functions for coupling the bottom-most cell of a hydrodynamic model to the top-most layer of the sediment model:
+
+-	flux of solid (particulate) material onto the sediment surface, $mmol/m^2/d$
+-	concentration of dissolved substances in the bottom water, $mmol/m^3$
+-	flux of dissolved substances from the top sediment layer to or from the water, $mmol/m^2/d$
+
+<br>
+
+```{r dev-pics2, echo = FALSE, out.width='45%', fig.align='center', fig.cap = "Schematic of sediment water coupling interactions"}
+
+knitr::include_graphics("images/23-sediment_biogeochemistry/sed_picture3.png")
+
+```
+
+Depending on the nature of the host hydrodynamic model, several configurations can be implemented:
+
+<center>
+```{r 23-pic6, echo=FALSE, fig.cap="Spatial resolution options available through AED. a) Water column studies have traditionally assigned a flux to the sediment water interface without resolving the sediment chemical concentrations by depth, though they can be resolved laterally. b) The 0D water column is the method used in most sediment diagenesis studies, and use of multiple sediment zones is an option available within AED.", out.width = '95%'}
+knitr::include_graphics("images/23-sediment_biogeochemistry/image6.png")
+```
+</center>
+
+
+####	Resolving sediment zonation {-}
+
+Facility exists within the model to use sediment zones'\ which are identical to the above description but are not necessarily coincident with the grid-structure of the water (Figure \ref{fig:sed_integration}). This way "sed-zones" may be defined for the domain, allowing more efficient simulations. Using zones is a practical compromise between computational efficiency and capturing spatial heterogeneity in sediment properties and their fluxes.
+
+
+```{r dev-pics3, echo = FALSE, out.width='100%', class = "text-image", fig.cap = "Schematic depicting sediment zone numerical approach."}
+
+knitr::include_graphics("images/23-sediment_biogeochemistry/sed_picture5.png")
+
+```
+
+<br>
+
+From a numerical point of view, depending on the nature of the grid, the water cells above the sediment will be averaged for the purposes of the interfacial fluxes (Figure \ref{fig:dev-pics4}).
+
+<br>
+
+```{r dev-pics4, echo = FALSE, out.width='45%', class = "text-image",fig.show='hold',fig.align='center', fig.cap = "Schematic displaying how water cells are averaged when using sediment zones."}
+
+knitr::include_graphics("images/23-sediment_biogeochemistry/sed_picture4.png")
+
+```
+
+#### Program Structure
+
+The general structure of the program is shown in Figure \@ref(fig:23-pic7). The program is firstly initialised (including spin-up days if desired), then loops through the kinetic and equilibrium reactions for each time step and writes the resulting concentrations and rates at each depth to an output file. The kinetic reactions are solved by the VODE program (Brown et al. 1989) and the equilibrium reactions by the Simplex program.
+
+<br>
+
+<center>
+```{r 23-pic7, echo=FALSE, fig.cap="The program is firstly initialised, then loops through the kinetic and equilibrium reactions for each time step and writes the resulting concentrations and rates at each depth to an output file. The kinetic reactions are solved by the VODE program and the equilibrium reactions by the Simplex program.", out.width = '60%'}
+knitr::include_graphics("images/23-sediment_biogeochemistry/image7.png")
+```
+</center>
 
 <!-- ###	Variable Summary -->
 
@@ -155,24 +231,6 @@ The inorganic carbon module has no feedbacks to the host hydrodynamic model.
 
 The preceding details were an explanation of the scientific aspects of this diagenesis model, and next we turn to practical implementation.
 
-### Implementation within the AED framework
-
-The sediment diagenesis model AED CANDI is one module of the AED library, which is composed of numerous model components. The model allows any combination of these modules, or any other model package, to be included in a model simulation and couples them to a physical model of the water column, which provides the spatial and temporal resolution, and calculates the transport processes (Figure 5 - 1). 
-<center>
-```{r 23-pic6, echo=FALSE, fig.cap="Spatial resolution options available through AED. a) Water column studies have traditionally assigned a flux to the sediment water interface without resolving the sediment chemical concentrations by depth, though they can be resolved laterally. b) The 0D water column is the method used in most sediment diagenesis studies, and use of multiple sediment zones is an option available within AED.", out.width = '95%'}
-knitr::include_graphics("images/23-sediment_biogeochemistry/image6.png")
-```
-</center>
-
-### Program Structure
-
-The general structure of the program is shown in Figure 5 - 5. The program is firstly initialised, then loops through the kinetic and equilibrium reactions for each time step and writes the resulting concentrations and rates at each depth to an output file. The kinetic reactions are solved by the VODE program (Brown et al. 1989) and the equilibrium reactions by the Simplex program.
-
-<center>
-```{r 23-pic7, echo=FALSE, fig.cap="The program is firstly initialised, then loops through the kinetic and equilibrium reactions for each time step and writes the resulting concentrations and rates at each depth to an output file. The kinetic reactions are solved by the VODE program and the equilibrium reactions by the Simplex program.", out.width = '60%'}
-knitr::include_graphics("images/23-sediment_biogeochemistry/image7.png")
-```
-</center>
 
 ### Model Setup, Boundary Conditions & Parameter Definition
 
@@ -180,23 +238,42 @@ Each active sediment model within this module is discretised into a user definab
 
 <br>
 
-```{r 23sedimentparameters, echo=FALSE, message=FALSE, warning=FALSE}
+
+```{r 3dev-23sedimentparameters, echo=FALSE, message=FALSE, warning=FALSE}
 library(knitr)
 library(kableExtra)
 sediment_parameters <- read.csv("tables/23-sediment_biogeochemistry/sediment_parameters.csv", check.names=FALSE)
 kable(sediment_parameters,"html", escape = F, align = "c", caption = "Sediment physical and transport parameters",
       bootstrap_options = "hover") %>%
-  kable_styling(sediment_parameters, bootstrap_options = "hover", 
+  kable_styling(sediment_parameters, bootstrap_options = "hover",
                 full_width = F, position = "center",
                 font_size = 12) %>%
-  column_spec(1, width_min = "15em") %>%
-  column_spec(2, width_min = "15em") %>%
-  column_spec(3, width_min = "15em") %>%
+  column_spec(1, width_min = "10em") %>%
+  column_spec(2, width_min = "7em") %>%
+  column_spec(3, width_min = "7em") %>%
   column_spec(4, width_min = "15em") %>%
   row_spec(1:19, background = 'white') %>%
-  scroll_box(width = "770px", height = "500px",
-             fixed_thead = FALSE) 
+  scroll_box(width = "690px", height = "550px",
+             fixed_thead = FALSE)
 ```
+
+<!-- ```{r 23sedimentparameters, echo=FALSE, message=FALSE, warning=FALSE} -->
+<!-- library(knitr) -->
+<!-- library(kableExtra) -->
+<!-- sediment_parameters <- read.csv("tables/23-sediment_biogeochemistry/sediment_parameters.csv", check.names=FALSE) -->
+<!-- kable(sediment_parameters,"html", escape = F, align = "c", caption = "Sediment physical and transport parameters", -->
+<!--       bootstrap_options = "hover") %>% -->
+<!--   kable_styling(sediment_parameters, bootstrap_options = "hover",  -->
+<!--                 full_width = F, position = "center", -->
+<!--                 font_size = 12) %>% -->
+<!--   column_spec(1, width_min = "15em") %>% -->
+<!--   column_spec(2, width_min = "15em") %>% -->
+<!--   column_spec(3, width_min = "15em") %>% -->
+<!--   column_spec(4, width_min = "15em") %>% -->
+<!--   row_spec(1:19, background = 'white') %>% -->
+<!--   scroll_box(width = "770px", height = "500px", -->
+<!--              fixed_thead = FALSE)  -->
+<!-- ``` -->
 
 <br>
 
