@@ -70,49 +70,51 @@ where $\theta_{nitrif}$ is a Arrhenius temperature parameter specific to nitrifi
 ```
 where $K_{nitrif}$ is a half saturation constant concentration of oxygen. The purpose of this factor is to reduce the rate of nitrification as oxygen moves below a critical concentration.
 
-**pH limitation on nitrification:** The rate of nitrification can be decreased at very high and low pH values, if pH is being simulated (see [Carbon](#Carbon_1) and Geochemistry). To use this function, the parameter `simNitrfpH` is set to `.TRUE.`. Around neutral pH, between the upper and lower optimum parameters, the reaction proceeds at the normal rate. Below a lower tolerance, and above an upper tolerance, the reaction is stopped entirely. Between the optimum and tolerance values, the rate is limited, in proportion to pH. The piecewise function is described as:
+**pH limitation on nitrification:** The rate of nitrification can be decreased at very high and low pH values, if pH is being simulated (see [Carbon](#Carbon_1) and Geochemistry). To use this function, the parameter `simNitrfpH` is set to `.TRUE.`. Around neutral pH, between the upper and lower optimum parameters, the reaction proceeds at the normal rate. Below a lower tolerance, and above an upper tolerance, the reaction is stopped entirely. Between the optimum and tolerance values, the rate is limited, in proportion to pH. 
 
-```{=tex}
-\begin{equation}
-\Phi_{pH}^{nitrf}[pH]=
-\left\{\begin{array}{ll}
-0, \ \ \ \ pH < 0\\
-0, \ \ \ \ x \geq 0\\
-1, \ \ \ \ x \geq 0\\
-0, \ \ \ \ x \geq 0\\
-0, \ \ \ \ pH \geq 0\\
-\end{array}
-\right.
-(\#eq:nitrogen5)
-\end{equation}
-```
-The function is shown schematically in Figure \@ref(fig:nitrogen-2).
+<!-- The piecewise function is described as: -->
 
-<center>
+<!-- ```{=tex} -->
+<!-- \begin{equation} -->
+<!-- \Phi_{pH}^{nitrf}[pH]= -->
+<!-- \left\{\begin{array}{ll} -->
+<!-- 0, \ \ \ \ pH < 0\\ -->
+<!-- 0, \ \ \ \ x \geq 0\\ -->
+<!-- 1, \ \ \ \ x \geq 0\\ -->
+<!-- 0, \ \ \ \ x \geq 0\\ -->
+<!-- 0, \ \ \ \ pH \geq 0\\ -->
+<!-- \end{array} -->
+<!-- \right. -->
+<!-- (\#eq:nitrogen5) -->
+<!-- \end{equation} -->
+<!-- ``` -->
+<!-- The function is shown schematically in Figure \@ref(fig:nitrogen-2). -->
 
-```{r nitrogen-2, echo=FALSE, message=FALSE, warning=FALSE, fig.cap="pH limitation on nitrification.", out.width = '70%'}
-library(ggplot2)
-library(plotly)
-library(knitr)
+<!-- <center> -->
 
-pH <-  c(5,6,7,7.1,7.9,8,9)
-Rate <- c(0,0,0,1,1,0,0)
+<!-- ```{r nitrogen-2, echo=FALSE, message=FALSE, warning=FALSE, fig.cap="pH limitation on nitrification.", out.width = '70%'} -->
+<!-- library(ggplot2) -->
+<!-- library(plotly) -->
+<!-- library(knitr) -->
 
-plot_data <- data.frame(pH, Rate)
+<!-- pH <-  c(5,6,7,7.1,7.9,8,9) -->
+<!-- Rate <- c(0,0,0,1,1,0,0) -->
 
-plot <- ggplot(data = plot_data, aes(pH, Rate)) +
-          geom_line(colour = "red", lwd = 1.2, lineend = "round") +
-          scale_x_continuous(limits = c(4,10), breaks  = c(4,5,6,7,8,9,10))+
-          labs(x="pH", y = "Rate factor")+
-          theme_classic() +
-          theme(axis.title.x=element_text(colour = "black", size = 13),
-                axis.title.y=element_text(colour = "black", size = 13),
-                axis.text.y = element_text(colour = "black", size = 11),
-                axis.text.x = element_text(colour = "black", size = 11),
-                text = element_text(size=20))
+<!-- plot_data <- data.frame(pH, Rate) -->
 
-ggplotly(p = plot)
-```
+<!-- plot <- ggplot(data = plot_data, aes(pH, Rate)) + -->
+<!--           geom_line(colour = "red", lwd = 1.2, lineend = "round") + -->
+<!--           scale_x_continuous(limits = c(4,10), breaks  = c(4,5,6,7,8,9,10))+ -->
+<!--           labs(x="pH", y = "Rate factor")+ -->
+<!--           theme_classic() + -->
+<!--           theme(axis.title.x=element_text(colour = "black", size = 13), -->
+<!--                 axis.title.y=element_text(colour = "black", size = 13), -->
+<!--                 axis.text.y = element_text(colour = "black", size = 11), -->
+<!--                 axis.text.x = element_text(colour = "black", size = 11), -->
+<!--                 text = element_text(size=20)) -->
+
+<!-- ggplotly(p = plot) -->
+<!-- ``` -->
 
 </center>
 
@@ -221,7 +223,7 @@ aed %>%
     group = "Nitrification/Denitrification",
     rows = 1:11
   ) %>%
-  tab_options(container.height = px(500),
+  tab_options(container.height = px(1000),
               container.overflow.y = TRUE,
               container.overflow.x = TRUE,
               table.font.size = 12,
@@ -492,6 +494,64 @@ As with the default model, other nitrogen sources/sinks are indicated in Eq s...
 This nitrogen module configuration also contains no feedbacks to the host hydrodynamic model.
 
 ## Setup & Configuration
+
+An example `aed.nml` parameter specification block for the `aed_nitrogen` module is shown below:
+
+<br>
+
+```{fortran, eval = FALSE}
+&aed_nitrogen
+  !-- Initial values
+   amm_initial = 2.6
+   nit_initial = 0.1
+   n2o_initial = 0.1
+  !-- Nitrification
+   Rnitrif =  0.01358676
+   Knitrif = 62.02209
+   theta_nitrif = 1.08
+   nitrif_reactant_variable = 'OXY_oxy'
+   nitrif_ph_variable = ''
+   simNitrfpH = .false.
+   Rnh4o2 = 1.0
+   Rno2o2 = 1.0
+  !-- N2O reactions
+   simN2O = 0
+   Rn2o = 0.05
+   Kpart_ammox = 1.0
+   Kin_deamm = 1.0
+   atm_n2o = 3.2e-07
+   n2o_piston_model = 4
+  !-- Annamox
+   Rnh4no2 = 0.001
+   kanammox = 0.001
+   Kanmx_nit = 1.320344
+   Kanmx_amm = 0.8666655
+  !-- De-nitrification
+   Rdenit = 9.968717
+   Kdenit = 29.86566
+   theta_denit = 1.062862
+   Rdnra = 0.01123021
+   Kdnra_oxy = 0.360534
+  !-- Atmospheric deposition
+   simDryDeposition = .true.
+   atm_din_dd = 0.5
+   simWetDeposition = .true.
+   atm_din_conc = 0.5
+  !-- Sediment fluxes
+   Ksed_amm = 41.25
+   Ksed_nit = 73.26015
+   Fsed_n2o = 0
+   Ksed_n2o = 100
+   theta_sed_amm = 1.068994
+   theta_sed_nit = 1.068994
+   Fsed_amm         =   1.0
+   Fsed_nit         =  -0.05
+ ! Fsed_amm_variable = 'SDF_Fsed_amm'
+ ! Fsed_nit_variable = 'SDF_Fsed_nit'
+/
+```
+
+<br>
 
 ## Case Studies & Examples
 

@@ -1,4 +1,4 @@
-# Aqueous Geochemistry
+# Aqueous Geochemistry 
 
 ## Contributors
 
@@ -309,7 +309,7 @@ An example `nml` block for the geochemistry module is shown below:
 
 ```{fortran, eval = FALSE}
 &aed_geochemistry
-   geochem_file   = '../External/AED2/aed2_geochem_pars.dat'
+   geochem_file   = './AED2/aed_geochem_pars.dat'
    !-- dissolved components
      num_components = 10
      dis_components = 'DIC', 'FeII', 'FeIII' ,'Al', 'Cl', 'SO4', 'Na', 'K', 'Mg', 'Ca','H2S'
