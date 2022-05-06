@@ -83,18 +83,18 @@ browseURL("_book/index.html") # to view it
 
 Please cite this edited book and the AED model in scientific publications as: Hipsey, M.R., ed. (2022) 
 Modelling Aquatic Eco-Dynamics: Overview of the AED modular simulation platform.
-Zenodo repository. ADD ZENODO DOI LINK HERE. 
+Zenodo repository. DOI: 10.5281/zenodo.6516222. 
 
 If you would like to cite an individual chapter of this book (not the AED model), please
-use this format (example given for chapter 4): Hipsey, M.R. and P. Huang. (2022) Chapter 4. Dissolved 
+use this format (example given here for chapter 4): Hipsey, M.R. and P. Huang. (2022) Chapter 4. Dissolved 
 oxygen. Hipsey, M.R., ed. Modelling Aquatic Eco-Dynamics: Overview of the AED modular simulation platform.
-Zenodo repository. ADD ZENODO DOI LINK HERE.
+Zenodo repository. DOI: 10.5281/zenodo.6516222.
 
 ## Supporting the project{-}
 
 If you find AED useful, please support it by:
 
-- Telling people about it in person
+- Telling people about it
 - Join our Slack channel: general-lake-model.slack.com
 - Communicating about the model in digital media, e.g. via the "AEDmodel" hashtag on Twitter 
 - Citing the book, as described above
