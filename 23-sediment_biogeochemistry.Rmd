@@ -37,20 +37,48 @@ The sediment model CANDI-AED presented here is implemented as an optionally conf
 The heart of this model is the reaction, diffusion, advection model of Berner (1980), which was implemented as the Carbon and Nutrient Diagenesis model of Boudreau (1996), later further developed as the C.CANDI code (Luff et al. 2000). The CANDI-AED implementation however has evolved from the original code, and including extensions related to the treatment of organic matter, the simulation of the geochemical conditions known to influence the diagenetic equations, extensions for nutrients and trace metals, and dynamics at the sediment-water interface (SWI). However, the core organic matter breakdown equations (and their numerical solution) remains similar as the original descriptions presented in Boudreau (1996), and to other similar sediment models. An overview of the model is shown in Figure \@ref(fig:23-pic2).
 
 <center>
-```{r 23-pic2, echo=FALSE, fig.cap="AED CANDI includes chemical processes of organic matter transformation and oxidation, and reduction/oxidation, crystallisation, adsorption and precipitation reactions of inorganic by-products. Most of the processes are triggered by the input of POM at the sediment-water interface.", out.width = '85%'}
+```{r 23-pic2, echo=FALSE, fig.cap="CANDI-AED includes chemical processes of organic matter transformation and oxidation, and reduction/oxidation, crystallisation, adsorption and precipitation reactions of inorganic by-products. Most of the processes are triggered by the input of POM at the sediment-water interface.", out.width = '85%'}
 knitr::include_graphics("images/23-sediment_biogeochemistry/image2.png")
 ```
 </center>
 
 <br>
 
-In addition to physical processes, the CANDI-AED model considers two types of chemical reactions - the slow, kinetically controlled reactions, and the fast thermodynamically based equilibrium reactions. The latter are simulated in the sediment through appropriate configuration of the geochemistry reactions; the configuration of the equilibrium model will apply to both the water and each of the sediment layers. The kinetically controlled reactions are mostly microbially-mediated and include the reactions for organic matter breakdown and eventual oxidation, the re-oxidation of various by-products and the dynamics of the metal sulfides. These are outlined in further detail in the next sections.
+The model is based on the advection-dispersion reaction equation for the concentration of dissolved and particulate substances. For dissolved substances $C_d$, the balance equation is defined as:
+
+<center>
+\begin{equation}
+\frac{\phi \delta C_d}{\delta t} = \overbrace{ D_{B}\frac{\delta^{2} C_d}{\delta x^{2}} + \phi D_{S}\frac{\delta^{2} C_d}{\delta x^{2}} }^\text{biodiffusion and molecular diffusion} - \underbrace{u \frac{\delta C_d}{\delta x}}_\text{advection (flow)} + \overbrace{\alpha(C_{d_0}-C_d)}^\text{irrigation}  + \underbrace{\phi \sum R_d}_\text{reactions} + \color{brown}{S}
+(\#eq:sdg-1)
+\end{equation}
+</center>
+
+where the left hand side (LHS) is the “unsteady” term ($C_d$ change in time), the first term on the right hand side (RHS) is the dispersion/mixing term, the second term on the RHS is the advection/movement term, and $R_d$ denotes a generic reaction term. An optional $S$ term is included to represent sources from other modules (e.g., seagrass root injection of $O_2$).
+
+For particulate (solid) substances, $C_s$:
+
+<center>
+\begin{equation}
+\frac{(1-\phi)\rho \delta C_s}{\delta t} = \overbrace{ D_{B}\frac{\delta^{2}[(1-\phi)\rho C_s] }{\delta x^{2}} }^\text{biodiffusion} - \underbrace{\omega \frac{\delta [(1-\phi)\rho C_s]}{\delta x}}_\text{advection (sedimentation)}  + \overbrace{(1-\phi) \sum R_s}^\text{reactions} + \color{brown}{S}
+(\#eq:sdg-2)
+\end{equation}
+</center>
+
+where $(1-\phi)$ denotes the solid fraction of the sediment, and $R_s$ isa generic reaction term. 
+
+The above equations are solved numerically for the simulated set of constituents. The user can define the variables that are included in the $\mathbf{SDG}$ module (outlined in Table x), such that $C_d \in \small{\mathbb{DISSOLVED}}$ and $C_s \in \small{\mathbb{PARTICULATE}}$, where $\small{\mathbb{DISSOLVED}}$ and $\small{\mathbb{PARTICULATE}}$ are the set of dissolved and particulate variables selected for simulation, respectively.
+
+A number of options are available for resolving the physical processes, including the rate of diffusion, advection, irrigation and the boundary condition options.
+
+In addition to physical processes, the CANDI-AED model considers two types of chemical reactions - the slow, kinetically controlled reactions, and the fast thermodynamically based equilibrium reactions. The latter are simulated in the sediment through appropriate configuration of the geochemistry reactions; the configuration of the equilibrium model will apply to both the water and each of the sediment layers. The kinetically controlled reactions are mostly microbially-mediated and include the reactions for organic matter breakdown and eventual oxidation, the re-oxidation of various by-products and the dynamics of the metal sulfides. These reactions can be complex and are outlined in further detail in the next sections.
 
 ###	Process Descriptions
 
 #### Primary Redox Reactions {-}
 
-The key chemical process that causes ongoing change in the sediment is the breakdown of organic matter. The user can decide how complex or simple the organic matter breakdown pathway should be, with three options of varying complexity for parameterising the pathways included (Figure x). The first option (`OMModel = 1`) is a common multi-G model in which the POM phases are decomposed straight to CO~2~ and other breakdown products. Here POM is a variable that is not precisely defined, and its components (such as C, N and P) must be determined in post-processing based on a user-defined fixed stoichiometry. The second option (`OMModel = 2`) is another 2G model with both particulate and dissolved organic matter (POM and DOM) phases included and parameterisation hydrolysis of POM to DOM, and then DOM to CO~2~ and other breakdown products. The POM and DOM phases consist of three variables each, which trace the reaction and transport of carbon, nitrogen and phosphorus, thereby allowing for variable stoichiometry of organic matter to occur temporally and spatially. The third option (`OMModel = 3`) has many POM phases, which are all hydrolysed to DOM, which then undergoes fermentation and terminal metabolism, as using the mechanistic approach from Chapter 3.  This allows the carbon, nitrogen and phosphorus to be calculated precisely before and after a model run, and allows the free energies of the reaction of each phase to be included. This third option is the most detailed and mechanistic, and allows for expansion of more detailed reaction mechanisms to be included.
+The key chemical process that causes ongoing change in the sediment is the breakdown of organic matter. Organic matter ($OM$) degradation pathway can consider labile and refractory components and the breakdown pathway simulated is conceptually summarized in Figure \@ref(fig:figures-side). Reactions included in the kinetic component include the hydrolysis of the complex (e.g., high molecular weight) $OM$ pools ($POM_{VR}$, $POM_R$, $DOM_R$, $POM_L$) and transformation of Low Molecular Weight (LMW) $DOM_L$ by oxidants ($O_2$, $MnO_2$, $Fe(III)$ and $SO_4^{2-}$ - the so-called 'terminal metabolism' pathway), and the release of resulting nutrients ($NO_3^-$, $NH_4^+$, $PO_4^{3-}$) and reduced by-products ($Mn^{2+}$, $Fe^{2+}$, $N_2$, $H_2S$, $CH_4$) and $CO_2$. Oxidants, nutrients and by-products are all capable of interacting, say through complexation or re-oxidation of reduced species for example (outlined in the next section).
+
+The user can decide how complex or simple the organic matter breakdown pathway should be, with three options of varying complexity for parameterising the pathways included (Figure \@ref(fig:figures-side)). The first option (`OMModel = 1`) is a common multi-G model in which the POM phases are decomposed straight to CO~2~ and other breakdown products. Here POM is a variable that is not precisely defined, and its components (such as C, N and P) must be determined in post-processing based on a user-defined fixed stoichiometry. The second option (`OMModel = 2`) is another 2G model with both particulate and dissolved organic matter (POM and DOM) phases included and parameterisation hydrolysis of POM to DOM, and then DOM to CO~2~ and other breakdown products. The POM and DOM phases consist of three variables each, which trace the reaction and transport of carbon, nitrogen and phosphorus, thereby allowing for variable stoichiometry of organic matter to occur temporally and spatially. The third option (`OMModel = 3`) has many POM phases, which are all hydrolysed to DOM, which then undergoes fermentation and terminal metabolism, as using the mechanistic approach from Chapter 3.  This allows the carbon, nitrogen and phosphorus to be calculated precisely before and after a model run, and allows the free energies of the reaction of each phase to be included. This third option is the most detailed and mechanistic, and allows for expansion of more detailed reaction mechanisms to be included, but is reccomended only for experienced users.
 
 <br>
 
@@ -253,7 +281,7 @@ kable(sediment_parameters,"html", escape = F, align = "c", caption = "Sediment p
   column_spec(3, width_min = "7em") %>%
   column_spec(4, width_min = "15em") %>%
   row_spec(1:19, background = 'white') %>%
-  scroll_box(width = "690px", height = "550px",
+  scroll_box(width = "770px", height = "525px",
              fixed_thead = FALSE)
 ```
 
@@ -380,6 +408,17 @@ An example `aed.nml` configuration block for the `aed_seddiagenesis` module that
 
 <br>
 
+
+<br>
+
+
+```{block2, pars-text, type='rmdnote'}
+In addition to adding the above code block to `aed.nml`, users must also supply a valid AED sediment parameter database file (`aed_candi_pars`) and a variable definition file ('aed_sdg_vars'). Both of these files file must be supplied in either `CSV` format. 
+
+Users can create a standard file in the correct format from the online [**AED parameter database**](https://aed.see.uwa.edu.au/research/models/AED/aed_dbase/db_edit.php) by selecting from the available sediment types of interest, downloading via the **"Make CSV"** button, and then tailoring to the simulation being undertaken as required. Carefully check the parameter units and values!
+```
+
+<br>
 
 ### Model Output & Post-processing
 
