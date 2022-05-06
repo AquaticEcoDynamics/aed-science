@@ -706,7 +706,7 @@ Dissolved methane concentrations were calibrated using the glmtools R package an
 <br>
 	
 <center>
-```{r Kinneret-pic1, echo=FALSE, fig.cap="The observed vs. simulated dissolved methane concentrations (mmol/m^3^) at 1 m, 10 m, 20 m, 30 m, 35 m and 38-39 m depths in Lake Kinneret. The rhombus symbols represent the observed and the solid lines represent the simulated methane concentrations. Data consisting of dissolved methane concentrations in Lake Kinneret was extracted from Schmid et al., 2017, using WebPlotDigitizer (http://arohatgi.info/WebPlotDigitizer).", out.width = '100%'}
+```{r Kinneret-pic1, echo=FALSE, fig.cap="The observed vs. simulated dissolved methane concentrations (mmol/m^3^) at 1 m, 10 m, 20 m, 30 m, 35 m and 38-39 m depths in Lake Kinneret. The rhombus symbols represent the observed and the solid lines represent the simulated methane concentrations. Data consisting of dissolved methane concentrations in Lake Kinneret was extracted from @schmid2017, using WebPlotDigitizer (http://arohatgi.info/WebPlotDigitizer).", out.width = '100%'}
 knitr::include_graphics("images/carbon/methane.png")
 ```
 </center>
