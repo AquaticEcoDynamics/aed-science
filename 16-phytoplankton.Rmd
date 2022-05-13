@@ -152,6 +152,13 @@ f_{excr}^{{PHY_{Si}}_a}&=\hat{R}\ \left[{PHY_{Si}}_a\right]
 
 The salinity effect on mortality is given by various quadratic formulations, depending on the groups sensitivity to salinity (Griffin et al 2001; Robson and Hamilton, 2004). An example of the use of various salinity limitation options is shown in Figure 3.
 
+```{r, echo=FALSE,message=FALSE, warning=FALSE, customcap="Salinity growth suppression of pytoplankton via various model approaches.", out.width = '100%'}
+knitr::include_app('https://gilesnknight.shinyapps.io/aed_manual_salinity_growth_suppression/', height = '511px')
+```
+
+```{r, echo=FALSE,message=FALSE, warning=FALSE, customcap="Salinity respiration amplification of pytoplankton via various model approaches.", out.width = '100%'}
+knitr::include_app('https://gilesnknight.shinyapps.io/aed_manual_salinity_respiration_amplification/', height = '511px')
+```
 
 
 ###	Optional Module Links
