@@ -6,7 +6,9 @@ Matthew R. Hipsey, Peisheng Huang, and Cayelan C. Carey
 
 ## Overview
 
-Phosphorus is a limiting nutrient for phytoplankton growth and thus is fundamental to determining water quality in aquatic ecosystems. PO~4~^3-^ is the primary inorganic form of phosphorus that is taken up by microbes and aquatic plants (phytoplankton and macrophytes) to build biomass as organic phosphorus. As phosphorus is a core building block of an aquatic ecosystem, `aed_phosphorus` ($\mathrm{PHS}$) is designed as a low-level module for managing inorganic phosphorus cycling, and is able to be linked to by higher order modules associated with primary production, and organic matter breakdown.
+Phosphorus is a critically-important element in aquatic ecosystems. Many empirical studies have demonstrated that phosphorus can be the primary limiting nutrient for phytoplankton growth and thus is fundamental to determining water quality in freshwater, estuarine, and marine ecosystems. PO~4~^3-^ is the primary inorganic form of phosphorus that is taken up by microbes and aquatic plants (phytoplankton and macrophytes) to build biomass as organic phosphorus. Given that phosphorus is a core building block of an aquatic ecosystem, `aed_phosphorus` ($\mathrm{PHS}$) is designed as a low-level module for managing inorganic phosphorus cycling, and is able to be linked to by higher order modules associated with primary production (described in the Phytoplankton chapter in this book), and organic matter breakdown (described in the Organic Matter chapter in this book).
+
+The general phosphorus processes specifically resolved in this module are sorption/desorption, atmospheric deposition, dissolved sediment flux, and sedimentation and resuspension. 
 
 ## Model Description
 
@@ -324,6 +326,46 @@ An example `aed.nml` parameter specification block for the `aed_phosphorus` modu
   /
 ```
 
-<!-- ## Case Studies & Examples -->
-<!-- ###	Case Study -->
-<!-- ###	Publications -->
+## Case Studies & Examples
+
+###	Case Study: Falling Creek Reservoir
+
+Falling Creek Reservoir (FCR) is a eutrophic, drinking water supply reservoir located outside of Roanoke, Virginia, USA. In the summer months, FCR will quickly exhibit hypolimnetic anoxia after the onset of thermal stratification. To manage anoxia, managers deployed a hypolimnetic oxygenation system in FCR in which water is extracted from ~1 m above the sediment onshore, where super-saturated oxygen is injected into the water before it is returned to the hypolimnion at the same depth and temperature. Consequently, the hypolimnion of FCR experiences a wide range of oxygen conditions throughout the year, which have dramatic effects on phosphorus fluxes from the sediment. 
+
+Carey et al. (2022) analyzed the effect of oxygenation on phosphorus cycling in FCR over seven years, and used the `aed_phosphorus` model with the GLM hydrodynamic model to simulate the large temporal variability in phosphorus concentrations experienced under contrasting oxygenation conditions.
+
+<center>
+
+![Figure 1: Modeled (black line) vs. observed (red points) total phosphorus (TP, left panel) and dissolved reactive phosphorus (DRP) in the hypolimnion of Falling Creek Reservoir, USA.](images/13-phosphorus/CareyGCB_phosphorus.jpg){width=90%}
+
+</center>
+
+As evident from Figure 1, the model was generally able to recreate dissolved and total phosphorus dynamics in FCR (Carey et al. 2022). Carey et al. (2022) also used the validated model to explore the effects of anoxia on coupled biogeochemical cycling in the reservoir based on different oxygenation scenarios.
+
+
+### Publications
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+library(gt)
+library(tidyverse)
+library(kableExtra)
+library(rmarkdown)
+
+aed <- read.csv("tables/13-phosphorus/phosphorus_pubs.csv", check.names=FALSE)
+
+aed %>%
+  gt() %>%
+  tab_options(container.height = px(500),
+              container.width = pct(100),
+              table.width = pct(100),
+              container.overflow.y = TRUE,
+              container.overflow.x = TRUE,
+              table.font.size = 12,
+              column_labels.background.color = "#14759e",
+              row_group.background.color = "lightgrey",
+              column_labels.font.weight = "bold",
+              column_labels.font.size = 14) %>%
+  fmt_markdown(columns = everything())
+
+
+```
