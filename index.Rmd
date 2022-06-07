@@ -8,12 +8,15 @@ bibliography:  ["references/pathogens.bib",
               "references/generic_utilities_functions.bib",
               "references/bivalves.bib",
               "references/nitrogen.bib",
-              "references/publications.bib"]
+              "references/publications.bib",
+              "references/carbon.bib"]
 biblio-style: apalike
 link-citations: yes
 github-repo: AquaticEcoDynamics/aed-science/
 url: ''
 description: "Work in progress."
+nocite: |
+  @huang2022
 ---
 
 ```{r}
