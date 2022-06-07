@@ -19,7 +19,21 @@ tab:10-parstable
 eq:car1
 eq:car2
 fig:carbonPlotly
+eq:DIC0
+eq:TA1
+eq:TA2
+eq:TA3
 tab:11-alkmode
+eq:TA
+eq:pH
+eq:DIC2
+eq:pco2
+eq:I
+eq:act
+eq:diss
+eq:speciation1
+eq:speciation2
+eq:speciation3
 eq:sedimentExchange5
 eq:sedimentExchange6
 eq:sedimentExchange1
@@ -182,8 +196,8 @@ tab:26-statevariables
 tab:26-diagnostics
 tab:26-parametersummmary
 tab:26-parameterconfig
-tab:unnamed-chunk-27
 tab:unnamed-chunk-28
+tab:unnamed-chunk-29
 tab:35-publications
 introduction
 nomenclature
@@ -227,6 +241,8 @@ parameter-summary-1
 setup-configuration-1
 case-studies-examples-1
 SEQCarbonCaseStudy
+case-study-lake-kinneret
+publications-1
 inorganic-nitrogen
 contributors-2
 overview-2
@@ -265,7 +281,7 @@ feedbacks-to-the-host-model-3
 setup-configuration-2
 case-studies-examples-2
 case-study-yarra-river-estuary
-publications-1
+publications-2
 inorganic-phosphorus
 contributors-3
 overview-3
@@ -282,7 +298,7 @@ parameter-summary-4
 setup-configuration-3
 case-studies-examples-3
 case-study-falling-creek-reservoir
-publications-2
+publications-3
 silica
 contributors-4
 variable-summary-5
@@ -340,7 +356,7 @@ setup-configuration-8
 setup-example-2
 case-studies-examples-5
 case-study
-publications-3
+publications-4
 sediment-biogeochemistry
 contributors-9
 overview-8
@@ -366,7 +382,7 @@ setup-configuration-10
 setup-example-4
 case-studies-examples-6
 case-study-1
-publications-4
+publications-5
 genericUtilitiesFunctions
 GAS
-publications-5
+publications-6
