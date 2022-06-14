@@ -10,7 +10,7 @@ bibliography:  ["references/pathogens.bib",
               "references/nitrogen.bib",
               "references/publications.bib",
               "references/carbon.bib"]
-biblio-style: apalike
+csl: "references/biogeosciences.csl"
 link-citations: yes
 github-repo: AquaticEcoDynamics/aed-science/
 url: ''
