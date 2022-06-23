@@ -75,6 +75,10 @@ h1.title {
 .center {
   text-align: center;
 }
+
+
+
+
 /* table {
    border: 0px solid #ccc;
 }
@@ -105,4 +109,14 @@ border-top-width: 0px !important;
 border-bottom-width: 0px !important;
 border-right-width: 0px !important;
 border-left-width: 0px !important;
+}
+
+
+/* REFERENCES */
+#refs {
+  font-size: 12px;
+}
+
+.csl-entry {
+  margin: 10px 0;
 }
