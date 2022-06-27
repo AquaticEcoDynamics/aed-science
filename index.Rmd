@@ -4,19 +4,18 @@ author: ""
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
 documentclass: book
-bibliography:  ["references/pathogens.bib",
-              "references/generic_utilities_functions.bib",
-              "references/bivalves.bib",
-              "references/nitrogen.bib",
-              "references/publications.bib",
-              "references/carbon.bib"]
+bibliography:  ["references/carbon.bib", 
+                "references/oxygen.bib",
+                "references/bivalves.bib",
+                "references/generic_utilities_functions.bib", 
+                "references/nitrogen.bib",
+                "references/pathogens.bib",
+                "references/publications.bib"]
 csl: "references/biogeosciences.csl"
 link-citations: yes
 github-repo: AquaticEcoDynamics/aed-science/
 url: ''
 description: "Work in progress."
-nocite: |
-  @huang2022
 ---
 
 ```{r}

@@ -17,7 +17,7 @@ how aquatic communities are structured and supported [@Dodds2020].
 Exchange of carbon between aquatic systems and the atmosphere is also
 fundamental in influencing climate [e.g. @cai2011; @borges2011].
 Accordingly, there are a wide range of applications that require
-simulation of carbon species.
+simulation of carbon species. 
 
 The $\mathrm{AED}$ library can be used to simulate both the organic and
 inorganic pools of carbon. As carbon is a core building block of an
@@ -437,9 +437,9 @@ $\theta_{sed-DIC}$ and $\theta_{sed-CH_4}$ are the Arrhenius temperature
 multiplier for temperature control. The last item is the oxygen
 mediation of the fluxes.
 
-Oxygen mediation of the inorganic carbon fluxes: The sediment flux can
-be changed by bottom water O~2~ concentration. If the [aed2_oxygen
-module](#DO_1) is correctly linked to the carbon module then this
+**Oxygen mediation of the inorganic carbon fluxes**: The sediment flux can
+be changed by bottom water O~2~ concentration. If the aed_oxygen
+module is correctly linked to the carbon module then this
 setting will switch on automatically. At low O~2~ concentrations, the
 amount of DIC fluxing out of the sediment is decreased and at high O~2~
 concentrations, it is set close to the $F_{sed}^{DIC}$, as shown in
@@ -449,7 +449,7 @@ complicated full set of biogeochemical reactions. The half-saturation
 oxygen parameter $K_{sed-DIC}^{O_2}$ can be used to tune the DIC flux
 dependence on bottom water O~2~. A similar function can be used to tune
 the CH~4~ flux using the parameter $K_{sed-CH_4}^{O_2}$, as shown in
-Equation 6.22. At high O~2~ concentrations, CH~4~ flux decreases, and at
+\@ref(eq:sedimentExchange2). At high O~2~ concentrations, CH~4~ flux decreases, and at
 low O~2~ concentrations, the flux is close to the parameter
 $F_{sed}^{CH_4}$.
 
@@ -559,7 +559,7 @@ Aerobic oxidation is mediated by methanotrophs and is the most
 significant sink for dissolved methane. The metabolic rate of
 methanotrophs increases with increasing temperatures, hence aerobic
 oxidation is temperature sensitive. The aerobic oxidation rate can be
-described according to Michealis-Menten Kinetics as follows [@schmid2017]
+described according to Michealis-Menten Kinetics as follows: [@schmid2017]
 
 ```{=tex}
 \begin{equation}
@@ -575,7 +575,7 @@ $[CH_4]$ is the methane concentration in the water.
 The methane oxidation rate can be changed by water O~2~ concentration.
 At low O~2~ concentrations, the amount of CH~4~ oxidated to DIC
 decreased and at high O~2~ concentrations, it is set close to the
-$R_{oxmax}^{{CH}_4}$, as shown in Equation \@ref(eq:sedimentExchange11):
+$R_{oxmax}^{{CH}_4}$, as shown in Equation \@ref(eq:sedimentExchange10):
 
 ```{=tex}
 \begin{equation}
@@ -607,11 +607,11 @@ the air-water gas transfer velocity for CO~2~. As AED can be applied
 across many types of environments, spanning the ocean to small lakes and
 flowing waters, users can select from a range of gas exchange piston
 velocity models and Schmidt models, or implement their own, to capture
-this process. The options are listed in the 'Gas Transfer' section of
-the ['Generic utilities & Functions'
-chapter](#genericUtilitiesFunctions). The switches of the piston and
+this process. The options are listed in the [Gas Transfer] section of
+the [Generic utilities & Functions](#genericUtilitiesFunctions)
+chapter. The switches of the piston and
 Schmidt models are set via the use of $\Theta_{gas}^{piston}$ and
-$\Theta_{gas}^{schmidt}$, respectively (see option details in chapter 30
+$\Theta_{gas}^{schmidt}$, respectively (see option details in
 [Generic utilities & Functions](#genericUtilitiesFunctions)). The
 exchange flux can then be added to or subtracted from the surface cells
 of an aquatic system, and the change in the CO~2~ concentration in the
@@ -630,14 +630,14 @@ where $\Delta z_{surf}$ is the surface layer thickness.
 Other carbon sources/sinks are indicated in Eq \@ref(eq:car1) for DIC.
 These include:
 
--   aed_oxygen: Oxygen is used to control oxidation;
--   aed_organic_matter: organic matter mineralisation can update DIC;
--   aed_phytoplankton: phytoplankton photosynthetic uptake of CO2 can
+-   [aed_oxygen][Dissolved Oxygen]: oxygen is used to control oxidation;
+-   [aed_organic_matter][Organic Matter]: organic matter mineralisation can update DIC;
+-   [aed_phytoplankton][Phytoplankton]: phytoplankton photosynthetic uptake of CO2 can
     update DIC;
--   aed_geochemistry: optional link to simulate the carbonate system;
+-   [aed_geochemistry][Aqueous Geochemistry]: optional link to simulate the carbonate system;
 -   aed_sedflux: interface module to update the sediment-water exchange
     in zones;
--   aed_seddiagenesis: an advanced sediment biogeochemistry mode can
+-   [aed_seddiagenesis][Sediment biogeochemistry]: an advanced sediment biogeochemistry mode can
     dynamically predict sediment fluxes of DIC and CH4.
 
 ### Feedbacks to the Host Model
@@ -1040,3 +1040,6 @@ aed %>%
 
 
 ```
+<div style="display:none;">
+@huang2022
+</div>
