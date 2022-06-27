@@ -22,7 +22,7 @@
 
 
 
-<meta name="date" content="2022-06-23" />
+<meta name="date" content="2022-06-27" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -470,9 +470,11 @@ div.csl-indent {
 <p>This module supports one state variable to capture the oxygen concentration, <span class="math inline">\(O_2\)</span>. The module is a low-level module that supports the two core processes of air-water exchange, <span class="math inline">\(\check{f}_{atm}^{O_2}\)</span>, and sediment-water exchange, <span class="math inline">\(\hat{f}_{sed}^{O_2}\)</span>, and is designed to be linked to by other modules that interact with oxygen. The dynamics of <span class="math inline">\(O_2\)</span> can therefore be summarised as:</p>
 <p><span class="math display" id="eq:oxy1">\[\begin{eqnarray}
 \frac{D}{Dt}O_2 =  \color{darkgray}{ \mathbb{M} + \mathcal{S} } \quad
-&amp;+&amp;   \overbrace{\check{f}_{atm}^{O_2}+\hat{f}_{sed}^{O_2}}^\text{aed_oxygen} \\ \tag{4.1}
+&amp;+&amp;   \overbrace{\check{f}_{atm}^{O_2}+\hat{f}_{sed}^{O_2}}^\text{aed_oxygen} \\
+\tag{4.1}
 &amp;-&amp; \color{brown}{ f_{min}^{DOC} - f_{nitrf}^{NH_4} - f_{ch4ox}^{CH_4} - f_{h2sox}^{H_2S} - f_{feox}^{FeII} } \\ \nonumber
-&amp;+&amp; \color{brown}{ f_{gpp}^{PHY}    - f_{rsp}^{PHY} - f_{rsp}^{ZOO} + \hat{f}_{gpp}^{MAC} - \hat{f}_{rsp}^{MAC} + f_{gpp}^{MAG} - f_{rsp}^{MAG} - \hat{f}_{rsp}^{BIV} } \\ \nonumber
+&amp;+&amp; \color{brown}{ f_{gpp}^{PHY}    - f_{rsp}^{PHY} - f_{rsp}^{ZOO} + \hat{f}_{gpp}^{MAC} - \hat{f}_{rsp}^{MAC}} \\ \nonumber
+&amp;+&amp; \color{brown}{f_{gpp}^{MAG} - f_{rsp}^{MAG} - \hat{f}_{rsp}^{BIV} } \\ \nonumber
 \end{eqnarray}\]</span></p>
 <p>where <span class="math inline">\(\mathbb{M}\)</span> and <span class="math inline">\(\mathcal{S}\)</span> refer to water mixing and boundary source terms, respectively, and the coloured <span class="math inline">\(\color{brown}{f}\)</span> terms reflect the optionally configurable contributions from other modules; these include the breakdown of <span class="math inline">\(DOC\)</span> by aerobic heterotrophic bacteria to <span class="math inline">\(CO_2\)</span>, whereby a stoichiometrically equivalent amount of oxygen is removed, chemical oxidation reactions, such as nitrification or sulfide oxidation, photosynthetic oxygen production and respiratory consumption by phytoplankton, and also oxygen consumed and produced by any benthic biological groups.</p>
 <div id="process-descriptions" class="section level3 hasAnchor" number="4.3.1">
@@ -480,7 +482,7 @@ div.csl-indent {
 <!-- previously from 'aed2_oxygen : oxygen solubility & atmospheric exchange' on website version-->
 <div id="oxygen-solubility-atmospheric-exchange" class="section level4 unnumbered hasAnchor">
 <h4>Oxygen solubility &amp; atmospheric exchange<a href="DO_1.html#oxygen-solubility-atmospheric-exchange" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>Atmospheric exchange is typically modelled based on Wanninkhof (1992) and the flux equation of Riley and Skirrow (1974) for the open water, and on Ho et al. (2011) for estuarine environments. The instantaneous flux at the air-water interface, <span class="math inline">\(\mathcal{F}_{atm}^{O_2}\)</span>, depends on the oxygen gradient between the air and water and the gas transfer or piston velocity, <span class="math inline">\(k_{piston}\)</span> <span class="math inline">\((m/s)\)</span> :
+<p>Atmospheric exchange is typically modelled based on <span class="citation">Wanninkhof (<a href="#ref-wanninkhof1992" role="doc-biblioref">1992</a>)</span> and the flux equation of <span class="citation">Schlungbaum (<a href="#ref-schlungbaum1976" role="doc-biblioref">1976</a>)</span> for the open water, and on <span class="citation">Ho et al. (<a href="#ref-ho2011" role="doc-biblioref">2011</a>)</span> for estuarine environments. The instantaneous flux at the air-water interface, <span class="math inline">\(\mathcal{F}_{atm}^{O_2}\)</span>, depends on the oxygen gradient between the air and water and the gas transfer or piston velocity, <span class="math inline">\(k_{piston}\)</span> <span class="math inline">\((m/s)\)</span> :
 <span class="math display" id="eq:oxy2">\[\begin{equation}
                                 \mathcal{F}_{atm}^{O_2} = k_{piston}^{O_2} \left({O_2}_{air} - {O_2}_{s}\right) \tag{4.2}
 \end{equation}\]</span>
@@ -498,7 +500,7 @@ where <span class="math inline">\(T_K\)</span> is temperature in degrees Kelvin,
 \tag{4.4}
 \end{equation}\]</span>
 where <span class="math inline">\(p_H\)</span> and <span class="math inline">\(p_{SL}\)</span> is the pressure at the altitude of the simulation domain (<span class="math inline">\(H\)</span>) and at sea level, respectively.</p>
-<p>As <span class="math inline">\(\mathrm{AED}\)</span> can be applied across many types of environments, spanning the ocean to small lakes and flowing waters, users can select from a range of <span class="math inline">\(k_{piston}\)</span> options, or implement their own, to capture this process. The options of <span class="math inline">\(k\)</span> methods are listed in the <a href="genericUtilitiesFunctions.html#GAS">Gas Transfer</a> section of Chapter 30.</p>
+<p>As <span class="math inline">\(\mathrm{AED}\)</span> can be applied across many types of environments, spanning the ocean to small lakes and flowing waters, users can select from a range of <span class="math inline">\(k_{piston}\)</span> options, or implement their own, to capture this process. The options of <span class="math inline">\(k\)</span> methods are listed in the <a href="genericUtilitiesFunctions.html#GAS">Gas Transfer</a> section of <a href="genericUtilitiesFunctions.html#genericUtilitiesFunctions">Generic utilities &amp; Functions</a> chapter.</p>
 <p>Once the exchange flux is computed it is applied to the surface cells of the simulated domain, and the change in the <span class="math inline">\(O_2\)</span> concentration in the surface layer is:</p>
 <p><span class="math display" id="eq:oxy5">\[\begin{equation}
 \check{f}_{atm}^{O_2} = \frac{\mathcal{F}_{atm}^{O_2}}{\Delta z_{surf}}                          
@@ -508,7 +510,7 @@ where <span class="math inline">\(\Delta z_{surf}\)</span> is the surface layer 
 </div>
 <div id="sediment-oxygen-demand" class="section level4 unnumbered hasAnchor">
 <h4>Sediment oxygen demand<a href="DO_1.html#sediment-oxygen-demand" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>Modelling sediment oxygen demand (<span class="math inline">\(SOD\)</span>) can take a variety of forms. The simplest form in AED is the “static” model whereby <span class="math inline">\(SOD\)</span> varies as a function of the overlying water temperature and bottom water dissolved oxygen concentration:
+<p>Modelling sediment oxygen demand (<span class="math inline">\(SOD\)</span>) can take a variety of forms. The simplest form in <span class="math inline">\(\mathrm{AED}\)</span> is the “static” model whereby <span class="math inline">\(SOD\)</span> varies as a function of the overlying water temperature and bottom water dissolved oxygen concentration:
 <span class="math display" id="eq:oxy6">\[\begin{equation}
   \mathcal{F}_{sed}^{O_2}[T,O_2] = F_{sed}^{oxy} \: \theta_{sod}^{T-20} \: \Phi_{sod}^{oxy}\left[O_2\right]
     \tag{4.6}
@@ -532,12 +534,12 @@ where <span class="math inline">\(\Delta z_{bot}\)</span> is the bottom layer th
 <h3><span class="header-section-number">4.3.2</span> Optional Module Links<a href="DO_1.html#optional-module-links" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Other oxygen sources/sinks are indicated in Eq <a href="DO_1.html#eq:oxy1">(4.1)</a>. These include:</p>
 <ul>
-<li>Oxygen consumption during bacterial mineralisation of DOC is done in the organic matter module - aed_organic_matter;</li>
-<li>Oxygen consumption during nitrification is done in the nitrogen module - [aed_nitrogen][Inorganic Nutrients: C/N/P/Si];</li>
+<li>Oxygen consumption during bacterial mineralisation of DOC is done in the organic matter module - <a href="organic-matter.html#organic-matter">aed_organic_matter</a>;</li>
+<li>Oxygen consumption during nitrification is done in the nitrogen module - <a href="inorganic-nitrogen.html#inorganic-nitrogen">aed_inorganic_nitrogen</a>;</li>
 <li>Oxygen production/consumption by phytoplankton phtosynthesis/respiration is done in the phytoplankton module - <a href="phytoplankton.html#phytoplankton">aed_phytoplankton</a>;</li>
 <li>Oxygen consumption due to zooplankton respiration is done in the zooplankton module - [aed_zooplankton][Zooplankton];</li>
 <li>Oxygen production/consumption by seagrass phtosynthesis/respiration is done in the macrophyte module - aed_macrophyte;</li>
-<li>Oxygen consumption due to bivalve respiration is done in the benthic module - [aed_bivalve][Benthic Vegetation];</li>
+<li>Oxygen consumption due to bivalve respiration is done in the benthic module - <a href="bivalves.html#bivalves">aed_bivalve</a>.</li>
 </ul>
 </div>
 <div id="feedbacks-to-the-host-model" class="section level3 hasAnchor" number="4.3.3">
@@ -1066,37 +1068,46 @@ defaults to 0; Eq <a href="DO_1.html#eq:oxy4">(4.4)</a> used for <span class="ma
 <h2><span class="header-section-number">4.5</span> Case Studies &amp; Examples<a href="DO_1.html#case-studies-examples" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div id="case-study-swan-canning-estuary" class="section level3 hasAnchor" number="4.5.1">
 <h3><span class="header-section-number">4.5.1</span> Case Study: Swan-Canning Estuary<a href="DO_1.html#case-study-swan-canning-estuary" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>The Swan-Canning Estuary in Western Australia experiences hypoxia and anoxia due to the strong salt-wedge that forms within the system, and the high sediment oxygen demand. Huang et al. (2018) used the <code>aed_oxygen</code> model with the TUFLOW-FV hydrodynamic model to captured the large spatio-temporal variability in oxygen distribution.</p>
+<p>The Swan-Canning Estuary in Western Australia experiences hypoxia and anoxia due to the strong salt-wedge that forms within the system, and the high sediment oxygen demand. <span class="citation">Huang et al. (<a href="#ref-huang2018" role="doc-biblioref">2018</a>)</span> used the <code>aed_oxygen</code> model with the TUFLOW-FV hydrodynamic model to capture the large spatio-temporal variability in oxygen distribution.</p>
 <p><br></p>
 <center>
-<div id="htmlwidget-9bef45dec6bc623925cf" style="width:500px;height:385px;" class="leaflet html-widget"></div>
-<script type="application/json" data-for="htmlwidget-9bef45dec6bc623925cf">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"setView":[[-31.991618,115.835235],11,[]],"calls":[{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"https://openstreetmap.org\">OpenStreetMap<\/a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA<\/a>"}]},{"method":"addProviderTiles","args":["Stamen.Terrain",null,null,{"errorTileUrl":"","noWrap":false,"detectRetina":false}]},{"method":"addMarkers","args":[-31.991618,115.835235,null,null,null,{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},"Swan River",null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]}],"limits":{"lat":[-31.991618,-31.991618],"lng":[115.835235,115.835235]}},"evals":[],"jsHooks":[]}</script>
+<div class="figure"><span style="display:block;" id="fig:swan-map"></span>
+<div id="htmlwidget-3d4d59f57211875818bc" style="width:500px;height:385px;" class="leaflet html-widget"></div>
+<script type="application/json" data-for="htmlwidget-3d4d59f57211875818bc">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"setView":[[-31.991618,115.835235],11,[]],"calls":[{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"https://openstreetmap.org\">OpenStreetMap<\/a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA<\/a>"}]},{"method":"addProviderTiles","args":["Stamen.Terrain",null,null,{"errorTileUrl":"","noWrap":false,"detectRetina":false}]},{"method":"addMarkers","args":[-31.991618,115.835235,null,null,null,{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},"Swan River",null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]}],"limits":{"lat":[-31.991618,-31.991618],"lng":[115.835235,115.835235]}},"evals":[],"jsHooks":[]}</script>
+<p class="caption">
+Figure 4.1: Map of the Swan-Canning Estuary in Western Australia.
+</p>
+</div>
 </center>
 <p><br></p>
 <p>Using spatial zones with different values of <code>Fsed_oxy</code>, the simulations show very high accuracy in resolving the “dome” of low oxygen associated with the salt-wedge.</p>
 <p><br></p>
 <center>
-<div class="figure">
-<img src="images/oxygen_example4.png" style="width:75.0%" alt="" />
-<p class="caption">Figure 1: Cross-section plots comparing modelled and field salinity (psu, left) and <span class="math inline">\(O_2\)</span> (mg/L, right) for Sep-Dec 2008 within the Swan River. The field plots are based on contouring approx. 20 profile data locations.</p>
+<div class="figure"><span style="display:block;" id="fig:oxygen1"></span>
+<img src="images/oxygen_example4.png" alt="Cross-section plots comparing modelled and field salinity (psu, left) and $O_2$ (mg/L, right) for Sep-Dec 2008 within the Swan River. The field plots are based on contouring approx. 20 profile data locations." width="100%" />
+<p class="caption">
+Figure 4.2: Cross-section plots comparing modelled and field salinity (psu, left) and <span class="math inline">\(O_2\)</span> (mg/L, right) for Sep-Dec 2008 within the Swan River. The field plots are based on contouring approx. 20 profile data locations.
+</p>
 </div>
 </center>
-<p>The results of the model were integrated over the length of the modelled domain to demonstrate the model’s performance in capturing the system-scale areal extent of hypoxia (<span class="math inline">\(O_2&lt;4\:mg/L\)</span>) and anoxia (<span class="math inline">\(O_2&lt;2\:mg/L\)</span>). Huang et al. (2018) also used the validated model to explore different remediation options based on artificial oxygenation inputs.</p>
+<p>The results of the model were integrated over the length of the modelled domain to demonstrate the model’s performance in capturing the system-scale areal extent of hypoxia (<span class="math inline">\(O_2&lt;4\:mg/L\)</span>) and anoxia (<span class="math inline">\(O_2&lt;2\:mg/L\)</span>). <span class="citation">Huang et al. (<a href="#ref-huang2018" role="doc-biblioref">2018</a>)</span> also used the validated model to explore different remediation options based on artificial oxygenation inputs.</p>
 <center>
-<div class="figure">
-<img src="images/oxygen_example2.png" style="width:75.0%" alt="" />
-<p class="caption">Figure 2: The total area of anoxia (&lt;2 mg O2 / L) and hypoxia (&lt;4 mg O2 / L) within the estuary for a) 2008 and b) 2010, comparing the model (black line) and spatially interpolated weekly profile data (shaded region).</p>
+<div class="figure"><span style="display:block;" id="fig:anoxia2"></span>
+<img src="images/oxygen_example2.png" alt="The total area of anoxia (&lt;2 mg O2 / L) and hypoxia (&lt;4 mg O2 / L) within the estuary for a) 2008 and b) 2010, comparing the model (black line) and spatially interpolated weekly profile data (shaded region)." width="80%" />
+<p class="caption">
+Figure 4.3: The total area of anoxia (&lt;2 mg O2 / L) and hypoxia (&lt;4 mg O2 / L) within the estuary for a) 2008 and b) 2010, comparing the model (black line) and spatially interpolated weekly profile data (shaded region).
+</p>
 </div>
 </center>
 </div>
 <div id="publications" class="section level3 hasAnchor" number="4.5.2">
 <h3><span class="header-section-number">4.5.2</span> Publications<a href="DO_1.html#publications" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div id="wydgpymiqw" style="overflow-x:auto;overflow-y:auto;width:100%;height:500px;">
+<div id="bmfxjxxtqr" style="overflow-x:auto;overflow-y:auto;width:100%;height:500px;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#wydgpymiqw .gt_table {
+#bmfxjxxtqr .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -1121,7 +1132,7 @@ defaults to 0; Eq <a href="DO_1.html#eq:oxy4">(4.4)</a> used for <span class="ma
   border-left-color: #D3D3D3;
 }
 
-#wydgpymiqw .gt_heading {
+#bmfxjxxtqr .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1133,7 +1144,7 @@ defaults to 0; Eq <a href="DO_1.html#eq:oxy4">(4.4)</a> used for <span class="ma
   border-right-color: #D3D3D3;
 }
 
-#wydgpymiqw .gt_title {
+#bmfxjxxtqr .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1145,7 +1156,7 @@ defaults to 0; Eq <a href="DO_1.html#eq:oxy4">(4.4)</a> used for <span class="ma
   border-bottom-width: 0;
 }
 
-#wydgpymiqw .gt_subtitle {
+#bmfxjxxtqr .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1157,13 +1168,13 @@ defaults to 0; Eq <a href="DO_1.html#eq:oxy4">(4.4)</a> used for <span class="ma
   border-top-width: 0;
 }
 
-#wydgpymiqw .gt_bottom_border {
+#bmfxjxxtqr .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#wydgpymiqw .gt_col_headings {
+#bmfxjxxtqr .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1178,7 +1189,7 @@ defaults to 0; Eq <a href="DO_1.html#eq:oxy4">(4.4)</a> used for <span class="ma
   border-right-color: #D3D3D3;
 }
 
-#wydgpymiqw .gt_col_heading {
+#bmfxjxxtqr .gt_col_heading {
   color: #FFFFFF;
   background-color: #14759E;
   font-size: 14px;
@@ -1198,7 +1209,7 @@ defaults to 0; Eq <a href="DO_1.html#eq:oxy4">(4.4)</a> used for <span class="ma
   overflow-x: hidden;
 }
 
-#wydgpymiqw .gt_column_spanner_outer {
+#bmfxjxxtqr .gt_column_spanner_outer {
   color: #FFFFFF;
   background-color: #14759E;
   font-size: 14px;
@@ -1210,15 +1221,15 @@ defaults to 0; Eq <a href="DO_1.html#eq:oxy4">(4.4)</a> used for <span class="ma
   padding-right: 4px;
 }
 
-#wydgpymiqw .gt_column_spanner_outer:first-child {
+#bmfxjxxtqr .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#wydgpymiqw .gt_column_spanner_outer:last-child {
+#bmfxjxxtqr .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#wydgpymiqw .gt_column_spanner {
+#bmfxjxxtqr .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1230,7 +1241,7 @@ defaults to 0; Eq <a href="DO_1.html#eq:oxy4">(4.4)</a> used for <span class="ma
   width: 100%;
 }
 
-#wydgpymiqw .gt_group_heading {
+#bmfxjxxtqr .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1255,7 +1266,7 @@ defaults to 0; Eq <a href="DO_1.html#eq:oxy4">(4.4)</a> used for <span class="ma
   vertical-align: middle;
 }
 
-#wydgpymiqw .gt_empty_group_heading {
+#bmfxjxxtqr .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #D3D3D3;
@@ -1270,15 +1281,15 @@ defaults to 0; Eq <a href="DO_1.html#eq:oxy4">(4.4)</a> used for <span class="ma
   vertical-align: middle;
 }
 
-#wydgpymiqw .gt_from_md > :first-child {
+#bmfxjxxtqr .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#wydgpymiqw .gt_from_md > :last-child {
+#bmfxjxxtqr .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#wydgpymiqw .gt_row {
+#bmfxjxxtqr .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1297,7 +1308,7 @@ defaults to 0; Eq <a href="DO_1.html#eq:oxy4">(4.4)</a> used for <span class="ma
   overflow-x: hidden;
 }
 
-#wydgpymiqw .gt_stub {
+#bmfxjxxtqr .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1310,7 +1321,7 @@ defaults to 0; Eq <a href="DO_1.html#eq:oxy4">(4.4)</a> used for <span class="ma
   padding-right: 5px;
 }
 
-#wydgpymiqw .gt_stub_row_group {
+#bmfxjxxtqr .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1324,11 +1335,11 @@ defaults to 0; Eq <a href="DO_1.html#eq:oxy4">(4.4)</a> used for <span class="ma
   vertical-align: top;
 }
 
-#wydgpymiqw .gt_row_group_first td {
+#bmfxjxxtqr .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#wydgpymiqw .gt_summary_row {
+#bmfxjxxtqr .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1338,16 +1349,16 @@ defaults to 0; Eq <a href="DO_1.html#eq:oxy4">(4.4)</a> used for <span class="ma
   padding-right: 5px;
 }
 
-#wydgpymiqw .gt_first_summary_row {
+#bmfxjxxtqr .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#wydgpymiqw .gt_first_summary_row.thick {
+#bmfxjxxtqr .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#wydgpymiqw .gt_last_summary_row {
+#bmfxjxxtqr .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1357,7 +1368,7 @@ defaults to 0; Eq <a href="DO_1.html#eq:oxy4">(4.4)</a> used for <span class="ma
   border-bottom-color: #D3D3D3;
 }
 
-#wydgpymiqw .gt_grand_summary_row {
+#bmfxjxxtqr .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1367,7 +1378,7 @@ defaults to 0; Eq <a href="DO_1.html#eq:oxy4">(4.4)</a> used for <span class="ma
   padding-right: 5px;
 }
 
-#wydgpymiqw .gt_first_grand_summary_row {
+#bmfxjxxtqr .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1377,11 +1388,11 @@ defaults to 0; Eq <a href="DO_1.html#eq:oxy4">(4.4)</a> used for <span class="ma
   border-top-color: #D3D3D3;
 }
 
-#wydgpymiqw .gt_striped {
+#bmfxjxxtqr .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#wydgpymiqw .gt_table_body {
+#bmfxjxxtqr .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1390,7 +1401,7 @@ defaults to 0; Eq <a href="DO_1.html#eq:oxy4">(4.4)</a> used for <span class="ma
   border-bottom-color: #D3D3D3;
 }
 
-#wydgpymiqw .gt_footnotes {
+#bmfxjxxtqr .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1404,7 +1415,7 @@ defaults to 0; Eq <a href="DO_1.html#eq:oxy4">(4.4)</a> used for <span class="ma
   border-right-color: #D3D3D3;
 }
 
-#wydgpymiqw .gt_footnote {
+#bmfxjxxtqr .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-left: 4px;
@@ -1413,7 +1424,7 @@ defaults to 0; Eq <a href="DO_1.html#eq:oxy4">(4.4)</a> used for <span class="ma
   padding-right: 5px;
 }
 
-#wydgpymiqw .gt_sourcenotes {
+#bmfxjxxtqr .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1427,7 +1438,7 @@ defaults to 0; Eq <a href="DO_1.html#eq:oxy4">(4.4)</a> used for <span class="ma
   border-right-color: #D3D3D3;
 }
 
-#wydgpymiqw .gt_sourcenote {
+#bmfxjxxtqr .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1435,60 +1446,60 @@ defaults to 0; Eq <a href="DO_1.html#eq:oxy4">(4.4)</a> used for <span class="ma
   padding-right: 5px;
 }
 
-#wydgpymiqw .gt_left {
+#bmfxjxxtqr .gt_left {
   text-align: left;
 }
 
-#wydgpymiqw .gt_center {
+#bmfxjxxtqr .gt_center {
   text-align: center;
 }
 
-#wydgpymiqw .gt_right {
+#bmfxjxxtqr .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#wydgpymiqw .gt_font_normal {
+#bmfxjxxtqr .gt_font_normal {
   font-weight: normal;
 }
 
-#wydgpymiqw .gt_font_bold {
+#bmfxjxxtqr .gt_font_bold {
   font-weight: bold;
 }
 
-#wydgpymiqw .gt_font_italic {
+#bmfxjxxtqr .gt_font_italic {
   font-style: italic;
 }
 
-#wydgpymiqw .gt_super {
+#bmfxjxxtqr .gt_super {
   font-size: 65%;
 }
 
-#wydgpymiqw .gt_footnote_marks {
+#bmfxjxxtqr .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
   font-size: 75%;
   vertical-align: 0.4em;
 }
 
-#wydgpymiqw .gt_asterisk {
+#bmfxjxxtqr .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#wydgpymiqw .gt_slash_mark {
+#bmfxjxxtqr .gt_slash_mark {
   font-size: 0.7em;
   line-height: 0.7em;
   vertical-align: 0.15em;
 }
 
-#wydgpymiqw .gt_fraction_numerator {
+#bmfxjxxtqr .gt_fraction_numerator {
   font-size: 0.6em;
   line-height: 0.6em;
   vertical-align: 0.45em;
 }
 
-#wydgpymiqw .gt_fraction_denominator {
+#bmfxjxxtqr .gt_fraction_denominator {
   font-size: 0.6em;
   line-height: 0.6em;
   vertical-align: -0.05em;
@@ -1500,7 +1511,7 @@ defaults to 0; Eq <a href="DO_1.html#eq:oxy4">(4.4)</a> used for <span class="ma
     <tr>
       <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1">Author/Year</th>
       <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1">Paper Title</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1">Description</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1">Description</th>
     </tr>
   </thead>
   <tbody class="gt_table_body">
@@ -1508,52 +1519,61 @@ defaults to 0; Eq <a href="DO_1.html#eq:oxy4">(4.4)</a> used for <span class="ma
 </div></td>
 <td class="gt_row gt_left"><div class='gt_from_md'><p>Hydrodynamic controls on oxygen dynamics in a riverine salt wedge estuary, the Yarra River estuary, Australia.</p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'></div></td></tr>
-    <tr><td class="gt_row gt_left"><div class='gt_from_md'><p>Bruce et al. <a href="#ref-bruce2015" role="doc-biblioref">(2015)</a></p>
+<td class="gt_row gt_center">NA</td></tr>
+    <tr><td class="gt_row gt_left"><div class='gt_from_md'><p>Bruce et al. <a href="#ref-bruce2015model" role="doc-biblioref">(2015)</a></p>
 </div></td>
 <td class="gt_row gt_left"><div class='gt_from_md'><p>A model of oxygen and nitrogen biogeochemical response to hydrodynamic regimes in the Yarra River estuary.</p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'></div></td></tr>
-    <tr><td class="gt_row gt_left"><div class='gt_from_md'><p>Snortheim et al. (2017)</p>
+<td class="gt_row gt_center">NA</td></tr>
+    <tr><td class="gt_row gt_left"><div class='gt_from_md'><p>Snortheim et al. <a href="#ref-snortheim2017" role="doc-biblioref">(2017)</a></p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>&quot;Meteorological drivers of hypolimnetic anoxia in a eutrophic</p>
+<td class="gt_row gt_left"><div class='gt_from_md'><p>Meteorological drivers of hypolimnetic anoxia in a eutrophic, north temperate lake.</p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>north temperate lake.&quot;</p>
-</div></td></tr>
+<td class="gt_row gt_center">NA</td></tr>
     <tr><td class="gt_row gt_left"><div class='gt_from_md'><p>Huang et al. <a href="#ref-huang2019" role="doc-biblioref">(2018)</a></p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>Assessing artificial oxygenation in a riverine salt-wedge estuary with a three-dimensional finite-volume model</p>
+<td class="gt_row gt_left"><div class='gt_from_md'><p>Assessing artificial oxygenation in a riverine salt-wedge estuary with a three-dimensional finite-volume model.</p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'></div></td></tr>
+<td class="gt_row gt_center">NA</td></tr>
     <tr><td class="gt_row gt_left"><div class='gt_from_md'><p>Huang et al. <a href="#ref-huang2019" role="doc-biblioref">(2019)</a></p>
 </div></td>
 <td class="gt_row gt_left"><div class='gt_from_md'><p>An integrated modelling system for water quality forecasting in an urban eutrophic estuary: The Swan-Canning Estuary Virtual Observatory.</p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'></div></td></tr>
-    <tr><td class="gt_row gt_left"><div class='gt_from_md'><p>Ladwig et al. (2021)</p>
+<td class="gt_row gt_center">NA</td></tr>
+    <tr><td class="gt_row gt_left"><div class='gt_from_md'><p>Ladwig et al. <a href="#ref-ladwig2021" role="doc-biblioref">(2021)</a></p>
 </div></td>
 <td class="gt_row gt_left"><div class='gt_from_md'><p>Lake thermal structure drives interannual variability in summer anoxia dynamics in a eutrophic lake over 37 years.</p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'></div></td></tr>
-    <tr><td class="gt_row gt_left"><div class='gt_from_md'><p>Carey et al. (2022)</p>
+<td class="gt_row gt_center">NA</td></tr>
+    <tr><td class="gt_row gt_left"><div class='gt_from_md'><p>Carey et al. <a href="#ref-carey2022" role="doc-biblioref">(2022)</a></p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>Anoxia decreases the magnitude of the carbon, nitrogen, and phosphorus sink in freshwaters</p>
+<td class="gt_row gt_left"><div class='gt_from_md'><p>Anoxia decreases the magnitude of the carbon, nitrogen, and phosphorus sink in freshwaters.</p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'></div></td></tr>
-    <tr><td class="gt_row gt_left"><div class='gt_from_md'><p>Farrell et al. (2020)</p>
+<td class="gt_row gt_center">NA</td></tr>
+    <tr><td class="gt_row gt_left"><div class='gt_from_md'><p>Farrell et al. <a href="#ref-farrell2020" role="doc-biblioref">(2020)</a></p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>Ecosystem-scale nutrient cycling responses to increasing air temperatures vary with lake trophic state</p>
+<td class="gt_row gt_left"><div class='gt_from_md'><p>Ecosystem-scale nutrient cycling responses to increasing air temperatures vary with lake trophic state.</p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'></div></td></tr>
-    <tr><td class="gt_row gt_left"><div class='gt_from_md'><p>Ward et al. (2020)</p>
+<td class="gt_row gt_center">NA</td></tr>
+    <tr><td class="gt_row gt_left"><div class='gt_from_md'><p>Ward et al. <a href="#ref-ward2020" role="doc-biblioref">(2022)</a></p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>Differential responses of maximum and median chlorophyll-a to air temperature and nutrient load in a 31-year oligotrophic lake simulation</p>
+<td class="gt_row gt_left"><div class='gt_from_md'><p>Differential responses of maximum and median chlorophyll-a to air temperature and nutrient load in a 31-year oligotrophic lake simulation.</p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'></div></td></tr>
+<td class="gt_row gt_center">NA</td></tr>
   </tbody>
   
   
 </table>
+</div>
+<div style="display:none;">
+<p><span class="citation">Ward et al. (<a href="#ref-ward2020" role="doc-biblioref">2020</a>)</span>
+<span class="citation">Snortheim et al. (<a href="#ref-snortheim2017" role="doc-biblioref">2017</a>)</span>
+<span class="citation">Farrell et al. (<a href="#ref-farrell2020" role="doc-biblioref">2020</a>)</span>
+<span class="citation">Ladwig et al. (<a href="#ref-ladwig2021" role="doc-biblioref">2021</a>)</span>
+<span class="citation">Bruce et al. (<a href="#ref-bruce2015model" role="doc-biblioref">2015</a>)</span>
+<span class="citation">Bruce et al. (<a href="#ref-bruce2014" role="doc-biblioref">2014</a>)</span>
+<span class="citation">Carey et al. (<a href="#ref-carey2022" role="doc-biblioref">2022</a>)</span>
+<span class="citation">Huang et al. (<a href="#ref-huang2019" role="doc-biblioref">2019</a>)</span></p>
 </div>
 
 </div>
@@ -1561,11 +1581,41 @@ defaults to 0; Eq <a href="DO_1.html#eq:oxy4">(4.4)</a> used for <span class="ma
 </div>
 <h3>References<a href="references.html#references" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div id="refs" class="references csl-bib-body">
+<div id="ref-bruce2015model" class="csl-entry">
+Bruce, L., Cook, P., and Hipsey, M.: <span class="nocase">A model of oxygen and nitrogen biogeochemical response to hydrodynamic regimes in the Yarra River estuary</span>, in: <span class="nocase">IMACS World Congress and MODSIM International Congress on Modelling and Simulation</span>, <span>Modelling and Simulation Society of Australia and New Zealand Inc.</span>, 524–530, 2015.
+</div>
 <div id="ref-bruce2014" class="csl-entry">
 Bruce, L. C., Cook, P. L. M., Teakle, I., and Hipsey, M. R.: <span class="nocase">Hydrodynamic controls on oxygen dynamics in a riverine salt wedge estuary, the Yarra River estuary, Australia</span>, 18, 1397–1411, <a href="https://doi.org/10.5194/hess-18-1397-2014">https://doi.org/10.5194/hess-18-1397-2014</a>, 2014.
 </div>
-<div id="ref-bruce2015" class="csl-entry">
-Bruce, L. C., Cook, P. L. M., and Hipsey, M. R.: <a href="https://www.scopus.com/inward/record.uri?eid=2-s2.0-85080922287\&amp;partnerID=40\&amp;md5=7abaed710fbd4e92d9ea2b4ca3fa6bb6"><span class="nocase">A model of oxygen and nitrogen biogeochemical response to hydrodynamic regimes in the Yarra River estuary</span></a>, cited By 0, 524–530, 2015.
+<div id="ref-carey2022" class="csl-entry">
+Carey, C. C., Hanson, P. C., Thomas, R. Q., Gerling, A. B., Hounshell, A. G., Lewis, A. S. L., Lofton, M. E., McClure, R. P., Wander, H. L., Woelmer, W. M., Niederlehner, B. R., and Schreiber, M. E.: <span class="nocase">Anoxia decreases the magnitude of the carbon, nitrogen, and phosphorus sink in freshwaters</span>, <a href="https://doi.org/10.1111/gcb.16228">https://doi.org/10.1111/gcb.16228</a>, 2022.
+</div>
+<div id="ref-farrell2020" class="csl-entry">
+Farrell, K. J., Ward, N. K., Krinos, A. I., Hanson, P. C., Daneshmand, V., Figueiredo, R. J., and Carey, C. C.: <span class="nocase">Ecosystem-scale nutrient cycling responses to increasing air temperatures vary with lake trophic state</span>, 430, 109134, <a href="https://doi.org/10.1016/j.ecolmodel.2020.109134">https://doi.org/10.1016/j.ecolmodel.2020.109134</a>, 2020.
+</div>
+<div id="ref-ho2011" class="csl-entry">
+Ho, D. T., Wanninkhof, R., Schlosser, P., Ullman, D. S., Hebert, D., and Sullivan, K. F.: <span class="nocase">Toward a universal relationship between wind speed and gas exchange: Gas transfer velocities measured with 3 He/SF 6 during the Southern Ocean Gas Exchange Experiment</span>, 116, <a href="https://doi.org/10.1029/2010jc006854">https://doi.org/10.1029/2010jc006854</a>, 2011.
+</div>
+<div id="ref-huang2018" class="csl-entry">
+Huang, P., Kilminster, K., Larsen, S., and Hipsey, M. R.: <span class="nocase">Assessing artificial oxygenation in a riverine salt-wedge estuary with a three-dimensional finite-volume model</span>, 118, 111–125, <a href="https://doi.org/10.1016/j.ecoleng.2018.04.020">https://doi.org/10.1016/j.ecoleng.2018.04.020</a>, 2018.
+</div>
+<div id="ref-huang2019" class="csl-entry">
+Huang, P., Trayler, K., Wang, B., Saeed, A., Oldham, C. E., Busch, B., and Hipsey, M. R.: <span class="nocase">An integrated modelling system for water quality forecasting in an urban eutrophic estuary: The swan-canning estuary virtual observatory</span>, 199, 103218, <a href="https://doi.org/10.1016/j.jmarsys.2019.103218">https://doi.org/10.1016/j.jmarsys.2019.103218</a>, 2019.
+</div>
+<div id="ref-ladwig2021" class="csl-entry">
+Ladwig, R., Hanson, P. C., Dugan, H. A., Carey, C. C., Zhang, Y., Shu, L., Duffy, C. J., and Cobourn, K. M.: <span class="nocase">Lake thermal structure drives interannual variability in summer anoxia dynamics in a eutrophic lake over 37 years</span>, 25, 1009–1032, <a href="https://doi.org/10.5194/hess-25-1009-2021">https://doi.org/10.5194/hess-25-1009-2021</a>, 2021.
+</div>
+<div id="ref-schlungbaum1976" class="csl-entry">
+Schlungbaum, G.: <span>Chemical Oceanography</span>, 2nd edition., edited by: RILEY, J. P. and Skirrow, J., London; New York: Academic Press, <a href="https://doi.org/10.1002/iroh.19760610308">https://doi.org/10.1002/iroh.19760610308</a>, 1976.
+</div>
+<div id="ref-snortheim2017" class="csl-entry">
+Snortheim, C. A., Hanson, P. C., McMahon, K. D., Read, J. S., Carey, C. C., and Dugan, H. A.: <span class="nocase">Meteorological drivers of hypolimnetic anoxia in a eutrophic, north temperate lake</span>, 343, 39–53, <a href="https://doi.org/10.1016/j.ecolmodel.2016.10.014">https://doi.org/10.1016/j.ecolmodel.2016.10.014</a>, 2017.
+</div>
+<div id="ref-wanninkhof1992" class="csl-entry">
+Wanninkhof, R.: <span class="nocase">Relationship between wind speed and gas exchange over the ocean</span>, 97, 7373, <a href="https://doi.org/10.1029/92jc00188">https://doi.org/10.1029/92jc00188</a>, 1992.
+</div>
+<div id="ref-ward2020" class="csl-entry">
+Ward, N. K., Steele, B. G., Weathers, K. C., Cottingham, K. L., Ewing, H. A., Hanson, P. C., and Carey, C. C.: <span class="nocase">Differential responses of maximum versus median chlorophyll‐ a to air temperature and nutrient loads in an oligotrophic lake over 31 years</span>, <a href="https://doi.org/10.1029/2020wr027296">https://doi.org/10.1029/2020wr027296</a>, 2020.
 </div>
 </div>
             </section>

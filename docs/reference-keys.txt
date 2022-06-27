@@ -16,6 +16,9 @@ eq:oxy8
 tab:10-statetable
 tab:10-diagtable
 tab:10-parstable
+fig:swan-map
+fig:oxygen1
+fig:anoxia2
 eq:car1
 eq:car2
 fig:carbonPlotly
@@ -196,8 +199,8 @@ tab:26-statevariables
 tab:26-diagnostics
 tab:26-parametersummmary
 tab:26-parameterconfig
+tab:unnamed-chunk-27
 tab:unnamed-chunk-28
-tab:unnamed-chunk-29
 tab:35-publications
 introduction
 nomenclature
