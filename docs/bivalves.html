@@ -22,7 +22,7 @@
 
 
 
-<meta name="date" content="2022-06-27" />
+<meta name="date" content="2022-07-05" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -470,7 +470,7 @@ div.csl-indent {
 <h3><span class="header-section-number">14.3.1</span> Process Descriptions<a href="bivalves.html#process-descriptions-9" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div id="ingestion" class="section level4 unnumbered hasAnchor">
 <h4>Ingestion<a href="bivalves.html#ingestion" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>Ingestion is modelled as a function of filtration rate, food availability, pseudofeces production, density, suspended solids, and salinity (Equation 2) <span class="citation">(<a href="#ref-schneider1992" role="doc-biblioref">Schneider, 1992</a>; <a href="#ref-bierman2005" role="doc-biblioref">Bierman et al., 2005</a>; <a href="#ref-spillman2008" role="doc-biblioref">Spillman et al., 2008</a>; <a href="#ref-gudimov2015" role="doc-biblioref">Gudimov et al., 2015</a>)</span>. Filtration rate is based on maximum ingestion, temperature, food availability, and pseudofeces production according to the following:</p>
+<p>Ingestion is modelled as a function of filtration rate, food availability, pseudofeces production, density, suspended solids, and salinity (Equation 2) <span class="citation">(<a href="#ref-bierman2005" role="doc-biblioref">Bierman et al., 2005</a>; <a href="#ref-gudimov2015" role="doc-biblioref">Gudimov et al., 2015</a>; <a href="#ref-schneider1992" role="doc-biblioref">Schneider, 1992</a>; <a href="#ref-spillman2008" role="doc-biblioref">Spillman et al., 2008</a>)</span>. Filtration rate is based on maximum ingestion, temperature, food availability, and pseudofeces production according to the following:</p>
 <center>
 <br>
 <span class="math display" id="eq:bivalve1">\[\begin{equation}
@@ -503,7 +503,7 @@ W = \frac{0.071}{1000} * L^{2.8}
 \end{equation}\]</span>
 </center>
 <p><br></p>
-<p>where <span class="math inline">\(Imax\)</span> is maximum ingestion rate (mmol/mmol/d), <span class="math inline">\(a_{I}\)</span> is maximum standard ingestion rate (mmol/mmol/d), <span class="math inline">\(W\)</span> is weight (g), <span class="math inline">\(bI\)</span> is exponent for weight effect on ingestion, <span class="math inline">\(L\)</span> in length (mm) <span class="citation">(<a href="#ref-schneider1992" role="doc-biblioref">Schneider, 1992</a>; <a href="#ref-bierman2005" role="doc-biblioref">Bierman et al., 2005</a>)</span>.
+<p>where <span class="math inline">\(Imax\)</span> is maximum ingestion rate (mmol/mmol/d), <span class="math inline">\(a_{I}\)</span> is maximum standard ingestion rate (mmol/mmol/d), <span class="math inline">\(W\)</span> is weight (g), <span class="math inline">\(bI\)</span> is exponent for weight effect on ingestion, <span class="math inline">\(L\)</span> in length (mm) <span class="citation">(<a href="#ref-bierman2005" role="doc-biblioref">Bierman et al., 2005</a>; <a href="#ref-schneider1992" role="doc-biblioref">Schneider, 1992</a>)</span>.
 The temperature dependence function <span class="citation">(<a href="#ref-thornton1978" role="doc-biblioref">Thornton and Lessem, 1978</a>)</span> was fit to zebra and quagga mussel data (Hetherington et al. Submitted) with optimal ingestion from 17°C to 20°C according to the following:</p>
 <center>
 <br>
@@ -712,15 +712,15 @@ Y = lnQ_{R}*(Tmax_{R} – maxT_{R} + 2)
 </center>
 <p><br></p>
 <p>where <span class="math inline">\(T\)</span> is temperature (°C), <span class="math inline">\(Tmax_{R}\)</span> is upper temperature for optimum respiration (°C), <span class="math inline">\(maxT_{R}\)</span> is upper temperature for no respiration (°C), and <span class="math inline">\(Q_{R}\)</span> is respiration curve slope estimate (-). The maximum respiration occurs at 30°C with 43°C as the upper lethal temperature.
-The energetic cost of feeding or specific dynamic action is applied only to the portion of ingestion that is not egested <span class="citation">(<a href="#ref-schneider1992" role="doc-biblioref">Schneider, 1992</a>; <a href="#ref-bierman2005" role="doc-biblioref">Bierman et al., 2005</a>; <a href="#ref-gudimov2015" role="doc-biblioref">Gudimov et al., 2015</a>)</span>.</p>
+The energetic cost of feeding or specific dynamic action is applied only to the portion of ingestion that is not egested <span class="citation">(<a href="#ref-bierman2005" role="doc-biblioref">Bierman et al., 2005</a>; <a href="#ref-gudimov2015" role="doc-biblioref">Gudimov et al., 2015</a>; <a href="#ref-schneider1992" role="doc-biblioref">Schneider, 1992</a>)</span>.</p>
 </div>
 <div id="excretion" class="section level4 unnumbered hasAnchor">
 <h4>Excretion<a href="bivalves.html#excretion" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>Excretion is modelled as a constant fraction of assimilated food <span class="citation">(<a href="#ref-schneider1992" role="doc-biblioref">Schneider, 1992</a>; <a href="#ref-bierman2005" role="doc-biblioref">Bierman et al., 2005</a>; <a href="#ref-gudimov2015" role="doc-biblioref">Gudimov et al., 2015</a>)</span>. Excretion data for zebra and quagga mussels are limited; therefore, the excretion formulation for Mytilus edulis derived by Bayne and Newell (1983) was used <span class="citation">(<a href="#ref-schneider1992" role="doc-biblioref">Schneider, 1992</a>; <a href="#ref-bierman2005" role="doc-biblioref">Bierman et al., 2005</a>; <a href="#ref-gudimov2015" role="doc-biblioref">Gudimov et al., 2015</a>)</span>.</p>
+<p>Excretion is modelled as a constant fraction of assimilated food <span class="citation">(<a href="#ref-bierman2005" role="doc-biblioref">Bierman et al., 2005</a>; <a href="#ref-gudimov2015" role="doc-biblioref">Gudimov et al., 2015</a>; <a href="#ref-schneider1992" role="doc-biblioref">Schneider, 1992</a>)</span>. Excretion data for zebra and quagga mussels are limited; therefore, the excretion formulation for Mytilus edulis derived by Bayne and Newell (1983) was used <span class="citation">(<a href="#ref-bierman2005" role="doc-biblioref">Bierman et al., 2005</a>; <a href="#ref-gudimov2015" role="doc-biblioref">Gudimov et al., 2015</a>; <a href="#ref-schneider1992" role="doc-biblioref">Schneider, 1992</a>)</span>.</p>
 </div>
 <div id="egestion" class="section level4 unnumbered hasAnchor">
 <h4>Egestion<a href="bivalves.html#egestion" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>Egestion is modeled as a function of ingestion <span class="citation">(<a href="#ref-schneider1992" role="doc-biblioref">Schneider, 1992</a>; <a href="#ref-bierman2005" role="doc-biblioref">Bierman et al., 2005</a>; <a href="#ref-gudimov2015" role="doc-biblioref">Gudimov et al., 2015</a>)</span>. The model follows the assumption that ingestion is directly proportional to the food content of the water for all food concentrations less than the maximum which can be ingested. For all food concentrations above this saturation value, ingestion remains constant at a maximum value (<span class="math inline">\(I_{max}\)</span>) <span class="citation">(<a href="#ref-walz1978" role="doc-biblioref">Walz, 1978</a>)</span>.</p>
+<p>Egestion is modeled as a function of ingestion <span class="citation">(<a href="#ref-bierman2005" role="doc-biblioref">Bierman et al., 2005</a>; <a href="#ref-gudimov2015" role="doc-biblioref">Gudimov et al., 2015</a>; <a href="#ref-schneider1992" role="doc-biblioref">Schneider, 1992</a>)</span>. The model follows the assumption that ingestion is directly proportional to the food content of the water for all food concentrations less than the maximum which can be ingested. For all food concentrations above this saturation value, ingestion remains constant at a maximum value (<span class="math inline">\(I_{max}\)</span>) <span class="citation">(<a href="#ref-walz1978" role="doc-biblioref">Walz, 1978</a>)</span>.</p>
 </div>
 <div id="mortality" class="section level4 unnumbered hasAnchor">
 <h4>Mortality<a href="bivalves.html#mortality" class="anchor-section" aria-label="Anchor link to header"></a></h4>
@@ -2556,36 +2556,36 @@ NA
 
 
 <h3>References<a href="references.html#references" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div id="refs" class="references csl-bib-body">
+<div id="refs" class="references csl-bib-body hanging-indent">
 <div id="ref-bierman2005" class="csl-entry">
-Bierman, V. J., Kaur, J., Depinto, J. V., Feist, T. J., and Dilks, D. W.: <span class="nocase">Modeling the Role of Zebra Mussels in the Proliferation of Blue-green Algae in Saginaw Bay, Lake Huron</span>, 31, 32–55, <a href="https://doi.org/10.1016/s0380-1330(05)70236-7">https://doi.org/10.1016/s0380-1330(05)70236-7</a>, 2005.
+Bierman, V.J., Kaur, J., Depinto, J.V., Feist, T.J., Dilks, D.W., 2005. <span class="nocase">Modeling the Role of Zebra Mussels in the Proliferation of Blue-green Algae in Saginaw Bay, Lake Huron</span>, <em>Journal of Great Lakes Research</em> 31, 32–55. <a href="https://doi.org/10.1016/s0380-1330(05)70236-7">https://doi.org/10.1016/s0380-1330(05)70236-7</a>
 </div>
 <div id="ref-bocaniov2014" class="csl-entry">
-Bocaniov, S. A., Smith, R. E. H., Spillman, C. M., Hipsey, M. R., and Leon, L. F.: <span class="nocase">The nearshore shunt and the decline of the phytoplankton spring bloom in the Laurentian Great Lakes: insights from a three-dimensional lake model</span>, 731, 151–172, <a href="https://doi.org/10.1007/s10750-013-1642-2">https://doi.org/10.1007/s10750-013-1642-2</a>, 2014.
+Bocaniov, S.A., Smith, R.E.H., Spillman, C.M., Hipsey, M.R., Leon, L.F., 2014. <span class="nocase">The nearshore shunt and the decline of the phytoplankton spring bloom in the Laurentian Great Lakes: insights from a three-dimensional lake model</span>, <em>Hydrobiologia</em> 731, 151–172. <a href="https://doi.org/10.1007/s10750-013-1642-2">https://doi.org/10.1007/s10750-013-1642-2</a>
 </div>
 <div id="ref-gudimov2015" class="csl-entry">
-Gudimov, A., Kim, D.-K., Young, J. D., Palmer, M. E., Dittrich, M., Winter, J. G., Stainsby, E., and Arhonditsis, G. B.: <span class="nocase">Examination of the role of dreissenids and macrophytes in the phosphorus dynamics of Lake Simcoe, Ontario, Canada</span>, 26, 36–53, <a href="https://doi.org/10.1016/j.ecoinf.2014.11.007">https://doi.org/10.1016/j.ecoinf.2014.11.007</a>, 2015.
+Gudimov, A., Kim, D.-K., Young, J.D., Palmer, M.E., Dittrich, M., Winter, J.G., Stainsby, E., Arhonditsis, G.B., 2015. <span class="nocase">Examination of the role of dreissenids and macrophytes in the phosphorus dynamics of Lake Simcoe, Ontario, Canada</span>, <em>Ecological Informatics</em> 26, 36–53. <a href="https://doi.org/10.1016/j.ecoinf.2014.11.007">https://doi.org/10.1016/j.ecoinf.2014.11.007</a>
 </div>
 <div id="ref-alexander_jr2004" class="csl-entry">
-Jr, J. E. A. and McMahon, R. F.: <span class="nocase">Respiratory response to temperature and hypoxia in the zebra mussel Dreissena polymorpha</span>, 137, 425–434, <a href="https://doi.org/10.1016/j.cbpb.2003.11.003">https://doi.org/10.1016/j.cbpb.2003.11.003</a>, 2004.
+Jr, J.E.A., McMahon, R.F., 2004. <span class="nocase">Respiratory response to temperature and hypoxia in the zebra mussel Dreissena polymorpha</span>, <em>Comparative Biochemistry and Physiology Part A: Molecular &amp; Integrative Physiology</em> 137, 425–434. <a href="https://doi.org/10.1016/j.cbpb.2003.11.003">https://doi.org/10.1016/j.cbpb.2003.11.003</a>
 </div>
 <div id="ref-kitchell1977" class="csl-entry">
-Kitchell, J. F., Stewart, D. J., and Weininger, D.: <span class="nocase">Applications of a Bioenergetics Model to Yellow Perch ( Perca flavescens ) and Walleye ( Stizostedion vitreum vitreum )</span>, 34, 1922–1935, <a href="https://doi.org/10.1139/f77-258">https://doi.org/10.1139/f77-258</a>, 1977.
+Kitchell, J.F., Stewart, D.J., Weininger, D., 1977. <span class="nocase">Applications of a Bioenergetics Model to Yellow Perch ( Perca flavescens ) and Walleye ( Stizostedion vitreum vitreum )</span>, <em>Journal of the Fisheries Research Board of Canada</em> 34, 1922–1935. <a href="https://doi.org/10.1139/f77-258">https://doi.org/10.1139/f77-258</a>
 </div>
 <div id="ref-schneider1992" class="csl-entry">
-Schneider, D. W.: <span class="nocase">A Bioenergetics Model of Zebra Mussel, Dreissena polymorpha , Growth in the Great Lakes</span>, 49, 1406–1416, <a href="https://doi.org/10.1139/f92-156">https://doi.org/10.1139/f92-156</a>, 1992.
+Schneider, D.W., 1992. <span class="nocase">A Bioenergetics Model of Zebra Mussel, Dreissena polymorpha , Growth in the Great Lakes</span>, <em>Canadian Journal of Fisheries and Aquatic Sciences</em> 49, 1406–1416. <a href="https://doi.org/10.1139/f92-156">https://doi.org/10.1139/f92-156</a>
 </div>
 <div id="ref-spillman2008" class="csl-entry">
-Spillman, C. M., Hamilton, D. P., Hipsey, M. R., and Imberger, J.: <span class="nocase">A spatially resolved model of seasonal variations in phytoplankton and clam (Tapes philippinarum) biomass in Barbamarco Lagoon, Italy</span>, 79, 187–203, <a href="https://doi.org/10.1016/j.ecss.2008.03.020">https://doi.org/10.1016/j.ecss.2008.03.020</a>, 2008.
+Spillman, C.M., Hamilton, D.P., Hipsey, M.R., Imberger, J., 2008. <span class="nocase">A spatially resolved model of seasonal variations in phytoplankton and clam (Tapes philippinarum) biomass in Barbamarco Lagoon, Italy</span>, <em>Estuarine, Coastal and Shelf Science</em> 79, 187–203. <a href="https://doi.org/10.1016/j.ecss.2008.03.020">https://doi.org/10.1016/j.ecss.2008.03.020</a>
 </div>
 <div id="ref-sprung1988" class="csl-entry">
-Sprung, M. and Rose, U.: <span class="nocase">Influence of food size and food quantity on the feeding of the mussel Dreissena polymorpha</span>, 77, 526–532, <a href="https://doi.org/10.1007/bf00377269">https://doi.org/10.1007/bf00377269</a>, 1988.
+Sprung, M., Rose, U., 1988. <span class="nocase">Influence of food size and food quantity on the feeding of the mussel Dreissena polymorpha</span>, <em>Oecologia</em> 77, 526–532. <a href="https://doi.org/10.1007/bf00377269">https://doi.org/10.1007/bf00377269</a>
 </div>
 <div id="ref-thornton1978" class="csl-entry">
-Thornton, K. W. and Lessem, A. S.: <span class="nocase">A Temperature Algorithm for Modifying Biological Rates</span>, 107, 284–287, <a href="https://doi.org/10.1577/1548-8659(1978)107&lt;284:atafmb&gt;2.0.co;2">https://doi.org/10.1577/1548-8659(1978)107&lt;284:atafmb&gt;2.0.co;2</a>, 1978.
+Thornton, K.W., Lessem, A.S., 1978. <span class="nocase">A Temperature Algorithm for Modifying Biological Rates</span>, <em>Transactions of the American Fisheries Society</em> 107, 284–287. <a href="https://doi.org/10.1577/1548-8659(1978)107&lt;284:atafmb&gt;2.0.co;2">https://doi.org/10.1577/1548-8659(1978)107&lt;284:atafmb&gt;2.0.co;2</a>
 </div>
 <div id="ref-walz1978" class="csl-entry">
-Walz, N.: <span class="nocase">The energy balance of the freshwater mussel Dreissena polymorpha Pallas in laboratory experiments and in Lake Constance. I. Pattern of activity, feeding and assimilation efficiency</span>, 55, 83–105, 1978.
+Walz, N., 1978. <span class="nocase">The energy balance of the freshwater mussel Dreissena polymorpha Pallas in laboratory experiments and in Lake Constance. I. Pattern of activity, feeding and assimilation efficiency</span>, <em>Archiv für Hydrobiologie</em> 55, 83–105.
 </div>
 </div>
             </section>
