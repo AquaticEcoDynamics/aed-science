@@ -11,7 +11,7 @@ bibliography:  ["references/carbon.bib",
                 "references/nitrogen.bib",
                 "references/pathogens.bib",
                 "references/publications.bib"]
-csl: "references/biogeosciences.csl"
+csl: "references/elsevier-harvard_edited.csl"
 link-citations: yes
 github-repo: AquaticEcoDynamics/aed-science/
 url: ''
