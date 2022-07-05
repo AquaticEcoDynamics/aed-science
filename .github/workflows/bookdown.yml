@@ -8,44 +8,44 @@ name: bookdown
 
 jobs:
   build:
-    runs-on: macOS-latest
+    runs-on: ubuntu-latest
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
+      RENV_PATHS_ROOT: ~/.local/share/renv
     steps:
       - name: Checkout repo
         uses: actions/checkout@v2
 
       - name: Setup R
         uses: r-lib/actions/setup-r@v1
-
-      - name: Install pandoc
+      
+      - name: Install pandoc and gdal dependencies
         run: |
-          brew install pandoc
-      - name: Cache Renv packages
-        uses: actions/cache@v2
+          sudo apt-get install -y pandoc
+          sudo apt-get install -y pandoc-citeproc
+          sudo apt-get install gdal-bin proj-bin libgdal-dev libproj-dev
+          
+      - name: Cache renv packages
+        uses: actions/cache@v1
         with:
-          path: $HOME/.local/share/renv
-          key: r-${{ hashFiles('renv.lock') }}
-          restore-keys: r-
-
-      - name: Cache bookdown results
-        uses: actions/cache@v2
-        with:
-          path: _bookdown_files
-          key: bookdown-${{ hashFiles('**/*Rmd') }}
-          restore-keys: bookdown-
-
-      - name: Install packages
+         path: ${{ env.RENV_PATHS_ROOT }}
+         key: ${{ runner.os }}-renv-${{ hashFiles('**/renv.lock') }}
+         restore-keys: |
+           ${{ runner.os }}-renv-
+           
+      - name: Restore renv packages
+        shell: Rscript {0}
         run: |
-          R -e 'install.packages("renv")'
-          R -e 'renv::restore()'
+          if (!requireNamespace("renv", quietly = TRUE)) install.packages("renv")
+          renv::restore()
+           
       - name: Build site
         run: Rscript -e 'bookdown::render_book("index.Rmd", quiet = TRUE)'
 
-      - name: Commit results
+      - name: Commit automatic build
         run: |
-          git config --local user.name "$GITHUB_ACTOR"
-          git config --local user.email "$GITHUB_ACTOR@users.noreply.github.com"
-          git add docs
-          git commit docs -m 'rebuild site' || echo "No changes"
-          git push origin || echo "No changes to commit"
+           git config --local user.name "$GITHUB_ACTOR"
+           git config --local user.email "$GITHUB_ACTOR@users.noreply.github.com"
+           git add docs
+           git commit docs -m 'Automatic build' || echo "No changes"
+           git push origin || echo "No changes to commit"
