@@ -4,12 +4,14 @@ author: ""
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
 documentclass: book
-bibliography:  ["references/pathogens.bib",
-              "references/generic_utilities_functions.bib",
-              "references/bivalves.bib",
-              "references/nitrogen.bib",
-              "references/publications.bib"]
-biblio-style: apalike
+bibliography:  ["references/carbon.bib", 
+                "references/oxygen.bib",
+                "references/bivalves.bib",
+                "references/generic_utilities_functions.bib", 
+                "references/nitrogen.bib",
+                "references/pathogens.bib",
+                "references/publications.bib"]
+csl: "references/elsevier-harvard_edited.csl"
 link-citations: yes
 github-repo: AquaticEcoDynamics/aed-science/
 url: ''

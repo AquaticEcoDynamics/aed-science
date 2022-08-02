@@ -1,3 +1,9 @@
+---
+editor_options:
+  markdown:
+    wrap: 72
+---
+
 # Inorganic Carbon {#Carbon_1}
 
 ## Contributors
@@ -6,45 +12,92 @@ Peisheng Huang, Kamilla Kurucz, and Matthew R. Hipsey
 
 ## Overview
 
-Understanding carbon cycling is central to understanding food webs and how aquatic communities are structured and supported (Dodds and Whiles, 2010). Exchange of carbon between aquatic systems and the atmosphere is also fundamental in influencing climate (e.g. Cai, 2011; Borges and Abril, 2012). Accordingly, there are a wide range of applications that require simulation of carbon species.
+Understanding carbon cycling is central to understanding food webs and
+how aquatic communities are structured and supported [@Dodds2020].
+Exchange of carbon between aquatic systems and the atmosphere is also
+fundamental in influencing climate [e.g. @cai2011; @borges2011].
+Accordingly, there are a wide range of applications that require
+simulation of carbon species. 
 
-The $\mathrm{AED}$ library can be used to simulate both the organic and inorganic pools of carbon. As carbon is a core building block of an aquatic ecosystem, `aed_carbon` ($\mathrm{CAR}$) is designed as a low-level module for managing inorganic carbon pools, and is able to be linked to by higher level modules associated with organic matter cycling, primary production, and other biotic groups. In particular, organic carbon is the currency of energy exchange through food webs, and the processes for modelling organic carbon are described in [aed_organic_matter][Organic Matter]. This chapter presents the forms of inorganic carbon and fluxes of carbon in the aquatic environment and how they are modelled in the `aed_carbon` module
+The $\mathrm{AED}$ library can be used to simulate both the organic and
+inorganic pools of carbon. As carbon is a core building block of an
+aquatic ecosystem, `aed_carbon` ($\mathrm{CAR}$) is designed as a
+low-level module for managing inorganic carbon pools, and is able to be
+linked to by higher level modules associated with organic matter
+cycling, primary production, and other biotic groups. In particular,
+organic carbon is the currency of energy exchange through food webs, and
+the processes for modelling organic carbon are described in
+[aed_organic_matter][Organic Matter]. This chapter presents the forms of
+inorganic carbon and fluxes of carbon in the aquatic environment and how
+they are modelled in the `aed_carbon` module.
 
 ## Model Description
 
-The core variables included in the aed_carbon module are Dissolved Inorganic Carbon (DIC) and methane (CH4).
+The core variables included in the `aed_carbon` module are Dissolved
+Inorganic Carbon (DIC) and methane (CH4).
 
-The dynamics for DIC is captured in the model when `simDIC = .true.`. The rate of change of DIC concentration as it moves with the water is calculated from local effects associated with air-water exchange ($\check{f}_{atm}^{CO_2}$), oxidation of CH4, ($f_{ox}^{CH_4}$), and sediment-water exchange ($\hat{f}_{sed}^{DIC}$), which is summarized as:
+The dynamics for DIC is captured in the model when `simDIC = .true.`.
+The rate of change of DIC concentration as it moves with the water is
+calculated from local effects associated with air-water exchange
+($\check{f}_{atm}^{CO_2}$), oxidation of CH4, ($f_{ox}^{CH_4}$), and
+sediment-water exchange ($\hat{f}_{sed}^{DIC}$), which is summarized as:
 
+```{=tex}
 \begin{eqnarray}
 \frac{D}{Dt}DIC =  \color{darkgray}{ \mathbb{M} + \mathcal{S} } \quad
 &+&   \overbrace{\check{f}_{atm}^{CO_2}+f_{ox}^{CH_4}+\hat{f}_{sed}^{DIC}  }^\text{aed_carbon} \\ (\#eq:car1)
 &+& \color{brown}{ f_{min}^{DOC} - f_{gpp}^{PHY} + f_{rsp}^{PHY} + f_{rsp}^{ZOO} } \\ \nonumber
 &-& \color{brown}{ \hat{f}_{gpp}^{MAC} + \hat{f}_{rsp}^{MAC} - f_{gpp}^{MAG} - f_{rsp}^{MAG} + \hat{f}_{rsp}^{BIV} } \\ \nonumber
 \end{eqnarray}
+```
+where $\mathbb{M}$ and $\mathcal{S}$ refer to water mixing and boundary
+source terms, respectively, and the coloured $\color{brown}{f}$ terms
+reflect DIC fluxes computed by other (optionally) linked modules such as
+modules of organic matter ($\mathrm{OMG}$), phytoplankton
+($\mathrm{PHY}$) or zooplankton ($\mathrm{ZOO}$).
 
-where $\mathbb{M}$ and $\mathcal{S}$ refer to water mixing and boundary source terms, respectively, and the coloured $\color{brown}{f}$ terms reflect DIC fluxes computed by other (optionally) linked modules such as modules of organic matter ($\mathrm{OMG}$), phytoplankton ($\mathrm{PHY}$) or zooplankton ($\mathrm{ZOO}$).
+The dynamics for CH4 is captured in the model when `simCH4 = .true.`.
+CH4 is formed during the decomposition of organic material by microbial
+methanogenesis [e.g. @cicerone1988], which requires
+strictly anaerobic conditions and is therefore usually restricted to be
+deep within aquatic sediment. Inputs to the water therefore are from
+sediment CH4 production, which can enter the water column either as a
+dissolved flux or via ebullition (bubble release), or from external
+sources such as wastewater discharges. Once in the water, dissolved CH4
+is the balance between inputs from the sediment and losses from
+air-water exchange and CH4 oxidation to DIC.
 
-The dynamics for CH4 is captured in the model when `simCH4 = .true.`. CH4 is formed during the decomposition of organic material by microbial methanogenesis (e.g., Cicerone and Oremland, 1988), which requires strictly anaerobic conditions and is therefore usually restricted to be deep within aquatic sediment. Inputs to the water therefore are from sediment CH4 production, which can enter the water column either as a dissolved flux or via ebullition (bubble release), or from external sources such as wastewater discharges. Once in the water, dissolved CH4 is the balance between inputs from the sediment and losses from air-water exchange and CH4 oxidation to DIC.
+The rate of change of CH4 concentration as it moves with the water is
+therefore calculated as:
 
-The rate of change of CH4 concentration as it moves with the water is therefore calculated as:
-
+```{=tex}
 \begin{eqnarray}
 \frac{D}{Dt}CH_4 =  \color{darkgray}{ \mathbb{M} + \mathcal{S} } \quad
 &+&   \overbrace{\check{f}_{atm}^{CH_4}-f_{ox}^{CH_4}+\hat{f}_{sed}^{CH_4} +f_{dis}^{CH_{4-bubble}} }^\text{aed_carbon} \\ (\#eq:car2)
 \end{eqnarray}
+```
+where $\check{f}_{atm}^{CH_4}$ is the air-water exchange of dissolved
+methane and $\hat{f}_{sed}^{CH_4}$ is the sediment diffusive release
+flux. Bubbles moving through the water column after release from the
+sediment can also dissolve, denoted $f_{dis}^{CH_{4-bubble}}$.
 
-where $\check{f}_{atm}^{CH_4}$ is the air-water exchange of dissolved methane and $\hat{f}_{sed}^{CH_4}$  is the sediment diffusive release flux. Bubbles moving through the water column after release from the sediment can also dissolve, denoted $f_{dis}^{CH_{4-bubble}}$.
+The details of how each flux relevant to DIC and CH4 is calculated, and
+the associated parameter settings, are described in the next sections.
+For details on how to model organic carbon refer to the
+`aed_organic_matter` model.
 
-The details of how each flux relevant to DIC and CH4 is calculated, and the associated parameter settings, are described in the next sections. For details on how to model organic carbon refer to the aed_organic_matter model.
-
-
-###	Process Descriptions
+### Process Descriptions
 
 #### Carbonate buffering and pH
 
-In most circum-neutral waters the carbonate buffer system controls the pH conditions within the water. When CO2 within the atmosphere ($CO_{2(gas)}$) is dissolved in water, it can exist in a variety of forms. Initially, carbon dioxide will dissolve, $CO_{2_{(aq)}}$, which can then form carbonic acid, $H_2CO_3$, and dissociate into bicarbonate, $HCO_3^-$, and carbonate, $CO_3^{2-}$, ions.
+In most circum-neutral waters the carbonate buffer system controls the
+pH conditions within the water. When CO2 within the atmosphere
+($CO_{2(gas)}$) is dissolved in water, it can exist in a variety of
+forms. Initially, carbon dioxide will dissolve, $CO_{2_{(aq)}}$, which
+can then form carbonic acid, $H_2CO_3$, and dissociate into bicarbonate,
+$HCO_3^-$, and carbonate, $CO_3^{2-}$, ions.
 
+```{=tex}
 \begin{eqnarray}
 CO_{2_{(aq)}} &\rightleftharpoons& CO_{2_{(gas)}}
 \\
@@ -54,8 +107,9 @@ H_2CO_3 &\rightleftharpoons& H^+ + HCO_3^-
 \\
 HCO_3^- &\rightleftharpoons& H^+ + CO_3^{2-}
 \end{eqnarray}
-
+```
 <center>
+
 ```{r carbonPlotly, fig.cap="Bjerrum plot of DIC speciation.", echo=FALSE, message=FALSE, warning=FALSE}
 library(seacarb)
 library(plotly)
@@ -82,49 +136,84 @@ plot_ly(df, x = pH) %>%
        )) %>%
   config(displayModeBar = FALSE)
 ```
+
 </center>
 
-The sum of the concentrations of all these forms is the inorganic carbon concentration (DIC), and the composition of these forms depends on acidity (pH). The total $DIC$ state variable is the sum of carbonate species in a water parcel, which is conservative with respect to hydrodynamics:
+The sum of the concentrations of all these forms is the inorganic carbon
+concentration (DIC), and the composition of these forms depends on
+acidity (pH). The total $DIC$ state variable is the sum of carbonate
+species in a water parcel, which is conservative with respect to
+hydrodynamics:
 
+```{=tex}
 \begin{equation}
 DIC = [CO_{3}^{2-}]+[HCO_{3}^{-}]+[CO_{2}]+[H_2CO_{3}].
-\label{eq:DIC}
+(\#eq:DIC0)
 \end{equation}
+```
+To capture the interaction between carbonate species that make up DIC,
+each cell is treated as a closed system, as in a titration, where fluxes
+into and out of the system are specified, such as fluxes due to
+respiration, dissolved sediment fluxes, or atmospheric exchange. The
+changes due to these fluxes alter the $CO_{2_{(aq)}}$ concentration
+without changing the alkalinity, allowing for the speciation and pH to
+be recomputed at the end of the time-step.
 
+`aed_carbon` provides three options for modelling the bicarbonate
+equilibrium by switching the CO2_model options:
 
-
-To capture the interaction between carbonate species that make up DIC, each cell is treated as a closed system, as in a titration, where fluxes into and out of the system are specified, such as fluxes due to respiration, dissolved sediment fluxes, or atmospheric exchange. The changes due to these fluxes alter the $CO_{2_{(aq)}}$ concentration without changing the alkalinity, allowing for the speciation and pH to be recomputed at the end of the time-step.
-
-aed_carbon provides three options for modelling the bicarbonate equilibrium by switching the CO2_model options:
-
-
-The users can choose the aed_geochemistry module, or adopts the widely used CO2SYS code (Lewis and Wallace, 1998) or Butler (1982) code to calculate the partial pressure of CO2 (pCO2) and bicarbonate system. These options all lead to creation of state variables for DIC and pH, and their concentrations need to be specified in the boundary conditions. The use of each option is described in below sections.
-
+The users can choose the `aed_geochemistry module`, or adopt the widely
+used CO2SYS code [@lewis1998] or @butler1982 code to
+calculate the partial pressure of CO2 (pCO2) and bicarbonate system.
+These options all lead to creation of state variables for DIC and pH,
+and their concentrations need to be specified in the boundary
+conditions. The use of each option is described in below sections.
 
 ##### co2_model = 0
 
-This option is selected if the user wishes to defer the speciation, pCO2 and pH calculation to the geochemistry model in aed_geochemistry. In this option, `aed_carbon` creates the DIC and pH state variables, will compute the atmospheric exchange and sediment fluxes, but not update the speciation, pCO2 or pH.
+This option is selected if the user wishes to defer the speciation, pCO2
+and pH calculation to the geochemistry model in `aed_geochemistry`. In
+this option, `aed_carbon` creates the DIC and pH state variables, will
+compute the atmospheric exchange and sediment fluxes, but not update the
+speciation, pCO2 or pH.
 
-When using this approach, users must pay attention to correctly configure the `aed_geochemistry` model to link to DIC, pCO2 and pH within the `aed_carbon` module.
+When using this approach, users must pay attention to correctly
+configure the `aed_geochemistry` model to link to DIC, pCO2 and pH
+within the `aed_carbon` module.
 
-To resolve carbonate buffering that module can be setup with the following components, and species:
+To resolve carbonate buffering that module can be setup with the
+following components, and species:
 
+```{=tex}
 \begin{eqnarray}
 X &\in& \{CO_3^{2-}, H^+,H_2O\}
 \\
 C &\in& \{CO_2, HCO_3^-, H_2CO_3,CO_3^{2-},H^+,OH^-\}
 \end{eqnarray}
+```
+This will be solved each time the geochemical module is run. Fluxes of
+$CO_2$ between the atmosphere and sediment or from bioloigcal process
+will also be applied to the $DIC$ variable and therefore dynamically
+affect $pH$.
 
-This will be solved each time the geochemical module is run. Fluxes of $CO_2$ between the atmosphere and sediment or from bioloigcal process will also be applied to the $DIC$ variable and therefore dynamically affect $pH$.
-
-For users interested in simulating calcite precipitation, then this may also be achieved by configuring the geochemistry module, and enabling Calcite as a simulated mineral component.
+For users interested in simulating calcite precipitation, then this may
+also be achieved by configuring the geochemistry module, and enabling
+Calcite as a simulated mineral component.
 
 ##### co2_model = 1
 
-This option adopts the CO2SYS code (Lewis and Wallace, 1998) in which the bicarbonate system was modelled from DIC (mmol m^-3^) and total alkalinity (TA, mmol m^-3^), with water temperature (T, degrees), salinity (S, PSU) and water pressure (P, dbar) derived from the coupled hydrodynamic model, and DIC concentration derived from the aed_carbon model.
+This option adopts the CO2SYS code [@lewis1998], in which
+the bicarbonate system was modelled from DIC (mmol m^-3^) and total
+alkalinity (TA, mmol m^-3^), with water temperature (T, degrees),
+salinity (S, PSU) and water pressure (P, dbar) derived from the coupled
+hydrodynamic model, and DIC concentration derived from the aed_carbon
+model.
 
-There are multiple options for TA calculation methods in this code depending on the data availability and environment of the study site, which can be switched by the alk_mode option:
+There are multiple options for TA calculation methods in this code
+depending on the data availability and environment of the study site,
+which can be switched by the alk_mode option:
 
+```{=tex}
 \begin{equation}
   \Theta_{alk\_code}^{car}=\left\{
   \begin{array}{@{}ll@{}}
@@ -133,36 +222,67 @@ There are multiple options for TA calculation methods in this code depending on 
     2-5 & \text{dependance on salinity and DIC}\\
   \end{array}\right.
 \end{equation}
+```
+For freshwaters, there is a simple freshwater alkalinity option
+(`alk_mode = 0`), whereby TA is assumed to be dominated by the carbonate
+alkalinity. In this option, TA is calculated from the carbonate species
+according to:
 
-For freshwaters, there is a simple freshwater alkalinity option (`alk_mode = 0`), whereby TA is assumed to be dominated by the carbonate alkalinity. In this option, TA is calculated from the carbonate species according to:
-
+```{=tex}
 \begin{equation}
-TA=-[H^+ ]+[HCO_3^- ]+2[CO_3^(2-) ]+[OH^-]                                             
+TA=-[H^+ ]+[HCO_3^- ]+2[CO_{3}^{2-}]+[OH^-]                                   (\#eq:TA1) 
 \end{equation}
+```
+For hardwater lakes, estuaries or coastal systems, then other ions
+contribute significantly to the total alkalinity and the assumption
+above is no longer valid. However, the component ions needed for an
+alkalinity calculation are not always commonly available or included in
+the model and so approximations are needed to estimate TA. TA is a
+quasi-conservative parameter and it has been a popular practice in
+coastal modelling to predict TA from salinity [e.g. @lee2006;
+@alin2012; @takahashi2014], or from combination of
+salinity and DIC concentration [@kim2009; @jones2016].
+Accordingly, `aed_carbon` supports a few options to model the TA in
+coastal waters.
 
-For hardwater lakes, estuaries or coastal systems, then other ions contribute significantly to the total alkalinity and the assumption above is no longer valid. However, the component ions needed for an alkalinity calculation are not always commonly available or included in the model and so approximations are needed to estimate TA. TA is a quasi-conservative parameter and it has been a popular practice in coastal modelling to predict TA from salinity (e.g. Lee et al. 2006; Alin et al., 2012; Takahashi et al., 2014), or from combination of salinity and DIC concentration (Kim and Lee, 2009; Jones et al., 2016). Accordingly, `aed_carbon` supports a few options to model the TA in coastal waters.
+The first alk_mode option ($\Theta_{alk\_code}^{car}=1$) approximates
+the TA from salinity as:
 
-The first alk_mode option ($\Theta_{alk\_code}^{car}=1$) approximates the TA from salinity as:
-
+```{=tex}
 \begin{equation}
-TA=a+bS                                       
+TA=a+bS
+(\#eq:TA2) 
 \end{equation}
+```
+where $a$ and $b$ are constant coefficients, with pre-defined values of
+$a=1627.4$ and $b=22.176$ derived from a study case in the Caboolture
+River estuary. Other remaining `alk_mode` options
+($\Theta_{alk\_code}^{car}=2-5$) approximate the TA from salinity and
+DIC concentration with a quadratic polynomial relationship as:
 
-where $a$ and $b$ are constant coefficients, with pre-defined values of $a=1627.4$ and $b=22.176$ derived from a study case in the Caboolture River estuary. Other remaining `alk_mode` options ($\Theta_{alk\_code}^{car}=2-5$) approximate the TA from salinity and DIC concentration with a quadratic polynomial relationship as:
-
+```{=tex}
 \begin{equation}
 TA=p00+p10\ S+p01\ DIC+p20\ S^2+p11\ S\ DIC+p02\ {DIC}^2
+(\#eq:TA3) 
 \end{equation}
+```
+where $p00$, $p10$, $p01$, $p20$, $p11$, $p02$ are constant
+coefficients. For this method the available options include:
 
-where $p00$, $p10$, $p01$, $p20$, $p11$, $p02$ are constant coefficients. For this method the available options include:
+-   `alk_mode=2`: constant coefficients derived from all field work in
+    Noosa, Maroochy, and Brisbane estuaries in Australia;
+-   `alk_mode=3`: constant coefficients derived from field work in Noosa
+    River;
+-   `alk_mode=4`: constant coefficients derived from field work in
+    Maroochy River;
+-   `alk_mode=5`: constant coefficients derived from field work in
+    Brisbane River;
 
--   `alk_mode=2`: constant coefficients derived from all field work in Noosa, Maroochy, and Brisbane estuaries in Australia;
--   `alk_mode=3`: constant coefficients derived from field work in Noosa River;
--   `alk_mode=4`: constant coefficients derived from field work in Maroochy River;
--   `alk_mode=5`: constant coefficients derived from field work in Brisbane River;
-
-The constant coefficients in these options are provided in Table \@ref(tab:11-alkmode). A case study using alk_mode=5 in Brisbane River is given in Section \@ref(SEQCarbonCaseStudy). Users may wish to implement tailored alkalinity relationships as additional alk_mode options for specific study sites and use-cases.
-
+The constant coefficients in these options are provided in Table
+\@ref(tab:11-alkmode). A case study using alk_mode=5 in Brisbane River
+is given in Section \@ref(SEQCarbonCaseStudy). Users may wish to
+implement tailored alkalinity relationships as additional alk_mode
+options for specific study sites and use-cases.
 
 ```{r 11-alkmode, echo=FALSE, message=FALSE, warning=FALSE}
 library(knitr)
@@ -189,208 +309,350 @@ scroll_box(width = "770px",
 
 ##### co2_model = 2
 
-This option adopts the approach of Butler (1982) to model the carbonate system in freshwater environment. In a closed carbonate system, the TA, DIC and pH are related by:
+This option adopts the approach of @butler1982 to model the carbonate
+system in freshwater environment. In a closed carbonate system, the TA,
+DIC and pH are related by:
 
+```{=tex}
 \begin{equation}
  TA=DIC \frac{K_{a1}[H^+]+2K_{a1}K_{a2}}{[H^+]^2+K_{a1}[H^+]+K_{a1}K_{a2}}+  \frac{K_w}{[H^+]} -[H^+]
-\label{eq:TA}
+(\#eq:TA)
 \end{equation}
+```
+where $K_w$ is the ion product of water, $K_{a1}$ is the first acidity
+constant, $K_{a2}$ is the second acidity constant. $pH$ is calculated
+from:
 
-where $K_w$ is the ion product of water, $K_{a1}$ is the first acidity constant, $K_{a2}$ is the second acidity constant. $pH$ is calculated from:
-
+```{=tex}
 \begin{equation}
 pH = - \log_{10}[H^+]
+(\#eq:pH)
 \end{equation}
-
+```
 and $DIC$ is defined as:
 
+```{=tex}
 \begin{equation}
 DIC = [CO_{3}^{2-}]+[HCO_{3}^{-}]+[CO_{2}]+[H_2CO_{3}]
-\label{eq:DIC2}
+(\#eq:DIC2)
 \end{equation}
+```
+where all concentrations are in ($mmol\:C/m^3$). Note that the
+concentration of hydrated carbon dioxide, $[H_2CO_3]$, is considered to
+be negligible and is therefore omitted.
 
-where all concentrations are in ($mmol\:C/m^3$). Note that the concentration of hydrated carbon dioxide, $[H_2CO_3]$, is considered to be negligible and is therefore omitted.
-
-The conversion between the carbon dioxide partial pressure, $pCO_2$ and carbon dioxide concentration ($molL^{-1}$) is given by:
+The conversion between the carbon dioxide partial pressure, $pCO_2$ and
+carbon dioxide concentration ($molL^{-1}$) is given by: 
+```{=tex}
 \begin{equation}
 [CO_2]=K_HpCO_2
-\label{eq:pCO2}
-\end{equation}
+(\#eq:pco2)
+\end{equation} 
+``` 
 where $K_H$ is the activity coefficient.
 
-The ionic strength of the water impacts the dissociation constants. Ionic strength, $I$, is typically defined as \citep{Butl82}:
+The ionic strength of the water impacts the dissociation constants.
+Ionic strength, $I$, is typically defined as \citep{Butl82}:
 
+```{=tex}
 \begin{equation}
 I = 0.5 \left([Na^+]+[H^+]+[HCO_{3}^-]+4[CO_{3}^{2-}]+[H^+]/K_w \right).
+(\#eq:I)
 \end{equation}
-
-Rather than model this explicitly, the ionic strength is entered into the model as a constant, and is not assumed to vary significantly in space or time for a given system. From the ionic strength, an activity coefficient is defined as:
+```
+Rather than model this explicitly, the ionic strength is entered into
+the model as a constant, and is not assumed to vary significantly in
+space or time for a given system. From the ionic strength, an activity
+coefficient is defined as: 
+```{=tex}
 \begin{equation}
 f = \left( \frac{I^{1/2}}{1+I^{1/2}}-0.2I \right) \left(\frac{298}{T_K} \right)^{2/3}.
+(\#eq:act)
 \end{equation}
+```
 The dissociation constants are then computed following:
 \begin{eqnarray}
 \log_{10}\left(K_{H}^{i+1}\right) &=& \log_{10}\left(K_{H}^{0}\right) -bI \\
-log_{10}\left(K_{w}^{i+1}\right) &=& \log_{10}\left(K_{w}^{0}\right) +f \\
-log_{10}\left(K_{a1}^{i+1}\right) &=& \log_{10}\left(K_{a1}^{0}\right) +f+bI \\
+(\#eq:diss)
+log_{10}\left(K_{w}^{i+1}\right) &=& \log_{10}\left(K_{w}^{0}\right) +f \\ 
+log_{10}\left(K_{a1}^{i+1}\right) &=& \log_{10}\left(K_{a1}^{0}\right) +f+bI \\ 
 log_{10}\left(K_{a2}^{i+1}\right) &=& \log_{10}\left(K_{a2}^{0}\right) +2f
-\end{eqnarray}
-where $b=0.105$ \citep{Butl82}.
+\end{eqnarray} where $b=0.105$ \citep{Butl82}.
 
-For this system, if two of the three components (i.e. $TA$, $pH$ or $DIC$) are known the third can be determined. In AED, $pH$ and $DIC$ are tracked as state variables, and at each time step $TA$ is also computed and avalable via a diagnostic output.
+For this system, if two of the three components (i.e. $TA$, $pH$ or
+$DIC$) are known the third can be determined. In AED, $pH$ and $DIC$ are
+tracked as state variables, and at each time step $TA$ is also computed
+and avalable via a diagnostic output.
 
-The carbonate speciation for a given value of $pH$ and $DIC$ is then estimated from:
-\begin{eqnarray}
- \left[CO_{3}^{2-}\right] &=& DIC \frac{K_{a1}K_{a2}}{[H^+]^2+K_{a1}[H^+]+K_{a1}K_{a2}}, \label{eq:speciation1} \\
- \left[HCO_{3}\right] &=& DIC \frac{K_{a1}[H^+]}{[H^+]^2+K_{a1}[H^+]+K_{a1}K_{a2}}, \label{eq:speciation2} \\
+The carbonate speciation for a given value of $pH$ and $DIC$ is then
+estimated from: \begin{eqnarray}
+ \left[CO_{3}^{2-}\right] &=& DIC \frac{K_{a1}K_{a2}}{[H^+]^2+K_{a1}[H^+]+K_{a1}K_{a2}}, (\#eq:speciation1) \\
+ \left[HCO_{3}\right] &=& DIC \frac{K_{a1}[H^+]}{[H^+]^2+K_{a1}[H^+]+K_{a1}K_{a2}}, (\#eq:speciation2) \\
  \left[CO_{2}\right]&=&DIC\frac{[H^+]^2}{[H^+]^2+K_{a1}[H^+]+K_{a1}K_{a2}}.
-\label{eq:speciation3}
+(\#eq:speciation3)
 \end{eqnarray}
 
-Using this framework, the inorganic carbon model co2_model = 2 operates as follows:
+Using this framework, the inorganic carbon model co2_model = 2 operates
+as follows:
 
-- from initial field measurements of TA and pH, calculate DIC using \ref{eq:TA}
-- calculate initial carbonate speciation using \ref{eq:speciation1}-\ref{eq:speciation3}
-- calculate partial pressure of $CO_2$ using \ref{eq:pCO2}
-- start timestep loop
-- calculate atmospheric $CO_2$ flux using \ref{eq:atmco2}
-- calculate internal $CO_2$ fluxes from phytoplankton photosynthesis/respiration, zooplankton respiration and bacterial respiration
-- calculate new DIC using \ref{eq:DIC}
-- assuming $TA$ constant, as $CO_2$ does not change the alkalinity directly, calculate new $pH$ by iteratively solving \ref{eq:TA}
-- calculate new carbonate speciation using \ref{eq:speciation1}-\ref{eq:speciation3}
-- calculate new partial pressure of $CO_2$ using \ref{eq:pCO2}
-- update new $TA$ and $DIC$ concentratino estimates
+-   from initial field measurements of TA and pH, calculate DIC using Equation
+    \@ref(eq:TA)
+-   calculate initial carbonate speciation using
+    Equation \@ref(eq:speciation1) – Equation \@ref(eq:speciation3)
+-   calculate partial pressure of $CO_2$ using Equation \@ref(eq:pco2)
+-   start timestep loop
+-   calculate atmospheric $CO_2$ flux using Equation \@ref(eq:sedimentExchange12)
+-   calculate internal $CO_2$ fluxes from phytoplankton
+    photosynthesis/respiration, zooplankton respiration and bacterial
+    respiration
+-   calculate new DIC using Equation \@ref(eq:DIC2)
+-   assuming $TA$ constant, as $CO_2$ does not change the alkalinity
+    directly, calculate new $pH$ by iteratively solving Equation \@ref(eq:TA)
+-   calculate new carbonate speciation using Equation 
+    \@ref(eq:speciation1) – Equation \@ref(eq:speciation3)
+-   calculate new partial pressure of $CO_2$ using Equation \@ref(eq:pco2)
+-   update new $TA$ and $DIC$ concentration estimates
 
 #### Sediment exchange
 
-The exchange fluxes of DIC and CH4 between the sediment and overlaying water are modelled as a function of the overlying water temperature and bottom water dissolved oxygen concentration:
+The exchange fluxes of DIC and CH4 between the sediment and overlaying
+water are modelled as a function of the overlying water temperature and
+bottom water dissolved oxygen concentration:
 
+```{=tex}
 \begin{equation}
 \mathcal{F}_{sed}^{DIC}[T,O_2]=F_{sed}^{DIC} \theta_{sed - DIC}^{T-20} \phi_{O_2}^{DIC}[O_2]
 (\#eq:sedimentExchange5)  
 \end{equation}
-
+```
+```{=tex}
 \begin{equation}
 \mathcal{F}_{sed}^{CH_4}[T,O_2]=F_{sed}^{CH_4} \theta_{sed - CH_4}^{T-20} \phi_{O_2}^{CH_4}[O_2]
 (\#eq:sedimentExchange6)  
 \end{equation}
+```
+where the parameters $F_{sed}^{DIC}$ and $F_{sed}^{CH_4}$ are the
+maximum flux rate across the sediment-water interface at 20°C, the
+$\theta_{sed-DIC}$ and $\theta_{sed-CH_4}$ are the Arrhenius temperature
+multiplier for temperature control. The last item is the oxygen
+mediation of the fluxes.
 
-where the parameters $F_{sed}^{DIC}$ and $F_{sed}^{CH_4}$ are the maximum flux rate across the sediment-water interface at 20°C, the  $\theta_{sed-DIC}$  and $\theta_{sed-CH_4}$  are the Arrhenius temperature multiplier for temperature control. The last item is the oxygen mediation of the fluxes.
+**Oxygen mediation of the inorganic carbon fluxes**: The sediment flux can
+be changed by bottom water O~2~ concentration. If the aed_oxygen
+module is correctly linked to the carbon module then this
+setting will switch on automatically. At low O~2~ concentrations, the
+amount of DIC fluxing out of the sediment is decreased and at high O~2~
+concentrations, it is set close to the $F_{sed}^{DIC}$, as shown in
+Equation \@ref(eq:sedimentExchange5). This is a convenient
+simplification that can be tuned within this module, rather than a more
+complicated full set of biogeochemical reactions. The half-saturation
+oxygen parameter $K_{sed-DIC}^{O_2}$ can be used to tune the DIC flux
+dependence on bottom water O~2~. A similar function can be used to tune
+the CH~4~ flux using the parameter $K_{sed-CH_4}^{O_2}$, as shown in
+\@ref(eq:sedimentExchange2). At high O~2~ concentrations, CH~4~ flux decreases, and at
+low O~2~ concentrations, the flux is close to the parameter
+$F_{sed}^{CH_4}$.
 
-Oxygen mediation of the inorganic carbon fluxes: The sediment flux can be changed by bottom water O~2~ concentration. If the [aed2_oxygen module](#DO_1) is correctly linked to the carbon module then this setting will switch on automatically. At low O~2~ concentrations, the amount of DIC fluxing out of the sediment is decreased and at high O~2~ concentrations, it is set close to the $F_{sed}^{DIC}$, as shown in Equation \@ref(eq:sedimentExchange5). This is a convenient simplification that can be tuned within this module, rather than a more complicated full set of biogeochemical reactions. The half-saturation oxygen parameter $K_{sed-DIC}^{O_2}$ can be used to tune the DIC flux dependence on bottom water O~2~. A similar function can be used to tune the CH~4~ flux using the parameter $K_{sed-CH_4}^{O_2}$, as shown in Equation 6.22. At high O~2~ concentrations, CH~4~ flux decreases, and at low O~2~ concentrations, the flux is close to the parameter $F_{sed}^{CH_4}$.
-
+```{=tex}
 \begin{equation}
 \Phi_{O2}^{DIC}\left[O_2\right]=\frac{O_2}{O_2+K_{sed-DIC}^{O2}}
 (\#eq:sedimentExchange1)  
 \end{equation}
-
+```
+```{=tex}
 \begin{equation}
 \Phi_{O2}^{CH_4}\left[O_2\right]=\frac{K_{sed-CH_4}^{O_2}}{O_2+K_{sed-CH_4}^{O_2}}
 (\#eq:sedimentExchange2)  
 \end{equation}
+```
+Once the exchange fluxes are computed it is applied to the bottom cells
+of the simulated domain, and the changes in the DIC and CH~4~
+concentrations in the bottom layer are:
 
-Once the exchange fluxes are computed it is applied to the bottom cells of the simulated domain, and the changes in the DIC and CH~4~ concentrations in the bottom layer are:
-
+```{=tex}
 \begin{equation}
 {\hat{f}}_{sed}^{DIC}= \frac{F_{sed}^{DIC}}{\Delta z_{bot}}
 (\#eq:sedimentExchange3)  
 \end{equation}
-
+```
+```{=tex}
 \begin{equation}
 {\hat{f}}_{sed}^{CH_4}= \frac{F_{sed}^{CH_4}}{\Delta z_{bot}}
 (\#eq:sedimentExchange4)  
 \end{equation}
-
+```
 where $\Delta z_{bot}$ is the bottom layer thickness.
 
-**Advanced options**: The approach described above is the most simple and default method for capturing inorganic carbon fluxes from the sediment, and is referred to as the static model. This approach can be extended to allow for spatial variability in $F_{sed}^{DIC}$ and $F_{sed}^{CH_4}$, by engaging the link to the aed_sedflux module, where the host models support multiple benthic cells or zones. In this case, users input spatially discrete values of $F_{sed}^{DIC}$ and $F_{sed}^{CH4}$.
+**Advanced options**: The approach described above is the most simple
+and default method for capturing inorganic carbon fluxes from the
+sediment, and is referred to as the static model. This approach can be
+extended to allow for spatial variability in $F_{sed}^{DIC}$ and
+$F_{sed}^{CH_4}$, by engaging the link to the aed_sedflux module, where
+the host models support multiple benthic cells or zones. In this case,
+users input spatially discrete values of $F_{sed}^{DIC}$ and
+$F_{sed}^{CH4}$.
 
-Where dynamic rates of DIC and CH~4~ are required to flux to/from the sediment (e.g. in response to episodic loading of organic material to the sediment, or for assessment of long-term changes in C loading), then the above expressions (Eq \@ref(eq:sedimentExchange5) and \@ref(eq:sedimentExchange6)) are replaced instead with dynamically calculated variables in aed_seddiagenesis, via a link created with the aed_sedflux module.
+Where dynamic rates of DIC and CH~4~ are required to flux to/from the
+sediment (e.g. in response to episodic loading of organic material to
+the sediment, or for assessment of long-term changes in C loading), then
+the above expressions (Eq \@ref(eq:sedimentExchange5) and
+\@ref(eq:sedimentExchange6)) are replaced instead with dynamically
+calculated variables in aed_seddiagenesis, via a link created with the
+aed_sedflux module.
 
 **Methane ebullition**
 
-Methane bubbles are formed when anoxic methane production in the sediments exceeds the rate of oxidation and diffusion. As the bubbles overcome sediment tension, they are released to the water column. The sediment bubble flux is greatly depth-dependent and is enhanced by increasing temperatures (DelSontro et al., 2010). Moreover, it has been observed that falling water levels and decreasing hydrostatic pressure also result in increased ebullition rates (Casper et al., 2000). The ebullition flux is formulated mathematically as follows:
+Methane bubbles are formed when anoxic methane production in the
+sediments exceeds the rate of oxidation and diffusion. As the bubbles
+overcome sediment tension, they are released to the water column. The
+sediment bubble flux is greatly depth-dependent and is enhanced by
+increasing temperatures [@delsontro2010]. Moreover, it has been
+observed that falling water levels and decreasing hydrostatic pressure
+also result in increased ebullition rates [@casper2000]. The
+ebullition flux is formulated mathematically as follows:
 
+```{=tex}
 \begin{equation}
 {\hat{f}}_{sed}^{CH_{4}-bub}[T,\Delta z]=F_{sed}^{CH_{4}-bub} \theta_{sedch4-bub}^{T-20} \Phi_{\Delta z}^{CH_{4}-bub}[\Delta z]\frac{1}{\Delta z}
 (\#eq:sedimentExchange7)  
 \end{equation}
+```
+The sediment bubble flux $F_{sed}^{CH_{4}-bub}$ can be set as a constant
+or depth-dependent flux. By setting up a link to the aed_sedflux module
+(`Fsed_ebb_variable = 'SDF_Fsed_ch4_ebb'`), different sediment bubble
+flux rates can be implemented in each sediment zone, accounting for the
+spatial variability of ebullition.
+$\Phi_{\Delta z}^{{CH}_{4-bub}}\left[\Delta z\right]$ accounts for the
+effect of water level fluctuations (\Delta z) on the sediment bubble
+flux and is calculated by adopting a site-specific regression equation
+from [Lake Kinneret](#carbonCaseStudy) derived by @ostrovsky2012.
 
-The sediment bubble flux $F_{sed}^{CH_{4}-bub}$ can be set as a constant or depth-dependent flux. By setting up a link to the aed_sedflux module (`Fsed_ebb_variable = 'SDF_Fsed_ch4_ebb'`), different sediment bubble flux rates can be implemented in each sediment zone, accounting for the spatial variability of ebullition. $\Phi_{\Delta z}^{{CH}_{4-bub}}\left[\Delta z\right]$ accounts for the effect of water level fluctuations (\Delta z) on the sediment bubble flux and is calculated by adopting a site-specific regression equation from Lake [Kinneret](#carbonCaseStudy) derived by Ostrovsky et al., (2013).
 
+```{=tex}
 \begin{equation}
 \Phi_{\Delta z}^{CH_{4}-bub}[\Delta z] = c_{n}\text{exp}\{\varepsilon_{reg}(\bar{z}-z)\}
 (\#eq:sedimentExchange8)    
 \end{equation}
+```
+Where $c_n$ is a normalising constant, $\varepsilon_{reg}$ is the
+exponential factor from the regression equation.
 
-Where $c_n$ is a normalising constant, $\varepsilon_{reg}$ is the exponential factor from the regression equation.
+The methane bubbles released from the sediments either dissolve in the
+water column or are directly emitted to the atmosphere. The dissolution
+rate of methane bubbles can be set constant, or depth-dependent by
+splitting the water column into two layers and assigning different
+dissolution rates above (`ch4_bub_disf1`) and below (`ch4_bub_disf2`)
+the splitting depth (`ch4_bub_disp`). In stratified lakes, this
+functionality can be used to set different dissolution rates in the
+epilimnion and hypolimnion ($R_{diss}\left[z\right]$) to account for the
+effect of different thermal layers on dissolution rates.
 
-The methane bubbles released from the sediments either dissolve in the water column or are directly emitted to the atmosphere. The dissolution rate of methane bubbles can be set constant, or depth-dependent by splitting the water column into two layers and assigning different dissolution rates above (`ch4_bub_disf1`) and below (`ch4_bub_disf2`) the splitting depth (`ch4_bub_disp`). In stratified lakes, this functionality can be used to set different dissolution rates in the epilimnion and hypolimnion ($R_{diss}\left[z\right]$) to account for the effect of different thermal layers on dissolution rates.
-
+```{=tex}
 \begin{equation}
 f_{dis}^{{CH}_{4-bub}}=R_{diss}\left[z\right]\ {\hat{f}}_{sed}^{CH_{4}-bub}
 (\#eq:sedimentExchange9)  
 \end{equation}
-
+```
 **Methane oxidation**
 
-Aerobic oxidation is mediated by methanotrophs and is the most significant sink for dissolved methane. The metabolic rate of methanotrophs increases with increasing temperatures, hence aerobic oxidation is temperature sensitive. The aerobic oxidation rate can be described according to Michealis-Menten Kinetics as follows (Schmid et al., 2017):
+Aerobic oxidation is mediated by methanotrophs and is the most
+significant sink for dissolved methane. The metabolic rate of
+methanotrophs increases with increasing temperatures, hence aerobic
+oxidation is temperature sensitive. The aerobic oxidation rate can be
+described according to Michealis-Menten Kinetics as follows: [@schmid2017]
 
+```{=tex}
 \begin{equation}
 f_{ox}^{{CH}_4}=\ R_{oxmax}^{{CH}_4}\  \Phi_{O2}^{ch4-ox}\left[O_2\right]\theta_{ox}^{T-20}[CH_4]                                            (\#eq:sedimentExchange10)   
-\end{equation}    
+\end{equation}
+```
+where $R_{oxmax}^{{CH}_4}$ is the maximum reaction rate of methane
+oxidation at 20˚C (/day), $\Phi_{O2}^{ch4-ox}\left[O_2\right]$ is the
+oxygen mediation of the oxidation rate, $\theta_{ox}$ is the temperature
+multiplier for methane oxidation, $T$ the water temperature, and
+$[CH_4]$ is the methane concentration in the water.
 
-where $R_{oxmax}^{{CH}_4}$ is the maximum reaction rate of methane oxidation at 20˚C (/day),  $\Phi_{O2}^{ch4-ox}\left[O_2\right]$ is the oxygen mediation of the oxidation rate, $\theta_{ox}$  is the temperature multiplier for methane oxidation, $T$ the water temperature, and $[CH_4]$ is the methane concentration in the water.
+The methane oxidation rate can be changed by water O~2~ concentration.
+At low O~2~ concentrations, the amount of CH~4~ oxidated to DIC
+decreased and at high O~2~ concentrations, it is set close to the
+$R_{oxmax}^{{CH}_4}$, as shown in Equation \@ref(eq:sedimentExchange10):
 
-The methane oxidation rate can be changed by water O~2~ concentration. At low O~2~ concentrations, the amount of CH~4~ oxidated to DIC decreased and at high O~2~ concentrations, it is set close to the $R_{oxmax}^{{CH}_4}$, as shown in Equation \@ref(eq:sedimentExchange11):
-
+```{=tex}
 \begin{equation}
 \Phi_{O_2}^{CH_{4}-ox}\left[O_2\right]=\frac{O_2}{O_2+K_{CH_{4}-ox}^{O_2}}
 (\#eq:sedimentExchange11)    
-\end{equation}   
-
-where O~2~ is the dissolved oxygen concentration, $K_{CH_{4}-ox}^{O_2}$ is the half saturation oxygen concentration for methane oxidation.
+\end{equation}
+```
+where O~2~ is the dissolved oxygen concentration, $K_{CH_{4}-ox}^{O_2}$
+is the half saturation oxygen concentration for methane oxidation.
 
 **Air-water exchange**
 
-Carbon dioxide and methane transfer occurs across the air-water interface based on the gas solubility, the amount of turbulence at the interface and the concentration gradient between the air and water, using widely used approach introduced by Wanninkhof (1992). The air-water exchange rate of CO~2~ is modelled as:
+Carbon dioxide and methane transfer occurs across the air-water
+interface based on the gas solubility, the amount of turbulence at the
+interface and the concentration gradient between the air and water,
+using widely used approach introduced by @wanninkhof1992. The
+air-water exchange rate of CO~2~ is modelled as:
 
+```{=tex}
 \begin{equation}
 \mathcal{F}_{atm}^{{CO}_2}=\ k_{600}^{CO_2}\ \Upsilon_{0-CO_2}({pCO}_2^w-{pCO}_2^a)
 (\#eq:sedimentExchange12)  
-\end{equation}   
+\end{equation}
+```
+where the ${pCO}_2^w$ and ${pCO}_2^a$ are the partial pressure of CO~2~
+in the water surface and the air (in unit of atm), respectively;
+$\Upsilon_{0-CO_2}$ is the solubility of CO~2~, and $k_{600}^{CO_2}$ is
+the air-water gas transfer velocity for CO~2~. As AED can be applied
+across many types of environments, spanning the ocean to small lakes and
+flowing waters, users can select from a range of gas exchange piston
+velocity models and Schmidt models, or implement their own, to capture
+this process. The options are listed in the [Gas Transfer] section of
+the [Generic utilities & Functions](#genericUtilitiesFunctions)
+chapter. The switches of the piston and
+Schmidt models are set via the use of $\Theta_{gas}^{piston}$ and
+$\Theta_{gas}^{schmidt}$, respectively (see option details in
+[Generic utilities & Functions](#genericUtilitiesFunctions)). The
+exchange flux can then be added to or subtracted from the surface cells
+of an aquatic system, and the change in the CO~2~ concentration in the
+surface layer is:
 
-where the ${pCO}_2^w$ and ${pCO}_2^a$ are the partial pressure of CO~2~ in the water surface and the air (in unit of atm), respectively; $\Upsilon_{0-CO_2}$ is the solubility of CO~2~, and $k_{600}^{CO_2}$ is the air-water gas transfer velocity for CO~2~. As AED can be applied across many types of environments, spanning the ocean to small lakes and flowing waters, users can select from a range of gas exchange piston velocity models and Schmidt models, or implement their own, to capture this process. The options are listed in the ‘Gas Transfer’ section of the [‘Generic utilities & Functions’ chapter](#genericUtilitiesFunctions). The switches of the piston and Schmidt models are set via the use of $\Theta_{gas}^{piston}$ and $\Theta_{gas}^{schmidt}$, respectively (see option details in chapter 30 [Generic utilities & Functions](#genericUtilitiesFunctions)).
-The exchange flux can then be added to or subtracted from the surface cells of an aquatic system, and the change in the CO~2~ concentration in the surface layer is:
-
+```{=tex}
 \begin{equation}
 {\check{f}}_{atm}^{{CO}_2}=\frac{F_{atm}^{CO_2}}{\Delta Z_{surf}}
 (\#eq:sedimentExchange13)
 \end{equation}
-
+```
 where $\Delta z_{surf}$ is the surface layer thickness.
 
-###	Optional Module Links
+### Optional Module Links
 
-Other carbon sources/sinks are indicated in Eq \@ref(eq:car1) for DIC. These include:
+Other carbon sources/sinks are indicated in Eq \@ref(eq:car1) for DIC.
+These include:
 
--	aed_oxygen: Oxygen is used to control oxidation;
--	aed_organic_matter: organic matter mineralisation can update DIC;
--	aed_phytoplankton: phytoplankton photosynthetic uptake of CO2 can update DIC;
--	aed_geochemistry: optional link to simulate the carbonate system;
--	aed_sedflux: interface module to update the sediment-water exchange in zones;
--	aed_seddiagenesis: an advanced sediment biogeochemistry mode can dynamically predict sediment fluxes of DIC and CH4.
+-   [aed_oxygen][Dissolved Oxygen]: oxygen is used to control oxidation;
+-   [aed_organic_matter][Organic Matter]: organic matter mineralisation can update DIC;
+-   [aed_phytoplankton][Phytoplankton]: phytoplankton photosynthetic uptake of CO2 can
+    update DIC;
+-   [aed_geochemistry][Aqueous Geochemistry]: optional link to simulate the carbonate system;
+-   aed_sedflux: interface module to update the sediment-water exchange
+    in zones;
+-   [aed_seddiagenesis][Sediment biogeochemistry]: an advanced sediment biogeochemistry mode can
+    dynamically predict sediment fluxes of DIC and CH4.
 
+### Feedbacks to the Host Model
 
-###	Feedbacks to the Host Model
+The inorganic carbon module has no feedbacks to the host hydrodynamic
+model.
 
-The inorganic carbon module has no feedbacks to the host hydrodynamic model.
+### Variable Summary
 
-###	Variable Summary
+The default variables created by this module, and the optionally
+required linked variables needed for full functionality of this module
+are summarised in Table \@ref(tab:11-statetable). The diagnostic outputs
+able to be output are summarised in Table \@ref(tab:11-diagtable).
 
-The default variables created by this module, and the optionally required linked variables needed for full functionality of this module are summarised in Table \@ref(tab:11-statetable). The diagnostic outputs able to be output are summarised in Table \@ref(tab:11-diagtable).
-
-#### State variables {-}
+#### State variables {.unnumbered}
 
 ```{r 11-statetable, echo=FALSE, message=FALSE, warning=FALSE}
 library(knitr)
@@ -444,7 +706,7 @@ kbl(carbon[,3:NCOL(carbon)], caption = "Carbon - state variables", align = "l",)
              fixed_thead = FALSE)
 ```
 
-#### Diagnostics{-}
+#### Diagnostics {.unnumbered}
 
 ```{r 11-diagtable, echo=FALSE, message=FALSE, warning=FALSE}
 library(knitr)
@@ -498,9 +760,10 @@ scroll_box(width = "770px", height = "520px",
              fixed_thead = FALSE)
 ```
 
-###	Parameter Summary
+### Parameter Summary
 
-The parameters and settings used by this module are summarised in Table \@ref(tab:11-parstable).
+The parameters and settings used by this module are summarised in Table
+\@ref(tab:11-parstable).
 
 ```{r 11-parstable, echo=FALSE, message=FALSE, warning=FALSE}
 library(knitr)
@@ -575,7 +838,9 @@ kbl(carbon[,3:NCOL(carbon)], caption = "Carbon - parameters", align = "l",) %>%
 
 ## Setup & Configuration
 
-An example `aed.nml` parameter specification block for the `aed_carbon` module that is only modelling $DIC$ is shown below:
+An example `aed.nml` parameter specification block for the `aed_carbon`
+module that is only modelling $DIC$ is shown below:
+
 ```{fortran, eval = FALSE}
 &aed_carbon
  dic_initial       = 1000.
@@ -595,8 +860,9 @@ An example `aed.nml` parameter specification block for the `aed_carbon` module t
 /
 ```
 
-<br>
-An example `aed.nml` parameter specification block for the `aed_carbon` module that includes all options is shown below:
+<br> An example `aed.nml` parameter specification block for the
+`aed_carbon` module that includes all options is shown below:
+
 ```{fortran, eval = FALSE}
 &aed_carbon
   !-- DIC and pH --!
@@ -639,13 +905,18 @@ An example `aed.nml` parameter specification block for the `aed_carbon` module t
 
 ## Case Studies & Examples
 
-###	Case Study : South-east Queensland estuaries {#SEQCarbonCaseStudy}
+### Case Study : South-east Queensland estuaries {#SEQCarbonCaseStudy}
 
-The `aed_carbon` model was applied to three estuaries of the Moreton Bay region in south-east Queensland, Australia.  The river and estuaries were monitored to measure dissolved inorganic carbon and methane as part of a campaign in March 2016 to understand controls on greenhouse gas emissions.
+The `aed_carbon` model was applied to three estuaries of the Moreton Bay
+region in south-east Queensland, Australia. The river and estuaries were
+monitored to measure dissolved inorganic carbon and methane as part of a
+campaign in March 2016 to understand controls on greenhouse gas
+emissions.
 
 <br>
 
 <center>
+
 ```{r sitemapQ, fig.cap="Map of the three estuaries of the Moreton Bay region in south-east Queensland, Australia.", echo=FALSE, message=FALSE, warning=FALSE, width = 400, height = 305}
 library(leaflet)
 library(dplyr)
@@ -663,64 +934,112 @@ leaflet(height=385, width=500) %>%
   addProviderTiles(providers$Stamen.Terrain)  %>%
   addMarkers(data = aed_sites, ~Lon, ~Lat, popup = ~Site, icon = aed_icon)
 ```
+
 </center>
-  <!-- addMarkers(lng = 153.1417, lat = -27.387, popup = "Brisbane River Estuary") -->
-  <!-- addMarkers(lng = 153.1417, lat = -27.017, popup = "Maroochy River") -->
-  <!-- addMarkers(lng = 153.1417, lat = -27.017, popup = "Brisbane River") -->
+
+<!-- addMarkers(lng = 153.1417, lat = -27.387, popup = "Brisbane River Estuary") -->
+<!-- addMarkers(lng = 153.1417, lat = -27.017, popup = "Maroochy River") -->
+<!-- addMarkers(lng = 153.1417, lat = -27.017, popup = "Brisbane River") -->
 <br>
 
+Using the AED model coupled with the 3-D model TUFLOW-FV, the dynamics
+of the estuaries were simulated for the year 2016 and compared against
+data from the intensive field campaigns. An example of the model
+capturing the different gradients in DIC and CH~4~ in the three systems
+is shown in Figure \@ref(fig:Queensland-pic1).
 
-Using the AED model coupled with the 3-D model TUFLOW-FV, the dynamics of the estuaries were simulated for the year 2016 and compared against data from the intensive field campaigns. An example of the model capturing the different gradients in DIC and CH~4~ in the three systems is shown in Figure \@ref(fig:Queensland-pic1).
-	
 <br>
-	
+
 <center>
+
 ```{r Queensland-pic1, echo=FALSE, fig.cap="Trasect plots comparing modelled and field data for DOC (uM, 1st row), DIC (uM, 2nd row), pCO2 (uATM, 3rd row) and pCH4 (uATM, 4th row) for three estuaries in south-east Queensland: a) Brisbane river, b) Maroochy estuary, and c) Noosa estuary. Data presented for March 2016, collected by Southern Cross University Centre for Coastal Biogeochemistry.", out.width = '100%'}
 knitr::include_graphics("images/carbon/seq_example1.png")
-```	
+```
+
 </center>
 
 <br>
 
-###	Case Study : Lake Kinneret {#SEQCarbonCaseStudy}
-	
-The aed_carbon model was applied to Lake Kinneret, a deep subtropical lake in Israel. Using the AED model coupled with the General Lake Model, the dynamics of Lake Kinneret (Figure \@ref(fig:kinneret-map)) were simulated from 01/01/1998 until 23/02/2002.
-	
+### Case Study : Lake Kinneret
+
+The aed_carbon model was applied to Lake Kinneret, a deep subtropical
+lake in Israel. Using the AED model coupled with the General Lake Model,
+the dynamics of Lake Kinneret (Figure \@ref(fig:kinneret-map)) were
+simulated from 01/01/1998 until 23/02/2002.
+
 <br>
 
 <center>
+
 ```{r kinneret-map, fig.cap="Map of Lake Kinneret, Israel.", echo=FALSE, message=FALSE, warning=FALSE, width = 501, height = 385}
 library(leaflet)
 leaflet(height=385, width=500) %>%
-  setView(lng = 35.583333, lat = 32.833333, zoom = 11) %>%
+  setView(lng = 35.583333, lat = 32.833333, zoom = 10) %>%
   addTiles() %>%
   addProviderTiles(providers$Stamen.Terrain)  %>%
   addMarkers(lng = 35.583333, lat = 32.833333, popup = "Lake Kinneret")
 ```
+
 </center>
 
 <br>
-	
-Dissolved methane concentrations were calibrated using the glmtools R package and were compared against observations (Figure \@ref(fig:Kinneret-pic1)). Ebullition was simulated using a site-specific algorithm and the sources and sinks of both dissolved methane and methane bubbles are presented on Figure \@ref(fig:Kinneret-pic2). 
-	
+
+Dissolved methane concentrations were calibrated using the glmtools R
+package and were compared against observations (Figure
+\@ref(fig:Kinneret-pic1)). Ebullition was simulated using a
+site-specific algorithm and the sources and sinks of both dissolved
+methane and methane bubbles are presented on Figure
+\@ref(fig:Kinneret-pic2).
+
 <br>
-	
+
 <center>
+
 ```{r Kinneret-pic1, echo=FALSE, fig.cap="The observed vs. simulated dissolved methane concentrations (mmol/m^3^) at 1 m, 10 m, 20 m, 30 m, 35 m and 38-39 m depths in Lake Kinneret. The rhombus symbols represent the observed and the solid lines represent the simulated methane concentrations. Data consisting of dissolved methane concentrations in Lake Kinneret was extracted from @schmid2017, using WebPlotDigitizer (http://arohatgi.info/WebPlotDigitizer).", out.width = '100%'}
 knitr::include_graphics("images/carbon/methane.png")
 ```
+
 </center>
-	
+
 <br>
 
 <center>
+
 ```{r Kinneret-pic2, echo=FALSE, fig.cap="The sources and sinks of methane (mol 10^6^) in Lake Kinneret. The sources and sinks of dissolved methane (stacked) are presented in the first figure and include the dissolution of bubbles (“dissolution”), sediment diffusive flux (“sed_flux”), aerobic oxidation (“oxid”) and gas exchange at the water-air interface on the secondary axis (“sed_flux”). The sources and sinks of ebullition (stacked) in Lake Kinneret are presented in the second figure and include the sediment bubble flux (“sed_ebb”), the dissolution of bubbles (“dissolution”) and the atmospheric ebullition flux (“atm_ebb”).", out.width = '100%'}
 knitr::include_graphics("images/carbon/budget.png")
 ```
+
 </center>
-	
+
 <br>
 
+### Publications
 
-	
-<!-- ###	Publications -->
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+library(gt)
+library(tidyverse)
+library(kableExtra)
+library(rmarkdown)
+
+aed <- read.csv("tables/11-carbon/carbon_pubs.csv", check.names=FALSE)
+
+aed %>%
+  gt() %>%
+  tab_options(container.height = px(100),
+              container.width = pct(100),
+              table.width = pct(100),
+              container.overflow.y = TRUE,
+              container.overflow.x = TRUE,
+              table.font.size = 12,
+              column_labels.background.color = "#14759e",
+              row_group.background.color = "lightgrey",
+              column_labels.font.weight = "bold",
+              column_labels.font.size = 14) %>%
+  fmt_markdown(columns = everything())
+
+
+```
+<div style="display:none;">
+@huang2022
+</div>
