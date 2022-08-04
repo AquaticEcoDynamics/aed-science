@@ -22,7 +22,7 @@
 
 
 
-<meta name="date" content="2022-07-05" />
+<meta name="date" content="2022-08-04" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -390,13 +390,16 @@ div.csl-indent {
 <ul>
 <li class="chapter" data-level="13.3.1" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#process-descriptions-8"><i class="fa fa-check"></i><b>13.3.1</b> Process Descriptions</a></li>
 <li class="chapter" data-level="13.3.2" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#implementation-within-the-aed-framework"><i class="fa fa-check"></i><b>13.3.2</b> Implementation within the AED framework</a></li>
-<li class="chapter" data-level="13.3.3" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#feedbacks-to-the-host-model-8"><i class="fa fa-check"></i><b>13.3.3</b> Feedbacks to the Host Model</a></li>
 </ul></li>
 <li class="chapter" data-level="13.4" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#setup-configuration-9"><i class="fa fa-check"></i><b>13.4</b> Setup &amp; Configuration</a>
 <ul>
-<li class="chapter" data-level="13.4.1" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#model-setup-boundary-conditions-parameter-definition"><i class="fa fa-check"></i><b>13.4.1</b> Model Setup, Boundary Conditions &amp; Parameter Definition</a></li>
-<li class="chapter" data-level="13.4.2" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#setup-example-3"><i class="fa fa-check"></i><b>13.4.2</b> Setup example</a></li>
-<li class="chapter" data-level="13.4.3" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#model-output-post-processing"><i class="fa fa-check"></i><b>13.4.3</b> Model Output &amp; Post-processing</a></li>
+<li class="chapter" data-level="13.4.1" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#initialisation"><i class="fa fa-check"></i><b>13.4.1</b> Initialisation</a></li>
+<li class="chapter" data-level="13.4.2" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#boundary-settings"><i class="fa fa-check"></i><b>13.4.2</b> Boundary settings</a></li>
+<li class="chapter" data-level="13.4.3" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#parameter-definition"><i class="fa fa-check"></i><b>13.4.3</b> Parameter Definition</a></li>
+</ul></li>
+<li class="chapter" data-level="13.5" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#setup-example-3"><i class="fa fa-check"></i><b>13.5</b> Setup example</a>
+<ul>
+<li class="chapter" data-level="13.5.1" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#model-output-post-processing"><i class="fa fa-check"></i><b>13.5.1</b> Model Output &amp; Post-processing</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="14" data-path="bivalves.html"><a href="bivalves.html"><i class="fa fa-check"></i><b>14</b> Bivalves</a>
@@ -409,7 +412,7 @@ div.csl-indent {
 <li class="chapter" data-level="14.3.2" data-path="bivalves.html"><a href="bivalves.html#variable-summary-10"><i class="fa fa-check"></i><b>14.3.2</b> Variable Summary</a></li>
 <li class="chapter" data-level="14.3.3" data-path="bivalves.html"><a href="bivalves.html#parameter-summary-9"><i class="fa fa-check"></i><b>14.3.3</b> Parameter Summary</a></li>
 <li class="chapter" data-level="14.3.4" data-path="bivalves.html"><a href="bivalves.html#optional-module-links-8"><i class="fa fa-check"></i><b>14.3.4</b> Optional Module Links</a></li>
-<li class="chapter" data-level="14.3.5" data-path="bivalves.html"><a href="bivalves.html#feedbacks-to-the-host-model-9"><i class="fa fa-check"></i><b>14.3.5</b> Feedbacks to the Host Model</a></li>
+<li class="chapter" data-level="14.3.5" data-path="bivalves.html"><a href="bivalves.html#feedbacks-to-the-host-model-8"><i class="fa fa-check"></i><b>14.3.5</b> Feedbacks to the Host Model</a></li>
 </ul></li>
 <li class="chapter" data-level="14.4" data-path="bivalves.html"><a href="bivalves.html#setup-configuration-10"><i class="fa fa-check"></i><b>14.4</b> Setup &amp; Configuration</a>
 <ul>
@@ -490,7 +493,6 @@ AED Case Number
 <tbody>
 <tr>
 <td style="text-align:center;min-width: 6em; background-color: white !important;">
-NA
 </td>
 <td style="text-align:center;min-width: 6em; background-color: white !important;">
 <span class="math inline">\(schmidt = (0.9+0.1*\frac{salt}{35.0})*(1953.4+temp*(-128.0+temp*(3.9918-temp*0.050091)))\)</span>
@@ -501,7 +503,6 @@ NA
 </tr>
 <tr>
 <td style="text-align:center;min-width: 6em; background-color: white !important;">
-NA
 </td>
 <td style="text-align:center;min-width: 6em; background-color: white !important;">
 <span class="math inline">\(schmidt = 0.9 + \frac{salt}{350.0}\)</span> <br> <span class="math inline">\(schmidt = schmidt * (2073.1 -125.62*temp +3.6276*temp^{2} - 0.043219*temp^{3})\)</span>
@@ -512,7 +513,6 @@ NA
 </tr>
 <tr>
 <td style="text-align:center;min-width: 6em; background-color: white !important;">
-NA
 </td>
 <td style="text-align:center;min-width: 6em; background-color: white !important;">
 <span class="math inline">\(schmidt = (1.0 + 3.4e-3*salt)\)</span> <br> <span class="math inline">\(schmidt = schmidt * (1800.6 -120.1*temp +3.7818*temp^{2} - 0.047608*temp^{3})\)</span>
