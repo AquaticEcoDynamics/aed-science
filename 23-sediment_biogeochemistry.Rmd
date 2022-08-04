@@ -29,7 +29,7 @@ The model included in AED aimed to address challenges of building a generic and 
 Therefore the numerical model presented in this module has many optional features and alternative parameterisations for key processes, without mandating their inclusion in the calculations or enforcing a fixed model structure.
 
 The sediment model CANDI-AED presented here is implemented as an optionally configurable module in the AED model library. Through the model coupling approach it may be applied with any of the hydrodynamic models linked to AED (e.g. GLM, Tuflow), or alternatively, options to run in isolation are also possible. This chapter provides a scientific description of the model and describes attributes of the model associated with its practical implementation and operation. 
-<!-- An case-study of the model framework is also demonstrated.  -->
+An case-study of the model framework is also demonstrated.
 
 
 ## Model Description
@@ -64,7 +64,7 @@ For particulate (solid) substances, $C_s$:
 \end{equation}
 </center>
 
-where $(1-\phi)$ denotes the solid fraction of the sediment, and $R_s$ is a generic reaction term. 
+where $(1-\phi)$ denotes the solid fraction of the sediment, and $R_s$ is a generic reaction term.
 
 The above equations are solved numerically for the simulated set of constituents. The user can define the variables that are included in the $\mathbf{SDG}$ module (outlined in Table x), such that $C_d \in \small{\mathbb{DISSOLVED}}$ and $C_s \in \small{\mathbb{PARTICULATE}}$, where $\small{\mathbb{DISSOLVED}}$ and $\small{\mathbb{PARTICULATE}}$ are the set of dissolved and particulate variables selected for simulation, respectively.
 
@@ -78,8 +78,7 @@ In addition to physical processes, the CANDI-AED model considers two types of ch
 
 The key chemical process that causes ongoing change in the sediment is the breakdown of organic matter. An organic matter ($OM$) degradation pathway can include labile and refractory components and the breakdown pathway simulated is conceptually summarized in Figure \@ref(fig:figures-side). Reactions included in the kinetic component include the hydrolysis of the complex (e.g., high molecular weight) $OM$ pools ($POM_{VR}$, $POM_R$, $DOM_R$, $POM_L$) and transformation of low molecular weight (LMW) $DOM_L$ by oxidants ($O_2$, $MnO_2$, $Fe(III)$ and $SO_4^{2-}$ - the so-called 'terminal metabolism' pathway), and the release of resulting nutrients ($NH_4^+$, $PO_4^{3-}$) and reduced by-products ($Mn^{2+}$, $Fe^{2+}$, $N_2$, $H_2S$, $CH_4$) and $CO_2$. Oxidants, nutrients and by-products are all capable of interacting, for example, through re-oxidation of reduced species (outlined in the next section).
 
-The user can decide how complex or simple the organic matter breakdown pathway should be, with three options of varying complexity for parameterising the pathways included (Figure \@ref(fig:figures-side)). The first option (`OMModel = 1`) is a common multi-G model in which the $POM$ phases are decomposed straight to $CO_2$
-and other breakdown products. Here $POM$ is a variable that is not precisely defined, and its components (such as C, N and P) are assigned by parameters based on a user-defined stoichiometry. The second option (`OMModel = 2`) is another 2G model with both particulate and dissolved organic matter ($POM$ and $DOM$) phases included and parameterisation hydrolysis of $POM$ to $DOM$, and then $DOM$ to $CO_2$ and other breakdown products. The $POM$ and $DOM$ phases consist of three variables each, which trace the reaction and transport of carbon, nitrogen and phosphorus, thereby allowing for variable stoichiometry of organic matter to occur temporally and spatially. The third option (`OMModel = 3`) has many $POM$ phases, which are all hydrolysed to $DOM$, which then undergoes fermentation and terminal metabolism.  This allows the carbon, nitrogen and phosphorus to be calculated precisely before and after a model run, and allows the free energies of the reaction of each phase to be included. This third option is the most detailed and mechanistic, and allows for expansion of more detailed reaction mechanisms to be included, but is reccomended only for experienced users.
+The user can decide how complex or simple the organic matter breakdown pathway should be, with three options of varying complexity for parameterising the pathways included (Figure \@ref(fig:figures-side)). The first option (`OMModel = 1`) is a common multi-G model in which the $POM$ phases are decomposed straight to $CO_2$ and other breakdown products. Here $POM$ is a variable that is not precisely defined, and its components (such as C, N and P) are assigned by parameters based on a user-defined stoichiometry. The second option (`OMModel = 2`) is another 2G model with both particulate and dissolved organic matter ($POM$ and $DOM$) phases included and parameterisation hydrolysis of $POM$ to $DOM$, and then $DOM$ to $CO_2$ and other breakdown products. The $POM$ and $DOM$ phases consist of three variables each, which trace the reaction and transport of carbon, nitrogen and phosphorus, thereby allowing for variable stoichiometry of organic matter to occur temporally and spatially. The third option (`OMModel = 3`) has many $POM$ phases, which are all hydrolysed to $DOM$, which then undergoes fermentation and terminal metabolism.  This allows the carbon, nitrogen and phosphorus to be calculated precisely before and after a model run, and allows the free energies of the reaction of each phase to be included. This third option is the most detailed and mechanistic, and allows for expansion of more detailed reaction mechanisms to be included, but is reccomended only for experienced users.
 
 <br>
 
@@ -102,9 +101,11 @@ and other breakdown products. Here $POM$ is a variable that is not precisely def
 <!-- ``` -->
 
 
-```{r, figures-side, echo=FALSE, fig.cap="Three options for different levels of complexity in organic matter breakdown, by setting the OMModel switch. a – Model in which POM breaks down directly to CO~2~ and other waste products. b – Model in which POM is first hydrolysed to DOM and then oxidised to CO~2~. c – Model in which POM is hydrolysed to DOM, which can then be fermented and oxidised.", fig.show="hold", out.width=c("25%","25%","25%") ,fig.align='center'}
+```{r, figures-side, echo=FALSE, fig.cap="Three options for different levels of complexity in organic matter breakdown, by setting the OMModel switch. a – Model in which POM breaks down directly to CO~2~ and other waste products. b – Model in which POM is first hydrolysed to DOM and then oxidised to CO~2~. c – Model in which POM is hydrolysed to DOM, which can then be fermented and oxidised.", fig.show="hold", out.width=c("27%","1%","27%","1%","31%") ,fig.align='center'}
 knitr::include_graphics("images/23-sediment_biogeochemistry/image3.png")
+knitr::include_graphics("images/23-sediment_biogeochemistry/Spacer.png")
 knitr::include_graphics("images/23-sediment_biogeochemistry/image4.png")
+knitr::include_graphics("images/23-sediment_biogeochemistry/Spacer.png")
 knitr::include_graphics("images/23-sediment_biogeochemistry/image5.png")
 ```
 
@@ -161,11 +162,11 @@ and the reaction rates for each of these are calculated dynamically based on Mon
 
 The rate equation for the oxidation of the oxidants with any of the pools above can include any of the terms in equation x, where $R_{{Ox}_i}$ is the reaction of an oxidant $i$ (Arndt et al. 2013) (Table x). The kinetic rate constant $k_{OM}$ gives the maximum oxidation rate, which is different for each reactive type, but the same for each oxidation pathway. Alternatively, using OMModel 3, the kinetic rate constant is the rate of bacterial growth.
 
-The factor for terminal electron acceptor (TEA) limitation is *FTEA* (x), where options for Approach 1 or Approach 2 equations are available. The Monod constant for rate limitation at low oxidant concentration is *K~TEA* in Approach 1 and *L~TEA* in Approach 2. Similarly, the inhibition term *F~In* (x) can be set to Approach 1 or 2 equations, or turned off entirely. The constant for inhibition until low oxidant concentrations is *K~In* for Approach 1 and *L~IN* for Approach 2. 
+The factor for terminal electron acceptor (TEA) limitation is *FTEA* (x), where options for Approach 1 or Approach 2 equations are available. The Monod constant for rate limitation at low oxidant concentration is *K~TEA* in Approach 1 and *L~TEA* in Approach 2. Similarly, the inhibition term *F~In* (x) can be set to Approach 1 or 2 equations, or turned off entirely. The constant for inhibition until low oxidant concentrations is *K~In* for Approach 1 and *L~IN* for Approach 2.
 
-*$F~T* is a thermodynamic factor. The current version of the model includes *F~T* only for OMModel 3, for terminal oxidation reactions and fermentation. 
+*$F~T* is a thermodynamic factor. The current version of the model includes *F~T* only for OMModel 3, for terminal oxidation reactions and fermentation.
 
-*F~OM* is the organic matter concentration and may be a Monod function as in equation x (*K~OM* is a half saturation constant and the index *i* is the reactive phase). Using OMModels 1 and 2, *F~OM* is the concentration of the substrate, rather than a Monod function. The current version of the model has switches built in for both the temperature dependence factor, *F~Tem*, where values of 1 or 2 turn them off and on. However, implementation and testing of the factors has not been carried out for this version of the model. The metabolism rate at $T_{0}$ is $R_{0}$, $ξ$ is a scaling constant (see, for example, Eldridge and Morse 2008). 
+*F~OM* is the organic matter concentration and may be a Monod function as in equation x (*K~OM* is a half saturation constant and the index *i* is the reactive phase). Using OMModels 1 and 2, *F~OM* is the concentration of the substrate, rather than a Monod function. The current version of the model has switches built in for both the temperature dependence factor, *F~Tem*, where values of 1 or 2 turn them off and on. However, implementation and testing of the factors has not been carried out for this version of the model. The metabolism rate at $T_{0}$ is $R_{0}$, $ξ$ is a scaling constant (see, for example, Eldridge and Morse 2008).
 
 #### Secondary Redox Reactions {-}
 
@@ -174,22 +175,149 @@ In Paraska et al (2014), many secondary redox reactions were identified that hav
 #### Equilibrium Geochemistry {-}
 
 The pH is calculated as the sum of all charged species, where any unbalanced positive charge indicates H^+^. The charge balance is at each time step is solved as a state variable, which is subject to advection, diffusion and bioturbation reactions.
- 
-The precipitation of minerals is solved as an equilibrium reaction, dependent on the concentrations of the dissolved and solid substances, their $K_{sp}$ and ion activity product (IAP). The equations are applied in a similar manner to those in Van Cappellen and Wang (1996) and numerous other studies, but with the exact forms of the equations based on those from Tufano et al. (2009) (Table x). A positive rate indicates precipitation and a negative rate indicates dissolution. This model applies the function to all minerals simulated, including Fe(OH)~3~, FeS, FeS~2~, FeCO~3~, CaCO~3~ and MnCO~3~. This model can also include the process of mineral ageing, whereby iron and manganese oxides become crystalline and no longer react with organic matter, but can still undergo secondary redox reactions. 
 
-#### Physical Transport {-}
+The precipitation of minerals is solved as an equilibrium reaction, dependent on the concentrations of the dissolved and solid substances, their $K_{sp}$ and ion activity product (IAP). The equations are applied in a similar manner to those in Van Cappellen and Wang (1996) and numerous other studies, but with the exact forms of the equations based on those from Tufano et al. (2009) (Table x). A positive rate indicates precipitation and a negative rate indicates dissolution. This model applies the function to all minerals simulated, including Fe(OH)~3~, FeS, FeS~2~, FeCO~3~, CaCO~3~ and MnCO~3~. This model can also include the process of mineral ageing, whereby iron and manganese oxides become crystalline and no longer react with organic matter, but can still undergo secondary redox reactions.
 
-Advection and diffusion reactions are fairly consistent in diagenesis models, and CANDI-AED adopts the approach of Boudreau (1996). Porosity ($\phi$) is defined according to equation x, which allows it to decrease with depth, and the solid fraction is defined from $\phi_s=1-\phi)$. For bioturbation the model uses a diffusion coefficient that varies with depth ($D_{B(x)}$) as a two layer function or a Gaussian decrease (Boudreau 1996). For the porewater components, diffusion coefficients are used that are based on free-solution molecular diffusion constants corrected for sediment tortuosity, $θ$, according to equation x.
+#### Physical Transport and Porosity {-}
 
-#### Salinity inhibition {.unnumbered}
-From Word document
+##### Solids {-} 
+CANDI-AED adopts the approach of Boudreau (1996) to advection and dispersion, which is similar to most other diagenesis models. Advection of the solid sediment matrix is occurs at the rate of sediment deposition ($\omega_{00}$ in cm y^-1^). The sediment does not move, however, since the height of the modelling domain is fixed, as more sediment accumulates at the surface, a sediment particle moves downwards. An alternative way to view this is that the modelling domain moves upwards. 
 
-#### H~2~S inhibition {.unnumbered}
-From Word document
+```{r Phys1, echo = FALSE, out.width='60%', class = "text-image",fig.show='hold',fig.align='center', fig.cap = "Upon sedimentation, the frame of reference shifts upwards. The bottom area is effectively lost from the modelling domain over time. Particles and porewater are advected downward relative to the modelling domain."}
 
-#### Bioturbation functions {.unnumbered}
-From Word document
+knitr::include_graphics("images/23-sediment_biogeochemistry/AdvectionDispersion/AdvectionDispersion-05.png")
 
+```
+
+##### Porewater {-} 
+For the porewater components, diffusion coefficients are used that are based on free-solution molecular diffusion constants corrected for sediment tortuosity, $θ$. Porewater moves downwards at the same rate as the solids ($\omega_{00}$). A further porewater advection term (`poreflux`) is available, which could represent, for example, pressure on the sediment from a groundwater source. If `poreflux` is positive, then porewater moves upwards, relative to particles. Conversely, if `poreflux` is negative, then the porewater moves downwards relative to the particles. In most simulations `poreflux` is zero and advection is the transport process.
+
+```{r Phys2, echo = FALSE, out.width='100%', class = "text-image",fig.show='hold',fig.align='center', fig.cap = "Porewater is advected at the same rate as burial. If *poreflux* is non-zero, an additional rate of advection is applied to porewater. The direction is upwards when *poreflux* is positive, downwards when *poreflux* is negative."}
+
+knitr::include_graphics("images/23-sediment_biogeochemistry/AdvectionDispersion/Poreflux-04.png")
+
+```
+
+##### Bioturbation and bioirrigation  {-} 
+Bioturbation is an extra mixing process caused benthic animals in the upper layers of the sediment. Bioturbation affects both solids and porewater. The model uses a diffusion coefficient that varies with depth ($D_{B(x)}$) as a two layer function or a Gaussian decrease (Boudreau 1996). Bioirrigation is a non-local mixing process in the upper layers of the sediment, caused by animal burrows. Bioirrigation affects porewater only.
+
+```{r Phys3, echo = FALSE, out.width='65%', class = "text-image",fig.show='hold',fig.align='center', fig.cap = "Bioturbation is the mixing of solids and porewater in the upper layers by benthic animals. Irrigation causes extra mixing of porewater through burrows."}
+
+knitr::include_graphics("images/23-sediment_biogeochemistry/AdvectionDispersion/Biot-07.png")
+
+```
+
+```{r Phys-4, echo=FALSE, fig.cap="Bioturbation is more likely to occur towards the sediment water interface, and below a certain depth does not occur at all. ",fig.show='hold',fig.align='center' ,out.width = '90%'}
+knitr::include_graphics("images/23-sediment_biogeochemistry/Initialisation/Bioturb-02.png")
+```
+
+```{r Phys-5, echo=FALSE, fig.cap="Since shallow burrows are more likely than deep burrows, the amount of irrigation decreases with depth.",fig.show='hold',fig.align='center', out.width = '60%'}
+knitr::include_graphics("images/23-sediment_biogeochemistry/Initialisation/Irrig-01.png")
+```
+
+
+##### Porosity  {-} 
+Porosity ($\phi$) is defined as the amount of water per total volume of space, as a real number between 0 and 1. 
+A value for porosity is set at each depth layer during initialisation (see section below) and remains constant throughout the simulation (figure \@ref(fig:Phys-6)). The porosity array is used in the model to calculate other variables, such as 
+
+-    advection
+-    poreflux
+-    porewater volume 
+-    solid volume
+-    diffusive velocity
+-    solid fraction
+
+Porosity is also used in the model to calculate $ps$, $psp$ and $pps$, which are used to convert between solid and dissolved state variables, using these conversions:
+
+```{=tex}
+\begin{eqnarray}
+     ps  = 1 - \phi
+     \\
+     \\
+     psp = \frac {ps} {\phi}
+     \\
+     \\
+     pps = \frac {\phi} {ps}
+\end{eqnarray}
+```
+
+```{r Phys-6, echo=FALSE, fig.cap="Example depth profile of porosity.",fig.show='hold',fig.align='center' ,out.width = '60%'}
+knitr::include_graphics("images/23-sediment_biogeochemistry/Initialisation/Porosity-01.png")
+```
+
+
+
+
+
+#### Physical-chemical interactions {-}
+
+##### Salinity inhibition {.unnumbered}
+Salinity was set as a permanently linked variable from the water column AED model, without using *water_link*.
+
+A special salinity factor, $F_{Sal}$ was developed for the salinity in the Coorong, to inhibit processes at hypersaline concentrations. $F_{Sal}$ ranges from 1 to 0, as set between salinity concentration parameters *Sal1* and *Sal2* (PSU).
+
+The equations for $F_{Sal}$ are given below.
+
+
+```{=tex}
+\begin{eqnarray}
+     If   Salinity < Sal_1 \ \ then \  \     F_{Sal} = 1 \
+    \\
+    \\
+     If   Salinity > Sal_1  then     \frac {Sal_2 - Salinity} {Sal_2 - Sal_1} \
+    \\
+    \\
+     If   Salinity > Sal_2  then      F_{Sal} = 1 \
+\end{eqnarray}
+```
+The effect of the scaling is shown in Figure \@ref(fig:PhysChem1).
+
+```{r PhysChem1, echo = FALSE, out.width='50%', class = "text-image",fig.show='hold',fig.align='center', fig.cap = "Diaagram of the salinity factor $F_{Sal}$, scaling between 1 and 0 between the parameters. In this diagram *Sal~1~* is 40 and *Sal~2~* is 70."}
+knitr::include_graphics("images/23-sediment_biogeochemistry/PhysChemInteractions/FSal-02.png")
+```
+
+$F_{Sal}$ is applied to biota-driven mixing (see below) and to the nitrogen redox and adsorption reactions. It is multiplied by the following reactions:
+
+-   *R~N2O~*
+-   *R~NO2~*
+-   *R~NO3~*
+-   *R~NH4ox~*
+-   *R~NH4NO2~*
+-   *R~NO2O2~*
+-   *NH~4~^+^ adsorption*
+
+The term affects all rates equally and so does not favour the concentration of any of the species. However, it slows down the transformation of each species into the other, and increased the effect of transport reactions and depth-driven concentration gradients.
+
+##### H~2~S inhibition {.unnumbered}
+High $H_{2}S$ concentration is set to inhibit biota-driven mixing and nitrogen redox reactions, on the basis that $H_{2}S$ is toxic to organisms. An $H_{2}S$ factor, $F_{Sul}$, is an inhibition factor similar to other inhibition factors in the sediment model.
+
+```{=tex}
+\begin{eqnarray}
+
+F_{Sul} = \frac {K_{H_{2}S}} {(K_{H_{2}S} + H_{2}S)}
+
+\end{eqnarray}
+```
+As with $F_{Sal}$, $F_{Sul}$ scales between 1 and 0, however, as a decay rather than a stepped function (Figure \@ref(fig:PhysChem2)). The value for *K~H2S~* can be found in the physical parameters table below In this simulation, the same value for *K~H2S~* was used in all zones.
+
+```{r PhysChem2, echo = FALSE, out.width='50%', class = "text-image",fig.show='hold',fig.align='center', fig.cap = "Diagram of the $H_2S$ factor, $F_{Sul}$, scaling from 1 to 0 as $H_2S$ concentration decreases. "}
+
+knitr::include_graphics("images/23-sediment_biogeochemistry/PhysChemInteractions/FSul-02.png")
+
+```
+
+##### Bioturbation functions {.unnumbered}
+The baseline bioturbation rate set during initialisation is updated at each time step to account for high salinity values and high H2S concentrations.
+
+##### O~2 injections {.unnumbered}
+$O_2$ is injected into the sediment from microphytobenthic algae ($MPB$) and from plant roots (\@ref(fig:PhysChem3)). The $O_2$ is not part of the mass balance of the ecosystem and it is not in stoichiometric balance with biomass or $∑CO_2$. The depths where the $O_2$ is injected are set separately for $MPB$ and roots. The $O_2$ in these layers from $MPB$ is set as a rate of both gross primary production ($Rgpp O_2 input$) and respiration ($Rrsp O_2 consumption$). The rate $Rgpp$ is calculated as a function of the $MPB$ production rate, the parameter *fgpp~sflux~* and a decay with depth. The production rate is linked directly to the rate calculated in the water column model. Similarly, the rate $Rrsp$ is calculated as a function of the respiration rate, the same parameter *fgpp~sflux~* and a decay with depth. The respiration rate is also linked directly to the rate calculated in the water column model. Below the parameter *MPBDepth*, $Rgpp$ is zero, which means that the $MPB$ cannot photosynthesise without light. Below *MPBDepth* the rate $Rrsp$ is the product of $MPB$ biomass and 52 days, which means that the cells die within a week without access to light.
+
+The rate of $O_2$ injection from roots is calculated from the variable $RTO_2$, which applies above the depth $RTDP$. Both $RTO_2$ and $RTDP$ are linked directly from the water column model.
+
+```{r PhysChem3, echo = FALSE, out.width='75%', class = "text-image",fig.show='hold',fig.align='center', fig.cap = "Schematic of the new parameterisation of $O_2$ injection into the sediment. Left: $O_2$ is released where $MPB$ are respiring. Right: $O_2$ comes from plant roots to the depth of *RTDP*."}
+knitr::include_graphics("images/23-sediment_biogeochemistry/PhysChemInteractions/O2Inject-09.png")
+
+```
 
 ### Implementation within the AED framework
 
@@ -203,7 +331,7 @@ The sediment and hydrodynamic models are coupled at the sediment-water interface
 -	concentration of dissolved substances in the bottom water, $mmol/m^3$
 -	flux of dissolved substances from the top sediment layer to or from the water, $mmol/m^2/d$
 
-Where there is any mismatch between the sediment and water column variables, the factor of *part_sed_scale* can be used. (*part_sed_scale* can be found in the file aed_sdg_vars.csv, as outlined in more detail below.) For example, influx of the water column variable $PON$ can be distributed between sediment variables $PON_R$ and $PON_L$. *part_sed_scale* is a real number between zero and one. For any sediment variables linked to the same water column flux, the *part_sed_scales* values should sum to 1. 
+Where there is any mismatch between the sediment and water column variables, the factor of *part_sed_scale* can be used. (*part_sed_scale* can be found in the file aed_sdg_vars.csv, as outlined in more detail below.) For example, influx of the water column variable $PON$ can be distributed between sediment variables $PON_R$ and $PON_L$. *part_sed_scale* is a real number between zero and one. For any sediment variables linked to the same water column flux, the *part_sed_scales* values should sum to 1.
 
 <br>
 
@@ -221,8 +349,6 @@ knitr::include_graphics("images/23-sediment_biogeochemistry/image6.png")
 ```
 </center>
 
-#### O~2 injections
-From Word document
 
 
 ####	Resolving sediment zonation {-}
@@ -261,16 +387,13 @@ The fluxes and concentrations in the water cells above the sediment are averaged
 ```{r dev-Grid3, echo = FALSE, out.width='60%', class = "text-image",fig.show='hold',fig.align='center', out.width='60%', fig.cap = "Schematic displaying how water cells are averaged when using sediment zones with a 3D hydrodynamic model."}
 
 knitr::include_graphics("images/23-sediment_biogeochemistry/GridStructure/ZoneAveraging-05.png")
-knitr::include_graphics("images/23-sediment_biogeochemistry/GridStructure/ZoneAveraging-06.png")
 
 ```
 
 
-# ```{r dev-Grid4, echo = FALSE, out.width='60%', class = "text-image",fig.show='hold',fig.align='center', fig.cap = "Schematic displaying how water cells are averaged when using sediment zones with a 3D hydrodynamic model."}
-# 
-# knitr::include_graphics("images/23-sediment_biogeochemistry/GridStructure/ZoneAveraging-06.png")
-# 
-# ```
+```{r dev-Grid4, echo = FALSE, out.width='60%', class = "text-image",fig.show='hold',fig.align='center', fig.cap = "Schematic displaying how water cells are averaged when using sediment zones with a 3D hydrodynamic model."}
+knitr::include_graphics("images/23-sediment_biogeochemistry/GridStructure/ZoneAveraging-06.png")
+```
 
 #### Program Structure {.unnumbered}
 
@@ -297,12 +420,14 @@ knitr::include_graphics("images/23-sediment_biogeochemistry/ProgramStructure/Pro
 
 ## Setup & Configuration
 
-The preceding details were an explanation of the scientific aspects of this diagenesis model. Practical implementation is outlined below.
+The preceding details were an explanation of the scientific aspects of this diagenesis model. Practical implementation is outlined below. Four key places for the model setup are presented here, along with the file locations, and whether the settings are different for a simulation with more than one zone (table \@ref(tab:3dev-sedBouIni))).
+
+
 
 <center>
 
 
-```{r 3dev-sed_BouIni, echo=FALSE, message=FALSE, warning=FALSE}
+```{r 3dev-sedBouIni, echo=FALSE, message=FALSE, warning=FALSE}
 library(knitr)
 library(kableExtra)
 library(readxl)
@@ -319,7 +444,7 @@ sediment_BoundaryInitial <- read_xlsx("tables/23-sediment_biogeochemistry/UserMa
   column_spec(3, width_min = "15em" ,color="black") %>%
 #  column_spec(4, width_min = "15em") %>%
   row_spec(1:4, background = 'white') %>%
-  scroll_box(width = "50em", height = "25em",fixed_thead = FALSE)
+  scroll_box(width = "50em", height = "27em",fixed_thead = FALSE)
 ```
 
 
@@ -330,32 +455,120 @@ sediment_BoundaryInitial <- read_xlsx("tables/23-sediment_biogeochemistry/UserMa
 
 
 #### Initialisation of sediment depth layers {.unnumbered}
-\
-Each active sediment model within this module is discretised into a user-definable number of depth layers (`maxnpts`) that start at a thickness of a few mm at the sediment-water interface and which increase exponentially down to a pre-defined sediment depth (`xl`). The grid of layers is set to have either even spacing (*job* = 1) or exponentially increasing (*job* = 0). When the spacing increases exponentially, the first two layers are hard-coded to be a miniumum of 0.25 cm, in order to avoid numerical instability from sharp concentration differences over distances that are too small.
+Each active sediment model within this module is discretised into a user-definable number of depth layers (`maxnpts`) that start at a thickness of a few mm at the sediment-water interface and which increase exponentially down to a pre-defined sediment depth (`xl`). The grid of layers is set to have either even spacing (`job` = 1) or exponentially increasing (`job` = 0). When the spacing increases exponentially, the first two layers are hard-coded to be a miniumum of 0.25 cm, in order to avoid numerical instability from sharp concentration differences over distances that are too small. Porosity is the amount of water per total volume of space, as a real number between 0 and 1. 
 
-```{r Init-1, echo=FALSE, fig.cap="   caption ",fig.show='hold',fig.align='center' ,out.width = '60%'}
+```{r Init-1, echo=FALSE, fig.cap="Initialisation of the depth layers. The number of layers is set by `maxnpts` and the depth of the simulation by `xl`. The setup can have even spacing (left) using parameter `job` = 1 or increasing spacing (right) `job` = 2.",fig.show='hold',fig.align='center' ,out.width = '60%'}
 knitr::include_graphics("images/23-sediment_biogeochemistry/Initialisation/job1job2-06.png")
 ```
 
 #### Initialisation of porosity {.unnumbered}
+Porosity is configured by setting three parameters: the porosity at the sediment-water interface (`\rho 0`), the porosity at the depth where compaction causes constant porosity with depth (`\rho 00`), and the attenuation coefficient on the exponential curve (`bp`) (equation \#eq:init-1). These parameters are set separately for each zone. Porosity is the amount of water per total volume of space, as a real number between 0 and 1. 
+
+```{=tex}
+\begin{eqnarray}
+
+    \phi = (\rho 0 - \rho 00) \times e^{-bp \times depth}  + \rho 00
+
+(\#eq:init-1)
 
 
-```{r Init-2, echo=FALSE, fig.cap="   caption ",fig.show='hold',fig.align='center' ,out.width = '60%'}
-knitr::include_graphics("images/23-sediment_biogeochemistry/Initialisation/Porosity-01.png")
+\end{eqnarray}
 ```
 
+\
 
-
-
+```{r Init-2, echo=FALSE, fig.cap="Depth profile of porosity set during initialisation. ",fig.show='hold',fig.align='center' ,out.width = '60%'}
+knitr::include_graphics("images/23-sediment_biogeochemistry/Initialisation/Porosity-01.png")
+```
+\
 
 #### Initialisation of bioturbation and bioirrigation {.unnumbered}
+
+Bioturbation 
+
+   - If imix = 0
+```{=tex}
+\begin{eqnarray}
+
+   \\
+   bioturbation = DB_0 \times * e^ {- \frac {depth^2} {2 \times xs^2} } 
+   \\
+\end{eqnarray}
+```   
+   
+   
+   - If imix = 1
+   
+```{=tex}
+\begin{eqnarray}
+   \\
+ (if depth <= x_1)
+   \\
+   \\
+ bioturbation = DB_0
+
+
+     \\
+     \\
+   if depth > x_1 
+   \ and 
+   \ depth <= x_2
+   \\
+   \\
+   bioturbation = DB_0 \times (\frac {x_2 - depth} {x_2 - x_1})
+   \\
+   \\
+   if depth > x_2
+   \\
+   \\
+   bioturbation = 0 
+\end{eqnarray}
+```   
+
+   
+
+   - If imix = 2
+
+```{=tex}
+\begin{eqnarray}
+   bioturbation = DB_0 \times e ^{(- \frac{depth}{xs} )}
+\end{eqnarray}
+```
+
+Irrigation 
+
+   <!-- candi%cirrig(:) = candi%param%alpha0 -->
+   <!-- WHERE (candi%rpar > candi%param%xirrig) candi%cirrig=candi%param%alpha0*EXP(-1.5*(candi%rpar-candi%param%xirrig)) -->
+
+```{=tex}
+\begin{eqnarray}
+if depth > xirrig
+\\
+\\
+   irrigation = \alpha _0 \times e^{-1.5 \times (depth - xirrig) }
+\end{eqnarray}
+```
 
 
 ```{r Init-3, echo=FALSE, fig.cap="   caption ",fig.show='hold',fig.align='center' ,out.width = '90%'}
 knitr::include_graphics("images/23-sediment_biogeochemistry/Initialisation/Bioturb-02.png")
 ```
 
-```{r Init-4, echo=FALSE, fig.cap="   caption ",fig.show='hold',fig.align='center', out.width = '60%'}
+
+```{=tex}
+\begin{eqnarray}
+
+    \phi = (\rho 0 - \rho 00) \times e^{-bp \times depth}  + \rho 00
+
+(\#eq:init-1)
+
+
+\end{eqnarray}
+```
+
+
+
+```{r Init-4, echo=FALSE, fig.cap="   caption ",fig.show='hold',fig.align='center', out.width = '40%'}
 knitr::include_graphics("images/23-sediment_biogeochemistry/Initialisation/Irrig-01.png")
 ```
 
@@ -500,7 +713,7 @@ library(kableExtra)
 biogeochem_config <- read.csv("tables/23-sediment_biogeochemistry/biogeochem_config.csv", check.names=FALSE)
 kable(biogeochem_config,"html", escape = F, align = "c", caption = "The major biogeochemical configuration options, which are set by the user before the model is initialised",
       bootstrap_options = "hover") %>%
-  kable_styling(biogeochem_config, bootstrap_options = "hover", 
+  kable_styling(biogeochem_config, bootstrap_options = "hover",
                 full_width = F, position = "center",
                 font_size = 12) %>%
   column_spec(1, width_min = "15em") %>%
@@ -508,17 +721,17 @@ kable(biogeochem_config,"html", escape = F, align = "c", caption = "The major bi
   column_spec(3, width_min = "15em") %>%
   row_spec(1:15, background = 'white') %>%
   scroll_box(width = "770px", height = "500px",
-             fixed_thead = FALSE) 
+             fixed_thead = FALSE)
 ```
 
 <br>
 
-The initial conditions for each sedimemnt variable are set as a list by the `initial_vals`, which sets a constant concentration with depth in units of $\mu mol/L$, or ($mmol / m^3$). For organic matter initial concentrations only, there are three available options for the concentration with depth, set by `OMInitMethodL`. 
+The initial conditions for each sedimemnt variable are set as a list by the `initial_vals`, which sets a constant concentration with depth in units of $\mu mol/L$, or ($mmol / m^3$). For organic matter initial concentrations only, there are three available options for the concentration with depth, set by `OMInitMethodL`.
 
-The sediment-water interface is the uppermost layer of the sediment, for which there are three configuration options set by the parameter `swibc_mode`. 
-   - If the user specifies `swibc_mode = 2`, the concentration is a constant value set by `default_vals` in the `aed.nml` name list. 
-   - For `swibc_mode = 0`, the concentration is provided by a “link_variable”, which provides the concentration from another simulated water column AED module. If the variable name in the link list is left blank (“ ”) then AED-CANDI will assume these variables are not linked to any water column variables and default to the `default_vals` values. 
-   - If `swibc_mode = 10`, the concentration is provided by a user-prescribed temporally variable value read from the file `aed_sediment_swibc.dat`. This option may desirable, for example, for simulating a seasonally or daily changing boundary condition. 
+The sediment-water interface is the uppermost layer of the sediment, for which there are three configuration options set by the parameter `swibc_mode`.
+   - If the user specifies `swibc_mode = 2`, the concentration is a constant value set by `default_vals` in the `aed.nml` name list.
+   - For `swibc_mode = 0`, the concentration is provided by a “link_variable”, which provides the concentration from another simulated water column AED module. If the variable name in the link list is left blank (“ ”) then AED-CANDI will assume these variables are not linked to any water column variables and default to the `default_vals` values.
+   - If `swibc_mode = 10`, the concentration is provided by a user-prescribed temporally variable value read from the file `aed_sediment_swibc.dat`. This option may desirable, for example, for simulating a seasonally or daily changing boundary condition.
 
 Regardless of the `swibc_mode` surface boundary condition option, fluxes of dissolved species occur between the sediment and water column. They are calculated from the concentration gradient at the sediment-water interface according to Fick’s Law:
 
@@ -534,19 +747,66 @@ where $D_{0}$ is the diffusivity, $\delta$ is the thickness of the diffusive bou
 At the bottom of the domain ($x$ = `xl`) the model can be specified to have a fixed-concentration (`deepbc_mode` = 0) such that the concentration at $xl = C_{Bot}$, or it can be specified to have a zero-derivative (`deepbc_mode` = 1) defined as $\frac{dC}{dx}=0$ at $x = xl$.
 
 #### Timing switches {.unnumbered}
-From Word document
+
 ##### Substep {.unnumbered}
+The general task for the reactive transport model is to calculate a change in concentration over time, as a function of a change in concentration over space and as a result of chemical reactions. The general form of this is given in equation \@ref(eq:tim-1). When this is solved numerically, it is discretised by small increments of time, which are referred to as ‘time steps’ (Δt in equation \@ref(eq:tim-2)). 
+
+To allow the part of the model that solves these differential equations to process a large change in concentration over space or because of a large reaction, the timestep can be multiplied by a substep factor. Examples of where this is needed include a sharp concentration gradient over a small area, or in influx of a large amount of highly reactive substances. 
+
+```{=tex}
+\begin{eqnarray}
+
+ \frac {\delta C} {\delta t} = \frac {\delta C} {\delta x} + reactions
+
+(\#eq:tim-1)
+
+
+\\
+\\
+ {\Delta C} = (\frac {\Delta C} {\Delta x} + reactions) \times \Delta t
+(\#eq:tim-2)
+\end{eqnarray}
+```
+
+
+
 
 ##### Special organic matter flux {.unnumbered}
+The sediment model has a unique boundary condition, where a large influx of organic matter occurs for a limited time (figure \@ref(fig:Timing-1)). This represents, for example, the operation of a fish farm, a large algal bloom or an illegal dump of organic waste into a lake. This is a convenient tool for looking at the effect of large amounts of organic matter on other chemical species, and it operates separately to the constant flux boundaries, the swibc input file, or the variables linked to the pelagic model. The flux defaults to 0.0 before the time parameter *fluxon* and after the time parameter *fluxoff* (y). The state variable switched on by this flux is $POM_{Special}$. It is not named as, for example, labile or refractory because the user can tailor its properties to the simulation. The breakdown parameter for $POM_{Special}$ is *pomspecial2dic* (y^-1). The parameter ibc2 must be set to 10 or 0 for this feature to operate. The magnitude of $POM_{Special}$ flux is set in the file aed_sdg_vars.csv, in the default_vals column, and the default flux before *fluxon* and after *fluxoff* times is zero.
+
+
+```{r Timing-1, echo=FALSE, fig.cap="Schematic of $POM_{Special}$ flux over time. $POM_{Special}$ flux begins at time *fluxon* and stops at time *fluxoff*. The rate of the flux is *pomspecial*.",fig.show='hold',fig.align='center', out.width = '75%'}
+knitr::include_graphics("images/23-sediment_biogeochemistry/TimeSwitches/TimeSwitches-01.png")
+```
 
 ##### Spinup substep {.unnumbered}
+In some simulations the initial timesteps have a high probability that the numerical model may crash while processing the initial condition (figure \@ref(fig:Timing-2)). A slow substep overcomes this problem, however, it has the disadvantage of producing a longer run time. The solution for this problem is the tool *firststeps* (y), which sets an initial time period during which a slower substep (*substep_0*) is used, and after which the normal substep (*substep_1*) is used. The switch *timeswitch* must be set to 1 for this feature to work, otherwise the normal *substep* applies. 
+
+
+```{r Timing-2, echo=FALSE, fig.cap="Schematic of the timestep across time. A different timestep (*substep_0*) can be used for a period (*firsteps*) until another timestep is used (*substep_1*).   ",fig.show='hold',fig.align='center', out.width = '75%'}
+knitr::include_graphics("images/23-sediment_biogeochemistry/TimeSwitches/TimeSwitches-02.png")
+```
 
 ##### Transport without reaction {.unnumbered}
+Another tool to help move through the spinup period is to allow the transport to occur before the reactions start (figure \@ref(fig:Timing-3)). This evens out sharp chemical concentration gradients. This allows the simulation to start before the proper time of the simulation, represented in \@ref(fig:Timing-3) as negative time. The parameter *spinup_days* is the number of timestep integers of negative time, and *spinup_dt* is the length of each timestep (h).
+
+
+```{r Timing-3, echo=FALSE, fig.cap="Schematic of the timestep over time. The initial period up to *spinup_days* occurs in 'negative time', at a duration of *spinup_dt*.",fig.show='hold',fig.align='center', out.width = '75%'}
+knitr::include_graphics("images/23-sediment_biogeochemistry/TimeSwitches/TimeSwitches-03.png")
+```
 
 ##### Combined organic matter flux and timestep switch {.unnumbered}
+A large influx of organic matter can have the same effect for the model as processing the initial condition, and so the large flux can crash the model well after the initial spinup (figure \@ref(fig:Timing-4)). Therefore, further substep parameters are available for slowing the model while it processes the organic matter. The parameter *substep_2* is used as the substep after *fluxon*. The parameter *substep_3* is used as an intermediate substep after *fluxoff*, until the time *justwaitabit*, to allow the final effects of the organic matter influx to be processed, but allowing the possibility of running faster if not at the speed of *substep_1*. 
+
+```{r Timing-4, echo=FALSE, fig.cap="Schematic of $POM_{Special}$ flux and timestep changes over time. Options are available to optimise a short run total time with a slow substep centred around organic matter influx.",fig.show='hold',fig.align='center', out.width = '75%'}
+knitr::include_graphics("images/23-sediment_biogeochemistry/TimeSwitches/TimeSwitches-04.png")
+```
 
 
-### Setup example
+
+
+
+## Setup example
 
 The model is set up via the name list text file `aed.nml` using the module keyword `&aed_seddiagenesis` and a model namelist block termed `&aed_sediment` configured to select the `sediment_model` as “Dynamic” or “Dynamic2D” option. Once this is selected, the model will search for the `&aed_sedcandi` parameter block.
 
@@ -569,8 +829,8 @@ An example `aed.nml` configuration block for the `aed_seddiagenesis` module that
   !-- Time Settings --!
    spinup_days     =  90
    spinup_dt       =   0.25
-   driver_dt       = 900     
-   substep         =   8       
+   driver_dt       = 900
+   substep         =   8
   !-- Zones details --!
    n_zones         = 5
    active_zones    = 104,103, 53, 23, 12,11
@@ -617,7 +877,7 @@ An example `aed.nml` configuration block for the `aed_seddiagenesis` module that
 
 
 ```{block2, pars-text, type='rmdnote'}
-In addition to adding the above code block to `aed.nml`, users must also supply a valid AED sediment parameter database file (`aed_candi_pars`) and a variable definition file ('aed_sdg_vars'). Both of these files file must be supplied in either `CSV` format. 
+In addition to adding the above code block to `aed.nml`, users must also supply a valid AED sediment parameter database file (`aed_candi_pars`) and a variable definition file ('aed_sdg_vars'). Both of these files file must be supplied in either `CSV` format.
 
 Users can create a standard file in the correct format from the online [**AED parameter database**](https://aed.see.uwa.edu.au/research/models/AED/aed_dbase/db_edit.php) by selecting from the available sediment types of interest, downloading via the **"Make CSV"** button, and then tailoring to the simulation being undertaken as required. Carefully check the parameter units and values!
 ```
@@ -626,7 +886,7 @@ Users can create a standard file in the correct format from the online [**AED pa
 
 ### Model Output & Post-processing
 
-As with other modules, the NetCDF files include the model outputs (see Table above). In addition, the module also writes output files for each variable as text files, giving time (in years) as the first column depth as the first row and concentrations in the other fields. These can be read in using a data processing program such as R, Matlab or Excel for analysis. Further, the model outputs the file `rates.sed` for each variable at every depth for the final time step. 
+As with other modules, the NetCDF files include the model outputs (see Table above). In addition, the module also writes output files for each variable as text files, giving time (in years) as the first column depth as the first row and concentrations in the other fields. These can be read in using a data processing program such as R, Matlab or Excel for analysis. Further, the model outputs the file `rates.sed` for each variable at every depth for the final time step.
 
 
 conc
