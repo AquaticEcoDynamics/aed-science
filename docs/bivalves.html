@@ -22,7 +22,7 @@
 
 
 
-<meta name="date" content="2022-07-05" />
+<meta name="date" content="2022-08-04" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -390,13 +390,16 @@ div.csl-indent {
 <ul>
 <li class="chapter" data-level="13.3.1" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#process-descriptions-8"><i class="fa fa-check"></i><b>13.3.1</b> Process Descriptions</a></li>
 <li class="chapter" data-level="13.3.2" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#implementation-within-the-aed-framework"><i class="fa fa-check"></i><b>13.3.2</b> Implementation within the AED framework</a></li>
-<li class="chapter" data-level="13.3.3" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#feedbacks-to-the-host-model-8"><i class="fa fa-check"></i><b>13.3.3</b> Feedbacks to the Host Model</a></li>
 </ul></li>
 <li class="chapter" data-level="13.4" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#setup-configuration-9"><i class="fa fa-check"></i><b>13.4</b> Setup &amp; Configuration</a>
 <ul>
-<li class="chapter" data-level="13.4.1" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#model-setup-boundary-conditions-parameter-definition"><i class="fa fa-check"></i><b>13.4.1</b> Model Setup, Boundary Conditions &amp; Parameter Definition</a></li>
-<li class="chapter" data-level="13.4.2" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#setup-example-3"><i class="fa fa-check"></i><b>13.4.2</b> Setup example</a></li>
-<li class="chapter" data-level="13.4.3" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#model-output-post-processing"><i class="fa fa-check"></i><b>13.4.3</b> Model Output &amp; Post-processing</a></li>
+<li class="chapter" data-level="13.4.1" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#initialisation"><i class="fa fa-check"></i><b>13.4.1</b> Initialisation</a></li>
+<li class="chapter" data-level="13.4.2" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#boundary-settings"><i class="fa fa-check"></i><b>13.4.2</b> Boundary settings</a></li>
+<li class="chapter" data-level="13.4.3" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#parameter-definition"><i class="fa fa-check"></i><b>13.4.3</b> Parameter Definition</a></li>
+</ul></li>
+<li class="chapter" data-level="13.5" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#setup-example-3"><i class="fa fa-check"></i><b>13.5</b> Setup example</a>
+<ul>
+<li class="chapter" data-level="13.5.1" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#model-output-post-processing"><i class="fa fa-check"></i><b>13.5.1</b> Model Output &amp; Post-processing</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="14" data-path="bivalves.html"><a href="bivalves.html"><i class="fa fa-check"></i><b>14</b> Bivalves</a>
@@ -409,7 +412,7 @@ div.csl-indent {
 <li class="chapter" data-level="14.3.2" data-path="bivalves.html"><a href="bivalves.html#variable-summary-10"><i class="fa fa-check"></i><b>14.3.2</b> Variable Summary</a></li>
 <li class="chapter" data-level="14.3.3" data-path="bivalves.html"><a href="bivalves.html#parameter-summary-9"><i class="fa fa-check"></i><b>14.3.3</b> Parameter Summary</a></li>
 <li class="chapter" data-level="14.3.4" data-path="bivalves.html"><a href="bivalves.html#optional-module-links-8"><i class="fa fa-check"></i><b>14.3.4</b> Optional Module Links</a></li>
-<li class="chapter" data-level="14.3.5" data-path="bivalves.html"><a href="bivalves.html#feedbacks-to-the-host-model-9"><i class="fa fa-check"></i><b>14.3.5</b> Feedbacks to the Host Model</a></li>
+<li class="chapter" data-level="14.3.5" data-path="bivalves.html"><a href="bivalves.html#feedbacks-to-the-host-model-8"><i class="fa fa-check"></i><b>14.3.5</b> Feedbacks to the Host Model</a></li>
 </ul></li>
 <li class="chapter" data-level="14.4" data-path="bivalves.html"><a href="bivalves.html#setup-configuration-10"><i class="fa fa-check"></i><b>14.4</b> Setup &amp; Configuration</a>
 <ul>
@@ -974,7 +977,6 @@ Core
 Bivalve temperature limitation
 </td>
 <td style="text-align:center;min-width: 6em; background-color: white !important;">
-NA
 </td>
 <td style="text-align:center;min-width: 6em; background-color: white !important;">
 Benthic diagnostic
@@ -991,7 +993,6 @@ Optional: <code>extra_diag=.true.</code>
 Bivalve sediment limitation
 </td>
 <td style="text-align:center;min-width: 6em; background-color: white !important;">
-NA
 </td>
 <td style="text-align:center;min-width: 6em; background-color: white !important;">
 Benthic diagnostic
@@ -1008,7 +1009,6 @@ Optional: <code>extra_diag=.true.</code>
 Bivalve food limitation
 </td>
 <td style="text-align:center;min-width: 6em; background-color: white !important;">
-NA
 </td>
 <td style="text-align:center;min-width: 6em; background-color: white !important;">
 Benthic diagnostic
@@ -2018,8 +2018,8 @@ Preference factors for bivalve predators grazing on prey
 <div id="optional-module-links-8" class="section level3 hasAnchor" number="14.3.4">
 <h3><span class="header-section-number">14.3.4</span> Optional Module Links<a href="bivalves.html#optional-module-links-8" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 </div>
-<div id="feedbacks-to-the-host-model-9" class="section level3 hasAnchor" number="14.3.5">
-<h3><span class="header-section-number">14.3.5</span> Feedbacks to the Host Model<a href="bivalves.html#feedbacks-to-the-host-model-9" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="feedbacks-to-the-host-model-8" class="section level3 hasAnchor" number="14.3.5">
+<h3><span class="header-section-number">14.3.5</span> Feedbacks to the Host Model<a href="bivalves.html#feedbacks-to-the-host-model-8" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 </div>
 </div>
 <div id="setup-configuration-10" class="section level2 hasAnchor" number="14.4">
@@ -2065,19 +2065,16 @@ Comment
 Number of zooplankton groups
 </td>
 <td style="text-align:center;min-width: 6em; background-color: white !important;">
-NA
 </td>
 <td style="text-align:center;min-width: 6em; background-color: white !important;">
 Integer
 </td>
 <td style="text-align:center;min-width: 6em; background-color: white !important;">
-NA
 </td>
 <td style="text-align:center;min-width: 6em; background-color: white !important;">
 0-3
 </td>
 <td style="text-align:center;min-width: 6em; background-color: white !important;">
-NA
 </td>
 </tr>
 <tr>
@@ -2088,19 +2085,16 @@ NA
 List of ID’s of groups in aed_zoo_pars.nml (len=num_phyto)
 </td>
 <td style="text-align:center;min-width: 6em; background-color: white !important;">
-NA
 </td>
 <td style="text-align:center;min-width: 6em; background-color: white !important;">
 Integer
 </td>
 <td style="text-align:center;min-width: 6em; background-color: white !important;">
-NA
 </td>
 <td style="text-align:center;min-width: 6em; background-color: white !important;">
 1/3/17
 </td>
 <td style="text-align:center;min-width: 6em; background-color: white !important;">
-NA
 </td>
 </tr>
 <tr>
@@ -2111,19 +2105,15 @@ NA
 Number of sediment zones where bivalves will be active
 </td>
 <td style="text-align:center;min-width: 6em; background-color: white !important;">
-NA
 </td>
 <td style="text-align:center;min-width: 6em; background-color: white !important;">
 Integer
 </td>
 <td style="text-align:center;min-width: 6em; background-color: white !important;">
-NA
 </td>
 <td style="text-align:center;min-width: 6em; background-color: white !important;">
-NA
 </td>
 <td style="text-align:center;min-width: 6em; background-color: white !important;">
-NA
 </td>
 </tr>
 <tr>
@@ -2134,19 +2124,15 @@ NA
 The vector of sediment zones to include
 </td>
 <td style="text-align:center;min-width: 6em; background-color: white !important;">
-NA
 </td>
 <td style="text-align:center;min-width: 6em; background-color: white !important;">
 Integer (vector)
 </td>
 <td style="text-align:center;min-width: 6em; background-color: white !important;">
-NA
 </td>
 <td style="text-align:center;min-width: 6em; background-color: white !important;">
-NA
 </td>
 <td style="text-align:center;min-width: 6em; background-color: white !important;">
-NA
 </td>
 </tr>
 <tr>
@@ -2157,7 +2143,6 @@ NA
 Opton to include water column tracer tracking filtration amount
 </td>
 <td style="text-align:center;min-width: 6em; background-color: white !important;">
-NA
 </td>
 <td style="text-align:center;min-width: 6em; background-color: white !important;">
 Boolean
@@ -2166,10 +2151,8 @@ Boolean
 .false.
 </td>
 <td style="text-align:center;min-width: 6em; background-color: white !important;">
-NA
 </td>
 <td style="text-align:center;min-width: 6em; background-color: white !important;">
-NA
 </td>
 </tr>
 <tr>
@@ -2180,7 +2163,6 @@ NA
 Switch to enable/disable feedbacks between bivalve metabolism and water column variable concentration
 </td>
 <td style="text-align:center;min-width: 6em; background-color: white !important;">
-NA
 </td>
 <td style="text-align:center;min-width: 6em; background-color: white !important;">
 Boolean
@@ -2189,10 +2171,8 @@ Boolean
 .false.
 </td>
 <td style="text-align:center;min-width: 6em; background-color: white !important;">
-NA
 </td>
 <td style="text-align:center;min-width: 6em; background-color: white !important;">
-NA
 </td>
 </tr>
 <tr>
@@ -2203,19 +2183,15 @@ NA
 Water column variable to receive DON excretion
 </td>
 <td style="text-align:center;min-width: 6em; background-color: white !important;">
-NA
 </td>
 <td style="text-align:center;min-width: 6em; background-color: white !important;">
 String
 </td>
 <td style="text-align:center;min-width: 6em; background-color: white !important;">
-NA
 </td>
 <td style="text-align:center;min-width: 6em; background-color: white !important;">
-NA
 </td>
 <td style="text-align:center;min-width: 6em; background-color: white !important;">
-NA
 </td>
 </tr>
 <tr>
@@ -2226,19 +2202,15 @@ NA
 Water column variable to receive PON egestion/mortality
 </td>
 <td style="text-align:center;min-width: 6em; background-color: white !important;">
-NA
 </td>
 <td style="text-align:center;min-width: 6em; background-color: white !important;">
 String
 </td>
 <td style="text-align:center;min-width: 6em; background-color: white !important;">
-NA
 </td>
 <td style="text-align:center;min-width: 6em; background-color: white !important;">
-NA
 </td>
 <td style="text-align:center;min-width: 6em; background-color: white !important;">
-NA
 </td>
 </tr>
 <tr>
@@ -2249,19 +2221,15 @@ NA
 Water column variable to receive DOP excretion
 </td>
 <td style="text-align:center;min-width: 6em; background-color: white !important;">
-NA
 </td>
 <td style="text-align:center;min-width: 6em; background-color: white !important;">
 String
 </td>
 <td style="text-align:center;min-width: 6em; background-color: white !important;">
-NA
 </td>
 <td style="text-align:center;min-width: 6em; background-color: white !important;">
-NA
 </td>
 <td style="text-align:center;min-width: 6em; background-color: white !important;">
-NA
 </td>
 </tr>
 <tr>
@@ -2272,19 +2240,15 @@ NA
 Water column variable to receive POP egestion/mortality
 </td>
 <td style="text-align:center;min-width: 6em; background-color: white !important;">
-NA
 </td>
 <td style="text-align:center;min-width: 6em; background-color: white !important;">
 String
 </td>
 <td style="text-align:center;min-width: 6em; background-color: white !important;">
-NA
 </td>
 <td style="text-align:center;min-width: 6em; background-color: white !important;">
-NA
 </td>
 <td style="text-align:center;min-width: 6em; background-color: white !important;">
-NA
 </td>
 </tr>
 <tr>
@@ -2295,19 +2259,15 @@ NA
 Water column variable to receive DOC excretion
 </td>
 <td style="text-align:center;min-width: 6em; background-color: white !important;">
-NA
 </td>
 <td style="text-align:center;min-width: 6em; background-color: white !important;">
 String
 </td>
 <td style="text-align:center;min-width: 6em; background-color: white !important;">
-NA
 </td>
 <td style="text-align:center;min-width: 6em; background-color: white !important;">
-NA
 </td>
 <td style="text-align:center;min-width: 6em; background-color: white !important;">
-NA
 </td>
 </tr>
 <tr>
@@ -2318,19 +2278,15 @@ NA
 Water column variable to receive POC egestion/mortality
 </td>
 <td style="text-align:center;min-width: 6em; background-color: white !important;">
-NA
 </td>
 <td style="text-align:center;min-width: 6em; background-color: white !important;">
 String
 </td>
 <td style="text-align:center;min-width: 6em; background-color: white !important;">
-NA
 </td>
 <td style="text-align:center;min-width: 6em; background-color: white !important;">
-NA
 </td>
 <td style="text-align:center;min-width: 6em; background-color: white !important;">
-NA
 </td>
 </tr>
 <tr>
@@ -2341,19 +2297,15 @@ NA
 Water column variable providing DO concentration
 </td>
 <td style="text-align:center;min-width: 6em; background-color: white !important;">
-NA
 </td>
 <td style="text-align:center;min-width: 6em; background-color: white !important;">
 String
 </td>
 <td style="text-align:center;min-width: 6em; background-color: white !important;">
-NA
 </td>
 <td style="text-align:center;min-width: 6em; background-color: white !important;">
-NA
 </td>
 <td style="text-align:center;min-width: 6em; background-color: white !important;">
-NA
 </td>
 </tr>
 <tr>
@@ -2364,19 +2316,15 @@ NA
 Water column variable providing SS concentration
 </td>
 <td style="text-align:center;min-width: 6em; background-color: white !important;">
-NA
 </td>
 <td style="text-align:center;min-width: 6em; background-color: white !important;">
 String
 </td>
 <td style="text-align:center;min-width: 6em; background-color: white !important;">
-NA
 </td>
 <td style="text-align:center;min-width: 6em; background-color: white !important;">
-NA
 </td>
 <td style="text-align:center;min-width: 6em; background-color: white !important;">
-NA
 </td>
 </tr>
 <tr>
@@ -2384,10 +2332,8 @@ NA
 <code>dbase = 'AED2/aed2_bivalve_pars.nml'</code>
 </td>
 <td style="text-align:center;min-width: 6em; background-color: white !important;">
-NA
 </td>
 <td style="text-align:center;min-width: 6em; background-color: white !important;">
-NA
 </td>
 <td style="text-align:center;min-width: 6em; background-color: white !important;">
 String
@@ -2399,7 +2345,6 @@ aed2_bivalve_pars.nml
 aed2/aed2_bivalve_pars.nml
 </td>
 <td style="text-align:center;min-width: 6em; background-color: white !important;">
-NA
 </td>
 </tr>
 <tr>
@@ -2410,7 +2355,6 @@ NA
 Switch to enable/disable extra diagnostics to be output
 </td>
 <td style="text-align:center;min-width: 6em; background-color: white !important;">
-NA
 </td>
 <td style="text-align:center;min-width: 6em; background-color: white !important;">
 Boolean
@@ -2419,10 +2363,8 @@ Boolean
 .false.
 </td>
 <td style="text-align:center;min-width: 6em; background-color: white !important;">
-NA
 </td>
 <td style="text-align:center;min-width: 6em; background-color: white !important;">
-NA
 </td>
 </tr>
 <tr>
@@ -2433,7 +2375,6 @@ NA
 Switch to enable/disable environmental variables to be fixed (for testing)
 </td>
 <td style="text-align:center;min-width: 6em; background-color: white !important;">
-NA
 </td>
 <td style="text-align:center;min-width: 6em; background-color: white !important;">
 Boolean
@@ -2442,10 +2383,8 @@ Boolean
 .false.
 </td>
 <td style="text-align:center;min-width: 6em; background-color: white !important;">
-NA
 </td>
 <td style="text-align:center;min-width: 6em; background-color: white !important;">
-NA
 </td>
 </tr>
 <tr>
@@ -2462,13 +2401,11 @@ C
 Float
 </td>
 <td style="text-align:center;min-width: 6em; background-color: white !important;">
-NA
 </td>
 <td style="text-align:center;min-width: 6em; background-color: white !important;">
 20
 </td>
 <td style="text-align:center;min-width: 6em; background-color: white !important;">
-NA
 </td>
 </tr>
 <tr>
@@ -2485,13 +2422,11 @@ Fixed oxygen concentration
 Float
 </td>
 <td style="text-align:center;min-width: 6em; background-color: white !important;">
-NA
 </td>
 <td style="text-align:center;min-width: 6em; background-color: white !important;">
 300
 </td>
 <td style="text-align:center;min-width: 6em; background-color: white !important;">
-NA
 </td>
 </tr>
 <tr>
@@ -2508,13 +2443,11 @@ Fixed food concentration
 Float
 </td>
 <td style="text-align:center;min-width: 6em; background-color: white !important;">
-NA
 </td>
 <td style="text-align:center;min-width: 6em; background-color: white !important;">
 20
 </td>
 <td style="text-align:center;min-width: 6em; background-color: white !important;">
-NA
 </td>
 </tr>
 </tbody>
