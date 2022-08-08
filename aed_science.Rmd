@@ -1,3 +1,302 @@
+---
+title: "The AED Manual"
+author: ""
+date: "`r Sys.Date()`"
+site: bookdown::bookdown_site
+documentclass: book
+bibliography:  ["references/carbon.bib", 
+                "references/oxygen.bib",
+                "references/bivalves.bib",
+                "references/generic_utilities_functions.bib", 
+                "references/nitrogen.bib",
+                "references/pathogens.bib",
+                "references/publications.bib"]
+csl: "references/elsevier-harvard_edited.csl"
+link-citations: yes
+github-repo: AquaticEcoDynamics/aed-science/
+url: ''
+description: "Work in progress."
+---
+
+# Modelling Aquatic Eco-Dynamics: Overview of the AED modular simulation platform {-}
+
+Placeholder
+
+
+## Welcome! {-}
+## How to contribute?{-}
+## Editing the book{-}
+## How to cite this book{-}
+## Supporting the project{-}
+
+<!--chapter:end:index.Rmd-->
+
+
+# Preface {-}
+
+Placeholder
+
+
+## Who is this book for? {-}
+## Why AED? {-}
+## Acknowledgements {-}
+
+<!--chapter:end:03-preface.Rmd-->
+
+
+# Introduction
+
+Placeholder
+
+
+## Scientific Overview {-}
+## Application Contexts {-}
+## Navigating this book {-}
+
+<!--chapter:end:04-intro.Rmd-->
+
+
+# Nomenclature
+
+Placeholder
+
+
+## Variables and Data Types
+## A Note on Notation
+### General Notation
+### Model Domain and Position
+### Environmental Conditions
+### Transport Reference Frame
+
+<!--chapter:end:05-nomenclature.Rmd-->
+
+
+# Organisation of the Library & Module Structure
+
+Placeholder
+
+
+## Library Design
+## Model Structure
+## Module Summary
+
+<!--chapter:end:06-organisation_and_structure.Rmd-->
+
+
+# (PART)  AED Water Modules{-} 
+
+Placeholder
+
+
+## Contributors
+## Overview
+## Model Description
+### Process Descriptions
+#### Oxygen solubility & atmospheric exchange {-}
+#### Sediment oxygen demand {-}
+### Optional Module Links
+### Feedbacks to the Host Model
+### Variable Summary
+#### State variables {-}
+#### Diagnostics{-}
+### Parameter Summary
+## Setup & Configuration
+## Case Studies & Examples
+### Case Study: Swan-Canning Estuary
+### Publications
+
+<!--chapter:end:10-dissolved_oxygen.Rmd-->
+
+
+# Inorganic Carbon {#Carbon_1}
+
+Placeholder
+
+
+## Contributors
+## Overview
+## Model Description
+### Process Descriptions
+#### Carbonate buffering and pH
+##### co2_model = 0
+##### co2_model = 1
+##### co2_model = 2
+#### Sediment exchange
+### Optional Module Links
+### Feedbacks to the Host Model
+### Variable Summary
+#### State variables {.unnumbered}
+#### Diagnostics {.unnumbered}
+### Parameter Summary
+## Setup & Configuration
+## Case Studies & Examples
+### Case Study : South-east Queensland estuaries {#SEQCarbonCaseStudy}
+### Case Study : Lake Kinneret
+### Publications
+
+<!--chapter:end:11-carbon.Rmd-->
+
+
+# Inorganic Nitrogen
+
+Placeholder
+
+
+## Contributors
+## Overview
+## Model Description - Default Model
+### Process Descriptions
+#### Nitrification and denitrification reactions
+#### Nitrification
+#### Denitrification
+#### Atmospheric deposition
+#### Sediment flux
+### Variable Summary
+### Parameter Summary
+### Optional Module Links
+### Feedbacks to the Host Model
+## Model Description - Adding N~2~O Reactions
+### Process Descriptions (`simN20` = 1)
+#### Denitrification production of N~2~O
+#### Denitrification consumption of N~2~O
+#### Nitrification production of N~2~O
+#### Atmospheric N~2~O Flux
+#### Sediment N~2~O Flux
+### Process Descriptions (`simN2O = 2`)
+#### Nitrogen Oxidation Pathways
+#### Nitratation
+#### Ammonium oxidation
+#### Nitritation
+#### Nitrousation
+#### Organic matter oxidation - nitrogen reduction reactions
+#### Deammonification (anammox) pathway
+### Variable Summary
+#### State variables
+#### Diagnostics variables
+### Parameter summary
+### Optional Module Links
+### Feedbacks to the Host Model
+## Setup & Configuration
+## Case Studies & Examples
+### Case Study: Yarra River Estuary
+### Publications
+
+<!--chapter:end:12-nitrogen.Rmd-->
+
+
+# Inorganic Phosphorus
+
+Placeholder
+
+
+## Contributors
+## Overview
+## Model Description
+#### Phosphate sorption - desorption
+#### Atmospheric deposition
+#### Dissolved sediment flux
+#### Sedimentation and resuspension
+#### State variables {-}
+#### Diagnostics{-}
+## Setup & Configuration
+## Case Studies & Examples
+### Publications
+
+<!--chapter:end:13-phosphorous.Rmd-->
+
+
+# Silica
+
+Placeholder
+
+
+## Contributors
+#### State variables {-}
+#### Diagnostics{-}
+## Setup & Configuration
+
+<!--chapter:end:14-silica.Rmd-->
+
+
+# Organic Matter  {#organic-matter}
+
+Placeholder
+
+
+## Contributors
+## Overview
+## Model Description
+#### Hydrolysis
+#### Mineralisation
+#### Photolysis
+#### CPOM breakdown
+#### Sediment exchange
+#### Settling
+#### Resuspension
+#### State variables {-}
+#### Diagnostics{-}
+## Setup & Configuration
+
+<!--chapter:end:15-organic_matter.Rmd-->
+
+
+# Phytoplankton
+
+Placeholder
+
+
+## Contributors
+## Overview
+## Model Description
+#### Photosynthesis & Nutrient Uptake {-}
+#### Respiration, Excretion & Mortality {-}
+#### State Variables {-}
+#### Diagnostics {-}
+## Setup & Configuration
+### Setup Example
+## Case Studies & Examples
+
+<!--chapter:end:16-phytoplankton.Rmd-->
+
+
+# Aqueous Geochemistry 
+
+Placeholder
+
+
+## Contributors
+## Overview
+## Model Description
+#### Aqueous Speciation & Solubility Equilibrium Control {-}
+#### State Variables {-}
+## Setup & Configuration
+### Setup Example
+
+<!--chapter:end:19-aqueous_geochemistry.Rmd-->
+
+
+# Pathogens & Microbial Indicator Organisms
+
+Placeholder
+
+
+## Contributors
+## Overview
+## Model Description
+#### General Approach {-}
+### Process Descriptions
+#### Natural Mortality {-}
+#### Sunlight Inactivation {-}
+#### Sedimentation {-}
+#### Resupension {-}
+#### State Variables {-}
+#### Diagnostics {-}
+## Setup & Configuration
+### Setup Example
+## Case Studies & Examples
+
+<!--chapter:end:20-pathogens_microbial_indicators.Rmd-->
+
 # (PART) AED Benthic Modules {-} 
 
 # Sediment Biogeochemistry
@@ -1142,4 +1441,68 @@ library(readxl)
 <!-- library(downlit) -->
 
 <!-- \@ref(fig:23-pic2) -->
+
+
+<!--chapter:end:23-sediment_biogeochemistry.Rmd-->
+
+
+# Bivalves
+
+Placeholder
+
+
+## Contributors
+## Overview
+## Model Description
+#### Ingestion {-}
+#### Respiration {-}
+#### Excretion {-}
+#### Egestion {-}
+#### Mortality {-}
+#### State Variables {-}
+#### Diagnostics {-}
+## Setup & Configuration
+### Setup Example
+## Case Studies & Examples
+
+<!--chapter:end:26-bivalves.Rmd-->
+
+
+# (PART)  Supporting Material {-}
+# Generic Utilities & Functions {#genericUtilitiesFunctions}
+
+Placeholder
+
+
+### Gas Transfer {#GAS}
+
+<!--chapter:end:33-generic_utilities_functions.Rmd-->
+
+
+# Publications
+
+Placeholder
+
+
+
+<!--chapter:end:34-publications.Rmd-->
+
+
+# Forthcoming chapters {-}
+
+Placeholder
+
+
+## We invite you to contribute to these chapters! {-}
+## Editing the book{-}
+
+<!--chapter:end:37-forthcoming.Rmd-->
+
+\backmatter
+
+`r if (knitr::is_html_output()) '
+# References {-}
+'`
+
+<!--chapter:end:36-references.Rmd-->
 
