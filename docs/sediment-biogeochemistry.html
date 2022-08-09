@@ -22,7 +22,7 @@
 
 
 
-<meta name="date" content="2022-08-04" />
+<meta name="date" content="2022-08-09" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -397,9 +397,13 @@ div.csl-indent {
 <li class="chapter" data-level="13.4.2" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#boundary-settings"><i class="fa fa-check"></i><b>13.4.2</b> Boundary settings</a></li>
 <li class="chapter" data-level="13.4.3" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#parameter-definition"><i class="fa fa-check"></i><b>13.4.3</b> Parameter Definition</a></li>
 </ul></li>
-<li class="chapter" data-level="13.5" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#setup-example-3"><i class="fa fa-check"></i><b>13.5</b> Setup example</a>
+<li class="chapter" data-level="13.5" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#model-output-post-processing"><i class="fa fa-check"></i><b>13.5</b> Model Output &amp; Post-processing</a>
 <ul>
-<li class="chapter" data-level="13.5.1" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#model-output-post-processing"><i class="fa fa-check"></i><b>13.5.1</b> Model Output &amp; Post-processing</a></li>
+<li class="chapter" data-level="" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#concentration-.sed-files"><i class="fa fa-check"></i>Concentration: .sed files</a></li>
+<li class="chapter" data-level="" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#flux-swi_fluxes.sed"><i class="fa fa-check"></i>Flux: swi_fluxes.sed</a></li>
+<li class="chapter" data-level="" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#other-variables-.sed"><i class="fa fa-check"></i>Other variables: .sed</a></li>
+<li class="chapter" data-level="" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#diagnostics-7"><i class="fa fa-check"></i>Diagnostics:</a></li>
+<li class="chapter" data-level="" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#rates-rates.sed"><i class="fa fa-check"></i>Rates: rates.sed</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="14" data-path="bivalves.html"><a href="bivalves.html"><i class="fa fa-check"></i><b>14</b> Bivalves</a>
@@ -416,7 +420,7 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="14.4" data-path="bivalves.html"><a href="bivalves.html#setup-configuration-10"><i class="fa fa-check"></i><b>14.4</b> Setup &amp; Configuration</a>
 <ul>
-<li class="chapter" data-level="14.4.1" data-path="bivalves.html"><a href="bivalves.html#setup-example-4"><i class="fa fa-check"></i><b>14.4.1</b> Setup Example</a></li>
+<li class="chapter" data-level="14.4.1" data-path="bivalves.html"><a href="bivalves.html#setup-example-3"><i class="fa fa-check"></i><b>14.4.1</b> Setup Example</a></li>
 </ul></li>
 <li class="chapter" data-level="14.5" data-path="bivalves.html"><a href="bivalves.html#case-studies-examples-6"><i class="fa fa-check"></i><b>14.5</b> Case Studies &amp; Examples</a>
 <ul>
@@ -543,7 +547,7 @@ Figure 13.2: Three options for different levels of complexity in organic matter 
 </p>
 </div>
 <p><br></p>
-<p>The terminal redox reaction pathways are the six pathways that are available in most diagenesis models, and are driven by different organic matter pools, depending on the <em>OMModel</em> configuration chosen from the above options (Table x). AED CANDI allows the use of Approach 1 or 2 organic matter oxidation rate equations, as examined in detail in Paraska et al (2015).</p>
+<p>The terminal redox reaction pathways are the six pathways that are available in most diagenesis models, and are driven by different organic matter pools, depending on the <code>OMModel</code> configuration chosen from the above options (Table x). AED CANDI allows the use of Approach 1 or 2 organic matter oxidation rate equations, as examined in detail in Paraska et al (2015).</p>
 <p>The decay of the complex <span class="math inline">\(OM\)</span> types to the LMW <span class="math inline">\(DOM\)</span> required for the hetertrophic bacteria to utilise are all modelled with a simple first-order decay rate. The subsequent reactions for terminal metabolism that describe the breakdown of <span class="math inline">\(OM\)</span> may be written as:
 <span class="math display">\[\begin{eqnarray}
 \overbrace{(CH_2O)_{106}(NH_3)_{16}(H_3PO_4)}^{\textrm{organic matter}} &amp;+&amp; 138O_2 \rightarrow \nonumber
@@ -616,11 +620,11 @@ Figure 13.3: Upon sedimentation, the frame of reference shifts upwards. The bott
 </div>
 <div id="porewater" class="section level5 unnumbered hasAnchor">
 <h5>Porewater<a href="sediment-biogeochemistry.html#porewater" class="anchor-section" aria-label="Anchor link to header"></a></h5>
-<p>For the porewater components, diffusion coefficients are used that are based on free-solution molecular diffusion constants corrected for sediment tortuosity, <span class="math inline">\(θ\)</span>. Porewater moves downwards at the same rate as the solids (<span class="math inline">\(\omega_{00}\)</span>). A further porewater advection term (<code>poreflux</code>) is available, which could represent, for example, pressure on the sediment from a groundwater source. If <code>poreflux</code> is positive, then porewater moves upwards, relative to particles. Conversely, if <code>poreflux</code> is negative, then the porewater moves downwards relative to the particles. In most simulations <code>poreflux</code> is zero and advection is the transport process.</p>
+<p>For the porewater components, diffusion coefficients are used that are based on free-solution molecular diffusion constants corrected for sediment tortuosity, <span class="math inline">\(θ\)</span>. Porewater moves downwards at the same rate as the solids (<span class="math inline">\(\omega_{00}\)</span>). A further porewater advection term (<code>poreflux</code>) is available, which could represent, for example, pressure on the sediment from a groundwater source. If <code>poreflux</code> is positive, then porewater moves upwards, relative to particles. Conversely, if <code>poreflux</code> is negative, then the porewater moves downwards relative to the particles. In most simulations <code>poreflux</code> is zero and advection is the transport process. A dynamic <code>poreflux</code> can be assigned using the column headings <code>w00h00</code> in swibc.dat or <code>pf</code> in deepbc.dat (see setup section below).</p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:Phys2"></span>
-<img src="images/23-sediment_biogeochemistry/AdvectionDispersion/Poreflux-04.png" alt="Porewater is advected at the same rate as burial. If *poreflux* is non-zero, an additional rate of advection is applied to porewater. The direction is upwards when *poreflux* is positive, downwards when *poreflux* is negative." width="100%" />
+<img src="images/23-sediment_biogeochemistry/AdvectionDispersion/Poreflux-04.png" alt="Porewater is advected at the same rate as burial. If `poreflux` is non-zero, an additional rate of advection is applied to porewater. The direction is upwards when `poreflux` is positive, downwards when *poreflux* is negative." width="100%" />
 <p class="caption">
-Figure 13.4: Porewater is advected at the same rate as burial. If <em>poreflux</em> is non-zero, an additional rate of advection is applied to porewater. The direction is upwards when <em>poreflux</em> is positive, downwards when <em>poreflux</em> is negative.
+Figure 13.4: Porewater is advected at the same rate as burial. If <code>poreflux</code> is non-zero, an additional rate of advection is applied to porewater. The direction is upwards when <code>poreflux</code> is positive, downwards when <em>poreflux</em> is negative.
 </p>
 </div>
 </div>
@@ -634,15 +638,15 @@ Figure 13.5: Bioturbation is the mixing of solids and porewater in the upper lay
 </p>
 </div>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:Phys-4"></span>
-<img src="images/23-sediment_biogeochemistry/Initialisation/Bioturb-02.png" alt="Bioturbation is more likely to occur towards the sediment water interface, and below a certain depth does not occur at all. " width="90%" />
+<img src="images/23-sediment_biogeochemistry/Initialisation/Bioturb-02.png" alt="Depth profile representing two possible bioturbation options. Bioturbation is more likely to occur towards the sediment water interface, and below a certain depth does not occur at all." width="90%" />
 <p class="caption">
-Figure 13.6: Bioturbation is more likely to occur towards the sediment water interface, and below a certain depth does not occur at all.
+Figure 13.6: Depth profile representing two possible bioturbation options. Bioturbation is more likely to occur towards the sediment water interface, and below a certain depth does not occur at all.
 </p>
 </div>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:Phys-5"></span>
-<img src="images/23-sediment_biogeochemistry/Initialisation/Irrig-01.png" alt="Since shallow burrows are more likely than deep burrows, the amount of irrigation decreases with depth." width="60%" />
+<img src="images/23-sediment_biogeochemistry/Initialisation/Irrig-01.png" alt="Depth profile figure representing a possible irrigation setup. Since shallow burrows are more likely than deep burrows, the amount of irrigation decreases with depth." width="55%" />
 <p class="caption">
-Figure 13.7: Since shallow burrows are more likely than deep burrows, the amount of irrigation decreases with depth.
+Figure 13.7: Depth profile figure representing a possible irrigation setup. Since shallow burrows are more likely than deep burrows, the amount of irrigation decreases with depth.
 </p>
 </div>
 </div>
@@ -680,23 +684,30 @@ Figure 13.8: Example depth profile of porosity.
 <h4>Physical-chemical interactions<a href="sediment-biogeochemistry.html#physical-chemical-interactions" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <div id="salinity-inhibition" class="section level5 unnumbered hasAnchor">
 <h5>Salinity inhibition<a href="sediment-biogeochemistry.html#salinity-inhibition" class="anchor-section" aria-label="Anchor link to header"></a></h5>
-<p>Salinity was set as a permanently linked variable from the water column AED model, without using <em>water_link</em>.</p>
-<p>A special salinity factor, <span class="math inline">\(F_{Sal}\)</span> was developed for the salinity in the Coorong, to inhibit processes at hypersaline concentrations. <span class="math inline">\(F_{Sal}\)</span> ranges from 1 to 0, as set between salinity concentration parameters <em>Sal1</em> and <em>Sal2</em> (PSU).</p>
+<p>Salinity was set as a permanently linked variable from the water column AED model, without using <code>water_link</code>.</p>
+<p>A special salinity factor, <span class="math inline">\(F_{Sal}\)</span> was developed for the salinity in the Coorong, to inhibit processes at hypersaline concentrations. <span class="math inline">\(F_{Sal}\)</span> ranges from 1 to 0, as set between salinity concentration parameters <code>Sal1</code> and <code>Sal2</code> (PSU).</p>
 <p>The equations for <span class="math inline">\(F_{Sal}\)</span> are given below.</p>
-<span class="math display">\[\begin{eqnarray}
-     If   Salinity &lt; Sal_1 \ \ then \  \     F_{Sal} = 1 \
+<p><span class="math display">\[\begin{align*}
+\text{If  } \  \  Salinity &lt; Sal_1 \ \
+\\
+&amp;F_{Sal} = 1 \
     \\
     \\
-     If   Salinity &gt; Sal_1  then     \frac {Sal_2 - Salinity} {Sal_2 - Sal_1} \
+\text{If  }    Salinity &gt; Sal_1  
+&amp;\frac {Sal_2 - Salinity} {Sal_2 - Sal_1} \
     \\
     \\
-     If   Salinity &gt; Sal_2  then      F_{Sal} = 1 \
-\end{eqnarray}\]</span>
+\text{If  }   Salinity &gt; Sal_2  
+&amp;F_{Sal} = 1 \
+\end{align*}\]</span> \
+Salinity &gt; Sal_2<br />
+&amp;F_{Sal} = 1<br />
+\end{align*}</p>
 <p>The effect of the scaling is shown in Figure <a href="sediment-biogeochemistry.html#fig:PhysChem1">13.9</a>.</p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:PhysChem1"></span>
-<img src="images/23-sediment_biogeochemistry/PhysChemInteractions/FSal-02.png" alt="Diaagram of the salinity factor $F_{Sal}$, scaling between 1 and 0 between the parameters. In this diagram *Sal~1~* is 40 and *Sal~2~* is 70." width="50%" />
+<img src="images/23-sediment_biogeochemistry/PhysChemInteractions/FSal-02.png" alt="Diaagram of the salinity factor $F_{Sal}$, scaling between 1 and 0 between the parameters. In this diagram `Sal~1~` is 40 and `Sal~2~` is 70." width="50%" />
 <p class="caption">
-Figure 13.9: Diaagram of the salinity factor <span class="math inline">\(F_{Sal}\)</span>, scaling between 1 and 0 between the parameters. In this diagram <em>Sal<sub>1</sub></em> is 40 and <em>Sal<sub>2</sub></em> is 70.
+Figure 13.9: Diaagram of the salinity factor <span class="math inline">\(F_{Sal}\)</span>, scaling between 1 and 0 between the parameters. In this diagram <code>Sal~1~</code> is 40 and <code>Sal~2~</code> is 70.
 </p>
 </div>
 <p><span class="math inline">\(F_{Sal}\)</span> is applied to biota-driven mixing (see below) and to the nitrogen redox and adsorption reactions. It is multiplied by the following reactions:</p>
@@ -719,7 +730,7 @@ Figure 13.9: Diaagram of the salinity factor <span class="math inline">\(F_{Sal}
 F_{Sul} = \frac {K_{H_{2}S}} {(K_{H_{2}S} + H_{2}S)}
 
 \end{eqnarray}\]</span>
-<p>As with <span class="math inline">\(F_{Sal}\)</span>, <span class="math inline">\(F_{Sul}\)</span> scales between 1 and 0, however, as a decay rather than a stepped function (Figure <a href="sediment-biogeochemistry.html#fig:PhysChem2">13.10</a>). The value for <em>K<sub>H2S</sub></em> can be found in the physical parameters table below In this simulation, the same value for <em>K<sub>H2S</sub></em> was used in all zones.</p>
+<p>As with <span class="math inline">\(F_{Sal}\)</span>, <span class="math inline">\(F_{Sul}\)</span> scales between 1 and 0, however, as a decay rather than a stepped function (Figure <a href="sediment-biogeochemistry.html#fig:PhysChem2">13.10</a>). The value for <code>K~H2S~</code> can be found in the physical parameters table below In this simulation, the same value for <code>K~H2S~</code> was used in all zones.</p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:PhysChem2"></span>
 <img src="images/23-sediment_biogeochemistry/PhysChemInteractions/FSul-02.png" alt="Diagram of the $H_2S$ factor, $F_{Sul}$, scaling from 1 to 0 as $H_2S$ concentration decreases. " width="50%" />
 <p class="caption">
@@ -733,12 +744,12 @@ Figure 13.10: Diagram of the <span class="math inline">\(H_2S\)</span> factor, <
 </div>
 <div id="o2-injections" class="section level5 unnumbered hasAnchor">
 <h5>O~2 injections<a href="sediment-biogeochemistry.html#o2-injections" class="anchor-section" aria-label="Anchor link to header"></a></h5>
-<p><span class="math inline">\(O_2\)</span> is injected into the sediment from microphytobenthic algae (<span class="math inline">\(MPB\)</span>) and from plant roots (<a href="sediment-biogeochemistry.html#fig:PhysChem3">13.11</a>). The <span class="math inline">\(O_2\)</span> is not part of the mass balance of the ecosystem and it is not in stoichiometric balance with biomass or <span class="math inline">\(∑CO_2\)</span>. The depths where the <span class="math inline">\(O_2\)</span> is injected are set separately for <span class="math inline">\(MPB\)</span> and roots. The <span class="math inline">\(O_2\)</span> in these layers from <span class="math inline">\(MPB\)</span> is set as a rate of both gross primary production (<span class="math inline">\(Rgpp O_2 input\)</span>) and respiration (<span class="math inline">\(Rrsp O_2 consumption\)</span>). The rate <span class="math inline">\(Rgpp\)</span> is calculated as a function of the <span class="math inline">\(MPB\)</span> production rate, the parameter <em>fgpp<sub>sflux</sub></em> and a decay with depth. The production rate is linked directly to the rate calculated in the water column model. Similarly, the rate <span class="math inline">\(Rrsp\)</span> is calculated as a function of the respiration rate, the same parameter <em>fgpp<sub>sflux</sub></em> and a decay with depth. The respiration rate is also linked directly to the rate calculated in the water column model. Below the parameter <em>MPBDepth</em>, <span class="math inline">\(Rgpp\)</span> is zero, which means that the <span class="math inline">\(MPB\)</span> cannot photosynthesise without light. Below <em>MPBDepth</em> the rate <span class="math inline">\(Rrsp\)</span> is the product of <span class="math inline">\(MPB\)</span> biomass and 52 days, which means that the cells die within a week without access to light.</p>
+<p><span class="math inline">\(O_2\)</span> is injected into the sediment from microphytobenthic algae (<span class="math inline">\(MPB\)</span>) and from plant roots (<a href="sediment-biogeochemistry.html#fig:PhysChem3">13.11</a>). The <span class="math inline">\(O_2\)</span> is not part of the mass balance of the ecosystem and it is not in stoichiometric balance with biomass or <span class="math inline">\(∑CO_2\)</span>. The depths where the <span class="math inline">\(O_2\)</span> is injected are set separately for <span class="math inline">\(MPB\)</span> and roots. The <span class="math inline">\(O_2\)</span> in these layers from <span class="math inline">\(MPB\)</span> is set as a rate of both gross primary production (<span class="math inline">\(Rgpp O_2 input\)</span>) and respiration (<span class="math inline">\(Rrsp O_2 consumption\)</span>). The rate <span class="math inline">\(Rgpp\)</span> is calculated as a function of the <span class="math inline">\(MPB\)</span> production rate, the parameter <code>fgpp~sflux~</code> and a decay with depth. The production rate is linked directly to the rate calculated in the water column model. Similarly, the rate <span class="math inline">\(Rrsp\)</span> is calculated as a function of the respiration rate, the same parameter <code>fgpp~sflux~</code> and a decay with depth. The respiration rate is also linked directly to the rate calculated in the water column model. Below the parameter <code>MPBDepth</code>, <span class="math inline">\(Rgpp\)</span> is zero, which means that the <span class="math inline">\(MPB\)</span> cannot photosynthesise without light. Below <code>MPBDepth</code> the rate <span class="math inline">\(Rrsp\)</span> is the product of <span class="math inline">\(MPB\)</span> biomass and 52 days, which means that the cells die within a week without access to light.</p>
 <p>The rate of <span class="math inline">\(O_2\)</span> injection from roots is calculated from the variable <span class="math inline">\(RTO_2\)</span>, which applies above the depth <span class="math inline">\(RTDP\)</span>. Both <span class="math inline">\(RTO_2\)</span> and <span class="math inline">\(RTDP\)</span> are linked directly from the water column model.</p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:PhysChem3"></span>
-<img src="images/23-sediment_biogeochemistry/PhysChemInteractions/O2Inject-09.png" alt="Schematic of the new parameterisation of $O_2$ injection into the sediment. Left: $O_2$ is released where $MPB$ are respiring. Right: $O_2$ comes from plant roots to the depth of *RTDP*." width="75%" />
+<img src="images/23-sediment_biogeochemistry/PhysChemInteractions/O2Inject-09.png" alt="Schematic of the new parameterisation of $O_2$ injection into the sediment. Left: $O_2$ is released where $MPB$ are respiring. Right: $O_2$ comes from plant roots to the depth of `RTDP`." width="75%" />
 <p class="caption">
-Figure 13.11: Schematic of the new parameterisation of <span class="math inline">\(O_2\)</span> injection into the sediment. Left: <span class="math inline">\(O_2\)</span> is released where <span class="math inline">\(MPB\)</span> are respiring. Right: <span class="math inline">\(O_2\)</span> comes from plant roots to the depth of <em>RTDP</em>.
+Figure 13.11: Schematic of the new parameterisation of <span class="math inline">\(O_2\)</span> injection into the sediment. Left: <span class="math inline">\(O_2\)</span> is released where <span class="math inline">\(MPB\)</span> are respiring. Right: <span class="math inline">\(O_2\)</span> comes from plant roots to the depth of <code>RTDP</code>.
 </p>
 </div>
 </div>
@@ -755,7 +766,7 @@ Figure 13.11: Schematic of the new parameterisation of <span class="math inline"
 <li>concentration of dissolved substances in the bottom water, <span class="math inline">\(mmol/m^3\)</span></li>
 <li>flux of dissolved substances from the top sediment layer to or from the water, <span class="math inline">\(mmol/m^2/d\)</span></li>
 </ul>
-<p>Where there is any mismatch between the sediment and water column variables, the factor of <em>part_sed_scale</em> can be used. (<em>part_sed_scale</em> can be found in the file aed_sdg_vars.csv, as outlined in more detail below.) For example, influx of the water column variable <span class="math inline">\(PON\)</span> can be distributed between sediment variables <span class="math inline">\(PON_R\)</span> and <span class="math inline">\(PON_L\)</span>. <em>part_sed_scale</em> is a real number between zero and one. For any sediment variables linked to the same water column flux, the <em>part_sed_scales</em> values should sum to 1.</p>
+<p>Where there is any mismatch between the sediment and water column variables, the factor of <code>part_sed_scale</code> can be used. (<code>part_sed_scale</code> can be found in the file aed_sdg_vars.csv, as outlined in more detail below.) For example, influx of the water column variable <span class="math inline">\(PON\)</span> can be distributed between sediment variables <span class="math inline">\(PON_R\)</span> and <span class="math inline">\(PON_L\)</span>. <code>part_sed_scale</code> is a real number between zero and one. For any sediment variables linked to the same water column flux, the <code>part_sed_scale</code> values should sum to 1.</p>
 <p><br></p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:dev-pics2"></span>
 <img src="images/23-sediment_biogeochemistry/SWIBoundary/LinkedVars-08.png" alt="Schematic of sediment water coupling interactions" width="45%" />
@@ -772,6 +783,15 @@ Figure 13.13: Spatial resolution options available through AED. a) Water column 
 </p>
 </div>
 </center>
+<p>Fluxes of dissolved species occur between the sediment and water column. They are calculated from the concentration gradient at the sediment-water interface according to Fick’s Law:</p>
+<center>
+<span class="math display" id="eq:init-1" id="eq:biogeochem1">\[\begin{equation}
+F = D_{0}\frac{\Delta C}{\Delta x} = \frac{D_{0}}{\delta} (C_{bw} - C_{1})
+\tag{13.3}
+\end{equation}\]</span>
+</center>
+<p>where <span class="math inline">\(D_{0}\)</span> is the diffusivity, <span class="math inline">\(\delta\)</span> is the thickness of the diffusive boundary layer at the sediment water interface and defined as the length scale of the first sediment layer, <span class="math inline">\(C_{bw}\)</span> is the bottom water concentration and <span class="math inline">\(C_{1}\)</span> is the concentration in the top sediment layer.</p>
+<p>At the bottom of the domain (<span class="math inline">\(x\)</span> = <code>xl</code>) the model can be specified to have a fixed-concentration (<code>deepbc_mode</code> = 0) such that the concentration at <span class="math inline">\(xl = C_{Bot}\)</span>, or it can be specified to have a zero-derivative (<code>deepbc_mode</code> = 1) defined as <span class="math inline">\(\frac{dC}{dx}=0\)</span> at <span class="math inline">\(x = xl\)</span>.</p>
 </div>
 <div id="resolving-sediment-zonation" class="section level4 unnumbered hasAnchor">
 <h4>Resolving sediment zonation<a href="sediment-biogeochemistry.html#resolving-sediment-zonation" class="anchor-section" aria-label="Anchor link to header"></a></h4>
@@ -1023,12 +1043,12 @@ Figure 13.19: Initialisation of the depth layers. The number of layers is set by
 </div>
 <div id="initialisation-of-porosity" class="section level4 unnumbered hasAnchor">
 <h4>Initialisation of porosity<a href="sediment-biogeochemistry.html#initialisation-of-porosity" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>Porosity is configured by setting three parameters: the porosity at the sediment-water interface (<code>\rho 0</code>), the porosity at the depth where compaction causes constant porosity with depth (<code>\rho 00</code>), and the attenuation coefficient on the exponential curve (<code>bp</code>) (equation #eq:init-1). These parameters are set separately for each zone. Porosity is the amount of water per total volume of space, as a real number between 0 and 1.</p>
+<p>Porosity is configured by setting three parameters: the porosity at the sediment-water interface (<code>\rho 0</code>), the porosity at the depth where compaction causes constant porosity with depth (<code>\rho 00</code>), and the attenuation coefficient on the exponential curve (<code>bp</code>) (equation @ref\tag{13.4}). These parameters are set separately for each zone. Porosity is the amount of water per total volume of space, as a real number between 0 and 1.</p>
 <span class="math display" id="eq:init-1">\[\begin{eqnarray}
 
-    \phi = (\rho 0 - \rho 00) \times e^{-bp \times depth}  + \rho 00
+    \phi = (\rho _0 - \rho _{00}) \times e^{-bp \times depth}  + \rho _{00}
 
-\tag{13.3}
+\tag{13.4}
 
 
 \end{eqnarray}\]</span>
@@ -1042,93 +1062,86 @@ Figure 13.20: Depth profile of porosity set during initialisation.
 </div>
 <p><br />
 </p>
+<p>A porosity profile is output in the file <code>Depths.sed</code>, along with the depths (in cm), and so the user can examine the shape of the profile with depth.</p>
 </div>
 <div id="initialisation-of-bioturbation-and-bioirrigation" class="section level4 unnumbered hasAnchor">
 <h4>Initialisation of bioturbation and bioirrigation<a href="sediment-biogeochemistry.html#initialisation-of-bioturbation-and-bioirrigation" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Bioturbation</p>
+<p>Bioturbation is set firstly by choosing the switch <code>imix</code> (integer), which can be 0, 1, or 2. The equations and figures representing the depth profiles that correspond to the switches can be seen below. The rate of bioturbation is set with the parameter <code>DB0</code> (cm<sup>-2</sup> y<sup>-1</sup>). If the user selects <code>imix</code> switch 0 or 2, then they use the parameter <code>xs</code> to set the shape of the exponential decay curve. If the user selects <code>imix</code> switch 1, then they use parameters <code>x1</code> and <code>x2</code> to set the two depths between which bioturbation goes at the full rate and drops to zero.</p>
+<p>#eq:init-2</p>
 <ul>
 <li>If imix = 0</li>
 </ul>
 <span class="math display">\[\begin{eqnarray}
 
    \\
-   bioturbation = DB_0 \times * e^ {- \frac {depth^2} {2 \times xs^2} }
+   bioturbation = DB_0 \times e^ {- \frac {depth^2} {2 \times xs^2} }
    \\
 \end{eqnarray}\]</span>
 <ul>
 <li>If imix = 1</li>
 </ul>
-<span class="math display">\[\begin{eqnarray}
-   \\
-(if depth &lt;= x_1)
-   \\
-   \\
-bioturbation = DB_0
+<p><span class="math display">\[\begin{align*}
 
+\text{if } depth &lt;= x_1 \\
+&amp;bioturbation = DB_0\\
 
-     \\
-     \\
-   if depth &gt; x_1
-   \ and
-   \ depth &lt;= x_2
-   \\
-   \\
-   bioturbation = DB_0 \times (\frac {x_2 - depth} {x_2 - x_1})
-   \\
-   \\
-   if depth &gt; x_2
-   \\
-   \\
-   bioturbation = 0
-\end{eqnarray}\]</span>
+\text{if } depth &gt; x_1 \text{ and }depth &lt;= x_2\\
+&amp;bioturbation = DB_0 \times (\frac  {x_2 - depth} {x_2 - x_1})\\
+
+\text{if } depth &gt; x_2 \\
+&amp;bioturbation = 0
+
+\end{align*}\]</span></p>
 <ul>
 <li>If imix = 2</li>
 </ul>
 <span class="math display">\[\begin{eqnarray}
    bioturbation = DB_0 \times e ^{(- \frac{depth}{xs} )}
 \end{eqnarray}\]</span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:Init-3"></span>
+<img src="images/23-sediment_biogeochemistry/Initialisation/Bioturb-02.png" alt="Depth profile representing two possible bioturbation options and the functions of the parameters `DB0`, `x1` and `x2`. " width="90%" />
+<p class="caption">
+Figure 13.21: Depth profile representing two possible bioturbation options and the functions of the parameters <code>DB0</code>, <code>x1</code> and <code>x2</code>.
+</p>
+</div>
+<p>A bioturbation profile is output in the file <code>Depths.sed</code>, along with the depths (in cm), and so the user can examine the shape of the profile.</p>
 <p>Irrigation</p>
-<p><!-- candi%cirrig(:) = candi%param%alpha0 -->
-<!-- WHERE (candi%rpar > candi%param%xirrig) candi%cirrig=candi%param%alpha0*EXP(-1.5*(candi%rpar-candi%param%xirrig)) --></p>
+<p>Irrigation has only one configuration i.e. it does not have switches like bioturbation. The parameter <code>alpha0</code> sets the rate of irrigation and <code>xirrig</code> the depth at which irrigation decays, according to this equation:</p>
 <span class="math display">\[\begin{eqnarray}
-if depth &gt; xirrig
+\text{if  } depth &gt; xirrig
 \\
 \\
    irrigation = \alpha _0 \times e^{-1.5 \times (depth - xirrig) }
 \end{eqnarray}\]</span>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:Init-3"></span>
-<img src="images/23-sediment_biogeochemistry/Initialisation/Bioturb-02.png" alt="   caption " width="90%" />
-<p class="caption">
-Figure 13.21:  caption
-</p>
-</div>
-<span class="math display" id="eq:init-1">\[\begin{eqnarray}
-
-    \phi = (\rho 0 - \rho 00) \times e^{-bp \times depth}  + \rho 00
-
-\tag{13.3}
-
-
-\end{eqnarray}\]</span>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:Init-4"></span>
-<img src="images/23-sediment_biogeochemistry/Initialisation/Irrig-01.png" alt="   caption " width="40%" />
+<img src="images/23-sediment_biogeochemistry/Initialisation/Irrig-01.png" alt="Example of a depth profile that sets the rate of irrigation, and the parameters `alpha_0` and `x_irrig`." width="60%" />
 <p class="caption">
-Figure 13.22:  caption
+Figure 13.22: Example of a depth profile that sets the rate of irrigation, and the parameters <code>alpha_0</code> and <code>x_irrig</code>.
 </p>
 </div>
+<p>An irrigation profile is output in the file <code>Depths.sed</code>, along with the depths (in cm), and so the user can examine the shape of the profile with depth.</p>
 </div>
 <div id="initialisation-of-concentration-profiles" class="section level4 unnumbered hasAnchor">
 <h4>Initialisation of concentration profiles<a href="sediment-biogeochemistry.html#initialisation-of-concentration-profiles" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Concentration profiles are set using one of three options: constant, linear decrease or exponential decrease (<code>CO_I</code>, <code>LI_I</code>, <code>EX_I</code>) (figure <a href="sediment-biogeochemistry.html#fig:Init-5">13.23</a>).</p>
+<p>The default for most initial concentrations is the constant option. The concentration for each variable is set in the input file <code>aed_sdg_vars.csv</code>, in the column <code>initial_vals</code> (<a href="sediment-biogeochemistry.html#fig:Init-6">13.24</a>). If the simulation has several zones, then the initial concentration for the zone is set in other columns in the csv, under the column headings <code>initial_01</code>, <code>initial_02</code> etc. If there is no initial column in the csv for a particular zone, then the zone defaults to the value in the <code>initial_vals</code> column.</p>
+<p>For organic matter, the initial profiles are set to either the linear or exponential options. For the linear option, the initial concentration is still taken from <code>initial_vals</code> in <code>aed_sdg_vars.csv</code>. The upper and lower concentrations are set as percentages of the initial concentration using the parameters <code>OM_top</code> and <code>OM_Min</code>, which are found in the <code>&amp;aed_sed_candi</code> block in the <code>aed.nml</code> namelist. There are separate parameters for labile and refractory organic matter, so the parameter names are in fact <code>OM_topL</code> and <code>OM_topR</code>, and <code>OM_minL</code> and <code>OM_minR</code>. These parameters are real numbers as decimals between 0 and 1. The <code>OM_Top</code> fraction applies to the surface concentration. The <code>OM_Min</code> applies at the depth <code>InitMinDepth</code> (cm), which is also set in the <code>&amp;aed_sed_candi</code> block.</p>
+<p>For the exponential option, the initial concentration decreases according to the equation below.</p>
+<span class="math display">\[\begin{eqnarray}
+concentration = initial vals \times e^ {- OM cfl \times depth}
+\end{eqnarray}\]</span>
+<p>The shape of the curve is determined by the parameter <code>OM_cfl</code>, which is found in the <code>&amp;aed_sed_candi</code> block.</p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:Init-5"></span>
-<img src="images/23-sediment_biogeochemistry/Initialisation/InitialProfile-03.png" alt="   caption " width="100%" />
+<img src="images/23-sediment_biogeochemistry/Initialisation/InitialProfile-03.png" alt="Schematic of three possible options for initial profiles. Most concentrations default to the constant option, whereas organic matter is usually set to be linear or exponential." width="100%" />
 <p class="caption">
-Figure 13.23:  caption
+Figure 13.23: Schematic of three possible options for initial profiles. Most concentrations default to the constant option, whereas organic matter is usually set to be linear or exponential.
 </p>
 </div>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:Init-6"></span>
-<img src="images/23-sediment_biogeochemistry/aed_sdg_vars/aed_sdg_vars-04.png" alt="   caption " width="100%" />
+<img src="images/23-sediment_biogeochemistry/aed_sdg_vars/aed_sdg_vars-04.png" alt="Simplified image of the `aed_sdg_vars.csv` input file. For initialisation, the `variables` need to be set, along with default `initial_vals` or zones-specific `initial_01`, `initial_02` etc. columns." width="100%" />
 <p class="caption">
-Figure 13.24:  caption
+Figure 13.24: Simplified image of the <code>aed_sdg_vars.csv</code> input file. For initialisation, the <code>variables</code> need to be set, along with default <code>initial_vals</code> or zones-specific <code>initial_01</code>, <code>initial_02</code> etc. columns.
 </p>
 </div>
 </div>
@@ -1137,52 +1150,78 @@ Figure 13.24:  caption
 <h3><span class="header-section-number">13.4.2</span> Boundary settings<a href="sediment-biogeochemistry.html#boundary-settings" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div id="sediment-water-interface-boundary" class="section level4 unnumbered hasAnchor">
 <h4>Sediment-water interface boundary<a href="sediment-biogeochemistry.html#sediment-water-interface-boundary" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>default_vals - constant in time</p>
+<div id="static-option-default_vals" class="section level5 unnumbered hasAnchor">
+<h5>Static option: <em>default_vals</em><a href="sediment-biogeochemistry.html#static-option-default_vals" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<p>For the boundary at the sediment-water interface, the value is set using the <code>default_vals</code> column in the input file <code>aed_sdg_vars.csv</code> (figures <a href="sediment-biogeochemistry.html#fig:SWI-1">13.25</a>, <a href="sediment-biogeochemistry.html#fig:SWI-2">13.26</a>). These values are constant in time for the entire simulation. Solids are a deposition flux (mmol m<sup>-2</sup> y<sup>-1</sup>) and solutes are a concentration (mmol m<sup>-3</sup>). Variables may have other switches or options applied to them, as outlined below, but otherwise the values default to this.</p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:SWI-1"></span>
-<img src="images/23-sediment_biogeochemistry/SWIBoundary/default_vals-10.png" alt="   caption " width="60%" />
+<img src="images/23-sediment_biogeochemistry/SWIBoundary/default_vals-10.png" alt="Sediment-water interface boundary inputs that are constant in time are set with `default_vals`. " width="60%" />
 <p class="caption">
-Figure 13.25:  caption
+Figure 13.25: Sediment-water interface boundary inputs that are constant in time are set with <code>default_vals</code>.
 </p>
 </div>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:SWI-2"></span>
-<img src="images/23-sediment_biogeochemistry/aed_sdg_vars/aed_sdg_vars-02.png" alt="   caption " width="100%" />
+<img src="images/23-sediment_biogeochemistry/aed_sdg_vars/aed_sdg_vars-02.png" alt="Simplified image of the `aed_sdg_vars.csv` input file. The `variables` and `default_vals` need to be set for each row of the csv." width="100%" />
 <p class="caption">
-Figure 13.26:  caption
+Figure 13.26: Simplified image of the <code>aed_sdg_vars.csv</code> input file. The <code>variables</code> and <code>default_vals</code> need to be set for each row of the csv.
 </p>
 </div>
-<p>linked variables</p>
+</div>
+<div id="dynamic-options-linked-variables" class="section level5 unnumbered hasAnchor">
+<h5>Dynamic options: linked variables<a href="sediment-biogeochemistry.html#dynamic-options-linked-variables" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<p>There are three methods for linking variables to the water column model:
+- particle deposition flux using <code>part_sed_link</code>
+- solute flux using <code>diss_flux_link</code>
+- bottom water concentration using <code>water_link</code></p>
+<p>These do not need to be set for any variable, but they may be set for any variable. <code>part_sed_link</code> and <code>water_link</code> must be set for solids and solutes and cannot both be assigned to one variable. If a variable is not set to be linked, the csv contains double inverted commas (” “) and the value is set to the <code>default_vals</code>.</p>
+<p>As mentioned above, where there is any mismatch between the sediment and water column variables, the factor of <code>part_sed_scale</code> can be used. <code>part_sed_scale</code> can be found in the file <code>aed_sdg_vars.csv</code>. <code>part_sed_scale</code> is a real number between zero and one. For any sediment variables linked to the same water column flux, the <code>part_sed_scale</code> values should sum to 1.</p>
+<p>If a variable is linked, it is linked for all zones.</p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:SWI-3"></span>
-<img src="images/23-sediment_biogeochemistry/SWIBoundary/LinkedVars-08.png" alt="   caption " width="60%" />
+<img src="images/23-sediment_biogeochemistry/SWIBoundary/LinkedVars-08.png" alt="Schematic of possible linked variable options at the sediment-water interface. Particle fluxes and bottom water concentraitons go from the water column to the sediment. Sediment solutes can also be set to flux to the water column." width="60%" />
 <p class="caption">
-Figure 13.27:  caption
+Figure 13.27: Schematic of possible linked variable options at the sediment-water interface. Particle fluxes and bottom water concentraitons go from the water column to the sediment. Sediment solutes can also be set to flux to the water column.
 </p>
 </div>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:SWI-4"></span>
-<img src="images/23-sediment_biogeochemistry/aed_sdg_vars/aed_sdg_vars-05.png" alt="   caption " width="100%" />
+<img src="images/23-sediment_biogeochemistry/aed_sdg_vars/aed_sdg_vars-05.png" alt="Simplified image of the `aed_sdg_vars.csv` input file. Linking variables may be set in the same row as the variable, or left blank with inverted commas." width="100%" />
 <p class="caption">
-Figure 13.28:  caption
+Figure 13.28: Simplified image of the <code>aed_sdg_vars.csv</code> input file. Linking variables may be set in the same row as the variable, or left blank with inverted commas.
 </p>
 </div>
-<p>file</p>
+</div>
+<div id="dynamic-options-swibc-file" class="section level5 unnumbered hasAnchor">
+<h5>Dynamic options: swibc file<a href="sediment-biogeochemistry.html#dynamic-options-swibc-file" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<p>A dynamic boundary can be set for any variable and any zone using the text file swibc.dat (<a href="sediment-biogeochemistry.html#fig:SWI-5">13.29</a>). For a variable to be activated to take its boundary from swibc.dat, it must be included in the list <code>swibc_filevars</code>, which is a parameter in the <code>&amp;aed_sed_candi</code> block. The specific filename and filepath are set in the parameter <code>swibc_file</code> in the <code>&amp;aed_sed_candi</code> block. The swibc file has the following features:</p>
+<ul>
+<li><strong>timestep</strong> column: The number of the point where anything changes from the previous entry.\</li>
+<li><strong>time</strong> column: The time (days) at which a change occurs. Unlike a time series, each time step does not need to be listed. However, if there is a change in any one of the variables, an entry must be included in that row for all of the variables.\</li>
+<li><strong>forzone</strong> row: The zone for which the variable in this file applies. If a zone is not listed, then the variable in that zone will take the <code>default_vals</code>.\</li>
+<li><strong>variable</strong> columns: The value at the boundary until the next point of change.\</li>
+<li><strong>w00h00</strong> columns: if any column is labelled <code>w00h00</code>, then a dynamic poreflux is applied to that zone.\</li>
+</ul>
+<p>The benefit of using this file is that a time-changing boundary can be applied for a selection of variables and zones, while leaving other combinations of variables and zones unchanged.</p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:SWI-5"></span>
-<img src="images/23-sediment_biogeochemistry/SWIBoundary/swibcdat-09.png" alt="   caption " width="60%" />
+<img src="images/23-sediment_biogeochemistry/SWIBoundary/swibcdat-09.png" alt="Schematic of the sediment-water interface boundary supplied by the swibc.dat text file." width="60%" />
 <p class="caption">
-Figure 13.29:  caption
+Figure 13.29: Schematic of the sediment-water interface boundary supplied by the swibc.dat text file.
 </p>
 </div>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:SWI-6"></span>
-<img src="images/23-sediment_biogeochemistry/SWIBoundary/swibcdat-01.png" alt="   caption " width="60%" />
+<img src="images/23-sediment_biogeochemistry/SWIBoundary/swibcdat-01.png" alt="Simplified image of the swibc.dat text file." width="85%" />
 <p class="caption">
-Figure 13.30:  caption
+Figure 13.30: Simplified image of the swibc.dat text file.
 </p>
+</div>
 </div>
 </div>
 <div id="bottom-boundary" class="section level4 unnumbered hasAnchor">
 <h4>Bottom boundary<a href="sediment-biogeochemistry.html#bottom-boundary" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div id="static-option-deep_vals" class="section level5 unnumbered hasAnchor">
+<h5>Static option: <em>deep_vals</em><a href="sediment-biogeochemistry.html#static-option-deep_vals" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<p>A boundary can be supplied beneath the deepest cell using <code>deep_vals</code> (<a href="sediment-biogeochemistry.html#fig:Deep-1">13.31</a>). The value is taken from <code>deep_vals</code>, which is in the input file <code>aed_sdg_vars.csv</code> (<a href="sediment-biogeochemistry.html#fig:Deep-2">13.32</a>). (<code>deep_vals</code> is the lower boundary equivalent of the sediment-water interface <code>default_vals</code>.) In most instances a bottom boundary would not be supplied, however, if there were a simulation with, for example, groundwater infiltration, then this option is used. If the value in <code>deep_vals</code> is negative, no boundary is applied, and so the file has a default -999 for all variables.</p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:Deep-1"></span>
-<img src="images/23-sediment_biogeochemistry/DeepBoundary/deep_vals-12.png" alt="   caption " width="60%" />
+<img src="images/23-sediment_biogeochemistry/DeepBoundary/deep_vals-12.png" alt="Bottom boundary inputs that are constant in time are set with `deep_vals`. " width="60%" />
 <p class="caption">
-Figure 13.31:  caption
+Figure 13.31: Bottom boundary inputs that are constant in time are set with <code>deep_vals</code>.
 </p>
 </div>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:Deep-2"></span>
@@ -1191,528 +1230,1820 @@ Figure 13.31:  caption
 Figure 13.32:  caption
 </p>
 </div>
+</div>
+<div id="dynamic-option-deep_bc-file" class="section level5 unnumbered hasAnchor">
+<h5>Dynamic option: deep_bc file<a href="sediment-biogeochemistry.html#dynamic-option-deep_bc-file" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<p>A dynamic boundary can be set for any variable and any zone using the text file deepbc.dat (<a href="sediment-biogeochemistry.html#fig:Deep-3">13.33</a>). For a variable to be activated to take its boundary from deepbc.dat, it must be included in the list <code>deebc_filevars</code>, which is a parameter in the <code>&amp;aed_sed_candi</code> block. The specific filename and filepath are set in the parameter <code>deepbc_file</code> in the <code>&amp;aed_sed_candi</code> block. The deepbc file is the bottom boundary equivalent of the swibc file. It has the following features:</p>
+<ul>
+<li><strong>timestep</strong> column: The number of the point where anything changes from the previous entry.\</li>
+<li><strong>time</strong> column: The time (days) at which a change occurs. Unlike a time series, each time step does not need to be listed. However, if there is a change in any one of the variables, an entry must be included in that row for all of the variables.\</li>
+<li><strong>forzone</strong> row: The zone for which the variable in this file applies. If a zone is not listed, then the variable in that zone will take the <code>default_vals</code>.\</li>
+<li><strong>variable</strong> columns: The value at the boundary until the next point of change.\</li>
+<li><strong>pf</strong> columns: if any column is labelled <code>pf</code>, then a dynamic poreflux is applied to that zone.</li>
+</ul>
+<p>The benefit of using this file is that a time-changing boundary can be applied for a selection of variables and zones, while leaving other combinations of variables and zones unchanged.</p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:Deep-3"></span>
-<img src="images/23-sediment_biogeochemistry/DeepBoundary/DeepBC-11.png" alt="   caption " width="60%" />
+<img src="images/23-sediment_biogeochemistry/DeepBoundary/DeepBC-11.png" alt="Schematic of the bottom boundary supplied by the deepbc.dat text file." width="60%" />
 <p class="caption">
-Figure 13.33:  caption
+Figure 13.33: Schematic of the bottom boundary supplied by the deepbc.dat text file.
 </p>
 </div>
-<p>(table <span class="math inline">\(\ref{tab:3dev-sed_BouIni}\)</span>)</p>
+<!-- (table \ref{tab:3dev-sed_BouIni}) -->
 <p><br></p>
+</div>
 </div>
 </div>
 <div id="parameter-definition" class="section level3 hasAnchor" number="13.4.3">
 <h3><span class="header-section-number">13.4.3</span> Parameter Definition<a href="sediment-biogeochemistry.html#parameter-definition" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div id="same-for-all-zones" class="section level4 unnumbered hasAnchor">
-<h4>Same for all zones<a href="sediment-biogeochemistry.html#same-for-all-zones" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-</div>
-<div id="distinct-for-each-zone" class="section level4 unnumbered hasAnchor">
-<h4>Distinct for each zone<a href="sediment-biogeochemistry.html#distinct-for-each-zone" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p><br></p>
-<div style="border: 1px solid #ddd; padding: 5px; overflow-y: scroll; height:525px; overflow-x: scroll; width:770px; ">
+<div id="set-for-all-zones-aed_sed_candi" class="section level4 unnumbered hasAnchor">
+<h4>Set for all zones: &amp;aed_sed_candi<a href="sediment-biogeochemistry.html#set-for-all-zones-aed_sed_candi" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p><a href="sediment-biogeochemistry.html#tab:param-nml">13.2</a></p>
+<center>
+<div style="border: 1px solid #ddd; padding: 5px; overflow-y: scroll; height:400px; overflow-x: scroll; width:700px; ">
 <table class="table table-hover" style="font-size: 12px; width: auto !important; margin-left: auto; margin-right: auto;">
 <caption style="font-size: initial !important;">
-<span id="tab:3dev-23sedimentparameters">Table 13.2: </span>Sediment physical and transport parameters
+<span id="tab:param-nml">Table 13.2: </span>Parameters in &amp;aed_sed_candi.
 </caption>
 <thead>
 <tr>
-<th style="text-align:center;">
-Parameter name
+<th style="text-align:center;font-weight: bold;color: white !important;background-color: #14759e !important;">
+Parameter
 </th>
-<th style="text-align:center;">
-Unit
-</th>
-<th style="text-align:center;">
-Value
-</th>
-<th style="text-align:center;">
+<th style="text-align:center;font-weight: bold;color: white !important;background-color: #14759e !important;">
 Description
+</th>
+<th style="text-align:center;font-weight: bold;color: white !important;background-color: #14759e !important;">
+Example value
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center;min-width: 20em; background-color: white !important;">
+<strong>Timing parameters</strong>
+</td>
+<td style="text-align:center;min-width: 20em; background-color: white !important;">
+0
+</td>
+<td style="text-align:center;min-width: 20em; background-color: white !important;">
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 20em; background-color: white !important;">
+spinup_days
+</td>
+<td style="text-align:center;min-width: 20em; background-color: white !important;">
+Duration of spinup before flux (d)
+</td>
+<td style="text-align:center;min-width: 20em; background-color: white !important;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 20em; background-color: white !important;">
+driver_dt
+</td>
+<td style="text-align:center;min-width: 20em; background-color: white !important;">
+Hydrodynamic model time step (s)
+</td>
+<td style="text-align:center;min-width: 20em; background-color: white !important;">
+900
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 20em; background-color: white !important;">
+substep
+</td>
+<td style="text-align:center;min-width: 20em; background-color: white !important;">
+Sediment model substep (h)
+</td>
+<td style="text-align:center;min-width: 20em; background-color: white !important;">
+8
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 20em; background-color: white !important;">
+<strong>Zone setup parameters</strong>
+</td>
+<td style="text-align:center;min-width: 20em; background-color: white !important;">
+</td>
+<td style="text-align:center;min-width: 20em; background-color: white !important;">
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 20em; ">
+n_zones
+</td>
+<td style="text-align:center;min-width: 20em; ">
+Number of zones to simulate. Zones are listed in <code>active_zones</code> (integer)
+</td>
+<td style="text-align:center;min-width: 20em; ">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 20em; ">
+active_zones
+</td>
+<td style="text-align:center;min-width: 20em; ">
+Sequence of zones to be simulated (integer)
+</td>
+<td style="text-align:center;min-width: 20em; ">
+1,3,4,6,7,8,30,31
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 20em; ">
+zone_types
+</td>
+<td style="text-align:center;min-width: 20em; ">
+Type of zone, as listed by header in aed_sdg_vars.csv (integer)
+</td>
+<td style="text-align:center;min-width: 20em; ">
+1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 20em; ">
+<strong>External parameter file paths</strong>
+</td>
+<td style="text-align:center;min-width: 20em; ">
+</td>
+<td style="text-align:center;min-width: 20em; ">
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 20em; ">
+dbase
+</td>
+<td style="text-align:center;min-width: 20em; ">
+External candi parameter file path (text)
+</td>
+<td style="text-align:center;min-width: 20em; ">
+‘../../external/AED/aed_candi_params.csv’
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 20em; ">
+vars_files
+</td>
+<td style="text-align:center;min-width: 20em; ">
+</td>
+<td style="text-align:center;min-width: 20em; ">
+‘../../external/AED/sdg_vars.csv’
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 20em; ">
+geochem_file
+</td>
+<td style="text-align:center;min-width: 20em; ">
+External equilibrium chemistry solver parameter file path (text)
+</td>
+<td style="text-align:center;min-width: 20em; ">
+‘../../external/AED/aed_geochem_pars.dat’
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 20em; ">
+<strong>Boundary condition parameters and files</strong>
+</td>
+<td style="text-align:center;min-width: 20em; ">
+</td>
+<td style="text-align:center;min-width: 20em; ">
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 20em; ">
+swibc_mode
+</td>
+<td style="text-align:center;min-width: 20em; ">
+Sediment-water interface boundary switch
+</td>
+<td style="text-align:center;min-width: 20em; ">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 20em; ">
+deepbc_mode
+</td>
+<td style="text-align:center;min-width: 20em; ">
+Bottom boundary switch
+</td>
+<td style="text-align:center;min-width: 20em; ">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 20em; ">
+swibc_file
+</td>
+<td style="text-align:center;min-width: 20em; ">
+Sediment-water interface boundary file path (text)
+</td>
+<td style="text-align:center;min-width: 20em; ">
+../../external/AED/aed_sediment_swibc.dat’
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 20em; ">
+deepbc_file
+</td>
+<td style="text-align:center;min-width: 20em; ">
+Deep boundary file path (text)
+</td>
+<td style="text-align:center;min-width: 20em; ">
+../../external/AED/aed_sediment_deepbc.dat’
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 20em; ">
+swibc_filevars
+</td>
+<td style="text-align:center;min-width: 20em; ">
+Variables taken from external boundary file for sediment-water interface
+</td>
+<td style="text-align:center;min-width: 20em; ">
+‘oxy’,‘nit’,‘amm’,‘frp’,‘poml’
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 20em; ">
+deepbc_filevars
+</td>
+<td style="text-align:center;min-width: 20em; ">
+0
+</td>
+<td style="text-align:center;min-width: 20em; ">
+‘poml’
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 20em; ">
+<strong>Initial condition setup</strong>
+</td>
+<td style="text-align:center;min-width: 20em; ">
+</td>
+<td style="text-align:center;min-width: 20em; ">
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 20em; ">
+SolidInitialUnit
+</td>
+<td style="text-align:center;min-width: 20em; ">
+</td>
+<td style="text-align:center;min-width: 20em; ">
+‘mmolLsolid’
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 20em; ">
+OMInitMethodL
+</td>
+<td style="text-align:center;min-width: 20em; ">
+Switch for labile organic matter initial profile (constant, linear or exponential) (character switch)
+</td>
+<td style="text-align:center;min-width: 20em; ">
+‘LI_I’
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 20em; ">
+OM_topL
+</td>
+<td style="text-align:center;min-width: 20em; ">
+Fraction of initial condition at the top of the labile initial profile using linear option (0 to 1)
+</td>
+<td style="text-align:center;min-width: 20em; ">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 20em; ">
+OM_minL
+</td>
+<td style="text-align:center;min-width: 20em; ">
+Fraction of initial condition at the depth InitMinDepthL using linear option (0 to 1)
+</td>
+<td style="text-align:center;min-width: 20em; ">
+0.9
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 20em; ">
+OM_cfL
+</td>
+<td style="text-align:center;min-width: 20em; ">
+Decay coefficient for labile organic matter initial profile using exponential option (-)
+</td>
+<td style="text-align:center;min-width: 20em; ">
+0.6
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 20em; ">
+InitMinDepthL
+</td>
+<td style="text-align:center;min-width: 20em; ">
+Depth at which the OM_minL percentage applies using the linear option (cm)
+</td>
+<td style="text-align:center;min-width: 20em; ">
+99
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 20em; ">
+OMInitMethodR
+</td>
+<td style="text-align:center;min-width: 20em; ">
+Switch for refractory organic matter initial profile (constant, linear or exponential) (character switch)
+</td>
+<td style="text-align:center;min-width: 20em; ">
+‘LI_I’
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 20em; ">
+OM_topR
+</td>
+<td style="text-align:center;min-width: 20em; ">
+Fraction of initial condition at the top of the refractory initial profile using linear option (0 to 1)
+</td>
+<td style="text-align:center;min-width: 20em; ">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 20em; ">
+OM_minR
+</td>
+<td style="text-align:center;min-width: 20em; ">
+Fraction of initial condition at the depth InitMinDepthR using linear option (0 to 1)
+</td>
+<td style="text-align:center;min-width: 20em; ">
+0.9
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 20em; ">
+OM_cfR
+</td>
+<td style="text-align:center;min-width: 20em; ">
+Decay coefficient for labile organic matter initial profile using exponential option (-)
+</td>
+<td style="text-align:center;min-width: 20em; ">
+0.6
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 20em; ">
+InitMinDepthR
+</td>
+<td style="text-align:center;min-width: 20em; ">
+Depth at which the OM_minR percentage applies using the linear option (cm)
+</td>
+<td style="text-align:center;min-width: 20em; ">
+99
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 20em; ">
+POMVR
+</td>
+<td style="text-align:center;min-width: 20em; ">
+Concentration of very refractory particulate organic matter (% solids)
+</td>
+<td style="text-align:center;min-width: 20em; ">
+0.3
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 20em; ">
+<strong>Output settings</strong>
+</td>
+<td style="text-align:center;min-width: 20em; ">
+</td>
+<td style="text-align:center;min-width: 20em; ">
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 20em; ">
+diag_level
+</td>
+<td style="text-align:center;min-width: 20em; ">
+Switch for which types of diags to write to files (integer)
+</td>
+<td style="text-align:center;min-width: 20em; ">
+10
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 20em; ">
+output_profiles
+</td>
+<td style="text-align:center;min-width: 20em; ">
+Switch to write .sed files (logical)
+</td>
+<td style="text-align:center;min-width: 20em; ">
+.TRUE.
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 20em; ">
+morevariables
+</td>
+<td style="text-align:center;min-width: 20em; ">
+List of other variables to be written to output files e.g. rates, factors etc. (text)
+</td>
+<td style="text-align:center;min-width: 20em; ">
+‘FO2’
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 20em; ">
+output_diag_vars
+</td>
+<td style="text-align:center;min-width: 20em; ">
+List of variables to be written to diag files at <code>output_diag_depths</code> (text)
+</td>
+<td style="text-align:center;min-width: 20em; ">
+‘oxy’,‘amm’,‘poml’
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 20em; ">
+n_ddpths
+</td>
+<td style="text-align:center;min-width: 20em; ">
+Number of depths to write diag outputs for. Depths are listed in <code>output_diag_depths</code> (integer)
+</td>
+<td style="text-align:center;min-width: 20em; ">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 20em; ">
+output_diag_depths
+</td>
+<td style="text-align:center;min-width: 20em; ">
+Depths to write diag files (cm)
+</td>
+<td style="text-align:center;min-width: 20em; ">
+1
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</center>
+</div>
+<div id="distinct-for-each-zone-aed_candi_params.csv" class="section level4 unnumbered hasAnchor">
+<h4>Distinct for each zone: aed_candi_params.csv<a href="sediment-biogeochemistry.html#distinct-for-each-zone-aed_candi_params.csv" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div id="physical-domain-and-numerical-parameters" class="section level5 unnumbered hasAnchor">
+<h5>Physical domain and numerical parameters<a href="sediment-biogeochemistry.html#physical-domain-and-numerical-parameters" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<p>The physical properties of the sediment are given in Table <a href="sediment-biogeochemistry.html#tab:param-Mixing">13.3</a> and <a href="sediment-biogeochemistry.html#tab:param-Layers">13.4</a>. In general, the SDG module was set to run with a time-step of 2 hours, resolve a vertical sediment depth of 80 cm using 50 layers.</p>
+<p>Some parameters are set as constant values for all zones, while others are set to be variable in each zone. The variability of bioturbation and irrigation along the length of the lagoon is set using the depth of the effect (<span class="math inline">\(x_1\)</span>, <span class="math inline">\(x_2\)</span> and <span class="math inline">\(x_{irrig}\)</span>) rather than the intensity (<span class="math inline">\(DB_0\)</span>, <span class="math inline">\(\alpha_0\)</span>). Upper porosity <span class="math inline">\(\rho_0\)</span> is held at 0.9 (i.e. 90% porewater) for all zones and the lower porosity <span class="math inline">\(\rho_{00}\)</span> is based on measured data at sites in each zone.</p>
+<center>
+<div style="border: 1px solid #ddd; padding: 5px; overflow-y: scroll; height:380px; overflow-x: scroll; width:600px; ">
+<table class="table table-hover" style="font-size: 12px; width: auto !important; margin-left: auto; margin-right: auto;">
+<caption style="font-size: initial !important;">
+<span id="tab:param-Mixing">Table 13.3: </span>Sediment physical properties
+</caption>
+<thead>
+<tr>
+<th style="text-align:center;font-weight: bold;color: white !important;background-color: #14759e !important;">
+Parameter
+</th>
+<th style="text-align:center;font-weight: bold;color: white !important;background-color: #14759e !important;">
+Description
+</th>
+<th style="text-align:center;font-weight: bold;color: white !important;background-color: #14759e !important;">
+Example value
 </th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td style="text-align:center;min-width: 10em; background-color: white !important;">
-<code>db0</code>
+p0
 </td>
-<td style="text-align:center;min-width: 7em; background-color: white !important;">
-cm<sup>2</sup> y<sup>-1</sup>
+<td style="text-align:center;min-width: 20em; background-color: white !important;">
+Upper porosity (-)
 </td>
-<td style="text-align:center;min-width: 7em; background-color: white !important;">
-10.00
-</td>
-<td style="text-align:center;min-width: 15em; background-color: white !important;">
-Biodiffusion coefficient at sediment-water ineterface
-</td>
-</tr>
-<tr>
 <td style="text-align:center;min-width: 10em; background-color: white !important;">
-<code>imix</code>
-</td>
-<td style="text-align:center;min-width: 7em; background-color: white !important;">
-0/1
-</td>
-<td style="text-align:center;min-width: 7em; background-color: white !important;">
-0.00
-</td>
-<td style="text-align:center;min-width: 15em; background-color: white !important;">
-Bioturbation function: 0-Gaussian; 1 – two-layer model
-</td>
-</tr>
-<tr>
-<td style="text-align:center;min-width: 10em; background-color: white !important;">
-<code>xs</code>
-</td>
-<td style="text-align:center;min-width: 7em; background-color: white !important;">
-cm
-</td>
-<td style="text-align:center;min-width: 7em; background-color: white !important;">
-3.00
-</td>
-<td style="text-align:center;min-width: 15em; background-color: white !important;">
-Half depth for Gaussian mixing (<code>imix - 0</code>)
-</td>
-</tr>
-<tr>
-<td style="text-align:center;min-width: 10em; background-color: white !important;">
-<code>x1</code>
-</td>
-<td style="text-align:center;min-width: 7em; background-color: white !important;">
-cm
-</td>
-<td style="text-align:center;min-width: 7em; background-color: white !important;">
-1.00
-</td>
-<td style="text-align:center;min-width: 15em; background-color: white !important;">
-Depth at which db starts to decreacse (<code>imix -1</code>)
-</td>
-</tr>
-<tr>
-<td style="text-align:center;min-width: 10em; background-color: white !important;">
-<code>x2</code>
-</td>
-<td style="text-align:center;min-width: 7em; background-color: white !important;">
-cm
-</td>
-<td style="text-align:center;min-width: 7em; background-color: white !important;">
-5.00
-</td>
-<td style="text-align:center;min-width: 15em; background-color: white !important;">
-Depth at which db is zero (<code>imix - 1</code>)
-</td>
-</tr>
-<tr>
-<td style="text-align:center;min-width: 10em; background-color: white !important;">
-<code>irrig</code>
-</td>
-<td style="text-align:center;min-width: 7em; background-color: white !important;">
-0/1
-</td>
-<td style="text-align:center;min-width: 7em; background-color: white !important;">
-1.00
-</td>
-<td style="text-align:center;min-width: 15em; background-color: white !important;">
-Bioirrigation switch
-</td>
-</tr>
-<tr>
-<td style="text-align:center;min-width: 10em; background-color: white !important;">
-<code>alpha0</code>
-</td>
-<td style="text-align:center;min-width: 7em; background-color: white !important;">
-y<sup>-1</sup>
-</td>
-<td style="text-align:center;min-width: 7em; background-color: white !important;">
-15.00
-</td>
-<td style="text-align:center;min-width: 15em; background-color: white !important;">
-Irrigation coefficient
-</td>
-</tr>
-<tr>
-<td style="text-align:center;min-width: 10em; background-color: white !important;">
-<code>xirrig</code>
-</td>
-<td style="text-align:center;min-width: 7em; background-color: white !important;">
-cm
-</td>
-<td style="text-align:center;min-width: 7em; background-color: white !important;">
-4.00
-</td>
-<td style="text-align:center;min-width: 15em; background-color: white !important;">
-Maximum irrigation depth
-</td>
-</tr>
-<tr>
-<td style="text-align:center;min-width: 10em; background-color: white !important;">
-<code>ventflow</code>
-</td>
-<td style="text-align:center;min-width: 7em; background-color: white !important;">
-cm y<sup>-1</sup>
-</td>
-<td style="text-align:center;min-width: 7em; background-color: white !important;">
-0.00
-</td>
-<td style="text-align:center;min-width: 15em; background-color: white !important;">
-Advective flux (positive value indicates from below)
-</td>
-</tr>
-<tr>
-<td style="text-align:center;min-width: 10em; background-color: white !important;">
-<code>w00</code>
-</td>
-<td style="text-align:center;min-width: 7em; background-color: white !important;">
-cm y<sup>-1</sup>
-</td>
-<td style="text-align:center;min-width: 7em; background-color: white !important;">
-0.75
-</td>
-<td style="text-align:center;min-width: 15em; background-color: white !important;">
-Sediment accumulation velocity at maximum depth
-</td>
-</tr>
-<tr>
-<td style="text-align:center;min-width: 10em; background-color: white !important;">
-<code>p0</code>
-</td>
-<td style="text-align:center;min-width: 7em; background-color: white !important;">
-</td>
-<td style="text-align:center;min-width: 7em; background-color: white !important;">
 0.90
 </td>
-<td style="text-align:center;min-width: 15em; background-color: white !important;">
-Porosity at sediment-water interface (<span class="math inline">\(\phi_{0}\)</span> in equation 5 - 104)
+</tr>
+<tr>
+<td style="text-align:center;min-width: 10em; background-color: white !important;">
+p00
+</td>
+<td style="text-align:center;min-width: 20em; background-color: white !important;">
+Lower porosity (-)
+</td>
+<td style="text-align:center;min-width: 10em; background-color: white !important;">
+0.39
 </td>
 </tr>
 <tr>
 <td style="text-align:center;min-width: 10em; background-color: white !important;">
-<code>p00</code>
+taubsensitivity
 </td>
-<td style="text-align:center;min-width: 7em; background-color: white !important;">
+<td style="text-align:center;min-width: 20em; background-color: white !important;">
+Diffusion sensitivity to external transport (-)
 </td>
-<td style="text-align:center;min-width: 7em; background-color: white !important;">
-0.80
-</td>
-<td style="text-align:center;min-width: 15em; background-color: white !important;">
-Porosity at maximum depth (<span class="math inline">\(\phi_{xl}\)</span> in equation 5 - 104)
+<td style="text-align:center;min-width: 10em; background-color: white !important;">
+1.00
 </td>
 </tr>
 <tr>
 <td style="text-align:center;min-width: 10em; background-color: white !important;">
-<code>bp</code>
+w00
 </td>
-<td style="text-align:center;min-width: 7em; background-color: white !important;">
+<td style="text-align:center;min-width: 20em; background-color: white !important;">
+Sediment accumulation rate (cm y<sup>-1</sup>)
 </td>
-<td style="text-align:center;min-width: 7em; background-color: white !important;">
-2.50
-</td>
-<td style="text-align:center;min-width: 15em; background-color: white !important;">
-Porosity attenuation coefficient (<span class="math inline">\(\beta\)</span> in equation 5 - 104)
+<td style="text-align:center;min-width: 10em; background-color: white !important;">
+1.00
 </td>
 </tr>
 <tr>
 <td style="text-align:center;min-width: 10em; background-color: white !important;">
-<code>torteq</code>
+db0
 </td>
-<td style="text-align:center;min-width: 7em; background-color: white !important;">
-1/2/03
+<td style="text-align:center;min-width: 20em; background-color: white !important;">
+Bioturbation rate (cm<sup>-2</sup> y<sup>-1</sup>)
 </td>
-<td style="text-align:center;min-width: 7em; background-color: white !important;">
-3.00
-</td>
-<td style="text-align:center;min-width: 15em; background-color: white !important;">
-Tortuosity calculation method switch: 1-Archie; 2-Burger; 3-Weissberg
-</td>
-</tr>
-<tr>
 <td style="text-align:center;min-width: 10em; background-color: white !important;">
-<code>an</code>
-</td>
-<td style="text-align:center;min-width: 7em; background-color: white !important;">
-</td>
-<td style="text-align:center;min-width: 7em; background-color: white !important;">
-2.14
-</td>
-<td style="text-align:center;min-width: 15em; background-color: white !important;">
-Porosity exponent for tortuosity (if Archie)
-</td>
-</tr>
-<tr>
-<td style="text-align:center;min-width: 10em; background-color: white !important;">
-<code>aa</code>
-</td>
-<td style="text-align:center;min-width: 7em; background-color: white !important;">
-</td>
-<td style="text-align:center;min-width: 7em; background-color: white !important;">
-3.79
-</td>
-<td style="text-align:center;min-width: 15em; background-color: white !important;">
-Porosity exponent for tortuosity (if Burger)
-</td>
-</tr>
-<tr>
-<td style="text-align:center;min-width: 10em; background-color: white !important;">
-<code>ab</code>
-</td>
-<td style="text-align:center;min-width: 7em; background-color: white !important;">
-</td>
-<td style="text-align:center;min-width: 7em; background-color: white !important;">
-2.02
-</td>
-<td style="text-align:center;min-width: 15em; background-color: white !important;">
-Porosity exponent for tortuosity (if Weissberg)
-</td>
-</tr>
-<tr>
-<td style="text-align:center;min-width: 10em; background-color: white !important;">
-<code>xl</code>
-</td>
-<td style="text-align:center;min-width: 7em; background-color: white !important;">
-cm
-</td>
-<td style="text-align:center;min-width: 7em; background-color: white !important;">
-100.00
-</td>
-<td style="text-align:center;min-width: 15em; background-color: white !important;">
-Maximum simulation depth
-</td>
-</tr>
-<tr>
-<td style="text-align:center;min-width: 10em; background-color: white !important;">
-<code>maxnpts</code>
-</td>
-<td style="text-align:center;min-width: 7em; background-color: white !important;">
-</td>
-<td style="text-align:center;min-width: 7em; background-color: white !important;">
 40.00
 </td>
-<td style="text-align:center;min-width: 15em; background-color: white !important;">
-Number of vertical layers
+</tr>
+<tr>
+<td style="text-align:center;min-width: 10em; ">
+poreflux
+</td>
+<td style="text-align:center;min-width: 20em; ">
+Porewater advection rate (cm y<sup>-1</sup>)
+</td>
+<td style="text-align:center;min-width: 10em; ">
+0.00
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 10em; ">
+Sal1
+</td>
+<td style="text-align:center;min-width: 20em; ">
+Lower salinity concenration for F<sub>Sal</sub> (PSU)
+</td>
+<td style="text-align:center;min-width: 10em; ">
+35.00
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 10em; ">
+Sal2
+</td>
+<td style="text-align:center;min-width: 20em; ">
+Upper salinity concenration for F<sub>Sal</sub> (PSU)
+</td>
+<td style="text-align:center;min-width: 10em; ">
+70.00
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 10em; ">
+kH2S
+</td>
+<td style="text-align:center;min-width: 20em; ">
+H<sub>2</sub>S concentration for K<sub>Sul</sub> (mmol L<sup>-1</sup>)
+</td>
+<td style="text-align:center;min-width: 10em; ">
+0.10
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 10em; ">
+swibc_mode
+</td>
+<td style="text-align:center;min-width: 20em; ">
+Sediment-water interface boundary switch
+</td>
+<td style="text-align:center;min-width: 10em; ">
+0.00
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 10em; ">
+deepbc_mode
+</td>
+<td style="text-align:center;min-width: 20em; ">
+Bottom boundary switch
+</td>
+<td style="text-align:center;min-width: 10em; ">
+1.00
 </td>
 </tr>
 </tbody>
 </table>
 </div>
-<!-- ```{r 23sedimentparameters, echo=FALSE, message=FALSE, warning=FALSE} -->
-<!-- library(knitr) -->
-<!-- library(kableExtra) -->
-<!-- sediment_parameters <- read.csv("tables/23-sediment_biogeochemistry/sediment_parameters.csv", check.names=FALSE) -->
-<!-- kable(sediment_parameters,"html", escape = F, align = "c", caption = "Sediment physical and transport parameters", -->
-<!--       bootstrap_options = "hover") %>% -->
-<!--   kable_styling(sediment_parameters, bootstrap_options = "hover",  -->
-<!--                 full_width = F, position = "center", -->
-<!--                 font_size = 12) %>% -->
-<!--   column_spec(1, width_min = "15em") %>% -->
-<!--   column_spec(2, width_min = "15em") %>% -->
-<!--   column_spec(3, width_min = "15em") %>% -->
-<!--   column_spec(4, width_min = "15em") %>% -->
-<!--   row_spec(1:19, background = 'white') %>% -->
-<!--   scroll_box(width = "770px", height = "500px", -->
-<!--              fixed_thead = FALSE)  -->
-<!-- ``` -->
-<p><br></p>
-<div style="border: 1px solid #ddd; padding: 5px; overflow-y: scroll; height:500px; overflow-x: scroll; width:770px; ">
+<p><br />
+</p>
+<div style="border: 1px solid #ddd; padding: 5px; overflow-y: scroll; height:350px; overflow-x: scroll; width:600px; ">
 <table class="table table-hover" style="font-size: 12px; width: auto !important; margin-left: auto; margin-right: auto;">
 <caption style="font-size: initial !important;">
-<span id="tab:23biogeochemconfig">Table 13.3: </span>The major biogeochemical configuration options, which are set by the user before the model is initialised
+<span id="tab:param-Layers">Table 13.4: </span>Sediment layer setup parameters and mixing parameters that might vary by zone, to set simulation with differences in sediment quality across space.
 </caption>
 <thead>
 <tr>
-<th style="text-align:center;">
-Biogeochemical configuration
+<th style="text-align:center;font-weight: bold;color: white !important;background-color: #14759e !important;">
+Parameter
 </th>
-<th style="text-align:center;">
-Unit
-</th>
-<th style="text-align:center;">
+<th style="text-align:center;font-weight: bold;color: white !important;background-color: #14759e !important;">
 Description
+</th>
+<th style="text-align:center;font-weight: bold;color: white !important;background-color: #14759e !important;">
+Zone:
+</th>
+<th style="text-align:center;font-weight: bold;color: white !important;background-color: #14759e !important;">
+11
+</th>
+<th style="text-align:center;font-weight: bold;color: white !important;background-color: #14759e !important;">
+12
+</th>
+<th style="text-align:center;font-weight: bold;color: white !important;background-color: #14759e !important;">
+…
 </th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align:center;min-width: 15em; background-color: white !important;">
-<code>Omapproach</code>
+<td style="text-align:center;min-width: 10em; background-color: white !important;">
+p0
 </td>
-<td style="text-align:center;min-width: 15em; background-color: white !important;">
-1/2
+<td style="text-align:center;min-width: 20em; background-color: white !important;">
+Upper porosity (-)
 </td>
-<td style="text-align:center;min-width: 15em; background-color: white !important;">
-Kinetic redox equations, corresponding to the approaches of chapter 2
+<td style="text-align:center;min-width: 10em; background-color: white !important;">
 </td>
-</tr>
-<tr>
-<td style="text-align:center;min-width: 15em; background-color: white !important;">
-<code>OMModel</code>
+<td style="text-align:center;background-color: white !important;">
+0.90
 </td>
-<td style="text-align:center;min-width: 15em; background-color: white !important;">
-1/2/3
+<td style="text-align:center;background-color: white !important;">
+0.90
 </td>
-<td style="text-align:center;min-width: 15em; background-color: white !important;">
-Organic matter breakdown models, as described in Table 5 - 1, Figure 5 - 2
+<td style="text-align:center;background-color: white !important;">
+…
 </td>
 </tr>
 <tr>
-<td style="text-align:center;min-width: 15em; background-color: white !important;">
-<code>FTem switch</code>
+<td style="text-align:center;min-width: 10em; background-color: white !important;">
+p00
 </td>
-<td style="text-align:center;min-width: 15em; background-color: white !important;">
-1/2
+<td style="text-align:center;min-width: 20em; background-color: white !important;">
+Lower porosity (-)
 </td>
-<td style="text-align:center;min-width: 15em; background-color: white !important;">
-Sets reaction rate dependency on temperature
+<td style="text-align:center;min-width: 10em; background-color: white !important;">
 </td>
-</tr>
-<tr>
-<td style="text-align:center;min-width: 15em; background-color: white !important;">
-<code>FT switch</code>
+<td style="text-align:center;background-color: white !important;">
+0.39
 </td>
-<td style="text-align:center;min-width: 15em; background-color: white !important;">
-1/2
+<td style="text-align:center;background-color: white !important;">
+0.39
 </td>
-<td style="text-align:center;min-width: 15em; background-color: white !important;">
-Sets reaction rate dependency on thermodynamics
+<td style="text-align:center;background-color: white !important;">
+…
 </td>
 </tr>
 <tr>
-<td style="text-align:center;min-width: 15em; background-color: white !important;">
-<code>FBio switch</code>
+<td style="text-align:center;min-width: 10em; background-color: white !important;">
+xl
 </td>
-<td style="text-align:center;min-width: 15em; background-color: white !important;">
-1/2
+<td style="text-align:center;min-width: 20em; background-color: white !important;">
+Simulation depth
 </td>
-<td style="text-align:center;min-width: 15em; background-color: white !important;">
-Sets reaction rate dependency on biomass concentration
+<td style="text-align:center;min-width: 10em; background-color: white !important;">
 </td>
-</tr>
-<tr>
-<td style="text-align:center;min-width: 15em; background-color: white !important;">
-<code>FIN switch</code>
+<td style="text-align:center;background-color: white !important;">
+80.00
 </td>
-<td style="text-align:center;min-width: 15em; background-color: white !important;">
-1/2
+<td style="text-align:center;background-color: white !important;">
+80.00
 </td>
-<td style="text-align:center;min-width: 15em; background-color: white !important;">
-Sets reaction rate dependency on concentration of other oxidants
+<td style="text-align:center;background-color: white !important;">
+…
 </td>
 </tr>
 <tr>
-<td style="text-align:center;min-width: 15em; background-color: white !important;">
-<code>simMnFe</code>
+<td style="text-align:center;min-width: 10em; background-color: white !important;">
+maxnpts
 </td>
-<td style="text-align:center;min-width: 15em; background-color: white !important;">
-T/F
+<td style="text-align:center;min-width: 20em; background-color: white !important;">
+Number of sediment layers
 </td>
-<td style="text-align:center;min-width: 15em; background-color: white !important;">
-Turns all Mn and Fe primary and secondary reactions on or off
+<td style="text-align:center;min-width: 10em; background-color: white !important;">
 </td>
-</tr>
-<tr>
-<td style="text-align:center;min-width: 15em; background-color: white !important;">
-<code>simFeS</code>
+<td style="text-align:center;background-color: white !important;">
+50.00
 </td>
-<td style="text-align:center;min-width: 15em; background-color: white !important;">
-T/F
+<td style="text-align:center;background-color: white !important;">
+50.00
 </td>
-<td style="text-align:center;min-width: 15em; background-color: white !important;">
-Turns all FeS reactions on or off
+<td style="text-align:center;background-color: white !important;">
+…
 </td>
 </tr>
 <tr>
-<td style="text-align:center;min-width: 15em; background-color: white !important;">
-<code>simX</code>
+<td style="text-align:center;min-width: 10em; background-color: white !important;">
+job
 </td>
-<td style="text-align:center;min-width: 15em; background-color: white !important;">
-T/F
+<td style="text-align:center;min-width: 20em; background-color: white !important;">
+Switch for linear or exponential layer spacing
 </td>
-<td style="text-align:center;min-width: 15em; background-color: white !important;">
-Allows simulation of adsorbed metal X
+<td style="text-align:center;min-width: 10em; background-color: white !important;">
 </td>
-</tr>
-<tr>
-<td style="text-align:center;min-width: 15em; background-color: white !important;">
-<code>Xname</code>
+<td style="text-align:center;background-color: white !important;">
+2.00
 </td>
-<td style="text-align:center;min-width: 15em; background-color: white !important;">
-“X”
+<td style="text-align:center;background-color: white !important;">
+2.00
 </td>
-<td style="text-align:center;min-width: 15em; background-color: white !important;">
-Metal X: “As”, “Cu”, “Cd”, “Pb”, “Ni”, “Zn”
+<td style="text-align:center;background-color: white !important;">
+…
 </td>
 </tr>
 <tr>
-<td style="text-align:center;min-width: 15em; background-color: white !important;">
-<code>simCaCO3</code>
+<td style="text-align:center;min-width: 10em; ">
+x1
 </td>
-<td style="text-align:center;min-width: 15em; background-color: white !important;">
-T/F
+<td style="text-align:center;min-width: 20em; ">
+Depth of full bioturbation (cm)
 </td>
-<td style="text-align:center;min-width: 15em; background-color: white !important;">
-Turns all calcite reactions on or off
+<td style="text-align:center;min-width: 10em; ">
 </td>
-</tr>
-<tr>
-<td style="text-align:center;min-width: 15em; background-color: white !important;">
-<code>simFeCO3</code>
+<td style="text-align:center;">
+0.50
 </td>
-<td style="text-align:center;min-width: 15em; background-color: white !important;">
-T/F
+<td style="text-align:center;">
+0.50
 </td>
-<td style="text-align:center;min-width: 15em; background-color: white !important;">
-Turns all siderite reactions on or off
+<td style="text-align:center;">
+…
 </td>
 </tr>
 <tr>
-<td style="text-align:center;min-width: 15em; background-color: white !important;">
-<code>simMnCO3</code>
+<td style="text-align:center;min-width: 10em; ">
+x2
 </td>
-<td style="text-align:center;min-width: 15em; background-color: white !important;">
-T/F
+<td style="text-align:center;min-width: 20em; ">
+Depth of bioturbation decline (cm)
 </td>
-<td style="text-align:center;min-width: 15em; background-color: white !important;">
-Turns all rhodchrosite reactions on or off
+<td style="text-align:center;min-width: 10em; ">
 </td>
-</tr>
-<tr>
-<td style="text-align:center;min-width: 15em; background-color: white !important;">
-<code>simNPads</code>
+<td style="text-align:center;">
+1.00
 </td>
-<td style="text-align:center;min-width: 15em; background-color: white !important;">
-T/F
+<td style="text-align:center;">
+1.00
 </td>
-<td style="text-align:center;min-width: 15em; background-color: white !important;">
-Turns N and P adsorption on or off
+<td style="text-align:center;">
+…
 </td>
 </tr>
 <tr>
-<td style="text-align:center;min-width: 15em; background-color: white !important;">
-<code>rxn_mode</code>
+<td style="text-align:center;min-width: 10em; ">
+alpha0
 </td>
-<td style="text-align:center;min-width: 15em; background-color: white !important;">
-0/1
+<td style="text-align:center;min-width: 20em; ">
+Irrigation rate (cm y<sup>-1</sup>)
 </td>
-<td style="text-align:center;min-width: 15em; background-color: white !important;">
-Sets precipitation to: kinetic-0; IAP/K<sub>sp</sub>-1
+<td style="text-align:center;min-width: 10em; ">
+</td>
+<td style="text-align:center;">
+200.00
+</td>
+<td style="text-align:center;">
+200.00
+</td>
+<td style="text-align:center;">
+…
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 10em; ">
+xirrig
+</td>
+<td style="text-align:center;min-width: 20em; ">
+Depth of irrigation (cm)
+</td>
+<td style="text-align:center;min-width: 10em; ">
+</td>
+<td style="text-align:center;">
+1.00
+</td>
+<td style="text-align:center;">
+1.00
+</td>
+<td style="text-align:center;">
+…
 </td>
 </tr>
 </tbody>
 </table>
 </div>
-<p><br></p>
-<p>The initial conditions for each sedimemnt variable are set as a list by the <code>initial_vals</code>, which sets a constant concentration with depth in units of <span class="math inline">\(\mu mol/L\)</span>, or (<span class="math inline">\(mmol / m^3\)</span>). For organic matter initial concentrations only, there are three available options for the concentration with depth, set by <code>OMInitMethodL</code>.</p>
-<p>The sediment-water interface is the uppermost layer of the sediment, for which there are three configuration options set by the parameter <code>swibc_mode</code>.
-- If the user specifies <code>swibc_mode = 2</code>, the concentration is a constant value set by <code>default_vals</code> in the <code>aed.nml</code> name list.
-- For <code>swibc_mode = 0</code>, the concentration is provided by a “link_variable”, which provides the concentration from another simulated water column AED module. If the variable name in the link list is left blank (“ ”) then AED-CANDI will assume these variables are not linked to any water column variables and default to the <code>default_vals</code> values.
-- If <code>swibc_mode = 10</code>, the concentration is provided by a user-prescribed temporally variable value read from the file <code>aed_sediment_swibc.dat</code>. This option may desirable, for example, for simulating a seasonally or daily changing boundary condition.</p>
-<p>Regardless of the <code>swibc_mode</code> surface boundary condition option, fluxes of dissolved species occur between the sediment and water column. They are calculated from the concentration gradient at the sediment-water interface according to Fick’s Law:</p>
-<center>
-<span class="math display" id="eq:biogeochem1">\[\begin{equation}
-F = D_{0}\frac{\Delta C}{\Delta x} = \frac{D_{0}}{\delta} (C_{bw} - C_{1})
-\tag{13.4}
-\end{equation}\]</span>
 </center>
-<p>where <span class="math inline">\(D_{0}\)</span> is the diffusivity, <span class="math inline">\(\delta\)</span> is the thickness of the diffusive boundary layer at the sediment water interface and defined as the length scale of the first sediment layer, <span class="math inline">\(C_{bw}\)</span> is the bottom water concentration and <span class="math inline">\(C_{1}\)</span> is the concentration in the top sediment layer.</p>
-<p>At the bottom of the domain (<span class="math inline">\(x\)</span> = <code>xl</code>) the model can be specified to have a fixed-concentration (<code>deepbc_mode</code> = 0) such that the concentration at <span class="math inline">\(xl = C_{Bot}\)</span>, or it can be specified to have a zero-derivative (<code>deepbc_mode</code> = 1) defined as <span class="math inline">\(\frac{dC}{dx}=0\)</span> at <span class="math inline">\(x = xl\)</span>.</p>
+<p><br />
+</p>
+</div>
+<div id="organic-matter-parameters" class="section level5 unnumbered hasAnchor">
+<h5>Organic matter parameters<a href="sediment-biogeochemistry.html#organic-matter-parameters" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<p>Many of the key processes in the sediment are driven by organic matter oxidation. Fresh organic matter supplied to the sediment surface fuels the bacterially-driven primary redox reactions that constantly shift the chemical equilibrium in the sediment. Organic matter metabolism also releases organic N and P to the water column. The parameters are given in Table <a href="sediment-biogeochemistry.html#tab:param-OM">13.5</a>.</p>
+<p>The organic matter model option number 2 was used in this project. This option has both particulate and dissolved organic phases, and simulates organic C, N and P as separate state variables.</p>
+<center>
+<div style="border: 1px solid #ddd; padding: 5px; overflow-y: scroll; height:300px; overflow-x: scroll; width:600px; ">
+<table class="table table-hover" style="font-size: 12px; width: auto !important; margin-left: auto; margin-right: auto;">
+<caption style="font-size: initial !important;">
+<span id="tab:param-OM">Table 13.5: </span>Organic matter oxidation parameters
+</caption>
+<thead>
+<tr>
+<th style="text-align:center;font-weight: bold;color: white !important;background-color: #14759e !important;">
+Parameter
+</th>
+<th style="text-align:center;font-weight: bold;color: white !important;background-color: #14759e !important;">
+Description
+</th>
+<th style="text-align:center;font-weight: bold;color: white !important;background-color: #14759e !important;">
+Example value
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center;min-width: 10em; background-color: white !important;">
+OMModel
+</td>
+<td style="text-align:center;min-width: 20em; background-color: white !important;">
+Complexity of OM model
+</td>
+<td style="text-align:center;min-width: 10em; background-color: white !important;">
+2.0e+00
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 10em; background-color: white !important;">
+OMapproach
+</td>
+<td style="text-align:center;min-width: 20em; background-color: white !important;">
+Limitation function switch
+</td>
+<td style="text-align:center;min-width: 10em; background-color: white !important;">
+1.0e+00
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 10em; background-color: white !important;">
+docl2dic
+</td>
+<td style="text-align:center;min-width: 20em; background-color: white !important;">
+Description
+</td>
+<td style="text-align:center;min-width: 10em; background-color: white !important;">
+1.0e+02
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 10em; background-color: white !important;">
+donl2din
+</td>
+<td style="text-align:center;min-width: 20em; background-color: white !important;">
+Labile DON terminal metabolism rate (y<sup>-1</sup>)
+</td>
+<td style="text-align:center;min-width: 10em; background-color: white !important;">
+1.0e+02
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 10em; background-color: white !important;">
+dopl2dip
+</td>
+<td style="text-align:center;min-width: 20em; background-color: white !important;">
+Description
+</td>
+<td style="text-align:center;min-width: 10em; background-color: white !important;">
+1.0e+02
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 10em; ">
+pocl2docl
+</td>
+<td style="text-align:center;min-width: 20em; ">
+Labile POC hydrolysis rate (y<sup>-1</sup>)
+</td>
+<td style="text-align:center;min-width: 10em; ">
+5.0e+01
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 10em; ">
+ponl2donl
+</td>
+<td style="text-align:center;min-width: 20em; ">
+Description
+</td>
+<td style="text-align:center;min-width: 10em; ">
+5.0e+01
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 10em; ">
+popl2dopl
+</td>
+<td style="text-align:center;min-width: 20em; ">
+Labile POP hydrolysis rate (y<sup>-1</sup>)
+</td>
+<td style="text-align:center;min-width: 10em; ">
+5.0e+01
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 10em; ">
+docr2docl
+</td>
+<td style="text-align:center;min-width: 20em; ">
+Description
+</td>
+<td style="text-align:center;min-width: 10em; ">
+2.5e+00
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 10em; ">
+donr2donl
+</td>
+<td style="text-align:center;min-width: 20em; ">
+Refractory DON terminal metabolism rate (y<sup>-1</sup>)
+</td>
+<td style="text-align:center;min-width: 10em; ">
+2.5e+00
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 10em; ">
+dopr2dopl
+</td>
+<td style="text-align:center;min-width: 20em; ">
+Description
+</td>
+<td style="text-align:center;min-width: 10em; ">
+2.5e+00
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 10em; ">
+pocr2docr
+</td>
+<td style="text-align:center;min-width: 20em; ">
+Refractory POC hydrolysis rate (y<sup>-1</sup>)
+</td>
+<td style="text-align:center;min-width: 10em; ">
+5.0e+00
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 10em; ">
+ponr2donr
+</td>
+<td style="text-align:center;min-width: 20em; ">
+Description
+</td>
+<td style="text-align:center;min-width: 10em; ">
+5.0e+00
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 10em; ">
+popr2dopr
+</td>
+<td style="text-align:center;min-width: 20em; ">
+Refractory POP hydrolysis rate (y<sup>-1</sup>)
+</td>
+<td style="text-align:center;min-width: 10em; ">
+5.0e+00
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 10em; ">
+pocvr2docr
+</td>
+<td style="text-align:center;min-width: 20em; ">
+Description
+</td>
+<td style="text-align:center;min-width: 10em; ">
+0.0e+00
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 10em; ">
+ponvr2donr
+</td>
+<td style="text-align:center;min-width: 20em; ">
+Very refractory PON hydrolysis rate (y<sup>-1</sup>)
+</td>
+<td style="text-align:center;min-width: 10em; ">
+0.0e+00
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 10em; ">
+popvr2dopr
+</td>
+<td style="text-align:center;min-width: 20em; ">
+Description
+</td>
+<td style="text-align:center;min-width: 10em; ">
+0.0e+00
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 10em; ">
+domr2dic
+</td>
+<td style="text-align:center;min-width: 20em; ">
+Refractory DOM terminal metabolism (y<sup>-1</sup>)
+</td>
+<td style="text-align:center;min-width: 10em; ">
+1.0e-02
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 10em; ">
+domr2pomr
+</td>
+<td style="text-align:center;min-width: 20em; ">
+Description
+</td>
+<td style="text-align:center;min-width: 10em; ">
+1.0e-03
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 10em; ">
+poml2doml
+</td>
+<td style="text-align:center;min-width: 20em; ">
+Labile POM hydrolysis (y<sup>-1</sup>)
+</td>
+<td style="text-align:center;min-width: 10em; ">
+1.0e+00
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 10em; ">
+pocu
+</td>
+<td style="text-align:center;min-width: 20em; ">
+Description
+</td>
+<td style="text-align:center;min-width: 10em; ">
+1.0e+06
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 10em; ">
+ponu
+</td>
+<td style="text-align:center;min-width: 20em; ">
+Minimum concentration of refractory PON at which reactions stop (mmol L<sup>-1</sup>)
+</td>
+<td style="text-align:center;min-width: 10em; ">
+5.0e+03
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 10em; ">
+popu
+</td>
+<td style="text-align:center;min-width: 20em; ">
+Description
+</td>
+<td style="text-align:center;min-width: 10em; ">
+1.0e+04
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</center>
+<p><br></p>
+<p><br />
+</p>
+</div>
+<div id="secondary-redox-reactions-1" class="section level5 unnumbered hasAnchor">
+<h5>Secondary redox reactions<a href="sediment-biogeochemistry.html#secondary-redox-reactions-1" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<p>Secondary redox reactions are formed from the by-products of primary redox reactions. The nitrogen redox cycle parameters are given in Table <a href="sediment-biogeochemistry.html#tab:param-Nredox">13.6</a>.</p>
+<center>
+<div style="border: 1px solid #ddd; padding: 5px; overflow-y: scroll; height:250px; overflow-x: scroll; width:600px; ">
+<table class="table table-hover" style="font-size: 12px; width: auto !important; margin-left: auto; margin-right: auto;">
+<caption style="font-size: initial !important;">
+<span id="tab:param-Nredox">Table 13.6: </span>Nitrogen redox cycle parameters
+</caption>
+<thead>
+<tr>
+<th style="text-align:center;font-weight: bold;color: white !important;background-color: #14759e !important;">
+Parameter name
+</th>
+<th style="text-align:center;font-weight: bold;color: white !important;background-color: #14759e !important;">
+Description
+</th>
+<th style="text-align:center;font-weight: bold;color: white !important;background-color: #14759e !important;">
+Example value
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center;min-width: 10em; background-color: white !important;">
+kin_denitrit
+</td>
+<td style="text-align:center;min-width: 20em; background-color: white !important;">
+Inhibition concentration of denitritation (mmol L<sup>-1</sup>)
+</td>
+<td style="text-align:center;min-width: 10em; background-color: white !important;">
+0.000297
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 10em; background-color: white !important;">
+kpart_ammox
+</td>
+<td style="text-align:center;min-width: 20em; background-color: white !important;">
+Inhibition concentration of ammonium oxidation (mmol L<sup>-1</sup>)
+</td>
+<td style="text-align:center;min-width: 10em; background-color: white !important;">
+0.001000
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 10em; background-color: white !important;">
+kin_denitrous
+</td>
+<td style="text-align:center;min-width: 20em; background-color: white !important;">
+Inhibition concentration of denitrousation (mmol L<sup>-1</sup>)
+</td>
+<td style="text-align:center;min-width: 10em; background-color: white !important;">
+0.000205
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 10em; background-color: white !important;">
+kin_deamm
+</td>
+<td style="text-align:center;min-width: 20em; background-color: white !important;">
+Inhibition concentration of deammonification (mmol L<sup>-1</sup>)
+</td>
+<td style="text-align:center;min-width: 10em; background-color: white !important;">
+0.000886
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 10em; background-color: white !important;">
+klim_denitrat
+</td>
+<td style="text-align:center;min-width: 20em; background-color: white !important;">
+Limitation concentration of denitratation (mmol L<sup>-1</sup>)
+</td>
+<td style="text-align:center;min-width: 10em; background-color: white !important;">
+0.001000
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 10em; ">
+kpart_denitrit
+</td>
+<td style="text-align:center;min-width: 20em; ">
+Partitioning concentration of denitritation (mmol L<sup>-1</sup>)
+</td>
+<td style="text-align:center;min-width: 10em; ">
+0.006000
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 10em; ">
+knh4no2
+</td>
+<td style="text-align:center;min-width: 20em; ">
+NH<sub>$</sub><sup>+</sup> oxidation by NO<sub>2</sub><sup>-</sup> kinetic rate (mmol<sup>-1</sup> L y<sup>-1</sup>)
+</td>
+<td style="text-align:center;min-width: 10em; ">
+0.365000
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 10em; ">
+kno2o2
+</td>
+<td style="text-align:center;min-width: 20em; ">
+NO<sub>2</sub> oxidation kinetic rate (mmol<sup>-1</sup> L y<sup>-1</sup>)
+</td>
+<td style="text-align:center;min-width: 10em; ">
+0.001000
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</center>
+<p><br />
+<br />
+<br />
+<br />
+</p>
+<p>Secondary redox parameters for other processes are given in Table <a href="sediment-biogeochemistry.html#tab:param-SecondaryRedox">13.7</a>.</p>
+<center>
+<div style="border: 1px solid #ddd; padding: 5px; overflow-y: scroll; height:280px; overflow-x: scroll; width:600px; ">
+<table class="table table-hover" style="font-size: 12px; width: auto !important; margin-left: auto; margin-right: auto;">
+<caption style="font-size: initial !important;">
+<span id="tab:param-SecondaryRedox">Table 13.7: </span>Secondary redox parameters
+</caption>
+<thead>
+<tr>
+<th style="text-align:center;font-weight: bold;color: white !important;background-color: #14759e !important;">
+Parameter
+</th>
+<th style="text-align:center;font-weight: bold;color: white !important;background-color: #14759e !important;">
+Description
+</th>
+<th style="text-align:center;font-weight: bold;color: white !important;background-color: #14759e !important;">
+Example value
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center;min-width: 10em; background-color: white !important;">
+kMnFe
+</td>
+<td style="text-align:center;min-width: 20em; background-color: white !important;">
+Fe<sup>2+</sup> oxidation by MnO<sub>2</sub> rate (mmol<sup>-1</sup> L y<sup>-1</sup>)
+</td>
+<td style="text-align:center;min-width: 10em; background-color: white !important;">
+3.0e+03
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 10em; background-color: white !important;">
+kTSMn
+</td>
+<td style="text-align:center;min-width: 20em; background-color: white !important;">
+H<sub>2</sub>S oxidation by MnO<sub>2</sub> rate (mmol<sup>-1</sup> L y<sup>-1</sup>)
+</td>
+<td style="text-align:center;min-width: 10em; background-color: white !important;">
+2.0e+01
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 10em; background-color: white !important;">
+kTSOX
+</td>
+<td style="text-align:center;min-width: 20em; background-color: white !important;">
+H<sub>2</sub>S oxidation rate (mmol<sup>-1</sup> L y<sup>-1</sup>)
+</td>
+<td style="text-align:center;min-width: 10em; background-color: white !important;">
+1.6e+02
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 10em; background-color: white !important;">
+kTSFe
+</td>
+<td style="text-align:center;min-width: 20em; background-color: white !important;">
+H<sub>2</sub>S oxidation by Fe(OH)<sub>3</sub> rate (mmol<sup>-1</sup> L y<sup>-1</sup>)
+</td>
+<td style="text-align:center;min-width: 10em; background-color: white !important;">
+8.0e+00
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 10em; background-color: white !important;">
+kPyrite
+</td>
+<td style="text-align:center;min-width: 20em; background-color: white !important;">
+FeS<sub>2</sub> precipitation rate (mmol<sup>-1</sup> L y<sup>-1</sup>)
+</td>
+<td style="text-align:center;min-width: 10em; background-color: white !important;">
+2.3e-04
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 10em; ">
+kMnFe
+</td>
+<td style="text-align:center;min-width: 20em; ">
+Fe<sup>2+</sup> oxidation by MnO<sub>2</sub> rate (mmol<sup>-1</sup> L y<sup>-1</sup>)
+</td>
+<td style="text-align:center;min-width: 10em; ">
+3.0e+03
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 10em; ">
+kTSMn
+</td>
+<td style="text-align:center;min-width: 20em; ">
+H<sub>2</sub>S oxidation by MnO<sub>2</sub> rate (mmol<sup>-1</sup> L y<sup>-1</sup>)
+</td>
+<td style="text-align:center;min-width: 10em; ">
+2.0e+01
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 10em; ">
+kCH4OX
+</td>
+<td style="text-align:center;min-width: 20em; ">
+CH<sub>4</sub> oxidation rate (mmol<sup>-1</sup> L y<sup>-1</sup>)
+</td>
+<td style="text-align:center;min-width: 10em; ">
+1.0e+07
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 10em; ">
+kCH4SO4
+</td>
+<td style="text-align:center;min-width: 20em; ">
+CH<sub>4</sub> oxidation by SO<sub>4</sub><sup>2-</sup> rate (mmol<sup>-1</sup> L y<sup>-1</sup>)
+</td>
+<td style="text-align:center;min-width: 10em; ">
+1.0e+00
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</center>
+<p><br></p>
+<p><br />
+</p>
+</div>
+<div id="geochemistry-parameters" class="section level5 unnumbered hasAnchor">
+<h5>Geochemistry parameters<a href="sediment-biogeochemistry.html#geochemistry-parameters" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<p>Equilibrium and precipitation/dissolution constants are given in Table <a href="sediment-biogeochemistry.html#tab:param-Geochem">13.8</a>.</p>
+<center>
+<div style="border: 1px solid #ddd; padding: 5px; overflow-y: scroll; height:310px; overflow-x: scroll; width:600px; ">
+<table class="table table-hover" style="font-size: 12px; width: auto !important; margin-left: auto; margin-right: auto;">
+<caption style="font-size: initial !important;">
+<span id="tab:param-Geochem">Table 13.8: </span>Geochemistry and precipitation/dissolution parameters
+</caption>
+<thead>
+<tr>
+<th style="text-align:center;font-weight: bold;color: white !important;background-color: #14759e !important;">
+Parameter
+</th>
+<th style="text-align:center;font-weight: bold;color: white !important;background-color: #14759e !important;">
+Description
+</th>
+<th style="text-align:center;font-weight: bold;color: white !important;background-color: #14759e !important;">
+Example value
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center;min-width: 10em; background-color: white !important;">
+rxn_mode
+</td>
+<td style="text-align:center;min-width: 20em; background-color: white !important;">
+Geochemical reaction complexity
+</td>
+<td style="text-align:center;min-width: 10em; background-color: white !important;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 10em; background-color: white !important;">
+ads_use_pH
+</td>
+<td style="text-align:center;min-width: 20em; background-color: white !important;">
+Use of pH in adsorption reactions
+</td>
+<td style="text-align:center;min-width: 10em; background-color: white !important;">
+.true.
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 10em; background-color: white !important;">
+PO4AdsorptionModel
+</td>
+<td style="text-align:center;min-width: 20em; background-color: white !important;">
+Switch for PO<sub>4</sub><sup>3-</sup> adsorption options (integer)
+</td>
+<td style="text-align:center;min-width: 10em; background-color: white !important;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 10em; background-color: white !important;">
+KPO4p
+</td>
+<td style="text-align:center;min-width: 20em; background-color: white !important;">
+PO<sub>4</sub><sup>3-</sup> adsorption constant for PO4AdsoprtionModel = 1 (-)
+</td>
+<td style="text-align:center;min-width: 10em; background-color: white !important;">
+1.05
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 10em; background-color: white !important;">
+NH4AdsorptionModel
+</td>
+<td style="text-align:center;min-width: 20em; background-color: white !important;">
+NH<sub>4</sub><sup>+</sup> adsorption model switch
+</td>
+<td style="text-align:center;min-width: 10em; background-color: white !important;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 10em; ">
+kPyrite
+</td>
+<td style="text-align:center;min-width: 20em; ">
+FeS<sub>2</sub> precipitation rate (mmol<sup>-1</sup> L y<sup>-1</sup>)
+</td>
+<td style="text-align:center;min-width: 10em; ">
+2.3000000000000001E-4
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 10em; ">
+kFeSppt
+</td>
+<td style="text-align:center;min-width: 20em; ">
+FeS precipitation kinetic rate
+</td>
+<td style="text-align:center;min-width: 10em; ">
+1E-3
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 10em; ">
+kFeSdis
+</td>
+<td style="text-align:center;min-width: 20em; ">
+FeS dissolution kinetic rate
+</td>
+<td style="text-align:center;min-width: 10em; ">
+1E-3
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 10em; ">
+KPFeS
+</td>
+<td style="text-align:center;min-width: 20em; ">
+Equilibrium constant for FeS precipitation (-)
+</td>
+<td style="text-align:center;min-width: 10em; ">
+-2.2000000000000002
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</center>
+<p><br></p>
+</div>
+</div>
+<div id="hidden-parameters-aed_readcandi.f90" class="section level4 unnumbered hasAnchor">
+<h4>Hidden parameters: aed_readcandi.F90<a href="sediment-biogeochemistry.html#hidden-parameters-aed_readcandi.f90" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p><a href="sediment-biogeochemistry.html#tab:param-Hidden">13.9</a></p>
+<br>
+<center>
+<div style="border: 1px solid #ddd; padding: 5px; overflow-y: scroll; height:310px; overflow-x: scroll; width:500px; ">
+<table class="table table-hover" style="font-size: 12px; width: auto !important; margin-left: auto; margin-right: auto;">
+<caption style="font-size: initial !important;">
+<span id="tab:param-Hidden">Table 13.9: </span>Geochemistry and precipitation/dissolution parameters
+</caption>
+<thead>
+<tr>
+<th style="text-align:center;font-weight: bold;color: white !important;background-color: #14759e !important;">
+Parameter
+</th>
+<th style="text-align:center;font-weight: bold;color: white !important;background-color: #14759e !important;">
+…2
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center;min-width: 10em; background-color: white !important;">
+w00_min
+</td>
+<td style="text-align:center;background-color: white !important;">
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 10em; background-color: white !important;">
+w00_max
+</td>
+<td style="text-align:center;background-color: white !important;">
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 10em; background-color: white !important;">
+w00_link_scale
+</td>
+<td style="text-align:center;background-color: white !important;">
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 10em; background-color: white !important;">
+SolidInitialUnit
+</td>
+<td style="text-align:center;background-color: white !important;">
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 10em; background-color: white !important;">
+theta_om
+</td>
+<td style="text-align:center;background-color: white !important;">
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 10em; ">
+kpo2n2o
+</td>
+<td style="text-align:center;">
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 10em; ">
+Temporary_proton
+</td>
+<td style="text-align:center;">
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 10em; ">
+knh4ox_to_N2O
+</td>
+<td style="text-align:center;">
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 10em; ">
+dG0ManH2
+</td>
+<td style="text-align:center;">
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 10em; ">
+YManH2
+</td>
+<td style="text-align:center;">
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 10em; ">
+klim_denitrit
+</td>
+<td style="text-align:center;">
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 10em; ">
+kpNO2
+</td>
+<td style="text-align:center;">
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 10em; ">
+kpN2O
+</td>
+<td style="text-align:center;">
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 10em; ">
+kpO2NO3
+</td>
+<td style="text-align:center;">
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 10em; ">
+kpO2NO2
+</td>
+<td style="text-align:center;">
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 10em; ">
+lNO2
+</td>
+<td style="text-align:center;">
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 10em; ">
+lpNO2
+</td>
+<td style="text-align:center;">
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 10em; ">
+lN2O
+</td>
+<td style="text-align:center;">
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 10em; ">
+lpN2O
+</td>
+<td style="text-align:center;">
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 10em; ">
+lpo2no2
+</td>
+<td style="text-align:center;">
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 10em; ">
+lpo2n2o
+</td>
+<td style="text-align:center;">
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 10em; ">
+KNH4p
+</td>
+<td style="text-align:center;">
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 10em; ">
+DOMAdsorptionModel
+</td>
+<td style="text-align:center;">
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 10em; ">
+KDOMp
+</td>
+<td style="text-align:center;">
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 10em; ">
+kmn
+</td>
+<td style="text-align:center;">
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 10em; ">
+kpmn
+</td>
+<td style="text-align:center;">
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 10em; ">
+kfe
+</td>
+<td style="text-align:center;">
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 10em; ">
+kpfe
+</td>
+<td style="text-align:center;">
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 10em; ">
+lmn
+</td>
+<td style="text-align:center;">
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 10em; ">
+lpmn
+</td>
+<td style="text-align:center;">
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 10em; ">
+lfe
+</td>
+<td style="text-align:center;">
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 10em; ">
+lpfe
+</td>
+<td style="text-align:center;">
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 10em; ">
+kanh4
+</td>
+<td style="text-align:center;">
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 10em; ">
+kapo4
+</td>
+<td style="text-align:center;">
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 10em; ">
+fgpp_sflux
+</td>
+<td style="text-align:center;">
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 10em; ">
+Xgpp_n
+</td>
+<td style="text-align:center;">
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 10em; ">
+Xgpp_p
+</td>
+<td style="text-align:center;">
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 10em; ">
+Xrsp_n
+</td>
+<td style="text-align:center;">
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 10em; ">
+Xrsp_p
+</td>
+<td style="text-align:center;">
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 10em; ">
+Xrsp_co2
+</td>
+<td style="text-align:center;">
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 10em; ">
+Xrsp_doc
+</td>
+<td style="text-align:center;">
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 10em; ">
+Xrsp_poc
+</td>
+<td style="text-align:center;">
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 10em; ">
+smothbm
+</td>
+<td style="text-align:center;">
+</td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 <div id="timing-switches" class="section level4 unnumbered hasAnchor">
 <h4>Timing switches<a href="sediment-biogeochemistry.html#timing-switches" class="anchor-section" aria-label="Anchor link to header"></a></h4>
@@ -1735,130 +3066,151 @@ F = D_{0}\frac{\Delta C}{\Delta x} = \frac{D_{0}}{\delta} (C_{bw} - C_{1})
 </div>
 <div id="special-organic-matter-flux" class="section level5 unnumbered hasAnchor">
 <h5>Special organic matter flux<a href="sediment-biogeochemistry.html#special-organic-matter-flux" class="anchor-section" aria-label="Anchor link to header"></a></h5>
-<p>The sediment model has a unique boundary condition, where a large influx of organic matter occurs for a limited time (figure <a href="sediment-biogeochemistry.html#fig:Timing-1">13.34</a>). This represents, for example, the operation of a fish farm, a large algal bloom or an illegal dump of organic waste into a lake. This is a convenient tool for looking at the effect of large amounts of organic matter on other chemical species, and it operates separately to the constant flux boundaries, the swibc input file, or the variables linked to the pelagic model. The flux defaults to 0.0 before the time parameter <em>fluxon</em> and after the time parameter <em>fluxoff</em> (y). The state variable switched on by this flux is <span class="math inline">\(POM_{Special}\)</span>. It is not named as, for example, labile or refractory because the user can tailor its properties to the simulation. The breakdown parameter for <span class="math inline">\(POM_{Special}\)</span> is <em>pomspecial2dic</em> (y^-1). The parameter ibc2 must be set to 10 or 0 for this feature to operate. The magnitude of <span class="math inline">\(POM_{Special}\)</span> flux is set in the file aed_sdg_vars.csv, in the default_vals column, and the default flux before <em>fluxon</em> and after <em>fluxoff</em> times is zero.</p>
+<p>The sediment model has a unique boundary condition, where a large influx of organic matter occurs for a limited time (figure <a href="sediment-biogeochemistry.html#fig:Timing-1">13.34</a>). This represents, for example, the operation of a fish farm, a large algal bloom or an illegal dump of organic waste into a lake. This is a convenient tool for looking at the effect of large amounts of organic matter on other chemical species, and it operates separately to the constant flux boundaries, the swibc input file, or the variables linked to the pelagic model. The flux defaults to 0.0 before the time parameter <code>fluxon</code> and after the time parameter <code>fluxoff</code> (y). The state variable switched on by this flux is <span class="math inline">\(POM_{Special}\)</span>. It is not named as, for example, labile or refractory because the user can tailor its properties to the simulation. The breakdown parameter for <span class="math inline">\(POM_{Special}\)</span> is <code>pomspecial2dic</code> (y^-1). The parameter ibc2 must be set to 10 or 0 for this feature to operate. The magnitude of <span class="math inline">\(POM_{Special}\)</span> flux is set in the file aed_sdg_vars.csv, in the default_vals column, and the default flux before <code>fluxon</code> and after <code>fluxoff</code> times is zero.</p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:Timing-1"></span>
-<img src="images/23-sediment_biogeochemistry/TimeSwitches/TimeSwitches-01.png" alt="Schematic of $POM_{Special}$ flux over time. $POM_{Special}$ flux begins at time *fluxon* and stops at time *fluxoff*. The rate of the flux is *pomspecial*." width="75%" />
+<img src="images/23-sediment_biogeochemistry/TimeSwitches/TimeSwitches-01.png" alt="Schematic of $POM_{Special}$ flux over time. $POM_{Special}$ flux begins at time `fluxon` and stops at time `fluxoff`. The rate of the flux is `pomspecial`." width="75%" />
 <p class="caption">
-Figure 13.34: Schematic of <span class="math inline">\(POM_{Special}\)</span> flux over time. <span class="math inline">\(POM_{Special}\)</span> flux begins at time <em>fluxon</em> and stops at time <em>fluxoff</em>. The rate of the flux is <em>pomspecial</em>.
+Figure 13.34: Schematic of <span class="math inline">\(POM_{Special}\)</span> flux over time. <span class="math inline">\(POM_{Special}\)</span> flux begins at time <code>fluxon</code> and stops at time <code>fluxoff</code>. The rate of the flux is <code>pomspecial</code>.
 </p>
 </div>
 </div>
 <div id="spinup-substep" class="section level5 unnumbered hasAnchor">
 <h5>Spinup substep<a href="sediment-biogeochemistry.html#spinup-substep" class="anchor-section" aria-label="Anchor link to header"></a></h5>
-<p>In some simulations the initial timesteps have a high probability that the numerical model may crash while processing the initial condition (figure <a href="sediment-biogeochemistry.html#fig:Timing-2">13.35</a>). A slow substep overcomes this problem, however, it has the disadvantage of producing a longer run time. The solution for this problem is the tool <em>firststeps</em> (y), which sets an initial time period during which a slower substep (<em>substep_0</em>) is used, and after which the normal substep (<em>substep_1</em>) is used. The switch <em>timeswitch</em> must be set to 1 for this feature to work, otherwise the normal <em>substep</em> applies.</p>
+<p>In some simulations the initial timesteps have a high probability that the numerical model may crash while processing the initial condition (figure <a href="sediment-biogeochemistry.html#fig:Timing-2">13.35</a>). A slow substep overcomes this problem, however, it has the disadvantage of producing a longer run time. The solution for this problem is the tool <code>firststeps</code> (y), which sets an initial time period during which a slower substep (<code>substep_0</code>) is used, and after which the normal substep (<code>substep_1</code>) is used. The switch <code>timeswitch</code> must be set to 1 for this feature to work, otherwise the normal <code>substep</code> applies.</p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:Timing-2"></span>
-<img src="images/23-sediment_biogeochemistry/TimeSwitches/TimeSwitches-02.png" alt="Schematic of the timestep across time. A different timestep (*substep_0*) can be used for a period (*firsteps*) until another timestep is used (*substep_1*).   " width="75%" />
+<img src="images/23-sediment_biogeochemistry/TimeSwitches/TimeSwitches-02.png" alt="Schematic of the timestep across time. A different timestep (`substep_0`) can be used for a period (`firsteps`) until another timestep is used (`substep_1`).   " width="75%" />
 <p class="caption">
-Figure 13.35: Schematic of the timestep across time. A different timestep (<em>substep_0</em>) can be used for a period (<em>firsteps</em>) until another timestep is used (<em>substep_1</em>).
+Figure 13.35: Schematic of the timestep across time. A different timestep (<code>substep_0</code>) can be used for a period (<code>firsteps</code>) until another timestep is used (<code>substep_1</code>).
 </p>
 </div>
 </div>
 <div id="transport-without-reaction" class="section level5 unnumbered hasAnchor">
 <h5>Transport without reaction<a href="sediment-biogeochemistry.html#transport-without-reaction" class="anchor-section" aria-label="Anchor link to header"></a></h5>
-<p>Another tool to help move through the spinup period is to allow the transport to occur before the reactions start (figure <a href="sediment-biogeochemistry.html#fig:Timing-3">13.36</a>). This evens out sharp chemical concentration gradients. This allows the simulation to start before the proper time of the simulation, represented in <a href="sediment-biogeochemistry.html#fig:Timing-3">13.36</a> as negative time. The parameter <em>spinup_days</em> is the number of timestep integers of negative time, and <em>spinup_dt</em> is the length of each timestep (h).</p>
+<p>Another tool to help move through the spinup period is to allow the transport to occur before the reactions start (figure <a href="sediment-biogeochemistry.html#fig:Timing-3">13.36</a>). This evens out sharp chemical concentration gradients. This allows the simulation to start before the proper time of the simulation, represented in <a href="sediment-biogeochemistry.html#fig:Timing-3">13.36</a> as negative time. The parameter <code>spinup_days</code> is the number of timestep integers of negative time, and <code>spinup_dt</code> is the length of each timestep (h).</p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:Timing-3"></span>
-<img src="images/23-sediment_biogeochemistry/TimeSwitches/TimeSwitches-03.png" alt="Schematic of the timestep over time. The initial period up to *spinup_days* occurs in 'negative time', at a duration of *spinup_dt*." width="75%" />
+<img src="images/23-sediment_biogeochemistry/TimeSwitches/TimeSwitches-03.png" alt="Schematic of the timestep over time. The initial period up to `spinup_days` occurs in 'negative time', at a duration of `spinup_dt`." width="75%" />
 <p class="caption">
-Figure 13.36: Schematic of the timestep over time. The initial period up to <em>spinup_days</em> occurs in ‘negative time’, at a duration of <em>spinup_dt</em>.
+Figure 13.36: Schematic of the timestep over time. The initial period up to <code>spinup_days</code> occurs in ‘negative time’, at a duration of <code>spinup_dt</code>.
 </p>
 </div>
 </div>
 <div id="combined-organic-matter-flux-and-timestep-switch" class="section level5 unnumbered hasAnchor">
 <h5>Combined organic matter flux and timestep switch<a href="sediment-biogeochemistry.html#combined-organic-matter-flux-and-timestep-switch" class="anchor-section" aria-label="Anchor link to header"></a></h5>
-<p>A large influx of organic matter can have the same effect for the model as processing the initial condition, and so the large flux can crash the model well after the initial spinup (figure <a href="sediment-biogeochemistry.html#fig:Timing-4">13.37</a>). Therefore, further substep parameters are available for slowing the model while it processes the organic matter. The parameter <em>substep_2</em> is used as the substep after <em>fluxon</em>. The parameter <em>substep_3</em> is used as an intermediate substep after <em>fluxoff</em>, until the time <em>justwaitabit</em>, to allow the final effects of the organic matter influx to be processed, but allowing the possibility of running faster if not at the speed of <em>substep_1</em>.</p>
+<p>A large influx of organic matter can have the same effect for the model as processing the initial condition, and so the large flux can crash the model well after the initial spinup (figure <a href="sediment-biogeochemistry.html#fig:Timing-4">13.37</a>). Therefore, further substep parameters are available for slowing the model while it processes the organic matter. The parameter <code>substep_2</code> is used as the substep after <code>fluxon</code>. The parameter <code>substep_3</code> is used as an intermediate substep after <code>fluxoff</code>, until the time <code>justwaitabit</code>, to allow the final effects of the organic matter influx to be processed, but allowing the possibility of running faster if not at the speed of <code>substep_1</code>.</p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:Timing-4"></span>
 <img src="images/23-sediment_biogeochemistry/TimeSwitches/TimeSwitches-04.png" alt="Schematic of $POM_{Special}$ flux and timestep changes over time. Options are available to optimise a short run total time with a slow substep centred around organic matter influx." width="75%" />
 <p class="caption">
 Figure 13.37: Schematic of <span class="math inline">\(POM_{Special}\)</span> flux and timestep changes over time. Options are available to optimise a short run total time with a slow substep centred around organic matter influx.
 </p>
 </div>
+<!-- ## Setup example -->
+<!-- The model is set up via the name list text file `aed.nml` using the module keyword `&aed_seddiagenesis` and a model namelist block termed `&aed_sediment` configured to select the `sediment_model` as “Dynamic” or “Dynamic2D” option. Once this is selected, the model will search for the `&aed_sedcandi` parameter block. -->
+<!-- An example `aed.nml` configuration block for the `aed_seddiagenesis` module that includes multiple active sediment zones, plus microphytobenthos (MPB) and seagrass links, is shown below: -->
+<!-- <br> -->
+<!-- ```{fortran, eval = FALSE} -->
+<!-- !############################################################################### -->
+<!-- ! aed_seddiagenesis -->
+<!-- !------------------------------------------------------------------------------- -->
+<!-- &aed_sediment -->
+<!--    sediment_model    = 'DYNAMIC'    ! engages the CANDI-AED model -->
+<!--    mpb_link_variable = 'PHY_mpb'    ! use to set link for MPB -->
+<!--    mag_link_variable = 'MA2_mag'    ! use to set link for macroalgae inputs -->
+<!--    mac_link_variable = 'MAC_mac'    ! use to set link for macrophyte root inputs -->
+<!--    swi_link_variable = 'NCS_swi'    ! use to set link for variable w00 -->
+<!-- / -->
+<!-- &aed_sed_candi -->
+<!--   !-- Time Settings --! -->
+<!--    spinup_days     =  90 -->
+<!--    spinup_dt       =   0.25 -->
+<!--    driver_dt       = 900 -->
+<!--    substep         =   8 -->
+<!--   !-- Zones details --! -->
+<!--    n_zones         = 5 -->
+<!--    active_zones    = 104,103, 53, 23, 12,11 -->
+<!--    zone_types      =   5, 3, 3, 1, 1 -->
+<!--   !-- General Setup Options  --! -->
+<!--    dbase           = './AED/aed_candi_params.csv' -->
+<!--    vars_files      = './AED/aed_sdg_vars.csv' -->
+<!--    geochem_file    = './AED/aed_geochem_pars.dat' -->
+<!--   !-- Sediment Boundary Conditions  --! -->
+<!--    swibc_mode      = 0      ! previously ibc2 -->
+<!--    deepbc_mode     = 1      ! previously ibbc -->
+<!--    swibc_file      = './AED/aed_sediment_swibc.dat' -->
+<!--    deepbc_file     = './AED/aed_sediment_deepbc.dat' -->
+<!--    swibc_filevars  = '' ! 'oxy', 'nit', 'amm', 'frp', 'poml'   ! from_bc_file -->
+<!--    deepbc_filevars = '' ! ,OXY_oxy,                            ! use_deep_bc -->
+<!--    flux_scale      = 1 -->
+<!--   !-- Initial Conditions  --! -->
+<!--    SolidInitialUnit= 'mmolLsolid' -->
+<!--    OMInitMethodL   = 'LI_I' -->
+<!--    OM_topL         = 1 -->
+<!--    OM_minL         = 0.9 -->
+<!--    OM_cfL          = 0.6 -->
+<!--    InitMinDepthL   = 99 -->
+<!--    OMInitMethodR   = 'LI_I' -->
+<!--    OM_topR         = 1 -->
+<!--    OM_minR         = 0.3 -->
+<!--    OM_cfR          = 0.6 -->
+<!--    InitMinDepthR   = 50 -->
+<!--    POMVR           = 0.3 -->
+<!--   !-- Outputs  --! -->
+<!--    diag_level         = 10 -->
+<!--    output_profiles    =  .TRUE. -->
+<!--    morevariables      = 'Rgpp','Rrsp','FO2','f_an' -->
+<!--    output_diag_vars   = 'mpb','oxy','amm','docl','pocl','docr' -->
+<!--    n_ddpths           = 2 -->
+<!--    output_diag_depths = 1.0, 5.0  ! cm below swi -->
+<!-- / -->
+<!-- ``` -->
+<!-- <br> -->
+<!-- <br> -->
+<!-- ```{block2, pars-text, type='rmdnote'} -->
+<!-- In addition to adding the above code block to `aed.nml`, users must also supply a valid AED sediment parameter database file (`aed_candi_pars`) and a variable definition file ('aed_sdg_vars'). Both of these files file must be supplied in either `CSV` format. -->
+<!-- Users can create a standard file in the correct format from the online [**AED parameter database**](https://aed.see.uwa.edu.au/research/models/AED/aed_dbase/db_edit.php) by selecting from the available sediment types of interest, downloading via the **"Make CSV"** button, and then tailoring to the simulation being undertaken as required. Carefully check the parameter units and values! -->
+<!-- ``` -->
+<!-- <br> -->
 </div>
 </div>
 </div>
 </div>
-<div id="setup-example-3" class="section level2 hasAnchor" number="13.5">
-<h2><span class="header-section-number">13.5</span> Setup example<a href="sediment-biogeochemistry.html#setup-example-3" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>The model is set up via the name list text file <code>aed.nml</code> using the module keyword <code>&amp;aed_seddiagenesis</code> and a model namelist block termed <code>&amp;aed_sediment</code> configured to select the <code>sediment_model</code> as “Dynamic” or “Dynamic2D” option. Once this is selected, the model will search for the <code>&amp;aed_sedcandi</code> parameter block.</p>
-<p>An example <code>aed.nml</code> configuration block for the <code>aed_seddiagenesis</code> module that includes multiple active sediment zones, plus microphytobenthos (MPB) and seagrass links, is shown below:</p>
-<p><br></p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode fortran"><code class="sourceCode fortranfixed"><span id="cb17-1"><a href="sediment-biogeochemistry.html#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co">!###############################################################################</span></span>
-<span id="cb17-2"><a href="sediment-biogeochemistry.html#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="co">! aed_seddiagenesis</span></span>
-<span id="cb17-3"><a href="sediment-biogeochemistry.html#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="co">!-------------------------------------------------------------------------------</span></span>
-<span id="cb17-4"><a href="sediment-biogeochemistry.html#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="kw">&amp;</span>aed_sediment</span>
-<span id="cb17-5"><a href="sediment-biogeochemistry.html#cb17-5" aria-hidden="true" tabindex="-1"></a>   sediment_model    <span class="kw">=</span> <span class="st">&#39;DYNAMIC&#39;</span>    <span class="co">! engages the CANDI-AED model</span></span>
-<span id="cb17-6"><a href="sediment-biogeochemistry.html#cb17-6" aria-hidden="true" tabindex="-1"></a>   mpb_link_variable <span class="kw">=</span> <span class="st">&#39;PHY_mpb&#39;</span>    <span class="co">! use to set link for MPB</span></span>
-<span id="cb17-7"><a href="sediment-biogeochemistry.html#cb17-7" aria-hidden="true" tabindex="-1"></a>   mag_link_variable <span class="kw">=</span> <span class="st">&#39;MA2_mag&#39;</span>    <span class="co">! use to set link for macroalgae inputs</span></span>
-<span id="cb17-8"><a href="sediment-biogeochemistry.html#cb17-8" aria-hidden="true" tabindex="-1"></a>   mac_link_variable <span class="kw">=</span> <span class="st">&#39;MAC_mac&#39;</span>    <span class="co">! use to set link for macrophyte root inputs</span></span>
-<span id="cb17-9"><a href="sediment-biogeochemistry.html#cb17-9" aria-hidden="true" tabindex="-1"></a>   swi_link_variable <span class="kw">=</span> <span class="st">&#39;NCS_swi&#39;</span>    <span class="co">! use to set link for variable w00</span></span>
-<span id="cb17-10"><a href="sediment-biogeochemistry.html#cb17-10" aria-hidden="true" tabindex="-1"></a><span class="kw">/</span></span>
-<span id="cb17-11"><a href="sediment-biogeochemistry.html#cb17-11" aria-hidden="true" tabindex="-1"></a><span class="kw">&amp;</span>aed_sed_candi</span>
-<span id="cb17-12"><a href="sediment-biogeochemistry.html#cb17-12" aria-hidden="true" tabindex="-1"></a>  <span class="co">!-- Time Settings --!</span></span>
-<span id="cb17-13"><a href="sediment-biogeochemistry.html#cb17-13" aria-hidden="true" tabindex="-1"></a>   spinup_days     <span class="kw">=</span>  <span class="dv">90</span></span>
-<span id="cb17-14"><a href="sediment-biogeochemistry.html#cb17-14" aria-hidden="true" tabindex="-1"></a>   spinup_dt       <span class="kw">=</span>   <span class="fl">0.25</span></span>
-<span id="cb17-15"><a href="sediment-biogeochemistry.html#cb17-15" aria-hidden="true" tabindex="-1"></a>   driver_dt       <span class="kw">=</span> <span class="dv">900</span></span>
-<span id="cb17-16"><a href="sediment-biogeochemistry.html#cb17-16" aria-hidden="true" tabindex="-1"></a>   substep         <span class="kw">=</span>   <span class="dv">8</span></span>
-<span id="cb17-17"><a href="sediment-biogeochemistry.html#cb17-17" aria-hidden="true" tabindex="-1"></a>  <span class="co">!-- Zones details --!</span></span>
-<span id="cb17-18"><a href="sediment-biogeochemistry.html#cb17-18" aria-hidden="true" tabindex="-1"></a>   n_zones         <span class="kw">=</span> <span class="dv">5</span></span>
-<span id="cb17-19"><a href="sediment-biogeochemistry.html#cb17-19" aria-hidden="true" tabindex="-1"></a>   active_zones    <span class="kw">=</span> <span class="dv">104</span>,<span class="dv">103</span>, <span class="dv">53</span>, <span class="dv">23</span>, <span class="dv">12</span>,<span class="dv">11</span></span>
-<span id="cb17-20"><a href="sediment-biogeochemistry.html#cb17-20" aria-hidden="true" tabindex="-1"></a>   zone_types      <span class="kw">=</span>   <span class="dv">5</span>, <span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">1</span></span>
-<span id="cb17-21"><a href="sediment-biogeochemistry.html#cb17-21" aria-hidden="true" tabindex="-1"></a>  <span class="co">!-- General Setup Options  --!</span></span>
-<span id="cb17-22"><a href="sediment-biogeochemistry.html#cb17-22" aria-hidden="true" tabindex="-1"></a>   dbase           <span class="kw">=</span> <span class="st">&#39;./AED/aed_candi_params.csv&#39;</span></span>
-<span id="cb17-23"><a href="sediment-biogeochemistry.html#cb17-23" aria-hidden="true" tabindex="-1"></a>   vars_files      <span class="kw">=</span> <span class="st">&#39;./AED/aed_sdg_vars.csv&#39;</span></span>
-<span id="cb17-24"><a href="sediment-biogeochemistry.html#cb17-24" aria-hidden="true" tabindex="-1"></a>   geochem_file    <span class="kw">=</span> <span class="st">&#39;./AED/aed_geochem_pars.dat&#39;</span></span>
-<span id="cb17-25"><a href="sediment-biogeochemistry.html#cb17-25" aria-hidden="true" tabindex="-1"></a>  <span class="co">!-- Sediment Boundary Conditions  --!</span></span>
-<span id="cb17-26"><a href="sediment-biogeochemistry.html#cb17-26" aria-hidden="true" tabindex="-1"></a>   swibc_mode      <span class="kw">=</span> <span class="dv">0</span>      <span class="co">! previously ibc2</span></span>
-<span id="cb17-27"><a href="sediment-biogeochemistry.html#cb17-27" aria-hidden="true" tabindex="-1"></a>   deepbc_mode     <span class="kw">=</span> <span class="dv">1</span>      <span class="co">! previously ibbc</span></span>
-<span id="cb17-28"><a href="sediment-biogeochemistry.html#cb17-28" aria-hidden="true" tabindex="-1"></a>   swibc_file      <span class="kw">=</span> <span class="st">&#39;./AED/aed_sediment_swibc.dat&#39;</span></span>
-<span id="cb17-29"><a href="sediment-biogeochemistry.html#cb17-29" aria-hidden="true" tabindex="-1"></a>   deepbc_file     <span class="kw">=</span> <span class="st">&#39;./AED/aed_sediment_deepbc.dat&#39;</span></span>
-<span id="cb17-30"><a href="sediment-biogeochemistry.html#cb17-30" aria-hidden="true" tabindex="-1"></a>   swibc_filevars  <span class="kw">=</span> <span class="st">&#39;&#39;</span> <span class="co">! &#39;oxy&#39;, &#39;nit&#39;, &#39;amm&#39;, &#39;frp&#39;, &#39;poml&#39;   ! from_bc_file</span></span>
-<span id="cb17-31"><a href="sediment-biogeochemistry.html#cb17-31" aria-hidden="true" tabindex="-1"></a>   deepbc_filevars <span class="kw">=</span> <span class="st">&#39;&#39;</span> <span class="co">! ,OXY_oxy,                            ! use_deep_bc</span></span>
-<span id="cb17-32"><a href="sediment-biogeochemistry.html#cb17-32" aria-hidden="true" tabindex="-1"></a>   flux_scale      <span class="kw">=</span> <span class="dv">1</span></span>
-<span id="cb17-33"><a href="sediment-biogeochemistry.html#cb17-33" aria-hidden="true" tabindex="-1"></a>  <span class="co">!-- Initial Conditions  --!</span></span>
-<span id="cb17-34"><a href="sediment-biogeochemistry.html#cb17-34" aria-hidden="true" tabindex="-1"></a>   SolidInitialUnit<span class="kw">=</span> <span class="st">&#39;mmolLsolid&#39;</span></span>
-<span id="cb17-35"><a href="sediment-biogeochemistry.html#cb17-35" aria-hidden="true" tabindex="-1"></a>   OMInitMethodL   <span class="kw">=</span> <span class="st">&#39;LI_I&#39;</span></span>
-<span id="cb17-36"><a href="sediment-biogeochemistry.html#cb17-36" aria-hidden="true" tabindex="-1"></a>   OM_topL         <span class="kw">=</span> <span class="dv">1</span></span>
-<span id="cb17-37"><a href="sediment-biogeochemistry.html#cb17-37" aria-hidden="true" tabindex="-1"></a>   OM_minL         <span class="kw">=</span> <span class="fl">0.9</span></span>
-<span id="cb17-38"><a href="sediment-biogeochemistry.html#cb17-38" aria-hidden="true" tabindex="-1"></a>   OM_cfL          <span class="kw">=</span> <span class="fl">0.6</span></span>
-<span id="cb17-39"><a href="sediment-biogeochemistry.html#cb17-39" aria-hidden="true" tabindex="-1"></a>   InitMinDepthL   <span class="kw">=</span> <span class="dv">99</span></span>
-<span id="cb17-40"><a href="sediment-biogeochemistry.html#cb17-40" aria-hidden="true" tabindex="-1"></a>   OMInitMethodR   <span class="kw">=</span> <span class="st">&#39;LI_I&#39;</span></span>
-<span id="cb17-41"><a href="sediment-biogeochemistry.html#cb17-41" aria-hidden="true" tabindex="-1"></a>   OM_topR         <span class="kw">=</span> <span class="dv">1</span></span>
-<span id="cb17-42"><a href="sediment-biogeochemistry.html#cb17-42" aria-hidden="true" tabindex="-1"></a>   OM_minR         <span class="kw">=</span> <span class="fl">0.3</span></span>
-<span id="cb17-43"><a href="sediment-biogeochemistry.html#cb17-43" aria-hidden="true" tabindex="-1"></a>   OM_cfR          <span class="kw">=</span> <span class="fl">0.6</span></span>
-<span id="cb17-44"><a href="sediment-biogeochemistry.html#cb17-44" aria-hidden="true" tabindex="-1"></a>   InitMinDepthR   <span class="kw">=</span> <span class="dv">50</span></span>
-<span id="cb17-45"><a href="sediment-biogeochemistry.html#cb17-45" aria-hidden="true" tabindex="-1"></a>   POMVR           <span class="kw">=</span> <span class="fl">0.3</span></span>
-<span id="cb17-46"><a href="sediment-biogeochemistry.html#cb17-46" aria-hidden="true" tabindex="-1"></a>  <span class="co">!-- Outputs  --!</span></span>
-<span id="cb17-47"><a href="sediment-biogeochemistry.html#cb17-47" aria-hidden="true" tabindex="-1"></a>   diag_level         <span class="kw">=</span> <span class="dv">10</span></span>
-<span id="cb17-48"><a href="sediment-biogeochemistry.html#cb17-48" aria-hidden="true" tabindex="-1"></a>   output_profiles    <span class="kw">=</span>  <span class="cn">.TRUE.</span></span>
-<span id="cb17-49"><a href="sediment-biogeochemistry.html#cb17-49" aria-hidden="true" tabindex="-1"></a>   morevariables      <span class="kw">=</span> <span class="st">&#39;Rgpp&#39;</span>,<span class="st">&#39;Rrsp&#39;</span>,<span class="st">&#39;FO2&#39;</span>,<span class="st">&#39;f_an&#39;</span></span>
-<span id="cb17-50"><a href="sediment-biogeochemistry.html#cb17-50" aria-hidden="true" tabindex="-1"></a>   output_diag_vars   <span class="kw">=</span> <span class="st">&#39;mpb&#39;</span>,<span class="st">&#39;oxy&#39;</span>,<span class="st">&#39;amm&#39;</span>,<span class="st">&#39;docl&#39;</span>,<span class="st">&#39;pocl&#39;</span>,<span class="st">&#39;docr&#39;</span></span>
-<span id="cb17-51"><a href="sediment-biogeochemistry.html#cb17-51" aria-hidden="true" tabindex="-1"></a>   n_ddpths           <span class="kw">=</span> <span class="dv">2</span></span>
-<span id="cb17-52"><a href="sediment-biogeochemistry.html#cb17-52" aria-hidden="true" tabindex="-1"></a>   output_diag_depths <span class="kw">=</span> <span class="fl">1.0</span>, <span class="fl">5.0</span>  <span class="co">! cm below swi</span></span>
-<span id="cb17-53"><a href="sediment-biogeochemistry.html#cb17-53" aria-hidden="true" tabindex="-1"></a><span class="kw">/</span></span></code></pre></div>
-<p><br></p>
-<p><br></p>
-
-<div class="rmdnote">
-<p>In addition to adding the above code block to <code>aed.nml</code>, users must also supply a valid AED sediment parameter database file (<code>aed_candi_pars</code>) and a variable definition file (‘aed_sdg_vars’). Both of these files file must be supplied in either <code>CSV</code> format.</p>
-Users can create a standard file in the correct format from the online <a href="https://aed.see.uwa.edu.au/research/models/AED/aed_dbase/db_edit.php"><strong>AED parameter database</strong></a> by selecting from the available sediment types of interest, downloading via the <strong>“Make CSV”</strong> button, and then tailoring to the simulation being undertaken as required. Carefully check the parameter units and values!
+<div id="model-output-post-processing" class="section level2 hasAnchor" number="13.5">
+<h2><span class="header-section-number">13.5</span> Model Output &amp; Post-processing<a href="sediment-biogeochemistry.html#model-output-post-processing" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>As with other modules, the NetCDF files include the model outputs.</p>
+<div id="concentration-.sed-files" class="section level3 unnumbered hasAnchor">
+<h3>Concentration: .sed files<a href="sediment-biogeochemistry.html#concentration-.sed-files" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>In addition, the module also writes output files for each variable as text files, giving time (in years) as the first column depth as the first row and concentrations in the other fields. These can be read in using a data processing program such as R, Matlab or Excel for analysis.</p>
 </div>
-<p><br></p>
-<div id="model-output-post-processing" class="section level3 hasAnchor" number="13.5.1">
-<h3><span class="header-section-number">13.5.1</span> Model Output &amp; Post-processing<a href="sediment-biogeochemistry.html#model-output-post-processing" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>As with other modules, the NetCDF files include the model outputs (see Table above). In addition, the module also writes output files for each variable as text files, giving time (in years) as the first column depth as the first row and concentrations in the other fields. These can be read in using a data processing program such as R, Matlab or Excel for analysis. Further, the model outputs the file <code>rates.sed</code> for each variable at every depth for the final time step.</p>
-<p>conc</p>
-<p>flux</p>
-<p>rates</p>
+<div id="flux-swi_fluxes.sed" class="section level3 unnumbered hasAnchor">
+<h3>Flux: swi_fluxes.sed<a href="sediment-biogeochemistry.html#flux-swi_fluxes.sed" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>one for each state variable
+positive / negative</p>
+</div>
+<div id="other-variables-.sed" class="section level3 unnumbered hasAnchor">
+<h3>Other variables: .sed<a href="sediment-biogeochemistry.html#other-variables-.sed" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+</div>
+<div id="diagnostics-7" class="section level3 unnumbered hasAnchor">
+<h3>Diagnostics:<a href="sediment-biogeochemistry.html#diagnostics-7" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>INTEGER :: diag_level = 10 ! 0 = no diagnostic outputs
+! 1 = basic diagnostic outputs
+! 2 = flux rates, and supporitng
+! 3 = other metrics
+!10 = all debug &amp; checking outputs</p>
+</div>
+<div id="rates-rates.sed" class="section level3 unnumbered hasAnchor">
+<h3>Rates: rates.sed<a href="sediment-biogeochemistry.html#rates-rates.sed" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The model outputs the file <code>rates.sed</code> for each variable at every depth for the final time step.</p>
 <!-- ## Case Studies & Examples -->
 <!-- ###    Case Study -->
 <!-- install.packages("kableExtra", lib="C:/Program Files/R/R-4.2.0/library") -->
 <!-- install.packages("knitr", lib="C:/Program Files/R/R-4.2.0/library") -->
-<p>install.packages(“readxl”, lib=“C:/Program Files/R/R-4.2.0/library”)</p>
+<!-- install.packages("readxl", lib="C:/Program Files/R/R-4.2.0/library") -->
 <!-- library(rmarkdown, lib.loc = "C:/Program Files/R/R-4.2.0/library") -->
 <!-- install.packages("downlit") -->
 <!-- library(knitr) -->
 <!-- library(kableExtra) -->
-<p>library(readxl)</p>
+<!-- library(readxl) -->
 <!-- library(downlit) -->
+<!-- \@ref(fig:23-pic2) -->
 
 </div>
 </div>

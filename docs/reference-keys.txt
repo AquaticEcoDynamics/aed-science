@@ -169,6 +169,7 @@ fig:PhysChem2
 fig:PhysChem3
 fig:dev-pics2
 fig:23-pic6
+eq:biogeochem1
 fig:dev-Grid1
 fig:dev-Grid2
 fig:dev-Grid3
@@ -191,9 +192,14 @@ fig:SWI-6
 fig:Deep-1
 fig:Deep-2
 fig:Deep-3
-tab:3dev-23sedimentparameters
-tab:23biogeochemconfig
-eq:biogeochem1
+tab:param-nml
+tab:param-Mixing
+tab:param-Layers
+tab:param-OM
+tab:param-Nredox
+tab:param-SecondaryRedox
+tab:param-Geochem
+tab:param-Hidden
 eq:tim-1
 eq:tim-2
 fig:Timing-1
@@ -233,8 +239,8 @@ tab:26-statevariables
 tab:26-diagnostics
 tab:26-parametersummmary
 tab:26-parameterconfig
+tab:unnamed-chunk-26
 tab:unnamed-chunk-27
-tab:unnamed-chunk-28
 tab:35-publications
 introduction
 nomenclature
@@ -404,7 +410,6 @@ setup-configuration-9
 initialisation
 boundary-settings
 parameter-definition
-setup-example-3
 model-output-post-processing
 bivalves
 contributors-10
@@ -416,7 +421,7 @@ parameter-summary-9
 optional-module-links-8
 feedbacks-to-the-host-model-8
 setup-configuration-10
-setup-example-4
+setup-example-3
 case-studies-examples-6
 case-study-1
 publications-5
