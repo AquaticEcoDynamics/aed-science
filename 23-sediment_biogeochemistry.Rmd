@@ -952,7 +952,7 @@ knitr::include_graphics("images/23-sediment_biogeochemistry/TimeSwitches/TimeSwi
 ```
 
 ##### Transport without reaction {.unnumbered}
-Another tool to help move through the spinup period is to allow the transport to occur before the reactions start (figure \@ref(fig:Timing-3)). This evens out sharp chemical concentration gradients. This allows the simulation to start before the proper time of the simulation, represented in \@ref(fig:Timing-3) as negative time. The parameter `spinup_days` is the number of timestep integers of negative time, and `spinup_dt` is the length of each timestep (h).
+Another tool to help move through the spinup period is to allow the transport to occur before the reactions start (figure \@ref(fig:Timing-3)). This evens out sharp chemical concentration gradients. This allows the simulation to start before the proper time of the simulation, represented in \@ref(fig:Timing-3) as negative time. The parameter `spinup_days` is the number of timestep integers of negative time, and `spinup_dt` is the length of each timestep (h). No fluxes at the sediment-water interface occur during negative time.
 
 
 ```{r Timing-3, echo=FALSE, fig.cap="Schematic of the timestep over time. The initial period up to `spinup_days` occurs in 'negative time', at a duration of `spinup_dt`.",fig.show='hold',fig.align='center', out.width = '75%'}
@@ -1050,26 +1050,54 @@ knitr::include_graphics("images/23-sediment_biogeochemistry/TimeSwitches/TimeSwi
 
 ## Model Output & Post-processing
 
-As with other modules, the NetCDF files include the model outputs. 
 
-### Concentration: .sed files {-}
-In addition, the module also writes output files for each variable as text files, giving time (in years) as the first column depth as the first row and concentrations in the other fields. These can be read in using a data processing program such as R, Matlab or Excel for analysis. 
+### Concentration of state variables: '.sed' files {-}
+The model writes output files for each state variable as text files, with a '.sed' extension. The files are written to the results directory, under the `candi_aed` subdirectory, and then in a separate subdirectory for each zone (with five significant figures), for example `.../results/candi_aed/00001/oxy.sed`. The '.sed' file has three rows of headers, then a row that lists the depths (cm). The first column is the sequence of output times (years). The other text entries are a matrix of the concentration values at each depth and each time (mmol L^-1^) (figure \@ref(fig:Output-1)). These can be read in using a data processing program such as R, Matlab or Excel for analysis and plotting \@ref(fig:Output-4). 
 
-### Flux: swi_fluxes.sed{-}
-one for each state variable
-positive / negative
+```{r Output-1, echo=FALSE, fig.cap="Simplified version of the .sed output file.",fig.show='hold',fig.align='center', out.width = '85%'}
+knitr::include_graphics("images/23-sediment_biogeochemistry/Outputs/Outputs-01.png")
+```
 
-### Other variables: .sed{-}
-### Diagnostics: {-}
 
-  INTEGER  :: diag_level = 10                ! 0 = no diagnostic outputs
-                                             ! 1 = basic diagnostic outputs
-                                             ! 2 = flux rates, and supporitng
-                                             ! 3 = other metrics
-                                             !10 = all debug & checking outputs
+```{r Output-4, echo=FALSE, fig.cap="Examples of the figures that can be plotted with the .sed file. Left: concentration-depth at one time step; centre: concentration-time at one depth; right: concentration-depth-time ",fig.show='hold',fig.align='center', out.width = '75%'}
+knitr::include_graphics("images/23-sediment_biogeochemistry/Outputs/Outputs-04.png")
+```
 
-### Rates: rates.sed{-}
-The model outputs the file `rates.sed` for each variable at every depth for the final time step.
+
+### Flux of state variables: 'swi_fluxes.sed'{-}
+The model writes output files for sediment-water interface fluxes, named `swi_fluxes.sed`.  As with the concentration '.sed' files, the 'swi_fluxes' files are written to the results directory, under the `candi_aed` subdirectory, and then in a separate subdirectory for each zone (with five significant figures), for example `.../results/candi_aed/00001/swi_fluxes.sed`. The file has one row of the names of all state variables, and the second row for whether the variables are solids or solutes. The first column is the sequence of output times (years). Only the post-spinup times (positive time) are written to the file, as there are no fluxes during spinup. The other text entries are the flux values (mmol ^-2^ y^-1^), where a positive value is a flux into the sediment, and a negative value is a flux to the bottom water (figure \@ref(fig:Output-2)). As with the '.sed' files, these files can be processed and plotted (\@ref(fig:Output-5)).
+
+
+```{r Output-2, echo=FALSE, fig.cap="Simplified version of the swi_fluxes.sed file.",fig.show='hold',fig.align='center', out.width = '85%'}
+knitr::include_graphics("images/23-sediment_biogeochemistry/Outputs/Outputs-02.png")
+```
+
+
+```{r Output-5, echo=FALSE, fig.cap="Example of a figure that can be plotted from fluxes.sed ",fig.show='hold',fig.align='center', out.width = '75%'}
+knitr::include_graphics("images/23-sediment_biogeochemistry/Outputs/Outputs-05.png")
+```
+
+### Other variables: '/Extras/ .sed'{-}
+Any variable listed in the `&aed_sed_candi` block parameter `morevariables` can be written if to a file if desired. Extra '.sed' files can be written to a subdirectory of the zone directory, for example `.../results/candi_aed/00001/Extras/RO2.sed`. The file has the same format as the other '.sed' files, however, it does not record values during the spinup period (figure \@ref(fig:Output-3)). The unit of the variable is dependent on what is used in the model code and there is no unit conversion before the file is written.
+
+```{r Output-3, echo=FALSE, fig.cap="Example of a figure that can be plotted from fluxes.sed ",fig.show='hold',fig.align='center', out.width = '85%'}
+knitr::include_graphics("images/23-sediment_biogeochemistry/Outputs/Outputs-03.png")
+```
+
+<!-- ### netcdf outputs: .nc{-} -->
+
+<!-- As with other modules, the NetCDF files include the model outputs.  -->
+
+<!-- ### Diagnostics: {-} -->
+
+<!--   INTEGER  :: diag_level = 10                ! 0 = no diagnostic outputs\ -->
+<!--                                              ! 1 = basic diagnostic outputs\ -->
+<!--                                              ! 2 = flux rates, and supporitng\ -->
+<!--                                              ! 3 = other metrics\ -->
+<!--                                              !10 = all debug & checking outputs\ -->
+
+<!-- ### Rates: rates.sed{-} -->
+<!-- The model outputs the file `rates.sed` for each variable at every depth for the final time step. -->
 
 
 
