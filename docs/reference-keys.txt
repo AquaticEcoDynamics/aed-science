@@ -206,6 +206,11 @@ fig:Timing-1
 fig:Timing-2
 fig:Timing-3
 fig:Timing-4
+fig:Output-1
+fig:Output-4
+fig:Output-2
+fig:Output-5
+fig:Output-3
 eq:bivalve1
 eq:bivalve2
 eq:bivalve3

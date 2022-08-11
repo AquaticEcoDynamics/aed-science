@@ -20,9 +20,10 @@
   <meta name="twitter:description" content="Work in progress." />
   
 
+<meta name="author" content="" />
 
 
-<meta name="date" content="2022-08-09" />
+<meta name="date" content="2022-08-10" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -399,11 +400,9 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="13.5" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#model-output-post-processing"><i class="fa fa-check"></i><b>13.5</b> Model Output &amp; Post-processing</a>
 <ul>
-<li class="chapter" data-level="" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#concentration-.sed-files"><i class="fa fa-check"></i>Concentration: .sed files</a></li>
-<li class="chapter" data-level="" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#flux-swi_fluxes.sed"><i class="fa fa-check"></i>Flux: swi_fluxes.sed</a></li>
-<li class="chapter" data-level="" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#other-variables-.sed"><i class="fa fa-check"></i>Other variables: .sed</a></li>
-<li class="chapter" data-level="" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#diagnostics-7"><i class="fa fa-check"></i>Diagnostics:</a></li>
-<li class="chapter" data-level="" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#rates-rates.sed"><i class="fa fa-check"></i>Rates: rates.sed</a></li>
+<li class="chapter" data-level="" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#concentration-of-state-variables-.sed-files"><i class="fa fa-check"></i>Concentration of state variables: ‘.sed’ files</a></li>
+<li class="chapter" data-level="" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#flux-of-state-variables-swi_fluxes.sed"><i class="fa fa-check"></i>Flux of state variables: ‘swi_fluxes.sed’</a></li>
+<li class="chapter" data-level="" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#other-variables-extras-.sed"><i class="fa fa-check"></i>Other variables: ‘/Extras/ .sed’</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="14" data-path="bivalves.html"><a href="bivalves.html"><i class="fa fa-check"></i><b>14</b> Bivalves</a>
@@ -3086,7 +3085,7 @@ Figure 13.35: Schematic of the timestep across time. A different timestep (<code
 </div>
 <div id="transport-without-reaction" class="section level5 unnumbered hasAnchor">
 <h5>Transport without reaction<a href="sediment-biogeochemistry.html#transport-without-reaction" class="anchor-section" aria-label="Anchor link to header"></a></h5>
-<p>Another tool to help move through the spinup period is to allow the transport to occur before the reactions start (figure <a href="sediment-biogeochemistry.html#fig:Timing-3">13.36</a>). This evens out sharp chemical concentration gradients. This allows the simulation to start before the proper time of the simulation, represented in <a href="sediment-biogeochemistry.html#fig:Timing-3">13.36</a> as negative time. The parameter <code>spinup_days</code> is the number of timestep integers of negative time, and <code>spinup_dt</code> is the length of each timestep (h).</p>
+<p>Another tool to help move through the spinup period is to allow the transport to occur before the reactions start (figure <a href="sediment-biogeochemistry.html#fig:Timing-3">13.36</a>). This evens out sharp chemical concentration gradients. This allows the simulation to start before the proper time of the simulation, represented in <a href="sediment-biogeochemistry.html#fig:Timing-3">13.36</a> as negative time. The parameter <code>spinup_days</code> is the number of timestep integers of negative time, and <code>spinup_dt</code> is the length of each timestep (h). No fluxes at the sediment-water interface occur during negative time.</p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:Timing-3"></span>
 <img src="images/23-sediment_biogeochemistry/TimeSwitches/TimeSwitches-03.png" alt="Schematic of the timestep over time. The initial period up to `spinup_days` occurs in 'negative time', at a duration of `spinup_dt`." width="75%" />
 <p class="caption">
@@ -3175,30 +3174,57 @@ Figure 13.37: Schematic of <span class="math inline">\(POM_{Special}\)</span> fl
 </div>
 <div id="model-output-post-processing" class="section level2 hasAnchor" number="13.5">
 <h2><span class="header-section-number">13.5</span> Model Output &amp; Post-processing<a href="sediment-biogeochemistry.html#model-output-post-processing" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>As with other modules, the NetCDF files include the model outputs.</p>
-<div id="concentration-.sed-files" class="section level3 unnumbered hasAnchor">
-<h3>Concentration: .sed files<a href="sediment-biogeochemistry.html#concentration-.sed-files" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>In addition, the module also writes output files for each variable as text files, giving time (in years) as the first column depth as the first row and concentrations in the other fields. These can be read in using a data processing program such as R, Matlab or Excel for analysis.</p>
+<div id="concentration-of-state-variables-.sed-files" class="section level3 unnumbered hasAnchor">
+<h3>Concentration of state variables: ‘.sed’ files<a href="sediment-biogeochemistry.html#concentration-of-state-variables-.sed-files" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The model writes output files for each state variable as text files, with a ‘.sed’ extension. The files are written to the results directory, under the <code>candi_aed</code> subdirectory, and then in a separate subdirectory for each zone (with five significant figures), for example <code>.../results/candi_aed/00001/oxy.sed</code>. The ‘.sed’ file has three rows of headers, then a row that lists the depths (cm). The first column is the sequence of output times (years). The other text entries are a matrix of the concentration values at each depth and each time (mmol L<sup>-1</sup>) (figure <a href="sediment-biogeochemistry.html#fig:Output-1">13.38</a>). These can be read in using a data processing program such as R, Matlab or Excel for analysis and plotting <a href="sediment-biogeochemistry.html#fig:Output-4">13.39</a>.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:Output-1"></span>
+<img src="images/23-sediment_biogeochemistry/Outputs/Outputs-01.png" alt="Simplified version of the .sed output file." width="85%" />
+<p class="caption">
+Figure 13.38: Simplified version of the .sed output file.
+</p>
 </div>
-<div id="flux-swi_fluxes.sed" class="section level3 unnumbered hasAnchor">
-<h3>Flux: swi_fluxes.sed<a href="sediment-biogeochemistry.html#flux-swi_fluxes.sed" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>one for each state variable
-positive / negative</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:Output-4"></span>
+<img src="images/23-sediment_biogeochemistry/Outputs/Outputs-04.png" alt="Examples of the figures that can be plotted with the .sed file. Left: concentration-depth at one time step; centre: concentration-time at one depth; right: concentration-depth-time " width="75%" />
+<p class="caption">
+Figure 13.39: Examples of the figures that can be plotted with the .sed file. Left: concentration-depth at one time step; centre: concentration-time at one depth; right: concentration-depth-time
+</p>
 </div>
-<div id="other-variables-.sed" class="section level3 unnumbered hasAnchor">
-<h3>Other variables: .sed<a href="sediment-biogeochemistry.html#other-variables-.sed" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 </div>
-<div id="diagnostics-7" class="section level3 unnumbered hasAnchor">
-<h3>Diagnostics:<a href="sediment-biogeochemistry.html#diagnostics-7" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>INTEGER :: diag_level = 10 ! 0 = no diagnostic outputs
-! 1 = basic diagnostic outputs
-! 2 = flux rates, and supporitng
-! 3 = other metrics
-!10 = all debug &amp; checking outputs</p>
+<div id="flux-of-state-variables-swi_fluxes.sed" class="section level3 unnumbered hasAnchor">
+<h3>Flux of state variables: ‘swi_fluxes.sed’<a href="sediment-biogeochemistry.html#flux-of-state-variables-swi_fluxes.sed" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The model writes output files for sediment-water interface fluxes, named <code>swi_fluxes.sed</code>. As with the concentration ‘.sed’ files, the ‘swi_fluxes’ files are written to the results directory, under the <code>candi_aed</code> subdirectory, and then in a separate subdirectory for each zone (with five significant figures), for example <code>.../results/candi_aed/00001/swi_fluxes.sed</code>. The file has one row of the names of all state variables, and the second row for whether the variables are solids or solutes. The first column is the sequence of output times (years). Only the post-spinup times (positive time) are written to the file, as there are no fluxes during spinup. The other text entries are the flux values (mmol <sup>-2</sup> y<sup>-1</sup>), where a positive value is a flux into the sediment, and a negative value is a flux to the bottom water (figure <a href="sediment-biogeochemistry.html#fig:Output-2">13.40</a>). As with the ‘.sed’ files, these files can be processed and plotted (<a href="sediment-biogeochemistry.html#fig:Output-5">13.41</a>).</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:Output-2"></span>
+<img src="images/23-sediment_biogeochemistry/Outputs/Outputs-02.png" alt="Simplified version of the swi_fluxes.sed file." width="85%" />
+<p class="caption">
+Figure 13.40: Simplified version of the swi_fluxes.sed file.
+</p>
 </div>
-<div id="rates-rates.sed" class="section level3 unnumbered hasAnchor">
-<h3>Rates: rates.sed<a href="sediment-biogeochemistry.html#rates-rates.sed" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>The model outputs the file <code>rates.sed</code> for each variable at every depth for the final time step.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:Output-5"></span>
+<img src="images/23-sediment_biogeochemistry/Outputs/Outputs-05.png" alt="Example of a figure that can be plotted from fluxes.sed " width="75%" />
+<p class="caption">
+Figure 13.41: Example of a figure that can be plotted from fluxes.sed
+</p>
+</div>
+</div>
+<div id="other-variables-extras-.sed" class="section level3 unnumbered hasAnchor">
+<h3>Other variables: ‘/Extras/ .sed’<a href="sediment-biogeochemistry.html#other-variables-extras-.sed" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Any variable listed in the <code>&amp;aed_sed_candi</code> block parameter <code>morevariables</code> can be written if to a file if desired. Extra ‘.sed’ files can be written to a subdirectory of the zone directory, for example <code>.../results/candi_aed/00001/Extras/RO2.sed</code>. The file has the same format as the other ‘.sed’ files, however, it does not record values during the spinup period (figure <a href="sediment-biogeochemistry.html#fig:Output-3">13.42</a>). The unit of the variable is dependent on what is used in the model code and there is no unit conversion before the file is written.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:Output-3"></span>
+<img src="images/23-sediment_biogeochemistry/Outputs/Outputs-03.png" alt="Example of a figure that can be plotted from fluxes.sed " width="85%" />
+<p class="caption">
+Figure 13.42: Example of a figure that can be plotted from fluxes.sed
+</p>
+</div>
+<!-- ### netcdf outputs: .nc{-} -->
+<!-- As with other modules, the NetCDF files include the model outputs.  -->
+<!-- ### Diagnostics: {-} -->
+<!--   INTEGER  :: diag_level = 10                ! 0 = no diagnostic outputs\ -->
+<!--                                              ! 1 = basic diagnostic outputs\ -->
+<!--                                              ! 2 = flux rates, and supporitng\ -->
+<!--                                              ! 3 = other metrics\ -->
+<!--                                              !10 = all debug & checking outputs\ -->
+<!-- ### Rates: rates.sed{-} -->
+<!-- The model outputs the file `rates.sed` for each variable at every depth for the final time step. -->
 <!-- ## Case Studies & Examples -->
 <!-- ###    Case Study -->
 <!-- install.packages("kableExtra", lib="C:/Program Files/R/R-4.2.0/library") -->
