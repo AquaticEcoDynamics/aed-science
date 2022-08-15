@@ -10,7 +10,8 @@ bibliography:  ["references/carbon.bib",
                 "references/generic_utilities_functions.bib", 
                 "references/nitrogen.bib",
                 "references/pathogens.bib",
-                "references/publications.bib"]
+                "references/publications.bib",
+				        "references/habitat.bib"]
 csl: "references/elsevier-harvard_edited.csl"
 link-citations: yes
 github-repo: AquaticEcoDynamics/aed-science/
