@@ -54,7 +54,7 @@ for details on rationale.
 
 ```{r ruppia-cycle, echo = FALSE, out.width='75%', class = "text-image", fig.align='center', fig.cap = "Conceptual diagram of the *R. tuberosa* five-stage life cycle showing annual growth through three possible life cycle pathways: vegetative (whole plant survival); asexual persistence (turions); sexual (seed bank). (Source: Asanopoulos and Waycott, 2020)."}
 
-knitr::include_graphics("images/27-benthic_habitat_quality/ruppia_lifecycle.png")
+knitr::include_graphics("images/27-benthic_habitat_quality/ruppia_lifecycle.jpg")
 ```
 
 ### Feedbacks to the Host Model
