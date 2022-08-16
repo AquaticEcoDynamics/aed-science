@@ -466,6 +466,7 @@ overview-10
 model-description---ruppia-habitat
 feedbacks-to-the-host-model-9
 variable-summary-11
+parameter-summary-10
 post-processing
 setup-configuration-11
 case-studies-examples-7
