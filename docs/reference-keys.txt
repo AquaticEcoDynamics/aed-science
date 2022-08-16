@@ -461,7 +461,6 @@ case-studies-examples-6
 case-study-1
 publications-5
 benthic-habitat-quality
-benthic-habitat-quality-1
 contributors-11
 overview-10
 model-description---ruppia-habitat
