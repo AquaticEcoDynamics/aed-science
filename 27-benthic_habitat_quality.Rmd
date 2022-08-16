@@ -121,22 +121,23 @@ row_spec(0, background = "#14759e", bold = TRUE, color = "white") %>%
 
 <br>
   
-  ### Parameter Summary
+### Parameter Summary
   
   The environmental thresholds and HSI functions used by this model are
 summarised in Table \@ref(tab:hsi-function).
 
 ```{r hsi-function, echo=FALSE, message=FALSE, warning=FALSE}
-library(knitr)
+#library(knitr)
 library(kableExtra)
 library(readxl)
-library(rmarkdown)
+#library(rmarkdown)
 # library(dplyr)
 #library(pander)
 
 theSheet <- read_excel('tables/27-benthic_habitat_quality/hsi.xlsx', sheet =1)
 
-kbl(theSheet[,2:6],"html", caption = "Environmental thresholds and Habitat Suitability functions for *Ruppia* life stages used in the model.", align = "l",escape = F) %>%  #escape controls whether the syntax in table is interpreted
+# kbl(theSheet[,2:6],"html", caption = "Environmental thresholds and Habitat Suitability functions for *Ruppia* life stages used in the model.", align = "l",escape = F) %>%  #escape controls whether the syntax in table is interpreted
+kbl(theSheet[,2:6], caption = "Environmental thresholds and Habitat Suitability functions for *Ruppia* life stages used in the model.", align = "l",escape = F) %>%  #escape controls whether the syntax in table is interpreted
   row_spec(0, background = "#14759e", bold = TRUE, color = "white") %>%
   
   kable_styling(full_width = F,font_size = 10) %>%
@@ -260,15 +261,13 @@ module is shown below:
 <br>
 
 ## Case Studies & Examples
-###	Case Study
-###	Publications
 
 ### Case Study
 
 The Ruppia Habitat model was applied to the Coorong Lagoon in South
 Australia. The Coorong Lagoon is a hypersaline system situated at the
 end of the Murray-Darling basin and a Ramsar Wetland of international
-importance (Figure \@fig:coorongmap). The growth of the keystone seagrass species *Ruppia
+importance (Figure \@ref(fig:coorongmap)). The growth of the keystone seagrass species *Ruppia
 tuberosa* in this system is influenced by environmental factors such as
 salinity, water level, light availability, temperature and macroalgae
 presence. 
@@ -277,8 +276,8 @@ presence.
 ```{r coorongmap, fig.cap="Map of the Coorong Lagoon in South Australia.", echo=FALSE, message=FALSE, warning=FALSE, width = 400, height = 305}
 library(leaflet)
 library(dplyr)
-library(htmlwidgets)
-library(htmltools)
+# library(htmlwidgets)
+# library(htmltools)
 aed_icon  <- makeIcon(
   iconUrl = "maps/marker.png",
   iconWidth = 23, iconHeight = 23)
@@ -296,7 +295,7 @@ with AED to simulate the hydrodynamic conditions (velocity, salinity,
 temperature and water level), water clarity (light and turbidity) and
 the potential for filamentous algae (nutrients and algae). Outputs were
 used to assess habitat quality for various life-stages of *Ruppia* in
-the `aed_habitat` module (examples are shown in Figure \@fig:Gen2-HSIflower and \@fig:Gen2-HSIsexual). Refer to [CDM manual](https://aquaticecodynamics.github.io/cdm-science/habitat-modelling.html)
+the `aed_habitat` module (examples are shown in Figure \@ref(fig:Gen2-HSIflower) and Figure \@ref(fig:Gen2-HSIsexual). Refer to [CDM manual](https://aquaticecodynamics.github.io/cdm-science/habitat-modelling.html)
 for details of the study.
 <br>
 
