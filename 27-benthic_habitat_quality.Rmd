@@ -1,8 +1,5 @@
 # Benthic Habitat Quality 
 
-  
-# Benthic Habitat Quality
-
 ## Contributors
   
 Matt Hipsey, Sherry Zhai
