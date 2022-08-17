@@ -22,7 +22,7 @@ jobs:
       - name: Install pandoc
         run: |
           brew install pandoc
-       - name: Cache renv packages
+      - name: Cache renv packages
         uses: actions/cache@v1
         with:
          path: ${{ env.RENV_PATHS_ROOT }}
