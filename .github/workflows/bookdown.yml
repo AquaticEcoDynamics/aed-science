@@ -1,51 +1,50 @@
 on:
-  push:
-    branches:
-      - main
-      - master
+    push:
+      branches:
+        - main
+        - master
 
-name: bookdown
+  name: bookdown
 
-jobs:
-  build:
-    runs-on: ubuntu-latest
-    env:
-      GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
-      RENV_PATHS_ROOT: ~/.local/share/renv
-    steps:
-      - name: Checkout repo
-        uses: actions/checkout@v2
+  jobs:
+    build:
+      runs-on: macOS-latest
+      env:
+        GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
+        RENV_PATHS_ROOT: ~/.local/share/renv
+      steps:
+        - name: Checkout repo
+          uses: actions/checkout@v2
 
-      - name: Setup R
-        uses: r-lib/actions/setup-r@v1
-      
-      - name: Install pandoc and gdal dependencies
-        run: |
-          sudo apt-get install -y pandoc
-          sudo apt-get install -y pandoc-citeproc
-          sudo apt-get install gdal-bin proj-bin libgdal-dev libproj-dev
-          
-      - name: Cache renv packages
-        uses: actions/cache@v1
-        with:
-         path: ${{ env.RENV_PATHS_ROOT }}
-         key: ${{ runner.os }}-renv-${{ hashFiles('**/renv.lock') }}
-         restore-keys: |
-           ${{ runner.os }}-renv-
+        - name: Setup R
+          uses: r-lib/actions/setup-r@v1
 
-      - name: Restore renv packages
-        shell: Rscript {0}
-        run: |
-          if (!requireNamespace("renv", quietly = TRUE)) install.packages("renv")
-          renv::restore()
-           
-      - name: Build site
-        run: Rscript -e 'bookdown::render_book("index.Rmd", quiet = TRUE)'
+        - name: Install pandoc
+          run: |
+            sudo apt-get install -y pandoc
+            sudo apt-get install -y pandoc-citeproc
 
-      - name: Commit automatic build
-        run: |
-           git config --local user.name "$GITHUB_ACTOR"
-           git config --local user.email "$GITHUB_ACTOR@users.noreply.github.com"
-           git add docs
-           git commit docs -m 'Automatic build' || echo "No changes"
-           git push origin || echo "No changes to commit"
+        - name: Cache renv packages
+          uses: actions/cache@v1
+          with:
+           path: ${{ env.RENV_PATHS_ROOT }}
+           key: ${{ runner.os }}-renv-${{ hashFiles('**/renv.lock') }}
+           restore-keys: |
+             ${{ runner.os }}-renv-
+
+        - name: Restore renv packages
+          shell: Rscript {0}
+          run: |
+            if (!requireNamespace("renv", quietly = TRUE)) install.packages("renv")
+            renv::restore()
+
+        - name: Build site
+          run: Rscript -e 'bookdown::render_book("index.Rmd", quiet = TRUE)'
+
+        - name: Commit automatic build
+          run: |
+             git config --local user.name "$GITHUB_ACTOR"
+             git config --local user.email "$GITHUB_ACTOR@users.noreply.github.com"
+             git add docs
+             git commit docs -m 'Automatic build' || echo "No changes"
+             git push origin || echo "No changes to commit"
