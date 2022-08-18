@@ -136,12 +136,11 @@ library(readxl)
 
 theSheet <- read_excel('tables/27-benthic_habitat_quality/hsi.xlsx', sheet =1)
 
-# kbl(theSheet[,2:6],"html", caption = "Environmental thresholds and Habitat Suitability functions for *Ruppia* life stages used in the model.", align = "l",escape = F) %>%  #escape controls whether the syntax in table is interpreted
-kbl(theSheet[,2:6], caption = "Environmental thresholds and Habitat Suitability functions for *Ruppia* life stages used in the model.", align = "l",escape = F) %>%  #escape controls whether the syntax in table is interpreted
+kbl(theSheet[,2:6],"html", caption = "Environmental thresholds and Habitat Suitability functions for *Ruppia* life stages used in the model.", align = "l",escape = F) %>%  #escape controls whether the syntax in table is interpreted
   row_spec(0, background = "#14759e", bold = TRUE, color = "white") %>%
-  
+ 
   kable_styling(full_width = F,font_size = 10) %>%
-  column_spec(3, width_min = "15em") %>%
+  column_spec(3, width_min = "8em") %>%
   #column_spec(5, width_min = "30em") %>%
   #column_spec(7, width_min = "20em") %>%
   pack_rows("Turion viability (Jan 1 – Mar 31)", 1, 1) %>%
