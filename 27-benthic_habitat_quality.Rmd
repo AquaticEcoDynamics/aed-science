@@ -149,7 +149,7 @@ kbl(theSheet[,2:6],"html", caption = "Environmental thresholds and Habitat Suita
   pack_rows("Adult plant growth (Jun 1 – Sep 30)", 9, 13) %>%
   pack_rows("Flowering and seed set (Sep 1 – Dec 31)", 14, 18) %>%
   pack_rows("Turion formation (Sep 1 – Dec 31)", 19, 22)%>%
-  scroll_box(width = "700px", height = "1600px",fixed_thead = T)
+  scroll_box(width = "770px", height = "1600px",fixed_thead = T)
 
 ```
 
