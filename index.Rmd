@@ -10,7 +10,8 @@ bibliography:  ["references/carbon.bib",
                 "references/generic_utilities_functions.bib", 
                 "references/nitrogen.bib",
                 "references/pathogens.bib",
-                "references/publications.bib"]
+                "references/publications.bib",
+				        "references/habitat.bib"]
 csl: "references/elsevier-harvard_edited.csl"
 link-citations: yes
 github-repo: AquaticEcoDynamics/aed-science/
@@ -23,10 +24,9 @@ knitr::opts_chunk$set(cache = F)
 knitr::opts_knit$set(root.dir = rprojroot::find_rstudio_root_file())
 ```
 
+# Modelling Aquatic Eco-Dynamics: Overview of the AED modular simulation platform {.unnumbered}
 
-# Modelling Aquatic Eco-Dynamics: Overview of the AED modular simulation platform {-}
-
-## Welcome! {-}
+## Welcome! {.unnumbered}
 
 This is the online home of *Modelling Aquatic Eco-Dynamics*, a book on describing the AED (previously released as AED2) modelling platform for the simulation of aquatic ecosystem dynamics.
 
@@ -50,28 +50,29 @@ leaflet(height=400, width="auto") %>% addProviderTiles(providers$Esri.WorldGrayC
 
 ```
 
-## How to contribute?{-}
+## How to contribute? {.unnumbered}
 
 You may be a new user seeking to understand how to get started, or you may be interested in tailoring a module to your research or management application. As modules evolve, through incremental improvements or wholesale changes, the experts working on these changes can ensure the latest information is available to the community by continuously updating and improving this book.
 
-**bookdown** makes editing a book as easy as editing a wiki, provided you have a GitHub account ([sign-up at github.com](https://github.com/)).
-Once logged-in to GitHub, click on the 'edit me' icon highlighted with a red ellipse in the image below.
+**bookdown** makes editing a book as easy as editing a wiki, provided you have a GitHub account ([sign-up at github.com](https://github.com/)). Once logged-in to GitHub, click on the 'edit me' icon highlighted with a red ellipse in the image below.
 
 This will take you to an editable version of the the source [R Markdown](http://rmarkdown.rstudio.com/) file that generated the page you're on:
 
 <center>
+
 ```{r editting, echo=FALSE, out.width = '100%'}
 knitr::include_graphics("images/index/edit.png")
 ```
+
 </center>
 
 To raise an issue about the book's content (e.g. code not running) or make a feature request, check-out the [issue tracker](https://github.com/Robinlovelace/geocompr/issues).
 
 Readers may also use the hypothes.is utility on the right margin of the book to add personal annotations and public comments on the book content.
 
-Maintainers and contributors must follow this repository’s [CODE OF CONDUCT](https://github.com/Robinlovelace/geocompr/blob/master/CODE_OF_CONDUCT.md).
+Maintainers and contributors must follow this repository's [CODE OF CONDUCT](https://github.com/Robinlovelace/geocompr/blob/master/CODE_OF_CONDUCT.md).
 
-## Editing the book{-}
+## Editing the book {.unnumbered}
 
 To build the book locally, clone or download the aed-science repo, load R in root directory (e.g. by opening aed-sceince.Rproj in RStudio) and run the following lines:
 
@@ -81,26 +82,21 @@ bookdown::render_book("index.Rmd") # to build the book
 browseURL("_book/index.html") # to view it
 
 ```
-## How to cite this book{-}
 
-Please cite this edited book and the AED model in scientific publications as: Hipsey, M.R., ed. (2022) 
-Modelling Aquatic Eco-Dynamics: Overview of the AED modular simulation platform.
-Zenodo repository. DOI: 10.5281/zenodo.6516222. 
+## How to cite this book {.unnumbered}
 
-If you would like to cite an individual chapter of this book (not the AED model), please
-use this format (example given here for chapter 4): Hipsey, M.R. and P. Huang. (2022) Chapter 4. Dissolved 
-oxygen. Hipsey, M.R., ed. Modelling Aquatic Eco-Dynamics: Overview of the AED modular simulation platform.
-Zenodo repository. DOI: 10.5281/zenodo.6516222.
+Please cite this edited book and the AED model in scientific publications as: Hipsey, M.R., ed. (2022) Modelling Aquatic Eco-Dynamics: Overview of the AED modular simulation platform. Zenodo repository. DOI: 10.5281/zenodo.6516222.
 
-## Supporting the project{-}
+If you would like to cite an individual chapter of this book (not the AED model), please use this format (example given here for chapter 4): Hipsey, M.R. and P. Huang. (2022) Chapter 4. Dissolved oxygen. Hipsey, M.R., ed. Modelling Aquatic Eco-Dynamics: Overview of the AED modular simulation platform. Zenodo repository. DOI: 10.5281/zenodo.6516222.
+
+## Supporting the project {.unnumbered}
 
 If you find AED useful, please support it by:
 
-- Telling people about it
-- Join our Slack channel: general-lake-model.slack.com
-- Communicating about the model in digital media, e.g. via the "AEDmodel" hashtag on Twitter 
-- Citing the book, as described above
-- Contributing to this book via [GitHub](https://github.com/AquaticEcoDynamics/aed-science) or the
-AED model more broadly via [Github](https://github.com/AquaticEcoDynamics)
+-   Telling people about it
+-   Join our Slack channel: general-lake-model.slack.com
+-   Communicating about the model in digital media, e.g. via the "AEDmodel" hashtag on Twitter
+-   Citing the book, as described above
+-   Contributing to this book via [GitHub](https://github.com/AquaticEcoDynamics/aed-science) or the AED model more broadly via [Github](https://github.com/AquaticEcoDynamics)
 
-<a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License</a>.
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"><img src="https://i.creativecommons.org/l/by-nc-nd/4.0/88x31.png" alt="Creative Commons License" style="border-width:0"/></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License</a>.
