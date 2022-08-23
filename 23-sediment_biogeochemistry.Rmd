@@ -533,8 +533,7 @@ where $OM_i$ is an organic matter species, such as $D_{Hyd}$ or $OAc$ and *K~OM~
 
 The temperature factor $F_{Tem}$ is rarely employed in diagenesis models, but in a handful of cases it uses a Q10 relationship between 2 and 4 (see Fossing et al. 2004 for a clear explanation of how temperature affects reaction rates and Eldridge and Morse 2008 or Reed et al. 2011b for a specific examination of the effect of temperature). The current version of the model has switches built in for both the temperature dependence factor, *F~Tem~*, where values of 1 or 2 turn them off and on. However, implementation and testing of the factors has not been carried out for this version of the model. The metabolism rate at $T_{0}$ is $R_{0}$, $ξ$ is a scaling constant (see, for example, Eldridge and Morse 2008). 
 
-The TEA factor, $F_{TEA}$, term accounts for the $R_{Ox}$ dependence on the oxidant concentration when the oxidant concentration is low. The $F_{TEA}$ term in Approach 1 is a Monod expression (table \@ref(tab:OMApproach-table)), 
-which uses Monod half-saturation constants (*K~Ox~*), and which is chosen because it best reflects laboratory data of bacterially-controlled oxidation reactions (Boudreau and Westrich, 1984, Gaillard and Rabouille 1992). The $F_{TEA}$ of Approach 3 uses Monod functions, modified to include inhibition terms. In Approach 2 the FTEA is either 0, 1 or the ratio of *Ox~i~* to *L~Ox~*, depending on the oxidant concentration relative to *L~Ox~*, a specified limiting concentration (table \@ref(tab:OMApproach-table)). We use the notation *K~Ox~* and *L~Ox~* to emphasise that a distinction should be made between the Monod half constants in Approaches 1 and 3 and the limiting concentrations used in Approach 2; the difference in conceptual representation is not always clear in Approach 2 papers that use the notation *K~Ox~*. We recommend that the user set the parameter `OMModel` to 1, unless they  specifically need to emulate an Approach 2 model, such as that by Van Cappellen and Wang (1996), or an Approach 3 model, such as that by Soetaert et al. (1996). 
+The TEA factor, $F_{TEA}$, term accounts for the $R_{Ox}$ dependence on the oxidant concentration when the oxidant concentration is low. The $F_{TEA}$ term in Approach 1 is a Monod expression (table \@ref(tab:OMApproach-table), figure \@ref(fig:OMModels-2)), which uses Monod half-saturation constants (*K~Ox~*), and which is chosen because it best reflects laboratory data of bacterially-controlled oxidation reactions (Boudreau and Westrich, 1984, Gaillard and Rabouille 1992). The $F_{TEA}$ of Approach 3 uses Monod functions, modified to include inhibition terms. In Approach 2 the FTEA is either 0, 1 or the ratio of *Ox~i~* to *L~Ox~*, depending on the oxidant concentration relative to *L~Ox~*, a specified limiting concentration (table \@ref(tab:OMApproach-table)). We use the notation *K~Ox~* and *L~Ox~* to emphasise that a distinction should be made between the Monod half constants in Approaches 1 and 3 and the limiting concentrations used in Approach 2; the difference in conceptual representation is not always clear in Approach 2 papers that use the notation *K~Ox~*. We recommend that the user set the parameter `OMModel` to 1, unless they  specifically need to emulate an Approach 2 model, such as that by Van Cappellen and Wang (1996), or an Approach 3 model, such as that by Soetaert et al. (1996). 
 
 
 <center>
@@ -545,7 +544,7 @@ library(readxl)
   options(knitr.kable.NA = "")
 OMApproach_tab <- read_xlsx("tables/23-sediment_biogeochemistry/UserManual.xlsx", sheet="OMApproach")
   kable(OMApproach_tab[,1:3],"html", escape = F, align = "c"
-        , caption = "Limitation and inhibition equations for three different approaches.",bootstrap_options = "hover")%>%
+        , caption = "Limitation and inhibition equations for two different approaches.",bootstrap_options = "hover")%>%
   
  
    kable_styling(OMApproach_tab, bootstrap_options = "hover",
@@ -556,12 +555,23 @@ OMApproach_tab <- read_xlsx("tables/23-sediment_biogeochemistry/UserManual.xlsx"
   column_spec(1, width_min = "10em" ,color="black",bold = F) %>%
   column_spec(2, width_min = "15em" ,color="black") %>%
   column_spec(3, width_min = "15em" ,color="black") %>%
-  row_spec(1:4, background = 'white')  %>%
- scroll_box(width = "40em", height = "30em",fixed_thead = FALSE)
+  # row_spec(1:2, background = 'white')  %>%
+ scroll_box(width = "40em", height = "25em",fixed_thead = FALSE)
 ```
 </center>
 
-*F~T~* is a thermodynamic factor. The current version of the model includes *F~T~* only for *OMModel* 3, for terminal oxidation reactions and fermentation. This factor uses the ratio of products and reactants, as well as the free energy of each reaction pathway ($\Delta G^0$).
+\\
+
+<center>
+
+```{r OMModels-2, echo=FALSE, fig.cap="Schematic of examples of how inhibition and limitation scale between 0 and 1 over a range of concentrations. Left: limitation function. Right: inhibtion function.", fig.show="hold", out.width="85%" ,fig.align='center'}
+knitr::include_graphics("images/23-sediment_biogeochemistry/OMSetup/FTEAFIn-02.png")
+```
+
+
+</center>
+
+*F~T~* is the thermodynamic factor. The current version of the model includes *F~T~* only for *OMModel* 3, for terminal oxidation reactions and fermentation. This factor uses the ratio of products and reactants, as well as the free energy of each reaction pathway ($\Delta G^0$).
 
 The *F~T~* is a factor that scales between 0, which stops the reaction, and 1, which allows the reaction to proceed, in the same way as *F~TEA~* and *F~In~*. The form of the equation proposed by Jin and Bethke is that shown in equation \@ref(eq:factors-3).The *m* and *χ* are stoichiometric coefficients, *ΔG~ATP~* is the energy required to synthesise one mole of ATP, *R* is the gas constant and *T* is the temperature. In the case where the *F~T~* < 0 then the factor is set to 0 by convention, otherwise a negative FT would represent the case where microbes carried out a reaction that was unfavourable to their metabolism. 
 
@@ -575,7 +585,7 @@ F_T = 1 - e^{\frac {∆G_r + m ∆G_{ATP}} {χR} }
 \end{equation}
 </center>
 
-\\
+\
 
 *ΔG~r~* is the changing free energy in the system, which controls whether the *F~T~* becomes favourable or not as the environment changes, and is calculated according to the simplified version in equation 3 - 4 (see Jin and Bethke 2005 for a more precise definition):
 
@@ -589,20 +599,70 @@ F_T = 1 - e^{\frac {∆G_r + m ∆G_{ATP}} {χR} }
 </center>
 
 
-where ΔG0 is the standard state free energy of a redox reaction, calculated as the sum of the energy of the reduction of a TEA and the oxidation of an organic substrate. These energies are well constrained by laboratory data, though there may be differences between laboratory and field conditions that create some uncertainty in their use (Bethke et al. 2011). Practically, this equation allows for ΔGr to be very close to ∆G^0when the reactants are at high concentrations relative to the products. Inversely, when the products are at relatively high concentrations, ΔGr becomes more positive, making FT more negative (Table 3 - 5).
-
-Equation \@ref(eq:factors-3) requires the constants *m* and *χ*, which are parameters that could be measured empirically, however as yet they have not all been measured for every redox pathway for every substrate, and therefore authors have had to estimate some values when using equation \@ref(eq:factors-3) (Dale et al. 2008). It also requires *ΔG~ATP~*, which is around 45 kJ (mol substrate)^-1^ but has variable published values. Around neutral pH the conditions for fermentation product consumption by iron reducers, sulphate reducers and methanogens are all thermodynamically favourable, but this changes with changing pH (Bethke et al. 2011). Acidity either promotes or hinders the reaction depending on whether the protons are produced or consumed in the reaction. 
+where ΔG0 is the standard state free energy of a redox reaction, calculated as the sum of the energy of the reduction of a TEA and the oxidation of an organic substrate. These energies are well constrained by laboratory data, though there may be differences between laboratory and field conditions that create some uncertainty in their use (Bethke et al. 2011). Practically, this equation allows for *ΔG~r~* to be very close to *∆G~0~* when the reactants are at high concentrations relative to the products. Inversely, when the products are at relatively high concentrations, *ΔG~r~* becomes more positive, making FT more negative. Equation \@ref(eq:factors-3) requires the constants *m* and *χ*, which are parameters that could be measured empirically, however as yet they have not all been measured for every redox pathway for every substrate, and therefore authors have had to estimate some values when using equation \@ref(eq:factors-3) (Dale et al. 2008). It also requires *ΔG~ATP~*, which is around 45 kJ (mol substrate)^-1^ but has variable published values. Around neutral pH the conditions for fermentation product consumption by iron reducers, sulphate reducers and methanogens are all thermodynamically favourable, but this changes with pH (Bethke et al. 2011). Acidity either promotes or hinders the reaction depending on whether the protons are produced or consumed in the reaction. 
 
 ##### Nitrogen cycling {-}
 
-mattedit:
+The redox sequence in CANDI-AED is slightly different to the sequence in other diagenesis models: here the nitrogen redox reactions are split into several processes. Most diagenesis models have an overall reaction of $NO_3^-$ oxidising organic matter and producing $N_2$, as shown in figure \@ref(fig:NModel-1). This reaction is less favourable than aerobic oxidation and it is inhibited by $O_2$. 
 
-##### Methanogenesis {-}
+<center>
 
-mattedit:
-methane is a fuel for other reactions
+```{r NModel-1, echo=FALSE, fig.cap=" wqwqwq", fig.show="hold", out.width="35%" ,fig.align='center'}
+knitr::include_graphics("images/23-sediment_biogeochemistry/OMSetup/NModel1.png")
+```
 
-##### Organic matter limitation and inhibition approaches
+</center>
+
+In CANDI-AED, there are separate nitrogen reactions for oxidising organic matter:
+- **Denitratation**: $NO_3^-$ reduction to $NO_2^-$ 
+- **Denitritation**: $NO_2^-$ reduction 
+    - **Nitrous denitritation**: $NO_2^-$ reduction to $N_2O$ 
+    - **DNRA**: (Dissimilatory nitrate reduction to ammonia) $NO_2^-$ reduction to $NH_4^+$ 
+- **Denitrousation**: $N_2O$ reduction to $N_2$
+
+
+\
+
+
+These reactions interact as shown in figure \@ref(fig:NModel-2). 
+
+<center>
+
+```{r NModel-2, echo=FALSE, fig.cap=" wqwqwq", fig.show="hold", out.width="85%" ,fig.align='center'}
+knitr::include_graphics("images/23-sediment_biogeochemistry/OMSetup/NModel2.png")
+```
+
+</center>
+
+The rate equations are as shown in table \@ref(tab:NRate-table). 
+
+<center>
+```{r NRate-table, echo=FALSE, message=FALSE, warning=FALSE}
+library(knitr)
+library(kableExtra)
+library(readxl)
+  options(knitr.kable.NA = "")
+NRates_tab <- read_xlsx("tables/23-sediment_biogeochemistry/UserManual.xlsx", sheet="NRates")
+  kable(NRates_tab[,1:2],"html", escape = F, align = "c"
+        , caption = "wqwqwqwqwq",bootstrap_options = "hover")%>%
+  
+ 
+   kable_styling(NRates_tab, bootstrap_options = "hover",
+                full_width = T, position = "left",
+                font_size = 12) %>% 
+    
+  row_spec(0, background = "#14759e", bold = TRUE, color = "white") %>%
+  column_spec(1, width_min = "10em" ,color="black",bold = F) %>%
+  column_spec(2, width_min = "15em" ,color="black") %>%
+  # column_spec(3, width_min = "15em" ,color="black") %>%
+  row_spec(1:5, background = 'white')  %>%
+ scroll_box(width = "40em", height = "40em",fixed_thead = FALSE)
+```
+</center>
+
+Along with the nitrogen - organic matter redox reactions, there are sets of nitrogen oxidation reactions, where the oxidant is $O_2$ or $NO_2^-$. These are outlined in more detail in the AED inorganic nitrogen chapter. 
+
+
 
 
 
