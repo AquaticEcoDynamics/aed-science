@@ -302,7 +302,23 @@ The key chemical process that causes ongoing change in the sediment is the break
 
 Organic matter ($OM$) degradation pathways can include labile and refractory components, and the breakdown pathways simulated are summarized conceptually in Figure \@ref(fig:OMModels). Reactions included in the kinetic component include the hydrolysis of the complex (e.g., high molecular weight) $OM$ pools ($POM_{VR}$, $POM_R$, $DOM_R$, $POM_L$) and transformation of low molecular weight (LMW) $DOM_L$ by oxidants ($O_2$, $NO_3^-$, $MnO_2$, $Fe(III)$ and $SO_4^{2-}$ - the so-called 'terminal metabolism' pathway), and the release of resulting nutrients ($NH_4^+$, $PO_4^{3-}$) and reduced by-products ($Mn^{2+}$, $Fe^{2+}$, $N_2$, $H_2S$, $CH_4$) and $CO_2$. Oxidants, nutrients and by-products are all capable of interacting, for example, through re-oxidation of reduced species (outlined in the next section).
 
-The user can decide how complex or simple the organic matter breakdown pathway should be, with three options of varying complexity for parameterising the pathways included (Figure \@ref(fig:OMModels)). The first option (`OMModel` = 1) is a common multi-G model in which the $POM$ phases are decomposed straight to $CO_2$ and other breakdown products. Here $POM$ is a variable that is not precisely defined, and its components (such as C, N and P) are assigned by parameters based on a user-defined stoichiometry. The second option (`OMModel` = 2) is another 2G model with both particulate and dissolved organic matter ($POM$ and $DOM$) phases included and parameterisation hydrolysis of $POM$ to $DOM$, and then $DOM$ to $CO_2$ and other breakdown products. The $POM$ and $DOM$ phases consist of three variables each, which trace the reaction and transport of carbon, nitrogen and phosphorus, thereby allowing for variable stoichiometry of organic matter to occur temporally and spatially. The third option (`OMModel` = 3) has many $POM$ phases, which are all hydrolysed to $DOM$, which then undergoes fermentation and terminal metabolism.  This allows the carbon, nitrogen and phosphorus to be calculated precisely before and after a model run, and allows the free energies of the reaction of each phase to be included. This third option is the most detailed and mechanistic, and allows for expansion of more detailed reaction mechanisms to be included, but is recomended only for experienced users.
+The user can decide how complex or simple the organic matter breakdown pathway should be, with three options of varying complexity for parameterising the pathways included (Figure \@ref(fig:OMModels)). The first option (`OMModel` = 1) is a common multi-G model in which the $POM$ phases are decomposed straight to $CO_2$ and other breakdown products. Here $POM$ is a variable that is not precisely defined, and its components (such as C, N and P) are assigned by parameters based on a user-defined stoichiometry. The second option (`OMModel` = 2) is another 2G model with both particulate and dissolved organic matter ($POM$ and $DOM$) phases included and parameterisation hydrolysis of $POM$ to $DOM$, and then $DOM$ to $CO_2$ and other breakdown products. The $POM$ and $DOM$ phases consist of three variables each, which trace the reaction and transport of carbon, nitrogen and phosphorus, thereby allowing for variable stoichiometry of organic matter to occur temporally and spatially. The third option (`OMModel` = 3) has many $POM$ phases, which are all hydrolysed to $DOM$, which then undergoes fermentation and terminal metabolism.  This allows the carbon, nitrogen and phosphorus to be calculated precisely before and after a model run, and allows the free energies of the reaction of each phase to be included. This third option is the most detailed and mechanistic, and allows for expansion of more detailed reaction mechanisms to be included, but is recommended only for experienced users.
+
+
+CANDI-AED also contains options for very unreactive organic matter parameter. The model can lower the reactivity of the particulate refractory phase towards zero as the concentration approaches a minimum. For example, for $POC_R$, the parameter `pocu` sets the minimum concentration and `KOMPres_C` sets the sensitivity of the decrease, as in equation \@ref(eq:pomr-1) below. The equivalent parameters for N an P are `ponu` and `popu`, and `KOMPres_N` and `KOMPres_P`.
+
+```{=tex}
+\begin{eqnarray}
+
+komlim = \frac {PON_R - ponu} {PON_R - ponu + KOMPres_N}
+\\
+\\
+R_{PONR} = (ponr2donr) (komlim)
+(\#eq:pomr-1)
+
+\end{eqnarray}
+```
+(The equation above is a simplified version, where the full equation had checks to prevent the rate going below zero, plus the respiration processes of $MPB$.)
 
 
 ```{r OMModels, echo=FALSE, fig.cap="Three options for different levels of complexity in organic matter breakdown, by setting the `OMModel` switch. Left – Model in which POM breaks down directly to CO~2~ and other waste products. Centre – Model in which POM is first hydrolysed to DOM and then oxidised to CO~2~. Right – Model in which POM is hydrolysed to DOM, which can then be fermented and oxidised.", fig.show="hold", out.width="85%" ,fig.align='center'}
@@ -364,7 +380,7 @@ OMModel_Groups <- unique(OMModel_tab$Group)
 
 ##### The redox sequence {-}
 
-The terminal redox reaction pathways are the six major pathways that are available in most diagenesis models, and are driven by different organic matter pools, depending on the `OMModel` configuration chosen from the above options. AED CANDI allows the use of Approach 1 or 2 organic matter oxidation rate equations, as examined in detail in Paraska et al (2015), and also explained below. The six major pathways are:
+The terminal redox reaction pathways are the six major pathways that are available in most diagenesis models, and are driven by different organic matter pools, depending on the `OMModel` configuration chosen from the above options. CANDI-AED allows the use of Approach 1 or 2 organic matter oxidation rate equations, as examined in detail in Paraska et al (2015), and also explained below. The six major pathways are:
 
 -   Aerobic
 -   Denitrifying
@@ -377,7 +393,7 @@ The decay of the complex $OM$ types to the LMW $DOM$ required for the hetertroph
 \
 (equations \@ref(eq:primary-0) to \@ref(eq:primary-6). 
 \
-CANDI-AED uses a more detailed set of reactions for the denitrifying process, which are described in a section below. The chemical equations may be written as in table \@ref(tab:OMChem-table) and the reaction rates for each of these are calculated dynamically based on Monod expressions which mediate the reaction rate according to the concentration of potential oxidants higher in the redox sequence, and the concentration of the available oxidant.\@ref(fig:dev-Grid1)
+CANDI-AED uses a more detailed set of reactions for the denitrifying process, which are described in the \@ref(####Nitrogen cycling) section below. The chemical equations may be written as in table \@ref(tab:OMChem-table) and the reaction rates for each of these are calculated dynamically based on Monod expressions which mediate the reaction rate according to the concentration of potential oxidants higher in the redox sequence, and the concentration of the available oxidant.\@ref(fig:dev-Grid1)
 
 <center>
 
@@ -556,7 +572,7 @@ OMApproach_tab <- read_xlsx("tables/23-sediment_biogeochemistry/UserManual.xlsx"
   column_spec(2, width_min = "15em" ,color="black") %>%
   column_spec(3, width_min = "15em" ,color="black") %>%
   # row_spec(1:2, background = 'white')  %>%
- scroll_box(width = "40em", height = "25em",fixed_thead = FALSE)
+ scroll_box(width = "40em", height = "20em",fixed_thead = FALSE)
 ```
 </center>
 
@@ -607,34 +623,33 @@ The redox sequence in CANDI-AED is slightly different to the sequence in other d
 
 <center>
 
-```{r NModel-1, echo=FALSE, fig.cap=" wqwqwq", fig.show="hold", out.width="35%" ,fig.align='center'}
+```{r NModel-1, echo=FALSE, fig.cap="Schematic of the basic nitrogen-organic matter redox process from most other diagenesis models.", fig.show="hold", out.width="35%" ,fig.align='center'}
 knitr::include_graphics("images/23-sediment_biogeochemistry/OMSetup/NModel1.png")
 ```
 
 </center>
 
 In CANDI-AED, there are separate nitrogen reactions for oxidising organic matter:
-- **Denitratation**: $NO_3^-$ reduction to $NO_2^-$ 
-- **Denitritation**: $NO_2^-$ reduction 
-    - **Nitrous denitritation**: $NO_2^-$ reduction to $N_2O$ 
+- **Denitrousation**: $N_2O$ reduction to $N_2$ \
+- **Denitratation**: $NO_3^-$ reduction to $NO_2^-$  \
+- **Denitritation**: $NO_2^-$ reduction \
+    - **Nitrous denitritation**: $NO_2^-$ reduction to $N_2O$ \
     - **DNRA**: (Dissimilatory nitrate reduction to ammonia) $NO_2^-$ reduction to $NH_4^+$ 
-- **Denitrousation**: $N_2O$ reduction to $N_2$
-
+    
 
 \
 
-
-These reactions interact as shown in figure \@ref(fig:NModel-2). 
+These reactions interact as shown in figure \@ref(fig:NModel-2). In CANDI-AED, the denitrousation reaction is configured to be more favourable than aerobic oxidation, based on the free energy data reported in Lam and Kuypers (2011). Therefore $N_2O$ inhibits aerobic respiration and all lower-energy pathways. Denitratation and all other reactions are less favourable than aerobic oxidation. Denitritation is the term used for the oxidation of $NO_2^-$, the products of which are produced through either nitrous denitritation (to $N_2O$) or DNRA (to $NH_4^+$), depending on the abundance of $NO_2^-$.The rate equations are as shown in table \@ref(tab:NRate-table). 
 
 <center>
 
-```{r NModel-2, echo=FALSE, fig.cap=" wqwqwq", fig.show="hold", out.width="85%" ,fig.align='center'}
+```{r NModel-2, echo=FALSE, fig.cap="Schematic of the nitrogen-organic matter redox processes used in the CANDI-AED model.", fig.show="hold", out.width="85%" ,fig.align='center'}
 knitr::include_graphics("images/23-sediment_biogeochemistry/OMSetup/NModel2.png")
 ```
 
 </center>
 
-The rate equations are as shown in table \@ref(tab:NRate-table). 
+
 
 <center>
 ```{r NRate-table, echo=FALSE, message=FALSE, warning=FALSE}
@@ -644,7 +659,7 @@ library(readxl)
   options(knitr.kable.NA = "")
 NRates_tab <- read_xlsx("tables/23-sediment_biogeochemistry/UserManual.xlsx", sheet="NRates")
   kable(NRates_tab[,1:2],"html", escape = F, align = "c"
-        , caption = "wqwqwqwqwq",bootstrap_options = "hover")%>%
+        , caption = "Rate equations for organic matter oxidation by nitrogen.",bootstrap_options = "hover")%>%
   
  
    kable_styling(NRates_tab, bootstrap_options = "hover",
@@ -653,10 +668,10 @@ NRates_tab <- read_xlsx("tables/23-sediment_biogeochemistry/UserManual.xlsx", sh
     
   row_spec(0, background = "#14759e", bold = TRUE, color = "white") %>%
   column_spec(1, width_min = "10em" ,color="black",bold = F) %>%
-  column_spec(2, width_min = "15em" ,color="black") %>%
+  column_spec(2, width_min = "25em" ,color="black") %>%
   # column_spec(3, width_min = "15em" ,color="black") %>%
   row_spec(1:5, background = 'white')  %>%
- scroll_box(width = "40em", height = "40em",fixed_thead = FALSE)
+ scroll_box(width = "44em", height = "40em",fixed_thead = FALSE)
 ```
 </center>
 
@@ -669,9 +684,8 @@ Along with the nitrogen - organic matter redox reactions, there are sets of nitr
 
 #### Secondary Redox Reactions {-}
 
-mattedit: more detail, all the reactions, add tables
+The reactions of chemical species produced by the primary redox reactions (\@ref(tab:SecondChem-table)) are referred to as secondary redox reactions, and are usually given bimolecular rate laws, which are first order with respect to the oxidant and reductant (\@ref(tab:SecondChem-table)). The rates are controlled by a kinetic constant with units (mmol L)^-1 y^-1.
 
-In Paraska et al (2014), many secondary redox reactions were identified that have been included across the diversity of diagenesis model applications. In CANDI-AED, they are all included as options, and may be turned on or off as desired.
 
 <center>
 
@@ -681,61 +695,233 @@ library(kableExtra)
 library(readxl)
   options(knitr.kable.NA = "")
 SecondChem_tab <- read_xlsx("tables/23-sediment_biogeochemistry/UserManual.xlsx", sheet="SecondChem")
-# View(sediment_VarsTable)
-SecondChem_Groups <- unique(OMChem_tab$Group)
-  kable(SecondChem_tab[,1:2],"html", escape = F, align = "c"
-        , caption = "Secondary redox reactions.",bootstrap_options = "hover")%>%
-  
-  #   
-  # pack_rows(OMChem_Groups[1],
-  #           min(which(OMModel_tab$Group == OMModel_Groups[1])),
-  #           max(which(OMModel_tab$Group == OMModel_Groups[1])),
-  #           background = '#ebebeb'
-  #           ,color="black") %>%
-  # pack_rows(OMChem_Groups[2],
-  #           min(which(OMModel_tab$Group == OMModel_Groups[2])),
-  #           max(which(OMModel_tab$Group == OMModel_Groups[2])),
-  #           background = '#ebebeb'
-  #           ,color="black") %>%
-  # pack_rows(OMChem_Groups[3],
-  #           min(which(OMModel_tab$Group == OMModel_Groups[3])),
-  #           max(which(OMModel_tab$Group == OMModel_Groups[3])),
-  #           background = '#ebebeb'
-  #           ,color="black") %>%
-  # pack_rows(OMChem_Groups[4],
-  #           min(which(OMModel_tab$Group == OMModel_Groups[4])),
-  #           max(which(OMModel_tab$Group == OMModel_Groups[4])),
-  #           background = '#ebebeb'
-  #           ,color="black") %>%
-
+  kable(SecondChem_tab[,1:5],"html", escape = F, align = "c"
+        , caption = "Chemical reactions for secondary redox reactions.",bootstrap_options = "hover")%>%
    kable_styling(SecondChem_tab, bootstrap_options = "hover",
+                full_width = T, position = "left",
+                font_size = 12) %>% 
+    
+  row_spec(0, background = "#14759e", bold = TRUE, color = "white") %>%
+  column_spec(1, width_min = "12em" ,color="black",bold = F) %>%
+  column_spec(2, width_min = "3em" ,color="black") %>%
+  column_spec(3, width_min = "12em" ,color="black") %>%
+  column_spec(4, width_min = "3em" ,color="black") %>%
+  column_spec(5, width_min = "12em" ,color="black") %>%
+  row_spec(1:5, background = 'white')  %>%
+ scroll_box(width = "45em", height = "25em",fixed_thead = FALSE)
+```
+</center>
+
+\
+\
+
+#### Equilibrium Geochemistry {-}
+
+##### pH {-}
+
+The *pH* is initialised at a fixed value of around 8, which the user does not control. Setting the parameter `rxn_mode` to 0 or 4 keeps the pH constant throughout the simulation. Setting `rxn_mode` to 1, 2 or 3 updates the pH calculation at each time step. The *pH* is calculated as the sum of all charged species, where any unbalanced charge is calculated as ‘charge balance’ ($ubalchg$), which is assumed to be H^+^. The charge balance is at each time step is solved as a state variable, which is subject to advection, diffusion and bioturbation reactions.
+
+The *pH* is used in the calculation of $PO_4^{3-}$ adsorption if the parameter `ads_use_pH` is set to `TRUE`. 
+
+*It is otherwise not used in any other reactions.*
+
+##### Mineral precipitation and ageing {-}
+
+IN CANDI-AED, dissolved species can combine to form precipitated minerals:  $MnO_{2A}$, $Fe(OH)_{3A}$, $FeS$, $MnCO_3$, $FeCO_3$, and $CaCO_3$. Another process is the ageing of amorphous $MnO_{2A}$ and $Fe(OH)_{3A}$ to the unreactive, crystalline phases $MnO_{2B}$ and $Fe(OH)_{3B}$. The third type of process is ageing process of $FeS$ to $FeS_2$ (adding a further S atom to the compound). The reactions rates are outlined in tables \@ref(tab:Geochem-table1) to \@ref(tab:Geochem-table3). 
+
+The form of the rate is dependent on the complexity of the reaction mode chosen, using the parameter `rxn_mode`. The simplest option is for the reactions not to occur. The next option is for the reaction to proceed as a biomolecular rate law, in a similar way to the secondary redox reactions, by selecting `rxn_mode` = 2. 
+
+There are also two methods that set the precipitation rate based on the relative concentrations of dissolved and precipitated species. One method uses the ion activity product (*IAP*), which is a state variable and is calculated at each depth and timestep. The calculation method is based on that from Tufano et al. (2009). This method is generally selected with `rxn_mode` = 3 (see tables \@ref(tab:Geochem-table1) to \@ref(tab:Geochem-table3)). The other method is the "omega" method, using the equations from Van Cappellen and Wang (1996), generally by using `rxn_mode` = 4 (see tables \@ref(tab:Geochem-table1) to \@ref(tab:Geochem-table3)).
+
+<center>
+
+```{r Geochem-table1, echo=FALSE, message=FALSE, warning=FALSE}
+library(knitr)
+library(kableExtra)
+library(readxl)
+  options(knitr.kable.NA = "")
+MnOFeO_tab    <- read_xlsx("tables/23-sediment_biogeochemistry/UserManual.xlsx", sheet="MnOFeO")
+MnOFeO_Groups <- unique(MnOFeO_tab$Group)
+  kable(MnOFeO_tab[,1:4],"html", escape = F, align = "c"
+        , caption = "Reactions and rate equations for precipitation and ageing for MnO~2~ and Fe(OH)~3~",bootstrap_options = "hover")%>%
+    
+  pack_rows(MnOFeO_Groups[1],
+            min(which(MnOFeO_tab$Group == MnOFeO_Groups[1])),
+            max(which(MnOFeO_tab$Group == MnOFeO_Groups[1])),
+            background = '#ebebeb'
+            ,color="black") %>%
+  pack_rows(MnOFeO_Groups[2],
+            min(which(MnOFeO_tab$Group == MnOFeO_Groups[2])),
+            max(which(MnOFeO_tab$Group == MnOFeO_Groups[2])),
+            background = '#ebebeb'
+            ,color="black") %>%
+    
+   kable_styling(MnOFeO_tab, bootstrap_options = "hover",
                 full_width = T, position = "left",
                 font_size = 12) %>% 
     
   row_spec(0, background = "#14759e", bold = TRUE, color = "white") %>%
   column_spec(1, width_min = "10em" ,color="black",bold = F) %>%
   column_spec(2, width_min = "15em" ,color="black") %>%
-  # column_spec(3, width_min = "15em" ,color="black") %>%
-  # column_spec(4, width_min = "15em") %>%
-  row_spec(1:4, background = 'white')  %>%
- scroll_box(width = "45em", height = "25em",fixed_thead = FALSE)
+  column_spec(3, width_min = "3em"  ,color="black") %>%
+  column_spec(4, width_min = "15em" ,color="black") %>%
+  # row_spec(1:4, background = 'white')  %>%
+ scroll_box(width = "48em", height = "30em",fixed_thead = FALSE)
 ```
 </center>
 
+<br>
+
+<center>
+
+```{r Geochem-table2, echo=FALSE, message=FALSE, warning=FALSE}
+library(knitr)
+library(kableExtra)
+library(readxl)
+  options(knitr.kable.NA = "")
+FeS_tab <- read_xlsx("tables/23-sediment_biogeochemistry/UserManual.xlsx", sheet="FeS")
+# View(sediment_VarsTable)
+  kable(FeS_tab[,1:4],"html", escape = F, align = "c"
+        , caption = "Reactions and rate equations for precipitation and ageing for FeS and FeS~2~",bootstrap_options = "hover")%>%
+   kable_styling(FeS_tab, bootstrap_options = "hover",
+                full_width = T, position = "left",
+                font_size = 12) %>% 
+    
+  row_spec(0, background = "#14759e", bold = TRUE, color = "white") %>%
+  column_spec(1, width_min = "10em" ,color="black",bold = F) %>%
+  column_spec(2, width_min = "15em" ,color="black") %>%
+  column_spec(3, width_min = "3em" ,color="black") %>%
+  column_spec(4, width_min = "15em" ,color="black") %>%
+  row_spec(1:4, background = 'white')  %>%
+ scroll_box(width = "48em", height = "30em",fixed_thead = FALSE)
+```
+</center>
+
+<br>
+
+<center>
+
+```{r Geochem-table3, echo=FALSE, message=FALSE, warning=FALSE}
+library(knitr)
+library(kableExtra)
+library(readxl)
+  options(knitr.kable.NA = "")
+CO3_tab <- read_xlsx("tables/23-sediment_biogeochemistry/UserManual.xlsx", sheet="CO3")
+CO3_Groups <- unique(CO3_tab$Group)
+  kable(CO3_tab[,1:4],"html", escape = F, align = "c"
+        , caption = "Reactions and rate equations for precipitation and ageing for carbonate compounds.",bootstrap_options = "hover")%>%
+   pack_rows(CO3_Groups[1],
+            min(which(CO3_tab$Group == CO3_Groups[1])),
+            max(which(CO3_tab$Group == CO3_Groups[1])),
+            background = '#ebebeb'
+            ,color="black") %>%
+   pack_rows(CO3_Groups[2],
+            min(which(CO3_tab$Group == CO3_Groups[2])),
+            max(which(CO3_tab$Group == CO3_Groups[2])),
+            background = '#ebebeb'
+            ,color="black") %>%
+  pack_rows(CO3_Groups[3],
+            min(which(CO3_tab$Group == CO3_Groups[3])),
+            max(which(CO3_tab$Group == CO3_Groups[3])),
+            background = '#ebebeb'
+            ,color="black") %>%
+    
+    
+   kable_styling(CO3_tab, bootstrap_options = "hover",
+                full_width = T, position = "left",
+                font_size = 12) %>% 
+  row_spec(0, background = "#14759e", bold = TRUE, color = "white") %>%
+  column_spec(1, width_min = "10em" ,color="black",bold = F) %>%
+  column_spec(2, width_min = "15em" ,color="black") %>%
+  column_spec(3, width_min = "3em" ,color="black") %>%
+  column_spec(4, width_min = "15em" ,color="black") %>%
+  row_spec(1:4, background = 'white')  %>%
+ scroll_box(width = "48em", height = "30em",fixed_thead = FALSE)
+```
+</center>
+
+<br>
+
+The parameter `rxn_mode` sets different configurations of precipitation and *pH* calculations. A summary of the options is presented in \@ref(tab:Geochem-table4).
 
 
 
-#### Equilibrium Geochemistry {-}
 
-mattedit: more detail, IAP etc.\
+<center>
 
-##### Mineral precipitation and ageing {-}
+```{r Geochem-table4, echo=FALSE, message=FALSE, warning=FALSE}
+library(knitr)
+library(kableExtra)
+library(readxl)
+  options(knitr.kable.NA = "")
+rxn_mode_tab <- read_xlsx("tables/23-sediment_biogeochemistry/UserManual.xlsx", sheet="rxn_mode")
+  kable(rxn_mode_tab[,1:9],"html", escape = F, align = "c"
+        , caption = "Geochemical configurations from the `rxn_mode` parameter",bootstrap_options = "hover")%>%
+   kable_styling(rxn_mode_tab, bootstrap_options = "hover",
+                full_width = T, position = "left",
+                font_size = 12) %>% 
+    
+  row_spec(0, background = "#14759e", bold = TRUE, color = "white") %>%
+  column_spec(1, width_min = "12em" ,color="black",bold = T) %>%
+  column_spec(2, width_min = "12em" ,color="black") %>%
+  column_spec(3, width_min = "12em" ,color="black") %>%
+  column_spec(4, width_min = "12em" ,color="black") %>%
+  column_spec(9, width_min = "12em" ,color="red", italic = T) %>%
+  row_spec(1:4, background = 'white')  %>%
+ scroll_box(width = "48em", height = "25em",fixed_thead = FALSE)
+```
+</center>
+
 ##### Adsorption {-}
-##### pH {-}
 
-The pH is calculated as the sum of all charged species, where any unbalanced positive charge indicates H^+^. The charge balance is at each time step is solved as a state variable, which is subject to advection, diffusion and bioturbation reactions.
+IN CANDI-AED, $NH_4^+$ adsorption  is simulated as precipitating onto solid particles, including organic matter and clay, following the method of Van Cappellen and Wang (1996). It is assumed that there are unlimited adsorption sites for $NH_4^+$, and the relative amounts of $NH_4^+$ were assigned by the adsorption constant `knh4p`, which was initially based on Mackin and Aller (1984). A simplified version of the adsorption equations adsorption can be found in the equation set below (equation \@ref(eq:ppt-1)). The full equations correct for porosity and solid volume when transferring between particulate and dissolved phases. $NH_4^+$ adsorption defaults ot being switched on, but may be switched off by setting the parameter `NH4AdsorptionModel` to 0.
 
-The precipitation of minerals is solved as an equilibrium reaction, dependent on the concentrations of the dissolved and solid substances, their $K_{sp}$ and ion activity product (IAP). The equations are applied in a similar manner to those in Van Cappellen and Wang (1996) and numerous other studies, but with the exact forms of the equations based on those from Tufano et al. (2009). A positive rate indicates precipitation and a negative rate indicates dissolution. This model applies the function to all minerals simulated, including $Fe(OH)_3$, $FeS$, $FeS_2$, $FeCO_3$, $CaCO_3$ and $MnCO_3$. This model can also include the process of mineral ageing, whereby iron and manganese oxides become crystalline and no longer react with organic matter, but can still undergo secondary redox reactions.
+<center>
+
+```{=tex}
+\begin{eqnarray}
+
+NH_{4 _{Total}}^+       = NH_{4}^+ + NH_{4_{Adsorbed}}
+\\
+\\
+NH_{4 _{Dissolved}}^+   = \frac {1}{K_{NH_4p}}
+\\
+\\
+NH_{4 _{Particulate}}^+ = 1 - NH_{4 _{Dissolved}}^+ F_{Sal}
+\\
+\\
+NH_{4 _{Particulate}}^+ = NH_{4_{Total}}^+ NH_{4 _{Particulate}}^+
+\\
+\\
+NH_{4 _{Dissolved}}^+   = NH_{4_{Total}}^+ - NH_{4 _{Particulate}}^+
+
+(\#eq:ppt-1)
+
+
+\end{eqnarray}
+```
+</center>
+
+A similar approach is taken for dissolved organic carbon, nitrogen and phosphrous. The $DON_R$ and $DON_S$ are adsorbed to the sediment with the adsorption constant *K~DOMP~*, and $DOP_R$ and $DOP_S$ adsorbed using the same adsorption constant *K~DOMP~*. The value for *K~DOMP~* defaults to 1.4 and the model defaults to being switched on (`DOMAdsorptionModel` > 0).
+
+The model uses the parameter `PO4AdsorptionModel` to switch the type of adsorption equations from the AED $PO_4^{3-}$ adsorption library. If it is not set, the model defaults to method 1. The equations for `PO4AdsorptionModel` 1 are given in equation set \@ref(eq:ppt-2). $PO_4^{3-}$ is adsorbed onto the surfaces of iron oxide particles, both the reactive $Fe(OH)_{3A}$ and unreactive $Fe(OH)_{3B}$ fractions. During a simulation, low oxygen and nitrate concentrations in the sediment cause iron oxide reduction, which dissolves the solid particles and releases the dissolved $PO_4^{3-}$ to the porewater.
+
+If `PO4AdsorptionModel` 2 is selected, a set of pH-dependent reactions are used. A further parameter, `ads_use_pH` is required to be set to `TRUE` if the user wants the model to respond to *pH* dynamically, or to `FALSE` if it should be less sensitive to *pH*. If `PO4AdsorptionModel` 3 is selected, a set of equations is used that rely on salinity and temperature. It is suggested to use `PO4AdsorptionModel` = 1 for most sediment model applications. 
+
+
+```{=tex}
+\begin{eqnarray}
+
+PO_{4_{Particulate}}^{3-} = \frac {K_{PO_4p} (Fe(OH)_{3A} + Fe(OH)_{3B})}
+{1 + K_{PO_4p} (Fe(OH)_{3A} + Fe(OH)_{3B}) } (PO_{4 _{Total}}^{3-})
+\\
+\\
+PO_{4_{Dissolved}}^{3-}   = \frac {1} {1 + K_{PO_4p} (Fe(OH)_{3A} + Fe(OH)_{3B}) } (PO_{4 _{Total}}^{3-})
+(\#eq:ppt-2)
+\end{eqnarray}
+```
+
+
 
 
 
