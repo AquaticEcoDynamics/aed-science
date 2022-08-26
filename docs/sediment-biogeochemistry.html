@@ -23,7 +23,7 @@
 <meta name="author" content="" />
 
 
-<meta name="date" content="2022-08-23" />
+<meta name="date" content="2022-08-26" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -1099,7 +1099,18 @@ Figure 13.9: Example depth profile of porosity.
 <div id="organic-matter-pools-and-reactivity" class="section level5 unnumbered hasAnchor">
 <h5>Organic matter pools and reactivity<a href="sediment-biogeochemistry.html#organic-matter-pools-and-reactivity" class="anchor-section" aria-label="Anchor link to header"></a></h5>
 <p>Organic matter (<span class="math inline">\(OM\)</span>) degradation pathways can include labile and refractory components, and the breakdown pathways simulated are summarized conceptually in Figure <a href="sediment-biogeochemistry.html#fig:OMModels">13.10</a>. Reactions included in the kinetic component include the hydrolysis of the complex (e.g., high molecular weight) <span class="math inline">\(OM\)</span> pools (<span class="math inline">\(POM_{VR}\)</span>, <span class="math inline">\(POM_R\)</span>, <span class="math inline">\(DOM_R\)</span>, <span class="math inline">\(POM_L\)</span>) and transformation of low molecular weight (LMW) <span class="math inline">\(DOM_L\)</span> by oxidants (<span class="math inline">\(O_2\)</span>, <span class="math inline">\(NO_3^-\)</span>, <span class="math inline">\(MnO_2\)</span>, <span class="math inline">\(Fe(III)\)</span> and <span class="math inline">\(SO_4^{2-}\)</span> - the so-called ‘terminal metabolism’ pathway), and the release of resulting nutrients (<span class="math inline">\(NH_4^+\)</span>, <span class="math inline">\(PO_4^{3-}\)</span>) and reduced by-products (<span class="math inline">\(Mn^{2+}\)</span>, <span class="math inline">\(Fe^{2+}\)</span>, <span class="math inline">\(N_2\)</span>, <span class="math inline">\(H_2S\)</span>, <span class="math inline">\(CH_4\)</span>) and <span class="math inline">\(CO_2\)</span>. Oxidants, nutrients and by-products are all capable of interacting, for example, through re-oxidation of reduced species (outlined in the next section).</p>
-<p>The user can decide how complex or simple the organic matter breakdown pathway should be, with three options of varying complexity for parameterising the pathways included (Figure <a href="sediment-biogeochemistry.html#fig:OMModels">13.10</a>). The first option (<code>OMModel</code> = 1) is a common multi-G model in which the <span class="math inline">\(POM\)</span> phases are decomposed straight to <span class="math inline">\(CO_2\)</span> and other breakdown products. Here <span class="math inline">\(POM\)</span> is a variable that is not precisely defined, and its components (such as C, N and P) are assigned by parameters based on a user-defined stoichiometry. The second option (<code>OMModel</code> = 2) is another 2G model with both particulate and dissolved organic matter (<span class="math inline">\(POM\)</span> and <span class="math inline">\(DOM\)</span>) phases included and parameterisation hydrolysis of <span class="math inline">\(POM\)</span> to <span class="math inline">\(DOM\)</span>, and then <span class="math inline">\(DOM\)</span> to <span class="math inline">\(CO_2\)</span> and other breakdown products. The <span class="math inline">\(POM\)</span> and <span class="math inline">\(DOM\)</span> phases consist of three variables each, which trace the reaction and transport of carbon, nitrogen and phosphorus, thereby allowing for variable stoichiometry of organic matter to occur temporally and spatially. The third option (<code>OMModel</code> = 3) has many <span class="math inline">\(POM\)</span> phases, which are all hydrolysed to <span class="math inline">\(DOM\)</span>, which then undergoes fermentation and terminal metabolism. This allows the carbon, nitrogen and phosphorus to be calculated precisely before and after a model run, and allows the free energies of the reaction of each phase to be included. This third option is the most detailed and mechanistic, and allows for expansion of more detailed reaction mechanisms to be included, but is recomended only for experienced users.</p>
+<p>The user can decide how complex or simple the organic matter breakdown pathway should be, with three options of varying complexity for parameterising the pathways included (Figure <a href="sediment-biogeochemistry.html#fig:OMModels">13.10</a>). The first option (<code>OMModel</code> = 1) is a common multi-G model in which the <span class="math inline">\(POM\)</span> phases are decomposed straight to <span class="math inline">\(CO_2\)</span> and other breakdown products. Here <span class="math inline">\(POM\)</span> is a variable that is not precisely defined, and its components (such as C, N and P) are assigned by parameters based on a user-defined stoichiometry. The second option (<code>OMModel</code> = 2) is another 2G model with both particulate and dissolved organic matter (<span class="math inline">\(POM\)</span> and <span class="math inline">\(DOM\)</span>) phases included and parameterisation hydrolysis of <span class="math inline">\(POM\)</span> to <span class="math inline">\(DOM\)</span>, and then <span class="math inline">\(DOM\)</span> to <span class="math inline">\(CO_2\)</span> and other breakdown products. The <span class="math inline">\(POM\)</span> and <span class="math inline">\(DOM\)</span> phases consist of three variables each, which trace the reaction and transport of carbon, nitrogen and phosphorus, thereby allowing for variable stoichiometry of organic matter to occur temporally and spatially. The third option (<code>OMModel</code> = 3) has many <span class="math inline">\(POM\)</span> phases, which are all hydrolysed to <span class="math inline">\(DOM\)</span>, which then undergoes fermentation and terminal metabolism. This allows the carbon, nitrogen and phosphorus to be calculated precisely before and after a model run, and allows the free energies of the reaction of each phase to be included. This third option is the most detailed and mechanistic, and allows for expansion of more detailed reaction mechanisms to be included, but is recommended only for experienced users.</p>
+<p>CANDI-AED also contains options for very unreactive organic matter parameter. The model can lower the reactivity of the particulate refractory phase towards zero as the concentration approaches a minimum. For example, for <span class="math inline">\(POC_R\)</span>, the parameter <code>pocu</code> sets the minimum concentration and <code>KOMPres_C</code> sets the sensitivity of the decrease, as in equation <a href="sediment-biogeochemistry.html#eq:pomr-1">(13.11)</a> below. The equivalent parameters for N an P are <code>ponu</code> and <code>popu</code>, and <code>KOMPres_N</code> and <code>KOMPres_P</code>.</p>
+<span class="math display" id="eq:pomr-1">\[\begin{eqnarray}
+
+komlim = \frac {PON_R - ponu} {PON_R - ponu + KOMPres_N}
+\\
+\\
+R_{PONR} = (ponr2donr) (komlim)
+\tag{13.11}
+
+\end{eqnarray}\]</span>
+<p>(The equation above is a simplified version, where the full equation had checks to prevent the rate going below zero, plus the respiration processes of <span class="math inline">\(MPB\)</span>.)</p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:OMModels"></span>
 <img src="images/23-sediment_biogeochemistry/Boxes&Arrows/OMModel-04.png" alt="Three options for different levels of complexity in organic matter breakdown, by setting the `OMModel` switch. Left – Model in which POM breaks down directly to CO~2~ and other waste products. Centre – Model in which POM is first hydrolysed to DOM and then oxidised to CO~2~. Right – Model in which POM is hydrolysed to DOM, which can then be fermented and oxidised." width="85%" />
 <p class="caption">
@@ -1274,7 +1285,7 @@ POM <span class="math inline">\(\rightarrow\)</span> CO<sub>2</sub> etc.
 </div>
 <div id="the-redox-sequence" class="section level5 unnumbered hasAnchor">
 <h5>The redox sequence<a href="sediment-biogeochemistry.html#the-redox-sequence" class="anchor-section" aria-label="Anchor link to header"></a></h5>
-<p>The terminal redox reaction pathways are the six major pathways that are available in most diagenesis models, and are driven by different organic matter pools, depending on the <code>OMModel</code> configuration chosen from the above options. AED CANDI allows the use of Approach 1 or 2 organic matter oxidation rate equations, as examined in detail in Paraska et al (2015), and also explained below. The six major pathways are:</p>
+<p>The terminal redox reaction pathways are the six major pathways that are available in most diagenesis models, and are driven by different organic matter pools, depending on the <code>OMModel</code> configuration chosen from the above options. CANDI-AED allows the use of Approach 1 or 2 organic matter oxidation rate equations, as examined in detail in Paraska et al (2015), and also explained below. The six major pathways are:</p>
 <ul>
 <li>Aerobic</li>
 <li>Denitrifying</li>
@@ -1285,7 +1296,7 @@ POM <span class="math inline">\(\rightarrow\)</span> CO<sub>2</sub> etc.
 </ul>
 <p>The decay of the complex <span class="math inline">\(OM\)</span> types to the LMW <span class="math inline">\(DOM\)</span> required for the hetertrophic bacteria to utilise are all modelled with a simple first-order decay rate. The subsequent reactions for terminal metabolism that describe the breakdown of <span class="math inline">\(OM\)</span> to <span class="math inline">\(CO_2\)</span> and other breakdown products are described below<br />
 (equations <a href="#eq:primary-0">(<strong>??</strong>)</a> to <a href="#eq:primary-6">(<strong>??</strong>)</a>.<br />
-CANDI-AED uses a more detailed set of reactions for the denitrifying process, which are described in a section below. The chemical equations may be written as in table <a href="sediment-biogeochemistry.html#tab:OMChem-table">13.3</a> and the reaction rates for each of these are calculated dynamically based on Monod expressions which mediate the reaction rate according to the concentration of potential oxidants higher in the redox sequence, and the concentration of the available oxidant.<a href="sediment-biogeochemistry.html#fig:dev-Grid1">13.19</a></p>
+CANDI-AED uses a more detailed set of reactions for the denitrifying process, which are described in the @ref(####Nitrogen cycling) section below. The chemical equations may be written as in table <a href="sediment-biogeochemistry.html#tab:OMChem-table">13.3</a> and the reaction rates for each of these are calculated dynamically based on Monod expressions which mediate the reaction rate according to the concentration of potential oxidants higher in the redox sequence, and the concentration of the available oxidant.<a href="sediment-biogeochemistry.html#fig:dev-Grid1">13.19</a></p>
 <center>
 <div style="border: 1px solid #ddd; padding: 5px; overflow-y: scroll; height:25em; overflow-x: scroll; width:45em; ">
 <table class="table table-hover" style="font-size: 12px; ">
@@ -1436,7 +1447,7 @@ Methanogenesis
 R_{Ox_{i}} = k_{OM}F_{OM}F_{Tem}F_{Bio}F_{TEA{i}}F_{In_{i}}F_{T}
 
 \\
-\tag{13.11}
+\tag{13.12}
 \end{equation}\]</span>
 </center>
 <p>In CANDI-AED, organic matter limitation, <span class="math inline">\(F_{OM}\)</span>, is only used with <em>OMModel</em> 3. It takes the general form</p>
@@ -1446,14 +1457,14 @@ R_{Ox_{i}} = k_{OM}F_{OM}F_{Tem}F_{Bio}F_{TEA{i}}F_{In_{i}}F_{T}
 F_{OM_{i}} = \frac{OM_{i}} {(OM_{i} + K_{OM})}
 
 \\
-\tag{13.12}
+\tag{13.13}
 \end{equation}\]</span>
 </center>
 <p>where <span class="math inline">\(OM_i\)</span> is an organic matter species, such as <span class="math inline">\(D_{Hyd}\)</span> or <span class="math inline">\(OAc\)</span> and <em>K<sub>OM</sub></em> is a limiting concentration. This functions like other Monod terms, limiting the reaction rate when the concentration of <span class="math inline">\(OM_{i}\)</span> is low. Using <em>OMModel</em> 1 or 2 (the common and simplest options), <span class="math inline">\(F_{OM}\)</span> is effectively 1 and it is assumed that organic matter concentration never limits the reaction rate.</p>
 <p>The temperature factor <span class="math inline">\(F_{Tem}\)</span> is rarely employed in diagenesis models, but in a handful of cases it uses a Q10 relationship between 2 and 4 (see Fossing et al. 2004 for a clear explanation of how temperature affects reaction rates and Eldridge and Morse 2008 or Reed et al. 2011b for a specific examination of the effect of temperature). The current version of the model has switches built in for both the temperature dependence factor, <em>F<sub>Tem</sub></em>, where values of 1 or 2 turn them off and on. However, implementation and testing of the factors has not been carried out for this version of the model. The metabolism rate at <span class="math inline">\(T_{0}\)</span> is <span class="math inline">\(R_{0}\)</span>, <span class="math inline">\(ξ\)</span> is a scaling constant (see, for example, Eldridge and Morse 2008).</p>
 <p>The TEA factor, <span class="math inline">\(F_{TEA}\)</span>, term accounts for the <span class="math inline">\(R_{Ox}\)</span> dependence on the oxidant concentration when the oxidant concentration is low. The <span class="math inline">\(F_{TEA}\)</span> term in Approach 1 is a Monod expression (table <a href="sediment-biogeochemistry.html#tab:OMApproach-table">13.4</a>, figure <a href="sediment-biogeochemistry.html#fig:OMModels-2">13.11</a>), which uses Monod half-saturation constants (<em>K<sub>Ox</sub></em>), and which is chosen because it best reflects laboratory data of bacterially-controlled oxidation reactions (Boudreau and Westrich, 1984, Gaillard and Rabouille 1992). The <span class="math inline">\(F_{TEA}\)</span> of Approach 3 uses Monod functions, modified to include inhibition terms. In Approach 2 the FTEA is either 0, 1 or the ratio of <em>Ox<sub>i</sub></em> to <em>L<sub>Ox</sub></em>, depending on the oxidant concentration relative to <em>L<sub>Ox</sub></em>, a specified limiting concentration (table <a href="sediment-biogeochemistry.html#tab:OMApproach-table">13.4</a>). We use the notation <em>K<sub>Ox</sub></em> and <em>L<sub>Ox</sub></em> to emphasise that a distinction should be made between the Monod half constants in Approaches 1 and 3 and the limiting concentrations used in Approach 2; the difference in conceptual representation is not always clear in Approach 2 papers that use the notation <em>K<sub>Ox</sub></em>. We recommend that the user set the parameter <code>OMModel</code> to 1, unless they specifically need to emulate an Approach 2 model, such as that by Van Cappellen and Wang (1996), or an Approach 3 model, such as that by Soetaert et al. (1996).</p>
 <center>
-<div style="border: 1px solid #ddd; padding: 5px; overflow-y: scroll; height:25em; overflow-x: scroll; width:40em; ">
+<div style="border: 1px solid #ddd; padding: 5px; overflow-y: scroll; height:20em; overflow-x: scroll; width:40em; ">
 <table class="table table-hover" style="font-size: 12px; ">
 <caption style="font-size: initial !important;">
 <span id="tab:OMApproach-table">Table 13.4: </span>Limitation and inhibition equations for two different approaches.
@@ -1520,14 +1531,14 @@ Figure 13.11: Schematic of examples of how inhibition and limitation scale betwe
 </div>
 </center>
 <p><em>F<sub>T</sub></em> is the thermodynamic factor. The current version of the model includes <em>F<sub>T</sub></em> only for <em>OMModel</em> 3, for terminal oxidation reactions and fermentation. This factor uses the ratio of products and reactants, as well as the free energy of each reaction pathway (<span class="math inline">\(\Delta G^0\)</span>).</p>
-<p>The <em>F<sub>T</sub></em> is a factor that scales between 0, which stops the reaction, and 1, which allows the reaction to proceed, in the same way as <em>F<sub>TEA</sub></em> and <em>F<sub>In</sub></em>. The form of the equation proposed by Jin and Bethke is that shown in equation <a href="sediment-biogeochemistry.html#eq:factors-3">(13.13)</a>.The <em>m</em> and <em>χ</em> are stoichiometric coefficients, <em>ΔG<sub>ATP</sub></em> is the energy required to synthesise one mole of ATP, <em>R</em> is the gas constant and <em>T</em> is the temperature. In the case where the <em>F<sub>T</sub></em> &lt; 0 then the factor is set to 0 by convention, otherwise a negative FT would represent the case where microbes carried out a reaction that was unfavourable to their metabolism.</p>
+<p>The <em>F<sub>T</sub></em> is a factor that scales between 0, which stops the reaction, and 1, which allows the reaction to proceed, in the same way as <em>F<sub>TEA</sub></em> and <em>F<sub>In</sub></em>. The form of the equation proposed by Jin and Bethke is that shown in equation <a href="sediment-biogeochemistry.html#eq:factors-3">(13.14)</a>.The <em>m</em> and <em>χ</em> are stoichiometric coefficients, <em>ΔG<sub>ATP</sub></em> is the energy required to synthesise one mole of ATP, <em>R</em> is the gas constant and <em>T</em> is the temperature. In the case where the <em>F<sub>T</sub></em> &lt; 0 then the factor is set to 0 by convention, otherwise a negative FT would represent the case where microbes carried out a reaction that was unfavourable to their metabolism.</p>
 <center>
 <span class="math display" id="eq:factors-3">\[\begin{equation}
 
 F_T = 1 - e^{\frac {∆G_r + m ∆G_{ATP}} {χR} }
 
 
-\tag{13.13}
+\tag{13.14}
 \end{equation}\]</span>
 </center>
 <p><br />
@@ -1538,45 +1549,44 @@ F_T = 1 - e^{\frac {∆G_r + m ∆G_{ATP}} {χR} }
 
     ∆G_r = ∆G^0 + RT ln ( \frac {[redox \ products]^{molar \ ratios} }  { [redox \ reactants]^{molar \ ratios}  } )
 \\
-\tag{13.14}
+\tag{13.15}
 \end{equation}\]</span>
 </center>
-<p>where ΔG0 is the standard state free energy of a redox reaction, calculated as the sum of the energy of the reduction of a TEA and the oxidation of an organic substrate. These energies are well constrained by laboratory data, though there may be differences between laboratory and field conditions that create some uncertainty in their use (Bethke et al. 2011). Practically, this equation allows for <em>ΔG<sub>r</sub></em> to be very close to <em>∆G<sub>0</sub></em> when the reactants are at high concentrations relative to the products. Inversely, when the products are at relatively high concentrations, <em>ΔG<sub>r</sub></em> becomes more positive, making FT more negative. Equation <a href="sediment-biogeochemistry.html#eq:factors-3">(13.13)</a> requires the constants <em>m</em> and <em>χ</em>, which are parameters that could be measured empirically, however as yet they have not all been measured for every redox pathway for every substrate, and therefore authors have had to estimate some values when using equation <a href="sediment-biogeochemistry.html#eq:factors-3">(13.13)</a> (Dale et al. 2008). It also requires <em>ΔG<sub>ATP</sub></em>, which is around 45 kJ (mol substrate)<sup>-1</sup> but has variable published values. Around neutral pH the conditions for fermentation product consumption by iron reducers, sulphate reducers and methanogens are all thermodynamically favourable, but this changes with pH (Bethke et al. 2011). Acidity either promotes or hinders the reaction depending on whether the protons are produced or consumed in the reaction.</p>
+<p>where ΔG0 is the standard state free energy of a redox reaction, calculated as the sum of the energy of the reduction of a TEA and the oxidation of an organic substrate. These energies are well constrained by laboratory data, though there may be differences between laboratory and field conditions that create some uncertainty in their use (Bethke et al. 2011). Practically, this equation allows for <em>ΔG<sub>r</sub></em> to be very close to <em>∆G<sub>0</sub></em> when the reactants are at high concentrations relative to the products. Inversely, when the products are at relatively high concentrations, <em>ΔG<sub>r</sub></em> becomes more positive, making FT more negative. Equation <a href="sediment-biogeochemistry.html#eq:factors-3">(13.14)</a> requires the constants <em>m</em> and <em>χ</em>, which are parameters that could be measured empirically, however as yet they have not all been measured for every redox pathway for every substrate, and therefore authors have had to estimate some values when using equation <a href="sediment-biogeochemistry.html#eq:factors-3">(13.14)</a> (Dale et al. 2008). It also requires <em>ΔG<sub>ATP</sub></em>, which is around 45 kJ (mol substrate)<sup>-1</sup> but has variable published values. Around neutral pH the conditions for fermentation product consumption by iron reducers, sulphate reducers and methanogens are all thermodynamically favourable, but this changes with pH (Bethke et al. 2011). Acidity either promotes or hinders the reaction depending on whether the protons are produced or consumed in the reaction.</p>
 </div>
 <div id="nitrogen-cycling" class="section level5 unnumbered hasAnchor">
 <h5>Nitrogen cycling<a href="sediment-biogeochemistry.html#nitrogen-cycling" class="anchor-section" aria-label="Anchor link to header"></a></h5>
 <p>The redox sequence in CANDI-AED is slightly different to the sequence in other diagenesis models: here the nitrogen redox reactions are split into several processes. Most diagenesis models have an overall reaction of <span class="math inline">\(NO_3^-\)</span> oxidising organic matter and producing <span class="math inline">\(N_2\)</span>, as shown in figure <a href="sediment-biogeochemistry.html#fig:NModel-1">13.12</a>. This reaction is less favourable than aerobic oxidation and it is inhibited by <span class="math inline">\(O_2\)</span>.</p>
 <center>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:NModel-1"></span>
-<img src="images/23-sediment_biogeochemistry/OMSetup/NModel1.png" alt=" wqwqwq" width="35%" />
+<img src="images/23-sediment_biogeochemistry/OMSetup/NModel1.png" alt="Schematic of the basic nitrogen-organic matter redox process from most other diagenesis models." width="35%" />
 <p class="caption">
-Figure 13.12:  wqwqwq
+Figure 13.12: Schematic of the basic nitrogen-organic matter redox process from most other diagenesis models.
 </p>
 </div>
 </center>
 <p>In CANDI-AED, there are separate nitrogen reactions for oxidising organic matter:
-- <strong>Denitratation</strong>: <span class="math inline">\(NO_3^-\)</span> reduction to <span class="math inline">\(NO_2^-\)</span>
-- <strong>Denitritation</strong>: <span class="math inline">\(NO_2^-\)</span> reduction
-- <strong>Nitrous denitritation</strong>: <span class="math inline">\(NO_2^-\)</span> reduction to <span class="math inline">\(N_2O\)</span>
-- <strong>DNRA</strong>: (Dissimilatory nitrate reduction to ammonia) <span class="math inline">\(NO_2^-\)</span> reduction to <span class="math inline">\(NH_4^+\)</span>
-- <strong>Denitrousation</strong>: <span class="math inline">\(N_2O\)</span> reduction to <span class="math inline">\(N_2\)</span></p>
+- <strong>Denitrousation</strong>: <span class="math inline">\(N_2O\)</span> reduction to <span class="math inline">\(N_2\)</span><br />
+- <strong>Denitratation</strong>: <span class="math inline">\(NO_3^-\)</span> reduction to <span class="math inline">\(NO_2^-\)</span><br />
+- <strong>Denitritation</strong>: <span class="math inline">\(NO_2^-\)</span> reduction<br />
+- <strong>Nitrous denitritation</strong>: <span class="math inline">\(NO_2^-\)</span> reduction to <span class="math inline">\(N_2O\)</span><br />
+- <strong>DNRA</strong>: (Dissimilatory nitrate reduction to ammonia) <span class="math inline">\(NO_2^-\)</span> reduction to <span class="math inline">\(NH_4^+\)</span></p>
 <p><br />
 </p>
-<p>These reactions interact as shown in figure <a href="sediment-biogeochemistry.html#fig:NModel-2">13.13</a>.</p>
+<p>These reactions interact as shown in figure <a href="sediment-biogeochemistry.html#fig:NModel-2">13.13</a>. In CANDI-AED, the denitrousation reaction is configured to be more favourable than aerobic oxidation, based on the free energy data reported in Lam and Kuypers (2011). Therefore <span class="math inline">\(N_2O\)</span> inhibits aerobic respiration and all lower-energy pathways. Denitratation and all other reactions are less favourable than aerobic oxidation. Denitritation is the term used for the oxidation of <span class="math inline">\(NO_2^-\)</span>, the products of which are produced through either nitrous denitritation (to <span class="math inline">\(N_2O\)</span>) or DNRA (to <span class="math inline">\(NH_4^+\)</span>), depending on the abundance of <span class="math inline">\(NO_2^-\)</span>.The rate equations are as shown in table <a href="sediment-biogeochemistry.html#tab:NRate-table">13.5</a>.</p>
 <center>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:NModel-2"></span>
-<img src="images/23-sediment_biogeochemistry/OMSetup/NModel2.png" alt=" wqwqwq" width="85%" />
+<img src="images/23-sediment_biogeochemistry/OMSetup/NModel2.png" alt="Schematic of the nitrogen-organic matter redox processes used in the CANDI-AED model." width="85%" />
 <p class="caption">
-Figure 13.13:  wqwqwq
+Figure 13.13: Schematic of the nitrogen-organic matter redox processes used in the CANDI-AED model.
 </p>
 </div>
 </center>
-<p>The rate equations are as shown in table <a href="sediment-biogeochemistry.html#tab:NRate-table">13.5</a>.</p>
 <center>
-<div style="border: 1px solid #ddd; padding: 5px; overflow-y: scroll; height:40em; overflow-x: scroll; width:40em; ">
+<div style="border: 1px solid #ddd; padding: 5px; overflow-y: scroll; height:40em; overflow-x: scroll; width:44em; ">
 <table class="table table-hover" style="font-size: 12px; ">
 <caption style="font-size: initial !important;">
-<span id="tab:NRate-table">Table 13.5: </span>wqwqwqwqwq
+<span id="tab:NRate-table">Table 13.5: </span>Rate equations for organic matter oxidation by nitrogen.
 </caption>
 <thead>
 <tr>
@@ -1593,7 +1603,7 @@ Rate equation
 <td style="text-align:center;min-width: 10em; color: black !important;background-color: white !important;">
 Denitratation
 </td>
-<td style="text-align:center;min-width: 15em; color: black !important;background-color: white !important;">
+<td style="text-align:center;min-width: 25em; color: black !important;background-color: white !important;">
 <br />
 <span class="math inline">\(\displaystyle \
 \ R_{Denitratation} = k_{OM} OM \frac {NO_3^-} {NO_3^- + K_{NO3} } \frac {K_{O2}^1} {O_2 + K_{O2}^1} \frac {K_{N2O}} {N_2O + K_{N2O}}\)</span><br />
@@ -1604,7 +1614,7 @@ Denitratation
 <td style="text-align:center;min-width: 10em; color: black !important;background-color: white !important;">
 Denitritation
 </td>
-<td style="text-align:center;min-width: 15em; color: black !important;background-color: white !important;">
+<td style="text-align:center;min-width: 25em; color: black !important;background-color: white !important;">
 <br />
 <span class="math inline">\(\displaystyle \
 \ R_{Denitritation} = k_{OM} OM \frac {K_{O2}^3} {O_2 + K_{O2}^3 } \frac {K_{N2O}} {N_2O + K_{NO2} }\)</span><br />
@@ -1615,7 +1625,7 @@ Denitritation
 <td style="text-align:center;min-width: 10em; color: black !important;background-color: white !important;">
 Nitrous denitritation
 </td>
-<td style="text-align:center;min-width: 15em; color: black !important;background-color: white !important;">
+<td style="text-align:center;min-width: 25em; color: black !important;background-color: white !important;">
 <br />
 <span class="math inline">\(\displaystyle \
 \ R_{Nitrous denitritation} = \frac {1} {2} R_{Denitritation} \frac {NO_2^- } {NO_2^- + K_{NO2} }\)</span><br />
@@ -1626,7 +1636,7 @@ Nitrous denitritation
 <td style="text-align:center;min-width: 10em; color: black !important;background-color: white !important;">
 DNRA
 </td>
-<td style="text-align:center;min-width: 15em; color: black !important;background-color: white !important;">
+<td style="text-align:center;min-width: 25em; color: black !important;background-color: white !important;">
 <br />
 <span class="math inline">\(\displaystyle \
 \ R_{DNRA} = R_{Denitritation} \frac {K_{NO2} } {NO_2^- + K_{NO2} }\)</span><br />
@@ -1637,7 +1647,7 @@ DNRA
 <td style="text-align:center;min-width: 10em; color: black !important;background-color: white !important;">
 Denitrousation
 </td>
-<td style="text-align:center;min-width: 15em; color: black !important;background-color: white !important;">
+<td style="text-align:center;min-width: 25em; color: black !important;background-color: white !important;">
 <br />
 <span class="math inline">\(\displaystyle \
 \ R_{Denitrousation} = k_{OM} OM \frac {K_{N2O} } {K_{N2O}^6 +O_2 }\)</span><br />
@@ -1648,10 +1658,17 @@ Denitrousation
 <td style="text-align:center;min-width: 10em; color: black !important;">
 Ammonium release
 </td>
-<td style="text-align:center;min-width: 15em; color: black !important;">
+<td style="text-align:center;min-width: 25em; color: black !important;">
 <br />
-<span class="math inline">\(\displaystyle \
-\ R_{Ammonium release} = k_{OM} OM \times \\ (R_{Denitratation} + R_{Denitritation} + R_{Denitrousation}) \times \\  \frac {N } {C }\)</span><br />
+(<br />
+<span class="math display">\[\begin{align}
+\ R_{Ammonium release} = k_{OM} OM \times
+\\
+(R_{Denitratation} +  R_{Denitritation} +  R_{Denitrousation}) $\times$
+\\
+\frac {N } {C }   
+\end{align}\]</span>
+)<br />
  
 </td>
 </tr>
@@ -1664,13 +1681,342 @@ Ammonium release
 </div>
 <div id="secondary-redox-reactions" class="section level4 unnumbered hasAnchor">
 <h4>Secondary Redox Reactions<a href="sediment-biogeochemistry.html#secondary-redox-reactions" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>mattedit: more detail, all the reactions, add tables</p>
-<p>In Paraska et al (2014), many secondary redox reactions were identified that have been included across the diversity of diagenesis model applications. In CANDI-AED, they are all included as options, and may be turned on or off as desired.</p>
+<p>The reactions of chemical species produced by the primary redox reactions (<a href="sediment-biogeochemistry.html#tab:SecondChem-table">13.6</a>) are referred to as secondary redox reactions, and are usually given bimolecular rate laws, which are first order with respect to the oxidant and reductant (<a href="sediment-biogeochemistry.html#tab:SecondChem-table">13.6</a>). The rates are controlled by a kinetic constant with units (mmol L)^-1 y^-1.</p>
 <center>
 <div style="border: 1px solid #ddd; padding: 5px; overflow-y: scroll; height:25em; overflow-x: scroll; width:45em; ">
 <table class="table table-hover" style="font-size: 12px; ">
 <caption style="font-size: initial !important;">
-<span id="tab:SecondChem-table">Table 13.6: </span>Secondary redox reactions.
+<span id="tab:SecondChem-table">Table 13.6: </span>Chemical reactions for secondary redox reactions.
+</caption>
+<thead>
+<tr>
+<th style="text-align:center;font-weight: bold;color: white !important;background-color: #14759e !important;">
+Description
+</th>
+<th style="text-align:center;font-weight: bold;color: white !important;background-color: #14759e !important;">
+….2
+</th>
+<th style="text-align:center;font-weight: bold;color: white !important;background-color: #14759e !important;">
+Reaction
+</th>
+<th style="text-align:center;font-weight: bold;color: white !important;background-color: #14759e !important;">
+….4
+</th>
+<th style="text-align:center;font-weight: bold;color: white !important;background-color: #14759e !important;">
+Rate equation
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center;min-width: 12em; color: black !important;background-color: white !important;">
+<em>NH<sub>4</sub><sup>+</sup></em> oxidation by <em>O<sub>2</sub></em>
+</td>
+<td style="text-align:center;min-width: 3em; color: black !important;background-color: white !important;">
+</td>
+<td style="text-align:center;min-width: 12em; color: black !important;background-color: white !important;">
+<em>NH<sub>4</sub><sup>+</sup></em> + 2<em>O<sub>2</sub></em> + 2<em>HCO<sub>3</sub><sup>-</sup></em> <span class="math inline">\(\rightarrow\)</span> <em>NO<sub>3</sub><sup>-</sup></em> + 2<em>CO<sub>2</sub></em> + 3<em>H<sub>2</sub>O</em>
+</td>
+<td style="text-align:center;min-width: 3em; color: black !important;background-color: white !important;">
+</td>
+<td style="text-align:center;min-width: 12em; color: black !important;background-color: white !important;">
+<span class="math inline">\(\displaystyle R_{NH4Ox} = k_{NH4Ox}[NH_4^+][O_2]\)</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 12em; color: black !important;background-color: white !important;">
+<em>Mn<sup>2+</sup></em> oxidation by <em>O<sub>2</sub></em>
+</td>
+<td style="text-align:center;min-width: 3em; color: black !important;background-color: white !important;">
+</td>
+<td style="text-align:center;min-width: 12em; color: black !important;background-color: white !important;">
+<em>Mn<sup>2+</sup></em> + <em>kX</em> + 0.5<em>O<sub>2</sub></em> + 2<em>HCO<sub>3</sub><sup>-</sup></em> <span class="math inline">\(\rightarrow\)</span> <em>MnO<sub>2A</sub>-X<sub>k</sub></em> + 2<em>CO<sub>2</sub></em> + <em>H<sub>2</sub>O</em>
+</td>
+<td style="text-align:center;min-width: 3em; color: black !important;background-color: white !important;">
+</td>
+<td style="text-align:center;min-width: 12em; color: black !important;background-color: white !important;">
+<span class="math inline">\(\displaystyle R_{MnOx} = k_{MnOx}[Mn^{2+}][O_2]\)</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 12em; color: black !important;background-color: white !important;">
+<em>Fe<sup>2+</sup></em> oxidation by <em>O<sub>2</sub></em>
+</td>
+<td style="text-align:center;min-width: 3em; color: black !important;background-color: white !important;">
+</td>
+<td style="text-align:center;min-width: 12em; color: black !important;background-color: white !important;">
+4<em>Fe<sup>2+</sup></em> + <em>O<sub>2</sub></em> + 4<em>CO<sub>2</sub></em>+ 2<em>H<sub>2</sub>O</em> <span class="math inline">\(\rightarrow\)</span> 4<em>Fe<sup>3+</sup></em> + 4<em>HCO<sub>3</sub><sup>-</sup></em>
+</td>
+<td style="text-align:center;min-width: 3em; color: black !important;background-color: white !important;">
+</td>
+<td style="text-align:center;min-width: 12em; color: black !important;background-color: white !important;">
+<span class="math inline">\(\displaystyle R_{FeOx} = k_{FeOx}[Fe^{2+}][O_2]\)</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 12em; color: black !important;background-color: white !important;">
+<em>H<sub>2</sub>S</em> oxidation by <em>O<sub>2</sub></em>
+</td>
+<td style="text-align:center;min-width: 3em; color: black !important;background-color: white !important;">
+</td>
+<td style="text-align:center;min-width: 12em; color: black !important;background-color: white !important;">
+<em>H<sub>2</sub>S</em> + 2<em>O<sub>2</sub></em> + 2<em>HCO<sub>3</sub><sup>-</sup></em> <span class="math inline">\(\rightarrow\)</span> <em>SO<sub>4</sub><sup>2-</sup></em> + 2<em>CO<sub>2</sub></em> + 2<em>H<sub>2</sub>O</em>
+</td>
+<td style="text-align:center;min-width: 3em; color: black !important;background-color: white !important;">
+</td>
+<td style="text-align:center;min-width: 12em; color: black !important;background-color: white !important;">
+<span class="math inline">\(\displaystyle R_{TSOx} = k_{TSOx}[H_2S][O_2]\)</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 12em; color: black !important;background-color: white !important;">
+<em>CH<sub>4</sub></em> oxidation by <em>O<sub>2</sub></em>
+</td>
+<td style="text-align:center;min-width: 3em; color: black !important;background-color: white !important;">
+</td>
+<td style="text-align:center;min-width: 12em; color: black !important;background-color: white !important;">
+<em>CH<sub>4</sub></em> + <em>O<sub>2</sub></em> <span class="math inline">\(\rightarrow\)</span> CO<sub>2</sub>* + <em>H<sub>2</sub>O</em>
+</td>
+<td style="text-align:center;min-width: 3em; color: black !important;background-color: white !important;">
+</td>
+<td style="text-align:center;min-width: 12em; color: black !important;background-color: white !important;">
+<span class="math inline">\(\displaystyle R_{CH4Ox} = k_{CH4Ox}[CH_4][O_2]\)</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 12em; color: black !important;">
+<em>FeS</em> oxidation by <em>O<sub>2</sub></em>
+</td>
+<td style="text-align:center;min-width: 3em; color: black !important;">
+</td>
+<td style="text-align:center;min-width: 12em; color: black !important;">
+<em>FeS-X<sub>m</sub></em> + 2<em>O<sub>2</sub></em> <span class="math inline">\(\rightarrow\)</span> <em>SO<sub>4</sub><sup>2-</sup></em> + <em>Fe<sup>2+</sup></em> + <em>mX</em>
+</td>
+<td style="text-align:center;min-width: 3em; color: black !important;">
+</td>
+<td style="text-align:center;min-width: 12em; color: black !important;">
+<span class="math inline">\(\displaystyle R_{FeSOx} = k_{FeSOx}[FeS][O_2]\)</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 12em; color: black !important;">
+<em>FeS<sub>2</sub></em> oxidation by <em>O<sub>2</sub></em>
+</td>
+<td style="text-align:center;min-width: 3em; color: black !important;">
+</td>
+<td style="text-align:center;min-width: 12em; color: black !important;">
+<em>FeS<sub>2</sub>-X<sub>m</sub></em> + 3.5<em>O<sub>2</sub></em> + 2<em>HCO<sub>3</sub><sup>-</sup></em> <span class="math inline">\(\rightarrow\)</span> <em>Fe<sup>2+</sup></em> + <em>mX</em> + 2<em>SO<sub>4</sub><sup>2-</sup></em> + 2<em>CO<sub>2</sub></em> + <em>H<sub>2</sub>O</em>
+</td>
+<td style="text-align:center;min-width: 3em; color: black !important;">
+</td>
+<td style="text-align:center;min-width: 12em; color: black !important;">
+<span class="math inline">\(\displaystyle R_{FeS2Ox} = k_{FeS2Ox}[FeS_2][O_2]\)</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 12em; color: black !important;">
+<em>NH<sub>4</sub><sup>+</sup></em> oxidation by <em>NO<sub>2</sub><sup>-</sup></em>
+</td>
+<td style="text-align:center;min-width: 3em; color: black !important;">
+</td>
+<td style="text-align:center;min-width: 12em; color: black !important;">
+<em>NH<sub>4</sub><sup>+</sup></em> + <em>NO<sub>2</sub><sup>-</sup></em> <span class="math inline">\(\rightarrow\)</span> <em>N<sub>2</sub></em> + 2<em>H<sub>2</sub>O</em>
+</td>
+<td style="text-align:center;min-width: 3em; color: black !important;">
+</td>
+<td style="text-align:center;min-width: 12em; color: black !important;">
+<span class="math inline">\(\displaystyle R_{NH4NO2} = k_{NH4NO2}[NH_4^+][O_2]\)</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 12em; color: black !important;">
+<em>Mn<sup>2+</sup></em> oxidation by <em>NO<sub>3</sub><sup>-</sup></em>
+</td>
+<td style="text-align:center;min-width: 3em; color: black !important;">
+</td>
+<td style="text-align:center;min-width: 12em; color: black !important;">
+5<em>Mn<sup>2+</sup></em> + 2<em>NO<sub>3</sub><sup>-</sup></em> + 8<em>HCO<sub>3</sub><sup>-</sup></em> + <em>kX</em> <span class="math inline">\(\rightarrow\)</span> 5<em>MnO<sub>2A</sub>-X<sub>k</sub></em> + 8<em>CO<sub>2</sub></em> +4<em>H<sub>2</sub>O</em> + <em>N<sub>2</sub></em>
+</td>
+<td style="text-align:center;min-width: 3em; color: black !important;">
+</td>
+<td style="text-align:center;min-width: 12em; color: black !important;">
+<span class="math inline">\(\displaystyle R_{MnNO3} = k_{MnNO3}[Mn^{2+}][NO_3^-]\)</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 12em; color: black !important;">
+<em>Fe<sup>2+</sup></em> oxidation by <em>NO<sub>3</sub><sup>-</sup></em>
+</td>
+<td style="text-align:center;min-width: 3em; color: black !important;">
+</td>
+<td style="text-align:center;min-width: 12em; color: black !important;">
+5<em>Fe<sup>2+</sup></em> + <em>NO<sub>3</sub><sup>-</sup></em> + 6<em>CO<sub>2</sub></em> + 3<em>H<sub>2</sub>O</em> <span class="math inline">\(\rightarrow\)</span> 0.5<em>N<sub>2</sub></em> + 5<em>Fe<sup>3+</sup></em> + 6<em>HCO<sub>3</sub><sup>-</sup></em>
+</td>
+<td style="text-align:center;min-width: 3em; color: black !important;">
+</td>
+<td style="text-align:center;min-width: 12em; color: black !important;">
+<span class="math inline">\(\displaystyle R_{FeNO3} = k_{FeNO3}[Fe^{2+}][NO_3^-]\)</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 12em; color: black !important;">
+∑<em>H<sub>2</sub>S</em> oxidation by <em>NO<sub>3</sub><sup>-</sup></em>
+</td>
+<td style="text-align:center;min-width: 3em; color: black !important;">
+</td>
+<td style="text-align:center;min-width: 12em; color: black !important;">
+2.5<em>H<sub>2</sub>S</em> + 4<em>NO<sub>3</sub><sup>-</sup></em> + <em>HCO<sub>3</sub><sup>-</sup></em> <span class="math inline">\(\rightarrow\)</span> 2.5<em>SO<sub>4</sub><sup>2-</sup></em> + 2<em>N<sub>2</sub></em> + <em>CO<sub>2</sub></em> + 3<em>H<sub>2</sub>O</em>
+</td>
+<td style="text-align:center;min-width: 3em; color: black !important;">
+</td>
+<td style="text-align:center;min-width: 12em; color: black !important;">
+<span class="math inline">\(\displaystyle R_{TSNO3} = k_{TSNO3}[H_2S][NO_3^-]\)</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 12em; color: black !important;">
+<em>Fe<sup>2+</sup></em> oxidation by <em>MnO<sub>2A,</sub> <sub>B</sub></em>
+</td>
+<td style="text-align:center;min-width: 3em; color: black !important;">
+</td>
+<td style="text-align:center;min-width: 12em; color: black !important;">
+2<em>Fe<sup>2+</sup></em> + 2l<em>X</em> + (<em>MnO<sub>2A</sub>-X<sub>k</sub></em> + <em>MnO<sub>2B</sub>-X<sub>k</sub></em>) + 2<em>HCO<sub>3</sub><sup>-</sup></em> + 2<em>H<sub>2</sub>O</em> <span class="math inline">\(\rightarrow\)</span> 2<em>Fe(OH)<sub>3A</sub>-X<sub>l</sub></em> + <em>Mn<sup>2+</sup></em> + <em>kX</em> + 2<em>CO<sub>2</sub></em>
+</td>
+<td style="text-align:center;min-width: 3em; color: black !important;">
+</td>
+<td style="text-align:center;min-width: 12em; color: black !important;">
+<span class="math inline">\(\displaystyle R_{FeMn} = k_{FeMn}[Fe^{2+}][MnO_{2A, B}]\)</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 12em; color: black !important;">
+∑<em>H<sub>2</sub>S</em> oxidation by <em>MnO<sub>2A,</sub> <sub>B</sub></em>
+</td>
+<td style="text-align:center;min-width: 3em; color: black !important;">
+</td>
+<td style="text-align:center;min-width: 12em; color: black !important;">
+<em>H<sub>2</sub>S</em> + 4(<em>MnO<sub>2A</sub>-X<sub>k</sub></em> + <em>MnO<sub>2B</sub>-X<sub>k</sub></em>) + 6<em>CO<sub>2</sub></em> + 2<em>H<sub>2</sub>O</em> <span class="math inline">\(\rightarrow\)</span> <em>SO<sub>4</sub><sup>2-</sup></em> + 4<em>Mn<sup>2+</sup></em> + 4<em>kX</em> + 6<em>HCO<sub>3</sub><sup>-</sup></em>
+</td>
+<td style="text-align:center;min-width: 3em; color: black !important;">
+</td>
+<td style="text-align:center;min-width: 12em; color: black !important;">
+<span class="math inline">\(\displaystyle R_{TSMnO2} = k_{TSMnO2}[H_2S][MnO_{2A, B}]\)</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 12em; color: black !important;">
+<em>FeS</em> oxidation by <em>MnO<sub>2A,</sub> <sub>B</sub></em>
+</td>
+<td style="text-align:center;min-width: 3em; color: black !important;">
+</td>
+<td style="text-align:center;min-width: 12em; color: black !important;">
+<em>FeS-X<sub>m</sub></em> + 4(<em>MnO<sub>2A</sub>-X<sub>k</sub></em> + <em>MnO<sub>2B</sub>-X<sub>k</sub></em>) + 8<em>CO<sub>2</sub></em> + 4<em>H<sub>2</sub>O</em> <span class="math inline">\(\rightarrow\)</span> <em>SO<sub>4</sub><sup>2-</sup></em> + 4<em>Mn<sup>2+</sup></em>+ <em>Fe<sup>2+</sup></em> + (<em>m</em> + <em>4k</em>) <em>X</em> + 8<em>HCO<sub>3</sub><sup>-</sup></em>
+</td>
+<td style="text-align:center;min-width: 3em; color: black !important;">
+</td>
+<td style="text-align:center;min-width: 12em; color: black !important;">
+<span class="math inline">\(\displaystyle R_{FeSMn} = k_{FeSMn}[FeS][MnO_{2A, B}]\)</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 12em; color: black !important;">
+∑<em>H<sub>2</sub>S</em> oxidation by <em>Fe(OH)<sub>3A,</sub> <sub>B</sub></em>
+</td>
+<td style="text-align:center;min-width: 3em; color: black !important;">
+</td>
+<td style="text-align:center;min-width: 12em; color: black !important;">
+<em>H<sub>2</sub>S</em> + 8(<em>Fe(OH)<sub>3A</sub>-X<sub>l</sub></em> + <em>Fe(OH)<sub>3B</sub>-X<sub>l</sub></em>) + 14<em>CO<sub>2</sub></em> <span class="math inline">\(\rightarrow\)</span> <em>SO<sub>4</sub><sup>2-</sup></em> + 8<em>Fe<sup>2+</sup></em>+ 8l<em>X</em> + 14<em>HCO<sub>3</sub><sup>-</sup></em> + 6<em>H<sub>2</sub>O</em>
+</td>
+<td style="text-align:center;min-width: 3em; color: black !important;">
+</td>
+<td style="text-align:center;min-width: 12em; color: black !important;">
+<span class="math inline">\(\displaystyle R_{TSFe} = k_{TSFe}[H_2S][Fe(OH)_{3A, B}]\)</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 12em; color: black !important;">
+<em>FeS</em> oxidation by <em>Fe(OH)<sub>3A,</sub> <sub>B</sub></em>
+</td>
+<td style="text-align:center;min-width: 3em; color: black !important;">
+</td>
+<td style="text-align:center;min-width: 12em; color: black !important;">
+<em>FeS-X<sub>m</sub></em> + 8(<em>Fe(OH)<sub>3A</sub>-X<sub>l</sub></em> + <em>Fe(OH)<sub>3B</sub>-X<sub>l</sub></em>) + 16<em>CO<sub>2</sub></em> <span class="math inline">\(\rightarrow\)</span> <em>SO<sub>4</sub><sup>2-</sup></em> + 9<em>Fe<sup>2+</sup></em> + (<em>m</em> + 8l)<em>X</em> + 16<em>HCO<sub>3</sub><sup>-</sup></em> + 4<em>H<sub>2</sub>O</em>
+</td>
+<td style="text-align:center;min-width: 3em; color: black !important;">
+</td>
+<td style="text-align:center;min-width: 12em; color: black !important;">
+<span class="math inline">\(\displaystyle R_{FeSFe} = k_{FeSFe}[FeS][Fe(OH)_{3A, B}]\)</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 12em; color: black !important;">
+<em>CH<sub>4</sub></em> oxidation by <em>SO<sub>4</sub><sup>2-</sup></em>
+</td>
+<td style="text-align:center;min-width: 3em; color: black !important;">
+</td>
+<td style="text-align:center;min-width: 12em; color: black !important;">
+<em>CH<sub>4</sub></em> + <em>SO<sub>4</sub><sup>2-</sup></em> + <em>CO<sub>2</sub></em> <span class="math inline">\(\rightarrow\)</span> <em>H<sub>2</sub>S</em> + 2<em>HCO<sub>3</sub><sup>-</sup></em>
+</td>
+<td style="text-align:center;min-width: 3em; color: black !important;">
+</td>
+<td style="text-align:center;min-width: 12em; color: black !important;">
+<span class="math inline">\(\displaystyle R_{CH4SO4} = k_{CH4SO4}[CH_4][SO_2^{2-}]\)</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 12em; color: black !important;">
+<em>H<sub>2</sub></em> oxidation by <em>SO<sub>4</sub><sup>2-</sup></em>
+</td>
+<td style="text-align:center;min-width: 3em; color: black !important;">
+</td>
+<td style="text-align:center;min-width: 12em; color: black !important;">
+5<em>H<sub>2</sub></em> + <em>SO<sub>4</sub><sup>2-</sup></em> <span class="math inline">\(\rightarrow\)</span> <em>H<sub>2</sub>S</em> + <em>4H<sub>2</sub>O</em>
+</td>
+<td style="text-align:center;min-width: 3em; color: black !important;">
+</td>
+<td style="text-align:center;min-width: 12em; color: black !important;">
+<span class="math inline">\(\displaystyle R_{HSO} = k_{HSO}[H_2][SO_4^{2-}]\)</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 12em; color: black !important;">
+<em>S<sup>0</sup></em> oxidation by <em>H<sub>2</sub>O</em>
+</td>
+<td style="text-align:center;min-width: 3em; color: black !important;">
+</td>
+<td style="text-align:center;min-width: 12em; color: black !important;">
+</td>
+<td style="text-align:center;min-width: 3em; color: black !important;">
+</td>
+<td style="text-align:center;min-width: 12em; color: black !important;">
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</center>
+<p><br />
+<br />
+</p>
+</div>
+<div id="equilibrium-geochemistry" class="section level4 unnumbered hasAnchor">
+<h4>Equilibrium Geochemistry<a href="sediment-biogeochemistry.html#equilibrium-geochemistry" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div id="ph" class="section level5 unnumbered hasAnchor">
+<h5>pH<a href="sediment-biogeochemistry.html#ph" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<p>The <em>pH</em> is initialised at a fixed value of around 8, which the user does not control. Setting the parameter <code>rxn_mode</code> to 0 or 4 keeps the pH constant throughout the simulation. Setting <code>rxn_mode</code> to 1, 2 or 3 updates the pH calculation at each time step. The <em>pH</em> is calculated as the sum of all charged species, where any unbalanced charge is calculated as ‘charge balance’ (<span class="math inline">\(ubalchg\)</span>), which is assumed to be H<sup>+</sup>. The charge balance is at each time step is solved as a state variable, which is subject to advection, diffusion and bioturbation reactions.</p>
+<p>The <em>pH</em> is used in the calculation of <span class="math inline">\(PO_4^{3-}\)</span> adsorption if the parameter <code>ads_use_pH</code> is set to <code>TRUE</code>.</p>
+<p><em>It is otherwise not used in any other reactions.</em></p>
+</div>
+<div id="mineral-precipitation-and-ageing" class="section level5 unnumbered hasAnchor">
+<h5>Mineral precipitation and ageing<a href="sediment-biogeochemistry.html#mineral-precipitation-and-ageing" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<p>IN CANDI-AED, dissolved species can combine to form precipitated minerals: <span class="math inline">\(MnO_{2A}\)</span>, <span class="math inline">\(Fe(OH)_{3A}\)</span>, <span class="math inline">\(FeS\)</span>, <span class="math inline">\(MnCO_3\)</span>, <span class="math inline">\(FeCO_3\)</span>, and <span class="math inline">\(CaCO_3\)</span>. Another process is the ageing of amorphous <span class="math inline">\(MnO_{2A}\)</span> and <span class="math inline">\(Fe(OH)_{3A}\)</span> to the unreactive, crystalline phases <span class="math inline">\(MnO_{2B}\)</span> and <span class="math inline">\(Fe(OH)_{3B}\)</span>. The third type of process is ageing process of <span class="math inline">\(FeS\)</span> to <span class="math inline">\(FeS_2\)</span> (adding a further S atom to the compound). The reactions rates are outlined in tables <a href="sediment-biogeochemistry.html#tab:Geochem-table1">13.7</a> to <a href="sediment-biogeochemistry.html#tab:Geochem-table3">13.9</a>.</p>
+<p>The form of the rate is dependent on the complexity of the reaction mode chosen, using the parameter <code>rxn_mode</code>. The simplest option is for the reactions not to occur. The next option is for the reaction to proceed as a biomolecular rate law, in a similar way to the secondary redox reactions, by selecting <code>rxn_mode</code> = 2.</p>
+<p>There are also two methods that set the precipitation rate based on the relative concentrations of dissolved and precipitated species. One method uses the ion activity product (<em>IAP</em>), which is a state variable and is calculated at each depth and timestep. The calculation method is based on that from Tufano et al. (2009). This method is generally selected with <code>rxn_mode</code> = 3 (see tables <a href="sediment-biogeochemistry.html#tab:Geochem-table1">13.7</a> to <a href="sediment-biogeochemistry.html#tab:Geochem-table3">13.9</a>). The other method is the “omega” method, using the equations from Van Cappellen and Wang (1996), generally by using <code>rxn_mode</code> = 4 (see tables <a href="sediment-biogeochemistry.html#tab:Geochem-table1">13.7</a> to <a href="sediment-biogeochemistry.html#tab:Geochem-table3">13.9</a>).</p>
+<center>
+<div style="border: 1px solid #ddd; padding: 5px; overflow-y: scroll; height:30em; overflow-x: scroll; width:48em; ">
+<table class="table table-hover" style="font-size: 12px; ">
+<caption style="font-size: initial !important;">
+<span id="tab:Geochem-table1">Table 13.7: </span>Reactions and rate equations for precipitation and ageing for MnO<sub>2</sub> and Fe(OH)<sub>3</sub>
 </caption>
 <thead>
 <tr>
@@ -1680,159 +2026,1138 @@ Description
 <th style="text-align:center;font-weight: bold;color: white !important;background-color: #14759e !important;">
 Reaction
 </th>
+<th style="text-align:center;font-weight: bold;color: white !important;background-color: #14759e !important;">
+.
+</th>
+<th style="text-align:center;font-weight: bold;color: white !important;background-color: #14759e !important;">
+Rate equation
+</th>
+</tr>
+</thead>
+<tbody>
+<tr grouplength="12">
+<td colspan="4" style="border-bottom: 1px solid;color: black !important;background-color: #ebebeb !important;">
+<strong>Manganese</strong>
+</td>
+</tr>
+<tr>
+<td style="text-align:center;padding-left: 2em;min-width: 10em; color: black !important;" indentlevel="1">
+MnO<sub>2</sub> ageing
+</td>
+<td style="text-align:center;min-width: 15em; color: black !important;">
+MnO<sub>2A</sub> <span class="math inline">\(\rightarrow\)</span> MnO<sub>2B</sub>
+</td>
+<td style="text-align:center;min-width: 3em; color: black !important;">
+</td>
+<td style="text-align:center;min-width: 15em; color: black !important;">
+If <code>rxn_mode</code> = 0 or 1,<br />
+<span class="math inline">\(\displaystyle R_{MnO2Bppt} = 0\)</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:center;padding-left: 2em;min-width: 10em; color: black !important;" indentlevel="1">
+</td>
+<td style="text-align:center;min-width: 15em; color: black !important;">
+</td>
+<td style="text-align:center;min-width: 3em; color: black !important;">
+</td>
+<td style="text-align:center;min-width: 15em; color: black !important;">
+ 
+</td>
+</tr>
+<tr>
+<td style="text-align:center;padding-left: 2em;min-width: 10em; color: black !important;" indentlevel="1">
+</td>
+<td style="text-align:center;min-width: 15em; color: black !important;">
+</td>
+<td style="text-align:center;min-width: 3em; color: black !important;">
+</td>
+<td style="text-align:center;min-width: 15em; color: black !important;">
+If <code>rxn_mode</code> = 2, 3 or 4<br />
+<span class="math inline">\(\displaystyle \
+\begin{align} R_{MnO2Bppt} = k_{MnO2Bppt} [MnO_{2B}] \end{align}\)</span>
+ 
+</td>
+</tr>
+<tr>
+<td style="text-align:center;padding-left: 2em;min-width: 10em; color: black !important;" indentlevel="1">
+MnO<sub>2A</sub> precipitation
+</td>
+<td style="text-align:center;min-width: 15em; color: black !important;">
+2Mn<sup>2+</sup> + O<sub>2</sub> + 4HCO<sub>3</sub><sup>-</sup> <span class="math inline">\(\rightarrow\)</span> 2MnO<sub>2</sub> + 4CO<sub>2</sub> +2H<sub>2</sub>O
+</td>
+<td style="text-align:center;min-width: 3em; color: black !important;">
+</td>
+<td style="text-align:center;min-width: 15em; color: black !important;">
+If <code>rxn_mode</code> = 0 or 1<br />
+<span class="math inline">\(\displaystyle \
+R_{MnO2Appt} = 0\)</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:center;padding-left: 2em;min-width: 10em; color: black !important;" indentlevel="1">
+</td>
+<td style="text-align:center;min-width: 15em; color: black !important;">
+</td>
+<td style="text-align:center;min-width: 3em; color: black !important;">
+</td>
+<td style="text-align:center;min-width: 15em; color: black !important;">
+ 
+</td>
+</tr>
+<tr>
+<td style="text-align:center;padding-left: 2em;min-width: 10em; color: black !important;" indentlevel="1">
+</td>
+<td style="text-align:center;min-width: 15em; color: black !important;">
+</td>
+<td style="text-align:center;min-width: 3em; color: black !important;">
+</td>
+<td style="text-align:center;min-width: 15em; color: black !important;">
+If <code>rxn_mode</code> = 2<br />
+<span class="math inline">\(\displaystyle \
+\begin{align} R_{MnO2Appt} = k_{MnO2Appt} [Mn^{2+}] \end{align}\)</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:center;padding-left: 2em;min-width: 10em; color: black !important;" indentlevel="1">
+</td>
+<td style="text-align:center;min-width: 15em; color: black !important;">
+</td>
+<td style="text-align:center;min-width: 3em; color: black !important;">
+</td>
+<td style="text-align:center;min-width: 15em; color: black !important;">
+ 
+</td>
+</tr>
+<tr>
+<td style="text-align:center;padding-left: 2em;min-width: 10em; color: black !important;" indentlevel="1">
+</td>
+<td style="text-align:center;min-width: 15em; color: black !important;">
+</td>
+<td style="text-align:center;min-width: 3em; color: black !important;">
+</td>
+<td style="text-align:center;min-width: 15em; color: black !important;">
+If <code>rxn_mode</code> = 3<br />
+<span class="math inline">\(\displaystyle \
+\begin{align} \\ If IAP_{MnO2} = 0 \\ \\ R_{MnO2Appt} = k_{MnO2Appt} [Mn^{2+}] \\ \\ If IAP_{MnO2ppt} \lt 1 \\ \\ R_{MnO2Appt} = k_{MnO2Appt} (1 - (\frac {1 }{IAP_{MnO2} })) \\ \\ If IAP_{MnO2Appt} \ge 1 \\ \\ R_{MnO2Appt} = k_{MnO2Appt} (1 - (\frac {IAP_{MnO2} }{1 })) \end{align}\)</span>
+ 
+</td>
+</tr>
+<tr>
+<td style="text-align:center;padding-left: 2em;min-width: 10em; color: black !important;" indentlevel="1">
+</td>
+<td style="text-align:center;min-width: 15em; color: black !important;">
+</td>
+<td style="text-align:center;min-width: 3em; color: black !important;">
+</td>
+<td style="text-align:center;min-width: 15em; color: black !important;">
+ 
+</td>
+</tr>
+<tr>
+<td style="text-align:center;padding-left: 2em;min-width: 10em; color: black !important;" indentlevel="1">
+</td>
+<td style="text-align:center;min-width: 15em; color: black !important;">
+</td>
+<td style="text-align:center;min-width: 3em; color: black !important;">
+</td>
+<td style="text-align:center;min-width: 15em; color: black !important;">
+If <code>rxn_mode</code> = 4<br />
+<span class="math inline">\(\displaystyle \
+\begin{align} R_{MnO2Appt} = k_{MnO2Appt} [Mn^{2+}] \end{align}\)</span>
+ 
+</td>
+</tr>
+<tr>
+<td style="text-align:center;padding-left: 2em;min-width: 10em; color: black !important;" indentlevel="1">
+</td>
+<td style="text-align:center;min-width: 15em; color: black !important;">
+</td>
+<td style="text-align:center;min-width: 3em; color: black !important;">
+</td>
+<td style="text-align:center;min-width: 15em; color: black !important;">
+</td>
+</tr>
+<tr>
+<td style="text-align:center;padding-left: 2em;min-width: 10em; color: black !important;" indentlevel="1">
+</td>
+<td style="text-align:center;min-width: 15em; color: black !important;">
+</td>
+<td style="text-align:center;min-width: 3em; color: black !important;">
+</td>
+<td style="text-align:center;min-width: 15em; color: black !important;">
+ 
+</td>
+</tr>
+<tr grouplength="12">
+<td colspan="4" style="border-bottom: 1px solid;color: black !important;background-color: #ebebeb !important;">
+<strong>Iron</strong>
+</td>
+</tr>
+<tr>
+<td style="text-align:center;padding-left: 2em;min-width: 10em; color: black !important;" indentlevel="1">
+Fe(OH)<sub>3A</sub> ageing
+</td>
+<td style="text-align:center;min-width: 15em; color: black !important;">
+4Fe(OH)<sub>3A</sub> <span class="math inline">\(\rightarrow\)</span> 4Fe(OH)<sub>3B</sub>
+</td>
+<td style="text-align:center;min-width: 3em; color: black !important;">
+</td>
+<td style="text-align:center;min-width: 15em; color: black !important;">
+If <code>rxn_mode</code> = 0 or 1,
+ 
+<span class="math inline">\(\displaystyle R_{FeOHBppt} = 0\)</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:center;padding-left: 2em;min-width: 10em; color: black !important;" indentlevel="1">
+</td>
+<td style="text-align:center;min-width: 15em; color: black !important;">
+</td>
+<td style="text-align:center;min-width: 3em; color: black !important;">
+</td>
+<td style="text-align:center;min-width: 15em; color: black !important;">
+ 
+</td>
+</tr>
+<tr>
+<td style="text-align:center;padding-left: 2em;min-width: 10em; color: black !important;" indentlevel="1">
+</td>
+<td style="text-align:center;min-width: 15em; color: black !important;">
+</td>
+<td style="text-align:center;min-width: 3em; color: black !important;">
+</td>
+<td style="text-align:center;min-width: 15em; color: black !important;">
+If <code>rxn_mode</code> = 2<br />
+<span class="math inline">\(\displaystyle \
+\begin{align} R_{FeOHBppt} = k_{FeOHBppt} [Fe(OH)_{3B}] \end{align}\)</span>
+ 
+</td>
+</tr>
+<tr>
+<td style="text-align:center;padding-left: 2em;min-width: 10em; color: black !important;" indentlevel="1">
+</td>
+<td style="text-align:center;min-width: 15em; color: black !important;">
+</td>
+<td style="text-align:center;min-width: 3em; color: black !important;">
+</td>
+<td style="text-align:center;min-width: 15em; color: black !important;">
+ 
+</td>
+</tr>
+<tr>
+<td style="text-align:center;padding-left: 2em;min-width: 10em; color: black !important;" indentlevel="1">
+Fe(OH)<sub>3A</sub> precipitation
+</td>
+<td style="text-align:center;min-width: 15em; color: black !important;">
+4Fe<sup>2+</sup> + O_2 +8HCO_3^- + 2H_2O <span class="math inline">\(\rightarrow\)</span> 4Fe(OH)3A + 8CO_2
+</td>
+<td style="text-align:center;min-width: 3em; color: black !important;">
+</td>
+<td style="text-align:center;min-width: 15em; color: black !important;">
+If <code>rxn_mode</code> = 0 or 1,<br />
+R_{FeOHAppt} = 0
+</td>
+</tr>
+<tr>
+<td style="text-align:center;padding-left: 2em;min-width: 10em; color: black !important;" indentlevel="1">
+</td>
+<td style="text-align:center;min-width: 15em; color: black !important;">
+</td>
+<td style="text-align:center;min-width: 3em; color: black !important;">
+</td>
+<td style="text-align:center;min-width: 15em; color: black !important;">
+ 
+</td>
+</tr>
+<tr>
+<td style="text-align:center;padding-left: 2em;min-width: 10em; color: black !important;" indentlevel="1">
+</td>
+<td style="text-align:center;min-width: 15em; color: black !important;">
+</td>
+<td style="text-align:center;min-width: 3em; color: black !important;">
+</td>
+<td style="text-align:center;min-width: 15em; color: black !important;">
+If <code>rxn_mode</code> = 2<br />
+<span class="math inline">\(\displaystyle \
+\begin{align} R_{FeOHAppt} = k_{FeOHAppt} [Fe^{2+}] \end{align}\)</span>
+ 
+</td>
+</tr>
+<tr>
+<td style="text-align:center;padding-left: 2em;min-width: 10em; color: black !important;" indentlevel="1">
+</td>
+<td style="text-align:center;min-width: 15em; color: black !important;">
+</td>
+<td style="text-align:center;min-width: 3em; color: black !important;">
+</td>
+<td style="text-align:center;min-width: 15em; color: black !important;">
+ 
+</td>
+</tr>
+<tr>
+<td style="text-align:center;padding-left: 2em;min-width: 10em; color: black !important;" indentlevel="1">
+</td>
+<td style="text-align:center;min-width: 15em; color: black !important;">
+</td>
+<td style="text-align:center;min-width: 3em; color: black !important;">
+</td>
+<td style="text-align:center;min-width: 15em; color: black !important;">
+If <code>rxn_mode</code> = 3<br />
+<span class="math inline">\(\displaystyle \
+\begin{align} \\ If IAP_{FeOH} = 0 \\ \\ R_{FeOHAppt} = k_{FeOHAppt} [Fe^{2+}] \\ \\ If IAP_{FeOHA} \lt 1 \\ \\ R_{FeOHAppt} = k_{FeOHAppt} (1 - (\frac {1 }{IAP_{FeOH3} })) \\ \\ If IAP_{FeOH3} \ge 1 \\ \\ R_{FeOHAppt} = k_{FeOHAppt} (1 - (\frac {IAP_{FeOH3} }{1 })) \end{align}\)</span>
+ 
+</td>
+</tr>
+<tr>
+<td style="text-align:center;padding-left: 2em;min-width: 10em; color: black !important;" indentlevel="1">
+</td>
+<td style="text-align:center;min-width: 15em; color: black !important;">
+</td>
+<td style="text-align:center;min-width: 3em; color: black !important;">
+</td>
+<td style="text-align:center;min-width: 15em; color: black !important;">
+ 
+</td>
+</tr>
+<tr>
+<td style="text-align:center;padding-left: 2em;min-width: 10em; color: black !important;" indentlevel="1">
+</td>
+<td style="text-align:center;min-width: 15em; color: black !important;">
+</td>
+<td style="text-align:center;min-width: 3em; color: black !important;">
+</td>
+<td style="text-align:center;min-width: 15em; color: black !important;">
+If <code>rxn_mode</code> = 4<br />
+<span class="math inline">\(\displaystyle \
+\begin{align} R_{FeOHAppt} = k_{FeOHAppt} [Fe^{2+}] \end{align}\)</span>
+ 
+</td>
+</tr>
+<tr>
+<td style="text-align:center;padding-left: 2em;min-width: 10em; color: black !important;" indentlevel="1">
+</td>
+<td style="text-align:center;min-width: 15em; color: black !important;">
+</td>
+<td style="text-align:center;min-width: 3em; color: black !important;">
+</td>
+<td style="text-align:center;min-width: 15em; color: black !important;">
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</center>
+<p><br></p>
+<center>
+<div style="border: 1px solid #ddd; padding: 5px; overflow-y: scroll; height:30em; overflow-x: scroll; width:48em; ">
+<table class="table table-hover" style="font-size: 12px; ">
+<caption style="font-size: initial !important;">
+<span id="tab:Geochem-table2">Table 13.8: </span>Reactions and rate equations for precipitation and ageing for FeS and FeS<sub>2</sub>
+</caption>
+<thead>
+<tr>
+<th style="text-align:center;font-weight: bold;color: white !important;background-color: #14759e !important;">
+Description
+</th>
+<th style="text-align:center;font-weight: bold;color: white !important;background-color: #14759e !important;">
+Reaction
+</th>
+<th style="text-align:center;font-weight: bold;color: white !important;background-color: #14759e !important;">
+.
+</th>
+<th style="text-align:center;font-weight: bold;color: white !important;background-color: #14759e !important;">
+Rate equation
+</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td style="text-align:center;min-width: 10em; color: black !important;background-color: white !important;">
-<em>NH<sub>4</sub><sup>+</sup></em> oxidation by <em>O<sub>2</sub></em>
+FeS transformation to FeS<sub>2</sub>
 </td>
 <td style="text-align:center;min-width: 15em; color: black !important;background-color: white !important;">
-<em>NH<sub>4</sub><sup>+</sup></em> + 2<em>O<sub>2</sub></em> + 2<em>HCO<sub>3</sub><sup>-</sup></em> <span class="math inline">\(\rightarrow\)</span> <em>NO<sub>3</sub><sup>-</sup></em> + 2<em>CO<sub>2</sub></em> + 3<em>H<sub>2</sub>O</em>
+FeS + H<sub>2</sub>S <span class="math inline">\(\rightarrow\)</span> FeS<sub>2</sub> + H<sub>2</sub>
+</td>
+<td style="text-align:center;min-width: 3em; color: black !important;background-color: white !important;">
+</td>
+<td style="text-align:center;min-width: 15em; color: black !important;background-color: white !important;">
+<br />
+<span class="math inline">\(\displaystyle R_{Pyrite} = k_{Pyrite} [FeS][H_2S] \\ \)</span>
 </td>
 </tr>
 <tr>
 <td style="text-align:center;min-width: 10em; color: black !important;background-color: white !important;">
-<em>Mn<sup>2+</sup></em> oxidation by <em>O<sub>2</sub></em>
 </td>
 <td style="text-align:center;min-width: 15em; color: black !important;background-color: white !important;">
-<em>Mn<sup>2+</sup></em> + <em>kX</em> + 0.5<em>O<sub>2</sub></em> + 2<em>HCO<sub>3</sub><sup>-</sup></em> <span class="math inline">\(\rightarrow\)</span> <em>MnO<sub>2A</sub>-X<sub>k</sub></em> + 2<em>CO<sub>2</sub></em> + <em>H<sub>2</sub>O</em>
+</td>
+<td style="text-align:center;min-width: 3em; color: black !important;background-color: white !important;">
+</td>
+<td style="text-align:center;min-width: 15em; color: black !important;background-color: white !important;">
+ 
 </td>
 </tr>
 <tr>
 <td style="text-align:center;min-width: 10em; color: black !important;background-color: white !important;">
-<em>Fe<sup>2+</sup></em> oxidation by <em>O<sub>2</sub></em>
+FeS precipitation
 </td>
 <td style="text-align:center;min-width: 15em; color: black !important;background-color: white !important;">
-4<em>Fe<sup>2+</sup></em> + <em>O<sub>2</sub></em> + 4<em>CO<sub>2</sub></em>+ 2<em>H<sub>2</sub>O</em> <span class="math inline">\(\rightarrow\)</span> 4<em>Fe<sup>3+</sup></em> + 4<em>HCO<sub>3</sub><sup>-</sup></em>
+Fe<sup>2+</sup> + H<sub>2</sub>S <span class="math inline">\(\rightarrow\)</span> FeS + 2H<sup>+</sup>
+</td>
+<td style="text-align:center;min-width: 3em; color: black !important;background-color: white !important;">
+</td>
+<td style="text-align:center;min-width: 15em; color: black !important;background-color: white !important;">
+If <code>rxn_mode</code> = 0 or 1<br />
+<span class="math inline">\(\displaystyle \
+R_{FeS} = 0\)</span>
+ 
 </td>
 </tr>
 <tr>
 <td style="text-align:center;min-width: 10em; color: black !important;background-color: white !important;">
-<em>H<sub>2</sub>S</em> oxidation by <em>O<sub>2</sub></em>
 </td>
 <td style="text-align:center;min-width: 15em; color: black !important;background-color: white !important;">
-<em>H<sub>2</sub>S</em> + 2<em>O<sub>2</sub></em> + 2<em>HCO<sub>3</sub><sup>-</sup></em> <span class="math inline">\(\rightarrow\)</span> <em>SO<sub>4</sub><sup>2-</sup></em> + 2<em>CO<sub>2</sub></em> + 2<em>H<sub>2</sub>O</em>
+</td>
+<td style="text-align:center;min-width: 3em; color: black !important;background-color: white !important;">
+</td>
+<td style="text-align:center;min-width: 15em; color: black !important;background-color: white !important;">
+ 
 </td>
 </tr>
 <tr>
 <td style="text-align:center;min-width: 10em; color: black !important;">
-<em>CH<sub>4</sub></em> oxidation by <em>O<sub>2</sub></em>
 </td>
 <td style="text-align:center;min-width: 15em; color: black !important;">
-<em>CH<sub>4</sub></em> + <em>O<sub>2</sub></em> <span class="math inline">\(\rightarrow\)</span> CO<sub>2</sub>* + <em>H<sub>2</sub>O</em>
+</td>
+<td style="text-align:center;min-width: 3em; color: black !important;">
+</td>
+<td style="text-align:center;min-width: 15em; color: black !important;">
+If <code>rxn_mode</code> = 2<br />
+<span class="math inline">\(\displaystyle \
+R_{FeS} = k_{FeSppt}[Fe^2][HS^-]\)</span>
+ 
 </td>
 </tr>
 <tr>
 <td style="text-align:center;min-width: 10em; color: black !important;">
-<em>FeS</em> oxidation by <em>O<sub>2</sub></em>
 </td>
 <td style="text-align:center;min-width: 15em; color: black !important;">
-<em>FeS-X<sub>m</sub></em> + 2<em>O<sub>2</sub></em> <span class="math inline">\(\rightarrow\)</span> <em>SO<sub>4</sub><sup>2-</sup></em> + <em>Fe<sup>2+</sup></em> + <em>mX</em>
+</td>
+<td style="text-align:center;min-width: 3em; color: black !important;">
+</td>
+<td style="text-align:center;min-width: 15em; color: black !important;">
+ 
 </td>
 </tr>
 <tr>
 <td style="text-align:center;min-width: 10em; color: black !important;">
-<em>FeS<sub>2</sub></em> oxidation by <em>O<sub>2</sub></em>
 </td>
 <td style="text-align:center;min-width: 15em; color: black !important;">
-<em>FeS<sub>2</sub>-X<sub>m</sub></em> + 3.5<em>O<sub>2</sub></em> + 2<em>HCO<sub>3</sub><sup>-</sup></em> <span class="math inline">\(\rightarrow\)</span> <em>Fe<sup>2+</sup></em> + <em>mX</em> + 2<em>SO<sub>4</sub><sup>2-</sup></em> + 2<em>CO<sub>2</sub></em> + <em>H<sub>2</sub>O</em>
+</td>
+<td style="text-align:center;min-width: 3em; color: black !important;">
+</td>
+<td style="text-align:center;min-width: 15em; color: black !important;">
+If <code>rxn_mode</code> = 3<br />
+<span class="math inline">\(\displaystyle \
+\begin{align} R_{FeSppt} = k_{FeSppt}(1 - (\frac {K_{sp FeS} }{IAP_{FeS} })) \\ R_{FeSdiss} = - k_{FeSppt}(1 - (\frac {IAP_{FeS} } {K_{sp FeS} })) \end{align}\)</span>
+ 
 </td>
 </tr>
 <tr>
 <td style="text-align:center;min-width: 10em; color: black !important;">
-<em>NH<sub>4</sub><sup>+</sup></em> oxidation by <em>NO<sub>2</sub><sup>-</sup></em>
 </td>
 <td style="text-align:center;min-width: 15em; color: black !important;">
-<em>NH<sub>4</sub><sup>+</sup></em> + <em>NO<sub>2</sub><sup>-</sup></em> <span class="math inline">\(\rightarrow\)</span> <em>N<sub>2</sub></em> + 2<em>H<sub>2</sub>O</em>
+</td>
+<td style="text-align:center;min-width: 3em; color: black !important;">
+</td>
+<td style="text-align:center;min-width: 15em; color: black !important;">
+ 
 </td>
 </tr>
 <tr>
 <td style="text-align:center;min-width: 10em; color: black !important;">
-<em>Mn<sup>2+</sup></em> oxidation by <em>NO<sub>3</sub><sup>-</sup></em>
 </td>
 <td style="text-align:center;min-width: 15em; color: black !important;">
-5<em>Mn<sup>2+</sup></em> + 2<em>NO<sub>3</sub><sup>-</sup></em> + 8<em>HCO<sub>3</sub><sup>-</sup></em> + <em>kX</em> <span class="math inline">\(\rightarrow\)</span> 5<em>MnO<sub>2A</sub>-X<sub>k</sub></em> + 8<em>CO<sub>2</sub></em> +4<em>H<sub>2</sub>O</em> + <em>N<sub>2</sub></em>
+</td>
+<td style="text-align:center;min-width: 3em; color: black !important;">
+</td>
+<td style="text-align:center;min-width: 15em; color: black !important;">
+If <code>rxn_mode</code> = 4<br />
+<span class="math inline">\(\displaystyle \
+\begin{align} R_{FeSppt} = k_{FeSppt} \delta_{FeS} (\Omega_{FeS} - 1) \\ R_{FeSdiss} = k_{FeSdiss} \delta_{-FeS} (1 - \Omega_{FeS} ) \\ \Omega_{FeS} = (\frac {[Fe^{2+}]{HS^-} } {[H^+] K_{FeS}}) \\ If \Omega_{FeS} \gt 1 \
+\delta_{FeS} = 1; \delta_{-FeS} = 0\
+\\ If \Omega_{FeS} \le 1 \
+\delta_{FeS} = 0; \delta_{-FeS} = 1 \end{align}\)</span>
+\
 </td>
 </tr>
 <tr>
 <td style="text-align:center;min-width: 10em; color: black !important;">
-<em>Fe<sup>2+</sup></em> oxidation by <em>NO<sub>3</sub><sup>-</sup></em>
 </td>
 <td style="text-align:center;min-width: 15em; color: black !important;">
-5<em>Fe<sup>2+</sup></em> + <em>NO<sub>3</sub><sup>-</sup></em> + 6<em>CO<sub>2</sub></em> + 3<em>H<sub>2</sub>O</em> <span class="math inline">\(\rightarrow\)</span> 0.5<em>N<sub>2</sub></em> + 5<em>Fe<sup>3+</sup></em> + 6<em>HCO<sub>3</sub><sup>-</sup></em>
+</td>
+<td style="text-align:center;min-width: 3em; color: black !important;">
+</td>
+<td style="text-align:center;min-width: 15em; color: black !important;">
+ 
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</center>
+<p><br></p>
+<center>
+<div style="border: 1px solid #ddd; padding: 5px; overflow-y: scroll; height:30em; overflow-x: scroll; width:48em; ">
+<table class="table table-hover" style="font-size: 12px; ">
+<caption style="font-size: initial !important;">
+<span id="tab:Geochem-table3">Table 13.9: </span>Reactions and rate equations for precipitation and ageing for carbonate compounds.
+</caption>
+<thead>
+<tr>
+<th style="text-align:center;font-weight: bold;color: white !important;background-color: #14759e !important;">
+Description
+</th>
+<th style="text-align:center;font-weight: bold;color: white !important;background-color: #14759e !important;">
+Reaction
+</th>
+<th style="text-align:center;font-weight: bold;color: white !important;background-color: #14759e !important;">
+ 
+</th>
+<th style="text-align:center;font-weight: bold;color: white !important;background-color: #14759e !important;">
+Rate equation
+</th>
+</tr>
+</thead>
+<tbody>
+<tr grouplength="7">
+<td colspan="4" style="border-bottom: 1px solid;color: black !important;background-color: #ebebeb !important;">
+<strong>MnCO<sub>3</sub></strong>
+</td>
+</tr>
+<tr>
+<td style="text-align:center;padding-left: 2em;min-width: 10em; color: black !important;background-color: white !important;" indentlevel="1">
+MnCO<sub>3</sub> precipitation
+</td>
+<td style="text-align:center;min-width: 15em; color: black !important;background-color: white !important;">
+Mn<sup>2+</sup> + CO<sub>3</sub><sup>2-</sup> <span class="math inline">\(\rightarrow\)</span> MnCO<sub>3</sub>
+</td>
+<td style="text-align:center;min-width: 3em; color: black !important;background-color: white !important;">
+</td>
+<td style="text-align:center;min-width: 15em; color: black !important;background-color: white !important;">
+If <code>rxn_mode</code> = 0 or 1<br />
+<span class="math inline">\(\displaystyle \
+R_{Rodppt} = 0\)</span>
+ 
+</td>
+</tr>
+<tr>
+<td style="text-align:center;padding-left: 2em;min-width: 10em; color: black !important;background-color: white !important;" indentlevel="1">
+</td>
+<td style="text-align:center;min-width: 15em; color: black !important;background-color: white !important;">
+</td>
+<td style="text-align:center;min-width: 3em; color: black !important;background-color: white !important;">
+</td>
+<td style="text-align:center;min-width: 15em; color: black !important;background-color: white !important;">
+If <code>rxn_mode</code> = 2<br />
+<span class="math inline">\(\displaystyle \
+R_{Rod} = k_{FeSppt} [Mn^{2+}] [HCO_3^-]\)</span>
+ 
+</td>
+</tr>
+<tr>
+<td style="text-align:center;padding-left: 2em;min-width: 10em; color: black !important;background-color: white !important;" indentlevel="1">
+</td>
+<td style="text-align:center;min-width: 15em; color: black !important;background-color: white !important;">
+</td>
+<td style="text-align:center;min-width: 3em; color: black !important;background-color: white !important;">
+</td>
+<td style="text-align:center;min-width: 15em; color: black !important;background-color: white !important;">
+ 
+</td>
+</tr>
+<tr>
+<td style="text-align:center;padding-left: 2em;min-width: 10em; color: black !important;background-color: white !important;" indentlevel="1">
+</td>
+<td style="text-align:center;min-width: 15em; color: black !important;background-color: white !important;">
+</td>
+<td style="text-align:center;min-width: 3em; color: black !important;background-color: white !important;">
+</td>
+<td style="text-align:center;min-width: 15em; color: black !important;background-color: white !important;">
+If <code>rxn_mode</code> = 3<br />
+<span class="math inline">\(\displaystyle \
+\begin{align} R_{Rodppt} = k_{Rodppt}(1 - (\frac {K_{sp Rod} }{IAP_{Rod} })) \\ R_{Roddiss} = - k_{Rodppt}(1 - (\frac {IAP_{Rod} } {K_{sp Rod} })) \end{align}\)</span>
+ 
+</td>
+</tr>
+<tr>
+<td style="text-align:center;padding-left: 2em;min-width: 10em; color: black !important;" indentlevel="1">
+</td>
+<td style="text-align:center;min-width: 15em; color: black !important;">
+</td>
+<td style="text-align:center;min-width: 3em; color: black !important;">
+</td>
+<td style="text-align:center;min-width: 15em; color: black !important;">
+ 
+</td>
+</tr>
+<tr>
+<td style="text-align:center;padding-left: 2em;min-width: 10em; color: black !important;" indentlevel="1">
+</td>
+<td style="text-align:center;min-width: 15em; color: black !important;">
+</td>
+<td style="text-align:center;min-width: 3em; color: black !important;">
+</td>
+<td style="text-align:center;min-width: 15em; color: black !important;">
+If <code>rxn_mode</code> = 4<br />
+<span class="math inline">\(\displaystyle \
+\begin{align} R_{Rodppt} = k_{Rodppt} \delta_{Rod} (\Omega_{Rod} - 1) \\ R_{Roddiss} = k_{Roddiss} \delta_{-Rod} (1 - \Omega_{Rod} ) \\ \Omega_{Rod} = (\frac {[Mn^{2+}]{CO_3^-} } { K_{Rod}}) \\ If \Omega_{Rod} \gt 1 \
+\delta_{Rod} = 1; \delta_{-Rod} = 0\
+\\ If \Omega_{Rod} \le 1 \
+\delta_{Rod} = 0; \delta_{-Rod} = 1 \end{align}\)</span>
+ 
+</td>
+</tr>
+<tr>
+<td style="text-align:center;padding-left: 2em;min-width: 10em; color: black !important;" indentlevel="1">
+</td>
+<td style="text-align:center;min-width: 15em; color: black !important;">
+</td>
+<td style="text-align:center;min-width: 3em; color: black !important;">
+</td>
+<td style="text-align:center;min-width: 15em; color: black !important;">
+</td>
+</tr>
+<tr grouplength="8">
+<td colspan="4" style="border-bottom: 1px solid;color: black !important;background-color: #ebebeb !important;">
+<strong>FeCO<sub>3</sub></strong>
+</td>
+</tr>
+<tr>
+<td style="text-align:center;padding-left: 2em;min-width: 10em; color: black !important;" indentlevel="1">
+FeCO<sub>3</sub> precipitation
+</td>
+<td style="text-align:center;min-width: 15em; color: black !important;">
+Fe<sup>2+</sup> + CO<sub>3</sub><sup>2-</sup> <span class="math inline">\(\rightarrow\)</span> FeCO<sub>3</sub>
+</td>
+<td style="text-align:center;min-width: 3em; color: black !important;">
+</td>
+<td style="text-align:center;min-width: 15em; color: black !important;">
+If <code>rxn_mode</code> = 0 or 1<br />
+<span class="math inline">\(\displaystyle \
+R_{Sidppt} = 0\)</span>
+ 
+</td>
+</tr>
+<tr>
+<td style="text-align:center;padding-left: 2em;min-width: 10em; color: black !important;" indentlevel="1">
+</td>
+<td style="text-align:center;min-width: 15em; color: black !important;">
+</td>
+<td style="text-align:center;min-width: 3em; color: black !important;">
+</td>
+<td style="text-align:center;min-width: 15em; color: black !important;">
+ 
+</td>
+</tr>
+<tr>
+<td style="text-align:center;padding-left: 2em;min-width: 10em; color: black !important;" indentlevel="1">
+</td>
+<td style="text-align:center;min-width: 15em; color: black !important;">
+</td>
+<td style="text-align:center;min-width: 3em; color: black !important;">
+</td>
+<td style="text-align:center;min-width: 15em; color: black !important;">
+If <code>rxn_mode</code> = 2<br />
+<span class="math inline">\(\displaystyle \
+R_{Sid} = k_{Sidppt} [Fe^{2+}] [HCO_3^-]\)</span>
+ 
+</td>
+</tr>
+<tr>
+<td style="text-align:center;padding-left: 2em;min-width: 10em; color: black !important;" indentlevel="1">
+</td>
+<td style="text-align:center;min-width: 15em; color: black !important;">
+</td>
+<td style="text-align:center;min-width: 3em; color: black !important;">
+</td>
+<td style="text-align:center;min-width: 15em; color: black !important;">
+ 
+</td>
+</tr>
+<tr>
+<td style="text-align:center;padding-left: 2em;min-width: 10em; color: black !important;" indentlevel="1">
+</td>
+<td style="text-align:center;min-width: 15em; color: black !important;">
+</td>
+<td style="text-align:center;min-width: 3em; color: black !important;">
+</td>
+<td style="text-align:center;min-width: 15em; color: black !important;">
+If <code>rxn_mode</code> = 3<br />
+<span class="math inline">\(\displaystyle \
+\begin{align} R_{Sidppt} = k_{Sidppt}(1 - (\frac {K_{sp Sid} }{IAP_{Sid} })) \\ R_{Siddiss} = - k_{Sidppt}(1 - (\frac {IAP_{Sid} } {K_{sp Sid} })) \end{align}\)</span><br />
+ 
+</td>
+</tr>
+<tr>
+<td style="text-align:center;padding-left: 2em;min-width: 10em; color: black !important;" indentlevel="1">
+</td>
+<td style="text-align:center;min-width: 15em; color: black !important;">
+</td>
+<td style="text-align:center;min-width: 3em; color: black !important;">
+</td>
+<td style="text-align:center;min-width: 15em; color: black !important;">
+ 
+</td>
+</tr>
+<tr>
+<td style="text-align:center;padding-left: 2em;min-width: 10em; color: black !important;" indentlevel="1">
+</td>
+<td style="text-align:center;min-width: 15em; color: black !important;">
+</td>
+<td style="text-align:center;min-width: 3em; color: black !important;">
+</td>
+<td style="text-align:center;min-width: 15em; color: black !important;">
+If <code>rxn_mode</code> = 4<br />
+<span class="math inline">\(\displaystyle \begin{align} \
+R_{Sidppt} = k_{Sidppt} \delta_{Sid} (\Omega_{Sid} - 1) \\ R_{Siddiss} = k_{Siddiss} \delta_{-Sid} (1 - \Omega_{Sid} ) \\ \Omega_{Sid} = (\frac {[Fe^{2+}]{CO_3^-} } { K_{Sid}}) \\ If \Omega_{Sid} \gt 1 \
+\delta_{Sid} = 1; \delta_{-Sid} = 0\
+\\ If \Omega_{Sid} \le 1 \
+\delta_{Sid} = 0; \delta_{-Sid} = 1 \end{align}\)</span>
+ 
+</td>
+</tr>
+<tr>
+<td style="text-align:center;padding-left: 2em;min-width: 10em; color: black !important;" indentlevel="1">
+</td>
+<td style="text-align:center;min-width: 15em; color: black !important;">
+</td>
+<td style="text-align:center;min-width: 3em; color: black !important;">
+</td>
+<td style="text-align:center;min-width: 15em; color: black !important;">
+ 
+</td>
+</tr>
+<tr grouplength="7">
+<td colspan="4" style="border-bottom: 1px solid;color: black !important;background-color: #ebebeb !important;">
+<strong>CaCO<sub>3</sub></strong>
+</td>
+</tr>
+<tr>
+<td style="text-align:center;padding-left: 2em;min-width: 10em; color: black !important;" indentlevel="1">
+CaCO<sub>3</sub> precipitation
+</td>
+<td style="text-align:center;min-width: 15em; color: black !important;">
+Ca<sup>2+</sup> + CO<sub>3</sub><sup>2-</sup> <span class="math inline">\(\rightarrow\)</span> CaCO<sub>3</sub>
+</td>
+<td style="text-align:center;min-width: 3em; color: black !important;">
+</td>
+<td style="text-align:center;min-width: 15em; color: black !important;">
+If <code>rxn_mode</code> = 0 or 1<br />
+<span class="math inline">\(\displaystyle \
+R_{Sidppt} = 0\)</span>
+ 
+</td>
+</tr>
+<tr>
+<td style="text-align:center;padding-left: 2em;min-width: 10em; color: black !important;" indentlevel="1">
+</td>
+<td style="text-align:center;min-width: 15em; color: black !important;">
+</td>
+<td style="text-align:center;min-width: 3em; color: black !important;">
+</td>
+<td style="text-align:center;min-width: 15em; color: black !important;">
+ 
+</td>
+</tr>
+<tr>
+<td style="text-align:center;padding-left: 2em;min-width: 10em; color: black !important;" indentlevel="1">
+</td>
+<td style="text-align:center;min-width: 15em; color: black !important;">
+</td>
+<td style="text-align:center;min-width: 3em; color: black !important;">
+</td>
+<td style="text-align:center;min-width: 15em; color: black !important;">
+If <code>rxn_mode</code> = 2<br />
+<span class="math inline">\(\displaystyle \
+R_{Cal} = k_{Calppt} [Ca^{2+}] [HCO_3^-]\)</span>
+ 
+</td>
+</tr>
+<tr>
+<td style="text-align:center;padding-left: 2em;min-width: 10em; color: black !important;" indentlevel="1">
+</td>
+<td style="text-align:center;min-width: 15em; color: black !important;">
+</td>
+<td style="text-align:center;min-width: 3em; color: black !important;">
+</td>
+<td style="text-align:center;min-width: 15em; color: black !important;">
+ 
+</td>
+</tr>
+<tr>
+<td style="text-align:center;padding-left: 2em;min-width: 10em; color: black !important;" indentlevel="1">
+</td>
+<td style="text-align:center;min-width: 15em; color: black !important;">
+</td>
+<td style="text-align:center;min-width: 3em; color: black !important;">
+</td>
+<td style="text-align:center;min-width: 15em; color: black !important;">
+If <code>rxn_mode</code> = 3<br />
+<span class="math inline">\(\displaystyle \
+\begin{align} R_{Calppt} = k_{Calppt}(1 - (\frac {K_{sp Cal} }{IAP_{Cal} })) \\ R_{Caldiss} = - k_{Calppt}(1 - (\frac {IAP_{Cal} } {K_{sp Cal} })) \end{align}\)</span><br />
+ 
+</td>
+</tr>
+<tr>
+<td style="text-align:center;padding-left: 2em;min-width: 10em; color: black !important;" indentlevel="1">
+</td>
+<td style="text-align:center;min-width: 15em; color: black !important;">
+</td>
+<td style="text-align:center;min-width: 3em; color: black !important;">
+</td>
+<td style="text-align:center;min-width: 15em; color: black !important;">
+ 
+</td>
+</tr>
+<tr>
+<td style="text-align:center;padding-left: 2em;min-width: 10em; color: black !important;" indentlevel="1">
+</td>
+<td style="text-align:center;min-width: 15em; color: black !important;">
+</td>
+<td style="text-align:center;min-width: 3em; color: black !important;">
+</td>
+<td style="text-align:center;min-width: 15em; color: black !important;">
+If <code>rxn_mode</code> = 4<br />
+<span class="math inline">\(\displaystyle \
+\begin{align} R_{Calppt} = k_{Calppt} \delta_{Cal} (\Omega_{Cal} - 1) \\ R_{Caldiss} = k_{Caldiss} \delta_{-Cal} (1 - \Omega_{Cal} ) \\ \Omega_{Cal} = (\frac {[Ca^{2+}]{CO_3^-} } { K_{Cal}}) \\ If \Omega_{Cal} \gt 1 \
+\\ \delta_{Cal} = 1; \delta_{-Cal} = 0\
+\\ If \Omega_{Cal} \le 1 \
+\\ \delta_{Cal} = 0; \delta_{-Cal} = 1 \end{align}\)</span>
+ 
 </td>
 </tr>
 <tr>
 <td style="text-align:center;min-width: 10em; color: black !important;">
-∑<em>H<sub>2</sub>S</em> oxidation by <em>NO<sub>3</sub><sup>-</sup></em>
 </td>
 <td style="text-align:center;min-width: 15em; color: black !important;">
-2.5<em>H<sub>2</sub>S</em> + 4<em>NO<sub>3</sub><sup>-</sup></em> + <em>HCO<sub>3</sub><sup>-</sup></em> <span class="math inline">\(\rightarrow\)</span> 2.5<em>SO<sub>4</sub><sup>2-</sup></em> + 2<em>N<sub>2</sub></em> + <em>CO<sub>2</sub></em> + 3<em>H<sub>2</sub>O</em>
+</td>
+<td style="text-align:center;min-width: 3em; color: black !important;">
+</td>
+<td style="text-align:center;min-width: 15em; color: black !important;">
+ 
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</center>
+<p><br></p>
+<p>The parameter <code>rxn_mode</code> sets different configurations of precipitation and <em>pH</em> calculations. A summary of the options is presented in <a href="sediment-biogeochemistry.html#tab:Geochem-table4">13.10</a>.</p>
+<center>
+<div style="border: 1px solid #ddd; padding: 5px; overflow-y: scroll; height:25em; overflow-x: scroll; width:48em; ">
+<table class="table table-hover" style="font-size: 12px; ">
+<caption style="font-size: initial !important;">
+<span id="tab:Geochem-table4">Table 13.10: </span>Geochemical configurations from the <code>rxn_mode</code> parameter
+</caption>
+<thead>
+<tr>
+<th style="text-align:center;font-weight: bold;color: white !important;background-color: #14759e !important;">
+rxn_mode
+</th>
+<th style="text-align:center;font-weight: bold;color: white !important;background-color: #14759e !important;">
+MnO<sub>2A</sub>
+</th>
+<th style="text-align:center;font-weight: bold;color: white !important;background-color: #14759e !important;">
+Fe(OH)<sub>3A</sub>
+</th>
+<th style="text-align:center;font-weight: bold;color: white !important;background-color: #14759e !important;">
+FeS
+</th>
+<th style="text-align:center;font-weight: bold;color: white !important;background-color: #14759e !important;">
+MnCO<sub>3</sub>
+</th>
+<th style="text-align:center;font-weight: bold;color: white !important;background-color: #14759e !important;">
+FeCO<sub>3</sub>
+</th>
+<th style="text-align:center;font-weight: bold;color: white !important;background-color: #14759e !important;">
+CaCO<sub>3</sub>
+</th>
+<th style="text-align:center;font-weight: bold;color: white !important;background-color: #14759e !important;">
+pH
+</th>
+<th style="text-align:center;font-weight: bold;color: white !important;background-color: #14759e !important;">
+Update equilibration
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center;min-width: 12em; font-weight: bold;color: black !important;background-color: white !important;">
+0
+</td>
+<td style="text-align:center;min-width: 12em; color: black !important;background-color: white !important;">
+No precipitation
+</td>
+<td style="text-align:center;min-width: 12em; color: black !important;background-color: white !important;">
+No precipitation
+</td>
+<td style="text-align:center;min-width: 12em; color: black !important;background-color: white !important;">
+No precipitation
+</td>
+<td style="text-align:center;background-color: white !important;">
+No precipitation
+</td>
+<td style="text-align:center;background-color: white !important;">
+No precipitation
+</td>
+<td style="text-align:center;background-color: white !important;">
+No precipitation
+</td>
+<td style="text-align:center;background-color: white !important;">
+Constant
+</td>
+<td style="text-align:center;min-width: 12em; font-style: italic;color: red !important;background-color: white !important;">
+Not called
 </td>
 </tr>
 <tr>
-<td style="text-align:center;min-width: 10em; color: black !important;">
-<em>Fe<sup>2+</sup></em> oxidation by <em>MnO<sub>2A,</sub> <sub>B</sub></em>
+<td style="text-align:center;min-width: 12em; font-weight: bold;color: black !important;background-color: white !important;">
 </td>
-<td style="text-align:center;min-width: 15em; color: black !important;">
-2<em>Fe<sup>2+</sup></em> + 2l<em>X</em> + (<em>MnO<sub>2A</sub>-X<sub>k</sub></em> + <em>MnO<sub>2B</sub>-X<sub>k</sub></em>) + 2<em>HCO<sub>3</sub><sup>-</sup></em> + 2<em>H<sub>2</sub>O</em> <span class="math inline">\(\rightarrow\)</span> 2<em>Fe(OH)<sub>3A</sub>-X<sub>l</sub></em> + <em>Mn<sup>2+</sup></em> + <em>kX</em> + 2<em>CO<sub>2</sub></em>
+<td style="text-align:center;min-width: 12em; color: black !important;background-color: white !important;">
+No ageing
 </td>
-</tr>
-<tr>
-<td style="text-align:center;min-width: 10em; color: black !important;">
-∑<em>H<sub>2</sub>S</em> oxidation by <em>MnO<sub>2A,</sub> <sub>B</sub></em>
+<td style="text-align:center;min-width: 12em; color: black !important;background-color: white !important;">
+No ageing
 </td>
-<td style="text-align:center;min-width: 15em; color: black !important;">
-<em>H<sub>2</sub>S</em> + 4(<em>MnO<sub>2A</sub>-X<sub>k</sub></em> + <em>MnO<sub>2B</sub>-X<sub>k</sub></em>) + 6<em>CO<sub>2</sub></em> + 2<em>H<sub>2</sub>O</em> <span class="math inline">\(\rightarrow\)</span> <em>SO<sub>4</sub><sup>2-</sup></em> + 4<em>Mn<sup>2+</sup></em> + 4<em>kX</em> + 6<em>HCO<sub>3</sub><sup>-</sup></em>
+<td style="text-align:center;min-width: 12em; color: black !important;background-color: white !important;">
+Produces FeS<sub>2</sub>
 </td>
-</tr>
-<tr>
-<td style="text-align:center;min-width: 10em; color: black !important;">
-<em>FeS</em> oxidation by <em>MnO<sub>2A,</sub> <sub>B</sub></em>
+<td style="text-align:center;background-color: white !important;">
 </td>
-<td style="text-align:center;min-width: 15em; color: black !important;">
-<em>FeS-X<sub>m</sub></em> + 4(<em>MnO<sub>2A</sub>-X<sub>k</sub></em> + <em>MnO<sub>2B</sub>-X<sub>k</sub></em>) + 8<em>CO<sub>2</sub></em> + 4<em>H<sub>2</sub>O</em> <span class="math inline">\(\rightarrow\)</span> <em>SO<sub>4</sub><sup>2-</sup></em> + 4<em>Mn<sup>2+</sup></em>+ <em>Fe<sup>2+</sup></em> + (<em>m</em> + <em>4k</em>) <em>X</em> + 8<em>HCO<sub>3</sub><sup>-</sup></em>
+<td style="text-align:center;background-color: white !important;">
 </td>
-</tr>
-<tr>
-<td style="text-align:center;min-width: 10em; color: black !important;">
-∑<em>H<sub>2</sub>S</em> oxidation by <em>Fe(OH)<sub>3A,</sub> <sub>B</sub></em>
+<td style="text-align:center;background-color: white !important;">
 </td>
-<td style="text-align:center;min-width: 15em; color: black !important;">
-<em>H<sub>2</sub>S</em> + 8(<em>Fe(OH)<sub>3A</sub>-X<sub>l</sub></em> + <em>Fe(OH)<sub>3B</sub>-X<sub>l</sub></em>) + 14<em>CO<sub>2</sub></em> <span class="math inline">\(\rightarrow\)</span> <em>SO<sub>4</sub><sup>2-</sup></em> + 8<em>Fe<sup>2+</sup></em>+ 8l<em>X</em> + 14<em>HCO<sub>3</sub><sup>-</sup></em> + 6<em>H<sub>2</sub>O</em>
+<td style="text-align:center;background-color: white !important;">
+</td>
+<td style="text-align:center;min-width: 12em; font-style: italic;color: red !important;background-color: white !important;">
 </td>
 </tr>
 <tr>
-<td style="text-align:center;min-width: 10em; color: black !important;">
-<em>FeS</em> oxidation by <em>Fe(OH)<sub>3A,</sub> <sub>B</sub></em>
+<td style="text-align:center;min-width: 12em; font-weight: bold;color: black !important;background-color: white !important;">
 </td>
-<td style="text-align:center;min-width: 15em; color: black !important;">
-<em>FeS-X<sub>m</sub></em> + 8(<em>Fe(OH)<sub>3A</sub>-X<sub>l</sub></em> + <em>Fe(OH)<sub>3B</sub>-X<sub>l</sub></em>) + 16<em>CO<sub>2</sub></em> <span class="math inline">\(\rightarrow\)</span> <em>SO<sub>4</sub><sup>2-</sup></em> + 9<em>Fe<sup>2+</sup></em> + (<em>m</em> + 8l)<em>X</em> + 16<em>HCO<sub>3</sub><sup>-</sup></em> + 4<em>H<sub>2</sub>O</em>
+<td style="text-align:center;min-width: 12em; color: black !important;background-color: white !important;">
 </td>
-</tr>
-<tr>
-<td style="text-align:center;min-width: 10em; color: black !important;">
-<em>CH<sub>4</sub></em> oxidation by <em>SO<sub>4</sub><sup>2-</sup></em>
+<td style="text-align:center;min-width: 12em; color: black !important;background-color: white !important;">
 </td>
-<td style="text-align:center;min-width: 15em; color: black !important;">
-<em>CH<sub>4</sub></em> + <em>SO<sub>4</sub><sup>2-</sup></em> + <em>CO<sub>2</sub></em> <span class="math inline">\(\rightarrow\)</span> <em>H<sub>2</sub>S</em> + 2<em>HCO<sub>3</sub><sup>-</sup></em>
+<td style="text-align:center;min-width: 12em; color: black !important;background-color: white !important;">
 </td>
-</tr>
-<tr>
-<td style="text-align:center;min-width: 10em; color: black !important;">
-<em>H<sub>2</sub></em> oxidation by <em>SO<sub>4</sub><sup>2-</sup></em>
+<td style="text-align:center;background-color: white !important;">
 </td>
-<td style="text-align:center;min-width: 15em; color: black !important;">
-5<em>H<sub>2</sub></em> + <em>SO<sub>4</sub><sup>2-</sup></em> <span class="math inline">\(\rightarrow\)</span> <em>H<sub>2</sub>S</em> + <em>4H<sub>2</sub>O</em>
+<td style="text-align:center;background-color: white !important;">
+</td>
+<td style="text-align:center;background-color: white !important;">
+</td>
+<td style="text-align:center;background-color: white !important;">
+</td>
+<td style="text-align:center;min-width: 12em; font-style: italic;color: red !important;background-color: white !important;">
 </td>
 </tr>
 <tr>
-<td style="text-align:center;min-width: 10em; color: black !important;">
-<em>S<sup>0</sup></em> oxidation by <em>H<sub>2</sub>O</em>
+<td style="text-align:center;min-width: 12em; font-weight: bold;color: black !important;background-color: white !important;">
+1
 </td>
-<td style="text-align:center;min-width: 15em; color: black !important;">
-4<em>S</em> + 4<em>H<sub>2</sub>O</em> <span class="math inline">\(\rightarrow\)</span> <em>SO<sub>4</sub><sup>2-</sup></em> + 3<em>HS<sup>-</sup></em> + 5<em>H<sup>+</sup></em>
+<td style="text-align:center;min-width: 12em; color: black !important;background-color: white !important;">
+No precipitation
+</td>
+<td style="text-align:center;min-width: 12em; color: black !important;background-color: white !important;">
+No precipitation
+</td>
+<td style="text-align:center;min-width: 12em; color: black !important;background-color: white !important;">
+No precipitation
+</td>
+<td style="text-align:center;background-color: white !important;">
+No precipitation
+</td>
+<td style="text-align:center;background-color: white !important;">
+No precipitation
+</td>
+<td style="text-align:center;background-color: white !important;">
+No precipitation
+</td>
+<td style="text-align:center;background-color: white !important;">
+Recalculated
+</td>
+<td style="text-align:center;min-width: 12em; font-style: italic;color: red !important;background-color: white !important;">
+stoEq = T
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 12em; font-weight: bold;color: black !important;">
+</td>
+<td style="text-align:center;min-width: 12em; color: black !important;">
+No ageing
+</td>
+<td style="text-align:center;min-width: 12em; color: black !important;">
+No ageing
+</td>
+<td style="text-align:center;min-width: 12em; color: black !important;">
+Produces FeS<sub>2</sub>
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;min-width: 12em; font-style: italic;color: red !important;">
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 12em; font-weight: bold;color: black !important;">
+</td>
+<td style="text-align:center;min-width: 12em; color: black !important;">
+</td>
+<td style="text-align:center;min-width: 12em; color: black !important;">
+</td>
+<td style="text-align:center;min-width: 12em; color: black !important;">
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;min-width: 12em; font-style: italic;color: red !important;">
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 12em; font-weight: bold;color: black !important;">
+2
+</td>
+<td style="text-align:center;min-width: 12em; color: black !important;">
+Constant precipitation
+</td>
+<td style="text-align:center;min-width: 12em; color: black !important;">
+Constant precipitation
+</td>
+<td style="text-align:center;min-width: 12em; color: black !important;">
+Constant precipitation
+</td>
+<td style="text-align:center;">
+Constant precipitation
+</td>
+<td style="text-align:center;">
+Constant precipitation
+</td>
+<td style="text-align:center;">
+Constant precipitation
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;min-width: 12em; font-style: italic;color: red !important;">
+stoEq = F
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 12em; font-weight: bold;color: black !important;">
+</td>
+<td style="text-align:center;min-width: 12em; color: black !important;">
+</td>
+<td style="text-align:center;min-width: 12em; color: black !important;">
+</td>
+<td style="text-align:center;min-width: 12em; color: black !important;">
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;min-width: 12em; font-style: italic;color: red !important;">
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 12em; font-weight: bold;color: black !important;">
+3
+</td>
+<td style="text-align:center;min-width: 12em; color: black !important;">
+IAP precipitation / dissolution
+</td>
+<td style="text-align:center;min-width: 12em; color: black !important;">
+IAP precipitation / dissolution
+</td>
+<td style="text-align:center;min-width: 12em; color: black !important;">
+IAP precipitation / dissolution
+</td>
+<td style="text-align:center;">
+IAP precipitation / dissolution
+</td>
+<td style="text-align:center;">
+IAP precipitation / dissolution
+</td>
+<td style="text-align:center;">
+IAP precipitation / dissolution
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;min-width: 12em; font-style: italic;color: red !important;">
+stoEq = F
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 12em; font-weight: bold;color: black !important;">
+</td>
+<td style="text-align:center;min-width: 12em; color: black !important;">
+</td>
+<td style="text-align:center;min-width: 12em; color: black !important;">
+</td>
+<td style="text-align:center;min-width: 12em; color: black !important;">
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;min-width: 12em; font-style: italic;color: red !important;">
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 12em; font-weight: bold;color: black !important;">
+4
+</td>
+<td style="text-align:center;min-width: 12em; color: black !important;">
+Constant precipitation
+</td>
+<td style="text-align:center;min-width: 12em; color: black !important;">
+Constant precipitation
+</td>
+<td style="text-align:center;min-width: 12em; color: black !important;">
+<span class="math inline">\(\Omega\)</span> precipitation / dissolution
+</td>
+<td style="text-align:center;">
+<span class="math inline">\(\Omega\)</span> precipitation / dissolution
+</td>
+<td style="text-align:center;">
+<span class="math inline">\(\Omega\)</span> precipitation / dissolution
+</td>
+<td style="text-align:center;">
+<span class="math inline">\(\Omega\)</span> precipitation / dissolution
+</td>
+<td style="text-align:center;">
+Constant
+</td>
+<td style="text-align:center;min-width: 12em; font-style: italic;color: red !important;">
 </td>
 </tr>
 </tbody>
@@ -1840,20 +3165,43 @@ Reaction
 </div>
 </center>
 </div>
-<div id="equilibrium-geochemistry" class="section level4 unnumbered hasAnchor">
-<h4>Equilibrium Geochemistry<a href="sediment-biogeochemistry.html#equilibrium-geochemistry" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>mattedit: more detail, IAP etc.<br />
-</p>
-<div id="mineral-precipitation-and-ageing" class="section level5 unnumbered hasAnchor">
-<h5>Mineral precipitation and ageing<a href="sediment-biogeochemistry.html#mineral-precipitation-and-ageing" class="anchor-section" aria-label="Anchor link to header"></a></h5>
-</div>
 <div id="adsorption" class="section level5 unnumbered hasAnchor">
 <h5>Adsorption<a href="sediment-biogeochemistry.html#adsorption" class="anchor-section" aria-label="Anchor link to header"></a></h5>
-</div>
-<div id="ph" class="section level5 unnumbered hasAnchor">
-<h5>pH<a href="sediment-biogeochemistry.html#ph" class="anchor-section" aria-label="Anchor link to header"></a></h5>
-<p>The pH is calculated as the sum of all charged species, where any unbalanced positive charge indicates H<sup>+</sup>. The charge balance is at each time step is solved as a state variable, which is subject to advection, diffusion and bioturbation reactions.</p>
-<p>The precipitation of minerals is solved as an equilibrium reaction, dependent on the concentrations of the dissolved and solid substances, their <span class="math inline">\(K_{sp}\)</span> and ion activity product (IAP). The equations are applied in a similar manner to those in Van Cappellen and Wang (1996) and numerous other studies, but with the exact forms of the equations based on those from Tufano et al. (2009). A positive rate indicates precipitation and a negative rate indicates dissolution. This model applies the function to all minerals simulated, including <span class="math inline">\(Fe(OH)_3\)</span>, <span class="math inline">\(FeS\)</span>, <span class="math inline">\(FeS_2\)</span>, <span class="math inline">\(FeCO_3\)</span>, <span class="math inline">\(CaCO_3\)</span> and <span class="math inline">\(MnCO_3\)</span>. This model can also include the process of mineral ageing, whereby iron and manganese oxides become crystalline and no longer react with organic matter, but can still undergo secondary redox reactions.</p>
+<p>IN CANDI-AED, <span class="math inline">\(NH_4^+\)</span> adsorption is simulated as precipitating onto solid particles, including organic matter and clay, following the method of Van Cappellen and Wang (1996). It is assumed that there are unlimited adsorption sites for <span class="math inline">\(NH_4^+\)</span>, and the relative amounts of <span class="math inline">\(NH_4^+\)</span> were assigned by the adsorption constant <code>knh4p</code>, which was initially based on Mackin and Aller (1984). A simplified version of the adsorption equations adsorption can be found in the equation set below (equation <a href="sediment-biogeochemistry.html#eq:ppt-1">(13.16)</a>). The full equations correct for porosity and solid volume when transferring between particulate and dissolved phases. <span class="math inline">\(NH_4^+\)</span> adsorption defaults ot being switched on, but may be switched off by setting the parameter <code>NH4AdsorptionModel</code> to 0.</p>
+<center>
+<span class="math display" id="eq:ppt-1">\[\begin{eqnarray}
+
+NH_{4 _{Total}}^+       = NH_{4}^+ + NH_{4_{Adsorbed}}
+\\
+\\
+NH_{4 _{Dissolved}}^+   = \frac {1}{K_{NH_4p}}
+\\
+\\
+NH_{4 _{Particulate}}^+ = 1 - NH_{4 _{Dissolved}}^+ F_{Sal}
+\\
+\\
+NH_{4 _{Particulate}}^+ = NH_{4_{Total}}^+ NH_{4 _{Particulate}}^+
+\\
+\\
+NH_{4 _{Dissolved}}^+   = NH_{4_{Total}}^+ - NH_{4 _{Particulate}}^+
+
+\tag{13.16}
+
+
+\end{eqnarray}\]</span>
+</center>
+<p>A similar approach is taken for dissolved organic carbon, nitrogen and phosphrous. The <span class="math inline">\(DON_R\)</span> and <span class="math inline">\(DON_S\)</span> are adsorbed to the sediment with the adsorption constant <em>K<sub>DOMP</sub></em>, and <span class="math inline">\(DOP_R\)</span> and <span class="math inline">\(DOP_S\)</span> adsorbed using the same adsorption constant <em>K<sub>DOMP</sub></em>. The value for <em>K<sub>DOMP</sub></em> defaults to 1.4 and the model defaults to being switched on (<code>DOMAdsorptionModel</code> &gt; 0).</p>
+<p>The model uses the parameter <code>PO4AdsorptionModel</code> to switch the type of adsorption equations from the AED <span class="math inline">\(PO_4^{3-}\)</span> adsorption library. If it is not set, the model defaults to method 1. The equations for <code>PO4AdsorptionModel</code> 1 are given in equation set <a href="sediment-biogeochemistry.html#eq:ppt-2">(13.17)</a>. <span class="math inline">\(PO_4^{3-}\)</span> is adsorbed onto the surfaces of iron oxide particles, both the reactive <span class="math inline">\(Fe(OH)_{3A}\)</span> and unreactive <span class="math inline">\(Fe(OH)_{3B}\)</span> fractions. During a simulation, low oxygen and nitrate concentrations in the sediment cause iron oxide reduction, which dissolves the solid particles and releases the dissolved <span class="math inline">\(PO_4^{3-}\)</span> to the porewater.</p>
+<p>If <code>PO4AdsorptionModel</code> 2 is selected, a set of pH-dependent reactions are used. A further parameter, <code>ads_use_pH</code> is required to be set to <code>TRUE</code> if the user wants the model to respond to <em>pH</em> dynamically, or to <code>FALSE</code> if it should be less sensitive to <em>pH</em>. If <code>PO4AdsorptionModel</code> 3 is selected, a set of equations is used that rely on salinity and temperature. It is suggested to use <code>PO4AdsorptionModel</code> = 1 for most sediment model applications.</p>
+<span class="math display" id="eq:ppt-2">\[\begin{eqnarray}
+
+PO_{4_{Particulate}}^{3-} = \frac {K_{PO_4p} (Fe(OH)_{3A} + Fe(OH)_{3B})}
+{1 + K_{PO_4p} (Fe(OH)_{3A} + Fe(OH)_{3B}) } (PO_{4 _{Total}}^{3-})
+\\
+\\
+PO_{4_{Dissolved}}^{3-}   = \frac {1} {1 + K_{PO_4p} (Fe(OH)_{3A} + Fe(OH)_{3B}) } (PO_{4 _{Total}}^{3-})
+\tag{13.17}
+\end{eqnarray}\]</span>
 </div>
 </div>
 <div id="biological-dynamics" class="section level4 unnumbered hasAnchor">
@@ -1891,22 +3239,22 @@ Reaction
 \\
 &amp;F_{Sal} = 1 \
     \\
-\tag{13.15}
+\tag{13.18}
     \\
 \text{If  }    Salinity &gt; Sal_1  
 &amp;\frac {Sal_2 - Salinity} {Sal_2 - Sal_1} \
     \\
-\tag{13.16}
+\tag{13.19}
     \\
 \text{If  }   Salinity &gt; Sal_2
 \\
 &amp;F_{Sal} = 1 \
 \\
-\tag{13.17}
+\tag{13.20}
 \\
 \end{align*}\]</span><br />
 \
-\tag{13.17}
+\tag{13.20}
 \
 \end{align*}
 The effect of the scaling is shown in Figure <a href="sediment-biogeochemistry.html#fig:PhysChem1">13.14</a>.</p>
@@ -1934,7 +3282,7 @@ Figure 13.14: Diaagram of the salinity factor <span class="math inline">\(F_{Sal
 <span class="math display" id="eq:sdg-6">\[\begin{eqnarray}
 
 F_{Sul} = \frac {K_{H_{2}S}} {(K_{H_{2}S} + H_{2}S)}
-\tag{13.18}
+\tag{13.21}
 \end{eqnarray}\]</span>
 <p>As with <span class="math inline">\(F_{Sal}\)</span>, <span class="math inline">\(F_{Sul}\)</span> scales between 1 and 0, however, as a decay rather than a stepped function (Figure <a href="sediment-biogeochemistry.html#fig:PhysChem2">13.15</a>). The value for <code>K~H2S~</code> can be found in the physical parameters table below In this simulation, the same value for <code>K~H2S~</code> was used in all zones.</p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:PhysChem2"></span>
@@ -2008,7 +3356,7 @@ Figure 13.18: Spatial resolution options available through AED. a) Water column 
 <center>
 <span class="math display" id="eq:biogeochem1">\[\begin{equation}
 F = D_{0}\frac{\Delta C}{\Delta x} = \frac{D_{0}}{\delta} (C_{bw} - C_{1})
-\tag{13.19}
+\tag{13.22}
 \end{equation}\]</span>
 </center>
 <p>where <span class="math inline">\(D_{0}\)</span> is the diffusivity, <span class="math inline">\(\delta\)</span> is the thickness of the diffusive boundary layer at the sediment water interface and defined as the length scale of the first sediment layer, <span class="math inline">\(C_{bw}\)</span> is the bottom water concentration and <span class="math inline">\(C_{1}\)</span> is the concentration in the top sediment layer.</p>
@@ -2106,13 +3454,13 @@ Figure 13.23: Candi program workflow. The program is firstly initialised, then l
 <h4>Spinup<a href="sediment-biogeochemistry.html#spinup" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>The preceding details were an explanation of the scientific aspects of this diagenesis model. Practical implementation is outlined below.
 The model is set up via the name list text file <code>aed.nml</code> using the module keyword <code>&amp;aed_seddiagenesis</code> and a model namelist block termed <code>&amp;aed_sediment</code> configured to select the <code>sediment_model</code> as “Dynamic” or “Dynamic2D” option. Once this is selected, the model will search for the <code>&amp;aed_sedcandi</code> parameter block.</p>
-<p>In addition to adding the code block to <code>aed.nml</code>, users must also supply a valid AED sediment parameter database file (<code>aed_candi_pars.csv</code>) and a variable definition file (<code>aed_sdg_vars.csv</code>). If external boundaries are required, then a <code>swibc_file</code> and a <code>deepbc_file</code> also need to be supplied. The four key places for the model setup are summarised in table <a href="sediment-biogeochemistry.html#tab:3dev-sedBouIni">13.7</a>), along with the file locations, and whether the settings are different for a simulation with more than one zone.</p>
+<p>In addition to adding the code block to <code>aed.nml</code>, users must also supply a valid AED sediment parameter database file (<code>aed_candi_pars.csv</code>) and a variable definition file (<code>aed_sdg_vars.csv</code>). If external boundaries are required, then a <code>swibc_file</code> and a <code>deepbc_file</code> also need to be supplied. The four key places for the model setup are summarised in table <a href="sediment-biogeochemistry.html#tab:3dev-sedBouIni">13.11</a>), along with the file locations, and whether the settings are different for a simulation with more than one zone.</p>
 <p>Users can create a standard file in the correct format from the online <a href="https://aed.see.uwa.edu.au/research/models/AED/aed_dbase/db_edit.php"><strong>AED parameter database</strong></a> by selecting from the available sediment types of interest, downloading via the <strong>“Make CSV”</strong> button, and then tailoring to the simulation being undertaken as required.</p>
 <center>
 <div style="border: 1px solid #ddd; padding: 5px; overflow-y: scroll; height:27em; overflow-x: scroll; width:50em; ">
 <table class="table table-hover" style="font-size: 12px; ">
 <caption style="font-size: initial !important;">
-<span id="tab:3dev-sedBouIni">Table 13.7: </span>File locations for major inputs of parameters, initial conditions and boundary conditions.
+<span id="tab:3dev-sedBouIni">Table 13.11: </span>File locations for major inputs of parameters, initial conditions and boundary conditions.
 </caption>
 <thead>
 <tr>
@@ -2306,7 +3654,7 @@ aed_candi_params.csv
    bioturbation = DB_0 \times e^ {- \frac {depth^2} {2 \times xs^2} }
    \\
    
-   \tag{13.20}
+   \tag{13.23}
    
 \end{eqnarray}\]</span>
 <ul>
@@ -2323,7 +3671,7 @@ aed_candi_params.csv
 \text{if } depth &gt; x_2 \\
 &amp;bioturbation = 0
 
-\\\tag{13.21}
+\\\tag{13.24}
 \end{align*}\]</span><br />
 </p>
 <ul>
@@ -2331,7 +3679,7 @@ aed_candi_params.csv
 </ul>
 <span class="math display" id="eq:initeq-4b">\[\begin{eqnarray}
    bioturbation = DB_0 \times e ^{(- \frac{depth}{xs} )}
-   \tag{13.22}
+   \tag{13.25}
 \end{eqnarray}\]</span>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:Init-3b"></span>
 <img src="images/23-sediment_biogeochemistry/Initialisation/Bioturb-02.png" alt="Depth profile representing two possible bioturbation options and the functions of the parameters `DB0`, `x1` and `x2`. " width="90%" />
@@ -2365,7 +3713,7 @@ Figure 13.25: Example of a depth profile that sets the rate of irrigation, and t
 <p>For the exponential option, the initial concentration decreases according to the equation below.</p>
 <span class="math display" id="eq:init-7b">\[\begin{eqnarray}
 concentration = initial vals \times e^ {- OM cfl \times depth}
-\tag{13.23}
+\tag{13.26}
 \end{eqnarray}\]</span>
 <p>The shape of the curve is determined by the parameter <code>OM_cfl</code>, which is found in the <code>&amp;aed_sed_candi</code> block.</p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:Init-5b"></span>
@@ -2540,12 +3888,12 @@ Figure 13.37: Schematic of the bottom boundary supplied by the <code>deepbc.dat<
 <h3><span class="header-section-number">13.4.8</span> Parameter Definition<a href="sediment-biogeochemistry.html#parameter-definition" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div id="set-for-all-zones-aed_sed_candi" class="section level4 unnumbered hasAnchor">
 <h4>Set for all zones: &amp;aed_sed_candi<a href="sediment-biogeochemistry.html#set-for-all-zones-aed_sed_candi" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p><a href="sediment-biogeochemistry.html#tab:param-nml">13.8</a></p>
+<p><a href="sediment-biogeochemistry.html#tab:param-nml">13.12</a></p>
 <center>
 <div style="border: 1px solid #ddd; padding: 5px; overflow-y: scroll; height:400px; overflow-x: scroll; width:700px; ">
 <table class="table table-hover" style="font-size: 12px; width: auto !important; margin-left: auto; margin-right: auto;">
 <caption style="font-size: initial !important;">
-<span id="tab:param-nml">Table 13.8: </span>Parameters in &amp;aed_sed_candi.
+<span id="tab:param-nml">Table 13.12: </span>Parameters in &amp;aed_sed_candi.
 </caption>
 <thead>
 <tr>
@@ -2987,13 +4335,13 @@ Depths to write diag files (cm)
 <h4>Distinct for each zone: aed_candi_params.csv<a href="sediment-biogeochemistry.html#distinct-for-each-zone-aed_candi_params.csv" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <div id="physical-domain-and-numerical-parameters" class="section level5 unnumbered hasAnchor">
 <h5><em>Physical domain and numerical parameters</em><a href="sediment-biogeochemistry.html#physical-domain-and-numerical-parameters" class="anchor-section" aria-label="Anchor link to header"></a></h5>
-<p>The physical properties of the sediment are given in Table <a href="sediment-biogeochemistry.html#tab:param-Mixing">13.9</a> and <a href="sediment-biogeochemistry.html#tab:param-Layers">13.10</a>. In general, the SDG module was set to run with a time-step of 2 hours, resolve a vertical sediment depth of 80 cm using 50 layers.</p>
+<p>The physical properties of the sediment are given in Table <a href="sediment-biogeochemistry.html#tab:param-Mixing">13.13</a> and <a href="sediment-biogeochemistry.html#tab:param-Layers">13.14</a>. In general, the SDG module was set to run with a time-step of 2 hours, resolve a vertical sediment depth of 80 cm using 50 layers.</p>
 <p>Some parameters are set as constant values for all zones, while others are set to be variable in each zone. The variability of bioturbation and irrigation along the length of the lagoon is set using the depth of the effect (<span class="math inline">\(x_1\)</span>, <span class="math inline">\(x_2\)</span> and <span class="math inline">\(x_{irrig}\)</span>) rather than the intensity (<span class="math inline">\(DB_0\)</span>, <span class="math inline">\(\alpha_0\)</span>). Upper porosity <span class="math inline">\(\rho_0\)</span> is held at 0.9 (i.e. 90% porewater) for all zones and the lower porosity <span class="math inline">\(\rho_{00}\)</span> is based on measured data at sites in each zone.</p>
 <center>
 <div style="border: 1px solid #ddd; padding: 5px; overflow-y: scroll; height:380px; overflow-x: scroll; width:600px; ">
 <table class="table table-hover" style="font-size: 12px; width: auto !important; margin-left: auto; margin-right: auto;">
 <caption style="font-size: initial !important;">
-<span id="tab:param-Mixing">Table 13.9: </span>Sediment physical properties, given in aed_candi_parameters.csv.
+<span id="tab:param-Mixing">Table 13.13: </span>Sediment physical properties, given in aed_candi_parameters.csv.
 </caption>
 <thead>
 <tr>
@@ -3138,7 +4486,7 @@ Bottom boundary switch
 <div style="border: 1px solid #ddd; padding: 5px; overflow-y: scroll; height:350px; overflow-x: scroll; width:600px; ">
 <table class="table table-hover" style="font-size: 12px; width: auto !important; margin-left: auto; margin-right: auto;">
 <caption style="font-size: initial !important;">
-<span id="tab:param-Layers">Table 13.10: </span>Sediment layer setup parameters and mixing parameters that might vary by zone, to set simulation with differences in sediment quality across space, given in aed_candi_parameters.csv.
+<span id="tab:param-Layers">Table 13.14: </span>Sediment layer setup parameters and mixing parameters that might vary by zone, to set simulation with differences in sediment quality across space, given in aed_candi_parameters.csv.
 </caption>
 <thead>
 <tr>
@@ -3343,13 +4691,13 @@ Depth of irrigation (cm)
 </div>
 <div id="organic-matter-parameters" class="section level5 unnumbered hasAnchor">
 <h5><em>Organic matter parameters</em><a href="sediment-biogeochemistry.html#organic-matter-parameters" class="anchor-section" aria-label="Anchor link to header"></a></h5>
-<p>Many of the key processes in the sediment are driven by organic matter oxidation. Fresh organic matter supplied to the sediment surface fuels the bacterially-driven primary redox reactions that constantly shift the chemical equilibrium in the sediment. Organic matter metabolism also releases organic N and P to the water column. The parameters are given in Table <a href="sediment-biogeochemistry.html#tab:param-OM">13.11</a>.</p>
+<p>Many of the key processes in the sediment are driven by organic matter oxidation. Fresh organic matter supplied to the sediment surface fuels the bacterially-driven primary redox reactions that constantly shift the chemical equilibrium in the sediment. Organic matter metabolism also releases organic N and P to the water column. The parameters are given in Table <a href="sediment-biogeochemistry.html#tab:param-OM">13.15</a>.</p>
 <p>The organic matter model option number 2 was used in this project. This option has both particulate and dissolved organic phases, and simulates organic C, N and P as separate state variables.</p>
 <center>
 <div style="border: 1px solid #ddd; padding: 5px; overflow-y: scroll; height:300px; overflow-x: scroll; width:600px; ">
 <table class="table table-hover" style="font-size: 12px; width: auto !important; margin-left: auto; margin-right: auto;">
 <caption style="font-size: initial !important;">
-<span id="tab:param-OM">Table 13.11: </span>Organic matter oxidation parameters, given in aed_candi_parameters.csv.
+<span id="tab:param-OM">Table 13.15: </span>Organic matter oxidation parameters, given in aed_candi_parameters.csv.
 </caption>
 <thead>
 <tr>
@@ -3628,12 +4976,12 @@ Description
 </div>
 <div id="secondary-redox-reactions-1" class="section level5 unnumbered hasAnchor">
 <h5><em>Secondary redox reactions</em><a href="sediment-biogeochemistry.html#secondary-redox-reactions-1" class="anchor-section" aria-label="Anchor link to header"></a></h5>
-<p>Secondary redox reactions are formed from the by-products of primary redox reactions. The nitrogen redox cycle parameters are given in Table <a href="sediment-biogeochemistry.html#tab:param-Nredox">13.12</a>.</p>
+<p>Secondary redox reactions are formed from the by-products of primary redox reactions. The nitrogen redox cycle parameters are given in Table <a href="sediment-biogeochemistry.html#tab:param-Nredox">13.16</a>.</p>
 <center>
 <div style="border: 1px solid #ddd; padding: 5px; overflow-y: scroll; height:250px; overflow-x: scroll; width:600px; ">
 <table class="table table-hover" style="font-size: 12px; width: auto !important; margin-left: auto; margin-right: auto;">
 <caption style="font-size: initial !important;">
-<span id="tab:param-Nredox">Table 13.12: </span>Nitrogen redox cycle parameters, given in aed_candi_parameters.csv.
+<span id="tab:param-Nredox">Table 13.16: </span>Nitrogen redox cycle parameters, given in aed_candi_parameters.csv.
 </caption>
 <thead>
 <tr>
@@ -3746,12 +5094,12 @@ NO<sub>2</sub> oxidation kinetic rate (mmol<sup>-1</sup> L y<sup>-1</sup>)
 <br />
 <br />
 </p>
-<p>Secondary redox parameters for other processes are given in Table <a href="sediment-biogeochemistry.html#tab:param-SecondaryRedox">13.13</a>.</p>
+<p>Secondary redox parameters for other processes are given in Table <a href="sediment-biogeochemistry.html#tab:param-SecondaryRedox">13.17</a>.</p>
 <center>
 <div style="border: 1px solid #ddd; padding: 5px; overflow-y: scroll; height:325px; overflow-x: scroll; width:600px; ">
 <table class="table table-hover" style="font-size: 12px; width: auto !important; margin-left: auto; margin-right: auto;">
 <caption style="font-size: initial !important;">
-<span id="tab:param-SecondaryRedox">Table 13.13: </span>Secondary redox parameters, given in aed_candi_parameters.csv.
+<span id="tab:param-SecondaryRedox">Table 13.17: </span>Secondary redox parameters, given in aed_candi_parameters.csv.
 </caption>
 <thead>
 <tr>
@@ -3876,12 +5224,12 @@ CH<sub>4</sub> oxidation by SO<sub>4</sub><sup>2-</sup> rate (mmol<sup>-1</sup> 
 </div>
 <div id="geochemistry-parameters" class="section level5 unnumbered hasAnchor">
 <h5><em>Geochemistry parameters</em><a href="sediment-biogeochemistry.html#geochemistry-parameters" class="anchor-section" aria-label="Anchor link to header"></a></h5>
-<p>Equilibrium and precipitation/dissolution constants are given in Table <a href="sediment-biogeochemistry.html#tab:param-Geochem">13.14</a>.</p>
+<p>Equilibrium and precipitation/dissolution constants are given in Table <a href="sediment-biogeochemistry.html#tab:param-Geochem">13.18</a>.</p>
 <center>
 <div style="border: 1px solid #ddd; padding: 5px; overflow-y: scroll; height:310px; overflow-x: scroll; width:600px; ">
 <table class="table table-hover" style="font-size: 12px; width: auto !important; margin-left: auto; margin-right: auto;">
 <caption style="font-size: initial !important;">
-<span id="tab:param-Geochem">Table 13.14: </span>Geochemistry and precipitation/dissolution parameters, given in aed_candi_parameters.csv.
+<span id="tab:param-Geochem">Table 13.18: </span>Geochemistry and precipitation/dissolution parameters, given in aed_candi_parameters.csv.
 </caption>
 <thead>
 <tr>
@@ -4005,13 +5353,13 @@ Equilibrium constant for FeS precipitation (-)
 </div>
 <div id="hidden-parameters-aed_readcandi.f90" class="section level4 unnumbered hasAnchor">
 <h4>Hidden parameters: aed_readcandi.F90<a href="sediment-biogeochemistry.html#hidden-parameters-aed_readcandi.f90" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p><a href="sediment-biogeochemistry.html#tab:param-Hidden">13.15</a></p>
+<p><a href="sediment-biogeochemistry.html#tab:param-Hidden">13.19</a></p>
 <br>
 <center>
 <div style="border: 1px solid #ddd; padding: 5px; overflow-y: scroll; height:310px; overflow-x: scroll; width:500px; ">
 <table class="table table-hover" style="font-size: 12px; width: auto !important; margin-left: auto; margin-right: auto;">
 <caption style="font-size: initial !important;">
-<span id="tab:param-Hidden">Table 13.15: </span>Other parameters, which are not currently listed in the parameter input file.
+<span id="tab:param-Hidden">Table 13.19: </span>Other parameters, which are not currently listed in the parameter input file.
 </caption>
 <thead>
 <tr>
@@ -4334,19 +5682,19 @@ smothbm
 <p>The duration of the simulation is determined by the hydrodynamic model and its parameter inputs. Other timing parameters are set as outlined below.</p>
 <div id="substep" class="section level5 unnumbered hasAnchor">
 <h5><em>Substep</em><a href="sediment-biogeochemistry.html#substep" class="anchor-section" aria-label="Anchor link to header"></a></h5>
-<p>The general task for the reactive transport model is to calculate a change in concentration over time, as a function of a change in concentration over space and as a result of chemical reactions. The general form of this is given in equation <a href="sediment-biogeochemistry.html#eq:tim-1">(13.24)</a>. When this is solved numerically, it is discretised by small increments of time, which are referred to as ‘time steps’ (Δt in equation <a href="sediment-biogeochemistry.html#eq:tim-2">(13.25)</a>).</p>
+<p>The general task for the reactive transport model is to calculate a change in concentration over time, as a function of a change in concentration over space and as a result of chemical reactions. The general form of this is given in equation <a href="sediment-biogeochemistry.html#eq:tim-1">(13.27)</a>. When this is solved numerically, it is discretised by small increments of time, which are referred to as ‘time steps’ (Δt in equation <a href="sediment-biogeochemistry.html#eq:tim-2">(13.28)</a>).</p>
 <p>To allow the part of the model that solves these differential equations to process a large change in concentration over space or because of a large reaction, the timestep can be multiplied by a substep factor. Examples of where this is needed include a sharp concentration gradient over a small area, or in influx of a large amount of highly reactive substances.</p>
 <span class="math display" id="eq:tim-2" id="eq:tim-1">\[\begin{eqnarray}
 
 \frac {\delta C} {\delta t} = \frac {\delta C} {\delta x} + reactions
 
-\tag{13.24}
+\tag{13.27}
 
 
 \\
 \\
 {\Delta C} = (\frac {\Delta C} {\Delta x} + reactions) \times \Delta t
-\tag{13.25}
+\tag{13.28}
 \end{eqnarray}\]</span>
 <p>mattedit: link this to boundary<br />
 </p>
