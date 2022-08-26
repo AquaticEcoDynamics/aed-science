@@ -180,8 +180,12 @@ tab:OMChem-table
 eq:factors-1
 eq:factors-2
 tab:OMApproach-table
+fig:OMModels-2
 eq:factors-3
 eq:factors-4
+fig:NModel-1
+fig:NModel-2
+tab:NRate-table
 tab:SecondChem-table
 eq:sal-1
 eq:sal-2
@@ -448,7 +452,6 @@ contributors-9
 overview-8
 model-description-7
 process-descriptions-8
-organic-matter-limitation-and-inhibition-approaches
 implementation-within-the-aed-framework
 optional-module-links-8
 feedbacks-to-the-host-model-8
