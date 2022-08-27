@@ -1,5 +1,11 @@
 # Introduction
 
+```{r xaringanExtra, include = FALSE}
+library(xaringanExtra)
+xaringanExtra::use_panelset()
+xaringanExtra::style_panelset_tabs(font_family = "inherit")
+```
+
 Author: Matthew R. Hipsey
 
 ## Scientific Overview {-}

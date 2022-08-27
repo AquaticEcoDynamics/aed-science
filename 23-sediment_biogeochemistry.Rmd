@@ -215,6 +215,28 @@ Bioturbation is set firstly by choosing the switch `imix` (integer), which can b
 \end{eqnarray}
 ```
 
+
+::::: {.panelset .sideways}
+::: {.panel}
+[imix = 0]{.panel-name}
+
+$D_B =$ 
+:::
+    
+::: {.panel}
+[imix = 1]{.panel-name}
+
+$D_B =$ 
+:::
+    
+::: {.panel}
+[imix = 2]{.panel-name}
+
+$D_B =$ 
+:::
+:::::
+
+
 ```{r Init-3, echo=FALSE, fig.cap="Depth profile representing two possible bioturbation options and the functions of the parameters `DB0`, `x1` and `x2`. ",fig.show='hold',fig.align='center' ,out.width = '90%'}
 knitr::include_graphics("images/23-sediment_biogeochemistry/Initialisation/Bioturb-02.png")
 ```
