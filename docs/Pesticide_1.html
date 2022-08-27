@@ -22,7 +22,7 @@
 
 
 
-<meta name="date" content="2022-08-21" />
+<meta name="date" content="2022-08-27" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -60,6 +60,8 @@
 <script src="libs/leaflet-binding-2.1.1/leaflet.js"></script>
 <script src="libs/leaflet-providers-1.9.0/leaflet-providers_1.9.0.js"></script>
 <script src="libs/leaflet-providers-plugin-2.1.1/leaflet-providers-plugin.js"></script>
+<link href="libs/panelset-0.2.6/panelset.css" rel="stylesheet" />
+<script src="libs/panelset-0.2.6/panelset.js"></script>
 <script src="libs/kePrint-0.0.1/kePrint.js"></script>
 <link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
 <script src="libs/plotly-binding-4.10.0/plotly.js"></script>
@@ -405,19 +407,38 @@ div.csl-indent {
 <ul>
 <li class="chapter" data-level="14.3.1" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#process-descriptions-9"><i class="fa fa-check"></i><b>14.3.1</b> Process Descriptions</a></li>
 <li class="chapter" data-level="14.3.2" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#implementation-within-the-aed-framework"><i class="fa fa-check"></i><b>14.3.2</b> Implementation within the AED framework</a></li>
+<li class="chapter" data-level="14.3.3" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#optional-module-links-9"><i class="fa fa-check"></i><b>14.3.3</b> Optional module links</a></li>
+<li class="chapter" data-level="14.3.4" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#feedbacks-to-the-host-model-9"><i class="fa fa-check"></i><b>14.3.4</b> Feedbacks to the host model</a></li>
+<li class="chapter" data-level="14.3.5" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#variable-summary-11"><i class="fa fa-check"></i><b>14.3.5</b> Variable summary</a></li>
+<li class="chapter" data-level="14.3.6" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#parameter-and-option-summary-1"><i class="fa fa-check"></i><b>14.3.6</b> Parameter and option summary</a></li>
 </ul></li>
 <li class="chapter" data-level="14.4" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#setup-configuration-9"><i class="fa fa-check"></i><b>14.4</b> Setup &amp; Configuration</a>
 <ul>
-<li class="chapter" data-level="14.4.1" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#initialisation"><i class="fa fa-check"></i><b>14.4.1</b> Initialisation</a></li>
-<li class="chapter" data-level="14.4.2" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#boundary-settings"><i class="fa fa-check"></i><b>14.4.2</b> Boundary settings</a></li>
-<li class="chapter" data-level="14.4.3" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#parameter-definition"><i class="fa fa-check"></i><b>14.4.3</b> Parameter Definition</a></li>
+<li class="chapter" data-level="14.4.1" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#setup-examples"><i class="fa fa-check"></i><b>14.4.1</b> Setup examples</a></li>
+<li class="chapter" data-level="14.4.2" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#sediment-initialisation-options"><i class="fa fa-check"></i><b>14.4.2</b> Sediment initialisation options</a></li>
+<li class="chapter" data-level="14.4.3" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#initialisation"><i class="fa fa-check"></i><b>14.4.3</b> Initialisation</a></li>
+<li class="chapter" data-level="14.4.4" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#boundary-settings"><i class="fa fa-check"></i><b>14.4.4</b> Boundary settings</a></li>
+<li class="chapter" data-level="14.4.5" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#sediment-water-interface-boundary"><i class="fa fa-check"></i><b>14.4.5</b> Sediment-water interface boundary</a></li>
+<li class="chapter" data-level="14.4.6" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#boundary-settings-1"><i class="fa fa-check"></i><b>14.4.6</b> Boundary settings</a></li>
+<li class="chapter" data-level="14.4.7" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#bottom-boundary"><i class="fa fa-check"></i><b>14.4.7</b> Bottom boundary</a></li>
+<li class="chapter" data-level="14.4.8" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#parameter-definition"><i class="fa fa-check"></i><b>14.4.8</b> Parameter Definition</a></li>
 </ul></li>
 <li class="chapter" data-level="14.5" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#model-output-post-processing"><i class="fa fa-check"></i><b>14.5</b> Model Output &amp; Post-processing</a>
 <ul>
-<li class="chapter" data-level="" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#concentration-of-state-variables-.sed-files"><i class="fa fa-check"></i>Concentration of state variables: ‘.sed’ files</a></li>
-<li class="chapter" data-level="" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#flux-of-state-variables-swi_fluxes.sed"><i class="fa fa-check"></i>Flux of state variables: ‘swi_fluxes.sed’</a></li>
-<li class="chapter" data-level="" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#other-variables-extras-.sed"><i class="fa fa-check"></i>Other variables: ‘/Extras/ .sed’</a></li>
-<li class="chapter" data-level="" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#depth-profile-settings-depths.sed"><i class="fa fa-check"></i>Depth profile settings: ‘Depths.sed’</a></li>
+<li class="chapter" data-level="14.5.1" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#concentration-of-state-variables"><i class="fa fa-check"></i><b>14.5.1</b> Concentration of state variables</a></li>
+<li class="chapter" data-level="14.5.2" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#flux-of-state-variables"><i class="fa fa-check"></i><b>14.5.2</b> Flux of state variables</a></li>
+<li class="chapter" data-level="14.5.3" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#other-variables"><i class="fa fa-check"></i><b>14.5.3</b> Other variables</a></li>
+<li class="chapter" data-level="14.5.4" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#depth-profile-settings"><i class="fa fa-check"></i><b>14.5.4</b> Depth profile settings</a></li>
+<li class="chapter" data-level="14.5.5" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#concentration-of-state-variables-.sed-files"><i class="fa fa-check"></i><b>14.5.5</b> Concentration of state variables: ‘.sed’ files</a></li>
+<li class="chapter" data-level="14.5.6" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#flux-of-state-variables-swi_fluxes.sed"><i class="fa fa-check"></i><b>14.5.6</b> Flux of state variables: ‘swi_fluxes.sed’</a></li>
+<li class="chapter" data-level="14.5.7" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#other-variables-extras-.sed"><i class="fa fa-check"></i><b>14.5.7</b> Other variables: ‘/Extras/ .sed’</a></li>
+<li class="chapter" data-level="14.5.8" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#depth-profile-settings-depths.sed"><i class="fa fa-check"></i><b>14.5.8</b> Depth profile settings: ‘Depths.sed’</a></li>
+</ul></li>
+<li class="chapter" data-level="14.6" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#case-studies-examples-6"><i class="fa fa-check"></i><b>14.6</b> Case Studies &amp; Examples</a>
+<ul>
+<li class="chapter" data-level="14.6.1" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#vcw"><i class="fa fa-check"></i><b>14.6.1</b> VCW</a></li>
+<li class="chapter" data-level="14.6.2" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#aquaculture"><i class="fa fa-check"></i><b>14.6.2</b> Aquaculture</a></li>
+<li class="chapter" data-level="14.6.3" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#cdm"><i class="fa fa-check"></i><b>14.6.3</b> CDM</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="15" data-path="bivalves.html"><a href="bivalves.html"><i class="fa fa-check"></i><b>15</b> Bivalves</a>
@@ -427,16 +448,16 @@ div.csl-indent {
 <li class="chapter" data-level="15.3" data-path="bivalves.html"><a href="bivalves.html#model-description-9"><i class="fa fa-check"></i><b>15.3</b> Model Description</a>
 <ul>
 <li class="chapter" data-level="15.3.1" data-path="bivalves.html"><a href="bivalves.html#process-descriptions-10"><i class="fa fa-check"></i><b>15.3.1</b> Process Descriptions</a></li>
-<li class="chapter" data-level="15.3.2" data-path="bivalves.html"><a href="bivalves.html#variable-summary-11"><i class="fa fa-check"></i><b>15.3.2</b> Variable Summary</a></li>
+<li class="chapter" data-level="15.3.2" data-path="bivalves.html"><a href="bivalves.html#variable-summary-12"><i class="fa fa-check"></i><b>15.3.2</b> Variable Summary</a></li>
 <li class="chapter" data-level="15.3.3" data-path="bivalves.html"><a href="bivalves.html#parameter-summary-10"><i class="fa fa-check"></i><b>15.3.3</b> Parameter Summary</a></li>
-<li class="chapter" data-level="15.3.4" data-path="bivalves.html"><a href="bivalves.html#optional-module-links-9"><i class="fa fa-check"></i><b>15.3.4</b> Optional Module Links</a></li>
-<li class="chapter" data-level="15.3.5" data-path="bivalves.html"><a href="bivalves.html#feedbacks-to-the-host-model-9"><i class="fa fa-check"></i><b>15.3.5</b> Feedbacks to the Host Model</a></li>
+<li class="chapter" data-level="15.3.4" data-path="bivalves.html"><a href="bivalves.html#optional-module-links-10"><i class="fa fa-check"></i><b>15.3.4</b> Optional Module Links</a></li>
+<li class="chapter" data-level="15.3.5" data-path="bivalves.html"><a href="bivalves.html#feedbacks-to-the-host-model-10"><i class="fa fa-check"></i><b>15.3.5</b> Feedbacks to the Host Model</a></li>
 </ul></li>
 <li class="chapter" data-level="15.4" data-path="bivalves.html"><a href="bivalves.html#setup-configuration-10"><i class="fa fa-check"></i><b>15.4</b> Setup &amp; Configuration</a>
 <ul>
 <li class="chapter" data-level="15.4.1" data-path="bivalves.html"><a href="bivalves.html#setup-example-3"><i class="fa fa-check"></i><b>15.4.1</b> Setup Example</a></li>
 </ul></li>
-<li class="chapter" data-level="15.5" data-path="bivalves.html"><a href="bivalves.html#case-studies-examples-6"><i class="fa fa-check"></i><b>15.5</b> Case Studies &amp; Examples</a>
+<li class="chapter" data-level="15.5" data-path="bivalves.html"><a href="bivalves.html#case-studies-examples-7"><i class="fa fa-check"></i><b>15.5</b> Case Studies &amp; Examples</a>
 <ul>
 <li class="chapter" data-level="15.5.1" data-path="bivalves.html"><a href="bivalves.html#case-study-1"><i class="fa fa-check"></i><b>15.5.1</b> Case Study</a></li>
 <li class="chapter" data-level="15.5.2" data-path="bivalves.html"><a href="bivalves.html#publications-5"><i class="fa fa-check"></i><b>15.5.2</b> Publications</a></li>
@@ -448,13 +469,13 @@ div.csl-indent {
 <li class="chapter" data-level="16.2" data-path="benthic-habitat-quality.html"><a href="benthic-habitat-quality.html#overview-11"><i class="fa fa-check"></i><b>16.2</b> Overview</a></li>
 <li class="chapter" data-level="16.3" data-path="benthic-habitat-quality.html"><a href="benthic-habitat-quality.html#model-description---ruppia-habitat"><i class="fa fa-check"></i><b>16.3</b> Model Description - Ruppia Habitat</a>
 <ul>
-<li class="chapter" data-level="16.3.1" data-path="benthic-habitat-quality.html"><a href="benthic-habitat-quality.html#feedbacks-to-the-host-model-10"><i class="fa fa-check"></i><b>16.3.1</b> Feedbacks to the Host Model</a></li>
-<li class="chapter" data-level="16.3.2" data-path="benthic-habitat-quality.html"><a href="benthic-habitat-quality.html#variable-summary-12"><i class="fa fa-check"></i><b>16.3.2</b> Variable Summary</a></li>
+<li class="chapter" data-level="16.3.1" data-path="benthic-habitat-quality.html"><a href="benthic-habitat-quality.html#feedbacks-to-the-host-model-11"><i class="fa fa-check"></i><b>16.3.1</b> Feedbacks to the Host Model</a></li>
+<li class="chapter" data-level="16.3.2" data-path="benthic-habitat-quality.html"><a href="benthic-habitat-quality.html#variable-summary-13"><i class="fa fa-check"></i><b>16.3.2</b> Variable Summary</a></li>
 <li class="chapter" data-level="16.3.3" data-path="benthic-habitat-quality.html"><a href="benthic-habitat-quality.html#parameter-summary-11"><i class="fa fa-check"></i><b>16.3.3</b> Parameter Summary</a></li>
 <li class="chapter" data-level="16.3.4" data-path="benthic-habitat-quality.html"><a href="benthic-habitat-quality.html#post-processing"><i class="fa fa-check"></i><b>16.3.4</b> Post-processing</a></li>
 </ul></li>
 <li class="chapter" data-level="16.4" data-path="benthic-habitat-quality.html"><a href="benthic-habitat-quality.html#setup-configuration-11"><i class="fa fa-check"></i><b>16.4</b> Setup &amp; Configuration</a></li>
-<li class="chapter" data-level="16.5" data-path="benthic-habitat-quality.html"><a href="benthic-habitat-quality.html#case-studies-examples-7"><i class="fa fa-check"></i><b>16.5</b> Case Studies &amp; Examples</a>
+<li class="chapter" data-level="16.5" data-path="benthic-habitat-quality.html"><a href="benthic-habitat-quality.html#case-studies-examples-8"><i class="fa fa-check"></i><b>16.5</b> Case Studies &amp; Examples</a>
 <ul>
 <li class="chapter" data-level="16.5.1" data-path="benthic-habitat-quality.html"><a href="benthic-habitat-quality.html#case-study-2"><i class="fa fa-check"></i><b>16.5.1</b> Case Study</a></li>
 <li class="chapter" data-level="16.5.2" data-path="benthic-habitat-quality.html"><a href="benthic-habitat-quality.html#publications-6"><i class="fa fa-check"></i><b>16.5.2</b> Publications</a></li>
@@ -747,6 +768,214 @@ f_{sed-dif}^{pst} = -\frac {D_w}{\delta_L} (C_w - C_{pw})
 <div id="variable-summary-10" class="section level3 hasAnchor" number="13.3.2">
 <h3><span class="header-section-number">13.3.2</span> Variable Summary<a href="Pesticide_1.html#variable-summary-10" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The default variables created by this module are summarised in Table @ref(tab:……). The diagnostic outputs able to be output are summarised in Table @ref(tab:……).</p>
+<div id="state-variables-9" class="section level4 unnumbered hasAnchor">
+<h4>State variables<a href="Pesticide_1.html#state-variables-9" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div style="border: 1px solid #ddd; padding: 5px; overflow-y: scroll; height:200px; overflow-x: scroll; width:770px; ">
+<table class="table" style="font-size: 11px; width: auto !important; margin-left: auto; margin-right: auto;">
+<caption style="font-size: initial !important;">
+<span id="tab:21p-statetable">Table 13.1: </span>Pesticide - <em>state</em> variables
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;font-weight: bold;color: white !important;background-color: #14759e !important;">
+AED name
+</th>
+<th style="text-align:left;font-weight: bold;color: white !important;background-color: #14759e !important;">
+Symbol
+</th>
+<th style="text-align:left;font-weight: bold;color: white !important;background-color: #14759e !important;">
+Description
+</th>
+<th style="text-align:left;font-weight: bold;color: white !important;background-color: #14759e !important;">
+Unit
+</th>
+<th style="text-align:left;font-weight: bold;color: white !important;background-color: #14759e !important;">
+Type
+</th>
+<th style="text-align:left;font-weight: bold;color: white !important;background-color: #14759e !important;">
+Typical Range
+</th>
+<th style="text-align:left;font-weight: bold;color: white !important;background-color: #14759e !important;">
+Comments
+</th>
+</tr>
+</thead>
+<tbody>
+<tr grouplength="4">
+<td colspan="7" style="border-bottom: 1px solid;background-color: #ebebeb !important;">
+<strong>aed_pesticide</strong>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;padding-left: 2em;" indentlevel="1">
+<code>PST_{group}</code>
+</td>
+<td style="text-align:left;min-width: 7em; ">
+<span class="math display">\[\mathbf{C_d}\]</span>
+</td>
+<td style="text-align:left;max-width: 18em; ">
+pesticide <code>group</code> dissolved water column concentration
+</td>
+<td style="text-align:left;min-width: 10em; ">
+<span class="math display">\[\small{mmol\: /m^3}\]</span>
+</td>
+<td style="text-align:left;min-width: 5em; ">
+pelagic
+</td>
+<td style="text-align:left;">
+0-1000
+</td>
+<td style="text-align:left;min-width: 10em; max-width: 20em; ">
+select <code>group</code> using index from <code>aed_pesticide_pars</code> database
+</td>
+</tr>
+<tr>
+<td style="text-align:left;padding-left: 2em;" indentlevel="1">
+<code>PST_{group}</code>
+</td>
+<td style="text-align:left;min-width: 7em; ">
+<span class="math display">\[\mathbf{C_doc}\]</span>
+</td>
+<td style="text-align:left;max-width: 18em; ">
+pesticide <code>group</code> sorbed water column concentration
+</td>
+<td style="text-align:left;min-width: 10em; ">
+<span class="math display">\[\small{mmol\: /m^3}\]</span>
+</td>
+<td style="text-align:left;min-width: 5em; ">
+pelagic
+</td>
+<td style="text-align:left;">
+0-1000
+</td>
+<td style="text-align:left;min-width: 10em; max-width: 20em; ">
+select <code>group</code> using index from <code>aed_pesticide_pars</code> database
+</td>
+</tr>
+<tr>
+<td style="text-align:left;padding-left: 2em;" indentlevel="1">
+<code>PST_{group}</code>
+</td>
+<td style="text-align:left;min-width: 7em; ">
+<span class="math display">\[\mathbf{C_p}\]</span>
+</td>
+<td style="text-align:left;max-width: 18em; ">
+pesticide <code>group</code> sorbed water column concentration
+</td>
+<td style="text-align:left;min-width: 10em; ">
+<span class="math display">\[\small{mmol\: /m^3}\]</span>
+</td>
+<td style="text-align:left;min-width: 5em; ">
+pelagic
+</td>
+<td style="text-align:left;">
+0-1000
+</td>
+<td style="text-align:left;min-width: 10em; max-width: 20em; ">
+select <code>group</code> using index from <code>aed_pesticide_pars</code> database
+</td>
+</tr>
+<tr>
+<td style="text-align:left;padding-left: 2em;" indentlevel="1">
+<code>PST_{group}_sed</code>
+</td>
+<td style="text-align:left;min-width: 7em; ">
+<span class="math display">\[\mathbf{C_p}\]</span>
+</td>
+<td style="text-align:left;max-width: 18em; ">
+pesticide <code>group</code> sediment concentration
+</td>
+<td style="text-align:left;min-width: 10em; ">
+<span class="math display">\[\small{mmol\: /m^2}\]</span>
+</td>
+<td style="text-align:left;min-width: 5em; ">
+benthic
+</td>
+<td style="text-align:left;">
+0-5000
+</td>
+<td style="text-align:left;min-width: 10em; max-width: 20em; ">
+activated when <code>do_mpb</code> <span class="math inline">\(\gt 0\)</span>
+</td>
+</tr>
+<tr grouplength="3">
+<td colspan="7" style="border-bottom: 1px solid;background-color: #ebebeb !important;">
+<strong>Dependent variables</strong>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;padding-left: 2em;" indentlevel="1">
+<code>OGM_doc</code>
+</td>
+<td style="text-align:left;min-width: 7em; ">
+<span class="math display">\[\mathbf{DOC}\]</span>
+</td>
+<td style="text-align:left;max-width: 18em; ">
+dissolved organic carbon concentration
+</td>
+<td style="text-align:left;min-width: 10em; ">
+<span class="math display">\[\small{mmol\: C/m^3}\]</span>
+</td>
+<td style="text-align:left;min-width: 5em; ">
+pelagic
+</td>
+<td style="text-align:left;">
+0 - 5000
+</td>
+<td style="text-align:left;min-width: 10em; max-width: 20em; ">
+optionally linked
+</td>
+</tr>
+<tr>
+<td style="text-align:left;padding-left: 2em;" indentlevel="1">
+<code>PHY_gpp</code>
+</td>
+<td style="text-align:left;min-width: 7em; ">
+<span class="math display">\[\mathbf{GPP}\]</span>
+</td>
+<td style="text-align:left;max-width: 18em; ">
+phytoplankton productivity rate
+</td>
+<td style="text-align:left;min-width: 10em; ">
+<span class="math display">\[\small{mmol\: C/m^3 /d}\]</span>
+</td>
+<td style="text-align:left;min-width: 5em; ">
+pelagic
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;min-width: 10em; max-width: 20em; ">
+optionally linked
+</td>
+</tr>
+<tr>
+<td style="text-align:left;padding-left: 2em;" indentlevel="1">
+<code>NCS_resus</code>
+</td>
+<td style="text-align:left;min-width: 7em; ">
+<span class="math display">\[\mathbf{\mathcal{F}}_{resus}\]</span>
+</td>
+<td style="text-align:left;max-width: 18em; ">
+sediment resuspension rate
+</td>
+<td style="text-align:left;min-width: 10em; ">
+<span class="math display">\[\small{g/m^2/s}\]</span>
+</td>
+<td style="text-align:left;min-width: 5em; ">
+benthic
+</td>
+<td style="text-align:left;">
+0 - 10
+</td>
+<td style="text-align:left;min-width: 10em; max-width: 20em; ">
+required for <span class="math inline">\(C_p\)</span> resuspension, set via <code>resus_link</code>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </div>
 <div id="parameter-summary-9" class="section level3 hasAnchor" number="13.3.3">
 <h3><span class="header-section-number">13.3.3</span> Parameter Summary<a href="Pesticide_1.html#parameter-summary-9" class="anchor-section" aria-label="Anchor link to header"></a></h3>
