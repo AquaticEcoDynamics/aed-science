@@ -120,3 +120,9 @@ border-left-width: 0px !important;
 .csl-entry {
   margin: 10px 0;
 }
+
+/* Fix panelset css */
+
+.panelset .panel-active {
+display: block !important;
+}
