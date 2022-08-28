@@ -20,10 +20,9 @@
   <meta name="twitter:description" content="Work in progress." />
   
 
-<meta name="author" content="" />
 
 
-<meta name="date" content="2022-08-27" />
+<meta name="date" content="2022-08-28" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -998,82 +997,72 @@ Figure 14.5: Porewater is advected at the same rate as burial. If <code>poreflux
 </div>
 <div id="bioturbation-and-bioirrigation" class="section level5 unnumbered hasAnchor">
 <h5><em>Bioturbation and bioirrigation</em><a href="sediment-biogeochemistry.html#bioturbation-and-bioirrigation" class="anchor-section" aria-label="Anchor link to header"></a></h5>
-<p>Bioturbation is an extra mixing process caused by benthic animals in the upper layers of the sediment. Bioturbation affects both solids and porewater. The model uses a diffusion coefficient that varies with depth (<span class="math inline">\(D_{B(x)}\)</span>) as a two layer function or a Gaussian decrease (Boudreau 1996).</p>
-<p>Bioirrigation is a non-local mixing process in the upper layers of the sediment, caused by animal burrows. Bioirrigation affects porewater only.</p>
+<p>Bioturbation is a mixing process caused by benthic infauna in the upper layers of the sediment that affects both solids and porewater (Berg et al., 2001). The model uses a diffusion coefficient (bio-diffusivity, <span class="math inline">\(D_B\)</span>) that varies with depth (<span class="math inline">\(D_B[z_s]\)</span>) as a two layer function or a Gaussian decrease (Boudreau 1996). Bioirrigation is a non-local mixing process in the upper layers of the sediment, caused by animal burrows leading to enhanced diffusion of porewater (Figure X).</p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:Phys3"></span>
-<img src="images/23-sediment_biogeochemistry/AdvectionDispersion/Biot-07.png" alt="Bioturbation is the mixing of solids and porewater in the upper layers by benthic animals. Irrigation causes extra mixing of porewater through burrows." width="65%" />
+<img src="images/23-sediment_biogeochemistry/AdvectionDispersion/Biot-07.png" alt="Bioturbation is the mixing of solids and porewater in the upper layers by benthic animals. Irrigation causes extra mixing of porewater through their burrows." width="60%" />
 <p class="caption">
-Figure 14.6: Bioturbation is the mixing of solids and porewater in the upper layers by benthic animals. Irrigation causes extra mixing of porewater through burrows.
+Figure 14.6: Bioturbation is the mixing of solids and porewater in the upper layers by benthic animals. Irrigation causes extra mixing of porewater through their burrows.
 </p>
 </div>
-<p>Bioturbation is set firstly by choosing the switch <code>imix</code> (integer), which can be 0, 1, or 2. The equations and figures representing the depth profiles that correspond to the switches can be seen below. The rate of bioturbation is set with the parameter <code>DB0</code> (cm<sup>-2</sup> y<sup>-1</sup>). If the user selects <code>imix</code> switch 0 or 2, then they use the parameter <code>xs</code> to set the shape of the exponential decay curve. If the user selects <code>imix</code> switch 1, then they use parameters <code>x1</code> and <code>x2</code> to set the two depths between which bioturbation goes at the full rate and drops to zero.</p>
-<ul>
-<li>If imix = 0</li>
-</ul>
-<span class="math display" id="eq:initeq-2">\[\begin{eqnarray}
-
-   \\
-   bioturbation = DB_0 \times e^ {- \frac {depth^2} {2 \times xs^2} }
-   \\
-   
-   \tag{14.3}
-   
-\end{eqnarray}\]</span>
-<ul>
-<li>If imix = 1</li>
-</ul>
-<p><span class="math display" id="eq:initeq-3">\[\begin{align*}
-
-\text{if } depth &lt;= x_1 \\
-&amp;bioturbation = DB_0\\
-
-\text{if } depth &gt; x_1 \text{ and }depth &lt;= x_2\\
-&amp;bioturbation = DB_0 \times (\frac  {x_2 - depth} {x_2 - x_1})\\
-
-\text{if } depth &gt; x_2 \\
-&amp;bioturbation = 0
-
-\\\tag{14.4}
-\end{align*}\]</span><br />
-</p>
-<ul>
-<li>If imix = 2</li>
-</ul>
-<span class="math display" id="eq:initeq-4">\[\begin{eqnarray}
-   bioturbation = DB_0 \times e ^{(- \frac{depth}{xs} )}
-   \tag{14.5}
-\end{eqnarray}\]</span>
-<div class="panelset sideways">
-<div class="panel">
-<p><span class="panel-name">imix = 0</span></p>
-<p><span class="math inline">\(D_B =\)</span></p>
-</div>
-<div class="panel">
-<p><span class="panel-name">imix = 1</span></p>
-<p><span class="math inline">\(D_B =\)</span></p>
-</div>
-<div class="panel">
-<p><span class="panel-name">imix = 2</span></p>
-<p><span class="math inline">\(D_B =\)</span></p>
-</div>
-</div>
+<p>Bioturbation is computed to vary with depth below the sediment-water interface, based on selection of an appropriate model, <span class="math inline">\(\Theta_{\text{imix}}^{sdg}\)</span>, via the switch <code>imix</code> (Figure Y), such that:</p>
+<span class="math display">\[\begin{equation}
+  \Theta_{\text{imix}}^{sdg}=\left\{
+  \begin{array}{@{}ll@{}}
+    0, &amp; \text{exponential decay curve}\\
+    1, &amp; \text{piece-wise two-layer option}\\
+    2  &amp; \text{exponential decay curve}\\
+  \end{array}\right.
+\end{equation}\]</span>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:Init-3"></span>
-<img src="images/23-sediment_biogeochemistry/Initialisation/Bioturb-02.png" alt="Depth profile representing two possible bioturbation options and the functions of the parameters `DB0`, `x1` and `x2`. " width="90%" />
+<img src="images/23-sediment_biogeochemistry/Initialisation/Bioturb-02.png" alt="Depth profile representing two possible bioturbation options and the functions of the parameters `DB0`, `x1` and `x2`. " width="80%" />
 <p class="caption">
 Figure 14.7: Depth profile representing two possible bioturbation options and the functions of the parameters <code>DB0</code>, <code>x1</code> and <code>x2</code>.
 </p>
 </div>
-<p>A bioturbation profile is output in the file <code>Depths.sed</code>, along with the depths (in cm), and so the user can examine the shape of the profile.</p>
-<p>Bioirrigation has only one configuration i.e. it does not have switches like bioturbation does. The parameter <code>alpha0</code> sets the rate of irrigation and <code>xirrig</code> the depth at which irrigation decays, according to this equation:</p>
-<span class="math display" id="eq:init-6">\[\begin{eqnarray}
-\text{if  } depth &gt; xirrig
-\\
-\\
-   irrigation = \alpha _0 \times e^{-1.5 \times (depth - xirrig) }
-   \tag{14.6}
-\end{eqnarray}\]</span>
+<p>The rate of bioturbation is set with the parameter <code>DB0</code>, whereby the bio-diffusivity is computed as <span class="math inline">\(D_{B}=D_{B}[D_{B_0},z_s]\)</span>. If the user selects <code>imix</code> switch 0 or 2, then they use the parameter <code>xs</code> to set the shape of the exponential decay curve. If the user selects <code>imix</code> switch 1, then they use parameters <code>x1</code> and <code>x2</code> to set the two depths between which bioturbation goes at the full rate and drops to zero:</p>
+<div class="panelset sideways">
+<div class="panel">
+<p><span class="panel-name">imix = 0</span>
+Bio-diffusivity:</p>
+<span class="math display">\[\begin{equation}
+D_B[z_s] = D_{B_0} e^{-\frac {z_s^2}{2 xs^2}}  
+\end{equation}\]</span>
+</div>
+<div class="panel">
+<p><span class="panel-name">imix = 1</span>
+Bio-diffusivity:</p>
+<span class="math display">\[\begin{equation}
+  D_B[z_s] =\left\{
+  \begin{array}{@{}ll@{}}
+    D_{B_0}, &amp; z_s \: \le \: x_1 \\
+    D_{B_0} \: (\frac  {x_2 - z_s} {x_2 - x_1}),       &amp; z_s \gt x_1 \text{ and } z_s \le x_2\\
+    0        &amp; z_s \gt x_2 \\
+  \end{array}\right.
+\end{equation}\]</span>
+</div>
+<div class="panel">
+<p><span class="panel-name">imix = 2</span>
+Bio-diffusivity:</p>
+<p><span class="math inline">\(D_B[z_s] = D_{B_0} \: e^{(- \frac{z_s}{xs} )}\)</span></p>
+</div>
+</div>
+<p>A bioturbation profile is output in the file <code>Depths.sed</code>, so the user can examine the shape of the profile based on the parameter settings chosen.</p>
+<p>Bioirrigation has only one option, whereby, the parameter <code>alpha0</code>, <span class="math inline">\(\alpha_0\)</span>, sets the rate of irrigation and <code>xirrig</code>, <span class="math inline">\(x_{irrig}\)</span>, sets the depth at which irrigation decays (Figure Z), according to:</p>
+<div class="panelset sideways">
+<div class="panel">
+<p><span class="panel-name">alpha</span>
+Bio-irrigation:</p>
+<span class="math display">\[\begin{equation}
+  \alpha[z_s] = \left\{
+  \begin{array}{@{}ll@{}}
+     \alpha_0 , &amp; z_s \: \le \: x_{irrig} \\
+     \alpha_0 \: e^{-1.5 \: (z_s - x_{irrig})},       &amp; z_s \gt x_{irrig} \\
+  \end{array}\right.
+\end{equation}\]</span>
+</div>
+</div>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:Init-4"></span>
-<img src="images/23-sediment_biogeochemistry/Initialisation/Irrig-01.png" alt="Example of a depth profile that sets the rate of irrigation, and the parameters `alpha_0` and `x_irrig`." width="60%" />
+<img src="images/23-sediment_biogeochemistry/Initialisation/Irrig-01.png" alt="Example of a depth profile that sets the rate of irrigation, and the parameters `alpha_0` and `x_irrig`." width="50%" />
 <p class="caption">
 Figure 14.8: Example of a depth profile that sets the rate of irrigation, and the parameters <code>alpha_0</code> and <code>x_irrig</code>.
 </p>
@@ -1095,21 +1084,21 @@ A value for porosity is set at each depth layer during initialisation (see secti
 <span class="math display" id="eq:init-1" id="eq:poros-3" id="eq:poros-2" id="eq:poros-1">\[\begin{eqnarray}
      ps  = 1 - \phi
      \\
-     \tag{14.7}
+     \tag{14.3}
      \\
      psp = \frac {ps} {\phi}
      \\
-     \tag{14.8}
+     \tag{14.4}
      \\
      pps = \frac {\phi} {ps}
-     \tag{14.9}
+     \tag{14.5}
 \end{eqnarray}\]</span>
-<p>Porosity is configured by setting three parameters: the porosity at the sediment-water interface (<code>p0</code>), the porosity at the depth where compaction causes constant porosity with depth (<code>p00</code>), and the attenuation coefficient on the exponential curve (<code>bp</code>) (equation @ref\tag{14.10}). These parameters are set separately for each zone in <code>aed_candi_params.csv</code>. Porosity is the amount of water per total volume of space, as a real number between 0 and 1.</p>
+<p>Porosity is configured by setting three parameters: the porosity at the sediment-water interface (<code>p0</code>), the porosity at the depth where compaction causes constant porosity with depth (<code>p00</code>), and the attenuation coefficient on the exponential curve (<code>bp</code>) (equation @ref\tag{14.6}). These parameters are set separately for each zone in <code>aed_candi_params.csv</code>. Porosity is the amount of water per total volume of space, as a real number between 0 and 1.</p>
 <span class="math display" id="eq:init-1">\[\begin{eqnarray}
 
     \phi = (\rho _0 - \rho _{00}) \times e^{-bp \times depth}  + \rho _{00}
 
-\tag{14.10}
+\tag{14.6}
 
 
 \end{eqnarray}\]</span>
@@ -1131,14 +1120,14 @@ Figure 14.9: Example depth profile of porosity.
 <h5>Organic matter pools and reactivity<a href="sediment-biogeochemistry.html#organic-matter-pools-and-reactivity" class="anchor-section" aria-label="Anchor link to header"></a></h5>
 <p>Organic matter (<span class="math inline">\(OM\)</span>) degradation pathways can include labile and refractory components, and the breakdown pathways simulated are summarized conceptually in Figure <a href="sediment-biogeochemistry.html#fig:OMModels">14.10</a>. Reactions included in the kinetic component include the hydrolysis of the complex (e.g., high molecular weight) <span class="math inline">\(OM\)</span> pools (<span class="math inline">\(POM_{VR}\)</span>, <span class="math inline">\(POM_R\)</span>, <span class="math inline">\(DOM_R\)</span>, <span class="math inline">\(POM_L\)</span>) and transformation of low molecular weight (LMW) <span class="math inline">\(DOM_L\)</span> by oxidants (<span class="math inline">\(O_2\)</span>, <span class="math inline">\(NO_3^-\)</span>, <span class="math inline">\(MnO_2\)</span>, <span class="math inline">\(Fe(III)\)</span> and <span class="math inline">\(SO_4^{2-}\)</span> - the so-called ‘terminal metabolism’ pathway), and the release of resulting nutrients (<span class="math inline">\(NH_4^+\)</span>, <span class="math inline">\(PO_4^{3-}\)</span>) and reduced by-products (<span class="math inline">\(Mn^{2+}\)</span>, <span class="math inline">\(Fe^{2+}\)</span>, <span class="math inline">\(N_2\)</span>, <span class="math inline">\(H_2S\)</span>, <span class="math inline">\(CH_4\)</span>) and <span class="math inline">\(CO_2\)</span>. Oxidants, nutrients and by-products are all capable of interacting, for example, through re-oxidation of reduced species (outlined in the next section).</p>
 <p>The user can decide how complex or simple the organic matter breakdown pathway should be, with three options of varying complexity for parameterising the pathways included (Figure <a href="sediment-biogeochemistry.html#fig:OMModels">14.10</a>). The first option (<code>OMModel</code> = 1) is a common multi-G model in which the <span class="math inline">\(POM\)</span> phases are decomposed straight to <span class="math inline">\(CO_2\)</span> and other breakdown products. Here <span class="math inline">\(POM\)</span> is a variable that is not precisely defined, and its components (such as C, N and P) are assigned by parameters based on a user-defined stoichiometry. The second option (<code>OMModel</code> = 2) is another 2G model with both particulate and dissolved organic matter (<span class="math inline">\(POM\)</span> and <span class="math inline">\(DOM\)</span>) phases included and parameterisation hydrolysis of <span class="math inline">\(POM\)</span> to <span class="math inline">\(DOM\)</span>, and then <span class="math inline">\(DOM\)</span> to <span class="math inline">\(CO_2\)</span> and other breakdown products. The <span class="math inline">\(POM\)</span> and <span class="math inline">\(DOM\)</span> phases consist of three variables each, which trace the reaction and transport of carbon, nitrogen and phosphorus, thereby allowing for variable stoichiometry of organic matter to occur temporally and spatially. The third option (<code>OMModel</code> = 3) has many <span class="math inline">\(POM\)</span> phases, which are all hydrolysed to <span class="math inline">\(DOM\)</span>, which then undergoes fermentation and terminal metabolism. This allows the carbon, nitrogen and phosphorus to be calculated precisely before and after a model run, and allows the free energies of the reaction of each phase to be included. This third option is the most detailed and mechanistic, and allows for expansion of more detailed reaction mechanisms to be included, but is recommended only for experienced users.</p>
-<p>CANDI-AED also contains options for very unreactive organic matter parameter. The model can lower the reactivity of the particulate refractory phase towards zero as the concentration approaches a minimum. For example, for <span class="math inline">\(POC_R\)</span>, the parameter <code>pocu</code> sets the minimum concentration and <code>KOMPres_C</code> sets the sensitivity of the decrease, as in equation <a href="sediment-biogeochemistry.html#eq:pomr-1">(14.11)</a> below. The equivalent parameters for N an P are <code>ponu</code> and <code>popu</code>, and <code>KOMPres_N</code> and <code>KOMPres_P</code>.</p>
+<p>CANDI-AED also contains options for very unreactive organic matter parameter. The model can lower the reactivity of the particulate refractory phase towards zero as the concentration approaches a minimum. For example, for <span class="math inline">\(POC_R\)</span>, the parameter <code>pocu</code> sets the minimum concentration and <code>KOMPres_C</code> sets the sensitivity of the decrease, as in equation <a href="sediment-biogeochemistry.html#eq:pomr-1">(14.7)</a> below. The equivalent parameters for N an P are <code>ponu</code> and <code>popu</code>, and <code>KOMPres_N</code> and <code>KOMPres_P</code>.</p>
 <span class="math display" id="eq:pomr-1">\[\begin{eqnarray}
 
 komlim = \frac {PON_R - ponu} {PON_R - ponu + KOMPres_N}
 \\
 \\
 R_{PONR} = (ponr2donr) (komlim)
-\tag{14.11}
+\tag{14.7}
 
 \end{eqnarray}\]</span>
 <p>(The equation above is a simplified version, where the full equation had checks to prevent the rate going below zero, plus the respiration processes of <span class="math inline">\(MPB\)</span>.)</p>
@@ -1478,7 +1467,7 @@ Methanogenesis
 R_{Ox_{i}} = k_{OM}F_{OM}F_{Tem}F_{Bio}F_{TEA{i}}F_{In_{i}}F_{T}
 
 \\
-\tag{14.12}
+\tag{14.8}
 \end{equation}\]</span>
 </center>
 <p>In CANDI-AED, organic matter limitation, <span class="math inline">\(F_{OM}\)</span>, is only used with <em>OMModel</em> 3. It takes the general form</p>
@@ -1488,7 +1477,7 @@ R_{Ox_{i}} = k_{OM}F_{OM}F_{Tem}F_{Bio}F_{TEA{i}}F_{In_{i}}F_{T}
 F_{OM_{i}} = \frac{OM_{i}} {(OM_{i} + K_{OM})}
 
 \\
-\tag{14.13}
+\tag{14.9}
 \end{equation}\]</span>
 </center>
 <p>where <span class="math inline">\(OM_i\)</span> is an organic matter species, such as <span class="math inline">\(D_{Hyd}\)</span> or <span class="math inline">\(OAc\)</span> and <em>K<sub>OM</sub></em> is a limiting concentration. This functions like other Monod terms, limiting the reaction rate when the concentration of <span class="math inline">\(OM_{i}\)</span> is low. Using <em>OMModel</em> 1 or 2 (the common and simplest options), <span class="math inline">\(F_{OM}\)</span> is effectively 1 and it is assumed that organic matter concentration never limits the reaction rate.</p>
@@ -1562,14 +1551,14 @@ Figure 14.11: Schematic of examples of how inhibition and limitation scale betwe
 </div>
 </center>
 <p><em>F<sub>T</sub></em> is the thermodynamic factor. The current version of the model includes <em>F<sub>T</sub></em> only for <em>OMModel</em> 3, for terminal oxidation reactions and fermentation. This factor uses the ratio of products and reactants, as well as the free energy of each reaction pathway (<span class="math inline">\(\Delta G^0\)</span>).</p>
-<p>The <em>F<sub>T</sub></em> is a factor that scales between 0, which stops the reaction, and 1, which allows the reaction to proceed, in the same way as <em>F<sub>TEA</sub></em> and <em>F<sub>In</sub></em>. The form of the equation proposed by Jin and Bethke is that shown in equation <a href="sediment-biogeochemistry.html#eq:factors-3">(14.14)</a>.The <em>m</em> and <em>χ</em> are stoichiometric coefficients, <em>ΔG<sub>ATP</sub></em> is the energy required to synthesise one mole of ATP, <em>R</em> is the gas constant and <em>T</em> is the temperature. In the case where the <em>F<sub>T</sub></em> &lt; 0 then the factor is set to 0 by convention, otherwise a negative FT would represent the case where microbes carried out a reaction that was unfavourable to their metabolism.</p>
+<p>The <em>F<sub>T</sub></em> is a factor that scales between 0, which stops the reaction, and 1, which allows the reaction to proceed, in the same way as <em>F<sub>TEA</sub></em> and <em>F<sub>In</sub></em>. The form of the equation proposed by Jin and Bethke is that shown in equation <a href="sediment-biogeochemistry.html#eq:factors-3">(14.10)</a>.The <em>m</em> and <em>χ</em> are stoichiometric coefficients, <em>ΔG<sub>ATP</sub></em> is the energy required to synthesise one mole of ATP, <em>R</em> is the gas constant and <em>T</em> is the temperature. In the case where the <em>F<sub>T</sub></em> &lt; 0 then the factor is set to 0 by convention, otherwise a negative FT would represent the case where microbes carried out a reaction that was unfavourable to their metabolism.</p>
 <center>
 <span class="math display" id="eq:factors-3">\[\begin{equation}
 
 F_T = 1 - e^{\frac {∆G_r + m ∆G_{ATP}} {χR} }
 
 
-\tag{14.14}
+\tag{14.10}
 \end{equation}\]</span>
 </center>
 <p><br />
@@ -1580,10 +1569,10 @@ F_T = 1 - e^{\frac {∆G_r + m ∆G_{ATP}} {χR} }
 
     ∆G_r = ∆G^0 + RT ln ( \frac {[redox \ products]^{molar \ ratios} }  { [redox \ reactants]^{molar \ ratios}  } )
 \\
-\tag{14.15}
+\tag{14.11}
 \end{equation}\]</span>
 </center>
-<p>where ΔG0 is the standard state free energy of a redox reaction, calculated as the sum of the energy of the reduction of a TEA and the oxidation of an organic substrate. These energies are well constrained by laboratory data, though there may be differences between laboratory and field conditions that create some uncertainty in their use (Bethke et al. 2011). Practically, this equation allows for <em>ΔG<sub>r</sub></em> to be very close to <em>∆G<sub>0</sub></em> when the reactants are at high concentrations relative to the products. Inversely, when the products are at relatively high concentrations, <em>ΔG<sub>r</sub></em> becomes more positive, making FT more negative. Equation <a href="sediment-biogeochemistry.html#eq:factors-3">(14.14)</a> requires the constants <em>m</em> and <em>χ</em>, which are parameters that could be measured empirically, however as yet they have not all been measured for every redox pathway for every substrate, and therefore authors have had to estimate some values when using equation <a href="sediment-biogeochemistry.html#eq:factors-3">(14.14)</a> (Dale et al. 2008). It also requires <em>ΔG<sub>ATP</sub></em>, which is around 45 kJ (mol substrate)<sup>-1</sup> but has variable published values. Around neutral pH the conditions for fermentation product consumption by iron reducers, sulphate reducers and methanogens are all thermodynamically favourable, but this changes with pH (Bethke et al. 2011). Acidity either promotes or hinders the reaction depending on whether the protons are produced or consumed in the reaction.</p>
+<p>where ΔG0 is the standard state free energy of a redox reaction, calculated as the sum of the energy of the reduction of a TEA and the oxidation of an organic substrate. These energies are well constrained by laboratory data, though there may be differences between laboratory and field conditions that create some uncertainty in their use (Bethke et al. 2011). Practically, this equation allows for <em>ΔG<sub>r</sub></em> to be very close to <em>∆G<sub>0</sub></em> when the reactants are at high concentrations relative to the products. Inversely, when the products are at relatively high concentrations, <em>ΔG<sub>r</sub></em> becomes more positive, making FT more negative. Equation <a href="sediment-biogeochemistry.html#eq:factors-3">(14.10)</a> requires the constants <em>m</em> and <em>χ</em>, which are parameters that could be measured empirically, however as yet they have not all been measured for every redox pathway for every substrate, and therefore authors have had to estimate some values when using equation <a href="sediment-biogeochemistry.html#eq:factors-3">(14.10)</a> (Dale et al. 2008). It also requires <em>ΔG<sub>ATP</sub></em>, which is around 45 kJ (mol substrate)<sup>-1</sup> but has variable published values. Around neutral pH the conditions for fermentation product consumption by iron reducers, sulphate reducers and methanogens are all thermodynamically favourable, but this changes with pH (Bethke et al. 2011). Acidity either promotes or hinders the reaction depending on whether the protons are produced or consumed in the reaction.</p>
 </div>
 <div id="nitrogen-cycling" class="section level5 unnumbered hasAnchor">
 <h5>Nitrogen cycling<a href="sediment-biogeochemistry.html#nitrogen-cycling" class="anchor-section" aria-label="Anchor link to header"></a></h5>
@@ -3198,7 +3187,7 @@ Constant
 </div>
 <div id="adsorption" class="section level5 unnumbered hasAnchor">
 <h5>Adsorption<a href="sediment-biogeochemistry.html#adsorption" class="anchor-section" aria-label="Anchor link to header"></a></h5>
-<p>IN CANDI-AED, <span class="math inline">\(NH_4^+\)</span> adsorption is simulated as precipitating onto solid particles, including organic matter and clay, following the method of Van Cappellen and Wang (1996). It is assumed that there are unlimited adsorption sites for <span class="math inline">\(NH_4^+\)</span>, and the relative amounts of <span class="math inline">\(NH_4^+\)</span> were assigned by the adsorption constant <code>knh4p</code>, which was initially based on Mackin and Aller (1984). A simplified version of the adsorption equations adsorption can be found in the equation set below (equation <a href="sediment-biogeochemistry.html#eq:ppt-1">(14.16)</a>). The full equations correct for porosity and solid volume when transferring between particulate and dissolved phases. <span class="math inline">\(NH_4^+\)</span> adsorption defaults ot being switched on, but may be switched off by setting the parameter <code>NH4AdsorptionModel</code> to 0.</p>
+<p>IN CANDI-AED, <span class="math inline">\(NH_4^+\)</span> adsorption is simulated as precipitating onto solid particles, including organic matter and clay, following the method of Van Cappellen and Wang (1996). It is assumed that there are unlimited adsorption sites for <span class="math inline">\(NH_4^+\)</span>, and the relative amounts of <span class="math inline">\(NH_4^+\)</span> were assigned by the adsorption constant <code>knh4p</code>, which was initially based on Mackin and Aller (1984). A simplified version of the adsorption equations adsorption can be found in the equation set below (equation <a href="sediment-biogeochemistry.html#eq:ppt-1">(14.12)</a>). The full equations correct for porosity and solid volume when transferring between particulate and dissolved phases. <span class="math inline">\(NH_4^+\)</span> adsorption defaults ot being switched on, but may be switched off by setting the parameter <code>NH4AdsorptionModel</code> to 0.</p>
 <center>
 <span class="math display" id="eq:ppt-1">\[\begin{eqnarray}
 
@@ -3216,13 +3205,13 @@ NH_{4 _{Particulate}}^+ = NH_{4_{Total}}^+ NH_{4 _{Particulate}}^+
 \\
 NH_{4 _{Dissolved}}^+   = NH_{4_{Total}}^+ - NH_{4 _{Particulate}}^+
 
-\tag{14.16}
+\tag{14.12}
 
 
 \end{eqnarray}\]</span>
 </center>
 <p>A similar approach is taken for dissolved organic carbon, nitrogen and phosphrous. The <span class="math inline">\(DON_R\)</span> and <span class="math inline">\(DON_S\)</span> are adsorbed to the sediment with the adsorption constant <em>K<sub>DOMP</sub></em>, and <span class="math inline">\(DOP_R\)</span> and <span class="math inline">\(DOP_S\)</span> adsorbed using the same adsorption constant <em>K<sub>DOMP</sub></em>. The value for <em>K<sub>DOMP</sub></em> defaults to 1.4 and the model defaults to being switched on (<code>DOMAdsorptionModel</code> &gt; 0).</p>
-<p>The model uses the parameter <code>PO4AdsorptionModel</code> to switch the type of adsorption equations from the AED <span class="math inline">\(PO_4^{3-}\)</span> adsorption library. If it is not set, the model defaults to method 1. The equations for <code>PO4AdsorptionModel</code> 1 are given in equation set <a href="sediment-biogeochemistry.html#eq:ppt-2">(14.17)</a>. <span class="math inline">\(PO_4^{3-}\)</span> is adsorbed onto the surfaces of iron oxide particles, both the reactive <span class="math inline">\(Fe(OH)_{3A}\)</span> and unreactive <span class="math inline">\(Fe(OH)_{3B}\)</span> fractions. During a simulation, low oxygen and nitrate concentrations in the sediment cause iron oxide reduction, which dissolves the solid particles and releases the dissolved <span class="math inline">\(PO_4^{3-}\)</span> to the porewater.</p>
+<p>The model uses the parameter <code>PO4AdsorptionModel</code> to switch the type of adsorption equations from the AED <span class="math inline">\(PO_4^{3-}\)</span> adsorption library. If it is not set, the model defaults to method 1. The equations for <code>PO4AdsorptionModel</code> 1 are given in equation set <a href="sediment-biogeochemistry.html#eq:ppt-2">(14.13)</a>. <span class="math inline">\(PO_4^{3-}\)</span> is adsorbed onto the surfaces of iron oxide particles, both the reactive <span class="math inline">\(Fe(OH)_{3A}\)</span> and unreactive <span class="math inline">\(Fe(OH)_{3B}\)</span> fractions. During a simulation, low oxygen and nitrate concentrations in the sediment cause iron oxide reduction, which dissolves the solid particles and releases the dissolved <span class="math inline">\(PO_4^{3-}\)</span> to the porewater.</p>
 <p>If <code>PO4AdsorptionModel</code> 2 is selected, a set of pH-dependent reactions are used. A further parameter, <code>ads_use_pH</code> is required to be set to <code>TRUE</code> if the user wants the model to respond to <em>pH</em> dynamically, or to <code>FALSE</code> if it should be less sensitive to <em>pH</em>. If <code>PO4AdsorptionModel</code> 3 is selected, a set of equations is used that rely on salinity and temperature. It is suggested to use <code>PO4AdsorptionModel</code> = 1 for most sediment model applications.</p>
 <span class="math display" id="eq:ppt-2">\[\begin{eqnarray}
 
@@ -3231,7 +3220,7 @@ PO_{4_{Particulate}}^{3-} = \frac {K_{PO_4p} (Fe(OH)_{3A} + Fe(OH)_{3B})}
 \\
 \\
 PO_{4_{Dissolved}}^{3-}   = \frac {1} {1 + K_{PO_4p} (Fe(OH)_{3A} + Fe(OH)_{3B}) } (PO_{4 _{Total}}^{3-})
-\tag{14.17}
+\tag{14.13}
 \end{eqnarray}\]</span>
 </div>
 </div>
@@ -3270,22 +3259,22 @@ PO_{4_{Dissolved}}^{3-}   = \frac {1} {1 + K_{PO_4p} (Fe(OH)_{3A} + Fe(OH)_{3B})
 \\
 &amp;F_{Sal} = 1 \
     \\
-\tag{14.18}
+\tag{14.14}
     \\
 \text{If  }    Salinity &gt; Sal_1  
 &amp;\frac {Sal_2 - Salinity} {Sal_2 - Sal_1} \
     \\
-\tag{14.19}
+\tag{14.15}
     \\
 \text{If  }   Salinity &gt; Sal_2
 \\
 &amp;F_{Sal} = 1 \
 \\
-\tag{14.20}
+\tag{14.16}
 \\
 \end{align*}\]</span><br />
 \
-\tag{14.20}
+\tag{14.16}
 \
 \end{align*}
 The effect of the scaling is shown in Figure <a href="sediment-biogeochemistry.html#fig:PhysChem1">14.14</a>.</p>
@@ -3313,7 +3302,7 @@ Figure 14.14: Diaagram of the salinity factor <span class="math inline">\(F_{Sal
 <span class="math display" id="eq:sdg-6">\[\begin{eqnarray}
 
 F_{Sul} = \frac {K_{H_{2}S}} {(K_{H_{2}S} + H_{2}S)}
-\tag{14.21}
+\tag{14.17}
 \end{eqnarray}\]</span>
 <p>As with <span class="math inline">\(F_{Sal}\)</span>, <span class="math inline">\(F_{Sul}\)</span> scales between 1 and 0, however, as a decay rather than a stepped function (Figure <a href="sediment-biogeochemistry.html#fig:PhysChem2">14.15</a>). The value for <code>K~H2S~</code> can be found in the physical parameters table below In this simulation, the same value for <code>K~H2S~</code> was used in all zones.</p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:PhysChem2"></span>
@@ -3387,7 +3376,7 @@ Figure 14.18: Spatial resolution options available through AED. a) Water column 
 <center>
 <span class="math display" id="eq:biogeochem1">\[\begin{equation}
 F = D_{0}\frac{\Delta C}{\Delta x} = \frac{D_{0}}{\delta} (C_{bw} - C_{1})
-\tag{14.22}
+\tag{14.18}
 \end{equation}\]</span>
 </center>
 <p>where <span class="math inline">\(D_{0}\)</span> is the diffusivity, <span class="math inline">\(\delta\)</span> is the thickness of the diffusive boundary layer at the sediment water interface and defined as the length scale of the first sediment layer, <span class="math inline">\(C_{bw}\)</span> is the bottom water concentration and <span class="math inline">\(C_{1}\)</span> is the concentration in the top sediment layer.</p>
@@ -3685,7 +3674,7 @@ aed_candi_params.csv
    bioturbation = DB_0 \times e^ {- \frac {depth^2} {2 \times xs^2} }
    \\
    
-   \tag{14.23}
+   \tag{14.19}
    
 \end{eqnarray}\]</span>
 <ul>
@@ -3702,7 +3691,7 @@ aed_candi_params.csv
 \text{if } depth &gt; x_2 \\
 &amp;bioturbation = 0
 
-\\\tag{14.24}
+\\\tag{14.20}
 \end{align*}\]</span><br />
 </p>
 <ul>
@@ -3710,7 +3699,7 @@ aed_candi_params.csv
 </ul>
 <span class="math display" id="eq:initeq-4b">\[\begin{eqnarray}
    bioturbation = DB_0 \times e ^{(- \frac{depth}{xs} )}
-   \tag{14.25}
+   \tag{14.21}
 \end{eqnarray}\]</span>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:Init-3b"></span>
 <img src="images/23-sediment_biogeochemistry/Initialisation/Bioturb-02.png" alt="Depth profile representing two possible bioturbation options and the functions of the parameters `DB0`, `x1` and `x2`. " width="90%" />
@@ -3726,7 +3715,7 @@ Figure 14.24: Depth profile representing two possible bioturbation options and t
 \\
 \\
    irrigation = \alpha _0 \times e^{-1.5 \times (depth - xirrig) }
-   \tag{14.6}
+   \tag{14.22}
 \end{eqnarray}\]</span>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:Init-4b"></span>
 <img src="images/23-sediment_biogeochemistry/Initialisation/Irrig-01.png" alt="Example of a depth profile that sets the rate of irrigation, and the parameters `alpha_0` and `x_irrig`." width="60%" />
@@ -3744,7 +3733,7 @@ Figure 14.25: Example of a depth profile that sets the rate of irrigation, and t
 <p>For the exponential option, the initial concentration decreases according to the equation below.</p>
 <span class="math display" id="eq:init-7b">\[\begin{eqnarray}
 concentration = initial vals \times e^ {- OM cfl \times depth}
-\tag{14.26}
+\tag{14.23}
 \end{eqnarray}\]</span>
 <p>The shape of the curve is determined by the parameter <code>OM_cfl</code>, which is found in the <code>&amp;aed_sed_candi</code> block.</p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:Init-5b"></span>
@@ -5713,19 +5702,19 @@ smothbm
 <p>The duration of the simulation is determined by the hydrodynamic model and its parameter inputs. Other timing parameters are set as outlined below.</p>
 <div id="substep" class="section level5 unnumbered hasAnchor">
 <h5><em>Substep</em><a href="sediment-biogeochemistry.html#substep" class="anchor-section" aria-label="Anchor link to header"></a></h5>
-<p>The general task for the reactive transport model is to calculate a change in concentration over time, as a function of a change in concentration over space and as a result of chemical reactions. The general form of this is given in equation <a href="sediment-biogeochemistry.html#eq:tim-1">(14.27)</a>. When this is solved numerically, it is discretised by small increments of time, which are referred to as ‘time steps’ (Δt in equation <a href="sediment-biogeochemistry.html#eq:tim-2">(14.28)</a>).</p>
+<p>The general task for the reactive transport model is to calculate a change in concentration over time, as a function of a change in concentration over space and as a result of chemical reactions. The general form of this is given in equation <a href="sediment-biogeochemistry.html#eq:tim-1">(14.24)</a>. When this is solved numerically, it is discretised by small increments of time, which are referred to as ‘time steps’ (Δt in equation <a href="sediment-biogeochemistry.html#eq:tim-2">(14.25)</a>).</p>
 <p>To allow the part of the model that solves these differential equations to process a large change in concentration over space or because of a large reaction, the timestep can be multiplied by a substep factor. Examples of where this is needed include a sharp concentration gradient over a small area, or in influx of a large amount of highly reactive substances.</p>
 <span class="math display" id="eq:tim-2" id="eq:tim-1">\[\begin{eqnarray}
 
 \frac {\delta C} {\delta t} = \frac {\delta C} {\delta x} + reactions
 
-\tag{14.27}
+\tag{14.24}
 
 
 \\
 \\
 {\Delta C} = (\frac {\Delta C} {\Delta x} + reactions) \times \Delta t
-\tag{14.28}
+\tag{14.25}
 \end{eqnarray}\]</span>
 <p>mattedit: link this to boundary<br />
 </p>

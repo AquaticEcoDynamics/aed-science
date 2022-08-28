@@ -162,113 +162,99 @@ knitr::include_graphics("images/23-sediment_biogeochemistry/AdvectionDispersion/
 ```
 
 ##### *Bioturbation and bioirrigation*  {-} 
-Bioturbation is an extra mixing process caused by benthic animals in the upper layers of the sediment. Bioturbation affects both solids and porewater. The model uses a diffusion coefficient that varies with depth ($D_{B(x)}$) as a two layer function or a Gaussian decrease (Boudreau 1996). 
+Bioturbation is a mixing process caused by benthic infauna in the upper layers of the sediment that affects both solids and porewater (Berg et al., 2001). The model uses a diffusion coefficient (bio-diffusivity, $D_B$) that varies with depth ($D_B[z_s]$) as a two layer function or a Gaussian decrease (Boudreau 1996). Bioirrigation is a non-local mixing process in the upper layers of the sediment, caused by animal burrows leading to enhanced diffusion of porewater (Figure X).
 
-Bioirrigation is a non-local mixing process in the upper layers of the sediment, caused by animal burrows. Bioirrigation affects porewater only.
-
-```{r Phys3, echo = FALSE, out.width='65%', class = "text-image",fig.show='hold',fig.align='center', fig.cap = "Bioturbation is the mixing of solids and porewater in the upper layers by benthic animals. Irrigation causes extra mixing of porewater through burrows."}
+```{r Phys3, echo = FALSE, out.width='60%', class = "text-image",fig.show='hold',fig.align='center', fig.cap = "Bioturbation is the mixing of solids and porewater in the upper layers by benthic animals. Irrigation causes extra mixing of porewater through their burrows."}
 
 knitr::include_graphics("images/23-sediment_biogeochemistry/AdvectionDispersion/Biot-07.png")
 
 ```
 
-
-Bioturbation is set firstly by choosing the switch `imix` (integer), which can be 0, 1, or 2. The equations and figures representing the depth profiles that correspond to the switches can be seen below. The rate of bioturbation is set with the parameter `DB0` (cm^-2^ y^-1^). If the user selects `imix` switch 0 or 2, then they use the parameter `xs` to set the shape of the exponential decay curve. If the user selects `imix` switch 1, then they use parameters `x1` and `x2` to set the two depths between which bioturbation goes at the full rate and drops to zero.
-
-   - If imix = 0
-```{=tex}
-\begin{eqnarray}
-
-   \\
-   bioturbation = DB_0 \times e^ {- \frac {depth^2} {2 \times xs^2} } 
-   \\
-   
-   (\#eq:initeq-2)
-   
-\end{eqnarray}
-```   
-   
-   
-   - If imix = 1
-
-\begin{align*}
-
-\text{if } depth <= x_1 \\
-&bioturbation = DB_0\\
-
-\text{if } depth > x_1 \text{ and }depth <= x_2\\
-&bioturbation = DB_0 \times (\frac  {x_2 - depth} {x_2 - x_1})\\
-
-\text{if } depth > x_2 \\
-&bioturbation = 0
-
-\\(\#eq:initeq-3)
-\end{align*}
-\
-
-   - If imix = 2
+Bioturbation is computed to vary with depth below the sediment-water interface, based on selection of an appropriate model, $\Theta_{\text{imix}}^{sdg}$, via the switch `imix` (Figure Y), such that:
 
 ```{=tex}
-\begin{eqnarray}
-   bioturbation = DB_0 \times e ^{(- \frac{depth}{xs} )}
-   (\#eq:initeq-4)
-\end{eqnarray}
+\begin{equation}
+  \Theta_{\text{imix}}^{sdg}=\left\{
+  \begin{array}{@{}ll@{}}
+    0, & \text{exponential decay curve}\\
+    1, & \text{piece-wise two-layer option}\\
+    2  & \text{exponential decay curve}\\
+  \end{array}\right.
+\end{equation}
 ```
 
+```{r Init-3, echo=FALSE, fig.cap="Depth profile representing two possible bioturbation options and the functions of the parameters `DB0`, `x1` and `x2`. ",fig.show='hold',fig.align='center' ,out.width = '80%'}
+knitr::include_graphics("images/23-sediment_biogeochemistry/Initialisation/Bioturb-02.png")
+```
+
+The rate of bioturbation is set with the parameter `DB0`, whereby the bio-diffusivity is computed as $D_{B}=D_{B}[D_{B_0},z_s]$. If the user selects `imix` switch 0 or 2, then they use the parameter `xs` to set the shape of the exponential decay curve. If the user selects `imix` switch 1, then they use parameters `x1` and `x2` to set the two depths between which bioturbation goes at the full rate and drops to zero:
 
 ::::: {.panelset .sideways}
 ::: {.panel}
 [imix = 0]{.panel-name}
+Bio-diffusivity:
 
-$D_B =$ 
+```{=tex}
+\begin{equation}
+ D_B[z_s] = D_{B_0} e^{-\frac {z_s^2}{2 xs^2}}  
+\end{equation}
+```
 :::
     
 ::: {.panel}
 [imix = 1]{.panel-name}
+Bio-diffusivity:
 
-$D_B =$ 
+```{=tex}
+\begin{equation}
+  D_B[z_s] =\left\{
+  \begin{array}{@{}ll@{}}
+    D_{B_0}, & z_s \: \le \: x_1 \\
+    D_{B_0} \: (\frac  {x_2 - z_s} {x_2 - x_1}),       & z_s \gt x_1 \text{ and } z_s \le x_2\\
+    0        & z_s \gt x_2 \\
+  \end{array}\right.
+\end{equation}
+```
 :::
     
 ::: {.panel}
 [imix = 2]{.panel-name}
+Bio-diffusivity:
 
-$D_B =$ 
+$D_B[z_s] = D_{B_0} \: e^{(- \frac{z_s}{xs} )}$ 
 :::
 :::::
 
+A bioturbation profile is output in the file `Depths.sed`, so the user can examine the shape of the profile based on the parameter settings chosen.
 
-```{r Init-3, echo=FALSE, fig.cap="Depth profile representing two possible bioturbation options and the functions of the parameters `DB0`, `x1` and `x2`. ",fig.show='hold',fig.align='center' ,out.width = '90%'}
-knitr::include_graphics("images/23-sediment_biogeochemistry/Initialisation/Bioturb-02.png")
-```
+Bioirrigation has only one option, whereby, the parameter `alpha0`, $\alpha_0$, sets the rate of irrigation and `xirrig`, $x_{irrig}$, sets the depth at which irrigation decays (Figure Z), according to:
 
-
-A bioturbation profile is output in the file `Depths.sed`, along with the depths (in cm), and so the user can examine the shape of the profile.
-
-
-Bioirrigation has only one configuration i.e. it does not have switches like bioturbation does. The parameter `alpha0` sets the rate of irrigation and `xirrig` the depth at which irrigation decays, according to this equation:
+::::: {.panelset .sideways}
+::: {.panel}
+[alpha   ]{.panel-name}
+Bio-irrigation:
 
 ```{=tex}
-\begin{eqnarray}
-\text{if  } depth > xirrig
-\\
-\\
-   irrigation = \alpha _0 \times e^{-1.5 \times (depth - xirrig) }
-   (\#eq:init-6)
-\end{eqnarray}
+\begin{equation}
+  \alpha[z_s] = \left\{
+  \begin{array}{@{}ll@{}}
+     \alpha_0 , & z_s \: \le \: x_{irrig} \\
+     \alpha_0 \: e^{-1.5 \: (z_s - x_{irrig})},       & z_s \gt x_{irrig} \\
+  \end{array}\right.
+\end{equation}
 ```
+:::
+:::::
 
-
-
-```{r Init-4, echo=FALSE, fig.cap="Example of a depth profile that sets the rate of irrigation, and the parameters `alpha_0` and `x_irrig`.",fig.show='hold',fig.align='center', out.width = '60%'}
+```{r Init-4, echo=FALSE, fig.cap="Example of a depth profile that sets the rate of irrigation, and the parameters `alpha_0` and `x_irrig`.",fig.show='hold',fig.align='center', out.width = '50%'}
 knitr::include_graphics("images/23-sediment_biogeochemistry/Initialisation/Irrig-01.png")
 ```
 
 
 
-
 ##### *Porosity*  {-} 
 Porosity ($\phi$) is defined as the amount of water per total volume of space, as a real number between 0 and 1. 
-A value for porosity is set at each depth layer during initialisation (see section below) and remains constant throughout the simulation (figure \@ref(fig:Phys-6)). The porosity array is used in the model to calculate other variables, such as 
+A value for porosity is set at each depth layer during initialisation (see section below) and remains constant throughout the simulation (Figure \@ref(fig:Phys-6)). The porosity array is used in the model to calculate other variables, such as 
 
 -    advection
 -    poreflux

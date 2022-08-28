@@ -155,6 +155,7 @@ tab:20-statevariables
 tab:20-parametersummmary
 tab:20-parameterconfig
 tab:21p-statetable
+tab:21p-diagtable
 fig:johnstone-map
 fig:23-pic1
 fig:23-pic2
@@ -165,11 +166,7 @@ fig:Init-1
 fig:Phys1
 fig:Phys2
 fig:Phys3
-eq:initeq-2
-eq:initeq-3
-eq:initeq-4
 fig:Init-3
-eq:init-6
 fig:Init-4
 eq:poros-1
 eq:poros-2
@@ -216,6 +213,7 @@ eq:initeq-2b
 eq:initeq-3b
 eq:initeq-4b
 fig:Init-3b
+eq:init-6
 fig:Init-4b
 eq:init-7b
 fig:Init-5b
