@@ -218,8 +218,10 @@ fig:dev-Grid1
 fig:dev-Grid2
 fig:dev-Grid3
 fig:dev-Grid4
+fig:Numeric3
 fig:23-pic7
 tab:VarsTable
+tab:DiagVarsTable
 tab:EnvVarsTable
 tab:3dev-sedBouIni
 tab:param-nml
@@ -509,6 +511,7 @@ initialisation-of-organic-matter-profiles
 tn-tp-tc-partitioning
 spinup
 boundary-settings
+output-post-processing
 concentration-of-state-variables-.sed-files
 flux-of-state-variables-swi_fluxes.sed
 other-variables-extras-.sed
