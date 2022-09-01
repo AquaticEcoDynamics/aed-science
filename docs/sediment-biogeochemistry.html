@@ -23,7 +23,7 @@
 <meta name="author" content="" />
 
 
-<meta name="date" content="2022-08-31" />
+<meta name="date" content="2022-09-01" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -3224,7 +3224,7 @@ R_{FeSOx} = k_{FeSOx} [O_2] [FeS]
 <center>
 <img src="images/23-sediment_biogeochemistry/AdvectionDispersion/AdvectionDispersion-14.png" width="25%" />
 </center>
-<p>For each time step, a matrix is produced, which contains an entry at each depth. The matrix contains:</p>
+<p>For each time step, one numerical matrix is produced, which contains an entry at each depth. The matrix contains:</p>
 <ul>
 <li>Dissolved variables</li>
 <li>Solid variables</li>
@@ -4581,419 +4581,394 @@ Example value
 </tr>
 </thead>
 <tbody>
-<tr>
-<td style="text-align:center;min-width: 20em; background-color: white !important;">
+<tr grouplength="3">
+<td colspan="3" style="border-bottom: 1px solid;color: black !important;background-color: #ebebeb !important;">
 <strong>Timing parameters</strong>
-</td>
-<td style="text-align:center;min-width: 20em; background-color: white !important;">
-0
-</td>
-<td style="text-align:center;min-width: 20em; background-color: white !important;">
 </td>
 </tr>
 <tr>
-<td style="text-align:center;min-width: 20em; background-color: white !important;">
+<td style="text-align:center;padding-left: 2em;min-width: 15em; color: black !important;background-color: white !important;" indentlevel="1">
 spinup_days
 </td>
-<td style="text-align:center;min-width: 20em; background-color: white !important;">
+<td style="text-align:center;min-width: 15em; color: black !important;background-color: white !important;">
 Duration of spinup before flux (d)
 </td>
-<td style="text-align:center;min-width: 20em; background-color: white !important;">
+<td style="text-align:center;min-width: 10em; color: black !important;background-color: white !important;">
 1
 </td>
 </tr>
 <tr>
-<td style="text-align:center;min-width: 20em; background-color: white !important;">
+<td style="text-align:center;padding-left: 2em;min-width: 15em; color: black !important;background-color: white !important;" indentlevel="1">
 driver_dt
 </td>
-<td style="text-align:center;min-width: 20em; background-color: white !important;">
+<td style="text-align:center;min-width: 15em; color: black !important;background-color: white !important;">
 Hydrodynamic model time step (s)
 </td>
-<td style="text-align:center;min-width: 20em; background-color: white !important;">
+<td style="text-align:center;min-width: 10em; color: black !important;background-color: white !important;">
 900
 </td>
 </tr>
 <tr>
-<td style="text-align:center;min-width: 20em; background-color: white !important;">
+<td style="text-align:center;padding-left: 2em;min-width: 15em; color: black !important;background-color: white !important;" indentlevel="1">
 substep
 </td>
-<td style="text-align:center;min-width: 20em; background-color: white !important;">
+<td style="text-align:center;min-width: 15em; color: black !important;background-color: white !important;">
 Sediment model substep (h)
 </td>
-<td style="text-align:center;min-width: 20em; background-color: white !important;">
+<td style="text-align:center;min-width: 10em; color: black !important;background-color: white !important;">
 8
 </td>
 </tr>
-<tr>
-<td style="text-align:center;min-width: 20em; background-color: white !important;">
+<tr grouplength="3">
+<td colspan="3" style="border-bottom: 1px solid;color: black !important;background-color: #ebebeb !important;">
 <strong>Zone setup parameters</strong>
-</td>
-<td style="text-align:center;min-width: 20em; background-color: white !important;">
-</td>
-<td style="text-align:center;min-width: 20em; background-color: white !important;">
 </td>
 </tr>
 <tr>
-<td style="text-align:center;min-width: 20em; ">
+<td style="text-align:center;padding-left: 2em;min-width: 15em; color: black !important;" indentlevel="1">
 n_zones
 </td>
-<td style="text-align:center;min-width: 20em; ">
+<td style="text-align:center;min-width: 15em; color: black !important;">
 Number of zones to simulate. Zones are listed in <code>active_zones</code> (integer)
 </td>
-<td style="text-align:center;min-width: 20em; ">
+<td style="text-align:center;min-width: 10em; color: black !important;">
 5
 </td>
 </tr>
 <tr>
-<td style="text-align:center;min-width: 20em; ">
+<td style="text-align:center;padding-left: 2em;min-width: 15em; color: black !important;" indentlevel="1">
 active_zones
 </td>
-<td style="text-align:center;min-width: 20em; ">
+<td style="text-align:center;min-width: 15em; color: black !important;">
 Sequence of zones to be simulated (integer)
 </td>
-<td style="text-align:center;min-width: 20em; ">
+<td style="text-align:center;min-width: 10em; color: black !important;">
 1,3,4,6,7,8,30,31
 </td>
 </tr>
 <tr>
-<td style="text-align:center;min-width: 20em; ">
+<td style="text-align:center;padding-left: 2em;min-width: 15em; color: black !important;" indentlevel="1">
 zone_types
 </td>
-<td style="text-align:center;min-width: 20em; ">
+<td style="text-align:center;min-width: 15em; color: black !important;">
 Type of zone, as listed by header in aed_sdg_vars.csv (integer)
 </td>
-<td style="text-align:center;min-width: 20em; ">
+<td style="text-align:center;min-width: 10em; color: black !important;">
 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
 </td>
 </tr>
-<tr>
-<td style="text-align:center;min-width: 20em; ">
+<tr grouplength="3">
+<td colspan="3" style="border-bottom: 1px solid;color: black !important;background-color: #ebebeb !important;">
 <strong>External parameter file paths</strong>
-</td>
-<td style="text-align:center;min-width: 20em; ">
-</td>
-<td style="text-align:center;min-width: 20em; ">
 </td>
 </tr>
 <tr>
-<td style="text-align:center;min-width: 20em; ">
+<td style="text-align:center;padding-left: 2em;min-width: 15em; color: black !important;" indentlevel="1">
 dbase
 </td>
-<td style="text-align:center;min-width: 20em; ">
+<td style="text-align:center;min-width: 15em; color: black !important;">
 External candi parameter file path (text)
 </td>
-<td style="text-align:center;min-width: 20em; ">
+<td style="text-align:center;min-width: 10em; color: black !important;">
 ‘../../external/AED/aed_candi_params.csv’
 </td>
 </tr>
 <tr>
-<td style="text-align:center;min-width: 20em; ">
+<td style="text-align:center;padding-left: 2em;min-width: 15em; color: black !important;" indentlevel="1">
 vars_files
 </td>
-<td style="text-align:center;min-width: 20em; ">
+<td style="text-align:center;min-width: 15em; color: black !important;">
 </td>
-<td style="text-align:center;min-width: 20em; ">
+<td style="text-align:center;min-width: 10em; color: black !important;">
 ‘../../external/AED/sdg_vars.csv’
 </td>
 </tr>
 <tr>
-<td style="text-align:center;min-width: 20em; ">
+<td style="text-align:center;padding-left: 2em;min-width: 15em; color: black !important;" indentlevel="1">
 geochem_file
 </td>
-<td style="text-align:center;min-width: 20em; ">
+<td style="text-align:center;min-width: 15em; color: black !important;">
 External equilibrium chemistry solver parameter file path (text)
 </td>
-<td style="text-align:center;min-width: 20em; ">
+<td style="text-align:center;min-width: 10em; color: black !important;">
 ‘../../external/AED/aed_geochem_pars.dat’
 </td>
 </tr>
-<tr>
-<td style="text-align:center;min-width: 20em; ">
+<tr grouplength="6">
+<td colspan="3" style="border-bottom: 1px solid;color: black !important;background-color: #ebebeb !important;">
 <strong>Boundary condition parameters and files</strong>
-</td>
-<td style="text-align:center;min-width: 20em; ">
-</td>
-<td style="text-align:center;min-width: 20em; ">
 </td>
 </tr>
 <tr>
-<td style="text-align:center;min-width: 20em; ">
+<td style="text-align:center;padding-left: 2em;min-width: 15em; color: black !important;" indentlevel="1">
 swibc_mode
 </td>
-<td style="text-align:center;min-width: 20em; ">
+<td style="text-align:center;min-width: 15em; color: black !important;">
 Sediment-water interface boundary switch
 </td>
-<td style="text-align:center;min-width: 20em; ">
+<td style="text-align:center;min-width: 10em; color: black !important;">
 0
 </td>
 </tr>
 <tr>
-<td style="text-align:center;min-width: 20em; ">
+<td style="text-align:center;padding-left: 2em;min-width: 15em; color: black !important;" indentlevel="1">
 deepbc_mode
 </td>
-<td style="text-align:center;min-width: 20em; ">
+<td style="text-align:center;min-width: 15em; color: black !important;">
 Bottom boundary switch
 </td>
-<td style="text-align:center;min-width: 20em; ">
+<td style="text-align:center;min-width: 10em; color: black !important;">
 1
 </td>
 </tr>
 <tr>
-<td style="text-align:center;min-width: 20em; ">
+<td style="text-align:center;padding-left: 2em;min-width: 15em; color: black !important;" indentlevel="1">
 swibc_file
 </td>
-<td style="text-align:center;min-width: 20em; ">
+<td style="text-align:center;min-width: 15em; color: black !important;">
 Sediment-water interface boundary file path (text)
 </td>
-<td style="text-align:center;min-width: 20em; ">
+<td style="text-align:center;min-width: 10em; color: black !important;">
 ../../external/AED/aed_sediment_swibc.dat’
 </td>
 </tr>
 <tr>
-<td style="text-align:center;min-width: 20em; ">
+<td style="text-align:center;padding-left: 2em;min-width: 15em; color: black !important;" indentlevel="1">
 deepbc_file
 </td>
-<td style="text-align:center;min-width: 20em; ">
+<td style="text-align:center;min-width: 15em; color: black !important;">
 Deep boundary file path (text)
 </td>
-<td style="text-align:center;min-width: 20em; ">
+<td style="text-align:center;min-width: 10em; color: black !important;">
 ../../external/AED/aed_sediment_deepbc.dat’
 </td>
 </tr>
 <tr>
-<td style="text-align:center;min-width: 20em; ">
+<td style="text-align:center;padding-left: 2em;min-width: 15em; color: black !important;" indentlevel="1">
 swibc_filevars
 </td>
-<td style="text-align:center;min-width: 20em; ">
+<td style="text-align:center;min-width: 15em; color: black !important;">
 Variables taken from external boundary file for sediment-water interface
 </td>
-<td style="text-align:center;min-width: 20em; ">
+<td style="text-align:center;min-width: 10em; color: black !important;">
 ‘oxy’,‘nit’,‘amm’,‘frp’,‘poml’
 </td>
 </tr>
 <tr>
-<td style="text-align:center;min-width: 20em; ">
+<td style="text-align:center;padding-left: 2em;min-width: 15em; color: black !important;" indentlevel="1">
 deepbc_filevars
 </td>
-<td style="text-align:center;min-width: 20em; ">
+<td style="text-align:center;min-width: 15em; color: black !important;">
 0
 </td>
-<td style="text-align:center;min-width: 20em; ">
+<td style="text-align:center;min-width: 10em; color: black !important;">
 ‘poml’
 </td>
 </tr>
-<tr>
-<td style="text-align:center;min-width: 20em; ">
+<tr grouplength="12">
+<td colspan="3" style="border-bottom: 1px solid;color: black !important;background-color: #ebebeb !important;">
 <strong>Initial condition setup</strong>
-</td>
-<td style="text-align:center;min-width: 20em; ">
-</td>
-<td style="text-align:center;min-width: 20em; ">
 </td>
 </tr>
 <tr>
-<td style="text-align:center;min-width: 20em; ">
+<td style="text-align:center;padding-left: 2em;min-width: 15em; color: black !important;" indentlevel="1">
 SolidInitialUnit
 </td>
-<td style="text-align:center;min-width: 20em; ">
+<td style="text-align:center;min-width: 15em; color: black !important;">
 </td>
-<td style="text-align:center;min-width: 20em; ">
+<td style="text-align:center;min-width: 10em; color: black !important;">
 ‘mmolLsolid’
 </td>
 </tr>
 <tr>
-<td style="text-align:center;min-width: 20em; ">
+<td style="text-align:center;padding-left: 2em;min-width: 15em; color: black !important;" indentlevel="1">
 OMInitMethodL
 </td>
-<td style="text-align:center;min-width: 20em; ">
+<td style="text-align:center;min-width: 15em; color: black !important;">
 Switch for labile organic matter initial profile (constant, linear or exponential) (character switch)
 </td>
-<td style="text-align:center;min-width: 20em; ">
+<td style="text-align:center;min-width: 10em; color: black !important;">
 ‘LI_I’
 </td>
 </tr>
 <tr>
-<td style="text-align:center;min-width: 20em; ">
+<td style="text-align:center;padding-left: 2em;min-width: 15em; color: black !important;" indentlevel="1">
 OM_topL
 </td>
-<td style="text-align:center;min-width: 20em; ">
+<td style="text-align:center;min-width: 15em; color: black !important;">
 Fraction of initial condition at the top of the labile initial profile using linear option (0 to 1)
 </td>
-<td style="text-align:center;min-width: 20em; ">
+<td style="text-align:center;min-width: 10em; color: black !important;">
 1
 </td>
 </tr>
 <tr>
-<td style="text-align:center;min-width: 20em; ">
+<td style="text-align:center;padding-left: 2em;min-width: 15em; color: black !important;" indentlevel="1">
 OM_minL
 </td>
-<td style="text-align:center;min-width: 20em; ">
+<td style="text-align:center;min-width: 15em; color: black !important;">
 Fraction of initial condition at the depth InitMinDepthL using linear option (0 to 1)
 </td>
-<td style="text-align:center;min-width: 20em; ">
+<td style="text-align:center;min-width: 10em; color: black !important;">
 0.9
 </td>
 </tr>
 <tr>
-<td style="text-align:center;min-width: 20em; ">
+<td style="text-align:center;padding-left: 2em;min-width: 15em; color: black !important;" indentlevel="1">
 OM_cfL
 </td>
-<td style="text-align:center;min-width: 20em; ">
+<td style="text-align:center;min-width: 15em; color: black !important;">
 Decay coefficient for labile organic matter initial profile using exponential option (-)
 </td>
-<td style="text-align:center;min-width: 20em; ">
+<td style="text-align:center;min-width: 10em; color: black !important;">
 0.6
 </td>
 </tr>
 <tr>
-<td style="text-align:center;min-width: 20em; ">
+<td style="text-align:center;padding-left: 2em;min-width: 15em; color: black !important;" indentlevel="1">
 InitMinDepthL
 </td>
-<td style="text-align:center;min-width: 20em; ">
+<td style="text-align:center;min-width: 15em; color: black !important;">
 Depth at which the OM_minL percentage applies using the linear option (cm)
 </td>
-<td style="text-align:center;min-width: 20em; ">
+<td style="text-align:center;min-width: 10em; color: black !important;">
 99
 </td>
 </tr>
 <tr>
-<td style="text-align:center;min-width: 20em; ">
+<td style="text-align:center;padding-left: 2em;min-width: 15em; color: black !important;" indentlevel="1">
 OMInitMethodR
 </td>
-<td style="text-align:center;min-width: 20em; ">
+<td style="text-align:center;min-width: 15em; color: black !important;">
 Switch for refractory organic matter initial profile (constant, linear or exponential) (character switch)
 </td>
-<td style="text-align:center;min-width: 20em; ">
+<td style="text-align:center;min-width: 10em; color: black !important;">
 ‘LI_I’
 </td>
 </tr>
 <tr>
-<td style="text-align:center;min-width: 20em; ">
+<td style="text-align:center;padding-left: 2em;min-width: 15em; color: black !important;" indentlevel="1">
 OM_topR
 </td>
-<td style="text-align:center;min-width: 20em; ">
+<td style="text-align:center;min-width: 15em; color: black !important;">
 Fraction of initial condition at the top of the refractory initial profile using linear option (0 to 1)
 </td>
-<td style="text-align:center;min-width: 20em; ">
+<td style="text-align:center;min-width: 10em; color: black !important;">
 1
 </td>
 </tr>
 <tr>
-<td style="text-align:center;min-width: 20em; ">
+<td style="text-align:center;padding-left: 2em;min-width: 15em; color: black !important;" indentlevel="1">
 OM_minR
 </td>
-<td style="text-align:center;min-width: 20em; ">
+<td style="text-align:center;min-width: 15em; color: black !important;">
 Fraction of initial condition at the depth InitMinDepthR using linear option (0 to 1)
 </td>
-<td style="text-align:center;min-width: 20em; ">
+<td style="text-align:center;min-width: 10em; color: black !important;">
 0.9
 </td>
 </tr>
 <tr>
-<td style="text-align:center;min-width: 20em; ">
+<td style="text-align:center;padding-left: 2em;min-width: 15em; color: black !important;" indentlevel="1">
 OM_cfR
 </td>
-<td style="text-align:center;min-width: 20em; ">
+<td style="text-align:center;min-width: 15em; color: black !important;">
 Decay coefficient for labile organic matter initial profile using exponential option (-)
 </td>
-<td style="text-align:center;min-width: 20em; ">
+<td style="text-align:center;min-width: 10em; color: black !important;">
 0.6
 </td>
 </tr>
 <tr>
-<td style="text-align:center;min-width: 20em; ">
+<td style="text-align:center;padding-left: 2em;min-width: 15em; color: black !important;" indentlevel="1">
 InitMinDepthR
 </td>
-<td style="text-align:center;min-width: 20em; ">
+<td style="text-align:center;min-width: 15em; color: black !important;">
 Depth at which the OM_minR percentage applies using the linear option (cm)
 </td>
-<td style="text-align:center;min-width: 20em; ">
+<td style="text-align:center;min-width: 10em; color: black !important;">
 99
 </td>
 </tr>
 <tr>
-<td style="text-align:center;min-width: 20em; ">
+<td style="text-align:center;padding-left: 2em;min-width: 15em; color: black !important;" indentlevel="1">
 POMVR
 </td>
-<td style="text-align:center;min-width: 20em; ">
+<td style="text-align:center;min-width: 15em; color: black !important;">
 Concentration of very refractory particulate organic matter (% solids)
 </td>
-<td style="text-align:center;min-width: 20em; ">
+<td style="text-align:center;min-width: 10em; color: black !important;">
 0.3
 </td>
 </tr>
-<tr>
-<td style="text-align:center;min-width: 20em; ">
+<tr grouplength="6">
+<td colspan="3" style="border-bottom: 1px solid;color: black !important;background-color: #ebebeb !important;">
 <strong>Output settings</strong>
-</td>
-<td style="text-align:center;min-width: 20em; ">
-</td>
-<td style="text-align:center;min-width: 20em; ">
 </td>
 </tr>
 <tr>
-<td style="text-align:center;min-width: 20em; ">
+<td style="text-align:center;padding-left: 2em;min-width: 15em; color: black !important;" indentlevel="1">
 diag_level
 </td>
-<td style="text-align:center;min-width: 20em; ">
+<td style="text-align:center;min-width: 15em; color: black !important;">
 Switch for which types of diags to write to files (integer)
 </td>
-<td style="text-align:center;min-width: 20em; ">
+<td style="text-align:center;min-width: 10em; color: black !important;">
 10
 </td>
 </tr>
 <tr>
-<td style="text-align:center;min-width: 20em; ">
+<td style="text-align:center;padding-left: 2em;min-width: 15em; color: black !important;" indentlevel="1">
 output_profiles
 </td>
-<td style="text-align:center;min-width: 20em; ">
+<td style="text-align:center;min-width: 15em; color: black !important;">
 Switch to write .sed files (logical)
 </td>
-<td style="text-align:center;min-width: 20em; ">
+<td style="text-align:center;min-width: 10em; color: black !important;">
 .TRUE.
 </td>
 </tr>
 <tr>
-<td style="text-align:center;min-width: 20em; ">
+<td style="text-align:center;padding-left: 2em;min-width: 15em; color: black !important;" indentlevel="1">
 morevariables
 </td>
-<td style="text-align:center;min-width: 20em; ">
+<td style="text-align:center;min-width: 15em; color: black !important;">
 List of other variables to be written to output files e.g. rates, factors etc. (text)
 </td>
-<td style="text-align:center;min-width: 20em; ">
+<td style="text-align:center;min-width: 10em; color: black !important;">
 ‘FO2’
 </td>
 </tr>
 <tr>
-<td style="text-align:center;min-width: 20em; ">
+<td style="text-align:center;padding-left: 2em;min-width: 15em; color: black !important;" indentlevel="1">
 output_diag_vars
 </td>
-<td style="text-align:center;min-width: 20em; ">
+<td style="text-align:center;min-width: 15em; color: black !important;">
 List of variables to be written to diag files at <code>output_diag_depths</code> (text)
 </td>
-<td style="text-align:center;min-width: 20em; ">
+<td style="text-align:center;min-width: 10em; color: black !important;">
 ‘oxy’,‘amm’,‘poml’
 </td>
 </tr>
 <tr>
-<td style="text-align:center;min-width: 20em; ">
+<td style="text-align:center;padding-left: 2em;min-width: 15em; color: black !important;" indentlevel="1">
 n_ddpths
 </td>
-<td style="text-align:center;min-width: 20em; ">
+<td style="text-align:center;min-width: 15em; color: black !important;">
 Number of depths to write diag outputs for. Depths are listed in <code>output_diag_depths</code> (integer)
 </td>
-<td style="text-align:center;min-width: 20em; ">
+<td style="text-align:center;min-width: 10em; color: black !important;">
 1
 </td>
 </tr>
 <tr>
-<td style="text-align:center;min-width: 20em; ">
+<td style="text-align:center;padding-left: 2em;min-width: 15em; color: black !important;" indentlevel="1">
 output_diag_depths
 </td>
-<td style="text-align:center;min-width: 20em; ">
+<td style="text-align:center;min-width: 15em; color: black !important;">
 Depths to write diag files (cm)
 </td>
-<td style="text-align:center;min-width: 20em; ">
+<td style="text-align:center;min-width: 10em; color: black !important;">
 1
 </td>
 </tr>
@@ -6355,7 +6330,56 @@ smothbm
 <p>The sections above described the scientific and technical processes within the model, the links to other AED modules, and the range of variables and parameters. This section outlines how the model treats the initial condition and boundary conditions.</p>
 <div id="setup-examples" class="section level3 hasAnchor" number="14.4.1">
 <h3><span class="header-section-number">14.4.1</span> Setup examples<a href="sediment-biogeochemistry.html#setup-examples" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>mattedit:</p>
+<p>This section contains a set of steps for how to set up a simple simulation. Due to the large number of variables and parameters in CANDI-AED a full set of example parameters is not presented here. However, the lists of the tables above all contain example values that the user can consult.</p>
+<div id="hydrodynamic-model" class="section level4 hasAnchor" number="14.4.1.1">
+<h4><span class="header-section-number">14.4.1.1</span> Hydrodynamic model<a href="sediment-biogeochemistry.html#hydrodynamic-model" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>The duration of the sediment model simulation is set within the parameters of the hydrodynamic driver model. For example, if using GLM, the duration is set in <code>glm.nml</code>, <code>&amp;time</code>, then either if <code>timefmt</code> = 2, the <code>start</code> and <code>stop</code> times are set, or if <code>timefmt</code> = 3, the <code>num_days</code> parameter sets the number of days. If using TUFLOW-FV, the time is set in the .fvc file, where the <code>start time</code> and <code>stop time</code> are set as dates.</p>
+<p>The sediment zone setup of the hydrodynamic model is also set in the hydrodynamic model parameters. The sediment model can be run without any zones, however, if zones are required, the user will need to make sure the zone numbers are aligned.</p>
+</div>
+<div id="module-settings" class="section level4 hasAnchor" number="14.4.1.2">
+<h4><span class="header-section-number">14.4.1.2</span> Module settings<a href="sediment-biogeochemistry.html#module-settings" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div id="aed_sed_candi" class="section level5 unnumbered hasAnchor">
+<h5>&amp;aed_sed_candi<a href="sediment-biogeochemistry.html#aed_sed_candi" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<p>Most parameters in the &amp;aed_sed_candi block can be left at the default values. The <code>substep</code> and <code>driver_dt</code> can be adjusted to optimise the simulation for speed and numerical stability. If the simulation is stable, then <code>spinup_days</code> are not required. The list of <code>active_zones</code> should correspond to the zones set in the hydrodynamic model and the parameter files. Users should check that the file paths and file names of the parameter and variable files are correctly set up in the user’s directories. The boundary condition parameters and the initial condition parameters can be left at their default values. From the output settings, the <code>output_profiles</code> can be set to <em>TRUE</em> so that the .sed files are written. Any <code>morevariables</code> and <code>output_diag_vars</code> are set here.</p>
+</div>
+<div id="aed_models" class="section level5 unnumbered hasAnchor">
+<h5>&amp;aed_models<a href="sediment-biogeochemistry.html#aed_models" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<p>The user should ensure that <code>aed_seddiagenesis</code> is included in the <code>models</code> list. It must come after <code>aed_totals</code>.</p>
+</div>
+<div id="aed_sedflux" class="section level5 unnumbered hasAnchor">
+<h5>&amp;aed_sedflux<a href="sediment-biogeochemistry.html#aed_sedflux" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<p>The parameter <code>sedflux_model</code> must be set to <code>Dynamic2d</code> for the sediment-water column models to be coupled.</p>
+</div>
+<div id="aed_sed_const2d" class="section level5 unnumbered hasAnchor">
+<h5>&amp;aed_sed_const2d<a href="sediment-biogeochemistry.html#aed_sed_const2d" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<p>If the sediment model is running in fewer zones than the water column model, then the water column model takes constant values for the sediment fluxes. The fluxes are listed in this code block.</p>
+</div>
+<div id="fsed-linking-variables" class="section level5 unnumbered hasAnchor">
+<h5>Fsed linking variables<a href="sediment-biogeochemistry.html#fsed-linking-variables" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<p>The names of Fsed linking variables are set in the various nml blocks. If a linking flux is desired, the user should check that each linking variable is set properly in each block. For example, to link the <em>diss_flux_link</em> for <span class="math inline">\(O_2\)</span>, the parameter <code>Fsed_oxy_variable</code> is set to <code>SDF_Fsed_oxy</code> in <code>aed_oxygen</code> and also in the variables .csv file. This applies similarly for <code>&amp;aed_nitogen</code> <code>Fsed_amm_variable</code> = <code>SDF_Fsed_amm</code> and <code>SDF_Fsed_nit</code>.</p>
+<p>compulsory variables</p>
+<p>non-compulsory variables</p>
+<p>boundary files</p>
+<p>hydrodynamic driver</p>
+<p>other modules</p>
+<p>module level</p>
+<p>timing</p>
+<p>aed_params</p>
+<p>grid settings
+porosity xl 30 cm</p>
+<p>OMModel, OMapproach</p>
+<p>rxn_mode = 0
+p0 Upper porosity (-) 0.90 0.90 …
+p00 Lower porosity (-) 0.39 0.39 …
+xl Simulation depth 80.00 80.00 …
+maxnpts Number of sediment layers 50.00 50.00 …
+job Switch for linear or exponential layer spacing 2.00 2.00 …
+x1 Depth of full bioturbation (cm) 0.50 0.50 …
+x2 Depth of bioturbation decline (cm) 1.00 1.00 …
+alpha0 Irrigation rate (cm y-1) 200.00 200.00 …
+xirrig</p>
+</div>
+</div>
 </div>
 <div id="sediment-initialisation-options" class="section level3 hasAnchor" number="14.4.2">
 <h3><span class="header-section-number">14.4.2</span> Sediment initialisation options<a href="sediment-biogeochemistry.html#sediment-initialisation-options" class="anchor-section" aria-label="Anchor link to header"></a></h3>
