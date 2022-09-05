@@ -7,13 +7,14 @@
 Daniel Paraska, Matthew R. Hipsey
 
 ## Overview
+
+This module is a sediment reactive transport model, based on a 1D approximation of the sediment and pore-water profiles. Each active sediment zone (or column) is discretized into a user defineable number of layers that start at thicknesses of around 1 mm at the sediment-water interface and increase exponentially down to a pre-defined sediment depth. The model resolves in each layer both physical processes (e.g. pore-water diffusion or bioturbation) and chemical processes (e.g. redox transformations).
+
 <center>
 ```{r 23-pic1, echo=FALSE, fig.cap="Schematic of the main physical and chemical processes that cause chemical concentration and flux change in the sediment and across the sediment-water interface, and therefore are included in most sediment diagenesis models.", out.width = '85%'}
 knitr::include_graphics("images/23-sediment_biogeochemistry/Boxes&Arrows/Overview-05.png")
 ```
 </center>
-
-This module is a sediment reactive transport model, based on a 1D approximation of the sediment and pore-water profiles. Each active sediment zone (or column) is discretized into a user defineable number of layers that start at thicknesses of around 1 mm at the sediment-water interface and increase exponentially down to a pre-defined sediment depth. The model resolves in each layer both physical processes (e.g. pore-water diffusion or bioturbation) and chemical processes (e.g. redox transformations).
 
 Under some conditions, the sediment stores can release nutrients to the water column, while under other conditions, the sediment can remove nutrients over the long-term through burial, and the surface layers can remove nitrogen through processes such as denitrification. The fine balance that controls the conditions under which the sediment will store, release or remove nutrients is largely governed by the aerobic state of the sediment pore water, and the amount of reactive organic matter fuelling the reactions. The depth-resolved sediment model accounts for mixing from the hydrodynamic model into the upper sediment layers, and then calculates whether organic matter is consumed aerobically, through denitrification or, deeper down, through sulfate reduction or even methanogenesis.
 
@@ -217,6 +218,8 @@ R_{PONR} = (ponr2donr) (komlim)
 knitr::include_graphics("images/23-sediment_biogeochemistry/Boxes&Arrows/OMModel-04.png")
 ```
 
+<br>
+
 <center>
 
 ```{r OMModel-table, echo=FALSE, message=FALSE, warning=FALSE}
@@ -254,15 +257,15 @@ OMModel_Groups <- unique(OMModel_tab$Group)
 
    kable_styling(OMModel_tab, bootstrap_options = "hover",
                 full_width = T, position = "left",
-                font_size = 12) %>% 
+                font_size = 11) %>% 
     
   row_spec(0, background = "#14759e", bold = TRUE, color = "white") %>%
-  column_spec(1, width_min = "10em" ,color="black",bold = F) %>%
-  column_spec(2, width_min = "15em" ,color="black") %>%
-  column_spec(3, width_min = "15em" ,color="black") %>%
+  column_spec(1, width_min = "18em" ,color="black",bold = F) %>%
+  column_spec(2, width_min = "18em" ,color="black") %>%
+  column_spec(3, width_min = "18em" ,color="black") %>%
   # column_spec(4, width_min = "15em") %>%
   row_spec(1:4, background = 'white')  %>%
- scroll_box(width = "45em", height = "30em",fixed_thead = FALSE)
+ scroll_box(width = "770px", height = "30em",fixed_thead = FALSE)
 ```
 </center>
 
@@ -270,7 +273,7 @@ OMModel_Groups <- unique(OMModel_tab$Group)
 
 
 
-##### *The redox sequence* 
+##### *The redox sequence* {-}
 
 The terminal redox reaction pathways are the six major pathways that are available in most diagenesis models, and are driven by different organic matter pools, depending on the `OMModel` configuration chosen from the above options. CANDI-AED allows the use of Approach 1 or 2 organic matter oxidation rate equations, as examined in detail in Paraska et al (2015), and also explained below. The six major pathways are:
 
@@ -287,6 +290,7 @@ The decay of the complex $OM$ types to the LMW $DOM$ required for the hetertroph
 \
 CANDI-AED uses a more detailed set of reactions for the denitrifying process, which are described in the \@ref(####Nitrogen cycling) section below. The chemical equations may be written as in table \@ref(tab:OMChem-table) and the reaction rates for each of these are calculated dynamically based on Monod expressions which mediate the reaction rate according to the concentration of potential oxidants higher in the redox sequence, and the concentration of the available oxidant.\@ref(fig:dev-Grid1)
 
+<br>
 <center>
 
 ```{r OMChem-table, echo=FALSE, message=FALSE, warning=FALSE}
@@ -324,7 +328,7 @@ OMChem_Groups <- unique(OMChem_tab$Group)
 
    kable_styling(OMChem_tab, bootstrap_options = "hover",
                 full_width = T, position = "left",
-                font_size = 12) %>% 
+                font_size = 11) %>% 
     
   row_spec(0, background = "#14759e", bold = TRUE, color = "white") %>%
   column_spec(1, width_min = "10em" ,color="black",bold = F) %>%
@@ -332,9 +336,10 @@ OMChem_Groups <- unique(OMChem_tab$Group)
   # column_spec(3, width_min = "15em" ,color="black") %>%
   # column_spec(4, width_min = "15em") %>%
   row_spec(1:4, background = 'white')  %>%
- scroll_box(width = "45em", height = "25em",fixed_thead = FALSE)
+ scroll_box(width = "770px", height = "20em",fixed_thead = FALSE)
 ```
 </center>
+<br>
 
 <!-- \begin{eqnarray} -->
 <!-- \\ -->
@@ -591,7 +596,7 @@ SecondChem_tab <- read_xlsx("tables/23-sediment_biogeochemistry/UserManual.xlsx"
         , caption = "Chemical reactions for secondary redox reactions.",bootstrap_options = "hover")%>%
    kable_styling(SecondChem_tab, bootstrap_options = "hover",
                 full_width = T, position = "left",
-                font_size = 12) %>% 
+                font_size = 11) %>% 
     
   row_spec(0, background = "#14759e", bold = TRUE, color = "white") %>%
   column_spec(1, width_min = "12em" ,color="black",bold = F) %>%
@@ -600,7 +605,7 @@ SecondChem_tab <- read_xlsx("tables/23-sediment_biogeochemistry/UserManual.xlsx"
   column_spec(4, width_min = "3em" ,color="black") %>%
   column_spec(5, width_min = "12em" ,color="black") %>%
   row_spec(1:5, background = 'white')  %>%
- scroll_box(width = "45em", height = "25em",fixed_thead = FALSE)
+ scroll_box(width = "770px", height = "25em",fixed_thead = FALSE)
 ```
 </center>
 
@@ -887,7 +892,7 @@ $D_B[z_s] = D_{B_0} \: e^{(- \frac{z_s}{xs} )}$
 
 A bioturbation profile is output in the file `Depths.sed`, so the user can examine the shape of the profile based on the parameter settings chosen.
 
-###### *Bioirrigation*
+###### *Bioirrigation* {-} 
 
 Bioirrigation has only one option, whereby the parameter `alpha0`, $\alpha_0$, sets the rate of irrigation and `xirrig`, $x_{irrig}$, sets the depth at which irrigation decays (Figure Z), according to:
 
@@ -1753,6 +1758,86 @@ kable(param_Hidden ,"html", escape = F, align = "c", caption = "Other parameters
 
 
 ## Setup & Configuration 
+
+The model is set up via the name list text file `aed.nml` using the module keyword `&aed_seddiagenesis` and a model namelist block termed `&aed_sediment` configured to select the `sediment_model` as “Dynamic” or “Dynamic2D” option. Once this is selected, the model will search for the `&aed_sedcandi` parameter block.
+
+An example `aed.nml` configuration block for the `aed_seddiagenesis` module that includes multiple active sediment zones, plus microphytobenthos (MPB) and seagrass links, is shown below:
+
+<br>
+
+```{fortran, eval = FALSE}
+!###############################################################################
+! aed_seddiagenesis
+!-------------------------------------------------------------------------------
+&aed_sediment
+   sediment_model    = 'DYNAMIC'    ! engages the CANDI-AED model
+   mpb_link_variable = 'PHY_mpb'    ! use to set link for MPB
+   mag_link_variable = 'MA2_mag'    ! use to set link for macroalgae inputs
+   mac_link_variable = 'MAC_mac'    ! use to set link for macrophyte root inputs
+   swi_link_variable = 'NCS_swi'    ! use to set link for variable w00
+/
+&aed_sed_candi
+  !-- Time Settings --!
+   spinup_days     =  90
+   spinup_dt       =   0.25
+   driver_dt       = 900     
+   substep         =   8       
+  !-- Zones details --!
+   n_zones         = 5
+   active_zones    = 104,103, 53, 23, 12,11
+   zone_types      =   5, 3, 3, 1, 1
+  !-- General Setup Options  --!
+   dbase           = './AED/aed_candi_params.csv'
+   vars_files      = './AED/aed_sdg_vars.csv'
+   geochem_file    = './AED/aed_geochem_pars.dat'
+  !-- Sediment Boundary Conditions  --!
+   swibc_mode      = 0      ! previously ibc2
+   deepbc_mode     = 1      ! previously ibbc
+   swibc_file      = './AED/aed_sediment_swibc.dat'
+   deepbc_file     = './AED/aed_sediment_deepbc.dat'
+   swibc_filevars  = '' ! 'oxy', 'nit', 'amm', 'frp', 'poml'   ! from_bc_file
+   deepbc_filevars = '' ! ,OXY_oxy,                            ! use_deep_bc
+   flux_scale      = 1
+  !-- Initial Conditions  --!
+   SolidInitialUnit= 'mmolLsolid'
+   OMInitMethodL   = 'LI_I'
+   OM_topL         = 1
+   OM_minL         = 0.9
+   OM_cfL          = 0.6
+   InitMinDepthL   = 99
+   OMInitMethodR   = 'LI_I'
+   OM_topR         = 1
+   OM_minR         = 0.3
+   OM_cfR          = 0.6
+   InitMinDepthR   = 50
+   POMVR           = 0.3
+  !-- Outputs  --!
+   diag_level         = 10
+   output_profiles    =  .TRUE.
+   morevariables      = 'Rgpp','Rrsp','FO2','f_an'
+   output_diag_vars   = 'mpb','oxy','amm','docl','pocl','docr'
+   n_ddpths           = 2
+   output_diag_depths = 1.0, 5.0  ! cm below swi
+/
+```
+
+<br>
+
+
+<br>
+
+
+```{block2, pars-text, type='rmdnote'}
+In addition to adding the above code block to `aed.nml`, users must also supply a valid AED sediment parameter database file (`aed_candi_pars`) and a variable definition file ('aed_sdg_vars'). Both of these files file must be supplied in either `CSV` format. 
+Users can create a standard file in the correct format from the online [**AED parameter database**](https://aed.see.uwa.edu.au/research/models/AED/aed_dbase/db_edit.php) by selecting from the available sediment types of interest, downloading via the **"Make CSV"** button, and then tailoring to the simulation being undertaken as required. Carefully check the parameter units and values!
+```
+
+<br>
+
+
+<br>
+
+
 The sections above described the scientific and technical processes within the model, the links to other AED modules, and the range of variables and parameters. This section outlines how the model treats the initial condition and boundary conditions. 
 
 ### Setup details and examples
