@@ -513,6 +513,7 @@ div.csl-indent {
 </div>
 <div id="overview-9" class="section level2 hasAnchor" number="14.2">
 <h2><span class="header-section-number">14.2</span> Overview<a href="sediment-biogeochemistry.html#overview-9" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>This module is a sediment reactive transport model, based on a 1D approximation of the sediment and pore-water profiles. Each active sediment zone (or column) is discretized into a user defineable number of layers that start at thicknesses of around 1 mm at the sediment-water interface and increase exponentially down to a pre-defined sediment depth. The model resolves in each layer both physical processes (e.g. pore-water diffusion or bioturbation) and chemical processes (e.g. redox transformations).</p>
 <center>
 <div class="figure"><span style="display:block;" id="fig:23-pic1"></span>
 <img src="images/23-sediment_biogeochemistry/Boxes&Arrows/Overview-05.png" alt="Schematic of the main physical and chemical processes that cause chemical concentration and flux change in the sediment and across the sediment-water interface, and therefore are included in most sediment diagenesis models." width="85%" />
@@ -521,7 +522,6 @@ Figure 14.1: Schematic of the main physical and chemical processes that cause ch
 </p>
 </div>
 </center>
-<p>This module is a sediment reactive transport model, based on a 1D approximation of the sediment and pore-water profiles. Each active sediment zone (or column) is discretized into a user defineable number of layers that start at thicknesses of around 1 mm at the sediment-water interface and increase exponentially down to a pre-defined sediment depth. The model resolves in each layer both physical processes (e.g. pore-water diffusion or bioturbation) and chemical processes (e.g. redox transformations).</p>
 <p>Under some conditions, the sediment stores can release nutrients to the water column, while under other conditions, the sediment can remove nutrients over the long-term through burial, and the surface layers can remove nitrogen through processes such as denitrification. The fine balance that controls the conditions under which the sediment will store, release or remove nutrients is largely governed by the aerobic state of the sediment pore water, and the amount of reactive organic matter fuelling the reactions. The depth-resolved sediment model accounts for mixing from the hydrodynamic model into the upper sediment layers, and then calculates whether organic matter is consumed aerobically, through denitrification or, deeper down, through sulfate reduction or even methanogenesis.</p>
 <p>Sediment early-diagenesis models are highly complex environmental reactive transport simulation tools. The meta-analysis by Paraska et al. (2014) discussed the history of their evolution to these complex configurations, in which the original models of Boudreau (1996), Van Cappellen and Wang (1996) and Soetaert et al. (1996) were taken up and applied in many contexts by new modellers, who added new features and extended their capabilities, or discarded old features as required. The meta-analysis also identified the major challenges associated with developing new sediment diagenesis models. Here, the AED modelling package for sediment biogeochemistry is presented, CANDI-AED, which is an extension of the Approach 1 models, but reengineered and augmented with new model approaches and capabilities as a way to address some of these challenges.</p>
 <p>Paraska et al. (2015) outlined the significance and uncertainty associated with different parameterisation approaches of organic matter dynamics. In these cases, simulations were run to test the significance of different theoretical approaches and model structural assumptions, using an idealised model setup with only primary oxidation reactions and no physical processes or spatial resolution. The true impact of these different model approaches within a spatially-resolved model, accounting for all of the advection, diffusion and secondary reaction processes, however, is yet to be determined and it is unclear whether some formulations may suit some application contexts better than others. Therefore there is a need for a fully flexible model structure that can include these different organic matter breakdown parameterisations and allow users to assess critically the alternative approaches. In addition, other aspects related to secondary redox reactions, mineral reactions, precipitation and adsorption should similarly be subject to comparative assessments.</p>
@@ -819,9 +819,10 @@ R_{PONR} = (ponr2donr) (komlim)
 Figure 14.7: Three options for different levels of complexity in organic matter breakdown, by setting the <code>OMModel</code> switch. Left – Model in which POM breaks down directly to CO<sub>2</sub> and other waste products. Centre – Model in which POM is first hydrolysed to DOM and then oxidised to CO<sub>2</sub>. Right – Model in which POM is hydrolysed to DOM, which can then be fermented and oxidised.
 </p>
 </div>
+<p><br></p>
 <center>
-<div style="border: 1px solid #ddd; padding: 5px; overflow-y: scroll; height:30em; overflow-x: scroll; width:45em; ">
-<table class="table table-hover" style="font-size: 12px; ">
+<div style="border: 1px solid #ddd; padding: 5px; overflow-y: scroll; height:30em; overflow-x: scroll; width:770px; ">
+<table class="table table-hover" style="font-size: 11px; ">
 <caption style="font-size: initial !important;">
 <span id="tab:OMModel-table">Table 14.2: </span>Organic matter breakdown processes. The index <em>i</em> in <em>∑ R<sub>Oxi</sub></em> refers to the sequence of TEA in Table 5 - 2. For OMModel 2, POM and DOM are each three state variables of POC, PON and POP, and DOC, DON and DOP. caption.
 </caption>
@@ -845,24 +846,24 @@ Rate equation
 </td>
 </tr>
 <tr>
-<td style="text-align:center;padding-left: 2em;min-width: 10em; color: black !important;background-color: white !important;" indentlevel="1">
+<td style="text-align:center;padding-left: 2em;min-width: 18em; color: black !important;background-color: white !important;" indentlevel="1">
 POM<sub>Lab</sub> oxidation
 </td>
-<td style="text-align:center;min-width: 15em; color: black !important;background-color: white !important;">
+<td style="text-align:center;min-width: 18em; color: black !important;background-color: white !important;">
 POM<sub>Lab</sub> <span class="math inline">\(\rightarrow\)</span> CO<sub>2</sub> etc.
 </td>
-<td style="text-align:center;min-width: 15em; color: black !important;background-color: white !important;">
+<td style="text-align:center;min-width: 18em; color: black !important;background-color: white !important;">
 <em>k<sub>DOMLab</sub>∑R<sub>Oxi</sub></em>
 </td>
 </tr>
 <tr>
-<td style="text-align:center;padding-left: 2em;min-width: 10em; color: black !important;background-color: white !important;" indentlevel="1">
+<td style="text-align:center;padding-left: 2em;min-width: 18em; color: black !important;background-color: white !important;" indentlevel="1">
 POM<sub>Ref</sub> oxidation
 </td>
-<td style="text-align:center;min-width: 15em; color: black !important;background-color: white !important;">
+<td style="text-align:center;min-width: 18em; color: black !important;background-color: white !important;">
 POM<sub>Ref</sub> <span class="math inline">\(\rightarrow\)</span> CO<sub>2</sub> etc.
 </td>
-<td style="text-align:center;min-width: 15em; color: black !important;background-color: white !important;">
+<td style="text-align:center;min-width: 18em; color: black !important;background-color: white !important;">
 <em>k<sub>DOMRef</sub>∑R<sub>Oxi</sub></em>
 </td>
 </tr>
@@ -872,46 +873,46 @@ POM<sub>Ref</sub> <span class="math inline">\(\rightarrow\)</span> CO<sub>2</sub
 </td>
 </tr>
 <tr>
-<td style="text-align:center;padding-left: 2em;min-width: 10em; color: black !important;background-color: white !important;" indentlevel="1">
+<td style="text-align:center;padding-left: 2em;min-width: 18em; color: black !important;background-color: white !important;" indentlevel="1">
 POMLab hydrolysis
 </td>
-<td style="text-align:center;min-width: 15em; color: black !important;background-color: white !important;">
+<td style="text-align:center;min-width: 18em; color: black !important;background-color: white !important;">
 POM<sub>Lab</sub> <span class="math inline">\(\rightarrow\)</span> DOM<sub>Lab</sub>
 </td>
-<td style="text-align:center;min-width: 15em; color: black !important;background-color: white !important;">
+<td style="text-align:center;min-width: 18em; color: black !important;background-color: white !important;">
 <em>k<sub>Hydrolysis</sub>(POM<sub>Lab</sub>)</em>
 </td>
 </tr>
 <tr>
-<td style="text-align:center;padding-left: 2em;min-width: 10em; color: black !important;background-color: white !important;" indentlevel="1">
+<td style="text-align:center;padding-left: 2em;min-width: 18em; color: black !important;background-color: white !important;" indentlevel="1">
 POMRef hydrolysis
 </td>
-<td style="text-align:center;min-width: 15em; color: black !important;background-color: white !important;">
+<td style="text-align:center;min-width: 18em; color: black !important;background-color: white !important;">
 POMRef <span class="math inline">\(\rightarrow\)</span> DOM<sub>Ref</sub>
 </td>
-<td style="text-align:center;min-width: 15em; color: black !important;background-color: white !important;">
+<td style="text-align:center;min-width: 18em; color: black !important;background-color: white !important;">
 <em>k<sub>Hydrolysis</sub>(POM<sub>Ref</sub>)</em>
 </td>
 </tr>
 <tr>
-<td style="text-align:center;padding-left: 2em;min-width: 10em; color: black !important;" indentlevel="1">
+<td style="text-align:center;padding-left: 2em;min-width: 18em; color: black !important;" indentlevel="1">
 DOMLab oxidation
 </td>
-<td style="text-align:center;min-width: 15em; color: black !important;">
+<td style="text-align:center;min-width: 18em; color: black !important;">
 DOMLab <span class="math inline">\(\rightarrow\)</span> CO<sub>2</sub> etc.
 </td>
-<td style="text-align:center;min-width: 15em; color: black !important;">
+<td style="text-align:center;min-width: 18em; color: black !important;">
 <em>k<sub>DOMLab</sub>∑R<sub>Oxi</sub></em>
 </td>
 </tr>
 <tr>
-<td style="text-align:center;padding-left: 2em;min-width: 10em; color: black !important;" indentlevel="1">
+<td style="text-align:center;padding-left: 2em;min-width: 18em; color: black !important;" indentlevel="1">
 DOMRef oxidation
 </td>
-<td style="text-align:center;min-width: 15em; color: black !important;">
+<td style="text-align:center;min-width: 18em; color: black !important;">
 DOMRef <span class="math inline">\(\rightarrow\)</span> CO<sub>2</sub> etc.
 </td>
-<td style="text-align:center;min-width: 15em; color: black !important;">
+<td style="text-align:center;min-width: 18em; color: black !important;">
 <em>k<sub>DOMRef</sub>∑R<sub>Oxi</sub></em>
 </td>
 </tr>
@@ -921,46 +922,46 @@ DOMRef <span class="math inline">\(\rightarrow\)</span> CO<sub>2</sub> etc.
 </td>
 </tr>
 <tr>
-<td style="text-align:center;padding-left: 2em;min-width: 10em; color: black !important;" indentlevel="1">
+<td style="text-align:center;padding-left: 2em;min-width: 18em; color: black !important;" indentlevel="1">
 POMi hydrolysis
 </td>
-<td style="text-align:center;min-width: 15em; color: black !important;">
+<td style="text-align:center;min-width: 18em; color: black !important;">
 POMi <span class="math inline">\(\rightarrow\)</span> D<sub>Hyd</sub>
 </td>
-<td style="text-align:center;min-width: 15em; color: black !important;">
+<td style="text-align:center;min-width: 18em; color: black !important;">
 <em>k<sub>Hydrolysis</sub>(POM<sub>Lab</sub>)F<sub>BHyd</sub></em>
 </td>
 </tr>
 <tr>
-<td style="text-align:center;padding-left: 2em;min-width: 10em; color: black !important;" indentlevel="1">
+<td style="text-align:center;padding-left: 2em;min-width: 18em; color: black !important;" indentlevel="1">
 DHyd fermentation
 </td>
-<td style="text-align:center;min-width: 15em; color: black !important;">
+<td style="text-align:center;min-width: 18em; color: black !important;">
 DHyd <span class="math inline">\(\rightarrow\)</span> OAc + H<sub>2</sub>
 </td>
-<td style="text-align:center;min-width: 15em; color: black !important;">
+<td style="text-align:center;min-width: 18em; color: black !important;">
 <em>k<sub>growth</sub>B<sub>Fer</sub>F<sub>T</sub> <sub>Fer</sub>F<sub>DHyd</sub></em>
 </td>
 </tr>
 <tr>
-<td style="text-align:center;padding-left: 2em;min-width: 10em; color: black !important;" indentlevel="1">
+<td style="text-align:center;padding-left: 2em;min-width: 18em; color: black !important;" indentlevel="1">
 DHyd oxidation
 </td>
-<td style="text-align:center;min-width: 15em; color: black !important;">
+<td style="text-align:center;min-width: 18em; color: black !important;">
 DHyd <span class="math inline">\(\rightarrow\)</span> CO<sub>2</sub> etc.
 </td>
-<td style="text-align:center;min-width: 15em; color: black !important;">
+<td style="text-align:center;min-width: 18em; color: black !important;">
 <em>k<sub>growth</sub>B<sub>Aer,Den</sub>F<sub>T</sub> <sub>j</sub> F<sub>DHyd</sub></em>
 </td>
 </tr>
 <tr>
-<td style="text-align:center;padding-left: 2em;min-width: 10em; color: black !important;" indentlevel="1">
+<td style="text-align:center;padding-left: 2em;min-width: 18em; color: black !important;" indentlevel="1">
 OAc, H2 oxidation
 </td>
-<td style="text-align:center;min-width: 15em; color: black !important;">
+<td style="text-align:center;min-width: 18em; color: black !important;">
 OAc, H2 <span class="math inline">\(\rightarrow\)</span> CO<sub>2</sub> etc.
 </td>
-<td style="text-align:center;min-width: 15em; color: black !important;">
+<td style="text-align:center;min-width: 18em; color: black !important;">
 <em>k<sub>growth</sub>B<sub>j</sub>F<sub>T</sub> <sub>j</sub> F<sub>TEA</sub> <sub>j</sub>F<sub>OAc,H2</sub> F<sub>In</sub> <sub>j</sub></em>
 </td>
 </tr>
@@ -970,13 +971,13 @@ OAc, H2 <span class="math inline">\(\rightarrow\)</span> CO<sub>2</sub> etc.
 </td>
 </tr>
 <tr>
-<td style="text-align:center;padding-left: 2em;min-width: 10em; color: black !important;" indentlevel="1">
+<td style="text-align:center;padding-left: 2em;min-width: 18em; color: black !important;" indentlevel="1">
 POM oxidation
 </td>
-<td style="text-align:center;min-width: 15em; color: black !important;">
+<td style="text-align:center;min-width: 18em; color: black !important;">
 POM <span class="math inline">\(\rightarrow\)</span> CO<sub>2</sub> etc.
 </td>
-<td style="text-align:center;min-width: 15em; color: black !important;">
+<td style="text-align:center;min-width: 18em; color: black !important;">
 <em>R<sub>0</sub> e<sup>(-<span class="math inline">\(\beta\)</span></sup> <sup><span class="math inline">\(\times\)</span></sup> <sup>depth)</sup></em>
 </td>
 </tr>
@@ -984,8 +985,8 @@ POM <span class="math inline">\(\rightarrow\)</span> CO<sub>2</sub> etc.
 </table>
 </div>
 </center>
-<div id="the-redox-sequence" class="section level5 hasAnchor" number="14.3.1.3.1">
-<h5><span class="header-section-number">14.3.1.3.1</span> <em>The redox sequence</em><a href="sediment-biogeochemistry.html#the-redox-sequence" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<div id="the-redox-sequence" class="section level5 unnumbered hasAnchor">
+<h5><em>The redox sequence</em><a href="sediment-biogeochemistry.html#the-redox-sequence" class="anchor-section" aria-label="Anchor link to header"></a></h5>
 <p>The terminal redox reaction pathways are the six major pathways that are available in most diagenesis models, and are driven by different organic matter pools, depending on the <code>OMModel</code> configuration chosen from the above options. CANDI-AED allows the use of Approach 1 or 2 organic matter oxidation rate equations, as examined in detail in Paraska et al (2015), and also explained below. The six major pathways are:</p>
 <ul>
 <li>Aerobic</li>
@@ -998,9 +999,10 @@ POM <span class="math inline">\(\rightarrow\)</span> CO<sub>2</sub> etc.
 <p>The decay of the complex <span class="math inline">\(OM\)</span> types to the LMW <span class="math inline">\(DOM\)</span> required for the hetertrophic bacteria to utilise are all modelled with a simple first-order decay rate. The subsequent reactions for terminal metabolism that describe the breakdown of <span class="math inline">\(OM\)</span> to <span class="math inline">\(CO_2\)</span> and other breakdown products are described below<br />
 (equations <a href="#eq:primary-0">(<strong>??</strong>)</a> to <a href="#eq:primary-6">(<strong>??</strong>)</a>.<br />
 CANDI-AED uses a more detailed set of reactions for the denitrifying process, which are described in the @ref(####Nitrogen cycling) section below. The chemical equations may be written as in table <a href="sediment-biogeochemistry.html#tab:OMChem-table">14.3</a> and the reaction rates for each of these are calculated dynamically based on Monod expressions which mediate the reaction rate according to the concentration of potential oxidants higher in the redox sequence, and the concentration of the available oxidant.<a href="sediment-biogeochemistry.html#fig:dev-Grid1">14.20</a></p>
+<br>
 <center>
-<div style="border: 1px solid #ddd; padding: 5px; overflow-y: scroll; height:25em; overflow-x: scroll; width:45em; ">
-<table class="table table-hover" style="font-size: 12px; ">
+<div style="border: 1px solid #ddd; padding: 5px; overflow-y: scroll; height:20em; overflow-x: scroll; width:770px; ">
+<table class="table table-hover" style="font-size: 11px; ">
 <caption style="font-size: initial !important;">
 <span id="tab:OMChem-table">Table 14.3: </span>Primary terminal redox reactions. x, y and z are stoichiometric coefficients.
 </caption>
@@ -1075,6 +1077,7 @@ Methanogenesis
 </table>
 </div>
 </center>
+<p><br></p>
 <!-- \begin{eqnarray} -->
 <!-- \\ -->
 <!-- N2O breakdown -->
@@ -1132,8 +1135,8 @@ Methanogenesis
 <!-- \end{eqnarray} -->
 <p>The rate equation for the oxidation of the oxidants with any of the pools above can include any of the terms in equation x, where <span class="math inline">\(R_{{Ox}_i}\)</span> is the reaction of an oxidant <span class="math inline">\(i\)</span> (Arndt et al. 2013). The kinetic rate constant <span class="math inline">\(k_{OM}\)</span> gives the maximum oxidation rate, which is different for each reactive type, but the same for each oxidation pathway. Alternatively, using <em>OMModel</em> 3, the kinetic rate constant is the rate of bacterial growth. The rates are calculated as the product of the rate constant, the concentration and a series of limitation and inhibition factors that scale between 0 and 1.</p>
 </div>
-<div id="limitation-and-inhibition-factors" class="section level5 hasAnchor" number="14.3.1.3.2">
-<h5><span class="header-section-number">14.3.1.3.2</span> <em>Limitation and inhibition factors</em><a href="sediment-biogeochemistry.html#limitation-and-inhibition-factors" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<div id="limitation-and-inhibition-factors" class="section level5 hasAnchor" number="14.3.1.3.1">
+<h5><span class="header-section-number">14.3.1.3.1</span> <em>Limitation and inhibition factors</em><a href="sediment-biogeochemistry.html#limitation-and-inhibition-factors" class="anchor-section" aria-label="Anchor link to header"></a></h5>
 <p>A common feature of all diagenesis models is that the oxidation rate expression <span class="math inline">\(R_{Ox}\)</span> is a product of up to seven terms:
 - an organic matter reaction rate constant <em>k<sub>OM</sub></em>
 - the organic matter concentration limitation, <span class="math inline">\(F_{OM}\)</span>
@@ -1255,8 +1258,8 @@ F_T = 1 - e^{\frac {∆G_r + m ∆G_{ATP}} {χR} }
 </center>
 <p>where ΔG0 is the standard state free energy of a redox reaction, calculated as the sum of the energy of the reduction of a TEA and the oxidation of an organic substrate. These energies are well constrained by laboratory data, though there may be differences between laboratory and field conditions that create some uncertainty in their use (Bethke et al. 2011). Practically, this equation allows for <em>ΔG<sub>r</sub></em> to be very close to <em>∆G<sub>0</sub></em> when the reactants are at high concentrations relative to the products. Inversely, when the products are at relatively high concentrations, <em>ΔG<sub>r</sub></em> becomes more positive, making FT more negative. Equation <a href="sediment-biogeochemistry.html#eq:factors-3">(14.10)</a> requires the constants <em>m</em> and <em>χ</em>, which are parameters that could be measured empirically, however as yet they have not all been measured for every redox pathway for every substrate, and therefore authors have had to estimate some values when using equation <a href="sediment-biogeochemistry.html#eq:factors-3">(14.10)</a> (Dale et al. 2008). It also requires <em>ΔG<sub>ATP</sub></em>, which is around 45 kJ (mol substrate)<sup>-1</sup> but has variable published values. Around neutral pH the conditions for fermentation product consumption by iron reducers, sulphate reducers and methanogens are all thermodynamically favourable, but this changes with pH (Bethke et al. 2011). Acidity either promotes or hinders the reaction depending on whether the protons are produced or consumed in the reaction.</p>
 </div>
-<div id="nitrogen-cycling" class="section level5 hasAnchor" number="14.3.1.3.3">
-<h5><span class="header-section-number">14.3.1.3.3</span> <em>Nitrogen cycling</em><a href="sediment-biogeochemistry.html#nitrogen-cycling" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<div id="nitrogen-cycling" class="section level5 hasAnchor" number="14.3.1.3.2">
+<h5><span class="header-section-number">14.3.1.3.2</span> <em>Nitrogen cycling</em><a href="sediment-biogeochemistry.html#nitrogen-cycling" class="anchor-section" aria-label="Anchor link to header"></a></h5>
 <p>The redox sequence in CANDI-AED is slightly different to the sequence in other diagenesis models: here the nitrogen redox reactions are split into several processes. Most diagenesis models have an overall reaction of <span class="math inline">\(NO_3^-\)</span> oxidising organic matter and producing <span class="math inline">\(N_2\)</span>, as shown in figure <a href="sediment-biogeochemistry.html#fig:NModel-1">14.9</a>. This reaction is less favourable than aerobic oxidation and it is inhibited by <span class="math inline">\(O_2\)</span>.</p>
 <center>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:NModel-1"></span>
@@ -1377,8 +1380,8 @@ Ammonium release
 <h4><span class="header-section-number">14.3.1.4</span> Secondary Redox Reactions<a href="sediment-biogeochemistry.html#secondary-redox-reactions" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>The reactions of chemical species produced by the primary redox reactions (<a href="sediment-biogeochemistry.html#tab:SecondChem-table">14.6</a>) are referred to as secondary redox reactions, and are usually given bimolecular rate laws, which are first order with respect to the oxidant and reductant (<a href="sediment-biogeochemistry.html#tab:SecondChem-table">14.6</a>). The rates are controlled by a kinetic constant with units (mmol L)^-1 y^-1.</p>
 <center>
-<div style="border: 1px solid #ddd; padding: 5px; overflow-y: scroll; height:25em; overflow-x: scroll; width:45em; ">
-<table class="table table-hover" style="font-size: 12px; ">
+<div style="border: 1px solid #ddd; padding: 5px; overflow-y: scroll; height:25em; overflow-x: scroll; width:770px; ">
+<table class="table table-hover" style="font-size: 11px; ">
 <caption style="font-size: initial !important;">
 <span id="tab:SecondChem-table">Table 14.6: </span>Chemical reactions for secondary redox reactions.
 </caption>
@@ -2956,8 +2959,8 @@ Bio-diffusivity:</p>
 </div>
 <p>A bioturbation profile is output in the file <code>Depths.sed</code>, so the user can examine the shape of the profile based on the parameter settings chosen.</p>
 </div>
-<div id="bioirrigation" class="section level6 hasAnchor" number="14.3.1.6.0.1">
-<h6><span class="header-section-number">14.3.1.6.0.1</span> <em>Bioirrigation</em><a href="sediment-biogeochemistry.html#bioirrigation" class="anchor-section" aria-label="Anchor link to header"></a></h6>
+<div id="bioirrigation" class="section level6 unnumbered hasAnchor">
+<h6><em>Bioirrigation</em><a href="sediment-biogeochemistry.html#bioirrigation" class="anchor-section" aria-label="Anchor link to header"></a></h6>
 <p>Bioirrigation has only one option, whereby the parameter <code>alpha0</code>, <span class="math inline">\(\alpha_0\)</span>, sets the rate of irrigation and <code>xirrig</code>, <span class="math inline">\(x_{irrig}\)</span>, sets the depth at which irrigation decays (Figure Z), according to:</p>
 <div class="panelset sideways">
 <div class="panel">
@@ -6475,6 +6478,71 @@ smothbm
 </div>
 <div id="setup-configuration-9" class="section level2 hasAnchor" number="14.4">
 <h2><span class="header-section-number">14.4</span> Setup &amp; Configuration<a href="sediment-biogeochemistry.html#setup-configuration-9" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The model is set up via the name list text file <code>aed.nml</code> using the module keyword <code>&amp;aed_seddiagenesis</code> and a model namelist block termed <code>&amp;aed_sediment</code> configured to select the <code>sediment_model</code> as “Dynamic” or “Dynamic2D” option. Once this is selected, the model will search for the <code>&amp;aed_sedcandi</code> parameter block.</p>
+<p>An example <code>aed.nml</code> configuration block for the <code>aed_seddiagenesis</code> module that includes multiple active sediment zones, plus microphytobenthos (MPB) and seagrass links, is shown below:</p>
+<p><br></p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode fortran"><code class="sourceCode fortranfixed"><span id="cb18-1"><a href="sediment-biogeochemistry.html#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co">!###############################################################################</span></span>
+<span id="cb18-2"><a href="sediment-biogeochemistry.html#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="co">! aed_seddiagenesis</span></span>
+<span id="cb18-3"><a href="sediment-biogeochemistry.html#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="co">!-------------------------------------------------------------------------------</span></span>
+<span id="cb18-4"><a href="sediment-biogeochemistry.html#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="kw">&amp;</span>aed_sediment</span>
+<span id="cb18-5"><a href="sediment-biogeochemistry.html#cb18-5" aria-hidden="true" tabindex="-1"></a>   sediment_model    <span class="kw">=</span> <span class="st">&#39;DYNAMIC&#39;</span>    <span class="co">! engages the CANDI-AED model</span></span>
+<span id="cb18-6"><a href="sediment-biogeochemistry.html#cb18-6" aria-hidden="true" tabindex="-1"></a>   mpb_link_variable <span class="kw">=</span> <span class="st">&#39;PHY_mpb&#39;</span>    <span class="co">! use to set link for MPB</span></span>
+<span id="cb18-7"><a href="sediment-biogeochemistry.html#cb18-7" aria-hidden="true" tabindex="-1"></a>   mag_link_variable <span class="kw">=</span> <span class="st">&#39;MA2_mag&#39;</span>    <span class="co">! use to set link for macroalgae inputs</span></span>
+<span id="cb18-8"><a href="sediment-biogeochemistry.html#cb18-8" aria-hidden="true" tabindex="-1"></a>   mac_link_variable <span class="kw">=</span> <span class="st">&#39;MAC_mac&#39;</span>    <span class="co">! use to set link for macrophyte root inputs</span></span>
+<span id="cb18-9"><a href="sediment-biogeochemistry.html#cb18-9" aria-hidden="true" tabindex="-1"></a>   swi_link_variable <span class="kw">=</span> <span class="st">&#39;NCS_swi&#39;</span>    <span class="co">! use to set link for variable w00</span></span>
+<span id="cb18-10"><a href="sediment-biogeochemistry.html#cb18-10" aria-hidden="true" tabindex="-1"></a><span class="kw">/</span></span>
+<span id="cb18-11"><a href="sediment-biogeochemistry.html#cb18-11" aria-hidden="true" tabindex="-1"></a><span class="kw">&amp;</span>aed_sed_candi</span>
+<span id="cb18-12"><a href="sediment-biogeochemistry.html#cb18-12" aria-hidden="true" tabindex="-1"></a>  <span class="co">!-- Time Settings --!</span></span>
+<span id="cb18-13"><a href="sediment-biogeochemistry.html#cb18-13" aria-hidden="true" tabindex="-1"></a>   spinup_days     <span class="kw">=</span>  <span class="dv">90</span></span>
+<span id="cb18-14"><a href="sediment-biogeochemistry.html#cb18-14" aria-hidden="true" tabindex="-1"></a>   spinup_dt       <span class="kw">=</span>   <span class="fl">0.25</span></span>
+<span id="cb18-15"><a href="sediment-biogeochemistry.html#cb18-15" aria-hidden="true" tabindex="-1"></a>   driver_dt       <span class="kw">=</span> <span class="dv">900</span>     </span>
+<span id="cb18-16"><a href="sediment-biogeochemistry.html#cb18-16" aria-hidden="true" tabindex="-1"></a>   substep         <span class="kw">=</span>   <span class="dv">8</span>       </span>
+<span id="cb18-17"><a href="sediment-biogeochemistry.html#cb18-17" aria-hidden="true" tabindex="-1"></a>  <span class="co">!-- Zones details --!</span></span>
+<span id="cb18-18"><a href="sediment-biogeochemistry.html#cb18-18" aria-hidden="true" tabindex="-1"></a>   n_zones         <span class="kw">=</span> <span class="dv">5</span></span>
+<span id="cb18-19"><a href="sediment-biogeochemistry.html#cb18-19" aria-hidden="true" tabindex="-1"></a>   active_zones    <span class="kw">=</span> <span class="dv">104</span>,<span class="dv">103</span>, <span class="dv">53</span>, <span class="dv">23</span>, <span class="dv">12</span>,<span class="dv">11</span></span>
+<span id="cb18-20"><a href="sediment-biogeochemistry.html#cb18-20" aria-hidden="true" tabindex="-1"></a>   zone_types      <span class="kw">=</span>   <span class="dv">5</span>, <span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">1</span></span>
+<span id="cb18-21"><a href="sediment-biogeochemistry.html#cb18-21" aria-hidden="true" tabindex="-1"></a>  <span class="co">!-- General Setup Options  --!</span></span>
+<span id="cb18-22"><a href="sediment-biogeochemistry.html#cb18-22" aria-hidden="true" tabindex="-1"></a>   dbase           <span class="kw">=</span> <span class="st">&#39;./AED/aed_candi_params.csv&#39;</span></span>
+<span id="cb18-23"><a href="sediment-biogeochemistry.html#cb18-23" aria-hidden="true" tabindex="-1"></a>   vars_files      <span class="kw">=</span> <span class="st">&#39;./AED/aed_sdg_vars.csv&#39;</span></span>
+<span id="cb18-24"><a href="sediment-biogeochemistry.html#cb18-24" aria-hidden="true" tabindex="-1"></a>   geochem_file    <span class="kw">=</span> <span class="st">&#39;./AED/aed_geochem_pars.dat&#39;</span></span>
+<span id="cb18-25"><a href="sediment-biogeochemistry.html#cb18-25" aria-hidden="true" tabindex="-1"></a>  <span class="co">!-- Sediment Boundary Conditions  --!</span></span>
+<span id="cb18-26"><a href="sediment-biogeochemistry.html#cb18-26" aria-hidden="true" tabindex="-1"></a>   swibc_mode      <span class="kw">=</span> <span class="dv">0</span>      <span class="co">! previously ibc2</span></span>
+<span id="cb18-27"><a href="sediment-biogeochemistry.html#cb18-27" aria-hidden="true" tabindex="-1"></a>   deepbc_mode     <span class="kw">=</span> <span class="dv">1</span>      <span class="co">! previously ibbc</span></span>
+<span id="cb18-28"><a href="sediment-biogeochemistry.html#cb18-28" aria-hidden="true" tabindex="-1"></a>   swibc_file      <span class="kw">=</span> <span class="st">&#39;./AED/aed_sediment_swibc.dat&#39;</span></span>
+<span id="cb18-29"><a href="sediment-biogeochemistry.html#cb18-29" aria-hidden="true" tabindex="-1"></a>   deepbc_file     <span class="kw">=</span> <span class="st">&#39;./AED/aed_sediment_deepbc.dat&#39;</span></span>
+<span id="cb18-30"><a href="sediment-biogeochemistry.html#cb18-30" aria-hidden="true" tabindex="-1"></a>   swibc_filevars  <span class="kw">=</span> <span class="st">&#39;&#39;</span> <span class="co">! &#39;oxy&#39;, &#39;nit&#39;, &#39;amm&#39;, &#39;frp&#39;, &#39;poml&#39;   ! from_bc_file</span></span>
+<span id="cb18-31"><a href="sediment-biogeochemistry.html#cb18-31" aria-hidden="true" tabindex="-1"></a>   deepbc_filevars <span class="kw">=</span> <span class="st">&#39;&#39;</span> <span class="co">! ,OXY_oxy,                            ! use_deep_bc</span></span>
+<span id="cb18-32"><a href="sediment-biogeochemistry.html#cb18-32" aria-hidden="true" tabindex="-1"></a>   flux_scale      <span class="kw">=</span> <span class="dv">1</span></span>
+<span id="cb18-33"><a href="sediment-biogeochemistry.html#cb18-33" aria-hidden="true" tabindex="-1"></a>  <span class="co">!-- Initial Conditions  --!</span></span>
+<span id="cb18-34"><a href="sediment-biogeochemistry.html#cb18-34" aria-hidden="true" tabindex="-1"></a>   SolidInitialUnit<span class="kw">=</span> <span class="st">&#39;mmolLsolid&#39;</span></span>
+<span id="cb18-35"><a href="sediment-biogeochemistry.html#cb18-35" aria-hidden="true" tabindex="-1"></a>   OMInitMethodL   <span class="kw">=</span> <span class="st">&#39;LI_I&#39;</span></span>
+<span id="cb18-36"><a href="sediment-biogeochemistry.html#cb18-36" aria-hidden="true" tabindex="-1"></a>   OM_topL         <span class="kw">=</span> <span class="dv">1</span></span>
+<span id="cb18-37"><a href="sediment-biogeochemistry.html#cb18-37" aria-hidden="true" tabindex="-1"></a>   OM_minL         <span class="kw">=</span> <span class="fl">0.9</span></span>
+<span id="cb18-38"><a href="sediment-biogeochemistry.html#cb18-38" aria-hidden="true" tabindex="-1"></a>   OM_cfL          <span class="kw">=</span> <span class="fl">0.6</span></span>
+<span id="cb18-39"><a href="sediment-biogeochemistry.html#cb18-39" aria-hidden="true" tabindex="-1"></a>   InitMinDepthL   <span class="kw">=</span> <span class="dv">99</span></span>
+<span id="cb18-40"><a href="sediment-biogeochemistry.html#cb18-40" aria-hidden="true" tabindex="-1"></a>   OMInitMethodR   <span class="kw">=</span> <span class="st">&#39;LI_I&#39;</span></span>
+<span id="cb18-41"><a href="sediment-biogeochemistry.html#cb18-41" aria-hidden="true" tabindex="-1"></a>   OM_topR         <span class="kw">=</span> <span class="dv">1</span></span>
+<span id="cb18-42"><a href="sediment-biogeochemistry.html#cb18-42" aria-hidden="true" tabindex="-1"></a>   OM_minR         <span class="kw">=</span> <span class="fl">0.3</span></span>
+<span id="cb18-43"><a href="sediment-biogeochemistry.html#cb18-43" aria-hidden="true" tabindex="-1"></a>   OM_cfR          <span class="kw">=</span> <span class="fl">0.6</span></span>
+<span id="cb18-44"><a href="sediment-biogeochemistry.html#cb18-44" aria-hidden="true" tabindex="-1"></a>   InitMinDepthR   <span class="kw">=</span> <span class="dv">50</span></span>
+<span id="cb18-45"><a href="sediment-biogeochemistry.html#cb18-45" aria-hidden="true" tabindex="-1"></a>   POMVR           <span class="kw">=</span> <span class="fl">0.3</span></span>
+<span id="cb18-46"><a href="sediment-biogeochemistry.html#cb18-46" aria-hidden="true" tabindex="-1"></a>  <span class="co">!-- Outputs  --!</span></span>
+<span id="cb18-47"><a href="sediment-biogeochemistry.html#cb18-47" aria-hidden="true" tabindex="-1"></a>   diag_level         <span class="kw">=</span> <span class="dv">10</span></span>
+<span id="cb18-48"><a href="sediment-biogeochemistry.html#cb18-48" aria-hidden="true" tabindex="-1"></a>   output_profiles    <span class="kw">=</span>  <span class="cn">.TRUE.</span></span>
+<span id="cb18-49"><a href="sediment-biogeochemistry.html#cb18-49" aria-hidden="true" tabindex="-1"></a>   morevariables      <span class="kw">=</span> <span class="st">&#39;Rgpp&#39;</span>,<span class="st">&#39;Rrsp&#39;</span>,<span class="st">&#39;FO2&#39;</span>,<span class="st">&#39;f_an&#39;</span></span>
+<span id="cb18-50"><a href="sediment-biogeochemistry.html#cb18-50" aria-hidden="true" tabindex="-1"></a>   output_diag_vars   <span class="kw">=</span> <span class="st">&#39;mpb&#39;</span>,<span class="st">&#39;oxy&#39;</span>,<span class="st">&#39;amm&#39;</span>,<span class="st">&#39;docl&#39;</span>,<span class="st">&#39;pocl&#39;</span>,<span class="st">&#39;docr&#39;</span></span>
+<span id="cb18-51"><a href="sediment-biogeochemistry.html#cb18-51" aria-hidden="true" tabindex="-1"></a>   n_ddpths           <span class="kw">=</span> <span class="dv">2</span></span>
+<span id="cb18-52"><a href="sediment-biogeochemistry.html#cb18-52" aria-hidden="true" tabindex="-1"></a>   output_diag_depths <span class="kw">=</span> <span class="fl">1.0</span>, <span class="fl">5.0</span>  <span class="co">! cm below swi</span></span>
+<span id="cb18-53"><a href="sediment-biogeochemistry.html#cb18-53" aria-hidden="true" tabindex="-1"></a><span class="kw">/</span></span></code></pre></div>
+<p><br></p>
+<p><br></p>
+
+<div class="rmdnote">
+In addition to adding the above code block to <code>aed.nml</code>, users must also supply a valid AED sediment parameter database file (<code>aed_candi_pars</code>) and a variable definition file (‘aed_sdg_vars’). Both of these files file must be supplied in either <code>CSV</code> format.
+Users can create a standard file in the correct format from the online <a href="https://aed.see.uwa.edu.au/research/models/AED/aed_dbase/db_edit.php"><strong>AED parameter database</strong></a> by selecting from the available sediment types of interest, downloading via the <strong>“Make CSV”</strong> button, and then tailoring to the simulation being undertaken as required. Carefully check the parameter units and values!
+</div>
+<p><br></p>
+<p><br></p>
 <p>The sections above described the scientific and technical processes within the model, the links to other AED modules, and the range of variables and parameters. This section outlines how the model treats the initial condition and boundary conditions.</p>
 <div id="setup-details-and-examples" class="section level3 hasAnchor" number="14.4.1">
 <h3><span class="header-section-number">14.4.1</span> Setup details and examples<a href="sediment-biogeochemistry.html#setup-details-and-examples" class="anchor-section" aria-label="Anchor link to header"></a></h3>

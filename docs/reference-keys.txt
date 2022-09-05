@@ -304,8 +304,8 @@ eq:hab5
 fig:coorongmap
 fig:Gen2-HSIflower
 fig:Gen2-HSIsexual
-tab:unnamed-chunk-29
 tab:unnamed-chunk-30
+tab:unnamed-chunk-31
 tab:35-publications
 introduction
 nomenclature
@@ -484,7 +484,6 @@ process-descriptions-9
 sediment-model-domain
 physical-transport
 primary-redox-reactions
-the-redox-sequence
 limitation-and-inhibition-factors
 nitrogen-cycling
 secondary-redox-reactions
@@ -492,7 +491,6 @@ equilibrium-geochemistry
 mineral-precipitation-and-ageing
 adsorption
 biological-dynamics
-bioirrigation
 implementation-within-the-aed-framework
 sediment-water-coupling
 resolving-sediment-zonation
