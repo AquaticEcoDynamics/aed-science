@@ -604,8 +604,152 @@ Figure 14.4: Upon sedimentation, the frame of reference shifts upwards. The bott
 Figure 14.5: Porewater is advected at the same rate as burial. If <code>poreflux</code> is non-zero, an additional rate of advection is applied to porewater. The direction is upwards when <code>poreflux</code> is positive, downwards when <em>poreflux</em> is negative.
 </p>
 </div>
-<p>wqwqwqwq
-Each species has its own rate of diffusion.</p>
+<p>Diffusion of solutes is calculated using a diffusivity constant. One default value, which is temperature-dependent, is used for most dissolved variables (table <a href="sediment-biogeochemistry.html#tab:Diff-table">14.1</a>). This value is based on the diffusivity of chloride. Twelve other variables have their own values, which are also temperature-dependent. Some also use the function <em>a</em>, which can also include salinity and pressure (table <a href="sediment-biogeochemistry.html#tab:Diff-table">14.1</a>).</p>
+<center>
+<div style="border: 1px solid #ddd; padding: 5px; overflow-y: scroll; height:20em; overflow-x: scroll; width:40em; ">
+<table class="table table-hover" style="font-size: 12px; ">
+<caption style="font-size: initial !important;">
+<span id="tab:Diff-table">Table 14.1: </span>Temperature-dependent calculations for diffusivity constants. All state variables in CANDI-AED use the default value, unless specified in this table. The function <em>a</em> is a further correction for salinity and pressure.
+</caption>
+<thead>
+<tr>
+<th style="text-align:center;font-weight: bold;color: white !important;background-color: #14759e !important;">
+Variable
+</th>
+<th style="text-align:center;font-weight: bold;color: white !important;background-color: #14759e !important;">
+Diffusivity (cm y<sup>-1</sup>)
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center;min-width: 20em; color: black !important;">
+Default
+</td>
+<td style="text-align:center;min-width: 20em; color: black !important;">
+(9.60 + 0.438×<em>Temperature</em>)×10<sup>-6</sup>
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 20em; color: black !important;">
+<em>O<sub>2</sub></em>
+</td>
+<td style="text-align:center;min-width: 20em; color: black !important;">
+7.4×10<sup>-8</sup>(<em>a</em>/25.6<sup>0.6</sup>)
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 20em; color: black !important;">
+<em>CO<sub>2</sub></em>
+</td>
+<td style="text-align:center;min-width: 20em; color: black !important;">
+7.4×10<sup>-8</sup>(<em>a</em>/34.0<sup>0.6</sup>)
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 20em; color: black !important;">
+<em>DIC</em>
+</td>
+<td style="text-align:center;min-width: 20em; color: black !important;">
+(5.06 + 0.275×<em>Temperature</em>)×10<sup>-6</sup>
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 20em; color: black !important;">
+<em>NH<sub>4</sub><sup>+</sup></em>
+</td>
+<td style="text-align:center;min-width: 20em; color: black !important;">
+0.5 × (9.5 + 0.413×<em>Temperature</em>)×10<sup>-6</sup> +
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 20em; color: black !important;">
+</td>
+<td style="text-align:center;min-width: 20em; color: black !important;">
+0.5 × (7.4×10<sup>-8</sup>(<em>a</em>/25.8<sup>0.6</sup>))
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 20em; color: black !important;">
+<em>HS<sup>-</sup></em>
+</td>
+<td style="text-align:center;min-width: 20em; color: black !important;">
+0.5 × (10.4 + 0.273×<em>Temperature</em>)×10<sup>-6</sup>) +
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 20em; color: black !important;">
+</td>
+<td style="text-align:center;min-width: 20em; color: black !important;">
+0.5 × (7.4×10<sup>-8</sup>(<em>a</em>/32.9<sup>0.6</sup>))
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 20em; color: black !important;">
+<em>NO<sub>3</sub><sup>-</sup></em>
+</td>
+<td style="text-align:center;min-width: 20em; color: black !important;">
+(9.50 + 0.388×<em>Temperature</em>)×10<sup>-6</sup>
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 20em; color: black !important;">
+<em>PO<sub>4</sub><sup>3-</sup></em>
+</td>
+<td style="text-align:center;min-width: 20em; color: black !important;">
+0.14 × ((2.62 + 0.143×<em>Temperature</em>)×10<sup>-6</sup>) +
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 20em; color: black !important;">
+</td>
+<td style="text-align:center;min-width: 20em; color: black !important;">
+0.85 × ( (3.26 + 0.177×<em>Temperature</em>)×10<sup>-6</sup>) +
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 20em; color: black !important;">
+</td>
+<td style="text-align:center;min-width: 20em; color: black !important;">
+0.01 × ( (4.02 + 0.223×<em>Temperature</em>)×10<sup>-6</sup>)
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 20em; color: black !important;">
+<em>Fe<sup>2+</sup></em>
+</td>
+<td style="text-align:center;min-width: 20em; color: black !important;">
+(3.31 + 0.150×<em>Temperature</em>)×10<sup>-6</sup>
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 20em; color: black !important;">
+<em>Mn<sup>2+</sup></em>
+</td>
+<td style="text-align:center;min-width: 20em; color: black !important;">
+(3.18 + 0.155×<em>Temperature</em>)×10<sup>-6</sup>
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 20em; color: black !important;">
+<em>SO<sub>4</sub><sup>2-</sup></em>
+</td>
+<td style="text-align:center;min-width: 20em; color: black !important;">
+(4.88 + 0.232×<em>Temperature</em>)×10<sup>-6</sup>
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 20em; color: black !important;">
+<em>CH<sub>4</sub></em>
+</td>
+<td style="text-align:center;min-width: 20em; color: black !important;">
+7.4×10<sup>-8</sup>(<em>a</em>/37.7<sup>0.6</sup>)
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</center>
 </div>
 <div id="porosity" class="section level5 unnumbered hasAnchor">
 <h5><em>Porosity</em><a href="sediment-biogeochemistry.html#porosity" class="anchor-section" aria-label="Anchor link to header"></a></h5>
@@ -679,7 +823,7 @@ Figure 14.7: Three options for different levels of complexity in organic matter 
 <div style="border: 1px solid #ddd; padding: 5px; overflow-y: scroll; height:30em; overflow-x: scroll; width:45em; ">
 <table class="table table-hover" style="font-size: 12px; ">
 <caption style="font-size: initial !important;">
-<span id="tab:OMModel-table">Table 14.1: </span>Organic matter breakdown processes. The index <em>i</em> in <em>∑ R<sub>Oxi</sub></em> refers to the sequence of TEA in Table 5 - 2. For OMModel 2, POM and DOM are each three state variables of POC, PON and POP, and DOC, DON and DOP. caption.
+<span id="tab:OMModel-table">Table 14.2: </span>Organic matter breakdown processes. The index <em>i</em> in <em>∑ R<sub>Oxi</sub></em> refers to the sequence of TEA in Table 5 - 2. For OMModel 2, POM and DOM are each three state variables of POC, PON and POP, and DOC, DON and DOP. caption.
 </caption>
 <thead>
 <tr>
@@ -853,12 +997,12 @@ POM <span class="math inline">\(\rightarrow\)</span> CO<sub>2</sub> etc.
 </ul>
 <p>The decay of the complex <span class="math inline">\(OM\)</span> types to the LMW <span class="math inline">\(DOM\)</span> required for the hetertrophic bacteria to utilise are all modelled with a simple first-order decay rate. The subsequent reactions for terminal metabolism that describe the breakdown of <span class="math inline">\(OM\)</span> to <span class="math inline">\(CO_2\)</span> and other breakdown products are described below<br />
 (equations <a href="#eq:primary-0">(<strong>??</strong>)</a> to <a href="#eq:primary-6">(<strong>??</strong>)</a>.<br />
-CANDI-AED uses a more detailed set of reactions for the denitrifying process, which are described in the @ref(####Nitrogen cycling) section below. The chemical equations may be written as in table <a href="sediment-biogeochemistry.html#tab:OMChem-table">14.2</a> and the reaction rates for each of these are calculated dynamically based on Monod expressions which mediate the reaction rate according to the concentration of potential oxidants higher in the redox sequence, and the concentration of the available oxidant.<a href="sediment-biogeochemistry.html#fig:dev-Grid1">14.20</a></p>
+CANDI-AED uses a more detailed set of reactions for the denitrifying process, which are described in the @ref(####Nitrogen cycling) section below. The chemical equations may be written as in table <a href="sediment-biogeochemistry.html#tab:OMChem-table">14.3</a> and the reaction rates for each of these are calculated dynamically based on Monod expressions which mediate the reaction rate according to the concentration of potential oxidants higher in the redox sequence, and the concentration of the available oxidant.<a href="sediment-biogeochemistry.html#fig:dev-Grid1">14.20</a></p>
 <center>
 <div style="border: 1px solid #ddd; padding: 5px; overflow-y: scroll; height:25em; overflow-x: scroll; width:45em; ">
 <table class="table table-hover" style="font-size: 12px; ">
 <caption style="font-size: initial !important;">
-<span id="tab:OMChem-table">Table 14.2: </span>Primary terminal redox reactions. x, y and z are stoichiometric coefficients.
+<span id="tab:OMChem-table">Table 14.3: </span>Primary terminal redox reactions. x, y and z are stoichiometric coefficients.
 </caption>
 <thead>
 <tr>
@@ -1019,12 +1163,12 @@ F_{OM_{i}} = \frac{OM_{i}} {(OM_{i} + K_{OM})}
 </center>
 <p>where <span class="math inline">\(OM_i\)</span> is an organic matter species, such as <span class="math inline">\(D_{Hyd}\)</span> or <span class="math inline">\(OAc\)</span> and <em>K<sub>OM</sub></em> is a limiting concentration. This functions like other Monod terms, limiting the reaction rate when the concentration of <span class="math inline">\(OM_{i}\)</span> is low. Using <em>OMModel</em> 1 or 2 (the common and simplest options), <span class="math inline">\(F_{OM}\)</span> is effectively 1 and it is assumed that organic matter concentration never limits the reaction rate.</p>
 <p>The temperature factor <span class="math inline">\(F_{Tem}\)</span> is rarely employed in diagenesis models, but in a handful of cases it uses a Q10 relationship between 2 and 4 (see Fossing et al. 2004 for a clear explanation of how temperature affects reaction rates and Eldridge and Morse 2008 or Reed et al. 2011b for a specific examination of the effect of temperature). The current version of the model has switches built in for both the temperature dependence factor, <em>F<sub>Tem</sub></em>, where values of 1 or 2 turn them off and on. However, implementation and testing of the factors has not been carried out for this version of the model. The metabolism rate at <span class="math inline">\(T_{0}\)</span> is <span class="math inline">\(R_{0}\)</span>, <span class="math inline">\(ξ\)</span> is a scaling constant (see, for example, Eldridge and Morse 2008).</p>
-<p>The TEA factor, <span class="math inline">\(F_{TEA}\)</span>, term accounts for the <span class="math inline">\(R_{Ox}\)</span> dependence on the oxidant concentration when the oxidant concentration is low. The <span class="math inline">\(F_{TEA}\)</span> term in Approach 1 is a Monod expression (table <a href="sediment-biogeochemistry.html#tab:OMApproach-table">14.3</a>, figure <a href="sediment-biogeochemistry.html#fig:OMModels-2">14.8</a>), which uses Monod half-saturation constants (<em>K<sub>Ox</sub></em>), and which is chosen because it best reflects laboratory data of bacterially-controlled oxidation reactions (Boudreau and Westrich, 1984, Gaillard and Rabouille 1992). The <span class="math inline">\(F_{TEA}\)</span> of Approach 3 uses Monod functions, modified to include inhibition terms. In Approach 2 the FTEA is either 0, 1 or the ratio of <em>Ox<sub>i</sub></em> to <em>L<sub>Ox</sub></em>, depending on the oxidant concentration relative to <em>L<sub>Ox</sub></em>, a specified limiting concentration (table <a href="sediment-biogeochemistry.html#tab:OMApproach-table">14.3</a>). We use the notation <em>K<sub>Ox</sub></em> and <em>L<sub>Ox</sub></em> to emphasise that a distinction should be made between the Monod half constants in Approaches 1 and 3 and the limiting concentrations used in Approach 2; the difference in conceptual representation is not always clear in Approach 2 papers that use the notation <em>K<sub>Ox</sub></em>. We recommend that the user set the parameter <code>OMModel</code> to 1, unless they specifically need to emulate an Approach 2 model, such as that by Van Cappellen and Wang (1996), or an Approach 3 model, such as that by Soetaert et al. (1996).</p>
+<p>The TEA factor, <span class="math inline">\(F_{TEA}\)</span>, term accounts for the <span class="math inline">\(R_{Ox}\)</span> dependence on the oxidant concentration when the oxidant concentration is low. The <span class="math inline">\(F_{TEA}\)</span> term in Approach 1 is a Monod expression (table <a href="sediment-biogeochemistry.html#tab:OMApproach-table">14.4</a>, figure <a href="sediment-biogeochemistry.html#fig:OMModels-2">14.8</a>), which uses Monod half-saturation constants (<em>K<sub>Ox</sub></em>), and which is chosen because it best reflects laboratory data of bacterially-controlled oxidation reactions (Boudreau and Westrich, 1984, Gaillard and Rabouille 1992). The <span class="math inline">\(F_{TEA}\)</span> of Approach 3 uses Monod functions, modified to include inhibition terms. In Approach 2 the FTEA is either 0, 1 or the ratio of <em>Ox<sub>i</sub></em> to <em>L<sub>Ox</sub></em>, depending on the oxidant concentration relative to <em>L<sub>Ox</sub></em>, a specified limiting concentration (table <a href="sediment-biogeochemistry.html#tab:OMApproach-table">14.4</a>). We use the notation <em>K<sub>Ox</sub></em> and <em>L<sub>Ox</sub></em> to emphasise that a distinction should be made between the Monod half constants in Approaches 1 and 3 and the limiting concentrations used in Approach 2; the difference in conceptual representation is not always clear in Approach 2 papers that use the notation <em>K<sub>Ox</sub></em>. We recommend that the user set the parameter <code>OMModel</code> to 1, unless they specifically need to emulate an Approach 2 model, such as that by Van Cappellen and Wang (1996), or an Approach 3 model, such as that by Soetaert et al. (1996).</p>
 <center>
 <div style="border: 1px solid #ddd; padding: 5px; overflow-y: scroll; height:20em; overflow-x: scroll; width:40em; ">
 <table class="table table-hover" style="font-size: 12px; ">
 <caption style="font-size: initial !important;">
-<span id="tab:OMApproach-table">Table 14.3: </span>Limitation and inhibition equations for two different approaches.
+<span id="tab:OMApproach-table">Table 14.4: </span>Limitation and inhibition equations for two different approaches.
 </caption>
 <thead>
 <tr>
@@ -1130,7 +1274,7 @@ Figure 14.9: Schematic of the basic nitrogen-organic matter redox process from m
 - <strong>DNRA</strong>: (Dissimilatory nitrate reduction to ammonia) <span class="math inline">\(NO_2^-\)</span> reduction to <span class="math inline">\(NH_4^+\)</span></p>
 <p><br />
 </p>
-<p>These reactions interact as shown in figure <a href="sediment-biogeochemistry.html#fig:NModel-2">14.10</a>. In CANDI-AED, the denitrousation reaction is configured to be more favourable than aerobic oxidation, based on the free energy data reported in Lam and Kuypers (2011). Therefore <span class="math inline">\(N_2O\)</span> inhibits aerobic respiration and all lower-energy pathways. Denitratation and all other reactions are less favourable than aerobic oxidation. Denitritation is the term used for the oxidation of <span class="math inline">\(NO_2^-\)</span>, the products of which are produced through either nitrous denitritation (to <span class="math inline">\(N_2O\)</span>) or DNRA (to <span class="math inline">\(NH_4^+\)</span>), depending on the abundance of <span class="math inline">\(NO_2^-\)</span>.The rate equations are as shown in table <a href="sediment-biogeochemistry.html#tab:NRate-table">14.4</a>.</p>
+<p>These reactions interact as shown in figure <a href="sediment-biogeochemistry.html#fig:NModel-2">14.10</a>. In CANDI-AED, the denitrousation reaction is configured to be more favourable than aerobic oxidation, based on the free energy data reported in Lam and Kuypers (2011). Therefore <span class="math inline">\(N_2O\)</span> inhibits aerobic respiration and all lower-energy pathways. Denitratation and all other reactions are less favourable than aerobic oxidation. Denitritation is the term used for the oxidation of <span class="math inline">\(NO_2^-\)</span>, the products of which are produced through either nitrous denitritation (to <span class="math inline">\(N_2O\)</span>) or DNRA (to <span class="math inline">\(NH_4^+\)</span>), depending on the abundance of <span class="math inline">\(NO_2^-\)</span>.The rate equations are as shown in table <a href="sediment-biogeochemistry.html#tab:NRate-table">14.5</a>.</p>
 <center>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:NModel-2"></span>
 <img src="images/23-sediment_biogeochemistry/OMSetup/NModel2.png" alt="Schematic of the nitrogen-organic matter redox processes used in the CANDI-AED model." width="85%" />
@@ -1143,7 +1287,7 @@ Figure 14.10: Schematic of the nitrogen-organic matter redox processes used in t
 <div style="border: 1px solid #ddd; padding: 5px; overflow-y: scroll; height:40em; overflow-x: scroll; width:44em; ">
 <table class="table table-hover" style="font-size: 12px; ">
 <caption style="font-size: initial !important;">
-<span id="tab:NRate-table">Table 14.4: </span>Rate equations for organic matter oxidation by nitrogen.
+<span id="tab:NRate-table">Table 14.5: </span>Rate equations for organic matter oxidation by nitrogen.
 </caption>
 <thead>
 <tr>
@@ -1231,12 +1375,12 @@ Ammonium release
 </div>
 <div id="secondary-redox-reactions" class="section level4 hasAnchor" number="14.3.1.4">
 <h4><span class="header-section-number">14.3.1.4</span> Secondary Redox Reactions<a href="sediment-biogeochemistry.html#secondary-redox-reactions" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>The reactions of chemical species produced by the primary redox reactions (<a href="sediment-biogeochemistry.html#tab:SecondChem-table">14.5</a>) are referred to as secondary redox reactions, and are usually given bimolecular rate laws, which are first order with respect to the oxidant and reductant (<a href="sediment-biogeochemistry.html#tab:SecondChem-table">14.5</a>). The rates are controlled by a kinetic constant with units (mmol L)^-1 y^-1.</p>
+<p>The reactions of chemical species produced by the primary redox reactions (<a href="sediment-biogeochemistry.html#tab:SecondChem-table">14.6</a>) are referred to as secondary redox reactions, and are usually given bimolecular rate laws, which are first order with respect to the oxidant and reductant (<a href="sediment-biogeochemistry.html#tab:SecondChem-table">14.6</a>). The rates are controlled by a kinetic constant with units (mmol L)^-1 y^-1.</p>
 <center>
 <div style="border: 1px solid #ddd; padding: 5px; overflow-y: scroll; height:25em; overflow-x: scroll; width:45em; ">
 <table class="table table-hover" style="font-size: 12px; ">
 <caption style="font-size: initial !important;">
-<span id="tab:SecondChem-table">Table 14.5: </span>Chemical reactions for secondary redox reactions.
+<span id="tab:SecondChem-table">Table 14.6: </span>Chemical reactions for secondary redox reactions.
 </caption>
 <thead>
 <tr>
@@ -1559,14 +1703,14 @@ Rate equation
 </div>
 <div id="mineral-precipitation-and-ageing" class="section level5 hasAnchor" number="14.3.1.5.1">
 <h5><span class="header-section-number">14.3.1.5.1</span> <em>Mineral precipitation and ageing</em><a href="sediment-biogeochemistry.html#mineral-precipitation-and-ageing" class="anchor-section" aria-label="Anchor link to header"></a></h5>
-<p>IN CANDI-AED, dissolved species can combine to form precipitated minerals: <span class="math inline">\(MnO_{2A}\)</span>, <span class="math inline">\(Fe(OH)_{3A}\)</span>, <span class="math inline">\(FeS\)</span>, <span class="math inline">\(MnCO_3\)</span>, <span class="math inline">\(FeCO_3\)</span>, and <span class="math inline">\(CaCO_3\)</span>. Another process is the ageing of amorphous <span class="math inline">\(MnO_{2A}\)</span> and <span class="math inline">\(Fe(OH)_{3A}\)</span> to the unreactive, crystalline phases <span class="math inline">\(MnO_{2B}\)</span> and <span class="math inline">\(Fe(OH)_{3B}\)</span>. The third type of process is ageing process of <span class="math inline">\(FeS\)</span> to <span class="math inline">\(FeS_2\)</span> (adding a further S atom to the compound). The reactions rates are outlined in tables <a href="sediment-biogeochemistry.html#tab:Geochem-table1">14.6</a> to <a href="sediment-biogeochemistry.html#tab:Geochem-table3">14.8</a>.</p>
+<p>IN CANDI-AED, dissolved species can combine to form precipitated minerals: <span class="math inline">\(MnO_{2A}\)</span>, <span class="math inline">\(Fe(OH)_{3A}\)</span>, <span class="math inline">\(FeS\)</span>, <span class="math inline">\(MnCO_3\)</span>, <span class="math inline">\(FeCO_3\)</span>, and <span class="math inline">\(CaCO_3\)</span>. Another process is the ageing of amorphous <span class="math inline">\(MnO_{2A}\)</span> and <span class="math inline">\(Fe(OH)_{3A}\)</span> to the unreactive, crystalline phases <span class="math inline">\(MnO_{2B}\)</span> and <span class="math inline">\(Fe(OH)_{3B}\)</span>. The third type of process is ageing process of <span class="math inline">\(FeS\)</span> to <span class="math inline">\(FeS_2\)</span> (adding a further S atom to the compound). The reactions rates are outlined in tables <a href="sediment-biogeochemistry.html#tab:Geochem-table1">14.7</a> to <a href="sediment-biogeochemistry.html#tab:Geochem-table3">14.9</a>.</p>
 <p>The form of the rate is dependent on the complexity of the reaction mode chosen, using the parameter <code>rxn_mode</code>. The simplest option is for the reactions not to occur. The next option is for the reaction to proceed as a biomolecular rate law, in a similar way to the secondary redox reactions, by selecting <code>rxn_mode</code> = 2.</p>
-<p>There are also two methods that set the precipitation rate based on the relative concentrations of dissolved and precipitated species. One method uses the ion activity product (<em>IAP</em>), which is a state variable and is calculated at each depth and timestep. The calculation method is based on that from Tufano et al. (2009). This method is generally selected with <code>rxn_mode</code> = 3 (see tables <a href="sediment-biogeochemistry.html#tab:Geochem-table1">14.6</a> to <a href="sediment-biogeochemistry.html#tab:Geochem-table3">14.8</a>). The other method is the “omega” method, using the equations from Van Cappellen and Wang (1996), generally by using <code>rxn_mode</code> = 4 (see tables <a href="sediment-biogeochemistry.html#tab:Geochem-table1">14.6</a> to <a href="sediment-biogeochemistry.html#tab:Geochem-table3">14.8</a>).</p>
+<p>There are also two methods that set the precipitation rate based on the relative concentrations of dissolved and precipitated species. One method uses the ion activity product (<em>IAP</em>), which is a state variable and is calculated at each depth and timestep. The calculation method is based on that from Tufano et al. (2009). This method is generally selected with <code>rxn_mode</code> = 3 (see tables <a href="sediment-biogeochemistry.html#tab:Geochem-table1">14.7</a> to <a href="sediment-biogeochemistry.html#tab:Geochem-table3">14.9</a>). The other method is the “omega” method, using the equations from Van Cappellen and Wang (1996), generally by using <code>rxn_mode</code> = 4 (see tables <a href="sediment-biogeochemistry.html#tab:Geochem-table1">14.7</a> to <a href="sediment-biogeochemistry.html#tab:Geochem-table3">14.9</a>).</p>
 <center>
 <div style="border: 1px solid #ddd; padding: 5px; overflow-y: scroll; height:30em; overflow-x: scroll; width:48em; ">
 <table class="table table-hover" style="font-size: 12px; ">
 <caption style="font-size: initial !important;">
-<span id="tab:Geochem-table1">Table 14.6: </span>Reactions and rate equations for precipitation and ageing for MnO<sub>2</sub> and Fe(OH)<sub>3</sub>
+<span id="tab:Geochem-table1">Table 14.7: </span>Reactions and rate equations for precipitation and ageing for MnO<sub>2</sub> and Fe(OH)<sub>3</sub>
 </caption>
 <thead>
 <tr>
@@ -1903,7 +2047,7 @@ If <code>rxn_mode</code> = 4<br />
 <div style="border: 1px solid #ddd; padding: 5px; overflow-y: scroll; height:30em; overflow-x: scroll; width:48em; ">
 <table class="table table-hover" style="font-size: 12px; ">
 <caption style="font-size: initial !important;">
-<span id="tab:Geochem-table2">Table 14.7: </span>Reactions and rate equations for precipitation and ageing for FeS and FeS<sub>2</sub>
+<span id="tab:Geochem-table2">Table 14.8: </span>Reactions and rate equations for precipitation and ageing for FeS and FeS<sub>2</sub>
 </caption>
 <thead>
 <tr>
@@ -2061,7 +2205,7 @@ If <code>rxn_mode</code> = 4<br />
 <div style="border: 1px solid #ddd; padding: 5px; overflow-y: scroll; height:30em; overflow-x: scroll; width:48em; ">
 <table class="table table-hover" style="font-size: 12px; ">
 <caption style="font-size: initial !important;">
-<span id="tab:Geochem-table3">Table 14.8: </span>Reactions and rate equations for precipitation and ageing for carbonate compounds.
+<span id="tab:Geochem-table3">Table 14.9: </span>Reactions and rate equations for precipitation and ageing for carbonate compounds.
 </caption>
 <thead>
 <tr>
@@ -2403,12 +2547,12 @@ If <code>rxn_mode</code> = 4<br />
 </div>
 </center>
 <p><br></p>
-<p>The parameter <code>rxn_mode</code> sets different configurations of precipitation and <em>pH</em> calculations. A summary of the options is presented in <a href="sediment-biogeochemistry.html#tab:Geochem-table4">14.9</a>.</p>
+<p>The parameter <code>rxn_mode</code> sets different configurations of precipitation and <em>pH</em> calculations. A summary of the options is presented in <a href="sediment-biogeochemistry.html#tab:Geochem-table4">14.10</a>.</p>
 <center>
 <div style="border: 1px solid #ddd; padding: 5px; overflow-y: scroll; height:25em; overflow-x: scroll; width:48em; ">
 <table class="table table-hover" style="font-size: 12px; ">
 <caption style="font-size: initial !important;">
-<span id="tab:Geochem-table4">Table 14.9: </span>Geochemical configurations from the <code>rxn_mode</code> parameter
+<span id="tab:Geochem-table4">Table 14.10: </span>Geochemical configurations from the <code>rxn_mode</code> parameter
 </caption>
 <thead>
 <tr>
@@ -2962,12 +3106,12 @@ Figure 14.16: Schematic of the parameterisation of <span class="math inline">\(O
 \end{align*}\]</span>\tag{14.24}
 \end{align*}<br />
 </p>
-<p>The term <code>RTDP</code> is a CANDI-AED parameter, set for each zone. The term <em>rto2</em> is the <span class="math inline">\(O_2\)</span> excretion rate parameter. It may be sourced from the water column model if the models are linked, or it may be calculated within CANDI-AED if the models are not linked. The options for having the root <span class="math inline">\(O_2\)</span> settins linked or not linked are laid out in table <a href="sediment-biogeochemistry.html#tab:MAG-table">14.10</a>.</p>
+<p>The term <code>RTDP</code> is a CANDI-AED parameter, set for each zone. The term <em>rto2</em> is the <span class="math inline">\(O_2\)</span> excretion rate parameter. It may be sourced from the water column model if the models are linked, or it may be calculated within CANDI-AED if the models are not linked. The options for having the root <span class="math inline">\(O_2\)</span> settins linked or not linked are laid out in table <a href="sediment-biogeochemistry.html#tab:MAG-table">14.11</a>.</p>
 <center>
 <div style="border: 1px solid #ddd; padding: 5px; overflow-y: scroll; height:25em; overflow-x: scroll; width:45em; ">
 <table class="table table-hover" style="font-size: 12px; ">
 <caption style="font-size: initial !important;">
-<span id="tab:MAG-table">Table 14.10: </span>Macroalgae parameters and variables
+<span id="tab:MAG-table">Table 14.11: </span>Macroalgae parameters and variables
 </caption>
 <thead>
 <tr>
@@ -3300,13 +3444,13 @@ Figure 14.25: Candi program workflow. The program is firstly initialised, then l
 <p>CANDI-AED contains the largest number of variables of any AED water quality module. This section outlines the state variables and diagnostic variables, including those that are compulsory and optional.</p>
 <div id="state-variables-10" class="section level4 hasAnchor" number="14.3.5.1">
 <h4><span class="header-section-number">14.3.5.1</span> State variables<a href="sediment-biogeochemistry.html#state-variables-10" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>A list of the state variables is given in table <a href="sediment-biogeochemistry.html#tab:VarsTable">14.11</a>. The compulsory variables are key to the biogeochemical processes in CANDI-AED and there is a switch to stop the model running if they are not requested in the variables input csv. Three variables (<span class="math inline">\(pH\)</span>, <span class="math inline">\(pe\)</span> and <span class="math inline">\(ubalchg\)</span>) are not requested in the input file but they are always calculated and written to the output files. The non-compulsory variables are optional and if they are not included, the model will be allowed to run. However, the results of the calculations may be unpredictable and it is recommended that unless the user is familiar with this model, the variables be left in.</p>
+<p>A list of the state variables is given in table <a href="sediment-biogeochemistry.html#tab:VarsTable">14.12</a>. The compulsory variables are key to the biogeochemical processes in CANDI-AED and there is a switch to stop the model running if they are not requested in the variables input csv. Three variables (<span class="math inline">\(pH\)</span>, <span class="math inline">\(pe\)</span> and <span class="math inline">\(ubalchg\)</span>) are not requested in the input file but they are always calculated and written to the output files. The non-compulsory variables are optional and if they are not included, the model will be allowed to run. However, the results of the calculations may be unpredictable and it is recommended that unless the user is familiar with this model, the variables be left in.</p>
 <p>The organic matter variables are more straightforward in this regard, as the <code>OMModel</code> switch leaves the unused organic matter species unreacted. For example, if <code>OMModel</code> = 1, then <span class="math inline">\(POML\)</span> will be a reactive species and <span class="math inline">\(POCL\)</span> will not react. <span class="math inline">\(POCL\)</span> will still be transported and written to the output file, but its concentration will simply disperse from the initial condition.</p>
 <center>
 <div style="border: 1px solid #ddd; padding: 5px; overflow-y: scroll; height:27em; overflow-x: scroll; width:25em; ">
 <table class="table table-hover" style="font-size: 12px; ">
 <caption style="font-size: initial !important;">
-<span id="tab:VarsTable">Table 14.11: </span>Full list of state variables.
+<span id="tab:VarsTable">Table 14.12: </span>Full list of state variables.
 </caption>
 <thead>
 <tr>
@@ -3773,12 +3917,12 @@ Macrophyte root oxygen excretion
 <div id="diagnostic-variables" class="section level4 hasAnchor" number="14.3.5.2">
 <h4><span class="header-section-number">14.3.5.2</span> Diagnostic variables<a href="sediment-biogeochemistry.html#diagnostic-variables" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>There is no exhaustive list of the diagnostic variables in CANDI-AED. As described in the outputs section below, most rates and factors can be written to an output .sed file using the list <code>morevariables</code>.</p>
-<p>Another set of sheet variables is calculated within CANDI-AED and written to the netcdf output (table <a href="sediment-biogeochemistry.html#tab:DiagVarsTable">14.12</a>). In order to set the amount of data written to the netcdf and prevent the creation of excessively large files, the parameter <code>diag_level</code> is used to set the number of diagnostics.</p>
+<p>Another set of sheet variables is calculated within CANDI-AED and written to the netcdf output (table <a href="sediment-biogeochemistry.html#tab:DiagVarsTable">14.13</a>). In order to set the amount of data written to the netcdf and prevent the creation of excessively large files, the parameter <code>diag_level</code> is used to set the number of diagnostics.</p>
 <center>
 <div style="border: 1px solid #ddd; padding: 5px; overflow-y: scroll; height:27em; overflow-x: scroll; width:40em; ">
 <table class="table table-hover" style="font-size: 12px; ">
 <caption style="font-size: initial !important;">
-<span id="tab:DiagVarsTable">Table 14.12: </span>List of diagnostic variables written to the netcdf.
+<span id="tab:DiagVarsTable">Table 14.13: </span>List of diagnostic variables written to the netcdf.
 </caption>
 <thead>
 <tr>
@@ -4203,14 +4347,14 @@ diag_level &gt; 9
 </div>
 <div id="environmental-variables" class="section level4 hasAnchor" number="14.3.5.3">
 <h4><span class="header-section-number">14.3.5.3</span> Environmental variables<a href="sediment-biogeochemistry.html#environmental-variables" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>There are several ‘environmental’ variables, that can be linked from the water column model or other AED modules, to set conditions in the sediment model (table <a href="sediment-biogeochemistry.html#tab:EnvVarsTable">14.13</a>). For example, water column salinity from a model such as TUFLOW-FV can be used to set the sediment-water interface concentration of salt at the sediment-water interface, which is used to calculate <em>F<sub>Sal</sub></em>. Another example is the set of <span class="math inline">\(MPB\)</span> and <span class="math inline">\(MAG\)</span> variables used to set the <span class="math inline">\(O_2\)</span> penetration into the upper sediment.</p>
+<p>There are several ‘environmental’ variables, that can be linked from the water column model or other AED modules, to set conditions in the sediment model (table <a href="sediment-biogeochemistry.html#tab:EnvVarsTable">14.14</a>). For example, water column salinity from a model such as TUFLOW-FV can be used to set the sediment-water interface concentration of salt at the sediment-water interface, which is used to calculate <em>F<sub>Sal</sub></em>. Another example is the set of <span class="math inline">\(MPB\)</span> and <span class="math inline">\(MAG\)</span> variables used to set the <span class="math inline">\(O_2\)</span> penetration into the upper sediment.</p>
 <p>qwqwqwqw
 <span class="math inline">\(SO_4^{2-}\)</span> concentration was tied to salinity in Coorong. Is this permanent? What are the settings for this?</p>
 <center>
 <div style="border: 1px solid #ddd; padding: 5px; overflow-y: scroll; height:25em; overflow-x: scroll; width:45em; ">
 <table class="table table-hover" style="font-size: 12px; ">
 <caption style="font-size: initial !important;">
-<span id="tab:EnvVarsTable">Table 14.13: </span>List of environmental variables.
+<span id="tab:EnvVarsTable">Table 14.14: </span>List of environmental variables.
 </caption>
 <thead>
 <tr>
@@ -4380,13 +4524,13 @@ Macrophyte root oxygen excretion
 <h3><span class="header-section-number">14.3.6</span> Parameter and option summary<a href="sediment-biogeochemistry.html#parameter-and-option-summary-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The preceding details were an explanation of the scientific aspects of this diagenesis model. Practical implementation is outlined below.</p>
 <p>The model is set up via the name list text file <code>aed.nml</code> using the module keyword <code>&amp;aed_seddiagenesis</code> and a model namelist block termed <code>&amp;aed_sediment</code> configured to select the <code>sediment_model</code> as “Dynamic” or “Dynamic2D” option. Once this is selected, the model will search for the <code>&amp;aed_sedcandi</code> parameter block.</p>
-<p>In addition to adding the code block to <code>aed.nml</code>, users must also supply a valid AED sediment parameter database file (<code>aed_candi_pars.csv</code> is the default name) and a variable definition file (<code>aed_sdg_vars.csv</code> is the default name). If external boundaries are required, then a <code>swibc_file</code> and a <code>deepbc_file</code> also need to be supplied. The four key places for the model setup are summarised in table <a href="sediment-biogeochemistry.html#tab:3dev-sedBouIni">14.14</a>), along with the file locations, and whether the settings are different for a simulation with more than one zone.</p>
+<p>In addition to adding the code block to <code>aed.nml</code>, users must also supply a valid AED sediment parameter database file (<code>aed_candi_pars.csv</code> is the default name) and a variable definition file (<code>aed_sdg_vars.csv</code> is the default name). If external boundaries are required, then a <code>swibc_file</code> and a <code>deepbc_file</code> also need to be supplied. The four key places for the model setup are summarised in table <a href="sediment-biogeochemistry.html#tab:3dev-sedBouIni">14.15</a>), along with the file locations, and whether the settings are different for a simulation with more than one zone.</p>
 <p>Users can create a standard file in the correct format from the online <a href="https://aed.see.uwa.edu.au/research/models/AED/aed_dbase/db_edit.php"><strong>AED parameter database</strong></a> by selecting from the available sediment types of interest, downloading via the <strong>“Make CSV”</strong> button, and then tailoring to the simulation being undertaken as required.</p>
 <center>
 <div style="border: 1px solid #ddd; padding: 5px; overflow-y: scroll; height:27em; overflow-x: scroll; width:50em; ">
 <table class="table table-hover" style="font-size: 12px; ">
 <caption style="font-size: initial !important;">
-<span id="tab:3dev-sedBouIni">Table 14.14: </span>File locations for major inputs of parameters, initial conditions and boundary conditions.
+<span id="tab:3dev-sedBouIni">Table 14.15: </span>File locations for major inputs of parameters, initial conditions and boundary conditions.
 </caption>
 <thead>
 <tr>
@@ -4564,12 +4708,12 @@ aed_candi_params.csv
 </center>
 <div id="module-settings-aed_sed_candi" class="section level4 hasAnchor" number="14.3.6.1">
 <h4><span class="header-section-number">14.3.6.1</span> Module settings: &amp;aed_sed_candi<a href="sediment-biogeochemistry.html#module-settings-aed_sed_candi" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>The parameters set at the module level are outlined in table <a href="sediment-biogeochemistry.html#tab:param-nml">14.15</a>. These parameters are the same for all zones.</p>
+<p>The parameters set at the module level are outlined in table <a href="sediment-biogeochemistry.html#tab:param-nml">14.16</a>. These parameters are the same for all zones.</p>
 <center>
 <div style="border: 1px solid #ddd; padding: 5px; overflow-y: scroll; height:400px; overflow-x: scroll; width:700px; ">
 <table class="table table-hover" style="font-size: 12px; width: auto !important; margin-left: auto; margin-right: auto;">
 <caption style="font-size: initial !important;">
-<span id="tab:param-nml">Table 14.15: </span>Parameters in &amp;aed_sed_candi.
+<span id="tab:param-nml">Table 14.16: </span>Parameters in &amp;aed_sed_candi.
 </caption>
 <thead>
 <tr>
@@ -4986,13 +5130,13 @@ Depths to write diag files (cm)
 <p>The majority of CANDI-AED parameters are specified for each zone, using the input parameter file. The default name is <code>aed_candi_pars.csv</code> but the user can change this in <code>aed.nml</code> <code>&amp;aed_sedcandi</code>.</p>
 <div id="physical-domain-and-numerical-parameters" class="section level5 unnumbered hasAnchor">
 <h5><em>Physical domain and numerical parameters</em><a href="sediment-biogeochemistry.html#physical-domain-and-numerical-parameters" class="anchor-section" aria-label="Anchor link to header"></a></h5>
-<p>The physical properties of the sediment are given in Table <a href="sediment-biogeochemistry.html#tab:param-Mixing">14.16</a> and <a href="sediment-biogeochemistry.html#tab:param-Layers">14.17</a>. In general, the SDG module was set to run with a time-step of 2 hours, resolve a vertical sediment depth of 80 cm using 50 layers.</p>
+<p>The physical properties of the sediment are given in Table <a href="sediment-biogeochemistry.html#tab:param-Mixing">14.17</a> and <a href="sediment-biogeochemistry.html#tab:param-Layers">14.18</a>. In general, the SDG module was set to run with a time-step of 2 hours, resolve a vertical sediment depth of 80 cm using 50 layers.</p>
 <p>Some parameters are set as constant values for all zones, while others are set to be variable in each zone. The variability of bioturbation and irrigation along the length of the lagoon is set using the depth of the effect (<span class="math inline">\(x_1\)</span>, <span class="math inline">\(x_2\)</span> and <span class="math inline">\(x_{irrig}\)</span>) rather than the intensity (<span class="math inline">\(DB_0\)</span>, <span class="math inline">\(\alpha_0\)</span>). Upper porosity <span class="math inline">\(\rho_0\)</span> is held at 0.9 (i.e. 90% porewater) for all zones and the lower porosity <span class="math inline">\(\rho_{00}\)</span> is based on measured data at sites in each zone.</p>
 <center>
 <div style="border: 1px solid #ddd; padding: 5px; overflow-y: scroll; height:380px; overflow-x: scroll; width:600px; ">
 <table class="table table-hover" style="font-size: 12px; width: auto !important; margin-left: auto; margin-right: auto;">
 <caption style="font-size: initial !important;">
-<span id="tab:param-Mixing">Table 14.16: </span>Sediment physical properties, given in aed_candi_parameters.csv.
+<span id="tab:param-Mixing">Table 14.17: </span>Sediment physical properties, given in aed_candi_parameters.csv.
 </caption>
 <thead>
 <tr>
@@ -5137,7 +5281,7 @@ Bottom boundary switch
 <div style="border: 1px solid #ddd; padding: 5px; overflow-y: scroll; height:350px; overflow-x: scroll; width:600px; ">
 <table class="table table-hover" style="font-size: 12px; width: auto !important; margin-left: auto; margin-right: auto;">
 <caption style="font-size: initial !important;">
-<span id="tab:param-Layers">Table 14.17: </span>Sediment layer setup parameters and mixing parameters that might vary by zone, to set simulation with differences in sediment quality across space, given in aed_candi_parameters.csv.
+<span id="tab:param-Layers">Table 14.18: </span>Sediment layer setup parameters and mixing parameters that might vary by zone, to set simulation with differences in sediment quality across space, given in aed_candi_parameters.csv.
 </caption>
 <thead>
 <tr>
@@ -5342,13 +5486,13 @@ Depth of irrigation (cm)
 </div>
 <div id="organic-matter-parameters" class="section level5 unnumbered hasAnchor">
 <h5><em>Organic matter parameters</em><a href="sediment-biogeochemistry.html#organic-matter-parameters" class="anchor-section" aria-label="Anchor link to header"></a></h5>
-<p>Many of the key processes in the sediment are driven by organic matter oxidation. Fresh organic matter supplied to the sediment surface fuels the bacterially-driven primary redox reactions that constantly shift the chemical equilibrium in the sediment. Organic matter metabolism also releases organic N and P to the water column. The parameters are given in Table <a href="sediment-biogeochemistry.html#tab:param-OM">14.18</a>.</p>
+<p>Many of the key processes in the sediment are driven by organic matter oxidation. Fresh organic matter supplied to the sediment surface fuels the bacterially-driven primary redox reactions that constantly shift the chemical equilibrium in the sediment. Organic matter metabolism also releases organic N and P to the water column. The parameters are given in Table <a href="sediment-biogeochemistry.html#tab:param-OM">14.19</a>.</p>
 <p>The organic matter model option number 2 was used in this project. This option has both particulate and dissolved organic phases, and simulates organic C, N and P as separate state variables.</p>
 <center>
 <div style="border: 1px solid #ddd; padding: 5px; overflow-y: scroll; height:300px; overflow-x: scroll; width:600px; ">
 <table class="table table-hover" style="font-size: 12px; width: auto !important; margin-left: auto; margin-right: auto;">
 <caption style="font-size: initial !important;">
-<span id="tab:param-OM">Table 14.18: </span>Organic matter oxidation parameters, given in aed_candi_parameters.csv.
+<span id="tab:param-OM">Table 14.19: </span>Organic matter oxidation parameters, given in aed_candi_parameters.csv.
 </caption>
 <thead>
 <tr>
@@ -5627,12 +5771,12 @@ Description
 </div>
 <div id="secondary-redox-reactions-1" class="section level5 unnumbered hasAnchor">
 <h5><em>Secondary redox reactions</em><a href="sediment-biogeochemistry.html#secondary-redox-reactions-1" class="anchor-section" aria-label="Anchor link to header"></a></h5>
-<p>Secondary redox reactions are formed from the by-products of primary redox reactions. The nitrogen redox cycle parameters are given in Table <a href="sediment-biogeochemistry.html#tab:param-Nredox">14.19</a>.</p>
+<p>Secondary redox reactions are formed from the by-products of primary redox reactions. The nitrogen redox cycle parameters are given in Table <a href="sediment-biogeochemistry.html#tab:param-Nredox">14.20</a>.</p>
 <center>
 <div style="border: 1px solid #ddd; padding: 5px; overflow-y: scroll; height:275px; overflow-x: scroll; width:600px; ">
 <table class="table table-hover" style="font-size: 12px; width: auto !important; margin-left: auto; margin-right: auto;">
 <caption style="font-size: initial !important;">
-<span id="tab:param-Nredox">Table 14.19: </span>Nitrogen redox cycle parameters, given in aed_candi_parameters.csv.
+<span id="tab:param-Nredox">Table 14.20: </span>Nitrogen redox cycle parameters, given in aed_candi_parameters.csv.
 </caption>
 <thead>
 <tr>
@@ -5745,12 +5889,12 @@ NO<sub>2</sub> oxidation kinetic rate (mmol<sup>-1</sup> L y<sup>-1</sup>)
 <br />
 <br />
 </p>
-<p>Secondary redox parameters for other processes are given in Table <a href="sediment-biogeochemistry.html#tab:param-SecondaryRedox">14.20</a>.</p>
+<p>Secondary redox parameters for other processes are given in Table <a href="sediment-biogeochemistry.html#tab:param-SecondaryRedox">14.21</a>.</p>
 <center>
 <div style="border: 1px solid #ddd; padding: 5px; overflow-y: scroll; height:325px; overflow-x: scroll; width:600px; ">
 <table class="table table-hover" style="font-size: 12px; width: auto !important; margin-left: auto; margin-right: auto;">
 <caption style="font-size: initial !important;">
-<span id="tab:param-SecondaryRedox">Table 14.20: </span>Secondary redox parameters, given in aed_candi_parameters.csv.
+<span id="tab:param-SecondaryRedox">Table 14.21: </span>Secondary redox parameters, given in aed_candi_parameters.csv.
 </caption>
 <thead>
 <tr>
@@ -5875,12 +6019,12 @@ CH<sub>4</sub> oxidation by SO<sub>4</sub><sup>2-</sup> rate (mmol<sup>-1</sup> 
 </div>
 <div id="geochemistry-parameters" class="section level5 unnumbered hasAnchor">
 <h5><em>Geochemistry parameters</em><a href="sediment-biogeochemistry.html#geochemistry-parameters" class="anchor-section" aria-label="Anchor link to header"></a></h5>
-<p>Equilibrium and precipitation/dissolution constants are given in Table <a href="sediment-biogeochemistry.html#tab:param-Geochem">14.21</a>.</p>
+<p>Equilibrium and precipitation/dissolution constants are given in Table <a href="sediment-biogeochemistry.html#tab:param-Geochem">14.22</a>.</p>
 <center>
 <div style="border: 1px solid #ddd; padding: 5px; overflow-y: scroll; height:310px; overflow-x: scroll; width:600px; ">
 <table class="table table-hover" style="font-size: 12px; width: auto !important; margin-left: auto; margin-right: auto;">
 <caption style="font-size: initial !important;">
-<span id="tab:param-Geochem">Table 14.21: </span>Geochemistry and precipitation/dissolution parameters, given in aed_candi_parameters.csv.
+<span id="tab:param-Geochem">Table 14.22: </span>Geochemistry and precipitation/dissolution parameters, given in aed_candi_parameters.csv.
 </caption>
 <thead>
 <tr>
@@ -6004,12 +6148,12 @@ Equilibrium constant for FeS precipitation (-)
 </div>
 <div id="hidden-parameters-aed_readcandi.f90" class="section level4 unnumbered hasAnchor">
 <h4>Hidden parameters: aed_readcandi.F90<a href="sediment-biogeochemistry.html#hidden-parameters-aed_readcandi.f90" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>A set of parameters that the user is unlikely to need to change has been removed from the model input files and set in the model code (table <a href="sediment-biogeochemistry.html#tab:param-Hidden">14.22</a>).</p>
+<p>A set of parameters that the user is unlikely to need to change has been removed from the model input files and set in the model code (table <a href="sediment-biogeochemistry.html#tab:param-Hidden">14.23</a>).</p>
 <center>
 <div style="border: 1px solid #ddd; padding: 5px; overflow-y: scroll; height:310px; overflow-x: scroll; width:500px; ">
 <table class="table table-hover" style="font-size: 12px; width: auto !important; margin-left: auto; margin-right: auto;">
 <caption style="font-size: initial !important;">
-<span id="tab:param-Hidden">Table 14.22: </span>Other parameters, which are not currently listed in the parameter input file.
+<span id="tab:param-Hidden">Table 14.23: </span>Other parameters, which are not currently listed in the parameter input file.
 </caption>
 <thead>
 <tr>
@@ -6383,7 +6527,7 @@ smothbm
 </div>
 <div id="geochemistry-parameters-1" class="section level5 unnumbered hasAnchor">
 <h5><em>Geochemistry parameters</em><a href="sediment-biogeochemistry.html#geochemistry-parameters-1" class="anchor-section" aria-label="Anchor link to header"></a></h5>
-<p>The key geochemistry paramter to select is <code>rxn_mode</code> (see section <em>Mineral precipitation and ageing</em> and <a href="sediment-biogeochemistry.html#tab:Geochem-table4">14.9</a> above). <code>rxn_mode</code> = 0 turns off precipitation, ageing and pH and is therefore the simplest setup. <code>rxn_mode</code> = 2 allows the constant precipitation and ageing of minerals, without any equilibrium.</p>
+<p>The key geochemistry paramter to select is <code>rxn_mode</code> (see section <em>Mineral precipitation and ageing</em> and <a href="sediment-biogeochemistry.html#tab:Geochem-table4">14.10</a> above). <code>rxn_mode</code> = 0 turns off precipitation, ageing and pH and is therefore the simplest setup. <code>rxn_mode</code> = 2 allows the constant precipitation and ageing of minerals, without any equilibrium.</p>
 </div>
 </div>
 <div id="boundary-setting-details-and-examples" class="section level4 hasAnchor" number="14.4.1.4">
@@ -6431,7 +6575,7 @@ concentration = initial vals \times e^ {- OM cfl \times depth}
 </div>
 <div id="tn-tp-tc-partitioning" class="section level4 hasAnchor" number="14.4.2.1">
 <h4><span class="header-section-number">14.4.2.1</span> TN TP TC partitioning<a href="sediment-biogeochemistry.html#tn-tp-tc-partitioning" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>The C:N:P stoichiometry is set differently for each <code>OMModel</code>. Using <code>OMModel</code> = 1, the ratios are set separately for the labile and refractory phases, using the <em>x</em>, <em>y</em> and <em>z</em> ratios outlined in table <a href="sediment-biogeochemistry.html#tab:OMChem-table">14.2</a>. For example, <code>xlab</code> is the carbon fraction of <span class="math inline">\(POM_L\)</span>, which is usually set to around 106, while <code>zlab</code> is the <span class="math inline">\(POM_L\)</span> phosphorus fraction, which is usually set to around 1. These ratios are fixed throughout the simulation. The <em>y</em> nitrogen fraction is also used to set the amount of <span class="math inline">\(NH_4^+\)</span> released per carbon during organic matter oxidation.</p>
+<p>The C:N:P stoichiometry is set differently for each <code>OMModel</code>. Using <code>OMModel</code> = 1, the ratios are set separately for the labile and refractory phases, using the <em>x</em>, <em>y</em> and <em>z</em> ratios outlined in table <a href="sediment-biogeochemistry.html#tab:OMChem-table">14.3</a>. For example, <code>xlab</code> is the carbon fraction of <span class="math inline">\(POM_L\)</span>, which is usually set to around 106, while <code>zlab</code> is the <span class="math inline">\(POM_L\)</span> phosphorus fraction, which is usually set to around 1. These ratios are fixed throughout the simulation. The <em>y</em> nitrogen fraction is also used to set the amount of <span class="math inline">\(NH_4^+\)</span> released per carbon during organic matter oxidation.</p>
 <p>Using <code>OMModel</code> = 2, the C:N:P ratio is set by the concentrations of separate organic species, such as <span class="math inline">\(POC_L\)</span>, <span class="math inline">\(PON_L\)</span> and <span class="math inline">\(POP_L\)</span>. The ratio is fixed by the boundary and initial conditions, however, if the boundary is dynamic, then the ratio can change through the course of the simulation.</p>
 <p>Using <code>OMModel</code> = 3 is similar to <code>OMModel</code> = 1. The ratios are applied to <span class="math inline">\(POM_1\)</span>, <span class="math inline">\(POM_2\)</span> etc. as <code>xPOM1</code>, <code>yPOM2</code> etc.</p>
 </div>
