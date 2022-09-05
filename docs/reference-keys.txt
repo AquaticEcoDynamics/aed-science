@@ -506,6 +506,8 @@ module-settings-aed_sed_candi
 zone-specific-parameters
 setup-configuration-9
 setup-examples
+hydrodynamic-model
+module-settings
 sediment-initialisation-options
 initialisation-of-organic-matter-profiles
 tn-tp-tc-partitioning
