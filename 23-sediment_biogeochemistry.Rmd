@@ -111,8 +111,30 @@ knitr::include_graphics("images/23-sediment_biogeochemistry/AdvectionDispersion/
 
 ```
 
-wqwqwqwq
-Each species has its own rate of diffusion. 
+Diffusion of solutes is calculated using a diffusivity constant. One default value, which is temperature-dependent, is used for most dissolved variables (table \@ref(tab:Diff-table)). This value is based on the diffusivity of chloride. Twelve other variables have their own values, which are also temperature-dependent. Some also use the function *a*, which can also include salinity and pressure (table \@ref(tab:Diff-table)).
+
+<center>
+```{r Diff-table, echo=FALSE, message=FALSE, warning=FALSE}
+library(knitr)
+library(kableExtra)
+library(readxl)
+  options(knitr.kable.NA = "")
+Diff_tab <- read_xlsx("tables/23-sediment_biogeochemistry/UserManual.xlsx", sheet="Diffcoef2")
+  kable(Diff_tab[,1:2],"html", escape = F, align = "c"
+        , caption = "Temperature-dependent calculations for diffusivity constants. All state variables in CANDI-AED use the default value, unless specified in this table. The function *a* is a further correction for salinity and pressure.",bootstrap_options = "hover")%>%
+   kable_styling(Diff_tab, bootstrap_options = "hover",
+                full_width = T, position = "left",
+                font_size = 12) %>% 
+    
+  row_spec(0, background = "#14759e", bold = TRUE, color = "white") %>%
+  column_spec(1, width_min = "20em" ,color="black",bold = F) %>%
+  column_spec(2, width_min = "20em" ,color="black") %>%
+  # column_spec(3, width_min = "15em" ,color="black") %>%
+  # row_spec(1:2, background = 'white')  %>%
+ scroll_box(width = "40em", height = "20em",fixed_thead = FALSE)
+```
+</center>
+
 
 ##### *Porosity*  {-} 
 Porosity ($\phi$) is defined as the amount of water per total volume of space, as a real number between 0 and 1. 
