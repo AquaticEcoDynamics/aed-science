@@ -156,6 +156,8 @@ tab:20-parametersummmary
 tab:20-parameterconfig
 tab:21p-statetable
 tab:21p-diagtable
+tab:21p-parstable
+tab:21p-configtable
 fig:johnstone-map
 fig:23-pic1
 fig:23-pic2

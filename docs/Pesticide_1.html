@@ -809,7 +809,7 @@ Comments
 pesticide <code>group</code> dissolved water column concentration
 </td>
 <td style="text-align:left;min-width: 10em; ">
-<span class="math display">\[\small{mmol\: /m^3}\]</span>
+<span class="math display">\[\small{mg\: /m^3}\]</span>
 </td>
 <td style="text-align:left;min-width: 5em; ">
 pelagic
@@ -823,7 +823,7 @@ select <code>group</code> using index from <code>aed_pesticide_pars</code> datab
 </tr>
 <tr>
 <td style="text-align:left;padding-left: 2em;" indentlevel="1">
-<code>PST_{group}</code>
+<code>PST_{group}_n</code>
 </td>
 <td style="text-align:left;min-width: 7em; ">
 <span class="math display">\[\mathbf{C_{doc}}\]</span>
@@ -832,7 +832,7 @@ select <code>group</code> using index from <code>aed_pesticide_pars</code> datab
 pesticide <code>group</code> sorbed water column concentration
 </td>
 <td style="text-align:left;min-width: 10em; ">
-<span class="math display">\[\small{mmol\: /m^3}\]</span>
+<span class="math display">\[\small{mg\: /m^3}\]</span>
 </td>
 <td style="text-align:left;min-width: 5em; ">
 pelagic
@@ -846,7 +846,7 @@ activated when <code>pest_sorbent</code> includes <span class="math inline">\(DO
 </tr>
 <tr>
 <td style="text-align:left;padding-left: 2em;" indentlevel="1">
-<code>PST_{group}</code>
+<code>PST_{group}_m</code>
 </td>
 <td style="text-align:left;min-width: 7em; ">
 <span class="math display">\[\mathbf{C_p}\]</span>
@@ -855,7 +855,7 @@ activated when <code>pest_sorbent</code> includes <span class="math inline">\(DO
 pesticide <code>group</code> sorbed water column concentration
 </td>
 <td style="text-align:left;min-width: 10em; ">
-<span class="math display">\[\small{mmol\: /m^3}\]</span>
+<span class="math display">\[\small{mg\: /m^3}\]</span>
 </td>
 <td style="text-align:left;min-width: 5em; ">
 pelagic
@@ -878,7 +878,7 @@ activated when <code>pest_sorbent</code> includes 1 or more <span class="math in
 pesticide <code>group</code> sediment particulate concentration
 </td>
 <td style="text-align:left;min-width: 10em; ">
-<span class="math display">\[\small{mmol\: /m^2}\]</span>
+<span class="math display">\[\small{mg\: /m^2}\]</span>
 </td>
 <td style="text-align:left;min-width: 5em; ">
 benthic
@@ -901,7 +901,7 @@ activated when <code>simSediment</code> <span class="math inline">\(=\)</span> t
 pesticide <code>group</code> sediment porewater concentration
 </td>
 <td style="text-align:left;min-width: 10em; ">
-<span class="math display">\[\small{mmol\: /m^2}\]</span>
+<span class="math display">\[\small{mg\: /m^2}\]</span>
 </td>
 <td style="text-align:left;min-width: 5em; ">
 benthic
@@ -929,7 +929,7 @@ activated when <code>simSediment</code> <span class="math inline">\(=\)</span> t
 dissolved organic carbon concentration
 </td>
 <td style="text-align:left;min-width: 10em; ">
-<span class="math display">\[\small{mmol\: C/m^3}\]</span>
+<span class="math display">\[\small{mg\: /m^3}\]</span>
 </td>
 <td style="text-align:left;min-width: 5em; ">
 pelagic
@@ -1070,7 +1070,7 @@ Comments
 </tr>
 </thead>
 <tbody>
-<tr grouplength="40">
+<tr grouplength="10">
 <td colspan="7" style="border-bottom: 1px solid;background-color: #ebebeb !important;">
 <strong>diag_level = 2+</strong>
 </td>
@@ -1080,13 +1080,13 @@ Comments
 <code>PST_{name}_atm</code>
 </td>
 <td style="text-align:left;min-width: 7em; ">
-<span class="math display">\[\mathbf{f_{atm}^{\mathbb{PST_{name}}}}\]</span>
+<span class="math display">\[\mathbf{\check{f}_{atm}^{PST_{name}}}\]</span>
 </td>
 <td style="text-align:left;max-width: 18em; ">
 pesticide group volatilisation rate
 </td>
 <td style="text-align:left;min-width: 10em; ">
-<span class="math display">\[\small{mmol/m^2/d}\]</span>
+<span class="math display">\[\small{mg/m^2/d}\]</span>
 </td>
 <td style="text-align:left;min-width: 6em; ">
 surface
@@ -1095,6 +1095,7 @@ surface
 NA
 </td>
 <td style="text-align:left;min-width: 10em; ">
+requires <code>simVolatlisation</code> <span class="math inline">\(=\)</span> true
 </td>
 </tr>
 <tr>
@@ -1102,13 +1103,13 @@ NA
 <code>PST_{name}_dsf</code>
 </td>
 <td style="text-align:left;min-width: 7em; ">
-<span class="math display">\[\mathbf{f_{upt_{NH4}}^{\mathbb{PHY}}}\]</span>
+<span class="math display">\[\mathbf{\hat{f}_{dsf}^{PST_{name}}}\]</span>
 </td>
 <td style="text-align:left;max-width: 18em; ">
 pesticide group dissolved sediment flux rate
 </td>
 <td style="text-align:left;min-width: 10em; ">
-<span class="math display">\[\small{mmol/m^2/d}\]</span>
+<span class="math display">\[\small{mg/m^2/d}\]</span>
 </td>
 <td style="text-align:left;min-width: 6em; ">
 benthic
@@ -1121,193 +1122,16 @@ NA
 </tr>
 <tr>
 <td style="text-align:left;padding-left: 2em;" indentlevel="1">
-<code>NA</code>
+<code>PST_{name}_res</code>
 </td>
 <td style="text-align:left;min-width: 7em; ">
-NA
+<span class="math display">\[\mathbf{\hat{f}_{res}^{PST_{name}}}\]</span>
 </td>
 <td style="text-align:left;max-width: 18em; ">
-NA
+pesticide group particulate resuspension rate
 </td>
 <td style="text-align:left;min-width: 10em; ">
-NA
-</td>
-<td style="text-align:left;min-width: 6em; ">
-NA
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:left;min-width: 10em; ">
-</td>
-</tr>
-<tr>
-<td style="text-align:left;padding-left: 2em;" indentlevel="1">
-<code>PHY_upt_n2</code>
-</td>
-<td style="text-align:left;min-width: 7em; ">
-<span class="math display">\[\mathbf{f_{upt_{N2}}^{\mathbb{PHY}}}\]</span>
-</td>
-<td style="text-align:left;max-width: 18em; ">
-phytoplankton community <span class="math inline">\(N_2\)</span> uptake rate
-</td>
-<td style="text-align:left;min-width: 10em; ">
-<span class="math display">\[\small{mmol\: N/m^3/d}\]</span>
-</td>
-<td style="text-align:left;min-width: 6em; ">
-pelagic
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:left;min-width: 10em; ">
-</td>
-</tr>
-<tr>
-<td style="text-align:left;padding-left: 2em;" indentlevel="1">
-<code>PHY_upt_po4</code>
-</td>
-<td style="text-align:left;min-width: 7em; ">
-<span class="math display">\[\mathbf{f_{upt_{PO4}}^{\mathbb{PHY}}}\]</span>
-</td>
-<td style="text-align:left;max-width: 18em; ">
-phytoplankton community <span class="math inline">\(PO_4\)</span> uptake rate
-</td>
-<td style="text-align:left;min-width: 10em; ">
-<span class="math display">\[\small{mmol\: P/m^3/d}\]</span>
-</td>
-<td style="text-align:left;min-width: 6em; ">
-pelagic
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:left;min-width: 10em; ">
-</td>
-</tr>
-<tr>
-<td style="text-align:left;padding-left: 2em;" indentlevel="1">
-<code>PHY_upt_dic</code>
-</td>
-<td style="text-align:left;min-width: 7em; ">
-<span class="math display">\[\mathbf{f_{upt_{DIC}}^{\mathbb{PHY}}}\]</span>
-</td>
-<td style="text-align:left;max-width: 18em; ">
-phytoplankton community <span class="math inline">\(CO_2\)</span> uptake rate
-</td>
-<td style="text-align:left;min-width: 10em; ">
-<span class="math display">\[\small{mmol\: C/m^3/d}\]</span>
-</td>
-<td style="text-align:left;min-width: 6em; ">
-pelagic
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:left;min-width: 10em; ">
-</td>
-</tr>
-<tr>
-<td style="text-align:left;padding-left: 2em;" indentlevel="1">
-<code>PHY_tchla</code>
-</td>
-<td style="text-align:left;min-width: 7em; ">
-<span class="math display">\[\mathbf{\mathbb{TCHLA}}\]</span>
-</td>
-<td style="text-align:left;max-width: 18em; ">
-total chlorophyll-a concentration
-</td>
-<td style="text-align:left;min-width: 10em; ">
-<span class="math display">\[\small{\mu g \, /L}\]</span>
-</td>
-<td style="text-align:left;min-width: 6em; ">
-pelagic
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:left;min-width: 10em; ">
-</td>
-</tr>
-<tr>
-<td style="text-align:left;padding-left: 2em;" indentlevel="1">
-<code>PHY_in</code>
-</td>
-<td style="text-align:left;min-width: 7em; ">
-<span class="math display">\[\mathbf{\mathbb{IN}}\]</span>
-</td>
-<td style="text-align:left;max-width: 18em; ">
-total phytoplankton nitrogen concentration
-</td>
-<td style="text-align:left;min-width: 10em; ">
-<span class="math display">\[\small{mmol\: N/m^3}\]</span>
-</td>
-<td style="text-align:left;min-width: 6em; ">
-pelagic
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:left;min-width: 10em; ">
-</td>
-</tr>
-<tr>
-<td style="text-align:left;padding-left: 2em;" indentlevel="1">
-<code>PHY_ip</code>
-</td>
-<td style="text-align:left;min-width: 7em; ">
-<span class="math display">\[\mathbf{\mathbb{IP}}\]</span>
-</td>
-<td style="text-align:left;max-width: 18em; ">
-total phytoplankton phosphorus concentration
-</td>
-<td style="text-align:left;min-width: 10em; ">
-<span class="math display">\[\small{mmol\: P/m^3}\]</span>
-</td>
-<td style="text-align:left;min-width: 6em; ">
-pelagic
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:left;min-width: 10em; ">
-</td>
-</tr>
-<tr>
-<td style="text-align:left;padding-left: 2em;" indentlevel="1">
-<code>PHY_mpb_ben</code>
-</td>
-<td style="text-align:left;min-width: 7em; ">
-<span class="math display">\[\mathbf{MPB}\]</span>
-</td>
-<td style="text-align:left;max-width: 18em; ">
-microphytobenthos concentration
-</td>
-<td style="text-align:left;min-width: 10em; ">
-<span class="math display">\[\small{mmol\: C/m^2}\]</span>
-</td>
-<td style="text-align:left;min-width: 6em; ">
-benthic
-</td>
-<td style="text-align:left;">
-0 - 10000
-</td>
-<td style="text-align:left;min-width: 10em; ">
-activated when <code>do_mpb &amp;gt;0</code>
-</td>
-</tr>
-<tr>
-<td style="text-align:left;padding-left: 2em;" indentlevel="1">
-<code>PHY_mpb_gpp</code>
-</td>
-<td style="text-align:left;min-width: 7em; ">
-<span class="math display">\[\hat{f}_{gpp}^{MPB}\]</span>
-</td>
-<td style="text-align:left;max-width: 18em; ">
-benthic phytoplankton primary production
-</td>
-<td style="text-align:left;min-width: 10em; ">
-<span class="math display">\[\small{mmol\: C/m^2/d}\]</span>
+<span class="math display">\[\small{mg/m^2/d}\]</span>
 </td>
 <td style="text-align:left;min-width: 6em; ">
 benthic
@@ -1316,21 +1140,154 @@ benthic
 NA
 </td>
 <td style="text-align:left;min-width: 10em; ">
-activated when <code>do_mpb &amp;gt;0</code>
+requires <code>simResuspension</code> <span class="math inline">\(=\)</span> true
 </td>
 </tr>
 <tr>
 <td style="text-align:left;padding-left: 2em;" indentlevel="1">
-<code>PHY_mpb_rsp</code>
+<code>PST_{name}_set</code>
 </td>
 <td style="text-align:left;min-width: 7em; ">
-<span class="math display">\[\hat{f}_{rsp}^{MPB}\]</span>
+<span class="math display">\[\mathbf{f_{set}^{PST_{name}}}\]</span>
 </td>
 <td style="text-align:left;max-width: 18em; ">
-benthic phytoplankton net production
+pesticide group particulate settling rate
 </td>
 <td style="text-align:left;min-width: 10em; ">
-<span class="math display">\[\small{mmol\: C/m^2/d}\]</span>
+<span class="math display">\[\small{mg\:/m^3/d}\]</span>
+</td>
+<td style="text-align:left;min-width: 6em; ">
+pelagic
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;min-width: 10em; ">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;padding-left: 2em;" indentlevel="1">
+<code>PST_{name}_srp</code>
+</td>
+<td style="text-align:left;min-width: 7em; ">
+<span class="math display">\[\mathbf{f_{srp}^{PST_{name}}}\]</span>
+</td>
+<td style="text-align:left;max-width: 18em; ">
+pesticide group sorption rate
+</td>
+<td style="text-align:left;min-width: 10em; ">
+<span class="math display">\[\small{mg\:/m^3/d}\]</span>
+</td>
+<td style="text-align:left;min-width: 6em; ">
+pelagic
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;min-width: 10em; ">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;padding-left: 2em;" indentlevel="1">
+<code>PST_{name}_pht</code>
+</td>
+<td style="text-align:left;min-width: 7em; ">
+<span class="math display">\[\mathbf{f_{pht}^{PST_{name}}}\]</span>
+</td>
+<td style="text-align:left;max-width: 18em; ">
+pesticide group photolysis rate
+</td>
+<td style="text-align:left;min-width: 10em; ">
+<span class="math display">\[\small{mg\:/m^3/d}\]</span>
+</td>
+<td style="text-align:left;min-width: 6em; ">
+pelagic
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;min-width: 10em; ">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;padding-left: 2em;" indentlevel="1">
+<code>PST_{name}_hyd</code>
+</td>
+<td style="text-align:left;min-width: 7em; ">
+<span class="math display">\[\mathbf{f_{hyd}^{PST_{name}}}\]</span>
+</td>
+<td style="text-align:left;max-width: 18em; ">
+pesticide group hydrolysis rate
+</td>
+<td style="text-align:left;min-width: 10em; ">
+<span class="math display">\[\small{mg\:/m^3/d}\]</span>
+</td>
+<td style="text-align:left;min-width: 6em; ">
+pelagic
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;min-width: 10em; ">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;padding-left: 2em;" indentlevel="1">
+<code>PST_{name}_upt</code>
+</td>
+<td style="text-align:left;min-width: 7em; ">
+<span class="math display">\[\mathbf{f_{upt}^{PST_{name}}}\]</span>
+</td>
+<td style="text-align:left;max-width: 18em; ">
+pesticide group biological uptake rate
+</td>
+<td style="text-align:left;min-width: 10em; ">
+<span class="math display">\[\small{mg\:/m^3/d}\]</span>
+</td>
+<td style="text-align:left;min-width: 6em; ">
+pelagic
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;min-width: 10em; ">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;padding-left: 2em;" indentlevel="1">
+<code>PST_{name}_tot</code>
+</td>
+<td style="text-align:left;min-width: 7em; ">
+<span class="math display">\[\mathbf{C_T}\]</span>
+</td>
+<td style="text-align:left;max-width: 18em; ">
+pesticide group total concentration
+</td>
+<td style="text-align:left;min-width: 10em; ">
+<span class="math display">\[\small{mg\:/m^3}\]</span>
+</td>
+<td style="text-align:left;min-width: 6em; ">
+pelagic
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;min-width: 10em; ">
+sum of dissolved and sorped pesticide mass
+</td>
+</tr>
+<tr>
+<td style="text-align:left;padding-left: 2em;" indentlevel="1">
+<code>PST_{name}_tot_sed</code>
+</td>
+<td style="text-align:left;min-width: 7em; ">
+<span class="math display">\[\mathbf{C_{T}^{sed}}\]</span>
+</td>
+<td style="text-align:left;max-width: 18em; ">
+pesticide group total sediment concentration
+</td>
+<td style="text-align:left;min-width: 10em; ">
+<span class="math display">\[\small{mg\:/m^2}\]</span>
 </td>
 <td style="text-align:left;min-width: 6em; ">
 benthic
@@ -1339,624 +1296,7 @@ benthic
 NA
 </td>
 <td style="text-align:left;min-width: 10em; ">
-activated when <code>do_mpb &amp;gt;0</code>
-</td>
-</tr>
-<tr>
-<td style="text-align:left;padding-left: 2em;" indentlevel="1">
-<code>PHY_mpb_swi</code>
-</td>
-<td style="text-align:left;min-width: 7em; ">
-<span class="math display">\[\hat{f}_{swi}^{MPB}\]</span>
-</td>
-<td style="text-align:left;max-width: 18em; ">
-microphytobenthos vertical exchange
-</td>
-<td style="text-align:left;min-width: 10em; ">
-<span class="math display">\[\small{mmol\: C/m^2/d}\]</span>
-</td>
-<td style="text-align:left;min-width: 6em; ">
-benthic
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:left;min-width: 10em; ">
-activated when <code>do_mpb &amp;gt;0</code>
-</td>
-</tr>
-<tr>
-<td style="text-align:left;padding-left: 2em;" indentlevel="1">
-<code>PHY_{name}_NtoP</code>
-</td>
-<td style="text-align:left;min-width: 7em; ">
-<span class="math display">\[\mathbf{\chi_{N:P}^{PHY}}\]</span>
-</td>
-<td style="text-align:left;max-width: 18em; ">
-phytoplankton internal N:P ratio for the <span class="math inline">\(a^{th}\)</span> group, <code>name</code>
-</td>
-<td style="text-align:left;min-width: 10em; ">
-<span class="math display">\[\small{-}\]</span>
-</td>
-<td style="text-align:left;min-width: 6em; ">
-pelagic
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:left;min-width: 10em; ">
-</td>
-</tr>
-<tr>
-<td style="text-align:left;padding-left: 2em;" indentlevel="1">
-<code>PHY_{name}_vvel</code>
-</td>
-<td style="text-align:left;min-width: 7em; ">
-<span class="math display">\[\mathbf{\omega_{p}^{PHY_a}}\]</span>
-</td>
-<td style="text-align:left;max-width: 18em; ">
-phytoplankton sedimentation velocity for the <span class="math inline">\(a^{th}\)</span> group, <code>name</code>
-</td>
-<td style="text-align:left;min-width: 10em; ">
-<span class="math display">\[\small{m/d}\]</span>
-</td>
-<td style="text-align:left;min-width: 6em; ">
-pelagic
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:left;min-width: 10em; ">
-</td>
-</tr>
-<tr>
-<td style="text-align:left;padding-left: 2em;" indentlevel="1">
-<code>PHY_{name}_gpp_c</code>
-</td>
-<td style="text-align:left;min-width: 7em; ">
-<span class="math display">\[\mathbf{f_{gpp}^{PHY_a}}\]</span>
-</td>
-<td style="text-align:left;max-width: 18em; ">
-phytoplankton gross primary production for the <span class="math inline">\(a^{th}\)</span> group, <code>name</code>
-</td>
-<td style="text-align:left;min-width: 10em; ">
-<span class="math display">\[\small{mmol\: C/m^3/d}\]</span>
-</td>
-<td style="text-align:left;min-width: 6em; ">
-pelagic
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:left;min-width: 10em; ">
-</td>
-</tr>
-<tr>
-<td style="text-align:left;padding-left: 2em;" indentlevel="1">
-<code>PHY_{name}_rsp_c</code>
-</td>
-<td style="text-align:left;min-width: 7em; ">
-<span class="math display">\[\mathbf{f_{rsp}^{PHY_a}}\]</span>
-</td>
-<td style="text-align:left;max-width: 18em; ">
-phytoplankton respiration rate for the <span class="math inline">\(a^{th}\)</span> group, <code>name</code>
-</td>
-<td style="text-align:left;min-width: 10em; ">
-<span class="math display">\[\small{mmol\: C/m^3/d}\]</span>
-</td>
-<td style="text-align:left;min-width: 6em; ">
-pelagic
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:left;min-width: 10em; ">
-</td>
-</tr>
-<tr>
-<td style="text-align:left;padding-left: 2em;" indentlevel="1">
-<code>PHY_{name}_exc_c</code>
-</td>
-<td style="text-align:left;min-width: 7em; ">
-<span class="math display">\[\mathbf{f_{exc}^{PHY_a}}\]</span>
-</td>
-<td style="text-align:left;max-width: 18em; ">
-phytoplankton excretion rate for the <span class="math inline">\(a^{th}\)</span> group, <code>name</code>
-</td>
-<td style="text-align:left;min-width: 10em; ">
-<span class="math display">\[\small{mmol\: C/m^3/d}\]</span>
-</td>
-<td style="text-align:left;min-width: 6em; ">
-pelagic
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:left;min-width: 10em; ">
-</td>
-</tr>
-<tr>
-<td style="text-align:left;padding-left: 2em;" indentlevel="1">
-<code>PHY_{name}_mor_c</code>
-</td>
-<td style="text-align:left;min-width: 7em; ">
-<span class="math display">\[\mathbf{f_{mor}^{PHY_a}}\]</span>
-</td>
-<td style="text-align:left;max-width: 18em; ">
-phytoplankton mortality rate for the <span class="math inline">\(a^{th}\)</span> group, <code>name</code>
-</td>
-<td style="text-align:left;min-width: 10em; ">
-<span class="math display">\[\small{mmol\: C/m^3/d}\]</span>
-</td>
-<td style="text-align:left;min-width: 6em; ">
-pelagic
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:left;min-width: 10em; ">
-</td>
-</tr>
-<tr>
-<td style="text-align:left;padding-left: 2em;" indentlevel="1">
-<code>PHY_{name}_set_c</code>
-</td>
-<td style="text-align:left;min-width: 7em; ">
-<span class="math display">\[\mathbf{f_{set}^{PHY_a}}\]</span>
-</td>
-<td style="text-align:left;max-width: 18em; ">
-phytoplankton sedimentation rate for the <span class="math inline">\(a^{th}\)</span> group, <code>name</code>
-</td>
-<td style="text-align:left;min-width: 10em; ">
-<span class="math display">\[\small{mmol\: C/m^3/d}\]</span>
-</td>
-<td style="text-align:left;min-width: 6em; ">
-pelagic
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:left;min-width: 10em; ">
-</td>
-</tr>
-<tr>
-<td style="text-align:left;padding-left: 2em;" indentlevel="1">
-<code>PHY_{name}_gpp_n</code>
-</td>
-<td style="text-align:left;min-width: 7em; ">
-<span class="math display">\[\mathbf{f_{gpp}^{IN_a}}\]</span>
-</td>
-<td style="text-align:left;max-width: 18em; ">
-phytoplankton gross primary production for the <span class="math inline">\(a^{th}\)</span> group, <code>name</code>
-</td>
-<td style="text-align:left;min-width: 10em; ">
-<span class="math display">\[\small{mmol\: N/m^3}\]</span>
-</td>
-<td style="text-align:left;min-width: 6em; ">
-pelagic
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:left;min-width: 10em; ">
-</td>
-</tr>
-<tr>
-<td style="text-align:left;padding-left: 2em;" indentlevel="1">
-<code>PHY_{name}_rsp_n</code>
-</td>
-<td style="text-align:left;min-width: 7em; ">
-<span class="math display">\[\mathbf{f_{rsp}^{IN_a}}\]</span>
-</td>
-<td style="text-align:left;max-width: 18em; ">
-phytoplankton respiration rate for the <span class="math inline">\(a^{th}\)</span> group, <code>name</code>
-</td>
-<td style="text-align:left;min-width: 10em; ">
-<span class="math display">\[\small{mmol\: N/m^3}\]</span>
-</td>
-<td style="text-align:left;min-width: 6em; ">
-pelagic
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:left;min-width: 10em; ">
-</td>
-</tr>
-<tr>
-<td style="text-align:left;padding-left: 2em;" indentlevel="1">
-<code>PHY_{name}_exc_n</code>
-</td>
-<td style="text-align:left;min-width: 7em; ">
-<span class="math display">\[\mathbf{f_{exc}^{IN_a}}\]</span>
-</td>
-<td style="text-align:left;max-width: 18em; ">
-phytoplankton excretion rate for the <span class="math inline">\(a^{th}\)</span> group, <code>name</code>
-</td>
-<td style="text-align:left;min-width: 10em; ">
-<span class="math display">\[\small{mmol\: N/m^3}\]</span>
-</td>
-<td style="text-align:left;min-width: 6em; ">
-pelagic
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:left;min-width: 10em; ">
-</td>
-</tr>
-<tr>
-<td style="text-align:left;padding-left: 2em;" indentlevel="1">
-<code>PHY_{name}_mor_n</code>
-</td>
-<td style="text-align:left;min-width: 7em; ">
-<span class="math display">\[\mathbf{f_{mor}^{IN_a}}\]</span>
-</td>
-<td style="text-align:left;max-width: 18em; ">
-phytoplankton mortality rate for the <span class="math inline">\(a^{th}\)</span> group, <code>name</code>
-</td>
-<td style="text-align:left;min-width: 10em; ">
-<span class="math display">\[\small{mmol\: N/m^3}\]</span>
-</td>
-<td style="text-align:left;min-width: 6em; ">
-pelagic
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:left;min-width: 10em; ">
-</td>
-</tr>
-<tr>
-<td style="text-align:left;padding-left: 2em;" indentlevel="1">
-<code>PHY_{name}_set_n</code>
-</td>
-<td style="text-align:left;min-width: 7em; ">
-<span class="math display">\[\mathbf{f_{set}^{IN_a}}\]</span>
-</td>
-<td style="text-align:left;max-width: 18em; ">
-phytoplankton sedimentation rate for the <span class="math inline">\(a^{th}\)</span> group, <code>name</code>
-</td>
-<td style="text-align:left;min-width: 10em; ">
-<span class="math display">\[\small{mmol\: N/m^3}\]</span>
-</td>
-<td style="text-align:left;min-width: 6em; ">
-pelagic
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:left;min-width: 10em; ">
-</td>
-</tr>
-<tr>
-<td style="text-align:left;padding-left: 2em;" indentlevel="1">
-<code>PHY_{name}_gpp_p</code>
-</td>
-<td style="text-align:left;min-width: 7em; ">
-<span class="math display">\[\mathbf{f_{gpp}^{IP_a}}\]</span>
-</td>
-<td style="text-align:left;max-width: 18em; ">
-phytoplankton gross primary production for the <span class="math inline">\(a^{th}\)</span> group, <code>name</code>
-</td>
-<td style="text-align:left;min-width: 10em; ">
-<span class="math display">\[\small{mmol\: P/m^3/d}\]</span>
-</td>
-<td style="text-align:left;min-width: 6em; ">
-pelagic
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:left;min-width: 10em; ">
-</td>
-</tr>
-<tr>
-<td style="text-align:left;padding-left: 2em;" indentlevel="1">
-<code>PHY_{name}_rsp_p</code>
-</td>
-<td style="text-align:left;min-width: 7em; ">
-<span class="math display">\[\mathbf{f_{rsp}^{IP_a}}\]</span>
-</td>
-<td style="text-align:left;max-width: 18em; ">
-phytoplankton respiration rate for the <span class="math inline">\(a^{th}\)</span> group, <code>name</code>
-</td>
-<td style="text-align:left;min-width: 10em; ">
-<span class="math display">\[\small{mmol\: P/m^3/d}\]</span>
-</td>
-<td style="text-align:left;min-width: 6em; ">
-pelagic
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:left;min-width: 10em; ">
-</td>
-</tr>
-<tr>
-<td style="text-align:left;padding-left: 2em;" indentlevel="1">
-<code>PHY_{name}_exc_p</code>
-</td>
-<td style="text-align:left;min-width: 7em; ">
-<span class="math display">\[\mathbf{f_{exc}^{IP_a}}\]</span>
-</td>
-<td style="text-align:left;max-width: 18em; ">
-phytoplankton excretion rate for the <span class="math inline">\(a^{th}\)</span> group, <code>name</code>
-</td>
-<td style="text-align:left;min-width: 10em; ">
-<span class="math display">\[\small{mmol\: P/m^3/d}\]</span>
-</td>
-<td style="text-align:left;min-width: 6em; ">
-pelagic
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:left;min-width: 10em; ">
-</td>
-</tr>
-<tr>
-<td style="text-align:left;padding-left: 2em;" indentlevel="1">
-<code>PHY_{name}_mor_p</code>
-</td>
-<td style="text-align:left;min-width: 7em; ">
-<span class="math display">\[\mathbf{f_{mor}^{IP_a}}\]</span>
-</td>
-<td style="text-align:left;max-width: 18em; ">
-phytoplankton mortality rate for the <span class="math inline">\(a^{th}\)</span> group, <code>name</code>
-</td>
-<td style="text-align:left;min-width: 10em; ">
-<span class="math display">\[\small{mmol\: P/m^3/d}\]</span>
-</td>
-<td style="text-align:left;min-width: 6em; ">
-pelagic
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:left;min-width: 10em; ">
-</td>
-</tr>
-<tr>
-<td style="text-align:left;padding-left: 2em;" indentlevel="1">
-<code>PHY_{name}_set_p</code>
-</td>
-<td style="text-align:left;min-width: 7em; ">
-<span class="math display">\[\mathbf{f_{set}^{IP_a}}\]</span>
-</td>
-<td style="text-align:left;max-width: 18em; ">
-phytoplankton sedimentation rate for the <span class="math inline">\(a^{th}\)</span> group, <code>name</code>
-</td>
-<td style="text-align:left;min-width: 10em; ">
-<span class="math display">\[\small{mmol\: P/m^3/d}\]</span>
-</td>
-<td style="text-align:left;min-width: 6em; ">
-pelagic
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:left;min-width: 10em; ">
-</td>
-</tr>
-<tr>
-<td style="text-align:left;padding-left: 2em;" indentlevel="1">
-<code>PHY_{name}_fI</code>
-</td>
-<td style="text-align:left;min-width: 7em; ">
-<span class="math display">\[\mathbf{\Phi_{light}^{PHY_{a}}}\]</span>
-</td>
-<td style="text-align:left;max-width: 18em; ">
-phytoplankton growth limitation function for the <span class="math inline">\(a^{th}\)</span> group, <code>name</code>
-</td>
-<td style="text-align:left;min-width: 10em; ">
-<span class="math display">\[\small{-}\]</span>
-</td>
-<td style="text-align:left;min-width: 6em; ">
-pelagic
-</td>
-<td style="text-align:left;">
-0 - 1
-</td>
-<td style="text-align:left;min-width: 10em; ">
-</td>
-</tr>
-<tr>
-<td style="text-align:left;padding-left: 2em;" indentlevel="1">
-<code>PHY_{name}_fNit</code>
-</td>
-<td style="text-align:left;min-width: 7em; ">
-<span class="math display">\[\mathbf{\Phi_{N}^{PHY_{a}}}\]</span>
-</td>
-<td style="text-align:left;max-width: 18em; ">
-phytoplankton growth limitation function for the <span class="math inline">\(a^{th}\)</span> group, <code>name</code>
-</td>
-<td style="text-align:left;min-width: 10em; ">
-<span class="math display">\[\small{-}\]</span>
-</td>
-<td style="text-align:left;min-width: 6em; ">
-pelagic
-</td>
-<td style="text-align:left;">
-0 - 1
-</td>
-<td style="text-align:left;min-width: 10em; ">
-</td>
-</tr>
-<tr>
-<td style="text-align:left;padding-left: 2em;" indentlevel="1">
-<code>PHY_{name}_fPho</code>
-</td>
-<td style="text-align:left;min-width: 7em; ">
-<span class="math display">\[\mathbf{\Phi_{P}^{PHY_{a}}}\]</span>
-</td>
-<td style="text-align:left;max-width: 18em; ">
-phytoplankton growth limitation function for the <span class="math inline">\(a^{th}\)</span> group, <code>name</code>
-</td>
-<td style="text-align:left;min-width: 10em; ">
-<span class="math display">\[\small{-}\]</span>
-</td>
-<td style="text-align:left;min-width: 6em; ">
-pelagic
-</td>
-<td style="text-align:left;">
-0 - 1
-</td>
-<td style="text-align:left;min-width: 10em; ">
-</td>
-</tr>
-<tr>
-<td style="text-align:left;padding-left: 2em;" indentlevel="1">
-<code>PHY_{name}_fSil</code>
-</td>
-<td style="text-align:left;min-width: 7em; ">
-<span class="math display">\[\mathbf{\Phi_{Si}^{PHY_{a}}}\]</span>
-</td>
-<td style="text-align:left;max-width: 18em; ">
-phytoplankton growth limitation function for the <span class="math inline">\(a^{th}\)</span> group, <code>name</code>
-</td>
-<td style="text-align:left;min-width: 10em; ">
-<span class="math display">\[\small{-}\]</span>
-</td>
-<td style="text-align:left;min-width: 6em; ">
-pelagic
-</td>
-<td style="text-align:left;">
-0 - 1
-</td>
-<td style="text-align:left;min-width: 10em; ">
-</td>
-</tr>
-<tr>
-<td style="text-align:left;padding-left: 2em;" indentlevel="1">
-<code>PHY_{name}_fT</code>
-</td>
-<td style="text-align:left;min-width: 7em; ">
-<span class="math display">\[\mathbf{\Phi_{tem}^{PHY_{a}}}\]</span>
-</td>
-<td style="text-align:left;max-width: 18em; ">
-phytoplankton growth limitation function for the <span class="math inline">\(a^{th}\)</span> group, <code>name</code>
-</td>
-<td style="text-align:left;min-width: 10em; ">
-<span class="math display">\[\small{-}\]</span>
-</td>
-<td style="text-align:left;min-width: 6em; ">
-pelagic
-</td>
-<td style="text-align:left;">
-0 - 1.5
-</td>
-<td style="text-align:left;min-width: 10em; ">
-</td>
-</tr>
-<tr>
-<td style="text-align:left;padding-left: 2em;" indentlevel="1">
-<code>PHY_{name}_fSal</code>
-</td>
-<td style="text-align:left;min-width: 7em; ">
-<span class="math display">\[\mathbf{\Phi_{sal}^{PHY_{a}}}\]</span>
-</td>
-<td style="text-align:left;max-width: 18em; ">
-phytoplankton growth limitation function for the <span class="math inline">\(a^{th}\)</span> group, <code>name</code>
-</td>
-<td style="text-align:left;min-width: 10em; ">
-<span class="math display">\[\small{-}\]</span>
-</td>
-<td style="text-align:left;min-width: 6em; ">
-pelagic
-</td>
-<td style="text-align:left;">
-0 - 5
-</td>
-<td style="text-align:left;min-width: 10em; ">
-</td>
-</tr>
-<tr>
-<td style="text-align:left;padding-left: 2em;" indentlevel="1">
-<code>PHY_tphy</code>
-</td>
-<td style="text-align:left;min-width: 7em; ">
-<span class="math display">\[\mathbf{TPHY}\]</span>
-</td>
-<td style="text-align:left;max-width: 18em; ">
-total phytoplankton community, <span class="math inline">\(\mathbb{PHY}\)</span> concentration
-</td>
-<td style="text-align:left;min-width: 10em; ">
-<span class="math display">\[\small{mmol\: C/m^3/d}\]</span>
-</td>
-<td style="text-align:left;min-width: 6em; ">
-pelagic
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:left;min-width: 10em; ">
-</td>
-</tr>
-<tr>
-<td style="text-align:left;padding-left: 2em;" indentlevel="1">
-<code>PHY_ppr</code>
-</td>
-<td style="text-align:left;min-width: 7em; ">
-<span class="math display">\[\mathbf{f_{gpp}^{\mathbb{PHY}}} / \mathbf{f_{rsp}^{\mathbb{PHY}}}\]</span>
-</td>
-<td style="text-align:left;max-width: 18em; ">
-gross phytoplankton <span class="math inline">\(P:R\)</span> ratio
-</td>
-<td style="text-align:left;min-width: 10em; ">
-<span class="math display">\[\small{-}\]</span>
-</td>
-<td style="text-align:left;min-width: 6em; ">
-pelagic
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:left;min-width: 10em; ">
-</td>
-</tr>
-<tr>
-<td style="text-align:left;padding-left: 2em;" indentlevel="1">
-<code>PHY_npr</code>
-</td>
-<td style="text-align:left;min-width: 7em; ">
-<span class="math display">\[\mathbf{f_{ncp}^{\mathbb{PHY}}} / \mathbf{f_{rsp}^{\mathbb{PHY}}}\]</span>
-</td>
-<td style="text-align:left;max-width: 18em; ">
-net phytoplankton P:R ratio
-</td>
-<td style="text-align:left;min-width: 10em; ">
-<span class="math display">\[\small{-}\]</span>
-</td>
-<td style="text-align:left;min-width: 6em; ">
-pelagic
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:left;min-width: 10em; ">
-</td>
-</tr>
-<tr>
-<td style="text-align:left;padding-left: 2em;" indentlevel="1">
-<code>PHY_par</code>
-</td>
-<td style="text-align:left;min-width: 7em; ">
-<span class="math display">\[\mathbf{I_{PAR}}\]</span>
-</td>
-<td style="text-align:left;max-width: 18em; ">
-photosynthetically active radiation
-</td>
-<td style="text-align:left;min-width: 10em; ">
-<span class="math display">\[\small{W/m^2}\]</span>
-</td>
-<td style="text-align:left;min-width: 6em; ">
-pelagic
-</td>
-<td style="text-align:left;">
-0-1200
-</td>
-<td style="text-align:left;min-width: 10em; ">
+requires <code>simSediment</code> <span class="math inline">\(=\)</span> true
 </td>
 </tr>
 </tbody>
@@ -1968,12 +1308,927 @@ pelagic
 <div id="parameter-summary-9" class="section level3 hasAnchor" number="13.3.3">
 <h3><span class="header-section-number">13.3.3</span> Parameter Summary<a href="Pesticide_1.html#parameter-summary-9" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The parameters and settings used by this module are summarised in Table @ref(tab:……).</p>
+<div style="border: 1px solid #ddd; padding: 5px; overflow-y: scroll; height:900px; overflow-x: scroll; width:770px; ">
+<table class="table" style="font-size: 11px; width: auto !important; margin-left: auto; margin-right: auto;">
+<caption style="font-size: initial !important;">
+<span id="tab:21p-parstable">Table 13.3: </span>Pesticide module parameters set for each group
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;font-weight: bold;color: white !important;background-color: #14759e !important;">
+AED name
+</th>
+<th style="text-align:left;font-weight: bold;color: white !important;background-color: #14759e !important;">
+Symbol
+</th>
+<th style="text-align:left;font-weight: bold;color: white !important;background-color: #14759e !important;">
+Description
+</th>
+<th style="text-align:left;font-weight: bold;color: white !important;background-color: #14759e !important;">
+Unit
+</th>
+<th style="text-align:left;font-weight: bold;color: white !important;background-color: #14759e !important;">
+Type
+</th>
+<th style="text-align:left;font-weight: bold;color: white !important;background-color: #14759e !important;">
+Typical Range
+</th>
+<th style="text-align:left;font-weight: bold;color: white !important;background-color: #14759e !important;">
+Comments
+</th>
+</tr>
+</thead>
+<tbody>
+<tr grouplength="2">
+<td colspan="7" style="border-bottom: 1px solid;background-color: #ebebeb !important;">
+<strong>General</strong>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;padding-left: 2em;" indentlevel="1">
+<code>name</code>
+</td>
+<td style="text-align:left;min-width: 7em; ">
+<span class="math display">\[i\]</span>
+</td>
+<td style="text-align:left;max-width: 19em; ">
+name of pesticide group
+</td>
+<td style="text-align:left;min-width: 10em; ">
+<span class="math display">\[\small{-}\]</span>
+</td>
+<td style="text-align:left;min-width: 5em; ">
+string
+</td>
+<td style="text-align:left;">
+<ul>
+<li></td>
+<td style="text-align:left;min-width: 10em; ">
+user specified name of chosen pesticide group, <span class="math inline">\(i\)</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;padding-left: 2em;" indentlevel="1">
+<code>pst_initial</code>
+</td>
+<td style="text-align:left;min-width: 7em; ">
+<span class="math display">\[C_T |_{t=0}\]</span>
+</td>
+<td style="text-align:left;max-width: 19em; ">
+initial concentration of pesticide group
+</td>
+<td style="text-align:left;min-width: 10em; ">
+<span class="math display">\[\small{mg\: /m^3}\]</span>
+</td>
+<td style="text-align:left;min-width: 5em; ">
+float
+</td>
+<td style="text-align:left;">
+0-1000
+</td>
+<td style="text-align:left;min-width: 10em; ">
+can be overwritten by initial condition files
+</td>
+</tr>
+<tr grouplength="5">
+<td colspan="7" style="border-bottom: 1px solid;background-color: #ebebeb !important;">
+<strong>Breakdown</strong>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;padding-left: 2em;" indentlevel="1">
+<code>Rhydrol</code>
+</td>
+<td style="text-align:left;min-width: 7em; ">
+<span class="math display">\[R_{hydrol}^{PST}\]</span>
+</td>
+<td style="text-align:left;max-width: 19em; ">
+NA
+</td>
+<td style="text-align:left;min-width: 10em; ">
+NA
+</td>
+<td style="text-align:left;min-width: 5em; ">
+float
+</td>
+<td style="text-align:left;">
+10 - 1000
+</td>
+<td style="text-align:left;min-width: 10em; ">
+<ul>
+<li></td>
+</tr>
+<tr>
+<td style="text-align:left;padding-left: 2em;" indentlevel="1">
+<code>theta_hydrol</code>
+</td>
+<td style="text-align:left;min-width: 7em; ">
+<span class="math display">\[\theta_{hydrol}^{PST}\]</span>
+</td>
+<td style="text-align:left;max-width: 19em; ">
+Arrenhius temperature scaling for breakdown function
+</td>
+<td style="text-align:left;min-width: 10em; ">
+<span class="math display">\[\small{-}\]</span>
+</td>
+<td style="text-align:left;min-width: 5em; ">
+float
+</td>
+<td style="text-align:left;">
+1 - 1.2
+</td>
+<td style="text-align:left;min-width: 10em; ">
+<ul>
+<li></td>
+</tr>
+<tr>
+<td style="text-align:left;padding-left: 2em;" indentlevel="1">
+<code>Rphoto</code>
+</td>
+<td style="text-align:left;min-width: 7em; ">
+<span class="math display">\[R_{photo}^{PST_{name}}\]</span>
+</td>
+<td style="text-align:left;max-width: 19em; ">
+NA
+</td>
+<td style="text-align:left;min-width: 10em; ">
+<span class="math display">\[\small{/d}\]</span>
+</td>
+<td style="text-align:left;min-width: 5em; ">
+float
+</td>
+<td style="text-align:left;">
+0.1 - 5.0
+</td>
+<td style="text-align:left;min-width: 10em; ">
+<ul>
+<li></td>
+</tr>
+<tr>
+<td style="text-align:left;padding-left: 2em;" indentlevel="1">
+<code>Ruptake</code>
+</td>
+<td style="text-align:left;min-width: 7em; ">
+<span class="math display">\[R_{uptake}^{PST}\]</span>
+</td>
+<td style="text-align:left;max-width: 19em; ">
+NA
+</td>
+<td style="text-align:left;min-width: 10em; ">
+<span class="math display">\[\small{/d}\]</span>
+</td>
+<td style="text-align:left;min-width: 5em; ">
+integer
+</td>
+<td style="text-align:left;">
+0-1
+</td>
+<td style="text-align:left;min-width: 10em; ">
+<ul>
+<li></td>
+</tr>
+<tr>
+<td style="text-align:left;padding-left: 2em;" indentlevel="1">
+<code>K_gpp</code>
+</td>
+<td style="text-align:left;min-width: 7em; ">
+<span class="math display">\[K_{gpp}\]</span>
+</td>
+<td style="text-align:left;max-width: 19em; ">
+NA
+</td>
+<td style="text-align:left;min-width: 10em; ">
+<span class="math display">\[\small{^{\circ}C}\]</span>
+</td>
+<td style="text-align:left;min-width: 5em; ">
+float
+</td>
+<td style="text-align:left;">
+20
+</td>
+<td style="text-align:left;min-width: 10em; ">
+<ul>
+<li></td>
+</tr>
+<tr grouplength="3">
+<td colspan="7" style="border-bottom: 1px solid;background-color: #ebebeb !important;">
+<strong>Light</strong>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;padding-left: 2em;" indentlevel="1">
+<code>coef_light_kb_vis</code>
+</td>
+<td style="text-align:left;min-width: 7em; ">
+</td>
+<td style="text-align:left;max-width: 19em; ">
+NA
+</td>
+<td style="text-align:left;min-width: 10em; ">
+NA
+</td>
+<td style="text-align:left;min-width: 5em; ">
+float
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;min-width: 10em; ">
+<ul>
+<li></td>
+</tr>
+<tr>
+<td style="text-align:left;padding-left: 2em;" indentlevel="1">
+<code>coef_light_kb_uva</code>
+</td>
+<td style="text-align:left;min-width: 7em; ">
+</td>
+<td style="text-align:left;max-width: 19em; ">
+NA
+</td>
+<td style="text-align:left;min-width: 10em; ">
+NA
+</td>
+<td style="text-align:left;min-width: 5em; ">
+float
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;min-width: 10em; ">
+<ul>
+<li></td>
+</tr>
+<tr>
+<td style="text-align:left;padding-left: 2em;" indentlevel="1">
+<code>coef_light_kb_uvb</code>
+</td>
+<td style="text-align:left;min-width: 7em; ">
+</td>
+<td style="text-align:left;max-width: 19em; ">
+NA
+</td>
+<td style="text-align:left;min-width: 10em; ">
+NA
+</td>
+<td style="text-align:left;min-width: 5em; ">
+float
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;min-width: 10em; ">
+<ul>
+<li></td>
+</tr>
+<tr grouplength="4">
+<td colspan="7" style="border-bottom: 1px solid;background-color: #ebebeb !important;">
+<strong>Sorption</strong>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;padding-left: 2em;" indentlevel="1">
+<code>sorption_model</code>
+</td>
+<td style="text-align:left;min-width: 7em; ">
+<span class="math display">\[\Theta_{srp}^{pst}\]</span>
+</td>
+<td style="text-align:left;max-width: 19em; ">
+NA
+</td>
+<td style="text-align:left;min-width: 10em; ">
+<span class="math display">\[\small{/d}\]</span>
+</td>
+<td style="text-align:left;min-width: 5em; ">
+float
+</td>
+<td style="text-align:left;">
+0.01 - 0.3
+</td>
+<td style="text-align:left;min-width: 10em; ">
+<ul>
+<li></td>
+</tr>
+<tr>
+<td style="text-align:left;padding-left: 2em;" indentlevel="1">
+<code>num_sorb</code>
+</td>
+<td style="text-align:left;min-width: 7em; ">
+<span class="math display">\[n_s\]</span>
+</td>
+<td style="text-align:left;max-width: 19em; ">
+NA
+</td>
+<td style="text-align:left;min-width: 10em; ">
+<span class="math display">\[\small{-}\]</span>
+</td>
+<td style="text-align:left;min-width: 5em; ">
+float
+</td>
+<td style="text-align:left;">
+1 - 1.2
+</td>
+<td style="text-align:left;min-width: 10em; ">
+<ul>
+<li></td>
+</tr>
+<tr>
+<td style="text-align:left;padding-left: 2em;" indentlevel="1">
+<code>pest_sorbent</code>
+</td>
+<td style="text-align:left;min-width: 7em; ">
+</td>
+<td style="text-align:left;max-width: 19em; ">
+NA
+</td>
+<td style="text-align:left;min-width: 10em; ">
+<span class="math display">\[\small{-}\]</span>
+</td>
+<td style="text-align:left;min-width: 5em; ">
+float
+</td>
+<td style="text-align:left;">
+0 - 1
+</td>
+<td style="text-align:left;min-width: 10em; ">
+<ul>
+<li></td>
+</tr>
+<tr>
+<td style="text-align:left;padding-left: 2em;" indentlevel="1">
+<code>Kpst_sorb</code>
+</td>
+<td style="text-align:left;min-width: 7em; ">
+<span class="math display">\[K_{sorb}^{pst}\]</span>
+</td>
+<td style="text-align:left;max-width: 19em; ">
+NA
+</td>
+<td style="text-align:left;min-width: 10em; ">
+<span class="math display">\[\small{-}\]</span>
+</td>
+<td style="text-align:left;min-width: 5em; ">
+float
+</td>
+<td style="text-align:left;">
+0 - 1
+</td>
+<td style="text-align:left;min-width: 10em; ">
+<ul>
+<li></td>
+</tr>
+<tr grouplength="5">
+<td colspan="7" style="border-bottom: 1px solid;background-color: #ebebeb !important;">
+<strong>Sediment</strong>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;padding-left: 2em;" indentlevel="1">
+<code>pst_initial_sed</code>
+</td>
+<td style="text-align:left;min-width: 7em; ">
+<span class="math display">\[C_T |_{t=0}\]</span>
+</td>
+<td style="text-align:left;max-width: 19em; ">
+NA
+</td>
+<td style="text-align:left;min-width: 10em; ">
+<span class="math display">\[\small{mmol\: C/m^3}\]</span>
+</td>
+<td style="text-align:left;min-width: 5em; ">
+float
+</td>
+<td style="text-align:left;">
+1-20
+</td>
+<td style="text-align:left;min-width: 10em; ">
+<ul>
+<li></td>
+</tr>
+<tr>
+<td style="text-align:left;padding-left: 2em;" indentlevel="1">
+<code>Fsed_pst</code>
+</td>
+<td style="text-align:left;min-width: 7em; ">
+</td>
+<td style="text-align:left;max-width: 19em; ">
+NA
+</td>
+<td style="text-align:left;min-width: 10em; ">
+<span class="math display">\[\small{^{\circ}C}\]</span>
+</td>
+<td style="text-align:left;min-width: 5em; ">
+float
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;min-width: 10em; ">
+<ul>
+<li></td>
+</tr>
+<tr>
+<td style="text-align:left;padding-left: 2em;" indentlevel="1">
+<code>porosity</code>
+</td>
+<td style="text-align:left;min-width: 7em; ">
+<span class="math display">\[\phi\]</span>
+</td>
+<td style="text-align:left;max-width: 19em; ">
+NA
+</td>
+<td style="text-align:left;min-width: 10em; ">
+<span class="math display">\[\small{^{\circ}C}\]</span>
+</td>
+<td style="text-align:left;min-width: 5em; ">
+float
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;min-width: 10em; ">
+<ul>
+<li></td>
+</tr>
+<tr>
+<td style="text-align:left;padding-left: 2em;" indentlevel="1">
+<code>Kpst_sorb_sed</code>
+</td>
+<td style="text-align:left;min-width: 7em; ">
+</td>
+<td style="text-align:left;max-width: 19em; ">
+NA
+</td>
+<td style="text-align:left;min-width: 10em; ">
+<span class="math display">\[\small{-}\]</span>
+</td>
+<td style="text-align:left;min-width: 5em; ">
+integer
+</td>
+<td style="text-align:left;">
+0-1
+</td>
+<td style="text-align:left;min-width: 10em; ">
+<ul>
+<li></td>
+</tr>
+<tr>
+<td style="text-align:left;padding-left: 2em;" indentlevel="1">
+<code>Kdsf</code>
+</td>
+<td style="text-align:left;min-width: 7em; ">
+</td>
+<td style="text-align:left;max-width: 19em; ">
+NA
+</td>
+<td style="text-align:left;min-width: 10em; ">
+NA
+</td>
+<td style="text-align:left;min-width: 5em; ">
+float
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;min-width: 10em; ">
+used if <span class="math inline">\(\Theta_{sed}^{pst}\)</span> is 0
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<br></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul>
+<div style="border: 1px solid #ddd; padding: 5px; overflow-y: scroll; height:800px; overflow-x: scroll; width:770px; ">
+<table class="table" style="font-size: 11px; width: auto !important; margin-left: auto; margin-right: auto;">
+<caption style="font-size: initial !important;">
+<span id="tab:21p-configtable">Table 13.4: </span>Pesticide module-level configuration options
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;font-weight: bold;color: white !important;background-color: #ff7043 !important;">
+AED name
+</th>
+<th style="text-align:left;font-weight: bold;color: white !important;background-color: #ff7043 !important;">
+Symbol
+</th>
+<th style="text-align:left;font-weight: bold;color: white !important;background-color: #ff7043 !important;">
+Description
+</th>
+<th style="text-align:left;font-weight: bold;color: white !important;background-color: #ff7043 !important;">
+Unit
+</th>
+<th style="text-align:left;font-weight: bold;color: white !important;background-color: #ff7043 !important;">
+Type
+</th>
+<th style="text-align:left;font-weight: bold;color: white !important;background-color: #ff7043 !important;">
+Typical Range
+</th>
+<th style="text-align:left;font-weight: bold;color: white !important;background-color: #ff7043 !important;">
+Comments
+</th>
+</tr>
+</thead>
+<tbody>
+<tr grouplength="2">
+<td colspan="7" style="border-bottom: 1px solid;background-color: #ebebeb !important;">
+<strong>Groups</strong>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;padding-left: 2em;" indentlevel="1">
+<code>num_pesticides</code>
+</td>
+<td style="text-align:left;min-width: 7em; ">
+<span class="math display">\[N_{i}^{pst}\]</span>
+</td>
+<td style="text-align:left;max-width: 19em; ">
+number of pesticide groups
+</td>
+<td style="text-align:left;min-width: 10em; ">
+<span class="math display">\[\small{-}\]</span>
+</td>
+<td style="text-align:left;min-width: 5em; ">
+integer
+</td>
+<td style="text-align:left;">
+1 - 64
+</td>
+<td style="text-align:left;min-width: 10em; ">
+<ul>
+<li></td>
+</tr>
+<tr>
+<td style="text-align:left;padding-left: 2em;" indentlevel="1">
+<code>the_pesticides</code>
+</td>
+<td style="text-align:left;min-width: 7em; ">
+<span class="math display">\[\mathbb{PST}\]</span>
+</td>
+<td style="text-align:left;max-width: 19em; ">
+set of chosen group ID’s within the database file, where <span class="math inline">\(i \in \mathbb{PST}\)</span>
+</td>
+<td style="text-align:left;min-width: 10em; ">
+<span class="math display">\[\small{-}\]</span>
+</td>
+<td style="text-align:left;min-width: 5em; ">
+integer
+</td>
+<td style="text-align:left;">
+1, 2, 3, …
+</td>
+<td style="text-align:left;min-width: 10em; ">
+<ul>
+<li></td>
+</tr>
+<tr grouplength="11">
+<td colspan="7" style="border-bottom: 1px solid;background-color: #ebebeb !important;">
+<strong>Options</strong>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;padding-left: 2em;" indentlevel="1">
+<code>simSediment</code>
+</td>
+<td style="text-align:left;min-width: 7em; ">
+<span class="math display">\[\Theta_{sed}^{pst}\]</span>
+</td>
+<td style="text-align:left;max-width: 19em; ">
+NA
+</td>
+<td style="text-align:left;min-width: 10em; ">
+<span class="math display">\[\small{-}\]</span>
+</td>
+<td style="text-align:left;min-width: 5em; ">
+boolean
+</td>
+<td style="text-align:left;">
+0 - 4
+</td>
+<td style="text-align:left;min-width: 10em; ">
+<ul>
+<li></td>
+</tr>
+<tr>
+<td style="text-align:left;padding-left: 2em;" indentlevel="1">
+<code>initSedimentConc</code>
+</td>
+<td style="text-align:left;min-width: 7em; ">
+<span class="math display">\[\Theta_{sedfile}^{pst}\]</span>
+</td>
+<td style="text-align:left;max-width: 19em; ">
+NA
+</td>
+<td style="text-align:left;min-width: 10em; ">
+<span class="math display">\[\small{-}\]</span>
+</td>
+<td style="text-align:left;min-width: 5em; ">
+boolean
+</td>
+<td style="text-align:left;">
+0 , 1, 2
+</td>
+<td style="text-align:left;min-width: 10em; ">
+<ul>
+<li></td>
+</tr>
+<tr>
+<td style="text-align:left;padding-left: 2em;" indentlevel="1">
+<code>simResuspension</code>
+</td>
+<td style="text-align:left;min-width: 7em; ">
+<span class="math display">\[\Theta_{resus}^{pst}\]</span>
+</td>
+<td style="text-align:left;max-width: 19em; ">
+NA
+</td>
+<td style="text-align:left;min-width: 10em; ">
+<span class="math display">\[\small{-}\]</span>
+</td>
+<td style="text-align:left;min-width: 5em; ">
+boolean
+</td>
+<td style="text-align:left;">
+0 - 3
+</td>
+<td style="text-align:left;min-width: 10em; ">
+<ul>
+<li></td>
+</tr>
+<tr>
+<td style="text-align:left;padding-left: 2em;" indentlevel="1">
+<code>resuspension</code>
+</td>
+<td style="text-align:left;min-width: 7em; ">
+<span class="math display">\[\Theta_{resus}^{pst}\]</span>
+</td>
+<td style="text-align:left;max-width: 19em; ">
+NA
+</td>
+<td style="text-align:left;min-width: 10em; ">
+<span class="math display">\[\small{-}\]</span>
+</td>
+<td style="text-align:left;min-width: 5em; ">
+integer
+</td>
+<td style="text-align:left;">
+0 - 1
+</td>
+<td style="text-align:left;min-width: 10em; ">
+<ul>
+<li></td>
+</tr>
+<tr>
+<td style="text-align:left;padding-left: 2em;" indentlevel="1">
+<code>resus_link</code>
+</td>
+<td style="text-align:left;min-width: 7em; ">
+<span class="math display">\[-\]</span>
+</td>
+<td style="text-align:left;max-width: 19em; ">
+variable simulating resuspension rate to link to
+</td>
+<td style="text-align:left;min-width: 10em; ">
+<span class="math display">\[\small{-}\]</span>
+</td>
+<td style="text-align:left;min-width: 5em; ">
+string
+</td>
+<td style="text-align:left;">
+0 - 100
+</td>
+<td style="text-align:left;min-width: 10em; ">
+<ul>
+<li></td>
+</tr>
+<tr>
+<td style="text-align:left;padding-left: 2em;" indentlevel="1">
+<code>simVolatilisation</code>
+</td>
+<td style="text-align:left;min-width: 7em; ">
+<span class="math display">\[\Theta_{volat}^{pst}\]</span>
+</td>
+<td style="text-align:left;max-width: 19em; ">
+NA
+</td>
+<td style="text-align:left;min-width: 10em; ">
+<span class="math display">\[\small{-}\]</span>
+</td>
+<td style="text-align:left;min-width: 5em; ">
+boolean
+</td>
+<td style="text-align:left;">
+10000
+</td>
+<td style="text-align:left;min-width: 10em; ">
+<ul>
+<li></td>
+</tr>
+<tr>
+<td style="text-align:left;padding-left: 2em;" indentlevel="1">
+<code>pst_piston_model</code>
+</td>
+<td style="text-align:left;min-width: 7em; ">
+<span class="math display">\[\Theta_{piston}^{pst}\]</span>
+</td>
+<td style="text-align:left;max-width: 19em; ">
+NA
+</td>
+<td style="text-align:left;min-width: 10em; ">
+<span class="math display">\[\small{-}\]</span>
+</td>
+<td style="text-align:left;min-width: 5em; ">
+integer
+</td>
+<td style="text-align:left;">
+0 , 1
+</td>
+<td style="text-align:left;min-width: 10em; ">
+<ul>
+<li></td>
+</tr>
+<tr>
+<td style="text-align:left;padding-left: 2em;" indentlevel="1">
+<code>simSorption</code>
+</td>
+<td style="text-align:left;min-width: 7em; ">
+<span class="math display">\[\Theta_{sorp}^{pst}\]</span>
+</td>
+<td style="text-align:left;max-width: 19em; ">
+NA
+</td>
+<td style="text-align:left;min-width: 10em; ">
+<span class="math display">\[\small{-}\]</span>
+</td>
+<td style="text-align:left;min-width: 5em; ">
+boolean
+</td>
+<td style="text-align:left;">
+0 - 64
+</td>
+<td style="text-align:left;min-width: 10em; ">
+<ul>
+<li></td>
+</tr>
+<tr>
+<td style="text-align:left;padding-left: 2em;" indentlevel="1">
+<code>simPhotolysis</code>
+</td>
+<td style="text-align:left;min-width: 7em; ">
+<span class="math display">\[\Theta_{photo}^{pst}\]</span>
+</td>
+<td style="text-align:left;max-width: 19em; ">
+NA
+</td>
+<td style="text-align:left;min-width: 10em; ">
+<span class="math display">\[\small{-}\]</span>
+</td>
+<td style="text-align:left;min-width: 5em; ">
+boolean
+</td>
+<td style="text-align:left;">
+1, 2, 3, …
+</td>
+<td style="text-align:left;min-width: 10em; ">
+<ul>
+<li></td>
+</tr>
+<tr>
+<td style="text-align:left;padding-left: 2em;" indentlevel="1">
+<code>simUptake</code>
+</td>
+<td style="text-align:left;min-width: 7em; ">
+<span class="math display">\[\Theta_{uptake}^{pst}\]</span>
+</td>
+<td style="text-align:left;max-width: 19em; ">
+NA
+</td>
+<td style="text-align:left;min-width: 10em; ">
+<span class="math display">\[\small{-}\]</span>
+</td>
+<td style="text-align:left;min-width: 5em; ">
+boolean
+</td>
+<td style="text-align:left;">
+<code>NCS_resus</code>
+</td>
+<td style="text-align:left;min-width: 10em; ">
+<ul>
+<li></td>
+</tr>
+<tr>
+<td style="text-align:left;padding-left: 2em;" indentlevel="1">
+<code>gpp_variable</code>
+</td>
+<td style="text-align:left;min-width: 7em; ">
+</td>
+<td style="text-align:left;max-width: 19em; ">
+NA
+</td>
+<td style="text-align:left;min-width: 10em; ">
+<span class="math display">\[\small{-}\]</span>
+</td>
+<td style="text-align:left;min-width: 5em; ">
+string
+</td>
+<td style="text-align:left;">
+<code>OGM_dop</code>
+</td>
+<td style="text-align:left;min-width: 10em; ">
+<ul>
+<li></td>
+</tr>
+<tr grouplength="2">
+<td colspan="7" style="border-bottom: 1px solid;background-color: #ebebeb !important;">
+<strong>Advanced</strong>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;padding-left: 2em;" indentlevel="1">
+<code>dbase</code>
+</td>
+<td style="text-align:left;min-width: 7em; ">
+<span class="math display">\[-\]</span>
+</td>
+<td style="text-align:left;max-width: 19em; ">
+pestcide parameter database file
+</td>
+<td style="text-align:left;min-width: 10em; ">
+<span class="math display">\[\small{-}\]</span>
+</td>
+<td style="text-align:left;min-width: 5em; ">
+string
+</td>
+<td style="text-align:left;">
+<code>aed_pesticide_pars.csv</code>
+</td>
+<td style="text-align:left;min-width: 10em; ">
+aed_dbase link
+</td>
+</tr>
+<tr>
+<td style="text-align:left;padding-left: 2em;" indentlevel="1">
+<code>diag_level</code>
+</td>
+<td style="text-align:left;min-width: 7em; ">
+<span class="math display">\[-\]</span>
+</td>
+<td style="text-align:left;max-width: 19em; ">
+extent of diagnostic output
+</td>
+<td style="text-align:left;min-width: 10em; ">
+<span class="math display">\[\small{-}\]</span>
+</td>
+<td style="text-align:left;min-width: 5em; ">
+integer
+</td>
+<td style="text-align:left;">
+0 - 10
+</td>
+<td style="text-align:left;min-width: 10em; ">
+see Table X.X
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<br></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul>
 </div>
 <div id="optional-module-links-8" class="section level3 hasAnchor" number="13.3.4">
 <h3><span class="header-section-number">13.3.4</span> Optional Module Links<a href="Pesticide_1.html#optional-module-links-8" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>This module can be linked to the following other AED modules:</p>
 <ul>
 <li><a href="phytoplankton.html#phytoplankton">aed_phytoplankton</a>: phytoplankton rate of productivity (<span class="math inline">\(GPP\)</span>) is able to drive the biological uptake rate of pesticide.</li>
+<li>[aed_noncohesive][NonCohesive]: sediment resuspension rate can have a linked concentration of pesticide.</li>
 </ul>
 </div>
 <div id="feedbacks-to-the-host-model-8" class="section level3 hasAnchor" number="13.3.5">
@@ -2020,8 +2275,8 @@ Users can create a standard file in the correct format from the online <a href="
 <p><br></p>
 <center>
 <div class="figure"><span style="display:block;" id="fig:johnstone-map"></span>
-<div id="htmlwidget-7f32b8ff6444e8247f8b" style="width:500px;height:385px;" class="leaflet html-widget"></div>
-<script type="application/json" data-for="htmlwidget-7f32b8ff6444e8247f8b">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"setView":[[-17.505,146.07],11,[]],"calls":[{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"https://openstreetmap.org\">OpenStreetMap<\/a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA<\/a>"}]},{"method":"addProviderTiles","args":["Stamen.Terrain",null,null,{"errorTileUrl":"","noWrap":false,"detectRetina":false}]},{"method":"addMarkers","args":[-17.51,146.06,null,null,null,{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},"Johnstone River Estuary",null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]}],"limits":{"lat":[-17.51,-17.51],"lng":[146.06,146.06]}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-9471e0e352329101c15d" style="width:500px;height:385px;" class="leaflet html-widget"></div>
+<script type="application/json" data-for="htmlwidget-9471e0e352329101c15d">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"setView":[[-17.505,146.07],11,[]],"calls":[{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"https://openstreetmap.org\">OpenStreetMap<\/a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA<\/a>"}]},{"method":"addProviderTiles","args":["Stamen.Terrain",null,null,{"errorTileUrl":"","noWrap":false,"detectRetina":false}]},{"method":"addMarkers","args":[-17.51,146.06,null,null,null,{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},"Johnstone River Estuary",null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]}],"limits":{"lat":[-17.51,-17.51],"lng":[146.06,146.06]}},"evals":[],"jsHooks":[]}</script>
 <p class="caption">
 Figure 13.1: Map of Johnstone estuary, Australia.
 </p>
