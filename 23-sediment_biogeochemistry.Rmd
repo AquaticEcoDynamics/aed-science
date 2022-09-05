@@ -111,7 +111,8 @@ knitr::include_graphics("images/23-sediment_biogeochemistry/AdvectionDispersion/
 
 ```
 
-
+wqwqwqwq
+Each species has its own rate of diffusion. 
 
 ##### *Porosity*  {-} 
 Porosity ($\phi$) is defined as the amount of water per total volume of space, as a real number between 0 and 1. 
@@ -1173,13 +1174,13 @@ The fluxes and concentrations in the water cells above the sediment are averaged
 
 ```{r dev-Grid3, echo = FALSE, out.width='60%', class = "text-image",fig.show='hold',fig.align='center', out.width='60%', fig.cap = "Schematic displaying how water cells are averaged when using sediment zones with a 3D hydrodynamic model."}
 
-knitr::include_graphics("images/23-sediment_biogeochemistry/GridStructure/ZoneAveraging-05.png")
+knitr::include_graphics("images/23-sediment_biogeochemistry/GridStructure/ZoneAveraging-04.png")
 
 ```
 
 
 ```{r dev-Grid4, echo = FALSE, out.width='60%', class = "text-image",fig.show='hold',fig.align='center', fig.cap = "Schematic displaying how water cells are averaged when using sediment zones with a 1D hydrodynamic model."}
-knitr::include_graphics("images/23-sediment_biogeochemistry/GridStructure/ZoneAveraging-06.png")
+knitr::include_graphics("images/23-sediment_biogeochemistry/GridStructure/ZoneAveraging-05.png")
 ```
 
 
@@ -1415,6 +1416,9 @@ sediment_DiagVarsTableGroups <- unique(sediment_DiagVarsTable$Group)
 #### Environmental variables 
 There are several 'environmental' variables, that can be linked from the water column model or other AED modules, to set conditions in the sediment model (table \@ref(tab:EnvVarsTable)). For example, water column salinity from a model such as TUFLOW-FV can be used to set the sediment-water interface concentration of salt at the sediment-water interface, which is used to calculate *F~Sal~*. Another example is the set of $MPB$ and $MAG$ variables used to set the $O_2$ penetration into the upper sediment. 
 
+qwqwqwqw
+$SO_4^{2-}$ concentration was tied to salinity in Coorong. Is this permanent? What are the settings for this?
+
 <center>
 
 ```{r EnvVarsTable, echo=FALSE, message=FALSE, warning=FALSE}
@@ -1640,7 +1644,7 @@ kable(param_Nredox ,"html", escape = F, align = "c", caption = "Nitrogen redox c
  column_spec(2, width_min = "20em") %>%
  column_spec(3, width_min = "10em") %>%
  row_spec(1:5, background = 'white') %>%
- scroll_box(width = "600px", height = "250px",
+ scroll_box(width = "600px", height = "275px",
             fixed_thead = FALSE)
 ```
 
@@ -1729,111 +1733,76 @@ kable(param_Hidden ,"html", escape = F, align = "c", caption = "Other parameters
 ## Setup & Configuration 
 The sections above described the scientific and technical processes within the model, the links to other AED modules, and the range of variables and parameters. This section outlines how the model treats the initial condition and boundary conditions. 
 
-### Setup examples 
+### Setup details and examples
 This section contains a set of steps for how to set up a simple simulation. Due to the large number of variables and parameters in CANDI-AED a full set of example parameters is not presented here. However, the lists of the tables above all contain example values that the user can consult.  
 
-#### Hydrodynamic model
+#### Hydrodynamic model setup details and examples
 The duration of the sediment model simulation is set within the parameters of the hydrodynamic driver model. For example, if using GLM, the duration is set in `glm.nml`, `&time`, then either if `timefmt` = 2, the `start` and `stop` times are set, or if `timefmt` = 3, the `num_days` parameter sets the number of days. If using TUFLOW-FV, the time is set in the .fvc file, where the `start time` and `stop time` are set as dates. 
 
 The sediment zone setup of the hydrodynamic model is also set in the hydrodynamic model parameters. The sediment model can be run without any zones, however, if zones are required, the user will need to make sure the zone numbers are aligned.
 
-#### Module settings
-##### &aed_sed_candi {-}
+#### Module settings and examples
+Recommendations for the module-level settings, and information about the necessary modules that are related to CANDI-AED are given below. Please see the parameter section above for the full list of names, units and examples of the module-level parameters. 
+
+##### *&aed_sed_candi* {-}
 Most parameters in the &aed_sed_candi block can be left at the default values. The `substep` and `driver_dt` can be adjusted to optimise the simulation for speed and numerical stability. If the simulation is stable, then `spinup_days` are not required. The list of `active_zones` should correspond to the zones set in the hydrodynamic model and the parameter files. Users should check that the file paths and file names of the parameter and variable files are correctly set up in the user's directories. The boundary condition parameters and the initial condition parameters can be left at their default values. From the output settings, the `output_profiles` can be set to *TRUE* so that the .sed files are written. Any `morevariables` and `output_diag_vars` are set here. 
 
-##### &aed_models {-}
+##### *&aed_models* {-}
 The user should ensure that `aed_seddiagenesis` is included in the `models` list. It must come after `aed_totals`.
 
-##### &aed_sedflux {-}
+##### *&aed_sedflux* {-}
 The parameter `sedflux_model` must be set to `Dynamic2d` for the sediment-water column models to be coupled. 
 
-##### &aed_sed_const2d {-}
+##### *&aed_sed_const2d* {-}
 If the sediment model is running in fewer zones than the water column model, then the water column model takes constant values for the sediment fluxes. The fluxes are listed in this code block. 
 
-##### Fsed linking variables {-}
+##### *Fsed linking variables* {-}
 The names of Fsed linking variables are set in the various nml blocks. If a linking flux is desired, the user should check that each linking variable is set properly in each block. For example, to link the *diss_flux_link* for $O_2$, the parameter `Fsed_oxy_variable` is set to `SDF_Fsed_oxy` in `aed_oxygen` and also in the variables .csv file. This applies similarly for `&aed_nitogen` `Fsed_amm_variable` = `SDF_Fsed_amm` and `SDF_Fsed_nit`. 
 
-compulsory variables
+#### Zone-specific parameter details and examples
+Recommendations for the zone-level settings are given below. All parameters can be set for each zone and therefore used to configure zones differently. If only one zone is needed, then the first set of parameters are used. Please see the parameter section above for the full list of names, units and examples of the zone-level parameters.
 
-non-compulsory variables
+##### *Physical domain and numerical parameters* {-}
+The parameters `xl` and `maxnpts` set the depth of the simulation and the number of layers. `xl` is often set to around 30 cm. This is deeper than biological mixing and it is around the depth of a field measurement such as a grab sample or core. Deeper than around 50 cm, most diagenetic processes are stable compared to the upper layers and so it is unlikely that a simulation deeper than 50 is necessary. The number of layers, `maxnpts` can be around 50. The simulation will require enough layers to resolve a profile of the upper sediment layers and few enough layers to keep the output file size to a minimum. Some tuning of `maxnpts` may be necessary if the simulation is unstable.
 
-boundary files
+The porosity parameters `p0` and `p00` are key parameters that can make a simulation specific to a study site. For example, a sandy sediment can have low porosity whereas a clay sediment can have very high porosity. Similarly, the sedimentation rate `w00` has a large effect on the dynamics of a simulation and it is an important parameter for making a simulation specific to a study site. Unfortunately, it is rarely measured in the environment.
 
+Bioturbation and bioirrigation depths (`x1`, `x2` and `xirrig`) have a large effect on the evolution of concentration profiles. If the water column is well oxygenated then these parameters will influence the oxic depth. These parameters also reflect a study site. If an environment has a healthy benthic environment, there will be a lot of mixing, whereas a eutrophic, hypersaline or anoxic environment will have little or no mixing. 
 
+##### *Organic matter parameters* {-}
+The `OMModel` parameter is used to set the complexity of the organic matter setup. The simplest is `OMModel` = 1, which can also be most easily compared with published studies. Once the `OMModel` is set, the oxidation rate parameters are set. For example, for `OMModel` 1, the oxidation rates of the labile and refractory phases can be set to approximately `poml2dic` = 100 and `pomr2dic` = 1 y^-1^. (A literature survey of this parameter can be found in Paraska et al. 2014.) 
 
+##### *Secondary redox parameters* {-}
+Default parameters can be used for nitrogen redox parameters, unless a simulation is specifically trying to tune to concentrations of nitrogen redox species. Other secondary redox parameters can be left at the default settings.
 
+##### *Geochemistry parameters* {-}
+The key geochemistry paramter to select is `rxn_mode` (see section *Mineral precipitation and ageing* and \@ref(tab:Geochem-table4) above). `rxn_mode` = 0 turns off precipitation, ageing and pH and is therefore the simplest setup. `rxn_mode` = 2 allows the constant precipitation and ageing of minerals, without any equilibrium.
 
+#### Boundary setting details and examples
+##### *Sediment-water interface boundary* {-}
+Boundary condition settings are described below in the *Boundary settings* section, including example fluxes and concentrations. The simplest boundary setting is *default_vals* rather than linked variables or the boundary file. In general, oxidised variables are present at the sediment-water interface, for example, $O_2$, $NO_3^-$, $MnO_2$ and $Fe(OH)_{3A}$. (Reduced species can be used in the initial profiles.) $SO_4^{2-}$ is generally at the sediment-water interface in a saline environment and not in a freshwater environment.
 
-hydrodynamic driver
-
-other modules
-
-module level
-
-timing
-
-aed_params
-
-grid settings
-porosity xl 30 cm
-
-OMModel, OMapproach
-
-rxn_mode = 0 
-p0	Upper porosity (-)		0.90	0.90	…
-p00	Lower porosity (-)		0.39	0.39	…
-xl	Simulation depth		80.00	80.00	…
-maxnpts	Number of sediment layers		50.00	50.00	…
-job	Switch for linear or exponential layer spacing		2.00	2.00	…
-x1	Depth of full bioturbation (cm)		0.50	0.50	…
-x2	Depth of bioturbation decline (cm)		1.00	1.00	…
-alpha0	Irrigation rate (cm y-1)		200.00	200.00	…
-xirrig
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+#### Initial condition setup details and examples
+Initial condition settings are described below in the section *Sediment initialisation options*, including examples of concentrations (of solids or in porewater). The simplest setup can start with low or zero concentrations and allow the profiles to evolve. In general, reduced species will be present in the sediment, for example $NH_4^+$, $Mn^{2+}$,  $Fe^{2+}$, $H_2S$ and $CH_4$. The exact concentrations can be set for each variable according to any available measured data. 
 
 ### Sediment initialisation options 
 Before the first time step starts, CANDI-AED loads in an initial concentration profile for each state variable. There is also a period of 'negative time' before the full reactive transport system begins.
-
 
 #### Initialisation of concentration profiles {.unnumbered}
 Concentration profiles are set using one of three options: constant, linear decrease or exponential decrease (`CO_I`, `LI_I`, `EX_I`) (figure \@ref(fig:Init-5)). 
 
 The default for most initial concentrations is the constant option. The concentration for each variable is set in the input file `aed_sdg_vars.csv`, in the column `initial_vals` (\@ref(fig:Init-6)). If the simulation has several zones, then the initial concentration for the zone is set in other columns in the csv, under the column headings `initial_01`, `initial_02` etc. If there is no initial column in the csv for a particular zone, then the zone defaults to the value in the `initial_vals` column. 
 
-
-
-
-
 ```{r Init-5b, echo=FALSE, fig.cap="Schematic of three possible options for initial profiles. Most concentrations default to the constant option, whereas organic matter is usually set to be linear or exponential.",fig.show='hold',fig.align='center' ,out.width = '100%'}
 knitr::include_graphics("images/23-sediment_biogeochemistry/Initialisation/InitialProfile-03.png")
 ```
-
+\
 
 ```{r Init-6b, echo=FALSE, fig.cap="Simplified image of the `aed_sdg_vars.csv` input file. For initialisation, the `variables` need to be set, along with default `initial_vals` or zones-specific `initial_01`, `initial_02` etc. columns.",fig.show='hold',fig.align='center' ,out.width = '100%'}
 knitr::include_graphics("images/23-sediment_biogeochemistry/aed_sdg_vars/aed_sdg_vars-04.png")
 ```
 
 \
-
-
-
-
-
 #### Initialisation of organic matter profiles
 
 For organic matter, the initial profiles are set to either the linear or exponential options. For the linear option, the initial concentration is still taken from `initial_vals` in `aed_sdg_vars.csv`. The upper and lower concentrations are set as percentages of the initial concentration using the parameters `OM_top` and `OM_Min`, which are found in the `&aed_sed_candi` block in the `aed.nml` namelist. There are separate parameters for labile and refractory organic matter, so the parameter names are in fact `OM_topL` and `OM_topR`, and `OM_minL` and `OM_minR`. These parameters are real numbers as decimals between 0 and 1. The `OM_Top` fraction applies to the surface concentration. The `OM_Min` applies at the depth `InitMinDepth` (cm), which is also set in the `&aed_sed_candi` block.
@@ -1849,12 +1818,51 @@ concentration = initial vals \times e^ {- OM cfl \times depth}
 The shape of the curve is determined by the parameter `OM_cfl`, which is found in the `&aed_sed_candi` block.
 
 #### TN TP TC partitioning 
-mattedit:
-OMModel
+The C:N:P stoichiometry is set differently for each `OMModel`. Using `OMModel` = 1, the ratios are set separately for the labile and refractory phases, using the *x*, *y* and *z* ratios outlined in table \@ref(tab:OMChem-table). For example, `xlab` is the carbon fraction of $POM_L$, which is usually set to around 106, while `zlab` is the $POM_L$ phosphorus fraction, which is usually set to around 1. These ratios are fixed throughout the simulation. The *y* nitrogen fraction is also used to set the amount of $NH_4^+$ released per carbon during organic matter oxidation.
 
-#### Spinup
+Using `OMModel` = 2, the C:N:P ratio is set by the concentrations of separate organic species, such as $POC_L$, $PON_L$ and $POP_L$. The ratio is fixed by the boundary and initial conditions, however, if the boundary is dynamic, then the ratio can change through the course of the simulation. 
 
-mattedit: this is the spinup section
+Using `OMModel` = 3 is similar to `OMModel` = 1. The ratios are applied to $POM_1$, $POM_2$ etc. as `xPOM1`, `yPOM2` etc.
+
+#### Timing switches {.unnumbered}
+
+The duration of the simulation is determined by the hydrodynamic model and its parameter inputs. Other timing parameters are set as outlined below.
+
+##### *Substep* {.unnumbered}
+The general task for the reactive transport model is to calculate a change in concentration over time, as a function of a change in concentration over space and as a result of chemical reactions. The general form of this is given in equation \@ref(eq:tim-1). When this is solved numerically, it is discretised by small increments of time, which are referred to as ‘time steps’ (Δt in equation \@ref(eq:tim-2)). 
+
+To allow the part of the model that solves these differential equations to process a large change in concentration over space or because of a large reaction, the timestep can be multiplied by a substep factor. Examples of where this is needed include a sharp concentration gradient over a small area, or in influx of a large amount of highly reactive substances. 
+
+```{=tex}
+\begin{eqnarray}
+
+ \frac {\delta C} {\delta t} = \frac {\delta C} {\delta x} + reactions
+
+(\#eq:tim-1)
+
+
+\\
+\\
+ {\Delta C} = (\frac {\Delta C} {\Delta x} + reactions) \times \Delta t
+(\#eq:tim-2)
+\end{eqnarray}
+```
+
+##### *Spinup substep* {.unnumbered}
+In some simulations the initial timesteps have a high probability that the numerical model may crash while processing the initial condition (figure \@ref(fig:Timing-2)). A slow substep overcomes this problem, however, it has the disadvantage of producing a longer run time. The solution for this problem is the tool `firststeps` (y), which sets an initial time period during which a slower substep (`substep_0`) is used, and after which the normal substep (`substep_1`) is used. The switch `timeswitch` must be set to 1 for this feature to work, otherwise the normal `substep` applies. 
+
+
+```{r Timing-2, echo=FALSE, fig.cap="Schematic of the timestep across time. A different timestep (`substep_0`) can be used for a period (`firsteps`) until another timestep is used (`substep_1`).   ",fig.show='hold',fig.align='center', out.width = '75%'}
+knitr::include_graphics("images/23-sediment_biogeochemistry/TimeSwitches/TimeSwitches-02.png")
+```
+
+##### *Transport without reaction* {.unnumbered}
+Another tool to help move through the spinup period is to allow transport processes to occur before the reactions start (figure \@ref(fig:Timing-3)). This evens out sharp chemical concentration gradients. This allows the simulation to start before the proper time of the simulation, represented in \@ref(fig:Timing-3) as negative time. The parameter `spinup_days` is the number of timestep integers of negative time, and `spinup_dt` is the length of each timestep (h). No fluxes at the sediment-water interface occur during negative time.
+
+
+```{r Timing-3, echo=FALSE, fig.cap="Schematic of the timestep over time. The initial period up to `spinup_days` occurs in 'negative time', at a duration of `spinup_dt`.",fig.show='hold',fig.align='center', out.width = '75%'}
+knitr::include_graphics("images/23-sediment_biogeochemistry/TimeSwitches/TimeSwitches-03.png")
+```
 
 ##### *Evolution of concentration profiles* {.unnumbered}
 After initialisation, the concentration profile develops through the course of the simulation. Some of the most common ways for the profile to develop are given in figure \@ref(fig:Init-7). 
@@ -1863,21 +1871,6 @@ After initialisation, the concentration profile develops through the course of t
 ```{r Init-7b, echo=FALSE, fig.cap= "Examples of how the concentration profiles develop after initialisation. Left: the variable accumulates at the surface. Centre: a concentration spike develops. Right: the variable accumulates in the deep sediment.  ",fig.show='hold',fig.align='center' ,out.width = '100%'}
 knitr::include_graphics("images/23-sediment_biogeochemistry/Initialisation/ProfileEvolution-05.png")
 ```
-
-
-mattedit: \
-
-
-
-
-
-
-
-
-
-
-\
-\
 
 ### Boundary settings
 
@@ -1891,7 +1884,7 @@ For the boundary at the sediment-water interface, the value is set using the `de
 knitr::include_graphics("images/23-sediment_biogeochemistry/SWIBoundary/default_vals-10.png")
 ```
 
-
+\
 
 ```{r SWI-2, echo=FALSE, fig.cap="Simplified image of the `aed_sdg_vars.csv` input file. The `variables` and `default_vals` need to be set for each row of the csv.",fig.show='hold',fig.align='center' ,out.width = '100%'}
 knitr::include_graphics("images/23-sediment_biogeochemistry/aed_sdg_vars/aed_sdg_vars-02.png")
@@ -1939,10 +1932,21 @@ knitr::include_graphics("images/23-sediment_biogeochemistry/SWIBoundary/swibcdat
 knitr::include_graphics("images/23-sediment_biogeochemistry/SWIBoundary/swibcdat-01.png")
 ```
 
-##### *$POMspecial$ options* {.unnumbered}
-A special boundary option is available for the variable $POM_{Special}$ only. To enable this option, set `swibc_mode` = 2. The details are outlined below in the Timing switches section.
 
-mattedit: \
+##### *Special organic matter flux* {.unnumbered}
+The sediment model has a unique boundary condition, where a large influx of organic matter occurs for a limited time (figure \@ref(fig:Timing-1)). This represents, for example, the operation of a fish farm, a large algal bloom or an illegal dump of organic waste into a lake. This is a convenient tool for looking at the effect of large amounts of organic matter on other chemical species, and it operates separately to the constant flux boundaries, the swibc input file, or the variables linked to the pelagic model. The flux defaults to 0.0 before the time parameter `fluxon` and after the time parameter `fluxoff` (y). The state variable switched on by this flux is $POM_{Special}$. It is not named as, for example, labile or refractory because the user can tailor its properties to the simulation. The breakdown parameter for $POM_{Special}$ is `pomspecial2dic` (y^-1). The parameter ibc2 must be set to 10 or 0 for this feature to operate. The magnitude of $POM_{Special}$ flux is set in the file aed_sdg_vars.csv, in the default_vals column, and the default flux before `fluxon` and after `fluxoff` times is zero. To enable this option, set `swibc_mode` = 2. 
+
+
+```{r Timing-1, echo=FALSE, fig.cap="Schematic of $POM_{Special}$ flux over time. $POM_{Special}$ flux begins at time `fluxon` and stops at time `fluxoff`. The rate of the flux is `pomspecial`.",fig.show='hold',fig.align='center', out.width = '75%'}
+knitr::include_graphics("images/23-sediment_biogeochemistry/TimeSwitches/TimeSwitches-01.png")
+```
+
+##### *Combined organic matter flux and timestep switch* {.unnumbered}
+A large influx of organic matter can have the same effect for the model as processing the initial condition, and so the large flux can crash the model well after the initial spinup (figure \@ref(fig:Timing-4)). Therefore, further substep parameters are available for slowing the model while it processes the organic matter. The parameter `substep_2` is used as the substep after `fluxon`. The parameter `substep_3` is used as an intermediate substep after `fluxoff`, until the time `justwaitabit`, to allow the final effects of the organic matter influx to be processed, but allowing the possibility of running faster if not at the speed of `substep_1`. Further *substep* options are explained in the timing switches section. 
+
+```{r Timing-4, echo=FALSE, fig.cap="Schematic of $POM_{Special}$ flux and timestep changes over time. Options are available to optimise a short run total time with a slow substep centred around organic matter influx.",fig.show='hold',fig.align='center', out.width = '75%'}
+knitr::include_graphics("images/23-sediment_biogeochemistry/TimeSwitches/TimeSwitches-04.png")
+```
 
 #### Bottom boundary {.unnumbered}
 ##### *Static option:* deep_vals {-}
@@ -1956,8 +1960,7 @@ knitr::include_graphics("images/23-sediment_biogeochemistry/DeepBoundary/deep_va
 knitr::include_graphics("images/23-sediment_biogeochemistry/aed_sdg_vars/aed_sdg_vars-03.png")
 ```
 
-
-
+\
 ##### *Dynamic option:* deep_bc file {-}
 A dynamic boundary can be set for any variable and any zone using the text file deepbc.dat (\@ref(fig:Deep-3)). For a variable to be activated to take its boundary from deepbc.dat, it must be included in the list `deebc_filevars`, which is a parameter in the `&aed_sed_candi` block. The specific filename and filepath are set in the parameter `deepbc_file` in the `&aed_sed_candi` block. The deepbc file is the bottom boundary equivalent of the swibc file. It has the following features:
 
@@ -1973,145 +1976,12 @@ The benefit of using this file is that a time-changing boundary can be applied f
 knitr::include_graphics("images/23-sediment_biogeochemistry/DeepBoundary/DeepBC-11.png")
 ```
 
-
-
-\
-\
-\
-\
-\
-\
-\
-\
-\
-\
-\
-\
-
-
-#### Timing switches {.unnumbered}
-
-The duration of the simulation is determined by the hydrodynamic model and its parameter inputs. Other timing parameters are set as outlined below.
-
-##### *Substep* {.unnumbered}
-The general task for the reactive transport model is to calculate a change in concentration over time, as a function of a change in concentration over space and as a result of chemical reactions. The general form of this is given in equation \@ref(eq:tim-1). When this is solved numerically, it is discretised by small increments of time, which are referred to as ‘time steps’ (Δt in equation \@ref(eq:tim-2)). 
-
-To allow the part of the model that solves these differential equations to process a large change in concentration over space or because of a large reaction, the timestep can be multiplied by a substep factor. Examples of where this is needed include a sharp concentration gradient over a small area, or in influx of a large amount of highly reactive substances. 
-
-```{=tex}
-\begin{eqnarray}
-
- \frac {\delta C} {\delta t} = \frac {\delta C} {\delta x} + reactions
-
-(\#eq:tim-1)
-
-
-\\
-\\
- {\Delta C} = (\frac {\Delta C} {\Delta x} + reactions) \times \Delta t
-(\#eq:tim-2)
-\end{eqnarray}
-```
-
-
-
-mattedit: link this to boundary
-\
-
-##### *Special organic matter flux* {.unnumbered}
-The sediment model has a unique boundary condition, where a large influx of organic matter occurs for a limited time (figure \@ref(fig:Timing-1)). This represents, for example, the operation of a fish farm, a large algal bloom or an illegal dump of organic waste into a lake. This is a convenient tool for looking at the effect of large amounts of organic matter on other chemical species, and it operates separately to the constant flux boundaries, the swibc input file, or the variables linked to the pelagic model. The flux defaults to 0.0 before the time parameter `fluxon` and after the time parameter `fluxoff` (y). The state variable switched on by this flux is $POM_{Special}$. It is not named as, for example, labile or refractory because the user can tailor its properties to the simulation. The breakdown parameter for $POM_{Special}$ is `pomspecial2dic` (y^-1). The parameter ibc2 must be set to 10 or 0 for this feature to operate. The magnitude of $POM_{Special}$ flux is set in the file aed_sdg_vars.csv, in the default_vals column, and the default flux before `fluxon` and after `fluxoff` times is zero.
-
-
-```{r Timing-1, echo=FALSE, fig.cap="Schematic of $POM_{Special}$ flux over time. $POM_{Special}$ flux begins at time `fluxon` and stops at time `fluxoff`. The rate of the flux is `pomspecial`.",fig.show='hold',fig.align='center', out.width = '75%'}
-knitr::include_graphics("images/23-sediment_biogeochemistry/TimeSwitches/TimeSwitches-01.png")
-```
-
-mattedit: spinup should go with initial conditions section
-
-##### *Spinup substep* {.unnumbered}
-In some simulations the initial timesteps have a high probability that the numerical model may crash while processing the initial condition (figure \@ref(fig:Timing-2)). A slow substep overcomes this problem, however, it has the disadvantage of producing a longer run time. The solution for this problem is the tool `firststeps` (y), which sets an initial time period during which a slower substep (`substep_0`) is used, and after which the normal substep (`substep_1`) is used. The switch `timeswitch` must be set to 1 for this feature to work, otherwise the normal `substep` applies. 
-
-
-```{r Timing-2, echo=FALSE, fig.cap="Schematic of the timestep across time. A different timestep (`substep_0`) can be used for a period (`firsteps`) until another timestep is used (`substep_1`).   ",fig.show='hold',fig.align='center', out.width = '75%'}
-knitr::include_graphics("images/23-sediment_biogeochemistry/TimeSwitches/TimeSwitches-02.png")
-```
-
-##### *Transport without reaction* {.unnumbered}
-Another tool to help move through the spinup period is to allow transport processes to occur before the reactions start (figure \@ref(fig:Timing-3)). This evens out sharp chemical concentration gradients. This allows the simulation to start before the proper time of the simulation, represented in \@ref(fig:Timing-3) as negative time. The parameter `spinup_days` is the number of timestep integers of negative time, and `spinup_dt` is the length of each timestep (h). No fluxes at the sediment-water interface occur during negative time.
-
-
-```{r Timing-3, echo=FALSE, fig.cap="Schematic of the timestep over time. The initial period up to `spinup_days` occurs in 'negative time', at a duration of `spinup_dt`.",fig.show='hold',fig.align='center', out.width = '75%'}
-knitr::include_graphics("images/23-sediment_biogeochemistry/TimeSwitches/TimeSwitches-03.png")
-```
-
-##### *Combined organic matter flux and timestep switch* {.unnumbered}
-A large influx of organic matter can have the same effect for the model as processing the initial condition, and so the large flux can crash the model well after the initial spinup (figure \@ref(fig:Timing-4)). Therefore, further substep parameters are available for slowing the model while it processes the organic matter. The parameter `substep_2` is used as the substep after `fluxon`. The parameter `substep_3` is used as an intermediate substep after `fluxoff`, until the time `justwaitabit`, to allow the final effects of the organic matter influx to be processed, but allowing the possibility of running faster if not at the speed of `substep_1`. 
-
-```{r Timing-4, echo=FALSE, fig.cap="Schematic of $POM_{Special}$ flux and timestep changes over time. Options are available to optimise a short run total time with a slow substep centred around organic matter influx.",fig.show='hold',fig.align='center', out.width = '75%'}
-knitr::include_graphics("images/23-sediment_biogeochemistry/TimeSwitches/TimeSwitches-04.png")
-```
-
-mattedit: move profile evolution from initialisation to spinup
-\
-\
-\
-\
-\
-\
-\
-\
-\
-\
-\
-\
-\
-\
-\
-\
-\
-\
-\
-\
-\
-\
-\
-\
-\
-\
-\
-\
-\
-\
-\
-\
-\
-\
-\
-\
-\
-\
-\
-\
-\
-\
-\
-\
-\
-\
-\
-\
-\
-
 ## Output & Post-processing
-
-mattedit:
+CANDI-AED has a range of output files and output file options. 
 \
-
-
-\\
 
 ### Concentration of state variables: '.sed' files 
-The model writes output files for each state variable as text files, with a '.sed' extension. The files are written to the results directory, under the `candi_aed` subdirectory, and then in a separate subdirectory for each zone (with five significant figures), for example `.../results/candi_aed/00001/oxy.sed`. The '.sed' file has three rows of headers, then a row that lists the depths (cm). The first column is the sequence of output times (years). The other text entries are a matrix of the concentration values at each depth and each time (mmol L^-1^) (figure \@ref(fig:Output-1)). These can be read in using a data processing program such as R, Matlab or Excel for analysis and plotting \@ref(fig:Output-4). 
+The model writes output files for each state variable (chemical species, $IAP$s, $pH$, $pe$ and $ubalchg$) as text files, with a '.sed' extension. The files are written to the results directory, under the `candi_aed` subdirectory, and then in a separate subdirectory for each zone (with five significant figures), for example `.../results/candi_aed/00001/oxy.sed`. The '.sed' file has three rows of headers, then a row that lists the depths (cm). The first column is the sequence of output times (years). The other text entries are a matrix of the concentration values at each depth and each time (mmol L^-1^) (figure \@ref(fig:Output-1)). These can be read in using a data processing program such as R, Matlab or Excel for analysis and plotting \@ref(fig:Output-4). 
 
 ```{r Output-1, echo=FALSE, fig.cap="Simplified version of the .sed output file.",fig.show='hold',fig.align='center', out.width = '85%'}
 knitr::include_graphics("images/23-sediment_biogeochemistry/Outputs/Outputs-01.png")
@@ -2171,11 +2041,6 @@ The model writes a text file that reports the initial depth profile settings, wi
 <!-- The model outputs the file `rates.sed` for each variable at every depth for the final time step. -->
 
 
-
-
-mattedit:
-
-\
 
 ## Case Studies & Examples
 ### VCW
