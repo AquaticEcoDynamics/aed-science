@@ -23,7 +23,7 @@
 <meta name="author" content="" />
 
 
-<meta name="date" content="2022-09-05" />
+<meta name="date" content="2022-09-06" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -821,7 +821,7 @@ Figure 14.7: Three options for different levels of complexity in organic matter 
 </div>
 <p><br></p>
 <center>
-<div style="border: 1px solid #ddd; padding: 5px; overflow-y: scroll; height:30em; overflow-x: scroll; width:770px; ">
+<div style="border: 1px solid #ddd; padding: 5px; overflow-y: scroll; height:27em; overflow-x: scroll; width:770px; ">
 <table class="table table-hover" style="font-size: 11px; ">
 <caption style="font-size: initial !important;">
 <span id="tab:OMModel-table">Table 14.2: </span>Organic matter breakdown processes. The index <em>i</em> in <em>∑ R<sub>Oxi</sub></em> refers to the sequence of TEA in Table 5 - 2. For OMModel 2, POM and DOM are each three state variables of POC, PON and POP, and DOC, DON and DOP. caption.
@@ -985,6 +985,12 @@ POM <span class="math inline">\(\rightarrow\)</span> CO<sub>2</sub> etc.
 </table>
 </div>
 </center>
+<div id="cnp-partitioning" class="section level5 unnumbered hasAnchor">
+<h5><em>C:N:P partitioning</em><a href="sediment-biogeochemistry.html#cnp-partitioning" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<p>The C:N:P stoichiometry is set differently for each <code>OMModel</code>. Using <code>OMModel</code> = 1, the ratios are set separately for the labile and refractory phases, using the <em>x</em>, <em>y</em> and <em>z</em> ratios outlined in table <a href="sediment-biogeochemistry.html#tab:OMChem-table">14.3</a>. For example, <code>xlab</code> is the carbon fraction of <span class="math inline">\(POM_L\)</span>, which is usually set to around 106, while <code>zlab</code> is the <span class="math inline">\(POM_L\)</span> phosphorus fraction, which is usually set to around 1. These ratios are fixed throughout the simulation. The <em>y</em> nitrogen fraction is also used to set the amount of <span class="math inline">\(NH_4^+\)</span> released per carbon during organic matter oxidation.</p>
+<p>Using <code>OMModel</code> = 2, the C:N:P ratio is set by the concentrations of separate organic species, such as <span class="math inline">\(POC_L\)</span>, <span class="math inline">\(PON_L\)</span> and <span class="math inline">\(POP_L\)</span>. The ratio is fixed by the boundary and initial conditions, however, if the boundary is dynamic, then the ratio can change through the course of the simulation.</p>
+<p>Using <code>OMModel</code> = 3 is similar to <code>OMModel</code> = 1. The ratios are applied to <span class="math inline">\(POM_1\)</span>, <span class="math inline">\(POM_2\)</span> etc. as <code>xPOM1</code>, <code>yPOM2</code> etc.</p>
+</div>
 <div id="the-redox-sequence" class="section level5 unnumbered hasAnchor">
 <h5><em>The redox sequence</em><a href="sediment-biogeochemistry.html#the-redox-sequence" class="anchor-section" aria-label="Anchor link to header"></a></h5>
 <p>The terminal redox reaction pathways are the six major pathways that are available in most diagenesis models, and are driven by different organic matter pools, depending on the <code>OMModel</code> configuration chosen from the above options. CANDI-AED allows the use of Approach 1 or 2 organic matter oxidation rate equations, as examined in detail in Paraska et al (2015), and also explained below. The six major pathways are:</p>
@@ -1001,7 +1007,7 @@ POM <span class="math inline">\(\rightarrow\)</span> CO<sub>2</sub> etc.
 CANDI-AED uses a more detailed set of reactions for the denitrifying process, which are described in the @ref(####Nitrogen cycling) section below. The chemical equations may be written as in table <a href="sediment-biogeochemistry.html#tab:OMChem-table">14.3</a> and the reaction rates for each of these are calculated dynamically based on Monod expressions which mediate the reaction rate according to the concentration of potential oxidants higher in the redox sequence, and the concentration of the available oxidant.<a href="sediment-biogeochemistry.html#fig:dev-Grid1">14.20</a></p>
 <br>
 <center>
-<div style="border: 1px solid #ddd; padding: 5px; overflow-y: scroll; height:20em; overflow-x: scroll; width:770px; ">
+<div style="border: 1px solid #ddd; padding: 5px; overflow-y: scroll; height:18em; overflow-x: scroll; width:770px; ">
 <table class="table table-hover" style="font-size: 11px; ">
 <caption style="font-size: initial !important;">
 <span id="tab:OMChem-table">Table 14.3: </span>Primary terminal redox reactions. x, y and z are stoichiometric coefficients.
@@ -1168,7 +1174,7 @@ F_{OM_{i}} = \frac{OM_{i}} {(OM_{i} + K_{OM})}
 <p>The temperature factor <span class="math inline">\(F_{Tem}\)</span> is rarely employed in diagenesis models, but in a handful of cases it uses a Q10 relationship between 2 and 4 (see Fossing et al. 2004 for a clear explanation of how temperature affects reaction rates and Eldridge and Morse 2008 or Reed et al. 2011b for a specific examination of the effect of temperature). The current version of the model has switches built in for both the temperature dependence factor, <em>F<sub>Tem</sub></em>, where values of 1 or 2 turn them off and on. However, implementation and testing of the factors has not been carried out for this version of the model. The metabolism rate at <span class="math inline">\(T_{0}\)</span> is <span class="math inline">\(R_{0}\)</span>, <span class="math inline">\(ξ\)</span> is a scaling constant (see, for example, Eldridge and Morse 2008).</p>
 <p>The TEA factor, <span class="math inline">\(F_{TEA}\)</span>, term accounts for the <span class="math inline">\(R_{Ox}\)</span> dependence on the oxidant concentration when the oxidant concentration is low. The <span class="math inline">\(F_{TEA}\)</span> term in Approach 1 is a Monod expression (table <a href="sediment-biogeochemistry.html#tab:OMApproach-table">14.4</a>, figure <a href="sediment-biogeochemistry.html#fig:OMModels-2">14.8</a>), which uses Monod half-saturation constants (<em>K<sub>Ox</sub></em>), and which is chosen because it best reflects laboratory data of bacterially-controlled oxidation reactions (Boudreau and Westrich, 1984, Gaillard and Rabouille 1992). The <span class="math inline">\(F_{TEA}\)</span> of Approach 3 uses Monod functions, modified to include inhibition terms. In Approach 2 the FTEA is either 0, 1 or the ratio of <em>Ox<sub>i</sub></em> to <em>L<sub>Ox</sub></em>, depending on the oxidant concentration relative to <em>L<sub>Ox</sub></em>, a specified limiting concentration (table <a href="sediment-biogeochemistry.html#tab:OMApproach-table">14.4</a>). We use the notation <em>K<sub>Ox</sub></em> and <em>L<sub>Ox</sub></em> to emphasise that a distinction should be made between the Monod half constants in Approaches 1 and 3 and the limiting concentrations used in Approach 2; the difference in conceptual representation is not always clear in Approach 2 papers that use the notation <em>K<sub>Ox</sub></em>. We recommend that the user set the parameter <code>OMModel</code> to 1, unless they specifically need to emulate an Approach 2 model, such as that by Van Cappellen and Wang (1996), or an Approach 3 model, such as that by Soetaert et al. (1996).</p>
 <center>
-<div style="border: 1px solid #ddd; padding: 5px; overflow-y: scroll; height:20em; overflow-x: scroll; width:40em; ">
+<div style="border: 1px solid #ddd; padding: 5px; overflow-y: scroll; height:17em; overflow-x: scroll; width:40em; ">
 <table class="table table-hover" style="font-size: 12px; ">
 <caption style="font-size: initial !important;">
 <span id="tab:OMApproach-table">Table 14.4: </span>Limitation and inhibition equations for two different approaches.
@@ -1947,7 +1953,7 @@ If <code>rxn_mode</code> = 2<br />
 Fe(OH)<sub>3A</sub> precipitation
 </td>
 <td style="text-align:center;min-width: 15em; color: black !important;">
-4Fe<sup>2+</sup> + O_2 +8HCO_3^- + 2H_2O <span class="math inline">\(\rightarrow\)</span> 4Fe(OH)3A + 8CO_2
+4Fe<sup>2+</sup> + O_2 + 8HCO_3^- + 2H_2O <span class="math inline">\(\rightarrow\)</span> 4Fe(OH)3A + 8CO_2
 </td>
 <td style="text-align:center;min-width: 3em; color: black !important;">
 </td>
@@ -2045,6 +2051,202 @@ If <code>rxn_mode</code> = 4<br />
 </table>
 </div>
 </center>
+<p><span class="math inline">\(MnO_{2A}\)</span> ageing</p>
+<span class="math display">\[\begin{equation}
+MnO_{2A} \rightarrow MnO_{2B}
+\end{equation}\]</span>
+<div class="panelset sideways">
+<div class="panel">
+<p><span class="panel-name">rxn_mode = 0</span></p>
+<span class="math display">\[\begin{equation}
+R_{MnO_{2B}ppt} = 0
+\end{equation}\]</span>
+</div>
+<div class="panel">
+<p><span class="panel-name">rxn_mode = 1</span></p>
+<span class="math display">\[\begin{equation}
+R_{MnO_{2B}ppt} = 0
+\end{equation}\]</span>
+</div>
+<div class="panel">
+<p><span class="panel-name">rxn_mode = 2</span></p>
+<span class="math display">\[\begin{equation}
+R_{MnO_{2B}ppt} = k_{MnO_{2B}ppt}  Mn_{O_{2A}}
+\end{equation}\]</span>
+</div>
+<div class="panel">
+<p><span class="panel-name">rxn_mode = 3</span></p>
+<span class="math display">\[\begin{equation}
+R_{MnO_{2B}ppt} = k_{MnO_{2B}ppt}  Mn_{O_{2A}}
+\end{equation}\]</span>
+</div>
+<div class="panel">
+<p><span class="panel-name">rxn_mode = 4</span></p>
+<span class="math display">\[\begin{equation}
+R_{MnO_{2B}ppt} = k_{MnO_{2B}ppt}  Mn_{O_{2A}}
+\end{equation}\]</span>
+</div>
+</div>
+<p><br />
+<br />
+<!-- _______________________________________________________________________________ --></p>
+<p><span class="math inline">\(MnO_{2A}\)</span> precipitation</p>
+<span class="math display">\[\begin{equation}
+2Mn^{2+} + O_2 + 4HCO_3^- \rightarrow  2MnO_{2A} + 4CO_2 +2H_2O
+\end{equation}\]</span>
+<div class="panelset sideways">
+<div class="panel">
+<p><span class="panel-name">rxn_mode = 0</span></p>
+<span class="math display">\[\begin{equation}
+R_{MnO_{2A}ppt} = 0
+\end{equation}\]</span>
+</div>
+<div class="panel">
+<p><span class="panel-name">rxn_mode = 1</span></p>
+<span class="math display">\[\begin{equation}
+R_{MnO_{2A}ppt} = 0
+\end{equation}\]</span>
+</div>
+<div class="panel">
+<p><span class="panel-name">rxn_mode = 2</span>
+Continuous</p>
+<span class="math display">\[\begin{equation}
+R_{MnO_{2A}ppt} = k_{MnO_{2A}ppt}  Mn^{2+}
+\end{equation}\]</span>
+</div>
+<div class="panel">
+<p><span class="panel-name">rxn_mode = 3</span>
+IAP method</p>
+<span class="math display">\[\begin{equation}
+
+R_{MnO_{2A}ppt} = \left\{
+  \begin{array}{@{}ll@{}}
+    k_{MnO_{2A}ppt}  MnO_{2A}, &amp; IAP_{MnO2} = 0 \\
+    k_{MnO_{2A}ppt} \left( 1 - \frac {1}{IAP_{MnO2}} \right) , &amp; IAP_{MnO2} \lt 1 \\
+    k_{MnO_{2A}ppt} \left( 1 - \frac {IAP_{MnO2}}{1} \right)   &amp; IAP_{MnO2} \ge 1
+  \end{array}\right.
+\end{equation}\]</span>
+</div>
+<div class="panel">
+<p><span class="panel-name">rxn_mode = 4</span>
+Continuous</p>
+<span class="math display">\[\begin{equation}
+R_{MnO_{2A}ppt} = k_{MnO_{2A}ppt}  Mn^{2+}
+\end{equation}\]</span>
+</div>
+</div>
+<!-- _______________________________________________________________________________ -->
+<p><br />
+<br />
+</p>
+<p><span class="math inline">\(Fe(OH)_{3A}\)</span> ageing</p>
+<span class="math display">\[\begin{equation}
+Fe(OH)_{3A} \rightarrow Fe(OH)_{3B}
+\end{equation}\]</span>
+<div class="panelset sideways">
+<div class="panel">
+<p><span class="panel-name">rxn_mode = 0</span></p>
+<span class="math display">\[\begin{equation}
+R_{Fe(OH)_{3A}ppt} = 0
+\end{equation}\]</span>
+</div>
+<div class="panel">
+<p><span class="panel-name">rxn_mode = 1</span></p>
+<span class="math display">\[\begin{equation}
+R_{Fe(OH)_{3A}ppt} = 0
+\end{equation}\]</span>
+</div>
+<div class="panel">
+<p><span class="panel-name">rxn_mode = 2</span></p>
+<span class="math display">\[\begin{equation}
+R_{Fe(OH)_{3A}ppt} = k_{Fe(OH)_{3A}ppt}  Fe(OH)_{3A}
+\end{equation}\]</span>
+</div>
+<div class="panel">
+<p><span class="panel-name">rxn_mode = 3</span></p>
+<span class="math display">\[\begin{equation}
+R_{Fe(OH)_{3A}ppt} = k_{Fe(OH)_{3A}ppt} Fe(OH)_{3A}
+\end{equation}\]</span>
+</div>
+<div class="panel">
+<p><span class="panel-name">rxn_mode = 4</span></p>
+<span class="math display">\[\begin{equation}
+R_{Fe(OH)_{3A}ppt} = k_{Fe(OH)_{3A}ppt}  Fe(OH)_{3A}
+\end{equation}\]</span>
+</div>
+</div>
+<p><br />
+<br />
+<br />
+<br />
+<!-- _______________________________________________________________________________ --></p>
+<p><span class="math inline">\(Fe(OH)_{3A}\)</span> precipitation</p>
+<span class="math display">\[\begin{equation}
+4Fe^{2+} + O_2 +8HCO_3^- + 2H_2O \rightarrow 4Fe(OH)_{3A} + 8CO_2
+\end{equation}\]</span>
+<div class="panelset sideways">
+<div class="panel">
+<p><span class="panel-name">rxn_mode = 0</span></p>
+<span class="math display">\[\begin{equation}
+R_{Fe(OH)_{3A}ppt} = 0
+\end{equation}\]</span>
+</div>
+<div class="panel">
+<p><span class="panel-name">rxn_mode = 1</span></p>
+<span class="math display">\[\begin{equation}
+R_{Fe(OH)_{3A}ppt} = 0
+\end{equation}\]</span>
+</div>
+<div class="panel">
+<p><span class="panel-name">rxn_mode = 2</span>
+Continuous</p>
+<span class="math display">\[\begin{equation}
+R_{Fe(OH)_{3A}ppt} = k_{Fe(OH)_{3A}ppt}  Fe^{2+}
+\end{equation}\]</span>
+</div>
+<div class="panel">
+<p><span class="panel-name">rxn_mode = 3</span>
+IAP method</p>
+<span class="math display">\[\begin{equation}
+
+R_{Fe(OH)_{3A}ppt} = \left\{
+  \begin{array}{@{}ll@{}}
+    k_{Fe(OH)_{3A}ppt}  Fe(OH)_{3A}, &amp; IAP_{Fe(OH)_3} = 0 \\
+    k_{Fe(OH)_{3A}ppt} \left( 1 - \frac {1}{IAP_{Fe(OH)_3}} \right) , &amp; IAP_{Fe(OH)_3} \lt 1 \\
+    k_{Fe(OH)_{3A}ppt} \left( 1 - \frac {IAP_{Fe(OH)_3}}{1} \right)   &amp; IAP_{Fe(OH)_3} \ge 1
+  \end{array}\right.
+\end{equation}\]</span>
+</div>
+<div class="panel">
+<p><span class="panel-name">rxn_mode = 4</span>
+Continuous</p>
+<span class="math display">\[\begin{equation}
+R_{Fe(OH)_{3A}ppt} = k_{Fe(OH)_{3A}ppt}  Fe^{2+}
+\end{equation}\]</span>
+</div>
+</div>
+<p><br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<!-- _______________________________________________________________________________ --><br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<!-- _______________________________________________________________________________ --></p>
 <p><br></p>
 <center>
 <div style="border: 1px solid #ddd; padding: 5px; overflow-y: scroll; height:30em; overflow-x: scroll; width:48em; ">
@@ -2203,6 +2405,245 @@ If <code>rxn_mode</code> = 4<br />
 </table>
 </div>
 </center>
+<!-- _______________________________________________________________________________ -->
+<p><span class="math inline">\(FeS\)</span> transformation to <span class="math inline">\(FeS_2\)</span></p>
+<span class="math display">\[\begin{equation}
+FeS + H_2S \rightarrow FeS_2 + H_2 \\
+R_{Pyrite} = k_{Pyrite} [FeS] [H_2S]
+\end{equation}\]</span>
+<!-- _______________________________________________________________________________ -->
+<p><span class="math inline">\(FeS\)</span> precipitation</p>
+<span class="math display">\[\begin{equation}
+Fe^{2+} + H_2S  \rightarrow FeS + 2H^+
+\end{equation}\]</span>
+<div class="panelset sideways">
+<div class="panel">
+<p><span class="panel-name">rxn_mode = 0</span></p>
+<span class="math display">\[\begin{equation}
+R_{FeS} = 0
+\end{equation}\]</span>
+</div>
+<div class="panel">
+<p><span class="panel-name">rxn_mode = 1</span></p>
+<span class="math display">\[\begin{equation}
+R_{FeS} = 0
+\end{equation}\]</span>
+</div>
+<div class="panel">
+<p><span class="panel-name">rxn_mode = 2</span>
+Continuous</p>
+<span class="math display">\[\begin{equation}
+R_{FeS} = k_{FeSppt}  [Fe^{2+}][HS^-]
+\end{equation}\]</span>
+</div>
+<div class="panel">
+<p><span class="panel-name">rxn_mode = 3</span>
+IAP method</p>
+<span class="math display">\[\begin{equation}
+  R_{FeSppt} = k_{FeSppt} \left( 1- \frac{K_{spFeS}}{IAP_{FeS}} \right) \\
+  R_{FeSdiss} = - k_{FeSppt} \left( 1- \frac{IAP_{FeS}}{K_{spFeS}} \right)
+  
+\end{equation}\]</span>
+</div>
+<div class="panel">
+<p><span class="panel-name">rxn_mode = 4</span>
+Omega method</p>
+<span class="math display">\[\begin{equation}
+R_{FeSppt} = k_{FeSppt} \delta_{FeS} (\Omega_{FeS} - 1)
+\\
+R_{FeSdiss} = k_{FeSdiss} \delta_{-FeS} (1 - \Omega_{FeS} )
+\\
+\Omega_{FeS} = \left( \frac {[Fe^{2+}]{HS^-} }    {[H^+] K_{FeS}} \right)
+\\
+If \Omega_{FeS} \gt 1 \
+\delta_{FeS} = 1; \delta_{-FeS} = 0\
+\\
+If \Omega_{FeS} \le 1 \
+\delta_{FeS} = 0; \delta_{-FeS} = 1
+\end{equation}\]</span>
+</div>
+</div>
+<!-- _______________________________________________________________________________ -->
+<p><br />
+<br />
+<br />
+<br />
+<br />
+<br />
+</p>
+<!-- _______________________________________________________________________________ -->
+<p><span class="math inline">\(MnCO_3\)</span> precipitation</p>
+<span class="math display">\[\begin{equation}
+Mn^{2+} + CO_3^{2-} \rightarrow  MnCO_3
+\end{equation}\]</span>
+<div class="panelset sideways">
+<div class="panel">
+<p><span class="panel-name">rxn_mode = 0</span></p>
+<span class="math display">\[\begin{equation}
+R_{Rodppt} = 0
+\end{equation}\]</span>
+</div>
+<div class="panel">
+<p><span class="panel-name">rxn_mode = 1</span></p>
+<span class="math display">\[\begin{equation}
+R_{Rodppt} = 0
+\end{equation}\]</span>
+</div>
+<div class="panel">
+<p><span class="panel-name">rxn_mode = 2</span>
+Continuous</p>
+<span class="math display">\[\begin{equation}
+R_{Rodppt} = k_{Rodppt}  [Mn^{2+}][CO_3^{2-}]
+\end{equation}\]</span>
+</div>
+<div class="panel">
+<p><span class="panel-name">rxn_mode = 3</span>
+IAP method</p>
+<span class="math display">\[\begin{equation}
+  R_{Rodppt} = k_{Rodppt} \left( 1- \frac{K_{spRod}}{IAP_{Rod}} \right) \\
+  R_{Rodppt} = - k_{Rodppt} \left( 1- \frac{IAP_{Rod}}{K_{spRod}} \right)
+  
+\end{equation}\]</span>
+</div>
+<div class="panel">
+<p><span class="panel-name">rxn_mode = 4</span>
+Omega method</p>
+<span class="math display">\[\begin{equation}
+R_{Rodppt} = k_{Rodppt} \delta_{Rod} (\Omega_{Rod} - 1)
+\\
+R_{Roddiss} = k_{Roddiss} \delta_{-Rod} (1 - \Omega_{Rod} )
+\\
+\Omega_{Rod} = \left( \frac {[Mn^{2+}][CO_3^{2-}] }    {K_{Rod}} \right)
+\\
+If \  \  \Omega_{Rod} \gt 1 \
+\delta_{Rod} = 1; \delta_{-Rod} = 0\
+\\
+If \  \  \Omega_{Rod} \le 1 \
+\delta_{Rod} = 0; \delta_{-Rod} = 1
+\end{equation}\]</span>
+</div>
+</div>
+<!-- _______________________________________________________________________________ -->
+<p><br />
+<br />
+<br />
+<br />
+<br />
+<br />
+</p>
+<!-- _______________________________________________________________________________ -->
+<p><span class="math inline">\(FeCO_3\)</span> precipitation</p>
+<span class="math display">\[\begin{equation}
+Fe^{2+} + CO_3^{2-} \rightarrow  FeCO_3
+\end{equation}\]</span>
+<div class="panelset sideways">
+<div class="panel">
+<p><span class="panel-name">rxn_mode = 0</span></p>
+<span class="math display">\[\begin{equation}
+R_{Sidppt} = 0
+\end{equation}\]</span>
+</div>
+<div class="panel">
+<p><span class="panel-name">rxn_mode = 1</span></p>
+<span class="math display">\[\begin{equation}
+R_{Sidppt} = 0
+\end{equation}\]</span>
+</div>
+<div class="panel">
+<p><span class="panel-name">rxn_mode = 2</span>
+Continuous</p>
+<span class="math display">\[\begin{equation}
+R_{Sidppt} = k_{Sidppt}  [Fe^{2+}][CO_3^{2-}]
+\end{equation}\]</span>
+</div>
+<div class="panel">
+<p><span class="panel-name">rxn_mode = 3</span>
+IAP method</p>
+<span class="math display">\[\begin{equation}
+  R_{Sidppt} = k_{Sidppt} \left( 1- \frac{K_{spSid}}{IAP_{Sid}} \right) \\
+  R_{Sidppt} = - k_{Sidppt} \left( 1- \frac{IAP_{Sid}}{K_{spSid}} \right)
+  
+\end{equation}\]</span>
+</div>
+<div class="panel">
+<p><span class="panel-name">rxn_mode = 4</span>
+Omega method</p>
+<span class="math display">\[\begin{equation}
+R_{Sidppt} = k_{Sidppt} \delta_{Sid} (\Omega_{Sid} - 1)
+\\
+R_{Siddiss} = k_{Siddiss} \delta_{-Sid} (1 - \Omega_{Sid} )
+\\
+\Omega_{Sid} = \left( \frac {[Fe^{2+}][CO_3^{2-}] }    {K_{Sid}} \right)
+\\
+If \  \  \Omega_{Sid} \gt 1 \
+\delta_{Sid} = 1; \delta_{-Sid} = 0\
+\\
+If \  \  \Omega_{Sid} \le 1 \
+\delta_{Sid} = 0; \delta_{-Sid} = 1
+\end{equation}\]</span>
+</div>
+</div>
+<!-- _______________________________________________________________________________ -->
+<p><br />
+<br />
+<br />
+<br />
+<br />
+<br />
+</p>
+<!-- _______________________________________________________________________________ -->
+<p><span class="math inline">\(CaCO_3\)</span> precipitation</p>
+<span class="math display">\[\begin{equation}
+Ca^{2+} + CO_3^{2-} \rightarrow  CaCO_3
+\end{equation}\]</span>
+<div class="panelset sideways">
+<div class="panel">
+<p><span class="panel-name">rxn_mode = 0</span></p>
+<span class="math display">\[\begin{equation}
+R_{Calppt} = 0
+\end{equation}\]</span>
+</div>
+<div class="panel">
+<p><span class="panel-name">rxn_mode = 1</span></p>
+<span class="math display">\[\begin{equation}
+R_{Calppt} = 0
+\end{equation}\]</span>
+</div>
+<div class="panel">
+<p><span class="panel-name">rxn_mode = 2</span>
+Continuous</p>
+<span class="math display">\[\begin{equation}
+R_{Calppt} = k_{Calppt}  [Ca^{2+}][CO_3^{2-}]
+\end{equation}\]</span>
+</div>
+<div class="panel">
+<p><span class="panel-name">rxn_mode = 3</span>
+IAP method</p>
+<span class="math display">\[\begin{equation}
+  R_{Calppt} = k_{Calppt} \left( 1- \frac{K_{spCal}}{IAP_{Cal}} \right) \\
+  R_{Calppt} = - k_{Calppt} \left( 1- \frac{IAP_{Cal}}{K_{spCal}} \right)
+  
+\end{equation}\]</span>
+</div>
+<div class="panel">
+<p><span class="panel-name">rxn_mode = 4</span>
+Omega method</p>
+<span class="math display">\[\begin{equation}
+R_{Calppt} = k_{Calppt} \delta_{Cal} (\Omega_{Cal} - 1)
+\\
+R_{Caldiss} = k_{Caldiss} \delta_{-Cal} (1 - \Omega_{Cal} )
+\\
+\Omega_{Cal} = \left( \frac {[Ca^{2+}][CO_3^{2-}] }    {K_{Cal}} \right)
+\\
+If \  \ \Omega_{Cal} \gt 1 \
+\delta_{Cal} = 1; \delta_{-Cal} = 0\
+\\
+If \  \  \Omega_{Cal} \le 1 \
+\delta_{Cal} = 0; \delta_{-Cal} = 1
+\end{equation}\]</span>
+</div>
+</div>
+<!-- _______________________________________________________________________________ -->
 <p><br></p>
 <center>
 <div style="border: 1px solid #ddd; padding: 5px; overflow-y: scroll; height:30em; overflow-x: scroll; width:48em; ">
@@ -2986,31 +3427,16 @@ Figure 14.13: Example of a depth profile that sets the rate of irrigation, and t
 <h6><em>Salinity inhibition</em><a href="sediment-biogeochemistry.html#salinity-inhibition" class="anchor-section" aria-label="Anchor link to header"></a></h6>
 <p>A special salinity factor, <span class="math inline">\(F_{Sal}\)</span> was developed for the salinity in the Coorong, to inhibit processes at hypersaline concentrations. <span class="math inline">\(F_{Sal}\)</span> ranges from 1 to 0, as set between salinity concentration parameters <code>Sal1</code> and <code>Sal2</code> (PSU).</p>
 <p>The equations for <span class="math inline">\(F_{Sal}\)</span> are given below.</p>
-<p><span class="math display" id="eq:sal-3" id="eq:sal-3" id="eq:sal-2" id="eq:sal-1">\[\begin{align*}
-\text{If  } \  \  Salinity &lt; Sal_1 \ \
-\\
-&amp;F_{Sal} = 1 \
-    \\
+<span class="math display" id="eq:sal-1">\[\begin{equation}
+  F_{Sal} =\left\{
+  \begin{array}{@{}ll@{}}
+    1, &amp; Salinity \: \le \: Sal_1 \\
+    \frac {Sal_2 - Salinity} {Sal_2 - Sal_1},       &amp; Salinity \gt Sal_1 \\
+    0        &amp; Salinity \gt Sal_2 \\
+  \end{array}\right.
 \tag{14.14}
-    \\
-\text{If  }    Salinity &gt; Sal_1  
-&amp;\frac {Sal_2 - Salinity} {Sal_2 - Sal_1} \
-    \\
-\tag{14.15}
-    \\
-\text{If  }   Salinity &gt; Sal_2
-\\
-&amp;F_{Sal} = 0 \
-\\
-\tag{14.16}
-\\
-\end{align*}\]</span><br />
-\
-\tag{14.16}
-\
-\end{align*}</p>
-<p><br />
-The effect of the scaling is shown in Figure <a href="sediment-biogeochemistry.html#fig:PhysChem1">14.14</a>.</p>
+\end{equation}\]</span>
+<p>The effect of the scaling is shown in Figure <a href="sediment-biogeochemistry.html#fig:PhysChem1">14.14</a>.</p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:PhysChem1"></span>
 <img src="images/23-sediment_biogeochemistry/PhysChemInteractions/FSal-02.png" alt="Diaagram of the salinity factor $F_{Sal}$, scaling between 1 and 0 between the parameters. In this diagram `Sal~1~` is 40 and `Sal~2~` is 70." width="50%" />
 <p class="caption">
@@ -3035,7 +3461,7 @@ Figure 14.14: Diaagram of the salinity factor <span class="math inline">\(F_{Sal
 <span class="math display" id="eq:sdg-6">\[\begin{eqnarray}
 
 F_{Sul} = \frac {K_{H_{2}S}} {(K_{H_{2}S} + H_{2}S)}
-\tag{14.17}
+\tag{14.15}
 \end{eqnarray}\]</span>
 <p>As with <span class="math inline">\(F_{Sal}\)</span>, <span class="math inline">\(F_{Sul}\)</span> scales between 1 and 0, however, as a decay rather than a stepped function (Figure <a href="sediment-biogeochemistry.html#fig:PhysChem2">14.15</a>). The value for <code>K~H2S~</code> can be found in the physical parameters table below In this simulation, the same value for <code>K~H2S~</code> was used in all zones.</p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:PhysChem2"></span>
@@ -3053,36 +3479,30 @@ Figure 14.15: Diagram of the <span class="math inline">\(H_2S\)</span> factor, <
 <p>CANDI-AED has two types of benthic plants that can affect <span class="math inline">\(O_2\)</span> concentrations and physical mixing. They have optional links to the water column models.</p>
 <div id="microphytobenthos" class="section level6 unnumbered hasAnchor">
 <h6><em>Microphytobenthos</em><a href="sediment-biogeochemistry.html#microphytobenthos" class="anchor-section" aria-label="Anchor link to header"></a></h6>
-<p>Microphytobenthos (<span class="math inline">\(MPB\)</span>) are small units of phytoplankton that grow on the sediment surface. They are subject to physical transport processes, in the same was as other sediment solids. <span class="math inline">\(MPB\)</span> concentration increases by growing (rather than reacting), which is the difference between its rates of growth (gross primary production, <em>R<sub>gpp</sub></em>) and respiration (<em>R<sub>rsp</sub></em>) (equation <a href="sediment-biogeochemistry.html#eq:MAG-1">(14.18)</a>).</p>
+<p>Microphytobenthos (<span class="math inline">\(MPB\)</span>) are small units of phytoplankton that grow on the sediment surface. They are subject to physical transport processes, in the same was as other sediment solids. <span class="math inline">\(MPB\)</span> concentration increases by growing (rather than reacting), which is the difference between its rates of growth (gross primary production, <em>R<sub>gpp</sub></em>) and respiration (<em>R<sub>rsp</sub></em>) (equation <a href="sediment-biogeochemistry.html#eq:MAG-1">(14.16)</a>).</p>
 <span class="math display" id="eq:MAG-1">\[\begin{equation}
 \frac {\delta MPB} {\delta T} = R_{gpp} - R_{rsp}
+\tag{14.16}
+\end{equation}\]</span>
+<p><em>R<sub>gpp</sub></em> and <em>R<sub>rsp</sub></em> are calculated according to equations <a href="sediment-biogeochemistry.html#eq:MAG-2">(14.17)</a> and <a href="sediment-biogeochemistry.html#eq:MAG-3">(14.18)</a>. <code>MPBdepth</code> and <code>fgpp_sflux</code> are CANDI-AED parameters, set for each zone in the parameters input file. <em>MPBG</em> and <em>MPBR</em> are growth and respiration rate variables linked to the water column model. If they are not present in the water column model, <em>MPBG</em> and <em>MPBR</em> default to zero, which in turn sets <em>R<sub>gpp</sub></em> and <em>R<sub>rsp</sub></em> to zero. From the sediment-water interface down to <code>MPBdepth</code>, the <span class="math inline">\(MPB\)</span> both grow and respire, and below <code>MPBdepth</code>, any <span class="math inline">\(MPB\)</span> that are mixed down to those layers cease to grow, due to a lack of light, but continue to respire at a reduced rate.</p>
+<span class="math display" id="eq:MAG-2">\[\begin{equation}
+
+
+  R_{gpp} =\left\{
+  \begin{array}{@{}ll@{}}
+    0, &amp; depth \: \gt \: MPBdepth \\
+    \frac{MPBG \times \delta depth} {depth} \times (1 - fgpp - sflux) &amp; depth \le MPBdepth \\
+  \end{array}\right.
+\tag{14.17}
+\end{equation}\]</span>
+<span class="math display" id="eq:MAG-3">\[\begin{equation}
+  R_{rsp} =\left\{
+  \begin{array}{@{}ll@{}}
+    \frac {365}{7} \times MPB, &amp; depth \: \gt \: MPBdepth \\
+    \frac{MPBR \times \delta depth} {depth} \times (1 - fgpp - sflux) &amp; depth \le MPBdepth \\
+  \end{array}\right.
 \tag{14.18}
 \end{equation}\]</span>
-<p><em>R<sub>gpp</sub></em> and <em>R<sub>rsp</sub></em> are calculated according to equations <a href="sediment-biogeochemistry.html#eq:MAG-2">(14.19)</a> and <a href="sediment-biogeochemistry.html#eq:MAG-3">(14.20)</a>. <code>MPBdepth</code> and <code>fgpp_sflux</code> are CANDI-AED parameters, set for each zone in the parameters input file. <em>MPBG</em> and <em>MPBR</em> are growth and respiration rate variables linked to the water column model. If they are not present in the water column model, <em>MPBG</em> and <em>MPBR</em> default to zero, which in turn sets <em>R<sub>gpp</sub></em> and <em>R<sub>rsp</sub></em> to zero. From the sediment-water interface down to <code>MPBdepth</code>, the <span class="math inline">\(MPB\)</span> both grow and respire, and below <code>MPBdepth</code>, any <span class="math inline">\(MPB\)</span> that are mixed down to those layers cease to grow, due to a lack of light, but continue to respire at a reduced rate.</p>
-<p><span class="math display" id="eq:MAG-5" id="eq:MAG-5" id="eq:MAG-4" id="eq:MAG-3" id="eq:MAG-2">\[\begin{align*}
-\text{If  } \  \  depth \le MPBdepth \ \
-\\
-&amp;R_{gpp} = \frac{MPBG \times \delta depth} {depth} \times (1 - fgpp_sflux)
-\\
-\tag{14.19}
-\\
-&amp;R_{rsp} = \frac{MPBR \times \delta depth} {depth} \times (1 - fgpp-sflux)
-\\
-\tag{14.20}
-\\
-\text{If  } \  \  depth \gt MPBdepth \ \
-\\
-&amp;R_{gpp} = 0
-\\
-\tag{14.21}
-\\
-&amp;R_{rsp} = \frac {365}{7} \times MPB
-\\
-\tag{14.22}
-\
-\end{align*}\]</span>\tag{14.22}<br />
-\end{align*}<br />
-</p>
 <p><em>R<sub>gpp</sub></em> is a source of <span class="math inline">\(O_2\)</span> in the <span class="math inline">\(O_2\)</span> balance equation. <em>R<sub>rsp</sub></em> consumes <span class="math inline">\(O_2\)</span> and produces organic matter.</p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:PhysChem3"></span>
 <img src="images/23-sediment_biogeochemistry/PhysChemInteractions/O2Inject-11.png" alt="Schematic of the parameterisation of $O_2$ injection into the sediment where $MPB$ are respiring." width="50%" />
@@ -3093,22 +3513,17 @@ Figure 14.16: Schematic of the parameterisation of <span class="math inline">\(O
 </div>
 <div id="aquatic-macrophytes" class="section level6 unnumbered hasAnchor">
 <h6><em>Aquatic macrophytes</em><a href="sediment-biogeochemistry.html#aquatic-macrophytes" class="anchor-section" aria-label="Anchor link to header"></a></h6>
-<p>CANDI-AED also includes aquatic macrophytes, such as seagrass or filamentous algae. In a similar way to <span class="math inline">\(MPB\)</span>, the roots of macrophtes inject <span class="math inline">\(O_2\)</span> into the upper layers of the sediment. The rate of <span class="math inline">\(O_2\)</span> production, <em>R~rootsO2</em>, is calculated according to <a href="sediment-biogeochemistry.html#eq:MAG-6">(14.23)</a>.</p>
-<p><span class="math display" id="eq:MAG-7" id="eq:MAG-7" id="eq:MAG-6">\[\begin{align*}
-\text{If  } \  \  depth \le RTDP \ \
-\\
-&amp;R_{RootsO_2} = \frac {rto2 \times \delta depth} {depth}
-\\
-\tag{14.23}
-\\
-\text{If  } \  \  depth \gt RTDP \ \
-\\
-&amp;R_{RootsO_2} =  0
-\\
-\tag{14.24}
-\end{align*}\]</span>\tag{14.24}
-\end{align*}<br />
-</p>
+<p>CANDI-AED also includes aquatic macrophytes, such as seagrass or filamentous algae. In a similar way to <span class="math inline">\(MPB\)</span>, the roots of macrophtes inject <span class="math inline">\(O_2\)</span> into the upper layers of the sediment. The rate of <span class="math inline">\(O_2\)</span> production, <em>R<sub>rootsO2</sub></em>, is calculated according to <a href="sediment-biogeochemistry.html#eq:MAG-6">(14.19)</a>.</p>
+<span class="math display" id="eq:MAG-6">\[\begin{equation}
+  R_{RootsO_{2}} =\left\{
+  \begin{array}{@{}ll@{}}
+    0, &amp; depth \: \gt \: RTDP \\
+    \frac {rto2 \times \delta depth}{depth}   &amp; depth \le RTDP \\
+  \end{array}\right.
+\tag{14.19}
+
+
+\end{equation}\]</span>
 <p>The term <code>RTDP</code> is a CANDI-AED parameter, set for each zone. The term <em>rto2</em> is the <span class="math inline">\(O_2\)</span> excretion rate parameter. It may be sourced from the water column model if the models are linked, or it may be calculated within CANDI-AED if the models are not linked. The options for having the root <span class="math inline">\(O_2\)</span> settins linked or not linked are laid out in table <a href="sediment-biogeochemistry.html#tab:MAG-table">14.11</a>.</p>
 <center>
 <div style="border: 1px solid #ddd; padding: 5px; overflow-y: scroll; height:25em; overflow-x: scroll; width:45em; ">
@@ -3237,24 +3652,24 @@ Light extinction coefficient for root O<sub>2</sub> excretion
 </div>
 </center>
 <p><br></p>
-<p>The presence of macrophytes also affects the diffusivity at the sediment-water interface. Diffusion is calculated as normal in all layers, but the diffusivity in the top-most layer only is multiplied by the factor <em>swi_deff</em>. <em>swi_deff</em> is calculated according to equation <a href="sediment-biogeochemistry.html#eq:MAG-10">(14.27)</a>, where <em>TAUB</em> is the linked variable, and <code>taubsensitivity</code> and <code>smothbm</code> are CANDI-AED parameters, set for each zone. The effect is that when macrophytes are present, they smother the sediment and prevent mixing with the water column.<br />
+<p>The presence of macrophytes also affects the diffusivity at the sediment-water interface. Diffusion is calculated as normal in all layers, but the diffusivity in the top-most layer only is multiplied by the factor <em>swi_deff</em>. <em>swi_deff</em> is calculated according to equation <a href="sediment-biogeochemistry.html#eq:MAG-10">(14.22)</a>, where <em>TAUB</em> is the linked variable, and <code>taubsensitivity</code> and <code>smothbm</code> are CANDI-AED parameters, set for each zone. The effect is that when macrophytes are present, they smother the sediment and prevent mixing with the water column.<br />
 </p>
 <p><span class="math display" id="eq:MAG-10" id="eq:MAG-9" id="eq:MAG-8">\[\begin{align*}
 \text{If  } \  \  id \text{_} mag \gt smothbm \ \
 \\
 &amp;taub = 0.001
 \\
-\tag{14.25}
+\tag{14.20}
 \\
 \text{If  } \  \  id \text{_} mac \gt smothbm \ \
 \\
 &amp;taub = 0.001
 \\
-\tag{14.26}
+\tag{14.21}
 \\
 swi \text{_} deff = (1.0 + TAUB \times 100) \times taubsensitivity
 \\
-\tag{14.27}
+\tag{14.22}
 \\
 \end{align*}\]</span>)
 \
@@ -3303,12 +3718,12 @@ Figure 14.19: Spatial resolution options available through AED. a) Water column 
 <center>
 <span class="math display" id="eq:biogeochem1">\[\begin{equation}
 F = D_{0}\frac{\Delta C}{\Delta x} = \frac{D_{0}}{\delta} (C_{bw} - C_{1})
-\tag{14.28}
+\tag{14.23}
 \end{equation}\]</span>
 </center>
 <p>where <span class="math inline">\(D_{0}\)</span> is the diffusivity, <span class="math inline">\(\delta\)</span> is the thickness of the diffusive boundary layer at the sediment water interface and defined as the length scale of the first sediment layer, <span class="math inline">\(C_{bw}\)</span> is the bottom water concentration and <span class="math inline">\(C_{1}\)</span> is the concentration in the top sediment layer.</p>
 <p>At the bottom of the domain (<span class="math inline">\(x\)</span> = <code>xl</code>) the model can be specified to have a fixed-concentration (<code>deepbc_mode</code> = 0) such that the concentration at <span class="math inline">\(xl = C_{Bot}\)</span>, or it can be specified to have a zero-derivative (<code>deepbc_mode</code> = 1) defined as <span class="math inline">\(\frac{dC}{dx}=0\)</span> at <span class="math inline">\(x = xl\)</span>.</p>
-<p>AED environmental variables can also be accessed by CANDI-AED, and in most cases they do not feed back to the water column.</p>
+<p>AED environmental variables can be accessed by CANDI-AED, and in most cases they do not feed back to the water column (see section on environmental variables). Parameter-variables can also be accessed by CANDI-AED, for example <em>taub</em> and <em>w<sub>00</sub></em>. <em>taub</em> affects the diffusivity and the sediment-water interface. The deposition rate <em>w<sub>00</sub></em> can be linked to the water column rate using <code>swi_link_variable</code>.</p>
 </div>
 <div id="resolving-sediment-zonation" class="section level4 hasAnchor" number="14.3.2.2">
 <h4><span class="header-section-number">14.3.2.2</span> Resolving sediment zonation<a href="sediment-biogeochemistry.html#resolving-sediment-zonation" class="anchor-section" aria-label="Anchor link to header"></a></h4>
@@ -4350,9 +4765,8 @@ diag_level &gt; 9
 </div>
 <div id="environmental-variables" class="section level4 hasAnchor" number="14.3.5.3">
 <h4><span class="header-section-number">14.3.5.3</span> Environmental variables<a href="sediment-biogeochemistry.html#environmental-variables" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>There are several ‘environmental’ variables, that can be linked from the water column model or other AED modules, to set conditions in the sediment model (table <a href="sediment-biogeochemistry.html#tab:EnvVarsTable">14.14</a>). For example, water column salinity from a model such as TUFLOW-FV can be used to set the sediment-water interface concentration of salt at the sediment-water interface, which is used to calculate <em>F<sub>Sal</sub></em>. Another example is the set of <span class="math inline">\(MPB\)</span> and <span class="math inline">\(MAG\)</span> variables used to set the <span class="math inline">\(O_2\)</span> penetration into the upper sediment.</p>
-<p>qwqwqwqw
-<span class="math inline">\(SO_4^{2-}\)</span> concentration was tied to salinity in Coorong. Is this permanent? What are the settings for this?</p>
+<p>There are several ‘environmental’ variables, that can be linked from the water column model or other AED modules, to set conditions in the sediment model (table <a href="sediment-biogeochemistry.html#tab:EnvVarsTable">14.14</a>). For example, the set of <span class="math inline">\(MPB\)</span> and <span class="math inline">\(MAG\)</span> variables is used to set the <span class="math inline">\(O_2\)</span> penetration into the upper sediment. Another example is that water column salinity from a model such as TUFLOW-FV can be used to set the sediment-water interface concentration of salt at the sediment-water interface, which is used to calculate <em>F<sub>Sal</sub></em>.</p>
+<p>Water column salinity is also used to set the boundary concentration of sulfate. Although most dissolved variables are simulated using mmol L<sup>-1</sup>, salinity uses practical salinity units (PSU). PSU has a standard concentration of solutes, primarily chloride, sodium, magnesium and sulfate. One PSU correlates to approximately 0.9 mmol L<sup>-1</sup> sulfate, and so the CANDI-AED <span class="math inline">\(SO_4^{2-}\)</span> boundary is fixed at 0.9 <span class="math inline">\(\times\)</span> salinity.</p>
 <center>
 <div style="border: 1px solid #ddd; padding: 5px; overflow-y: scroll; height:25em; overflow-x: scroll; width:45em; ">
 <table class="table table-hover" style="font-size: 12px; ">
@@ -6571,6 +6985,10 @@ Users can create a standard file in the correct format from the online <a href="
 <h5><em>&amp;aed_sed_const2d</em><a href="sediment-biogeochemistry.html#aed_sed_const2d" class="anchor-section" aria-label="Anchor link to header"></a></h5>
 <p>If the sediment model is running in fewer zones than the water column model, then the water column model takes constant values for the sediment fluxes. The fluxes are listed in this code block.</p>
 </div>
+<div id="aed_sediment" class="section level5 unnumbered hasAnchor">
+<h5><em>&amp;aed_sediment</em><a href="sediment-biogeochemistry.html#aed_sediment" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<p>Some of the names of the linking variables are listed here, for example, <code>mpb_link_variable</code> = <code>PHY_mpb</code>, <code>mag_link_variable</code> = <code>MA2_mag</code>, <code>mac_link_variable</code> = <code>MAC_mac</code> and <code>swi_link_variable</code> = <code>NCS_swi</code>.</p>
+</div>
 <div id="fsed-linking-variables" class="section level5 unnumbered hasAnchor">
 <h5><em>Fsed linking variables</em><a href="sediment-biogeochemistry.html#fsed-linking-variables" class="anchor-section" aria-label="Anchor link to header"></a></h5>
 <p>The names of Fsed linking variables are set in the various nml blocks. If a linking flux is desired, the user should check that each linking variable is set properly in each block. For example, to link the <em>diss_flux_link</em> for <span class="math inline">\(O_2\)</span>, the parameter <code>Fsed_oxy_variable</code> is set to <code>SDF_Fsed_oxy</code> in <code>aed_oxygen</code> and also in the variables .csv file. This applies similarly for <code>&amp;aed_nitogen</code> <code>Fsed_amm_variable</code> = <code>SDF_Fsed_amm</code> and <code>SDF_Fsed_nit</code>.</p>
@@ -6632,39 +7050,36 @@ Figure 14.27: Simplified image of the <code>aed_sdg_vars.csv</code> input file. 
 </p>
 </div>
 <p><br />
-#### Initialisation of organic matter profiles</p>
+</p>
+</div>
+<div id="initialisation-of-organic-matter-profiles" class="section level4 hasAnchor" number="14.4.2.1">
+<h4><span class="header-section-number">14.4.2.1</span> Initialisation of organic matter profiles<a href="sediment-biogeochemistry.html#initialisation-of-organic-matter-profiles" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>For organic matter, the initial profiles are set to either the linear or exponential options. For the linear option, the initial concentration is still taken from <code>initial_vals</code> in <code>aed_sdg_vars.csv</code>. The upper and lower concentrations are set as percentages of the initial concentration using the parameters <code>OM_top</code> and <code>OM_Min</code>, which are found in the <code>&amp;aed_sed_candi</code> block in the <code>aed.nml</code> namelist. There are separate parameters for labile and refractory organic matter, so the parameter names are in fact <code>OM_topL</code> and <code>OM_topR</code>, and <code>OM_minL</code> and <code>OM_minR</code>. These parameters are real numbers as decimals between 0 and 1. The <code>OM_Top</code> fraction applies to the surface concentration. The <code>OM_Min</code> applies at the depth <code>InitMinDepth</code> (cm), which is also set in the <code>&amp;aed_sed_candi</code> block.</p>
 <p>For the exponential option, the initial concentration decreases according to equation @ref(eq#init-7b):</p>
 <span class="math display" id="eq:init-7b">\[\begin{eqnarray}
 concentration = initial vals \times e^ {- OM cfl \times depth}
-\tag{14.29}
+\tag{14.24}
 \end{eqnarray}\]</span>
 <p>The shape of the curve is determined by the parameter <code>OM_cfl</code>, which is found in the <code>&amp;aed_sed_candi</code> block.</p>
 </div>
-<div id="tn-tp-tc-partitioning" class="section level4 hasAnchor" number="14.4.2.1">
-<h4><span class="header-section-number">14.4.2.1</span> TN TP TC partitioning<a href="sediment-biogeochemistry.html#tn-tp-tc-partitioning" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>The C:N:P stoichiometry is set differently for each <code>OMModel</code>. Using <code>OMModel</code> = 1, the ratios are set separately for the labile and refractory phases, using the <em>x</em>, <em>y</em> and <em>z</em> ratios outlined in table <a href="sediment-biogeochemistry.html#tab:OMChem-table">14.3</a>. For example, <code>xlab</code> is the carbon fraction of <span class="math inline">\(POM_L\)</span>, which is usually set to around 106, while <code>zlab</code> is the <span class="math inline">\(POM_L\)</span> phosphorus fraction, which is usually set to around 1. These ratios are fixed throughout the simulation. The <em>y</em> nitrogen fraction is also used to set the amount of <span class="math inline">\(NH_4^+\)</span> released per carbon during organic matter oxidation.</p>
-<p>Using <code>OMModel</code> = 2, the C:N:P ratio is set by the concentrations of separate organic species, such as <span class="math inline">\(POC_L\)</span>, <span class="math inline">\(PON_L\)</span> and <span class="math inline">\(POP_L\)</span>. The ratio is fixed by the boundary and initial conditions, however, if the boundary is dynamic, then the ratio can change through the course of the simulation.</p>
-<p>Using <code>OMModel</code> = 3 is similar to <code>OMModel</code> = 1. The ratios are applied to <span class="math inline">\(POM_1\)</span>, <span class="math inline">\(POM_2\)</span> etc. as <code>xPOM1</code>, <code>yPOM2</code> etc.</p>
-</div>
-<div id="timing-switches" class="section level4 unnumbered hasAnchor">
-<h4>Timing switches<a href="sediment-biogeochemistry.html#timing-switches" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div id="timing-switches" class="section level4 hasAnchor" number="14.4.2.2">
+<h4><span class="header-section-number">14.4.2.2</span> Timing switches<a href="sediment-biogeochemistry.html#timing-switches" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>The duration of the simulation is determined by the hydrodynamic model and its parameter inputs. Other timing parameters are set as outlined below.</p>
 <div id="substep" class="section level5 unnumbered hasAnchor">
 <h5><em>Substep</em><a href="sediment-biogeochemistry.html#substep" class="anchor-section" aria-label="Anchor link to header"></a></h5>
-<p>The general task for the reactive transport model is to calculate a change in concentration over time, as a function of a change in concentration over space and as a result of chemical reactions. The general form of this is given in equation <a href="sediment-biogeochemistry.html#eq:tim-1">(14.30)</a>. When this is solved numerically, it is discretised by small increments of time, which are referred to as ‘time steps’ (Δt in equation <a href="sediment-biogeochemistry.html#eq:tim-2">(14.31)</a>).</p>
+<p>The general task for the reactive transport model is to calculate a change in concentration over time, as a function of a change in concentration over space and as a result of chemical reactions. The general form of this is given in equation <a href="sediment-biogeochemistry.html#eq:tim-1">(14.25)</a>. When this is solved numerically, it is discretised by small increments of time, which are referred to as ‘time steps’ (Δt in equation <a href="sediment-biogeochemistry.html#eq:tim-2">(14.26)</a>).</p>
 <p>To allow the part of the model that solves these differential equations to process a large change in concentration over space or because of a large reaction, the timestep can be multiplied by a substep factor. Examples of where this is needed include a sharp concentration gradient over a small area, or in influx of a large amount of highly reactive substances.</p>
 <span class="math display" id="eq:tim-2" id="eq:tim-1">\[\begin{eqnarray}
 
 \frac {\delta C} {\delta t} = \frac {\delta C} {\delta x} + reactions
 
-\tag{14.30}
+\tag{14.25}
 
 
 \\
 \\
 {\Delta C} = (\frac {\Delta C} {\Delta x} + reactions) \times \Delta t
-\tag{14.31}
+\tag{14.26}
 \end{eqnarray}\]</span>
 </div>
 <div id="spinup-substep" class="section level5 unnumbered hasAnchor">
@@ -6731,7 +7146,7 @@ Figure 14.32: Simplified image of the <code>aed_sdg_vars.csv</code> input file. 
 <p>These do not need to be set for any variable, but they may be set for any variable. <code>part_sed_link</code> and <code>water_link</code> must be set for solids and solutes and cannot both be assigned to one variable. If a variable is not set to be linked, the csv contains double inverted commas (” “) and the value is set to the <code>default_vals</code>. To enable this option, set <code>swibc_mode</code> = 0.</p>
 <p>As mentioned above, where there is any mismatch between the sediment and water column variables, the factor of <code>part_sed_scale</code> can be used. <code>part_sed_scale</code> can be found in the file <code>aed_sdg_vars.csv</code>. <code>part_sed_scale</code> is a real number between zero and one. For any sediment variables linked to the same water column flux, the <code>part_sed_scale</code> values should sum to 1.</p>
 <p>If a variable is linked, it is linked for all zones.</p>
-<p>Some variables have a fixed link to the water column: <span class="math inline">\(Salinity\)</span>, <span class="math inline">\(Temperature\)</span> and <span class="math inline">\(\tau_b\)</span>. These variables are key components of hydrodynamic models but do not undergo any rates of change in the sediment model. They are used to affect other sediment processes.</p>
+<p>Environmental variables have a fixed link to the water column: <span class="math inline">\(Salinity\)</span>, <span class="math inline">\(Temperature\)</span> and <span class="math inline">\(\tau_b\)</span>. These variables are key components of hydrodynamic models but do not undergo any rates of change in the sediment model. They are used to affect other sediment processes. As mentioned in the <em>Environmental variables</em> section, the <span class="math inline">\(SO_4^{2-}\)</span> concentration (mmol L<sup>-1</sup>) is fixed at 0.9 <span class="math inline">\(\times\)</span> salinity (PSU).</p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:SWI-3"></span>
 <img src="images/23-sediment_biogeochemistry/SWIBoundary/LinkedVars-08.png" alt="Schematic of possible linked variable options at the sediment-water interface. Particle fluxes and bottom water concentraitons go from the water column to the sediment. Sediment solutes can also be set to flux to the water column." width="60%" />
 <p class="caption">
