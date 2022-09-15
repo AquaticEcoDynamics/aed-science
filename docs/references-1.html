@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>3 Organisation of the Library &amp; Module Structure | The AED Manual</title>
+  <title>References | The AED Manual</title>
   <meta name="description" content="Work in progress." />
   <meta name="generator" content="bookdown 0.26 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="3 Organisation of the Library &amp; Module Structure | The AED Manual" />
+  <meta property="og:title" content="References | The AED Manual" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="Work in progress." />
   <meta name="github-repo" content="AquaticEcoDynamics/aed-science/" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="3 Organisation of the Library &amp; Module Structure | The AED Manual" />
+  <meta name="twitter:title" content="References | The AED Manual" />
   
   <meta name="twitter:description" content="Work in progress." />
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="nomenclature.html"/>
-<link rel="next" href="DO_1.html"/>
+<link rel="prev" href="forthcoming-chapters.html"/>
+
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -507,273 +507,229 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="organisation-of-the-library-module-structure" class="section level1 hasAnchor" number="3">
-<h1><span class="header-section-number">3</span> Organisation of the Library &amp; Module Structure<a href="organisation-of-the-library-module-structure.html#organisation-of-the-library-module-structure" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>Author: Matthew R. Hipsey</p>
-<div id="library-design" class="section level2 hasAnchor" number="3.1">
-<h2><span class="header-section-number">3.1</span> Library Design<a href="organisation-of-the-library-module-structure.html#library-design" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>The AED modelling library is organised as a series of “modules” that can be connected or “linked” through specific variable dependencies. By linking modules users can simulate most aquatic biogeochemical processes relevant to nutrient cycling, oxygen dynamics, harmful algal blooms, sediment/soil biogeochemistry, vegetation, pathogens etc. Each module can work alone or combined with other modules, depending on the complexity of targeted system.</p>
-<p>A wide array of modules are available with some operational only in water, some operational where no water is present, and some can operate under both dry and wet conditions.</p>
-<p>The current AED software is divided into 5 separate code-libraries: water, benthic, demo, dev, and riparian. Prior to the 2020 release, the model was distributed as two libraries: the first was the core AED2 library (libaed2) and the second is the advanced modules which are bundled together as AED2+ (libaed2-plus).</p>
-<p>Currently there are 8 core modules in AED, and 12 advanced modules in AED+. For routine water quality assessments of lakes or estuaries, AED will suit most applications. For advanced users and researchers seeking to extend their simulation abilities, then AED+ includes numerous advanced options.</p>
-<center>
-<img src="images/06-organisation_and_structure/image1.png" width="100%" />
-</center>
-</div>
-<div id="model-structure" class="section level2 hasAnchor" number="3.2">
-<h2><span class="header-section-number">3.2</span> Model Structure<a href="organisation-of-the-library-module-structure.html#model-structure" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>The philosophy of the AED/AED2 library is that biogeochemical and ecological modules have a standard class structure. State variables defined within each module are subject to transport and mass conservation, as managed by the scalar transport facility of the host hydrodynamic model (see Section 4).</p>
-<p>Any AED module can have the ability to simulate a range of physical, chemical and biological processes, that can be generally classified as belonging to:</p>
-<ul>
-<li>Feedback of chemical or biological attributes to physical properties of water (light extinction, drag, density)</li>
-<li>Water column kinetic (time-varying) chemical / biological transformations (e.g., denitrification or algal growth)</li>
-<li>Water column equilibrium (instantaneous) chemical transformations (e.g., PO<sub>4</sub> adsorption)</li>
-<li>Biogeochemical transformations in the sediment or biological changes in the benthos</li>
-<li>Vertical sedimentation or migration</li>
-<li>Fluxes across the air-water interface</li>
-<li>Fluxes across the sediment-water interface</li>
-<li>Fluxes across the terrestrial-water interface (riparian interactions)</li>
-<li>Ecohydrological dynamics and biogeochemical transformations in the exposed (dry) cells</li>
-<li>Feedbacks of soil and vegetation dynamics onto lake hydrodynamics and water balance</li>
-</ul>
-<p>A general module structure in the figure above. Specific methods available within a module include those shown in the table. Note that not all methods must be used in modules; developers must choose which methods are relevant to a specific module. The only exception is “define”, which is compulsory for all modules to configure the chosen state variables, diagnostic variables, and set the necessary parameters and options.</p>
-</div>
-<div id="module-summary" class="section level2 hasAnchor" number="3.3">
-<h2><span class="header-section-number">3.3</span> Module Summary<a href="organisation-of-the-library-module-structure.html#module-summary" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>A high level overview of the simulatable modules are include in Table 3.1 below.</p>
-<head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<style>
-/* Style the buttons inside the tab */
-.tab button {
-  background-color: #2481AA;
-  float: left;
-  width: 50%;
-  border: none;
-  outline: none;
-  cursor: pointer;
-  padding: 14px 16px;
-  transition: 0.3s;
-  font-size: 17px;
-  color: #FFFFFF;
-  font-weight: bold;
-}
-</style>
-</head>
-<body>
-<div class="tab">
-<p><button class="tablinks" onclick="opentab(event, 'AED-water')"id="defaultOpen">AED-water</button>
-<button class="tablinks" onclick="opentab(event, 'AED-benthic')">AED-benthic</button></p>
-</div>
-<div id="AED-water" class="tabcontent">
-<p>
-<div style="border: 1px solid #ddd; padding: 5px; overflow-y: scroll; height:620px; overflow-x: scroll; width:750px; ">
-<table class="table" style="font-size: 12px; width: auto !important; ">
-<caption style="font-size: initial !important;">
-<span id="tab:modules">Table 3.1: </span>Modules
-</caption>
-<thead>
-<tr>
-<th style="text-align:center;">
-Module
-</th>
-<th style="text-align:center;">
-Description
-</th>
-<th style="text-align:center;">
-Relevant Variables
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center;min-width: 6em; background-color: white !important;">
-<strong>TRC</strong>: Tracers, Suspended Soilds and Retention Time
-</td>
-<td style="text-align:center;min-width: 6em; background-color: white !important;">
-Modellers can use the aed_tracer to simulate a dissolved or particulate tracer (subject to transport processes only), or this can be optionally configured to account for decay, sedimentation and/or resuspension. This module also include an option to simulate water “retention time” where the water age increments once enters into the waterbody
-</td>
-<td style="text-align:center;min-width: 6em; background-color: white !important;">
-C,<span class="math inline">\(t_{ret}\)</span>
-</td>
-</tr>
-<tr>
-<td style="text-align:center;min-width: 6em; background-color: white !important;">
-<strong>OXY</strong>: Dissolved Oxygen
-</td>
-<td style="text-align:center;min-width: 6em; background-color: white !important;">
-Dissolved oxygen (DO) dynamics are able to be simulated, accounting for atmospheric exchange and sediment oxygen demand, and through links to other modules will account for microbial use during organic matter mineralisation and nitrification, photosynthetic oxygen production and respiratory oxygen consumption, and respiration by other optional biotic components
-</td>
-<td style="text-align:center;min-width: 6em; background-color: white !important;">
-O<sub>2</sub>
-</td>
-</tr>
-<tr>
-<td style="text-align:center;min-width: 6em; background-color: white !important;">
-<strong>NUT</strong>: Inorganic Nutrients
-</td>
-<td style="text-align:center;min-width: 6em; background-color: white !important;">
-Modules exist for simulation of inorganic nutrients including phosphorus, nitrogen and silica. These modules provide basic nutrient cycling functionality and are designed to be linked with other modules (eg OGM, PHY) in order to provide a more comprehensive depiction of nutrient cycling.
-</td>
-<td style="text-align:center;min-width: 6em; background-color: white !important;">
-</td>
-</tr>
-<tr>
-<td style="text-align:center;min-width: 6em; background-color: white !important;">
-<strong>OGM</strong>: Organic Matter
-</td>
-<td style="text-align:center;min-width: 6em; background-color: white !important;">
-Organic matter variables cover the C, N &amp; P stored in the dissolved and particulate organic matter pools. This module optionally also supports depiction of “labile” vs “refractory” fractions of organic matter, including the breakdown and hydrolysis process, photo-degradation and mineralisation.
-</td>
-<td style="text-align:center;min-width: 6em; background-color: white !important;">
-DOM, POM
-</td>
-</tr>
-<tr>
-<td style="text-align:center;min-width: 6em; background-color: white !important;">
-<strong>PHY</strong>: Phytoplankton
-</td>
-<td style="text-align:center;min-width: 6em; background-color: white !important;">
-Highly customisable phytoplankton module for simulating change in algae, cyano-bacteria and chl-a, including phytoplankton production/respiration, nutrient uptake, excretion, vertical movement (eg buoyancy control), and grazing effects. Benthic phytoplankton may also be optionally configured.
-</td>
-<td style="text-align:center;min-width: 6em; background-color: white !important;">
-</td>
-</tr>
-<tr>
-<td style="text-align:center;min-width: 6em; background-color: white !important;">
-<strong>ZOO</strong>: Zooplankton
-</td>
-<td style="text-align:center;min-width: 6em; background-color: white !important;">
-Simulates different size classes of zooplankton, accounting for carbon and nutrient assimilation from grazing, carbon loss via respiration, excretion of DOM, faecal pellet production, mortality, and predation by larger organisms.
-</td>
-<td style="text-align:center;min-width: 6em; background-color: white !important;">
-</td>
-</tr>
-<tr>
-<td style="text-align:center;min-width: 6em; background-color: white !important;">
-<strong>TOT</strong>: Totals
-</td>
-<td style="text-align:center;min-width: 6em; background-color: white !important;">
-A summary module, allowing users to “sum-up” component variables from other modules into a total, for example, to compute TN, TP or TSS.
-</td>
-<td style="text-align:center;min-width: 6em; background-color: white !important;">
-</td>
-</tr>
-<tr>
-<td style="text-align:center;min-width: 6em; background-color: white !important;">
-<strong>SDF</strong>: Sediment Flux
-</td>
-<td style="text-align:center;min-width: 6em; background-color: white !important;">
-An interface module designed to provide spatially variable sediment flux settings to key modules (e.g., OXY, OGM, NUT), and/or link these variables to the dynamic sediment biogeochemistry model (SDG).
-</td>
-<td style="text-align:center;min-width: 6em; background-color: white !important;">
-</td>
-</tr>
-</tbody>
-</table>
-</div>
-</p>
-</div>
-<div id="AED-benthic" class="tabcontent">
-<p>
-<div style="border: 1px solid #ddd; padding: 5px; overflow-y: scroll; height:620px; overflow-x: scroll; width:750px; ">
-<table class="table" style="font-size: 12px; width: auto !important; ">
-<caption style="font-size: initial !important;">
-<span id="tab:modules2">Table 3.2: </span>Modules
-</caption>
-<thead>
-<tr>
-<th style="text-align:center;">
-Module
-</th>
-<th style="text-align:center;">
-Description
-</th>
-<th style="text-align:center;">
-Relevant Variables
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center;min-width: 6em; background-color: white !important;">
-<strong>MAC</strong>: Benthic macrophytes
-</td>
-<td style="text-align:center;min-width: 6em; background-color: white !important;">
-Simulates benthic habitat and/or growth of macrophytes such as seagrasses in specified sediment zones.
-</td>
-<td style="text-align:center;min-width: 6em; background-color: white !important;">
-NA
-</td>
-</tr>
-<tr>
-<td style="text-align:center;min-width: 6em; background-color: white !important;">
-<strong>MAG</strong>: Macroalgae
-</td>
-<td style="text-align:center;min-width: 6em; background-color: white !important;">
-Simulates benthic macroalgal growth and sloughing/detachment of macroalgae and its subsequent redistribution within the domain.
-</td>
-<td style="text-align:center;min-width: 6em; background-color: white !important;">
-NA
-</td>
-</tr>
-<tr>
-<td style="text-align:center;min-width: 6em; background-color: white !important;">
-<strong>BIV</strong>: Bivalves
-</td>
-<td style="text-align:center;min-width: 6em; background-color: white !important;">
-A model of one or more groups of benthic filter feeders, able to assimilate C, N and P and recycle filter material back to the water column and sediment.
-</td>
-<td style="text-align:center;min-width: 6em; background-color: white !important;">
-NA
-</td>
-</tr>
-<tr>
-<td style="text-align:center;min-width: 6em; background-color: white !important;">
-<strong>HAB</strong>: Habitat Quality
-</td>
-<td style="text-align:center;min-width: 6em; background-color: white !important;">
-A high level module that returns habitat quality metrics based on underlying water condition attributes, for example, for seagrass or crab habitat suitability at different life stages.
-</td>
-<td style="text-align:center;min-width: 6em; background-color: white !important;">
-NA
-</td>
-</tr>
-</tbody>
-</table>
-</div>
-</p>
-</div>
-<script>
-function opentab(evt, tabName) {
-  var i, tabcontent, tablinks;
-  tabcontent = document.getElementsByClassName("tabcontent");
-  for (i = 0; i < tabcontent.length; i++) {
-    tabcontent[i].style.display = "none";
-  }
-  tablinks = document.getElementsByClassName("tablinks");
-  for (i = 0; i < tablinks.length; i++) {
-    tablinks[i].className = tablinks[i].className.replace(" active", "");
-  }
-  document.getElementById(tabName).style.display = "block";
-  evt.currentTarget.className += " active";
-}
-document.getElementById("defaultOpen").click();
-</script>
-</body>
+<div id="references-1" class="section level1 unnumbered hasAnchor">
+<h1>References<a href="references-1.html#references-1" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div class="csl-entry">
+Alin, S.R., Feely, R.A., Dickson, A.G., Hernández‐Ayón, J.M., Juranek, L.W., Ohman, M.D., Goericke, R., 2012. <span class="nocase">Robust empirical relationships for estimating the carbonate system in the southern California Current System and application to CalCOFI hydrographic cruise data (2005–2011)</span>, <em>Journal of Geophysical Research: Oceans (1978–2012)</em> 117, n/a–n/a. <a href="https://doi.org/10.1029/2011jc007511">https://doi.org/10.1029/2011jc007511</a>
+</div>
+<div class="csl-entry">
+Asanopoulos, C., Waycott, M., 2020. <a href="http://www.goyderinstitute.org/_r3429/media/system/attrib/file/700/TI-2.1.1_TRS_20-13_Aquatic%20Plant%20Synthesis_2020-12-11_Final%20v2.pdf">The growth of aquatic macrophytes (ruppia tuberosa spp. And althenia cylindrocarpa) and the filamentous algal community in the southern coorong. Goyder institute for water research technical report series no.20/13</a>.
+</div>
+<div class="csl-entry">
+Bierman, V.J., Kaur, J., Depinto, J.V., Feist, T.J., Dilks, D.W., 2005. <span class="nocase">Modeling the Role of Zebra Mussels in the Proliferation of Blue-green Algae in Saginaw Bay, Lake Huron</span>, <em>Journal of Great Lakes Research</em> 31, 32–55. <a href="https://doi.org/10.1016/s0380-1330(05)70236-7">https://doi.org/10.1016/s0380-1330(05)70236-7</a>
+</div>
+<div class="csl-entry">
+Bocaniov, S.A., Smith, R.E.H., Spillman, C.M., Hipsey, M.R., Leon, L.F., 2014. <span class="nocase">The nearshore shunt and the decline of the phytoplankton spring bloom in the Laurentian Great Lakes: insights from a three-dimensional lake model</span>, <em>Hydrobiologia</em> 731, 151–172. <a href="https://doi.org/10.1007/s10750-013-1642-2">https://doi.org/10.1007/s10750-013-1642-2</a>
+</div>
+<div class="csl-entry">
+Borges, A., Abril, G., 2011. <span class="nocase">5.04 - Carbon Dioxide and Methane Dynamics in Estuaries</span>, in: <span class="nocase">Treatise on Estuarine and Coastal Science, Volume 5: Biogeochemistry</span>. <span>Academic Press</span>. <a href="https://doi.org/10.1016/B978-0-12-374711-2.00504-0">https://doi.org/10.1016/B978-0-12-374711-2.00504-0</a>
+</div>
+<div class="csl-entry">
+Borges, A.V., Vanderborght, J.-P., Schiettecatte, L.-S., Gazeau, F., Ferrón-Smith, S., Delille, B., Frankignoulle, M., 2004. <span class="nocase">Variability of the gas transfer velocity of CO2 in a macrotidal estuary (the Scheldt)</span>, <em>Estuaries</em> 27, 593–603. <a href="https://doi.org/10.1007/bf02907647">https://doi.org/10.1007/bf02907647</a>
+</div>
+<div class="csl-entry">
+Brock, M.A., 1982. <span class="nocase">Biology of the salinity tolerant genus Ruppia L. in saline lakes in South Australia II. Population ecology and reproductive biology</span>, <em>Aquatic Botany</em> 13, 249–268. <a href="https://doi.org/10.1016/0304-3770(82)90063-8">https://doi.org/10.1016/0304-3770(82)90063-8</a>
+</div>
+<div class="csl-entry">
+Bruce, L.C., Cook, P.L.M., Teakle, I., Hipsey, M.R., 2014. <span class="nocase">Hydrodynamic controls on oxygen dynamics in a riverine salt wedge estuary, the Yarra River estuary, Australia</span>, <em>Hydrology and Earth System Sciences</em> 18, 1397–1411. <a href="https://doi.org/10.5194/hess-18-1397-2014">https://doi.org/10.5194/hess-18-1397-2014</a>
+</div>
+<div class="csl-entry">
+Bruce, L., Cook, P., Hipsey, M., 2015. <span class="nocase">A model of oxygen and nitrogen biogeochemical response to hydrodynamic regimes in the Yarra River estuary</span>, in: <span class="nocase">IMACS World Congress and MODSIM International Congress on Modelling and Simulation</span>. <span>Modelling and Simulation Society of Australia and New Zealand Inc.(MSSANZ)</span>, pp. 524–530.
+</div>
+<div class="csl-entry">
+Bucak, T., Trolle, D., Tavşanoğlu, Ü.N., Çakıroğlu, A.İ., Özen, A., Jeppesen, E., Beklioğlu, M., 2018. <span class="nocase">Modeling the effects of climatic and land use changes on phytoplankton and water quality of the largest Turkish freshwater lake: Lake Beyşehir</span>, <em>Science of The Total Environment</em> 621, 802–816. <a href="https://doi.org/10.1016/j.scitotenv.2017.11.258">https://doi.org/10.1016/j.scitotenv.2017.11.258</a>
+</div>
+<div class="csl-entry">
+Butler, J.N., 1982. <span class="nocase">Carbon dioxide equilibria and their applications.</span>, Organic geochemistry.
+</div>
+<div class="csl-entry">
+Cai, W.-J., 2011. <span class="nocase">Estuarine and Coastal Ocean Carbon Paradox: CO2 Sinks or Sites of Terrestrial Carbon Incineration?</span>, <em><span>Annual Review of Marine Science</span></em> 3, 123–145. <a href="https://doi.org/10.1146/annurev-marine-120709-142723">https://doi.org/10.1146/annurev-marine-120709-142723</a>
+</div>
+<div class="csl-entry">
+Carey, C.C., Hanson, P.C., Thomas, R.Q., Gerling, A.B., Hounshell, A.G., Lewis, A.S.L., Lofton, M.E., McClure, R.P., Wander, H.L., Woelmer, W.M., Niederlehner, B.R., Schreiber, M.E., 2022. <span class="nocase">Anoxia decreases the magnitude of the carbon, nitrogen, and phosphorus sink in freshwaters</span>, <em>Global Change Biology</em>. <a href="https://doi.org/10.1111/gcb.16228">https://doi.org/10.1111/gcb.16228</a>
+</div>
+<div class="csl-entry">
+Casper, P., Maberly, S.C., Hall, G.H., Finlay, B.J., 2000. <span class="nocase">Fluxes of methane and carbon dioxide from a small productive lake to the atmosphere</span>, <em>Biogeochemistry</em> 49, 1–19. <a href="https://doi.org/10.1023/a:1006269900174">https://doi.org/10.1023/a:1006269900174</a>
+</div>
+<div class="csl-entry">
+Chen, S., Carey, C.C., Little, J.C., Lofton, M.E., McClure, R.P., Lei, C., 2018. <span class="nocase">Effectiveness of a bubble-plume mixing system for managing phytoplankton in lakes and reservoirs</span>, <em>Ecological Engineering</em> 113, 43–51. <a href="https://doi.org/10.1016/j.ecoleng.2018.01.002">https://doi.org/10.1016/j.ecoleng.2018.01.002</a>
+</div>
+<div class="csl-entry">
+Cicerone, R.J., Oremland, R.S., 1988. <span class="nocase">Biogeochemical aspects of atmospheric methane</span>, <em>Global Biogeochemical Cycles</em> 2, 299–327. <a href="https://doi.org/10.1029/gb002i004p00299">https://doi.org/10.1029/gb002i004p00299</a>
+</div>
+<div class="csl-entry">
+Coletti, J.Z., Vogwill, R., Hipsey, M.R., 2017. <span class="nocase">Water management can reinforce plant competition in salt-affected semi-arid wetlands</span>, <em>Journal of Hydrology</em> 552, 121–140. <a href="https://doi.org/10.1016/j.jhydrol.2017.05.002">https://doi.org/10.1016/j.jhydrol.2017.05.002</a>
+</div>
+<div class="csl-entry">
+Collier, C, Dijk, van, K, Erftemeijer, P, Foster, N, Hipsey, M, O’Laughlin, E, K., Ticli, Waycott, M., 2017. <a href="">Optimising coorong ruppia habitat. Stratigies to improve habitat conditions for ruppia tuberosa in the coorong (south australia) based on literature review, manipulative experiments and predictive modelling</a>.
+</div>
+<div class="csl-entry">
+DelSontro, T., McGinnis, D.F., Sobek, S., Ostrovsky, I., Wehrli, B., 2010. <span class="nocase">Extreme Methane Emissions from a Swiss Hydropower Reservoir: Contribution from Bubbling Sediments</span>, <em>Environmental Science &amp; Technology</em> 44, 2419–2425. <a href="https://doi.org/10.1021/es9031369">https://doi.org/10.1021/es9031369</a>
+</div>
+<div class="csl-entry">
+Dodds, W.K., Whiles, M.R., 2020. <span>Chapter 13 - Carbon</span>, in: Dodds, W.K., Whiles, M.R. (Eds.), <span>Freshwater Ecology (Third Edition)</span>, Aquatic Ecology. <span>Academic Press</span>, pp. 371–394. https://doi.org/<a href="https://doi.org/10.1016/B978-0-12-813255-5.00013-2">https://doi.org/10.1016/B978-0-12-813255-5.00013-2</a>
+</div>
+<div class="csl-entry">
+Fadel, A., Sharaf, N., Siblini, M., Slim, K., Kobaissi, A., 2019. <span class="nocase">A simple modelling approach to simulate the effect of different climate scenarios on toxic cyanobacterial bloom in a eutrophic reservoir</span>, <em>Ecohydrology &amp; Hydrobiology</em> 19, 359–369. <a href="https://doi.org/10.1016/j.ecohyd.2019.02.005">https://doi.org/10.1016/j.ecohyd.2019.02.005</a>
+</div>
+<div class="csl-entry">
+Farrell, K.J., Ward, N.K., Krinos, A.I., Hanson, P.C., Daneshmand, V., Figueiredo, R.J., Carey, C.C., 2020. <span class="nocase">Ecosystem-scale nutrient cycling responses to increasing air temperatures vary with lake trophic state</span>, <em>Ecological Modelling</em> 430, 109134. <a href="https://doi.org/10.1016/j.ecolmodel.2020.109134">https://doi.org/10.1016/j.ecolmodel.2020.109134</a>
+</div>
+<div class="csl-entry">
+Fenocchi, A., Rogora, M., Marchetto, A., Sibilla, S., Dresti, C., 2020. <span class="nocase">Model simulations of the ecological dynamics induced by climate and nutrient load changes for deep subalpine Lake Maggiore (Italy/Switzerland): Model simulations of the future ecological dynamics of Lake Maggiore</span>, <em>Journal of Limnology</em>. <a href="https://doi.org/10.4081/jlimnol.2020.1963">https://doi.org/10.4081/jlimnol.2020.1963</a>
+</div>
+<div class="csl-entry">
+Fenocchi, A., Rogora, M., Morabito, G., Marchetto, A., Sibilla, S., Dresti, C., 2019. <span class="nocase">Applicability of a one-dimensional coupled ecological-hydrodynamic numerical model to future projections in a very deep large lake (Lake Maggiore, Northern Italy/Southern Switzerland)</span>, <em>Ecological Modelling</em> 392, 38–51. <a href="https://doi.org/10.1016/j.ecolmodel.2018.11.005">https://doi.org/10.1016/j.ecolmodel.2018.11.005</a>
+</div>
+<div class="csl-entry">
+Griffith, M., Tate, P., 2014. <span class="nocase">Hawkesbury Nepean River and South Creek Model</span>, <em>Water: Journal of the Australian Water Association</em> 41, 51–57.
+</div>
+<div class="csl-entry">
+Gudimov, A., Kim, D.-K., Young, J.D., Palmer, M.E., Dittrich, M., Winter, J.G., Stainsby, E., Arhonditsis, G.B., 2015. <span class="nocase">Examination of the role of dreissenids and macrophytes in the phosphorus dynamics of Lake Simcoe, Ontario, Canada</span>, <em>Ecological Informatics</em> 26, 36–53. <a href="https://doi.org/10.1016/j.ecoinf.2014.11.007">https://doi.org/10.1016/j.ecoinf.2014.11.007</a>
+</div>
+<div class="csl-entry">
+Hipsey, M.R., Antenucci, J.P., Brookes, J.D., 2008. <span class="nocase">A generic, process-based model of microbial pollution in aquatic systems: MICROBIAL POLLUTION IN AQUATIC SYSTEMS</span>, <em>Water Resources Research</em> 44. <a href="https://doi.org/10.1029/2007wr006395">https://doi.org/10.1029/2007wr006395</a>
+</div>
+<div class="csl-entry">
+Hipsey, M.R., Antenucci, J.P., Brookes, J.D., Burch, M.D., Regel, R.H., Linden, L., 2004. <span class="nocase">A three dimensional model of Cryptosporidium dynamics in lakes and reservoirs: A new tool for risk management</span>, <em>International Journal of River Basin Management</em> 2, 181–197. <a href="https://doi.org/10.1080/15715124.2004.9635231">https://doi.org/10.1080/15715124.2004.9635231</a>
+</div>
+<div class="csl-entry">
+Ho, D.T., Coffineau, N., Hickman, B., Chow, N., Koffman, T., Schlosser, P., 2016. <span class="nocase">Influence of current velocity and wind speed on air-water gas exchange in a mangrove estuary: Gas Exchange in a Mangrove Estuary</span>, <em>Geophysical Research Letters</em> 43, 3813–3821. <a href="https://doi.org/10.1002/2016gl068727">https://doi.org/10.1002/2016gl068727</a>
+</div>
+<div class="csl-entry">
+Ho, D.T., Wanninkhof, R., Schlosser, P., Ullman, D.S., Hebert, D., Sullivan, K.F., 2011. <span class="nocase">Toward a universal relationship between wind speed and gas exchange: Gas transfer velocities measured with 3 He/SF 6 during the Southern Ocean Gas Exchange Experiment</span>, <em>Journal of Geophysical Research</em> 116. <a href="https://doi.org/10.1029/2010jc006854">https://doi.org/10.1029/2010jc006854</a>
+</div>
+<div class="csl-entry">
+Huang, P., Kilminster, K., Larsen, S., Hipsey, M.R., 2018. <span class="nocase">Assessing artificial oxygenation in a riverine salt-wedge estuary with a three-dimensional finite-volume model</span>, <em>Ecological Engineering</em> 118, 111–125. <a href="https://doi.org/10.1016/j.ecoleng.2018.04.020">https://doi.org/10.1016/j.ecoleng.2018.04.020</a>
+</div>
+<div class="csl-entry">
+Huang, P., Sousa, E.R.D., Wells, N.S., Eyre, B.D., Gibbes, B., Hipsey, M.R., 2022. <span class="nocase">A Modeling Approach for Addressing Sensitivity and Uncertainty of Estuarine Greenhouse Gas (CO2 and CH4) Dynamics</span>, <em>Journal of Geophysical Research: Biogeosciences</em> 127. <a href="https://doi.org/10.1029/2021jg006722">https://doi.org/10.1029/2021jg006722</a>
+</div>
+<div class="csl-entry">
+Huang, P., Trayler, K., Wang, B., Saeed, A., Oldham, C.E., Busch, B., Hipsey, M.R., 2019. <span class="nocase">An integrated modelling system for water quality forecasting in an urban eutrophic estuary: The swan-canning estuary virtual observatory</span>, <em>Journal of Marine Systems</em> 199, 103218. <a href="https://doi.org/10.1016/j.jmarsys.2019.103218">https://doi.org/10.1016/j.jmarsys.2019.103218</a>
+</div>
+<div class="csl-entry">
+Jones, J.M., Sweet, J., Brzezinski, M.A., McNair, H.M., Passow, U., 2016. <span class="nocase">Evaluating Carbonate System Algorithms in a Nearshore System: Does Total Alkalinity Matter?</span>, <em>PloS one</em> 11, e0165191. <a href="https://doi.org/10.1371/journal.pone.0165191">https://doi.org/10.1371/journal.pone.0165191</a>
+</div>
+<div class="csl-entry">
+Jr, J.E.A., McMahon, R.F., 2004. <span class="nocase">Respiratory response to temperature and hypoxia in the zebra mussel Dreissena polymorpha</span>, <em>Comparative Biochemistry and Physiology Part A: Molecular &amp; Integrative Physiology</em> 137, 425–434. <a href="https://doi.org/10.1016/j.cbpb.2003.11.003">https://doi.org/10.1016/j.cbpb.2003.11.003</a>
+</div>
+<div class="csl-entry">
+Kim, D., Aldridge, K.T., Ganf, G.G., Brookes, J.D., 2015. Physicochemical influences on ruppia tuberosa abundance and distribution mediated through life cycle stages, <em>Inland Waters</em> 5, 451–460. <a href="https://doi.org/10.5268/iw-5.4.709">https://doi.org/10.5268/iw-5.4.709</a>
+</div>
+<div class="csl-entry">
+Kim, D.H., Aldridge, K.T., Brookes, J.D., Ganf, G.G., 2013. <span class="nocase">The effect of salinity on the germination of Ruppia tuberosa and Ruppia megacarpa and implications for the Coorong: A coastal lagoon of southern Australia</span>, <em>Aquatic Botany</em> 111, 81–88. <a href="https://doi.org/10.1016/j.aquabot.2013.06.008">https://doi.org/10.1016/j.aquabot.2013.06.008</a>
+</div>
+<div class="csl-entry">
+Kim, H., Lee, K., 2009. <span class="nocase">Significant contribution of dissolved organic matter to seawater alkalinity</span>, <em>Geophysical Research Letters</em> 36. <a href="https://doi.org/10.1029/2009gl040271">https://doi.org/10.1029/2009gl040271</a>
+</div>
+<div class="csl-entry">
+Kitchell, J.F., Stewart, D.J., Weininger, D., 1977. <span class="nocase">Applications of a Bioenergetics Model to Yellow Perch ( Perca flavescens ) and Walleye ( Stizostedion vitreum vitreum )</span>, <em>Journal of the Fisheries Research Board of Canada</em> 34, 1922–1935. <a href="https://doi.org/10.1139/f77-258">https://doi.org/10.1139/f77-258</a>
+</div>
+<div class="csl-entry">
+Krinos, A.I., Farrell, K.J., Daneshmand, V., Subratie, K.C., Figueiredo, R.J., Carey, C.C., 2019. <span class="nocase">Including variability in air temperature warming scenarios in a lake simulation model highlights uncertainty in predictions of cyanobacteria</span>, <em>bioRxiv</em> 734285. <a href="https://doi.org/10.1101/734285">https://doi.org/10.1101/734285</a>
+</div>
+<div class="csl-entry">
+Ladwig, R., Hanson, P.C., Dugan, H.A., Carey, C.C., Zhang, Y., Shu, L., Duffy, C.J., Cobourn, K.M., 2021. <span class="nocase">Lake thermal structure drives interannual variability in summer anoxia dynamics in a eutrophic lake over 37 years</span>, <em>Hydrology and Earth System Sciences</em> 25, 1009–1032. <a href="https://doi.org/10.5194/hess-25-1009-2021">https://doi.org/10.5194/hess-25-1009-2021</a>
+</div>
+<div class="csl-entry">
+Lee, K., Tong, L.T., Millero, F.J., Sabine, C.L., Dickson, A.G., Goyet, C., Park, G., Wanninkhof, R., Feely, R.A., Key, R.M., 2006. <span class="nocase">Global relationships of total alkalinity with salinity and temperature in surface waters of the world’s oceans</span>, <em>Geophysical Research Letters</em> 33. <a href="https://doi.org/10.1029/2006gl027207">https://doi.org/10.1029/2006gl027207</a>
+</div>
+<div class="csl-entry">
+Lewis, E., Wallace, D., 1998. <span class="nocase">Program Developed for CO2 System Calculations</span>.
+</div>
+<div class="csl-entry">
+Lewis, R., Waycott, M., O’Loughlin E J, Urgl, C, Dijk, van, K J, Calladine, A., Nicol, J., 2022. <a href="">Distribution and seasonality of the ruppia dominated aquatic macrophyte community and filamentous algae in the southern coorong.</a>, Goyder Institute for Water Research Technical Report Series.
+</div>
+<div class="csl-entry">
+Liss, P.S., Merlivat, L., 1986. <span class="nocase">The Role of Air-Sea Exchange in Geochemical Cycling</span> 113–127. <a href="https://doi.org/10.1007/978-94-009-4738-2\_5">https://doi.org/10.1007/978-94-009-4738-2\_5</a>
+</div>
+<div class="csl-entry">
+Liu, J., Wang, B., Oldham, C.E., Hipsey, M.R., 2020. <span class="nocase">Unravelling the metabolism black-box in a dynamic wetland environment using a hybrid model framework: Storm driven changes in oxygen budgets</span>, <em>Science of The Total Environment</em> 138020. <a href="https://doi.org/10.1016/j.scitotenv.2020.138020">https://doi.org/10.1016/j.scitotenv.2020.138020</a>
+</div>
+<div class="csl-entry">
+Ostrovsky, I., Rimmer, A., Yacobi, Y., Nishri, A., Sukenik, A., Hadas, O., Zohary, T., 2012. <span class="nocase">Long-Term Changes in the Lake Kinneret Ecosystem: The Effects of Climate Change and Anthropogenic Factors</span>, in: <span>Climatic Change and Global Warming of Inland Waters: Impacts and Mitigation for Ecosystems and Societies</span>. pp. 271–293. <a href="https://doi.org/10.1002/9781118470596.ch16">https://doi.org/10.1002/9781118470596.ch16</a>
+</div>
+<div class="csl-entry">
+Raymond, P.A., Cole, J.J., 2001. <span class="nocase">Gas Exchange in Rivers and Estuaries: Choosing a Gas Transfer Velocity</span>, <em>Estuaries</em> 24, 312. <a href="https://doi.org/10.2307/1352954">https://doi.org/10.2307/1352954</a>
+</div>
+<div class="csl-entry">
+Rosentreter, J.A., Maher, D.T., Ho, D.T., Call, M., Barr, J.G., Eyre, B.D., 2016. <span class="nocase">Spatial and temporal variability of CO 2 and CH 4 gas transfer velocities and quantification of the CH 4 microbubble flux in mangrove dominated estuaries: Gas transfers in estuaries</span>, <em>Limnology and Oceanography</em> 62, 561–578. <a href="https://doi.org/10.1002/lno.10444">https://doi.org/10.1002/lno.10444</a>
+</div>
+<div class="csl-entry">
+Santamarı́a, L., Hootsmans, M.J.M., 1998. <span class="nocase">The effect of temperature on the photosynthesis, growth and reproduction of a Mediterranean submerged macrophyte, Ruppia drepanensis</span>, <em>Aquatic Botany</em> 60, 169–188. <a href="https://doi.org/10.1016/s0304-3770(97)00050-8">https://doi.org/10.1016/s0304-3770(97)00050-8</a>
+</div>
+<div class="csl-entry">
+Schlungbaum, G., 1976. <span>Chemical Oceanography</span>, 2nd edition. ed, Internationale revue der gesamten hydrobiologie und hydrographie. London; New York: Academic Press. <a href="https://doi.org/10.1002/iroh.19760610308">https://doi.org/10.1002/iroh.19760610308</a>
+</div>
+<div class="csl-entry">
+Schmid, M., Ostrovsky, I., McGinnis, D.F., 2017. <span class="nocase">Role of gas ebullition in the methane budget of a deep subtropical lake: What can we learn from process‐based modeling?</span>, <em>Limnology and Oceanography</em> 62, 2674–2698. <a href="https://doi.org/10.1002/lno.10598">https://doi.org/10.1002/lno.10598</a>
+</div>
+<div class="csl-entry">
+Schneider, D.W., 1992. <span class="nocase">A Bioenergetics Model of Zebra Mussel, Dreissena polymorpha , Growth in the Great Lakes</span>, <em>Canadian Journal of Fisheries and Aquatic Sciences</em> 49, 1406–1416. <a href="https://doi.org/10.1139/f92-156">https://doi.org/10.1139/f92-156</a>
+</div>
+<div class="csl-entry">
+Sidhu, J.P.S., Toze, S., 2012. <span class="nocase">Assessment of pathogen survival potential during managed aquifer recharge with diffusion chambers</span>, <em>Journal of Applied Microbiology</em> 113, 693–700. <a href="https://doi.org/10.1111/j.1365-2672.2012.05360.x">https://doi.org/10.1111/j.1365-2672.2012.05360.x</a>
+</div>
+<div class="csl-entry">
+Sinton, L., Hall, C., Braithwaite, R., 2007. <span class="nocase">Sunlight inactivation of Campylobacter jejuni and Salmonella enterica, compared with Escherichia coli, in seawater and river water</span>, <em>Journal of Water and Health</em> 5, 357–365. <a href="https://doi.org/10.2166/wh.2007.031">https://doi.org/10.2166/wh.2007.031</a>
+</div>
+<div class="csl-entry">
+Snortheim, C.A., Hanson, P.C., McMahon, K.D., Read, J.S., Carey, C.C., Dugan, H.A., 2017. <span class="nocase">Meteorological drivers of hypolimnetic anoxia in a eutrophic, north temperate lake</span>, <em>Ecological Modelling</em> 343, 39–53. <a href="https://doi.org/10.1016/j.ecolmodel.2016.10.014">https://doi.org/10.1016/j.ecolmodel.2016.10.014</a>
+</div>
+<div class="csl-entry">
+Sokolova, E., Åström, J., Pettersson, T.J.R., Bergstedt, O., Hermansson, M., 2012. <span class="nocase">Estimation of pathogen concentrations in a drinking water source using hydrodynamic modelling and microbial source tracking</span>, <em>Journal of Water and Health</em> 10, 358–370. <a href="https://doi.org/10.2166/wh.2012.183">https://doi.org/10.2166/wh.2012.183</a>
+</div>
+<div class="csl-entry">
+Spillman, C.M., Hamilton, D.P., Hipsey, M.R., Imberger, J., 2008. <span class="nocase">A spatially resolved model of seasonal variations in phytoplankton and clam (Tapes philippinarum) biomass in Barbamarco Lagoon, Italy</span>, <em>Estuarine, Coastal and Shelf Science</em> 79, 187–203. <a href="https://doi.org/10.1016/j.ecss.2008.03.020">https://doi.org/10.1016/j.ecss.2008.03.020</a>
+</div>
+<div class="csl-entry">
+Sprung, M., Rose, U., 1988. <span class="nocase">Influence of food size and food quantity on the feeding of the mussel Dreissena polymorpha</span>, <em>Oecologia</em> 77, 526–532. <a href="https://doi.org/10.1007/bf00377269">https://doi.org/10.1007/bf00377269</a>
+</div>
+<div class="csl-entry">
+Subratie, K.C., Aditya, S., Mahesula, S., Figueiredo, R., Carey, C.C., Hanson, P.C., 2017. <span class="nocase">GRAPLEr: A distributed collaborative environment for lake ecosystem modeling that integrates overlay networks, high-throughput computing, and WEB services</span>, <em>Concurrency and Computation: Practice and Experience</em> 29, e4139. <a href="https://doi.org/10.1002/cpe.4139">https://doi.org/10.1002/cpe.4139</a>
+</div>
+<div class="csl-entry">
+Takahashi, T., Sutherland, S.C., Chipman, D.W., Goddard, J.G., Ho, C., Newberger, T., Sweeney, C., Munro, D.R., 2014. <span class="nocase">Climatological distributions of pH, pCO2, total CO2, alkalinity, and CaCO3 saturation in the global surface ocean, and temporal changes at selected locations</span>, <em>Marine Chemistry</em> 164, 95–125. <a href="https://doi.org/10.1016/j.marchem.2014.06.004">https://doi.org/10.1016/j.marchem.2014.06.004</a>
+</div>
+<div class="csl-entry">
+Thornton, K.W., Lessem, A.S., 1978. <span class="nocase">A Temperature Algorithm for Modifying Biological Rates</span>, <em>Transactions of the American Fisheries Society</em> 107, 284–287. <a href="https://doi.org/10.1577/1548-8659(1978)107&lt;284:atafmb&gt;2.0.co;2">https://doi.org/10.1577/1548-8659(1978)107&lt;284:atafmb&gt;2.0.co;2</a>
+</div>
+<div class="csl-entry">
+Verbyla, M.E., Mihelcic, J.R., 2015. <span class="nocase">A review of virus removal in wastewater treatment pond systems</span>, <em>Water Research</em> 71, 107–124. <a href="https://doi.org/10.1016/j.watres.2014.12.031">https://doi.org/10.1016/j.watres.2014.12.031</a>
+</div>
+<div class="csl-entry">
+Walz, N., 1978. <span class="nocase">The energy balance of the freshwater mussel Dreissena polymorpha Pallas in laboratory experiments and in Lake Constance. I. Pattern of activity, feeding and assimilation efficiency</span>, <em>Archiv für Hydrobiologie</em> 55, 83–105.
+</div>
+<div class="csl-entry">
+Wanninkhof, R., 2014. <span class="nocase">Relationship between wind speed and gas exchange over the ocean revisited: Gas exchange and wind speed over the ocean</span>, <em>Limnology and Oceanography: Methods</em> 12, 351–362. <a href="https://doi.org/10.4319/lom.2014.12.351">https://doi.org/10.4319/lom.2014.12.351</a>
+</div>
+<div class="csl-entry">
+Wanninkhof, R., 1992. <span class="nocase">Relationship between wind speed and gas exchange over the ocean</span>, <em>Journal of Geophysical Research</em> 97, 7373. <a href="https://doi.org/10.1029/92jc00188">https://doi.org/10.1029/92jc00188</a>
+</div>
+<div class="csl-entry">
+Ward, N.K., Steele, B.G., Weathers, K.C., Cottingham, K.L., Ewing, H.A., Hanson, P.C., Carey, C.C., 2020. <span class="nocase">Differential responses of maximum versus median chlorophyll‐ a to air temperature and nutrient loads in an oligotrophic lake over 31 years</span>, <em>Water Resources Research</em>. <a href="https://doi.org/10.1029/2020wr027296">https://doi.org/10.1029/2020wr027296</a>
+</div>
+<div class="csl-entry">
+Weber, M., Rinke, K., Hipsey, M.R., Boehrer, B., 2017. <span class="nocase">Optimizing withdrawal from drinking water reservoirs to reduce downstream temperature pollution and reservoir hypoxia.</span>, <em>Journal of environmental management</em> 197, 96–105. <a href="https://doi.org/10.1016/j.jenvman.2017.03.020">https://doi.org/10.1016/j.jenvman.2017.03.020</a>
+</div>
+<div class="csl-entry">
+Weng, W., Boyle, K.J., Farrell, K.J., Carey, C.C., Cobourn, K.M., Dugan, H.A., Hanson, P.C., Ward, N.K., Weathers, K.C., 2020. <span class="nocase">Coupling Natural and Human Models in the Context of a Lake Ecosystem: Lake Mendota, Wisconsin, USA</span>, <em>Ecological Economics</em> 169, 106556. <a href="https://doi.org/10.1016/j.ecolecon.2019.106556">https://doi.org/10.1016/j.ecolecon.2019.106556</a>
+</div>
+<div class="csl-entry">
+Zhang, L., Hipsey, M.R., Zhang, G.X., Busch, B., Li, H.Y., 2017. <span class="nocase">Simulation of multiple water source ecological replenishment for Chagan Lake based on coupled hydrodynamic and water quality models</span>, <em>Water Supply</em> 17, 1774–1784. <a href="https://doi.org/10.2166/ws.2017.079">https://doi.org/10.2166/ws.2017.079</a>
 </div>
 </div>
-
-
-
+</div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="nomenclature.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="DO_1.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="forthcoming-chapters.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -804,11 +760,11 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/AquaticEcoDynamics/aed-science/blob/master/06-organisation_and_structure.Rmd",
+"link": "https://github.com/AquaticEcoDynamics/aed-science/blob/master/36-references.Rmd",
 "text": "Edit"
 },
 "history": {
-"link": "https://github.com/AquaticEcoDynamics/aed-science/edit/master/06-organisation_and_structure.Rmd",
+"link": "https://github.com/AquaticEcoDynamics/aed-science/edit/master/36-references.Rmd",
 "text": null
 },
 "view": {
