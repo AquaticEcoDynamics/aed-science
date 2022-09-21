@@ -23,7 +23,7 @@
 <meta name="author" content="" />
 
 
-<meta name="date" content="2022-09-15" />
+<meta name="date" content="2022-09-21" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -1227,7 +1227,7 @@ potential oxidants higher in the redox sequence, and the concentration
 of the available oxidant.<a href="sediment-biogeochemistry.html#fig:dev-Grid1">14.20</a></p>
 <p><br></p>
 <center>
-<div style="border: 1px solid #ddd; padding: 5px; overflow-y: scroll; height:18em; overflow-x: scroll; width:770px; ">
+<div style="border: 1px solid #ddd; padding: 5px; overflow-y: scroll; height:40em; overflow-x: scroll; width:770px; ">
 <table class="table table-hover" style="font-size: 11px; ">
 <caption style="font-size: initial !important;">
 <span id="tab:OMChem-table">Table 14.3: </span>Primary terminal redox reactions. x, y and z are stoichiometric coefficients.
@@ -1244,65 +1244,100 @@ Reaction
 </thead>
 <tbody>
 <tr>
-<td style="text-align:center;min-width: 10em; color: black !important;background-color: white !important;">
+<td style="text-align:center;min-width: 10em; font-weight: bold;color: black !important;background-color: white !important;">
 Denitrousation
 </td>
 <td style="text-align:center;min-width: 15em; color: black !important;background-color: white !important;">
-<em>(CH<sub>2</sub>O)<sub>x</sub>(NH<sub>3</sub>)<sub>y</sub>(PO<sub>4</sub>)<sub>z</sub></em> + 2<em>N<sub>2</sub>O</em> <span class="math inline">\(\rightarrow\)</span> 2<em>N<sub>2</sub></em> + <em>HCO<sub>3</sub><sup>-</sup></em> + y<em>NH<sub>4</sub><sup>+</sup></em> + z <em>HPO<sub>4</sub><sup>3-</sup></em>
+<br />
+<span class="math inline">\(\displaystyle \  (CH_2O)_x(NH_3)_y(PO_4)_z +2x N_2O + (-y + 2z) HCO_3^- \rightarrow 2xN_2 + (x-y+2z)CO_2 + (x-y+2z)H_2O + yNH_4^+ + zHPO_4^{3-}\)</span><br />
+ 
 </td>
 </tr>
 <tr>
-<td style="text-align:center;min-width: 10em; color: black !important;background-color: white !important;">
+<td style="text-align:center;min-width: 10em; font-weight: bold;color: black !important;background-color: white !important;">
 Aerobic respiration
 </td>
 <td style="text-align:center;min-width: 15em; color: black !important;background-color: white !important;">
-<em>(CH<sub>2</sub>O)<sub>x</sub>(NH<sub>3</sub>)<sub>y</sub>(PO<sub>4</sub>)<sub>z</sub></em> + x <em>O<sub>2</sub></em> + (-y + 2z) <em>HCO<sub>3</sub><sup>-</sup></em> <span class="math inline">\(\rightarrow\)</span> (x – y + 2z) <em>CO<sub>2</sub></em> + y <em>NH<sub>4</sub><sup>+</sup></em> + z <em>HPO<sub>4</sub><sup>2-</sup></em> + (x + 2y + 2z) <em>H<sub>2</sub>O</em>
+<br />
+<span class="math inline">\(\displaystyle \  (CH_2O)_x(NH_3)_y(PO_4)_z +(x+2y)O_2 + (y + 2z) HCO_3^- \rightarrow + (x+y+2z)CO_2 + (x+y+2z)H_2O + yNH_4^+ + zHPO_4^{3-}\)</span><br />
+ 
 </td>
 </tr>
 <tr>
-<td style="text-align:center;min-width: 10em; color: black !important;background-color: white !important;">
-Nitrous denitritation and DNRA
+<td style="text-align:center;min-width: 10em; font-weight: bold;color: black !important;background-color: white !important;">
+Denitritation
 </td>
 <td style="text-align:center;min-width: 15em; color: black !important;background-color: white !important;">
-<em>(CH<sub>2</sub>O)<sub>x</sub>(NH<sub>3</sub>)<sub>y</sub>(PO<sub>4</sub>)<sub>z</sub></em> + 0.8x <em>NO<sub>2</sub><sup>-</sup></em> <span class="math inline">\(\rightarrow\)</span> partitioning 0.4x <em>N<sub>2</sub>O</em> + (1-partitioning) (0.4x+y) <em>NH<sub>4</sub><sup>+</sup> </em> (0.2x-y+2z) <em>CO<sub>2</sub></em> + (0.8x + y - 2z) <em>HCO<sub>3</sub><sup>-</sup></em> +z <em>HPO<sub>4</sub><sup>2-</sup></em> + (0.6x - y +2z) <em>H<sub>2</sub>O</em>
+<br />
+<span class="math inline">\(\displaystyle \  (CH_2O)_x(NH_3)_y(PO_4)_z +2x NO_3^- + (-y + 2z) HCO_3^- \rightarrow +2x NO_2^- + (x-y+2z)CO_2 + (x-y+2z)H_2O + yNH_4^+ + zHPO_4^{3-}\)</span><br />
+ 
 </td>
 </tr>
 <tr>
-<td style="text-align:center;min-width: 10em; color: black !important;background-color: white !important;">
+<td style="text-align:center;min-width: 10em; font-weight: bold;color: black !important;background-color: white !important;">
+Nitrous denitritation
+</td>
+<td style="text-align:center;min-width: 15em; color: black !important;background-color: white !important;">
+<br />
+<span class="math inline">\(\displaystyle \  (CH_2O)_x(NH_3)_y(PO_4)_z + 2x NO-2^- + (-2x-y + 2z) HCO_3^- \rightarrow xN_2O + (x-y+2z)CO_2 + (-y+2z)H_2O + yNH_4^+ + zHPO_4^{3-}\)</span><br />
+ 
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 10em; font-weight: bold;color: black !important;">
+DNRA
+</td>
+<td style="text-align:center;min-width: 15em; color: black !important;">
+<br />
+<span class="math inline">\(\displaystyle \  (CH_2O)_x(NH_3)_y(PO_4)_z + \frac{2x}{3}NO_2^- + (\frac{-4x}{3} -y +2z )HCO_3^-\rightarrow\\ \\ \frac{2x}{3} NH_4^+ (reduction \ \ product)+ (\frac{-x}{3}-y+2z)CO_2 + (-x-y+2z)H_2O + yNH_4^+ (from \ \ organic \ \  nitrogen) + zHPO_4^{3-}\)</span><br />
+ 
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 10em; font-weight: bold;color: black !important;">
 Mn oxide reduction
 </td>
-<td style="text-align:center;min-width: 15em; color: black !important;background-color: white !important;">
-<em>(CH<sub>2</sub>O)<sub>x</sub>(NH<sub>3</sub>)<sub>y</sub>(PO<sub>4</sub>)<sub>z</sub></em> + 2x <em>MnO<sub>2</sub></em> + (3x + y – 2z) <em>CO<sub>2</sub></em> +(x + y – 2z) <em>H<sub>2</sub>O</em> <span class="math inline">\(\rightarrow\)</span> 2x <em>Mn<sup>2+</sup></em> + (4x + y – 2z) <em>HCO<sub>3</sub><sup>-</sup></em> + y <em>NH<sub>4</sub><sup>+</sup></em> +z <em>HPO<sub>4</sub><sup>2-</sup></em>
+<td style="text-align:center;min-width: 15em; color: black !important;">
+<br />
+<span class="math inline">\(\displaystyle \  (CH_2O)_x(NH_3)_y(PO_4)_z + 2xMnO_2 + (x + y - 2z) H_2O + (3x + y - 2z)CO_2 \rightarrow 2xMn^{2+} + (4x + y - 2z)HCO_3^- + yNH_4^+ + zHPO_4^{3-}\)</span><br />
+ 
 </td>
 </tr>
 <tr>
-<td style="text-align:center;min-width: 10em; color: black !important;">
+<td style="text-align:center;min-width: 10em; font-weight: bold;color: black !important;">
 Fe oxide reduction
 </td>
 <td style="text-align:center;min-width: 15em; color: black !important;">
-<em>(CH<sub>2</sub>O)<sub>x</sub>(NH<sub>3</sub>)<sub>y</sub>(PO<sub>4</sub>)<sub>z</sub></em> + 4x <em>Fe(OH)<sub>3</sub></em> + (7x + y – 2z) <em>CO<sub>2</sub></em> + (x – 2z) <em>H<sub>2</sub>O</em> <span class="math inline">\(\rightarrow\)</span> 4x <em>Fe<sup>2+</sup></em> + (8x + y – 2z) <em>HCO<sub>3</sub><sup>-</sup></em> + y <em>NH<sub>4</sub><sup>+</sup></em> + z <em>HPO<sub>4</sub><sup>2-</sup></em> + (3x + y - 2z) <em>H<sub>2</sub>O</em>
+<br />
+<span class="math inline">\(\displaystyle \  (CH_2O)_x(NH_3)_y(PO_4)_z + 4x FeOOH + (x + y - 2z) H_2O + (7x + y - 2z)CO_2 \rightarrow 4x Fe^{2+} + (8x + y - 2z)HCO_3^- + yNH_4^+ + zHPO_4^{3-}\)</span><br />
+ 
 </td>
 </tr>
 <tr>
-<td style="text-align:center;min-width: 10em; color: black !important;">
+<td style="text-align:center;min-width: 10em; font-weight: bold;color: black !important;">
 Sulfate reduction
 </td>
 <td style="text-align:center;min-width: 15em; color: black !important;">
-<em>(CH<sub>2</sub>O)<sub>x</sub>(NH<sub>3</sub>)<sub>y</sub>(PO<sub>4</sub>)<sub>z</sub></em> + 0.5x <em>SO<sub>4</sub><sup>2-</sup></em> + (y – 2z) <em>CO<sub>2</sub></em> + (y – 2z) <em>H<sub>2</sub>O</em> <span class="math inline">\(\rightarrow\)</span> 0.5x <em>H<sub>2</sub>S</em> + (x + y – 2z) <em>HCO<sub>3</sub><sup>-</sup></em> + y <em>NH<sub>4</sub><sup>+</sup></em> + z <em>HPO<sub>4</sub><sup>2-</sup></em>
+<br />
+<span class="math inline">\(\displaystyle \  (CH_2O)_x(NH_3)_y(PO_4)_z + \frac{x}{2} SO_4^{2-} + (\frac{-x}{2} - y + 2z) HCO_3^- \rightarrow \frac{x}{2}HS^- + (\frac{x}{2} - y + 2z)CO_2 + (\frac{x}{2} - y + 2z)H_2O + yNH_4^+ + zHPO_4^{3-}\)</span><br />
+ 
 </td>
 </tr>
 <tr>
-<td style="text-align:center;min-width: 10em; color: black !important;">
+<td style="text-align:center;min-width: 10em; font-weight: bold;color: black !important;">
 Methanogenesis
 </td>
 <td style="text-align:center;min-width: 15em; color: black !important;">
-<em>(CH<sub>2</sub>O)<sub>x</sub>(NH<sub>3</sub>)<sub>y</sub>(PO<sub>4</sub>)<sub>z</sub></em> + (y – 2z) <em>H<sub>2</sub>O</em> <span class="math inline">\(\rightarrow\)</span> 0.5x <em>CH<sub>4</sub></em> + (0.5x – y + 2z) <em>CO<sub>2</sub></em> + (y – 2z) <em>HCO<sup>3-</sup></em> + y <em>NH<sup>4+</sup></em> + z <em>HPO<sub>4</sub><sup>2-</sup> </em>
+<br />
+<span class="math inline">\(\displaystyle \  (CH_2O)_x(NH_3)_y(PO_4)_z + (- y + 2z) HCO_3^- \rightarrow 0.5 CH_4 + (0.5x - y + 2z)CO_2 + yNH_4^+ + zHPO_4^{3-}\)</span><br />
+ 
 </td>
 </tr>
 </tbody>
 </table>
 </div>
 </center>
+<p><br></p>
 <p><br></p>
 <!-- \begin{eqnarray} -->
 <!-- \\ -->
