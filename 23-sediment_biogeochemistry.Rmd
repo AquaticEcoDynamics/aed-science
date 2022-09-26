@@ -985,7 +985,7 @@ library(knitr)
 library(kableExtra)
 library(readxl)
   options(knitr.kable.NA = "")
-SecondChem_tab <- read_xlsx("tables/23-sediment_biogeochemistry/UserManual.xlsx", sheet="SecondChem")
+SecondChem_tab <- read_xlsx("tables/23-sediment_biogeochemistry/UserManual.xlsx", sheet="SecondChem (3)")
   kable(SecondChem_tab[,1:5],"html", escape = F, align = "c"
         , caption = "Chemical reactions for secondary redox reactions.",bootstrap_options = "hover")%>%
    kable_styling(SecondChem_tab, bootstrap_options = "hover",
@@ -993,13 +993,13 @@ SecondChem_tab <- read_xlsx("tables/23-sediment_biogeochemistry/UserManual.xlsx"
                 font_size = 11) %>% 
     
   row_spec(0, background = "#14759e", bold = TRUE, color = "white") %>%
-  column_spec(1, width_min = "12em" ,color="black",bold = F) %>%
+  column_spec(1, width_min = "15em" ,color="black",bold = T) %>%
   column_spec(2, width_min = "3em" ,color="black") %>%
   column_spec(3, width_min = "12em" ,color="black") %>%
   column_spec(4, width_min = "3em" ,color="black") %>%
   column_spec(5, width_min = "12em" ,color="black") %>%
   row_spec(1:5, background = 'white')  %>%
- scroll_box(width = "770px", height = "25em",fixed_thead = FALSE)
+ scroll_box(width = "770px", height = "45em",fixed_thead = FALSE)
 ```
 
 </center>
