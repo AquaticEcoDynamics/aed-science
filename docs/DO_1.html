@@ -23,7 +23,7 @@
 <meta name="author" content="" />
 
 
-<meta name="date" content="2022-09-26" />
+<meta name="date" content="2022-09-29" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -426,6 +426,7 @@ div.csl-indent {
 <li class="chapter" data-level="14.5.2" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#flux-of-state-variables-swi_fluxes.sed"><i class="fa fa-check"></i><b>14.5.2</b> Flux of state variables: ‘swi_fluxes.sed’</a></li>
 <li class="chapter" data-level="14.5.3" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#SedOtherVariablesExtrasSed"><i class="fa fa-check"></i><b>14.5.3</b> Other variables: ‘/Extras/ .sed’</a></li>
 <li class="chapter" data-level="14.5.4" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#depth-profile-settings-depths.sed"><i class="fa fa-check"></i><b>14.5.4</b> Depth profile settings: ‘Depths.sed’</a></li>
+<li class="chapter" data-level="14.5.5" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#mass-balance-calculation"><i class="fa fa-check"></i><b>14.5.5</b> Mass balance calculation</a></li>
 </ul></li>
 <li class="chapter" data-level="14.6" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#case-studies-examples-6"><i class="fa fa-check"></i><b>14.6</b> Case Studies &amp; Examples</a>
 <ul>
@@ -1126,8 +1127,8 @@ defaults to 0; Eq <a href="DO_1.html#eq:oxy4">(4.4)</a> used for <span class="ma
 <p><br></p>
 <center>
 <div class="figure"><span style="display:block;" id="fig:swan-map"></span>
-<div id="htmlwidget-76b8366e5eb976dc9ba9" style="width:500px;height:385px;" class="leaflet html-widget"></div>
-<script type="application/json" data-for="htmlwidget-76b8366e5eb976dc9ba9">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"setView":[[-31.991618,115.835235],11,[]],"calls":[{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"https://openstreetmap.org\">OpenStreetMap<\/a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA<\/a>"}]},{"method":"addProviderTiles","args":["Stamen.Terrain",null,null,{"errorTileUrl":"","noWrap":false,"detectRetina":false}]},{"method":"addMarkers","args":[-31.991618,115.835235,null,null,null,{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},"Swan River",null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]}],"limits":{"lat":[-31.991618,-31.991618],"lng":[115.835235,115.835235]}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-4a07543ad058895783a4" style="width:500px;height:385px;" class="leaflet html-widget"></div>
+<script type="application/json" data-for="htmlwidget-4a07543ad058895783a4">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"setView":[[-31.991618,115.835235],11,[]],"calls":[{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"https://openstreetmap.org\">OpenStreetMap<\/a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA<\/a>"}]},{"method":"addProviderTiles","args":["Stamen.Terrain",null,null,{"errorTileUrl":"","noWrap":false,"detectRetina":false}]},{"method":"addMarkers","args":[-31.991618,115.835235,null,null,null,{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},"Swan River",null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]}],"limits":{"lat":[-31.991618,-31.991618],"lng":[115.835235,115.835235]}},"evals":[],"jsHooks":[]}</script>
 <p class="caption">
 Figure 4.1: Map of the Swan-Canning Estuary in Western Australia.
 </p>
@@ -1156,12 +1157,12 @@ Figure 4.3: The total area of anoxia (&lt;2 mg O2 / L) and hypoxia (&lt;4 mg O2 
 </div>
 <div id="publications" class="section level3 hasAnchor" number="4.5.2">
 <h3><span class="header-section-number">4.5.2</span> Publications<a href="DO_1.html#publications" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div id="xrmfoqwvmf" style="overflow-x:auto;overflow-y:auto;width:100%;height:500px;">
+<div id="tjjsvorvcd" style="overflow-x:auto;overflow-y:auto;width:100%;height:500px;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#xrmfoqwvmf .gt_table {
+#tjjsvorvcd .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -1186,7 +1187,7 @@ Figure 4.3: The total area of anoxia (&lt;2 mg O2 / L) and hypoxia (&lt;4 mg O2 
   border-left-color: #D3D3D3;
 }
 
-#xrmfoqwvmf .gt_heading {
+#tjjsvorvcd .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1198,7 +1199,7 @@ Figure 4.3: The total area of anoxia (&lt;2 mg O2 / L) and hypoxia (&lt;4 mg O2 
   border-right-color: #D3D3D3;
 }
 
-#xrmfoqwvmf .gt_title {
+#tjjsvorvcd .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1210,7 +1211,7 @@ Figure 4.3: The total area of anoxia (&lt;2 mg O2 / L) and hypoxia (&lt;4 mg O2 
   border-bottom-width: 0;
 }
 
-#xrmfoqwvmf .gt_subtitle {
+#tjjsvorvcd .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1222,13 +1223,13 @@ Figure 4.3: The total area of anoxia (&lt;2 mg O2 / L) and hypoxia (&lt;4 mg O2 
   border-top-width: 0;
 }
 
-#xrmfoqwvmf .gt_bottom_border {
+#tjjsvorvcd .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#xrmfoqwvmf .gt_col_headings {
+#tjjsvorvcd .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1243,7 +1244,7 @@ Figure 4.3: The total area of anoxia (&lt;2 mg O2 / L) and hypoxia (&lt;4 mg O2 
   border-right-color: #D3D3D3;
 }
 
-#xrmfoqwvmf .gt_col_heading {
+#tjjsvorvcd .gt_col_heading {
   color: #FFFFFF;
   background-color: #14759E;
   font-size: 14px;
@@ -1263,7 +1264,7 @@ Figure 4.3: The total area of anoxia (&lt;2 mg O2 / L) and hypoxia (&lt;4 mg O2 
   overflow-x: hidden;
 }
 
-#xrmfoqwvmf .gt_column_spanner_outer {
+#tjjsvorvcd .gt_column_spanner_outer {
   color: #FFFFFF;
   background-color: #14759E;
   font-size: 14px;
@@ -1275,15 +1276,15 @@ Figure 4.3: The total area of anoxia (&lt;2 mg O2 / L) and hypoxia (&lt;4 mg O2 
   padding-right: 4px;
 }
 
-#xrmfoqwvmf .gt_column_spanner_outer:first-child {
+#tjjsvorvcd .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#xrmfoqwvmf .gt_column_spanner_outer:last-child {
+#tjjsvorvcd .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#xrmfoqwvmf .gt_column_spanner {
+#tjjsvorvcd .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1295,7 +1296,7 @@ Figure 4.3: The total area of anoxia (&lt;2 mg O2 / L) and hypoxia (&lt;4 mg O2 
   width: 100%;
 }
 
-#xrmfoqwvmf .gt_group_heading {
+#tjjsvorvcd .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1320,7 +1321,7 @@ Figure 4.3: The total area of anoxia (&lt;2 mg O2 / L) and hypoxia (&lt;4 mg O2 
   vertical-align: middle;
 }
 
-#xrmfoqwvmf .gt_empty_group_heading {
+#tjjsvorvcd .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #D3D3D3;
@@ -1335,15 +1336,15 @@ Figure 4.3: The total area of anoxia (&lt;2 mg O2 / L) and hypoxia (&lt;4 mg O2 
   vertical-align: middle;
 }
 
-#xrmfoqwvmf .gt_from_md > :first-child {
+#tjjsvorvcd .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#xrmfoqwvmf .gt_from_md > :last-child {
+#tjjsvorvcd .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#xrmfoqwvmf .gt_row {
+#tjjsvorvcd .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1362,7 +1363,7 @@ Figure 4.3: The total area of anoxia (&lt;2 mg O2 / L) and hypoxia (&lt;4 mg O2 
   overflow-x: hidden;
 }
 
-#xrmfoqwvmf .gt_stub {
+#tjjsvorvcd .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1375,7 +1376,7 @@ Figure 4.3: The total area of anoxia (&lt;2 mg O2 / L) and hypoxia (&lt;4 mg O2 
   padding-right: 5px;
 }
 
-#xrmfoqwvmf .gt_stub_row_group {
+#tjjsvorvcd .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1389,11 +1390,11 @@ Figure 4.3: The total area of anoxia (&lt;2 mg O2 / L) and hypoxia (&lt;4 mg O2 
   vertical-align: top;
 }
 
-#xrmfoqwvmf .gt_row_group_first td {
+#tjjsvorvcd .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#xrmfoqwvmf .gt_summary_row {
+#tjjsvorvcd .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1403,16 +1404,16 @@ Figure 4.3: The total area of anoxia (&lt;2 mg O2 / L) and hypoxia (&lt;4 mg O2 
   padding-right: 5px;
 }
 
-#xrmfoqwvmf .gt_first_summary_row {
+#tjjsvorvcd .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#xrmfoqwvmf .gt_first_summary_row.thick {
+#tjjsvorvcd .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#xrmfoqwvmf .gt_last_summary_row {
+#tjjsvorvcd .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1422,7 +1423,7 @@ Figure 4.3: The total area of anoxia (&lt;2 mg O2 / L) and hypoxia (&lt;4 mg O2 
   border-bottom-color: #D3D3D3;
 }
 
-#xrmfoqwvmf .gt_grand_summary_row {
+#tjjsvorvcd .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1432,7 +1433,7 @@ Figure 4.3: The total area of anoxia (&lt;2 mg O2 / L) and hypoxia (&lt;4 mg O2 
   padding-right: 5px;
 }
 
-#xrmfoqwvmf .gt_first_grand_summary_row {
+#tjjsvorvcd .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1442,11 +1443,11 @@ Figure 4.3: The total area of anoxia (&lt;2 mg O2 / L) and hypoxia (&lt;4 mg O2 
   border-top-color: #D3D3D3;
 }
 
-#xrmfoqwvmf .gt_striped {
+#tjjsvorvcd .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#xrmfoqwvmf .gt_table_body {
+#tjjsvorvcd .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1455,7 +1456,7 @@ Figure 4.3: The total area of anoxia (&lt;2 mg O2 / L) and hypoxia (&lt;4 mg O2 
   border-bottom-color: #D3D3D3;
 }
 
-#xrmfoqwvmf .gt_footnotes {
+#tjjsvorvcd .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1469,7 +1470,7 @@ Figure 4.3: The total area of anoxia (&lt;2 mg O2 / L) and hypoxia (&lt;4 mg O2 
   border-right-color: #D3D3D3;
 }
 
-#xrmfoqwvmf .gt_footnote {
+#tjjsvorvcd .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-left: 4px;
@@ -1478,7 +1479,7 @@ Figure 4.3: The total area of anoxia (&lt;2 mg O2 / L) and hypoxia (&lt;4 mg O2 
   padding-right: 5px;
 }
 
-#xrmfoqwvmf .gt_sourcenotes {
+#tjjsvorvcd .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1492,7 +1493,7 @@ Figure 4.3: The total area of anoxia (&lt;2 mg O2 / L) and hypoxia (&lt;4 mg O2 
   border-right-color: #D3D3D3;
 }
 
-#xrmfoqwvmf .gt_sourcenote {
+#tjjsvorvcd .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1500,60 +1501,60 @@ Figure 4.3: The total area of anoxia (&lt;2 mg O2 / L) and hypoxia (&lt;4 mg O2 
   padding-right: 5px;
 }
 
-#xrmfoqwvmf .gt_left {
+#tjjsvorvcd .gt_left {
   text-align: left;
 }
 
-#xrmfoqwvmf .gt_center {
+#tjjsvorvcd .gt_center {
   text-align: center;
 }
 
-#xrmfoqwvmf .gt_right {
+#tjjsvorvcd .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#xrmfoqwvmf .gt_font_normal {
+#tjjsvorvcd .gt_font_normal {
   font-weight: normal;
 }
 
-#xrmfoqwvmf .gt_font_bold {
+#tjjsvorvcd .gt_font_bold {
   font-weight: bold;
 }
 
-#xrmfoqwvmf .gt_font_italic {
+#tjjsvorvcd .gt_font_italic {
   font-style: italic;
 }
 
-#xrmfoqwvmf .gt_super {
+#tjjsvorvcd .gt_super {
   font-size: 65%;
 }
 
-#xrmfoqwvmf .gt_footnote_marks {
+#tjjsvorvcd .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
   font-size: 75%;
   vertical-align: 0.4em;
 }
 
-#xrmfoqwvmf .gt_asterisk {
+#tjjsvorvcd .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#xrmfoqwvmf .gt_slash_mark {
+#tjjsvorvcd .gt_slash_mark {
   font-size: 0.7em;
   line-height: 0.7em;
   vertical-align: 0.15em;
 }
 
-#xrmfoqwvmf .gt_fraction_numerator {
+#tjjsvorvcd .gt_fraction_numerator {
   font-size: 0.6em;
   line-height: 0.6em;
   vertical-align: 0.45em;
 }
 
-#xrmfoqwvmf .gt_fraction_denominator {
+#tjjsvorvcd .gt_fraction_denominator {
   font-size: 0.6em;
   line-height: 0.6em;
   vertical-align: -0.05em;

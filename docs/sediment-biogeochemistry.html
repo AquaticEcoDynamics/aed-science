@@ -23,7 +23,7 @@
 <meta name="author" content="" />
 
 
-<meta name="date" content="2022-09-26" />
+<meta name="date" content="2022-09-29" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -426,6 +426,7 @@ div.csl-indent {
 <li class="chapter" data-level="14.5.2" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#flux-of-state-variables-swi_fluxes.sed"><i class="fa fa-check"></i><b>14.5.2</b> Flux of state variables: ‘swi_fluxes.sed’</a></li>
 <li class="chapter" data-level="14.5.3" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#SedOtherVariablesExtrasSed"><i class="fa fa-check"></i><b>14.5.3</b> Other variables: ‘/Extras/ .sed’</a></li>
 <li class="chapter" data-level="14.5.4" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#depth-profile-settings-depths.sed"><i class="fa fa-check"></i><b>14.5.4</b> Depth profile settings: ‘Depths.sed’</a></li>
+<li class="chapter" data-level="14.5.5" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#mass-balance-calculation"><i class="fa fa-check"></i><b>14.5.5</b> Mass balance calculation</a></li>
 </ul></li>
 <li class="chapter" data-level="14.6" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#case-studies-examples-6"><i class="fa fa-check"></i><b>14.6</b> Case Studies &amp; Examples</a>
 <ul>
@@ -524,7 +525,7 @@ depth. The model resolves in each layer both physical processes (e.g.
 pore-water diffusion or bioturbation) and chemical processes (e.g. redox
 transformations).</p>
 <center>
-<div class="figure"><span style="display:block;" id="fig:23-pic1"></span>
+<div class="figure"><span style="display:block;" id="fig:SedOverview-1"></span>
 <img src="images/23-sediment_biogeochemistry/Boxes&Arrows/Overview-05.png" alt="Schematic of the main physical and chemical processes that cause chemical concentration and flux change in the sediment and across the sediment-water interface, and therefore are included in most sediment diagenesis models." width="85%" />
 <p class="caption">
 Figure 14.1: Schematic of the main physical and chemical processes that cause chemical concentration and flux change in the sediment and across the sediment-water interface, and therefore are included in most sediment diagenesis models.
@@ -596,6 +597,15 @@ run in isolation are also possible. This chapter provides a scientific
 description of the model and describes attributes of the model
 associated with its practical implementation and operation. A case-study
 of the model framework is also demonstrated.</p>
+<p>The major output of CANDI-AED includes concentration depth profiles and fluxes across the sediment-water interface (figure <a href="sediment-biogeochemistry.html#fig:SedOverview-2">14.2</a>).</p>
+<center>
+<div class="figure"><span style="display:block;" id="fig:SedOverview-2"></span>
+<img src="images/23-sediment_biogeochemistry/Outputs/Overview-17.png" alt="Examples of the final outputs after running CANDI-AED: concentration-depth profiles and flux-time plots." width="100%" />
+<p class="caption">
+Figure 14.2: Examples of the final outputs after running CANDI-AED: concentration-depth profiles and flux-time plots.
+</p>
+</div>
+</center>
 </div>
 <div id="model-description-8" class="section level2 hasAnchor" number="14.3">
 <h2><span class="header-section-number">14.3</span> Model Description<a href="sediment-biogeochemistry.html#model-description-8" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -611,12 +621,12 @@ conditions known to influence the diagenetic equations, extensions for
 nutrients and trace metals, and dynamics at the sediment-water interface. However, the core organic matter breakdown equations (and their
 numerical solution) remains similar as the original descriptions
 presented in Boudreau (1996), and to other similar sediment models. An
-overview of the model is shown in Figure <a href="sediment-biogeochemistry.html#fig:23-pic2">14.2</a>.</p>
+overview of the model is shown in Figure <a href="sediment-biogeochemistry.html#fig:23-pic2">14.3</a>.</p>
 <center>
 <div class="figure"><span style="display:block;" id="fig:23-pic2"></span>
 <img src="images/23-sediment_biogeochemistry/Boxes&Arrows/FullCandi-02.png" alt="Overview of the chemical processes in CANDI: organic matter transformation and oxidation, and reduction/oxidation, crystallisation, adsorption and precipitation reactions of inorganic by-products. Most of the processes are triggered by the input of POM at the sediment-water interface." width="85%" />
 <p class="caption">
-Figure 14.2: Overview of the chemical processes in CANDI: organic matter transformation and oxidation, and reduction/oxidation, crystallisation, adsorption and precipitation reactions of inorganic by-products. Most of the processes are triggered by the input of POM at the sediment-water interface.
+Figure 14.3: Overview of the chemical processes in CANDI: organic matter transformation and oxidation, and reduction/oxidation, crystallisation, adsorption and precipitation reactions of inorganic by-products. Most of the processes are triggered by the input of POM at the sediment-water interface.
 </p>
 </div>
 </center>
@@ -678,7 +688,7 @@ layers (<code>maxnpts</code>) down to a pre-defined sediment depth(<code>xl</cod
 of layers is set to have either even spacing (<code>job</code> = 1) or to be
 exponentially increasing (<code>job</code> = 0), where the layers sizes have a
 thickness of a few mm at the sediment-water interface and which increase
-exponentially down into the sediment (figure <a href="sediment-biogeochemistry.html#fig:Init-1">14.3</a>). When
+exponentially down into the sediment (figure <a href="sediment-biogeochemistry.html#fig:Init-1">14.4</a>). When
 the spacing increases exponentially, the first two layers are hard-coded
 to be a miniumum of 0.25 cm, in order to avoid numerical instability
 from sharp concentration differences over distances that are too small.</p>
@@ -688,7 +698,7 @@ domain.</p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:Init-1"></span>
 <img src="images/23-sediment_biogeochemistry/Initialisation/job1job2-06.png" alt="Initialisation of the depth layers. The number of layers is set by `maxnpts` and the depth of the simulation by `xl`. The setup can have even spacing (left) using parameter `job` = 1 or increasing spacing (right) `job` = 2." width="60%" />
 <p class="caption">
-Figure 14.3: Initialisation of the depth layers. The number of layers is set by <code>maxnpts</code> and the depth of the simulation by <code>xl</code>. The setup can have even spacing (left) using parameter <code>job</code> = 1 or increasing spacing (right) <code>job</code> = 2.
+Figure 14.4: Initialisation of the depth layers. The number of layers is set by <code>maxnpts</code> and the depth of the simulation by <code>xl</code>. The setup can have even spacing (left) using parameter <code>job</code> = 1 or increasing spacing (right) <code>job</code> = 2.
 </p>
 </div>
 </div>
@@ -707,7 +717,7 @@ moves upwards.</p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:Phys1"></span>
 <img src="images/23-sediment_biogeochemistry/AdvectionDispersion/AdvectionDispersion-05.png" alt="Upon sedimentation, the frame of reference shifts upwards. The bottom area is effectively lost from the modelling domain over time. Particles and porewater are advected downward relative to the modelling domain." width="60%" />
 <p class="caption">
-Figure 14.4: Upon sedimentation, the frame of reference shifts upwards. The bottom area is effectively lost from the modelling domain over time. Particles and porewater are advected downward relative to the modelling domain.
+Figure 14.5: Upon sedimentation, the frame of reference shifts upwards. The bottom area is effectively lost from the modelling domain over time. Particles and porewater are advected downward relative to the modelling domain.
 </p>
 </div>
 </div>
@@ -729,7 +739,7 @@ below).</p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:Phys2"></span>
 <img src="images/23-sediment_biogeochemistry/AdvectionDispersion/Poreflux-04.png" alt="Porewater is advected at the same rate as burial. If `poreflux` is non-zero, an additional rate of advection is applied to porewater. The direction is upwards when `poreflux` is positive, downwards when *poreflux* is negative." width="100%" />
 <p class="caption">
-Figure 14.5: Porewater is advected at the same rate as burial. If <code>poreflux</code> is non-zero, an additional rate of advection is applied to porewater. The direction is upwards when <code>poreflux</code> is positive, downwards when <em>poreflux</em> is negative.
+Figure 14.6: Porewater is advected at the same rate as burial. If <code>poreflux</code> is non-zero, an additional rate of advection is applied to porewater. The direction is upwards when <code>poreflux</code> is positive, downwards when <em>poreflux</em> is negative.
 </p>
 </div>
 <p>Diffusion of solutes is calculated using a diffusivity constant. One
@@ -891,7 +901,7 @@ Default
 space, as a real number between 0 and 1. A value for porosity is set at
 each depth layer during initialisation (see <a href="sediment-biogeochemistry.html#SedInitialisation">initialisation
 section</a> below) and remains constant throughout the
-simulation (Figure <a href="sediment-biogeochemistry.html#fig:Phys-6">14.6</a>). The porosity array is used in the
+simulation (Figure <a href="sediment-biogeochemistry.html#fig:Phys-6">14.7</a>). The porosity array is used in the
 model to calculate other variables, such as</p>
 <ul>
 <li>advection</li>
@@ -931,7 +941,7 @@ of space, as a real number between 0 and 1.</p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:Phys-6"></span>
 <img src="images/23-sediment_biogeochemistry/Initialisation/Porosity-01.png" alt="Example depth profile of porosity." width="60%" />
 <p class="caption">
-Figure 14.6: Example depth profile of porosity.
+Figure 14.7: Example depth profile of porosity.
 </p>
 </div>
 <p><br />
@@ -950,7 +960,7 @@ all, reduced carbon, to microorganisms living in the sediment.</p>
 <h5><em>Organic matter pools and reactivity</em><a href="sediment-biogeochemistry.html#organic-matter-pools-and-reactivity" class="anchor-section" aria-label="Anchor link to header"></a></h5>
 <p>Organic matter (<span class="math inline">\(OM\)</span>) degradation pathways can include labile and
 refractory components, and the breakdown pathways simulated are
-summarized conceptually in Figure <a href="sediment-biogeochemistry.html#fig:OMModels">14.7</a>. Reactions
+summarized conceptually in Figure <a href="sediment-biogeochemistry.html#fig:OMModels">14.8</a>. Reactions
 included in the kinetic component include the hydrolysis of the complex
 (e.g., high molecular weight) <span class="math inline">\(OM\)</span> pools (<span class="math inline">\(POM_{VR}\)</span>, <span class="math inline">\(POM_R\)</span>, <span class="math inline">\(DOM_R\)</span>,
 <span class="math inline">\(POM_L\)</span>) and transformation of low molecular weight (LMW) <span class="math inline">\(DOM_L\)</span> by
@@ -963,7 +973,7 @@ example, through re-oxidation of reduced species (outlined in the
 <a href="sediment-biogeochemistry.html#SedSecondaryRedoxReactions">secondary redox section</a> below).</p>
 <p>The user can decide how complex or simple the organic matter breakdown
 pathway should be, with three options of varying complexity for
-parameterising the pathways included (Figure <a href="sediment-biogeochemistry.html#fig:OMModels">14.7</a>). The
+parameterising the pathways included (Figure <a href="sediment-biogeochemistry.html#fig:OMModels">14.8</a>). The
 first option (<code>OMModel</code> = 1) is a common multi-G model in which the
 <span class="math inline">\(POM\)</span> phases are decomposed straight to <span class="math inline">\(CO_2\)</span> and other breakdown
 products. Here <span class="math inline">\(POM\)</span> is a variable that is not precisely defined, and
@@ -1007,7 +1017,7 @@ processes of <span class="math inline">\(MPB\)</span>.)</p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:OMModels"></span>
 <img src="images/23-sediment_biogeochemistry/Boxes&Arrows/OMModel-06.png" alt="Three options for different levels of complexity in organic matter breakdown, by setting the `OMModel` switch. Top left – Model in which $POM$ breaks down directly to $CO_2$ and other waste products. Top right - Model with the breakdown rate set by depth. Bottom left – Model in which POM is first hydrolysed to $DOM$ and then oxidised to $CO_2$. Bottom right – Model in which $POM$ is hydrolysed to $DOM$, which can then be fermented and oxidised." width="75%" />
 <p class="caption">
-Figure 14.7: Three options for different levels of complexity in organic matter breakdown, by setting the <code>OMModel</code> switch. Top left – Model in which <span class="math inline">\(POM\)</span> breaks down directly to <span class="math inline">\(CO_2\)</span> and other waste products. Top right - Model with the breakdown rate set by depth. Bottom left – Model in which POM is first hydrolysed to <span class="math inline">\(DOM\)</span> and then oxidised to <span class="math inline">\(CO_2\)</span>. Bottom right – Model in which <span class="math inline">\(POM\)</span> is hydrolysed to <span class="math inline">\(DOM\)</span>, which can then be fermented and oxidised.
+Figure 14.8: Three options for different levels of complexity in organic matter breakdown, by setting the <code>OMModel</code> switch. Top left – Model in which <span class="math inline">\(POM\)</span> breaks down directly to <span class="math inline">\(CO_2\)</span> and other waste products. Top right - Model with the breakdown rate set by depth. Bottom left – Model in which POM is first hydrolysed to <span class="math inline">\(DOM\)</span> and then oxidised to <span class="math inline">\(CO_2\)</span>. Bottom right – Model in which <span class="math inline">\(POM\)</span> is hydrolysed to <span class="math inline">\(DOM\)</span>, which can then be fermented and oxidised.
 </p>
 </div>
 <p><br></p>
@@ -1031,7 +1041,7 @@ Rate equation
 </tr>
 </thead>
 <tbody>
-<tr grouplength="2">
+<tr grouplength="3">
 <td colspan="3" style="border-bottom: 1px solid;color: black !important;background-color: #ebebeb !important;">
 <strong>OMModel 1</strong>
 </td>
@@ -1044,7 +1054,7 @@ POM<sub>Lab</sub> oxidation
 POM<sub>Lab</sub> <span class="math inline">\(\rightarrow\)</span> CO<sub>2</sub> etc.
 </td>
 <td style="text-align:center;min-width: 18em; color: black !important;background-color: white !important;">
-<em>k<sub>DOMLab</sub>∑R<sub>Oxi</sub></em>
+<em>poml2dic ∑R<sub>Oxi</sub></em>
 </td>
 </tr>
 <tr>
@@ -1055,7 +1065,18 @@ POM<sub>Ref</sub> oxidation
 POM<sub>Ref</sub> <span class="math inline">\(\rightarrow\)</span> CO<sub>2</sub> etc.
 </td>
 <td style="text-align:center;min-width: 18em; color: black !important;background-color: white !important;">
-<em>k<sub>DOMRef</sub>∑R<sub>Oxi</sub></em>
+<em>pomr2dic ∑R<sub>Oxi</sub></em>
+</td>
+</tr>
+<tr>
+<td style="text-align:center;padding-left: 2em;min-width: 18em; color: black !important;background-color: white !important;" indentlevel="1">
+POM<sub>Ref</sub> oxidation
+</td>
+<td style="text-align:center;min-width: 18em; color: black !important;background-color: white !important;">
+POM<sub>Ref</sub> <span class="math inline">\(\rightarrow\)</span> CO<sub>2</sub> etc.
+</td>
+<td style="text-align:center;min-width: 18em; color: black !important;background-color: white !important;">
+<em>pomspecial2dic ∑R<sub>Oxi</sub></em>
 </td>
 </tr>
 <tr grouplength="4">
@@ -1071,18 +1092,18 @@ POMLab hydrolysis
 POM<sub>Lab</sub> <span class="math inline">\(\rightarrow\)</span> DOM<sub>Lab</sub>
 </td>
 <td style="text-align:center;min-width: 18em; color: black !important;background-color: white !important;">
-<em>k<sub>Hydrolysis</sub>(POM<sub>Lab</sub>)</em>
+<em>pocl2docl (POC<sub>L</sub>)</em>
 </td>
 </tr>
 <tr>
-<td style="text-align:center;padding-left: 2em;min-width: 18em; color: black !important;background-color: white !important;" indentlevel="1">
+<td style="text-align:center;padding-left: 2em;min-width: 18em; color: black !important;" indentlevel="1">
 POMRef hydrolysis
 </td>
-<td style="text-align:center;min-width: 18em; color: black !important;background-color: white !important;">
+<td style="text-align:center;min-width: 18em; color: black !important;">
 POMRef <span class="math inline">\(\rightarrow\)</span> DOM<sub>Ref</sub>
 </td>
-<td style="text-align:center;min-width: 18em; color: black !important;background-color: white !important;">
-<em>k<sub>Hydrolysis</sub>(POM<sub>Ref</sub>)</em>
+<td style="text-align:center;min-width: 18em; color: black !important;">
+<em>pocr2docr (POC<sub>R</sub>)</em>
 </td>
 </tr>
 <tr>
@@ -1093,7 +1114,7 @@ DOMLab oxidation
 DOMLab <span class="math inline">\(\rightarrow\)</span> CO<sub>2</sub> etc.
 </td>
 <td style="text-align:center;min-width: 18em; color: black !important;">
-<em>k<sub>DOMLab</sub>∑R<sub>Oxi</sub></em>
+<em>docl2dic ∑R<sub>Oxi</sub></em>
 </td>
 </tr>
 <tr>
@@ -1104,7 +1125,7 @@ DOMRef oxidation
 DOMRef <span class="math inline">\(\rightarrow\)</span> CO<sub>2</sub> etc.
 </td>
 <td style="text-align:center;min-width: 18em; color: black !important;">
-<em>k<sub>DOMRef</sub>∑R<sub>Oxi</sub></em>
+<em>docr2dic ∑R<sub>Oxi</sub></em>
 </td>
 </tr>
 <tr grouplength="4">
@@ -1120,7 +1141,7 @@ POMi hydrolysis
 POMi <span class="math inline">\(\rightarrow\)</span> D<sub>Hyd</sub>
 </td>
 <td style="text-align:center;min-width: 18em; color: black !important;">
-<em>k<sub>Hydrolysis</sub>(POM<sub>Lab</sub>)F<sub>BHyd</sub></em>
+k~POM i~ <em>(POM<sub>i</sub>)F<sub>BHyd</sub></em>
 </td>
 </tr>
 <tr>
@@ -1179,20 +1200,19 @@ POM <span class="math inline">\(\rightarrow\)</span> CO<sub>2</sub> etc.
 </div>
 <div id="cnp-partitioning" class="section level5 unnumbered hasAnchor">
 <h5><em>C:N:P partitioning</em><a href="sediment-biogeochemistry.html#cnp-partitioning" class="anchor-section" aria-label="Anchor link to header"></a></h5>
-<p>The C:N:P stoichiometry is set differently for each <code>OMModel</code>. Using
-<code>OMModel</code> = 1, the ratios are set separately for the labile and
+<p>The C:N:P stoichiometry is set differently for each <code>OMModel</code>.</p>
+<p>Using <code>OMModel</code> = 1, the ratios are set separately for the labile and
 refractory phases, using the <em>x</em>, <em>y</em> and <em>z</em> ratios outlined in table
 <a href="sediment-biogeochemistry.html#tab:OMChem-table">14.3</a>. For example, <code>xlab</code> is the carbon fraction of
 <span class="math inline">\(POM_L\)</span>, which is usually set to around 106, while <code>zlab</code> is the <span class="math inline">\(POM_L\)</span>
 phosphorus fraction, which is usually set to around 1. These ratios are
-fixed throughout the simulation. The <em>y</em> nitrogen fraction is also used
-to set the amount of <span class="math inline">\(NH_4^+\)</span> released per carbon during organic matter
-oxidation.</p>
+fixed throughout the simulation. The <em>x</em>, <em>y</em> and <em>z</em> coefficients are used to set the proportions of the other species in the redox equation (such as oxidants and reduction products), the acid-base products (such as <span class="math inline">\(HCO_3^-\)</span> and <span class="math inline">\(CO_2\)</span>) and the amounts of free <span class="math inline">\(NH_4^+\)</span> and <span class="math inline">\(PO_4^{3-}\)</span> released from organic matter degradation oxidation.</p>
+<p>The <em>x</em>, <em>y</em> and <em>z</em> ratios in table <a href="sediment-biogeochemistry.html#tab:OMChem-table">14.3</a> are written in the standard form of the equations in the sediment model literature. The carbon in the organic matter is assumed to be carbon (0) and each carbon atom requires four electrons from the oxidant to form the carbon (IV) in <span class="math inline">\(CO_2\)</span>, and therefore <em>x</em> carbons require 4<em>x</em> electrons. In practice, the model code performs reactions per carbon, and so all of these coefficients are divided by <em>x</em>, for all reactants and products. This is done in order to make the reactions <code>OMModel</code> 1 equivalent to <code>OMModel</code> 2.</p>
 <p>Using <code>OMModel</code> = 2, the C:N:P ratio is set by the concentrations of
-separate organic species, such as <span class="math inline">\(POC_L\)</span>, <span class="math inline">\(PON_L\)</span> and <span class="math inline">\(POP_L\)</span>. The
+separate organic species, such as <span class="math inline">\(POC_L\)</span>, <span class="math inline">\(PON_L\)</span> and <span class="math inline">\(POP_L\)</span>, as opposed to the <span class="math inline">\(POM\)</span> phases of <code>OMModel</code> 1. The
 ratio is fixed by the boundary and initial conditions, however, if the
 boundary is dynamic, then the ratio can change through the course of the
-simulation.</p>
+simulation. Only <span class="math inline">\(DOC_L\)</span> participates in the redox reactions, and so the equivalent of <em>CH<sub>2</sub>O</em> in table <a href="sediment-biogeochemistry.html#tab:OMChem-table">14.3</a> is <span class="math inline">\(DOC_L\)</span>. The release of organic N as free <span class="math inline">\(NH_4^+^\)</span> is calculated <span class="math inline">\(PON_L\)</span> oxidation at <code>ponl2dic</code> and the release of organic P as free <span class="math inline">\(PO_4^{3-}\)</span> as <span class="math inline">\(POP_L\)</span> at <code>popl2dic</code>.</p>
 <p>Using <code>OMModel</code> = 3 is similar to <code>OMModel</code> = 1. The ratios are applied
 to <span class="math inline">\(POM_1\)</span>, <span class="math inline">\(POM_2\)</span> etc. as <code>xPOM1</code>, <code>yPOM2</code> etc.</p>
 </div>
@@ -1224,7 +1244,7 @@ be written as in table <a href="sediment-biogeochemistry.html#tab:OMChem-table">
 for each of these are calculated dynamically based on Monod expressions
 which mediate the reaction rate according to the concentration of
 potential oxidants higher in the redox sequence, and the concentration
-of the available oxidant.<a href="sediment-biogeochemistry.html#fig:dev-Grid1">14.20</a></p>
+of the available oxidant.<a href="sediment-biogeochemistry.html#fig:dev-Grid1">14.23</a></p>
 <p><br></p>
 <center>
 <div style="border: 1px solid #ddd; padding: 5px; overflow-y: scroll; height:40em; overflow-x: scroll; width:770px; ">
@@ -1238,6 +1258,9 @@ of the available oxidant.<a href="sediment-biogeochemistry.html#fig:dev-Grid1">1
 Description
 </th>
 <th style="text-align:center;font-weight: bold;color: white !important;background-color: #14759e !important;">
+.
+</th>
+<th style="text-align:center;font-weight: bold;color: white !important;background-color: #14759e !important;">
 Reaction
 </th>
 </tr>
@@ -1246,6 +1269,8 @@ Reaction
 <tr>
 <td style="text-align:center;min-width: 10em; font-weight: bold;color: black !important;background-color: white !important;">
 Denitrousation
+</td>
+<td style="text-align:center;min-width: 2em; color: black !important;background-color: white !important;">
 </td>
 <td style="text-align:center;min-width: 15em; color: black !important;background-color: white !important;">
 <br />
@@ -1257,6 +1282,8 @@ Denitrousation
 <td style="text-align:center;min-width: 10em; font-weight: bold;color: black !important;background-color: white !important;">
 Aerobic respiration
 </td>
+<td style="text-align:center;min-width: 2em; color: black !important;background-color: white !important;">
+</td>
 <td style="text-align:center;min-width: 15em; color: black !important;background-color: white !important;">
 <br />
 <span class="math inline">\(\displaystyle \  (CH_2O)_x(NH_3)_y(PO_4)_z +(x+2y)O_2 + (y + 2z) HCO_3^- \rightarrow + (x+y+2z)CO_2 + (x+y+2z)H_2O + yNH_4^+ + zHPO_4^{3-}\)</span><br />
@@ -1266,6 +1293,8 @@ Aerobic respiration
 <tr>
 <td style="text-align:center;min-width: 10em; font-weight: bold;color: black !important;background-color: white !important;">
 Denitritation
+</td>
+<td style="text-align:center;min-width: 2em; color: black !important;background-color: white !important;">
 </td>
 <td style="text-align:center;min-width: 15em; color: black !important;background-color: white !important;">
 <br />
@@ -1277,6 +1306,8 @@ Denitritation
 <td style="text-align:center;min-width: 10em; font-weight: bold;color: black !important;background-color: white !important;">
 Nitrous denitritation
 </td>
+<td style="text-align:center;min-width: 2em; color: black !important;background-color: white !important;">
+</td>
 <td style="text-align:center;min-width: 15em; color: black !important;background-color: white !important;">
 <br />
 <span class="math inline">\(\displaystyle \  (CH_2O)_x(NH_3)_y(PO_4)_z + 2x NO-2^- + (-2x-y + 2z) HCO_3^- \rightarrow xN_2O + (x-y+2z)CO_2 + (-y+2z)H_2O + yNH_4^+ + zHPO_4^{3-}\)</span><br />
@@ -1286,6 +1317,8 @@ Nitrous denitritation
 <tr>
 <td style="text-align:center;min-width: 10em; font-weight: bold;color: black !important;">
 DNRA
+</td>
+<td style="text-align:center;min-width: 2em; color: black !important;">
 </td>
 <td style="text-align:center;min-width: 15em; color: black !important;">
 <br />
@@ -1297,6 +1330,8 @@ DNRA
 <td style="text-align:center;min-width: 10em; font-weight: bold;color: black !important;">
 Mn oxide reduction
 </td>
+<td style="text-align:center;min-width: 2em; color: black !important;">
+</td>
 <td style="text-align:center;min-width: 15em; color: black !important;">
 <br />
 <span class="math inline">\(\displaystyle \  (CH_2O)_x(NH_3)_y(PO_4)_z + 2xMnO_2 + (x + y - 2z) H_2O + (3x + y - 2z)CO_2 \rightarrow 2xMn^{2+} + (4x + y - 2z)HCO_3^- + yNH_4^+ + zHPO_4^{3-}\)</span><br />
@@ -1306,6 +1341,8 @@ Mn oxide reduction
 <tr>
 <td style="text-align:center;min-width: 10em; font-weight: bold;color: black !important;">
 Fe oxide reduction
+</td>
+<td style="text-align:center;min-width: 2em; color: black !important;">
 </td>
 <td style="text-align:center;min-width: 15em; color: black !important;">
 <br />
@@ -1317,6 +1354,8 @@ Fe oxide reduction
 <td style="text-align:center;min-width: 10em; font-weight: bold;color: black !important;">
 Sulfate reduction
 </td>
+<td style="text-align:center;min-width: 2em; color: black !important;">
+</td>
 <td style="text-align:center;min-width: 15em; color: black !important;">
 <br />
 <span class="math inline">\(\displaystyle \  (CH_2O)_x(NH_3)_y(PO_4)_z + \frac{x}{2} SO_4^{2-} + (\frac{-x}{2} - y + 2z) HCO_3^- \rightarrow \frac{x}{2}HS^- + (\frac{x}{2} - y + 2z)CO_2 + (\frac{x}{2} - y + 2z)H_2O + yNH_4^+ + zHPO_4^{3-}\)</span><br />
@@ -1326,6 +1365,8 @@ Sulfate reduction
 <tr>
 <td style="text-align:center;min-width: 10em; font-weight: bold;color: black !important;">
 Methanogenesis
+</td>
+<td style="text-align:center;min-width: 2em; color: black !important;">
 </td>
 <td style="text-align:center;min-width: 15em; color: black !important;">
 <br />
@@ -1450,7 +1491,7 @@ not been carried out for this version of the model.</p>
 <p>The <em>TEA</em> factor, <span class="math inline">\(F_{TEA}\)</span>, term accounts for the <span class="math inline">\(R_{Ox}\)</span> dependence on
 the oxidant concentration when the oxidant concentration is low. The
 <span class="math inline">\(F_{TEA}\)</span> term in Approach 1 is a Monod expression (table
-<a href="sediment-biogeochemistry.html#tab:OMApproach-table">14.4</a>, figure <a href="sediment-biogeochemistry.html#fig:OMModels-2">14.8</a>), which uses
+<a href="sediment-biogeochemistry.html#tab:OMApproach-table">14.4</a>, figure <a href="sediment-biogeochemistry.html#fig:OMModels-2">14.9</a>), which uses
 Monod half-saturation constants (<em>K<sub>Ox</sub></em>), and which is chosen because
 it best reflects laboratory data of bacterially-controlled oxidation
 reactions (Boudreau and Westrich, 1984, Gaillard and Rabouille 1992).
@@ -1528,7 +1569,7 @@ Inhibition factor - FIn
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:OMModels-2"></span>
 <img src="images/23-sediment_biogeochemistry/OMSetup/FTEAFIn-02.png" alt="Schematic of examples of how inhibition and limitation scale between 0 and 1 over a range of concentrations. Left: limitation function. Right: inhibtion function." width="85%" />
 <p class="caption">
-Figure 14.8: Schematic of examples of how inhibition and limitation scale between 0 and 1 over a range of concentrations. Left: limitation function. Right: inhibtion function.
+Figure 14.9: Schematic of examples of how inhibition and limitation scale between 0 and 1 over a range of concentrations. Left: limitation function. Right: inhibtion function.
 </p>
 </div>
 </center>
@@ -1611,13 +1652,13 @@ F_{an (factor)} =\left\{
 other diagenesis models: here the nitrogen redox reactions are split
 into several processes. Most diagenesis models have an overall reaction
 of <span class="math inline">\(NO_3^-\)</span> oxidising organic matter and producing <span class="math inline">\(N_2\)</span>, as shown in
-figure <a href="sediment-biogeochemistry.html#fig:NModel-1">14.9</a>. This reaction is less favourable than
+figure <a href="sediment-biogeochemistry.html#fig:NModel-1">14.10</a>. This reaction is less favourable than
 aerobic oxidation and it is inhibited by <span class="math inline">\(O_2\)</span>.</p>
 <center>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:NModel-1"></span>
 <img src="images/23-sediment_biogeochemistry/OMSetup/NModel1.png" alt="Schematic of the basic nitrogen-organic matter redox process from most other diagenesis models." width="35%" />
 <p class="caption">
-Figure 14.9: Schematic of the basic nitrogen-organic matter redox process from most other diagenesis models.
+Figure 14.10: Schematic of the basic nitrogen-organic matter redox process from most other diagenesis models.
 </p>
 </div>
 </center>
@@ -1635,7 +1676,7 @@ organic matter:</p>
 <li><strong>DNRA</strong>: (Dissimilatory nitrate reduction to ammonia) <span class="math inline">\(NO_2^-\)</span>
 reduction to <span class="math inline">\(NH_4^+\)</span></li>
 </ul>
-<p>These reactions interact as shown in figure <a href="sediment-biogeochemistry.html#fig:NModel-2">14.10</a>. In
+<p>These reactions interact as shown in figure <a href="sediment-biogeochemistry.html#fig:NModel-2">14.11</a>. In
 CANDI-AED, the denitrousation reaction is configured to be more
 favourable than aerobic oxidation, based on the free energy data
 reported in Lam and Kuypers (2011). Therefore <span class="math inline">\(N_2O\)</span> inhibits aerobic
@@ -1649,7 +1690,7 @@ as shown in table <a href="sediment-biogeochemistry.html#tab:NRate-table">14.5</
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:NModel-2"></span>
 <img src="images/23-sediment_biogeochemistry/OMSetup/NModel2.png" alt="Schematic of the nitrogen-organic matter redox processes used in the CANDI-AED model." width="85%" />
 <p class="caption">
-Figure 14.10: Schematic of the nitrogen-organic matter redox processes used in the CANDI-AED model.
+Figure 14.11: Schematic of the nitrogen-organic matter redox processes used in the CANDI-AED model.
 </p>
 </div>
 <p><br></p>
@@ -1742,6 +1783,26 @@ Ammonium release
 <p>Along with the nitrogen–organic matter redox reactions, there are sets
 of nitrogen oxidation reactions, where the oxidant is <span class="math inline">\(O_2\)</span> or <span class="math inline">\(NO_2^-\)</span>.
 These are outlined in more detail in the AED inorganic nitrogen chapter.</p>
+</div>
+<div id="SedCalculationofthePrimaryReactions" class="section level5 unnumbered hasAnchor">
+<h5><em>Calculation of the primary reactions</em><a href="sediment-biogeochemistry.html#SedCalculationofthePrimaryReactions" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<p>The chemical reactions in table <a href="sediment-biogeochemistry.html#tab:OMChem-table">14.3</a> represent the overall process, however, the model code does not contain them in that form. A description of the numerical solution is presented below in the section <a href="sediment-biogeochemistry.html#SedNumericalSolution">Numerical solution</a> and a summary of the process as it pertains to primary reactions is given here. The model code contains:</p>
+<p><strong>The ‘Reaction’ function</strong>: the balance of each reaction rate for each species.</p>
+<p><strong>The ‘Rates’ function</strong>: the reaction rates, as the product of</p>
+<ul>
+<li>the species,</li>
+<li>the kinetic constants,</li>
+<li>the stoichiometric coefficients and</li>
+<li>the factors.</li>
+</ul>
+<center>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:OMCalcs-1"></span>
+<img src="images/23-sediment_biogeochemistry/OMSetup/EquationStructure-02.png" alt="An illustration of one example of how the reaction rates are calculated in the model code. The balance equation is calculated as the gains and losses from the individual rates, and the rates are calculated from constants or other variables." width="100%" />
+<p class="caption">
+Figure 14.12: An illustration of one example of how the reaction rates are calculated in the model code. The balance equation is calculated as the gains and losses from the individual rates, and the rates are calculated from constants or other variables.
+</p>
+</div>
+</center>
 </div>
 </div>
 <div id="SedSecondaryRedoxReactions" class="section level4 hasAnchor" number="14.3.2.4">
@@ -2154,6 +2215,26 @@ Ammonium oxidation
 </table>
 </div>
 </center>
+<div id="SedCalculationoftheSecondaryReactions" class="section level5 unnumbered hasAnchor">
+<h5><em>Calculation of the secondary reactions</em><a href="sediment-biogeochemistry.html#SedCalculationoftheSecondaryReactions" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<p>As with the <a href="SedCalculationofthePrimaryReactions">primary reactions</a>, the secondary redox reactions are present in the code as the combination of</p>
+<p><strong>The ‘Reaction’ function</strong>: the sum of the rates of change of each species.</p>
+<p><strong>The ‘Rates’ function</strong>: the reaction rates, as the product of</p>
+<ul>
+<li>the species,</li>
+<li>the kinetic constants,</li>
+<li>the stoichiometric coefficients and</li>
+<li>the factors.</li>
+</ul>
+<center>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:OMCalcs-2"></span>
+<img src="images/23-sediment_biogeochemistry/OMSetup/EquationStructure-03.png" alt="An illustration of one example of how the reaction rates are calculated in the model code. The balance equation is calculated as the gains and losses from the individual rates, and the rates are calculated from constants or other variables." width="100%" />
+<p class="caption">
+Figure 14.13: An illustration of one example of how the reaction rates are calculated in the model code. The balance equation is calculated as the gains and losses from the individual rates, and the rates are calculated from constants or other variables.
+</p>
+</div>
+</center>
+</div>
 </div>
 <div id="EquilibriumGeochemistry" class="section level4 hasAnchor" number="14.3.2.5">
 <h4><span class="header-section-number">14.3.2.5</span> Equilibrium Geochemistry<a href="sediment-biogeochemistry.html#EquilibriumGeochemistry" class="anchor-section" aria-label="Anchor link to header"></a></h4>
@@ -3847,16 +3928,16 @@ al. 2001). The model uses a diffusion coefficient (bio-diffusivity,
 <span class="math inline">\(D_B\)</span>) that varies with depth (<span class="math inline">\(D_B[z_s]\)</span>) as a two layer function or a
 Gaussian decrease (Boudreau 1996). Bioirrigation is a non-local mixing
 process in the upper layers of the sediment, caused by animal burrows
-leading to enhanced diffusion of porewater (figure <a href="sediment-biogeochemistry.html#fig:Phys3">14.11</a>).</p>
+leading to enhanced diffusion of porewater (figure <a href="sediment-biogeochemistry.html#fig:Phys3">14.14</a>).</p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:Phys3"></span>
 <img src="images/23-sediment_biogeochemistry/AdvectionDispersion/Biot-07.png" alt="Bioturbation is the mixing of solids and porewater in the upper layers by benthic animals. Irrigation causes extra mixing of porewater through their burrows." width="60%" />
 <p class="caption">
-Figure 14.11: Bioturbation is the mixing of solids and porewater in the upper layers by benthic animals. Irrigation causes extra mixing of porewater through their burrows.
+Figure 14.14: Bioturbation is the mixing of solids and porewater in the upper layers by benthic animals. Irrigation causes extra mixing of porewater through their burrows.
 </p>
 </div>
 <p>Bioturbation is computed to vary with depth below the sediment-water
 interface, based on selection of an appropriate model,
-<span class="math inline">\(\Theta_{\text{imix}}^{sdg}\)</span>, via the switch <code>imix</code> (equation <a href="sediment-biogeochemistry.html#eq:biodynamics-1">(14.14)</a>, figure <a href="sediment-biogeochemistry.html#fig:Init-3">14.12</a>), such
+<span class="math inline">\(\Theta_{\text{imix}}^{sdg}\)</span>, via the switch <code>imix</code> (equation <a href="sediment-biogeochemistry.html#eq:biodynamics-1">(14.14)</a>, figure <a href="sediment-biogeochemistry.html#fig:Init-3">14.15</a>), such
 that:</p>
 <span class="math display" id="eq:biodynamics-1">\[\begin{equation}
   \Theta_{\text{imix}}^{sdg}=\left\{
@@ -3871,7 +3952,7 @@ that:</p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:Init-3"></span>
 <img src="images/23-sediment_biogeochemistry/Initialisation/Bioturb-02.png" alt="Depth profile representing two possible bioturbation options and the functions of the parameters `DB0`, `x1` and `x2`. " width="80%" />
 <p class="caption">
-Figure 14.12: Depth profile representing two possible bioturbation options and the functions of the parameters <code>DB0</code>, <code>x1</code> and <code>x2</code>.
+Figure 14.15: Depth profile representing two possible bioturbation options and the functions of the parameters <code>DB0</code>, <code>x1</code> and <code>x2</code>.
 </p>
 </div>
 <p>The rate of bioturbation is set with the parameter <code>DB0</code>, whereby the
@@ -3911,7 +3992,7 @@ chosen.</p>
 <h6><em>Bioirrigation</em><a href="sediment-biogeochemistry.html#bioirrigation" class="anchor-section" aria-label="Anchor link to header"></a></h6>
 <p>Bioirrigation has only one option, whereby the parameter <code>alpha0</code>,
 <span class="math inline">\(\alpha_0\)</span>, sets the rate of irrigation and <code>xirrig</code>, <span class="math inline">\(x_{irrig}\)</span>, sets
-the depth at which irrigation decays (equation <a href="sediment-biogeochemistry.html#eq:biodynamics-1">(14.14)</a>, figure <a href="sediment-biogeochemistry.html#fig:Init-4">14.13</a>), according to:</p>
+the depth at which irrigation decays (equation <a href="sediment-biogeochemistry.html#eq:biodynamics-1">(14.14)</a>, figure <a href="sediment-biogeochemistry.html#fig:Init-4">14.16</a>), according to:</p>
 <div class="panelset sideways">
 <div class="panel">
 <p><span class="panel-name">alpha</span> Bio-irrigation:</p>
@@ -3929,7 +4010,7 @@ the depth at which irrigation decays (equation <a href="sediment-biogeochemistry
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:Init-4"></span>
 <img src="images/23-sediment_biogeochemistry/Initialisation/Irrig-01.png" alt="Example of a depth profile that sets the rate of irrigation, and the parameters `alpha_0` and `x_irrig`." width="50%" />
 <p class="caption">
-Figure 14.13: Example of a depth profile that sets the rate of irrigation, and the parameters <code>alpha_0</code> and <code>x_irrig</code>.
+Figure 14.16: Example of a depth profile that sets the rate of irrigation, and the parameters <code>alpha_0</code> and <code>x_irrig</code>.
 </p>
 </div>
 </div>
@@ -3947,11 +4028,11 @@ parameters <code>Sal1</code> and <code>Sal2</code> (PSU), according to equation 
   \end{array}\right.
 \tag{14.16}
 \end{equation}\]</span>
-<p>The effect of the scaling is shown in figure <a href="sediment-biogeochemistry.html#fig:PhysChem1">14.14</a>.</p>
+<p>The effect of the scaling is shown in figure <a href="sediment-biogeochemistry.html#fig:PhysChem1">14.17</a>.</p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:PhysChem1"></span>
 <img src="images/23-sediment_biogeochemistry/PhysChemInteractions/FSal-02.png" alt="Diaagram of the salinity factor $F_{Sal}$, scaling between 1 and 0 between the parameters. In this diagram `Sal~1~` is 40 and `Sal~2~` is 70." width="50%" />
 <p class="caption">
-Figure 14.14: Diaagram of the salinity factor <span class="math inline">\(F_{Sal}\)</span>, scaling between 1 and 0 between the parameters. In this diagram <code>Sal~1~</code> is 40 and <code>Sal~2~</code> is 70.
+Figure 14.17: Diaagram of the salinity factor <span class="math inline">\(F_{Sal}\)</span>, scaling between 1 and 0 between the parameters. In this diagram <code>Sal~1~</code> is 40 and <code>Sal~2~</code> is 70.
 </p>
 </div>
 <p><span class="math inline">\(F_{Sal}\)</span> is applied to biota-driven mixing (see below) and to the
@@ -3983,13 +4064,13 @@ F_{Sul} = \frac {K_{H_{2}S}} {(K_{H_{2}S} + H_{2}S)}
 \tag{14.17}
 \end{eqnarray}\]</span>
 <p>As with <span class="math inline">\(F_{Sal}\)</span>, <span class="math inline">\(F_{Sul}\)</span> scales between 1 and 0, however, as a decay
-rather than a stepped function (Figure <a href="sediment-biogeochemistry.html#fig:PhysChem2">14.15</a>). The value
+rather than a stepped function (Figure <a href="sediment-biogeochemistry.html#fig:PhysChem2">14.18</a>). The value
 for <code>KH2S</code> can be found in the physical parameters table below In this
 simulation, the same value for <code>KH2S</code> was used in all zones.</p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:PhysChem2"></span>
 <img src="images/23-sediment_biogeochemistry/PhysChemInteractions/FSul-02.png" alt="Diagram of the $H_2S$ factor, $F_{Sul}$, scaling from 1 to 0 as $H_2S$ concentration decreases. " width="50%" />
 <p class="caption">
-Figure 14.15: Diagram of the <span class="math inline">\(H_2S\)</span> factor, <span class="math inline">\(F_{Sul}\)</span>, scaling from 1 to 0 as <span class="math inline">\(H_2S\)</span> concentration decreases.
+Figure 14.18: Diagram of the <span class="math inline">\(H_2S\)</span> factor, <span class="math inline">\(F_{Sul}\)</span>, scaling from 1 to 0 as <span class="math inline">\(H_2S\)</span> concentration decreases.
 </p>
 </div>
 <p><br />
@@ -4044,7 +4125,7 @@ consumes <span class="math inline">\(O_2\)</span> and produces organic matter.</
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:PhysChem3"></span>
 <img src="images/23-sediment_biogeochemistry/PhysChemInteractions/O2Inject-11.png" alt="Schematic of the parameterisation of $O_2$ injection into the sediment where $MPB$ are respiring." width="50%" />
 <p class="caption">
-Figure 14.16: Schematic of the parameterisation of <span class="math inline">\(O_2\)</span> injection into the sediment where <span class="math inline">\(MPB\)</span> are respiring.
+Figure 14.19: Schematic of the parameterisation of <span class="math inline">\(O_2\)</span> injection into the sediment where <span class="math inline">\(MPB\)</span> are respiring.
 </p>
 </div>
 </div>
@@ -4232,7 +4313,7 @@ swi \text{_} deff = (1.0 + TAUB \times 100) \times taubsensitivity
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:PhysChem4"></span>
 <img src="images/23-sediment_biogeochemistry/PhysChemInteractions/O2Inject-12.png" alt="Schematic of macrophyte model: $O_2$ injection into the sediment by seagrass roots and smothering by filamentous algae." width="50%" />
 <p class="caption">
-Figure 14.17: Schematic of macrophyte model: <span class="math inline">\(O_2\)</span> injection into the sediment by seagrass roots and smothering by filamentous algae.
+Figure 14.20: Schematic of macrophyte model: <span class="math inline">\(O_2\)</span> injection into the sediment by seagrass roots and smothering by filamentous algae.
 </p>
 </div>
 </div>
@@ -4278,7 +4359,7 @@ values should sum to 1.</p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:dev-pics2"></span>
 <img src="images/23-sediment_biogeochemistry/SWIBoundary/LinkedVars-08.png" alt="Schematic of sediment water coupling interactions" width="45%" />
 <p class="caption">
-Figure 14.18: Schematic of sediment water coupling interactions
+Figure 14.21: Schematic of sediment water coupling interactions
 </p>
 </div>
 <p>Depending on the nature of the host hydrodynamic model, several
@@ -4287,7 +4368,7 @@ configurations can be implemented:</p>
 <div class="figure"><span style="display:block;" id="fig:23-pic6"></span>
 <img src="images/23-sediment_biogeochemistry/image6.png" alt="Spatial resolution options available through AED. a) Water column studies have traditionally assigned a flux to the sediment water interface without resolving the sediment chemical concentrations by depth, though they can be resolved laterally. b) The 0D water column is the method used in most sediment diagenesis studies, and use of multiple sediment zones is an option available within AED." width="95%" />
 <p class="caption">
-Figure 14.19: Spatial resolution options available through AED. a) Water column studies have traditionally assigned a flux to the sediment water interface without resolving the sediment chemical concentrations by depth, though they can be resolved laterally. b) The 0D water column is the method used in most sediment diagenesis studies, and use of multiple sediment zones is an option available within AED.
+Figure 14.22: Spatial resolution options available through AED. a) Water column studies have traditionally assigned a flux to the sediment water interface without resolving the sediment chemical concentrations by depth, though they can be resolved laterally. b) The 0D water column is the method used in most sediment diagenesis studies, and use of multiple sediment zones is an option available within AED.
 </p>
 </div>
 </center>
@@ -4328,21 +4409,21 @@ spatial heterogeneity in sediment properties and their fluxes.</p>
 <p>For a 3D hydrodynamic model, the sediment zones are adjacent areas of
 the bottom of the domain, for example, stretches of a river from
 upstream to downstream. A 3D diagram is given in Figure
-<a href="sediment-biogeochemistry.html#fig:dev-Grid1">14.20</a>.</p>
+<a href="sediment-biogeochemistry.html#fig:dev-Grid1">14.23</a>.</p>
 <div class="figure"><span style="display:block;" id="fig:dev-Grid1"></span>
 <img src="images/23-sediment_biogeochemistry/GridStructure/3DZones-05.png" alt="Schematic depicting sediment zone numerical approach, for a 3D hydrodynamic mesh." width="100%" />
 <p class="caption">
-Figure 14.20: Schematic depicting sediment zone numerical approach, for a 3D hydrodynamic mesh.
+Figure 14.23: Schematic depicting sediment zone numerical approach, for a 3D hydrodynamic mesh.
 </p>
 </div>
 <p>The equivalent 1D hydrodyanmic model has the water column simulated in
 vertical layers. The sediment zones are assigned as slices of sediment
 according to depth. A 1D diagram is given in Figure
-<a href="sediment-biogeochemistry.html#fig:dev-Grid2">14.21</a>.</p>
+<a href="sediment-biogeochemistry.html#fig:dev-Grid2">14.24</a>.</p>
 <div class="figure"><span style="display:block;" id="fig:dev-Grid2"></span>
 <img src="images/23-sediment_biogeochemistry/GridStructure/1DZones-05-04.png" alt="Schematic depicting sediment zone numerical approach, for a 1D layered hydrodyanmic model, such as a lake.." width="100%" />
 <p class="caption">
-Figure 14.21: Schematic depicting sediment zone numerical approach, for a 1D layered hydrodyanmic model, such as a lake..
+Figure 14.24: Schematic depicting sediment zone numerical approach, for a 1D layered hydrodyanmic model, such as a lake..
 </p>
 </div>
 <p><br></p>
@@ -4351,18 +4432,18 @@ averaged for linked variables (Figure (fig:dev-Grid3)).</p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:dev-Grid3"></span>
 <img src="images/23-sediment_biogeochemistry/GridStructure/ZoneAveraging-04.png" alt="Schematic displaying how water cells are averaged when using sediment zones with a 3D hydrodynamic model." width="60%" />
 <p class="caption">
-Figure 14.22: Schematic displaying how water cells are averaged when using sediment zones with a 3D hydrodynamic model.
+Figure 14.25: Schematic displaying how water cells are averaged when using sediment zones with a 3D hydrodynamic model.
 </p>
 </div>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:dev-Grid4"></span>
 <img src="images/23-sediment_biogeochemistry/GridStructure/ZoneAveraging-05.png" alt="Schematic displaying how water cells are averaged when using sediment zones with a 1D hydrodynamic model." width="60%" />
 <p class="caption">
-Figure 14.23: Schematic displaying how water cells are averaged when using sediment zones with a 1D hydrodynamic model.
+Figure 14.26: Schematic displaying how water cells are averaged when using sediment zones with a 1D hydrodynamic model.
 </p>
 </div>
 </div>
-<div id="numerical-solution" class="section level4 hasAnchor" number="14.3.3.3">
-<h4><span class="header-section-number">14.3.3.3</span> Numerical solution<a href="sediment-biogeochemistry.html#numerical-solution" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div id="SedNumericalSolution" class="section level4 hasAnchor" number="14.3.3.3">
+<h4><span class="header-section-number">14.3.3.3</span> Numerical solution<a href="sediment-biogeochemistry.html#SedNumericalSolution" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>The time-dependent processes in CANDI-AED are solved by an ordinary
 differential equation solver DVODE. The details of the numerical
 solution are explained in detail by Boudreau (1997). DVODE was
@@ -4422,7 +4503,7 @@ and <span class="math inline">\(SO_4^{2-}\)</span>. This process is then followe
 <div class="figure"><span style="display:block;" id="fig:Numeric3"></span>
 <img src="images/23-sediment_biogeochemistry/ProgramStructure/Matrix-05.png" alt="Representation of the matrix structure of the ordinary differential equation solver for and example reaction. With an entry at each depth, the ODE solver calculates the concentrations of reactants from the reactions and transport. " width="75%" />
 <p class="caption">
-Figure 14.24: Representation of the matrix structure of the ordinary differential equation solver for and example reaction. With an entry at each depth, the ODE solver calculates the concentrations of reactants from the reactions and transport.
+Figure 14.27: Representation of the matrix structure of the ordinary differential equation solver for and example reaction. With an entry at each depth, the ODE solver calculates the concentrations of reactants from the reactions and transport.
 </p>
 </div>
 </center>
@@ -4434,7 +4515,7 @@ framework in various ways. This includes a) how the SDG module links to
 other modules in simulating water variables, and b) how the module
 operates within the simulated domain.</p>
 <p>The general structure of the program is shown in Figure
-<a href="sediment-biogeochemistry.html#fig:23-pic7">14.25</a>. The program is firstly initialised (including
+<a href="sediment-biogeochemistry.html#fig:23-pic7">14.28</a>. The program is firstly initialised (including
 spin-up days if desired), then loops through the kinetic and equilibrium
 reactions for each time step and writes the resulting concentrations and
 rates at each depth to an output file. The kinetic reactions are solved
@@ -4444,7 +4525,7 @@ the Simplex program.</p>
 <div class="figure"><span style="display:block;" id="fig:23-pic7"></span>
 <img src="images/23-sediment_biogeochemistry/ProgramStructure/ProgramStructure-04.png" alt="Candi program workflow. The program is firstly initialised, then loops through the kinetic and equilibrium reactions for each time step and writes the resulting concentrations and rates at each depth to an output file. The kinetic reactions are solved by the VODE program and the equilibrium reactions by the Simplex program." width="75%" />
 <p class="caption">
-Figure 14.25: Candi program workflow. The program is firstly initialised, then loops through the kinetic and equilibrium reactions for each time step and writes the resulting concentrations and rates at each depth to an output file. The kinetic reactions are solved by the VODE program and the equilibrium reactions by the Simplex program.
+Figure 14.28: Candi program workflow. The program is firstly initialised, then loops through the kinetic and equilibrium reactions for each time step and writes the resulting concentrations and rates at each depth to an output file. The kinetic reactions are solved by the VODE program and the equilibrium reactions by the Simplex program.
 </p>
 </div>
 </center>
@@ -7873,10 +7954,10 @@ concentration profile for each state variable. There is also a period of
 <h4>Initialisation of concentration profiles<a href="sediment-biogeochemistry.html#initialisation-of-concentration-profiles" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Concentration profiles are set using one of three options: constant,
 linear decrease or exponential decrease (<code>CO_I</code>, <code>LI_I</code>, <code>EX_I</code>) (figure
-<a href="sediment-biogeochemistry.html#fig:Init-5b">14.26</a>).</p>
+<a href="sediment-biogeochemistry.html#fig:Init-5b">14.29</a>).</p>
 <p>The default for most initial concentrations is the constant option. The
 concentration for each variable is set in the input file
-<code>aed_sdg_vars.csv</code>, in the column <code>initial_vals</code> (<a href="sediment-biogeochemistry.html#fig:Init-6b">14.27</a>).
+<code>aed_sdg_vars.csv</code>, in the column <code>initial_vals</code> (<a href="sediment-biogeochemistry.html#fig:Init-6b">14.30</a>).
 If the simulation has several zones, then the initial concentration for
 the zone is set in other columns in the csv, under the column headings
 <code>initial_01</code>, <code>initial_02</code> etc. If there is no initial column in the csv
@@ -7885,7 +7966,7 @@ for a particular zone, then the zone defaults to the value in the
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:Init-5b"></span>
 <img src="images/23-sediment_biogeochemistry/Initialisation/InitialProfile-03.png" alt="Schematic of three possible options for initial profiles. Most concentrations default to the constant option, whereas organic matter is usually set to be linear or exponential." width="100%" />
 <p class="caption">
-Figure 14.26: Schematic of three possible options for initial profiles. Most concentrations default to the constant option, whereas organic matter is usually set to be linear or exponential.
+Figure 14.29: Schematic of three possible options for initial profiles. Most concentrations default to the constant option, whereas organic matter is usually set to be linear or exponential.
 </p>
 </div>
 <p><br />
@@ -7893,7 +7974,7 @@ Figure 14.26: Schematic of three possible options for initial profiles. Most con
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:Init-6b"></span>
 <img src="images/23-sediment_biogeochemistry/aed_sdg_vars/aed_sdg_vars-04.png" alt="Simplified image of the `aed_sdg_vars.csv` input file. For initialisation, the `variables` need to be set, along with default `initial_vals` or zones-specific `initial_01`, `initial_02` etc. columns." width="100%" />
 <p class="caption">
-Figure 14.27: Simplified image of the <code>aed_sdg_vars.csv</code> input file. For initialisation, the <code>variables</code> need to be set, along with default <code>initial_vals</code> or zones-specific <code>initial_01</code>, <code>initial_02</code> etc. columns.
+Figure 14.30: Simplified image of the <code>aed_sdg_vars.csv</code> input file. For initialisation, the <code>variables</code> need to be set, along with default <code>initial_vals</code> or zones-specific <code>initial_01</code>, <code>initial_02</code> etc. columns.
 </p>
 </div>
 <p><br />
@@ -7954,7 +8035,7 @@ substances.</p>
 <h5><em>Spinup substep</em><a href="sediment-biogeochemistry.html#spinup-substep" class="anchor-section" aria-label="Anchor link to header"></a></h5>
 <p>In some simulations the initial timesteps have a high probability that
 the numerical model may crash while processing the initial condition
-(figure <a href="sediment-biogeochemistry.html#fig:Timing-2">14.28</a>). A slow substep overcomes this problem,
+(figure <a href="sediment-biogeochemistry.html#fig:Timing-2">14.31</a>). A slow substep overcomes this problem,
 however, it has the disadvantage of producing a longer run time. The
 solution for this problem is the tool <code>firststeps</code> (y), which sets an
 initial time period during which a slower substep (<code>substep_0</code>) is used,
@@ -7964,7 +8045,7 @@ normal <code>substep</code> applies.</p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:Timing-2"></span>
 <img src="images/23-sediment_biogeochemistry/TimeSwitches/TimeSwitches-02.png" alt="Schematic of the timestep across time. A different timestep (`substep_0`) can be used for a period (`firsteps`) until another timestep is used (`substep_1`).   " width="75%" />
 <p class="caption">
-Figure 14.28: Schematic of the timestep across time. A different timestep (<code>substep_0</code>) can be used for a period (<code>firsteps</code>) until another timestep is used (<code>substep_1</code>).
+Figure 14.31: Schematic of the timestep across time. A different timestep (<code>substep_0</code>) can be used for a period (<code>firsteps</code>) until another timestep is used (<code>substep_1</code>).
 </p>
 </div>
 </div>
@@ -7972,16 +8053,16 @@ Figure 14.28: Schematic of the timestep across time. A different timestep (<code
 <h5><em>Transport without reaction</em><a href="sediment-biogeochemistry.html#transport-without-reaction" class="anchor-section" aria-label="Anchor link to header"></a></h5>
 <p>Another tool to help move through the spinup period is to allow
 transport processes to occur before the reactions start (figure
-<a href="sediment-biogeochemistry.html#fig:Timing-3">14.29</a>). This evens out sharp chemical concentration
+<a href="sediment-biogeochemistry.html#fig:Timing-3">14.32</a>). This evens out sharp chemical concentration
 gradients. This allows the simulation to start before the proper time of
-the simulation, represented in <a href="sediment-biogeochemistry.html#fig:Timing-3">14.29</a> as negative time. The
+the simulation, represented in <a href="sediment-biogeochemistry.html#fig:Timing-3">14.32</a> as negative time. The
 parameter <code>spinup_days</code> is the number of timestep integers of negative
 time, and <code>spinup_dt</code> is the length of each timestep (h). No fluxes at
 the sediment-water interface occur during negative time.</p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:Timing-3"></span>
 <img src="images/23-sediment_biogeochemistry/TimeSwitches/TimeSwitches-03.png" alt="Schematic of the timestep over time. The initial period up to `spinup_days` occurs in 'negative time', at a duration of `spinup_dt`." width="75%" />
 <p class="caption">
-Figure 14.29: Schematic of the timestep over time. The initial period up to <code>spinup_days</code> occurs in ‘negative time’, at a duration of <code>spinup_dt</code>.
+Figure 14.32: Schematic of the timestep over time. The initial period up to <code>spinup_days</code> occurs in ‘negative time’, at a duration of <code>spinup_dt</code>.
 </p>
 </div>
 </div>
@@ -7989,11 +8070,11 @@ Figure 14.29: Schematic of the timestep over time. The initial period up to <cod
 <h5><em>Evolution of concentration profiles</em><a href="sediment-biogeochemistry.html#evolution-of-concentration-profiles" class="anchor-section" aria-label="Anchor link to header"></a></h5>
 <p>After initialisation, the concentration profile develops through the
 course of the simulation. Some of the most common ways for the profile
-to develop are given in figure <a href="sediment-biogeochemistry.html#fig:Init-7b">14.30</a>.</p>
+to develop are given in figure <a href="sediment-biogeochemistry.html#fig:Init-7b">14.33</a>.</p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:Init-7b"></span>
 <img src="images/23-sediment_biogeochemistry/Initialisation/ProfileEvolution-05.png" alt="Examples of how the concentration profiles develop after initialisation. Left: the variable accumulates at the surface. Centre: a concentration spike develops. Right: the variable accumulates in the deep sediment.  " width="100%" />
 <p class="caption">
-Figure 14.30: Examples of how the concentration profiles develop after initialisation. Left: the variable accumulates at the surface. Centre: a concentration spike develops. Right: the variable accumulates in the deep sediment.
+Figure 14.33: Examples of how the concentration profiles develop after initialisation. Left: the variable accumulates at the surface. Centre: a concentration spike develops. Right: the variable accumulates in the deep sediment.
 </p>
 </div>
 </div>
@@ -8007,7 +8088,7 @@ Figure 14.30: Examples of how the concentration profiles develop after initialis
 <h5><em>Static option:</em> default_vals<a href="sediment-biogeochemistry.html#static-option-default_vals" class="anchor-section" aria-label="Anchor link to header"></a></h5>
 <p>For the boundary at the sediment-water interface, the value is set using
 the <code>default_vals</code> column in the input file <code>aed_sdg_vars.csv</code> (figures
-<a href="sediment-biogeochemistry.html#fig:SWI-1">14.31</a>, <a href="sediment-biogeochemistry.html#fig:SWI-2">14.32</a>). These values are constant in time
+<a href="sediment-biogeochemistry.html#fig:SWI-1">14.34</a>, <a href="sediment-biogeochemistry.html#fig:SWI-2">14.35</a>). These values are constant in time
 for the entire simulation. Solids are a deposition flux (mmol m<sup>-2</sup>
 y<sup>-1</sup>) and solutes are a concentration (mmol m<sup>-3</sup>). Variables may have
 other switches or options applied to them, as outlined below, but
@@ -8016,7 +8097,7 @@ otherwise the values default to this. To enable this option, set
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:SWI-1"></span>
 <img src="images/23-sediment_biogeochemistry/SWIBoundary/default_vals-10.png" alt="Sediment-water interface boundary inputs that are constant in time are set with `default_vals`. " width="60%" />
 <p class="caption">
-Figure 14.31: Sediment-water interface boundary inputs that are constant in time are set with <code>default_vals</code>.
+Figure 14.34: Sediment-water interface boundary inputs that are constant in time are set with <code>default_vals</code>.
 </p>
 </div>
 <p><br />
@@ -8024,7 +8105,7 @@ Figure 14.31: Sediment-water interface boundary inputs that are constant in time
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:SWI-2"></span>
 <img src="images/23-sediment_biogeochemistry/aed_sdg_vars/aed_sdg_vars-02.png" alt="Simplified image of the `aed_sdg_vars.csv` input file. The `variables` and `default_vals` need to be set for each row of the csv." width="100%" />
 <p class="caption">
-Figure 14.32: Simplified image of the <code>aed_sdg_vars.csv</code> input file. The <code>variables</code> and <code>default_vals</code> need to be set for each row of the csv.
+Figure 14.35: Simplified image of the <code>aed_sdg_vars.csv</code> input file. The <code>variables</code> and <code>default_vals</code> need to be set for each row of the csv.
 </p>
 </div>
 </div>
@@ -8057,20 +8138,20 @@ section</a>, the <span class="math inline">\(SO_4^{2-}\)</span> concentration
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:SWI-3"></span>
 <img src="images/23-sediment_biogeochemistry/SWIBoundary/LinkedVars-08.png" alt="Schematic of possible linked variable options at the sediment-water interface. Particle fluxes and bottom water concentraitons go from the water column to the sediment. Sediment solutes can also be set to flux to the water column." width="60%" />
 <p class="caption">
-Figure 14.33: Schematic of possible linked variable options at the sediment-water interface. Particle fluxes and bottom water concentraitons go from the water column to the sediment. Sediment solutes can also be set to flux to the water column.
+Figure 14.36: Schematic of possible linked variable options at the sediment-water interface. Particle fluxes and bottom water concentraitons go from the water column to the sediment. Sediment solutes can also be set to flux to the water column.
 </p>
 </div>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:SWI-4"></span>
 <img src="images/23-sediment_biogeochemistry/aed_sdg_vars/aed_sdg_vars-05.png" alt="Simplified image of the `aed_sdg_vars.csv` input file. Linking variables may be set in the same row as the variable, or left blank with inverted commas." width="100%" />
 <p class="caption">
-Figure 14.34: Simplified image of the <code>aed_sdg_vars.csv</code> input file. Linking variables may be set in the same row as the variable, or left blank with inverted commas.
+Figure 14.37: Simplified image of the <code>aed_sdg_vars.csv</code> input file. Linking variables may be set in the same row as the variable, or left blank with inverted commas.
 </p>
 </div>
 </div>
 <div id="DynamicOptionsSwibcFile" class="section level5 unnumbered hasAnchor">
 <h5><em>Dynamic options:</em> swibc file<a href="sediment-biogeochemistry.html#DynamicOptionsSwibcFile" class="anchor-section" aria-label="Anchor link to header"></a></h5>
 <p>A dynamic boundary can be set for any variable and any zone using the
-text file swibc.dat (<a href="sediment-biogeochemistry.html#fig:SWI-5">14.35</a>). For a variable to be activated
+text file swibc.dat (<a href="sediment-biogeochemistry.html#fig:SWI-5">14.38</a>). For a variable to be activated
 to take its boundary from swibc.dat, it must be included in the list
 <code>swibc_filevars</code>, which is a parameter in the <code>&amp;aed_sed_candi</code> block.
 The specific filename and filepath are set in the parameter <code>swibc_file</code>
@@ -8098,13 +8179,13 @@ set <code>swibc_mode</code> = 10.</p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:SWI-5"></span>
 <img src="images/23-sediment_biogeochemistry/SWIBoundary/swibcdat-09.png" alt="Schematic of the sediment-water interface boundary supplied by the `swibc.dat` text file." width="60%" />
 <p class="caption">
-Figure 14.35: Schematic of the sediment-water interface boundary supplied by the <code>swibc.dat</code> text file.
+Figure 14.38: Schematic of the sediment-water interface boundary supplied by the <code>swibc.dat</code> text file.
 </p>
 </div>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:SWI-6"></span>
 <img src="images/23-sediment_biogeochemistry/SWIBoundary/swibcdat-01.png" alt="Simplified image of the swibc.dat text file." width="85%" />
 <p class="caption">
-Figure 14.36: Simplified image of the swibc.dat text file.
+Figure 14.39: Simplified image of the swibc.dat text file.
 </p>
 </div>
 </div>
@@ -8112,7 +8193,7 @@ Figure 14.36: Simplified image of the swibc.dat text file.
 <h5><em>Special organic matter flux</em><a href="sediment-biogeochemistry.html#special-organic-matter-flux" class="anchor-section" aria-label="Anchor link to header"></a></h5>
 <p>The sediment model has a unique boundary condition, where a large influx
 of organic matter occurs for a limited time (figure
-<a href="sediment-biogeochemistry.html#fig:Timing-1">14.37</a>). This represents, for example, the operation of a
+<a href="sediment-biogeochemistry.html#fig:Timing-1">14.40</a>). This represents, for example, the operation of a
 fish farm, a large algal bloom or an illegal dump of organic waste into
 a lake. This is a convenient tool for looking at the effect of large
 amounts of organic matter on other chemical species, and it operates
@@ -8130,7 +8211,7 @@ default_vals column, and the default flux before <code>fluxon</code> and after
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:Timing-1"></span>
 <img src="images/23-sediment_biogeochemistry/TimeSwitches/TimeSwitches-01.png" alt="Schematic of $POM_{Special}$ flux over time. $POM_{Special}$ flux begins at time `fluxon` and stops at time `fluxoff`. The rate of the flux is `pomspecial`." width="75%" />
 <p class="caption">
-Figure 14.37: Schematic of <span class="math inline">\(POM_{Special}\)</span> flux over time. <span class="math inline">\(POM_{Special}\)</span> flux begins at time <code>fluxon</code> and stops at time <code>fluxoff</code>. The rate of the flux is <code>pomspecial</code>.
+Figure 14.40: Schematic of <span class="math inline">\(POM_{Special}\)</span> flux over time. <span class="math inline">\(POM_{Special}\)</span> flux begins at time <code>fluxon</code> and stops at time <code>fluxoff</code>. The rate of the flux is <code>pomspecial</code>.
 </p>
 </div>
 </div>
@@ -8138,7 +8219,7 @@ Figure 14.37: Schematic of <span class="math inline">\(POM_{Special}\)</span> fl
 <h5><em>Combined organic matter flux and timestep switch</em><a href="sediment-biogeochemistry.html#combined-organic-matter-flux-and-timestep-switch" class="anchor-section" aria-label="Anchor link to header"></a></h5>
 <p>A large influx of organic matter can have the same effect for the model
 as processing the initial condition, and so the large flux can crash the
-model well after the initial spinup (figure <a href="sediment-biogeochemistry.html#fig:Timing-4">14.38</a>).
+model well after the initial spinup (figure <a href="sediment-biogeochemistry.html#fig:Timing-4">14.41</a>).
 Therefore, further substep parameters are available for slowing the
 model while it processes the organic matter. The parameter <code>substep_2</code>
 is used as the substep after <code>fluxon</code>. The parameter <code>substep_3</code> is used
@@ -8150,7 +8231,7 @@ the <a href="sediment-biogeochemistry.html#SedTimingSwitches">timing switches se
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:Timing-4"></span>
 <img src="images/23-sediment_biogeochemistry/TimeSwitches/TimeSwitches-04.png" alt="Schematic of $POM_{Special}$ flux and timestep changes over time. Options are available to optimise a short run total time with a slow substep centred around organic matter influx." width="75%" />
 <p class="caption">
-Figure 14.38: Schematic of <span class="math inline">\(POM_{Special}\)</span> flux and timestep changes over time. Options are available to optimise a short run total time with a slow substep centred around organic matter influx.
+Figure 14.41: Schematic of <span class="math inline">\(POM_{Special}\)</span> flux and timestep changes over time. Options are available to optimise a short run total time with a slow substep centred around organic matter influx.
 </p>
 </div>
 </div>
@@ -8160,8 +8241,8 @@ Figure 14.38: Schematic of <span class="math inline">\(POM_{Special}\)</span> fl
 <div id="static-option-deep_vals" class="section level5 unnumbered hasAnchor">
 <h5><em>Static option:</em> deep_vals<a href="sediment-biogeochemistry.html#static-option-deep_vals" class="anchor-section" aria-label="Anchor link to header"></a></h5>
 <p>A boundary can be supplied beneath the deepest cell using <code>deep_vals</code>
-(<a href="sediment-biogeochemistry.html#fig:Deep-1">14.39</a>). The value is taken from <code>deep_vals</code>, which is in
-the input file <code>aed_sdg_vars.csv</code> (<a href="sediment-biogeochemistry.html#fig:Deep-2">14.40</a>). (<code>deep_vals</code> is
+(<a href="sediment-biogeochemistry.html#fig:Deep-1">14.42</a>). The value is taken from <code>deep_vals</code>, which is in
+the input file <code>aed_sdg_vars.csv</code> (<a href="sediment-biogeochemistry.html#fig:Deep-2">14.43</a>). (<code>deep_vals</code> is
 the lower boundary equivalent of the sediment-water interface
 <code>default_vals</code>.) In most instances a bottom boundary would not be
 supplied, however, if there were a simulation with, for example,
@@ -8172,13 +8253,13 @@ default -999 for all variables. To enable this option, set <code>deepbc_mode</co
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:Deep-1"></span>
 <img src="images/23-sediment_biogeochemistry/DeepBoundary/deep_vals-12.png" alt="Bottom boundary inputs that are constant in time are set with `deep_vals`. " width="60%" />
 <p class="caption">
-Figure 14.39: Bottom boundary inputs that are constant in time are set with <code>deep_vals</code>.
+Figure 14.42: Bottom boundary inputs that are constant in time are set with <code>deep_vals</code>.
 </p>
 </div>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:Deep-2"></span>
 <img src="images/23-sediment_biogeochemistry/aed_sdg_vars/aed_sdg_vars-03.png" alt="Simplified image of the `aed_sdg_vars.csv` input file. deep_vals are set if a value is present, greater than zero, corresponding to a variable." width="100%" />
 <p class="caption">
-Figure 14.40: Simplified image of the <code>aed_sdg_vars.csv</code> input file. deep_vals are set if a value is present, greater than zero, corresponding to a variable.
+Figure 14.43: Simplified image of the <code>aed_sdg_vars.csv</code> input file. deep_vals are set if a value is present, greater than zero, corresponding to a variable.
 </p>
 </div>
 <p><br />
@@ -8188,7 +8269,7 @@ Figure 14.40: Simplified image of the <code>aed_sdg_vars.csv</code> input file. 
 <h5><em>Dynamic option:</em> deep_bc file<a href="sediment-biogeochemistry.html#DynamicOptionsDeepbcFile" class="anchor-section" aria-label="Anchor link to header"></a></h5>
 <p>A dynamic boundary can be set for any
 variable and any zone using the text file deepbc.dat
-(<a href="sediment-biogeochemistry.html#fig:Deep-3">14.41</a>). For a variable to be activated to take its boundary
+(<a href="sediment-biogeochemistry.html#fig:Deep-3">14.44</a>). For a variable to be activated to take its boundary
 from deepbc.dat, it must be included in the list <code>deebc_filevars</code>, which
 is a parameter in the <code>&amp;aed_sed_candi</code> block. The specific filename and
 filepath are set in the parameter <code>deepbc_file</code> in the <code>&amp;aed_sed_candi</code>
@@ -8216,7 +8297,7 @@ set <code>deepbc_mode</code> = 10.</p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:Deep-3"></span>
 <img src="images/23-sediment_biogeochemistry/DeepBoundary/DeepBC-11.png" alt="Schematic of the bottom boundary supplied by the `deepbc.dat` text file." width="60%" />
 <p class="caption">
-Figure 14.41: Schematic of the bottom boundary supplied by the <code>deepbc.dat</code> text file.
+Figure 14.44: Schematic of the bottom boundary supplied by the <code>deepbc.dat</code> text file.
 </p>
 </div>
 </div>
@@ -8238,19 +8319,19 @@ zone (with five significant figures), for example
 headers, then a row that lists the depths (cm). The first column is the
 sequence of output times (years). The other text entries are a matrix of
 the concentration values at each depth and each time (mmol L<sup>-1</sup>)
-(figure <a href="sediment-biogeochemistry.html#fig:Output-1">14.42</a>). These can be read in using a data
+(figure <a href="sediment-biogeochemistry.html#fig:Output-1">14.45</a>). These can be read in using a data
 processing program such as R, Matlab or Excel for analysis and plotting
-<a href="sediment-biogeochemistry.html#fig:Output-4">14.43</a>.</p>
+<a href="sediment-biogeochemistry.html#fig:Output-4">14.46</a>.</p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:Output-1"></span>
 <img src="images/23-sediment_biogeochemistry/Outputs/Outputs-01.png" alt="Simplified version of the .sed output file." width="85%" />
 <p class="caption">
-Figure 14.42: Simplified version of the .sed output file.
+Figure 14.45: Simplified version of the .sed output file.
 </p>
 </div>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:Output-4"></span>
 <img src="images/23-sediment_biogeochemistry/Outputs/Outputs-04.png" alt="Examples of the figures that can be plotted with the .sed file. Left: concentration-depth at one time step; centre: concentration-time at one depth; right: concentration-depth-time " width="75%" />
 <p class="caption">
-Figure 14.43: Examples of the figures that can be plotted with the .sed file. Left: concentration-depth at one time step; centre: concentration-time at one depth; right: concentration-depth-time
+Figure 14.46: Examples of the figures that can be plotted with the .sed file. Left: concentration-depth at one time step; centre: concentration-time at one depth; right: concentration-depth-time
 </p>
 </div>
 </div>
@@ -8268,18 +8349,18 @@ output times (years). Only the post-spinup times (positive time) are
 written to the file, as there are no fluxes during spinup. The other
 text entries are the flux values (mmol <sup>-2</sup> y<sup>-1</sup>), where a positive
 value is a flux into the sediment, and a negative value is a flux to the
-bottom water (figure <a href="sediment-biogeochemistry.html#fig:Output-2">14.44</a>). As with the ‘.sed’ files,
-these files can be processed and plotted (<a href="sediment-biogeochemistry.html#fig:Output-5">14.45</a>).</p>
+bottom water (figure <a href="sediment-biogeochemistry.html#fig:Output-2">14.47</a>). As with the ‘.sed’ files,
+these files can be processed and plotted (<a href="sediment-biogeochemistry.html#fig:Output-5">14.48</a>).</p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:Output-2"></span>
 <img src="images/23-sediment_biogeochemistry/Outputs/Outputs-02.png" alt="Simplified version of the `swi_fluxes.sed` file." width="85%" />
 <p class="caption">
-Figure 14.44: Simplified version of the <code>swi_fluxes.sed</code> file.
+Figure 14.47: Simplified version of the <code>swi_fluxes.sed</code> file.
 </p>
 </div>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:Output-5"></span>
 <img src="images/23-sediment_biogeochemistry/Outputs/Outputs-05.png" alt="Example of a figure that can be plotted from fluxes.sed " width="75%" />
 <p class="caption">
-Figure 14.45: Example of a figure that can be plotted from fluxes.sed
+Figure 14.48: Example of a figure that can be plotted from fluxes.sed
 </p>
 </div>
 </div>
@@ -8290,13 +8371,13 @@ Figure 14.45: Example of a figure that can be plotted from fluxes.sed
 files can be written to a subdirectory of the zone directory, for
 example <code>.../results/candi_aed/00001/Extras/RO2.sed</code>. The file has the
 same format as the other ‘.sed’ files, however, it does not record
-values during the spinup period (figure <a href="sediment-biogeochemistry.html#fig:Output-3">14.46</a>). The unit
+values during the spinup period (figure <a href="sediment-biogeochemistry.html#fig:Output-3">14.49</a>). The unit
 of the variable is dependent on what is used in the model code and there
 is no unit conversion before the file is written.</p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:Output-3"></span>
 <img src="images/23-sediment_biogeochemistry/Outputs/Outputs-03.png" alt="Simplified version of the extra .sed file. " width="85%" />
 <p class="caption">
-Figure 14.46: Simplified version of the extra .sed file.
+Figure 14.49: Simplified version of the extra .sed file.
 </p>
 </div>
 </div>
@@ -8327,6 +8408,11 @@ m<sup>-2</sup>)<br />
 <li><em>Solids_m3_per_m2</em>: The volume of sediment solids (m<sup>3</sup> m<sup>-2</sup>)<br />
 </li>
 </ul>
+</div>
+<div id="mass-balance-calculation" class="section level3 hasAnchor" number="14.5.5">
+<h3><span class="header-section-number">14.5.5</span> Mass balance calculation<a href="sediment-biogeochemistry.html#mass-balance-calculation" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The function <em>Mass</em> within the CANDI-AED code calculates the mass balance of some species.</p>
+<p>Firstly it calculates <em>FOM_in</em>, which is the influx of</p>
 <!-- ### netcdf outputs: .nc{-} -->
 <!-- As with other modules, the NetCDF files include the model outputs.  -->
 <!-- ### Diagnostics: {-} -->
@@ -8573,38 +8659,38 @@ y<sup>-1</sup>
 <p>The <span class="math inline">\(O_2\)</span> concentration profile matched the Van Cappellen and Wang
 simulation very closely, apart from the concentration at the deepest
 point, which was slightly higher than the field data (Figure
-<a href="sediment-biogeochemistry.html#fig:VCW-1">14.47</a> (a)). The results for <span class="math inline">\(O_2\)</span> were very consistent about
+<a href="sediment-biogeochemistry.html#fig:VCW-1">14.50</a> (a)). The results for <span class="math inline">\(O_2\)</span> were very consistent about
 the median value. The slightly higher concentration of oxygen at the
 deepest point in this simulation may have carried through to inhibit
 denitrification, causing the concentration of <span class="math inline">\(NO_3^-\)</span> to be higher than
-in the Van Cappellen and Wang simulation (Figure <a href="sediment-biogeochemistry.html#fig:VCW-1">14.47</a> (a)).
+in the Van Cappellen and Wang simulation (Figure <a href="sediment-biogeochemistry.html#fig:VCW-1">14.50</a> (a)).
 <span class="math inline">\(NO_3^-\)</span> was similarly consistent about the median. The <span class="math inline">\(NH_4^+\)</span> field
 data points were lower than the median of these simulations but within
-the range of these simulations (Figure <a href="sediment-biogeochemistry.html#fig:VCW-1">14.47</a> (c)). <span class="math inline">\(pH\)</span> was
+the range of these simulations (Figure <a href="sediment-biogeochemistry.html#fig:VCW-1">14.50</a> (c)). <span class="math inline">\(pH\)</span> was
 between 7 and 8, and both <span class="math inline">\(NH_4^+\)</span> and <span class="math inline">\(pH\)</span> had increasing ranges with
-depth (Figure <a href="sediment-biogeochemistry.html#fig:VCW-1">14.47</a> (d)).</p>
+depth (Figure <a href="sediment-biogeochemistry.html#fig:VCW-1">14.50</a> (d)).</p>
 <p>The <span class="math inline">\(MnO_2\)</span> and <span class="math inline">\(Fe(OH)_{3A}\)</span> concentrations matched the data points
 closely, however, the <span class="math inline">\(Mn^{2+}\)</span> and <span class="math inline">\(Fe^{2+}\)</span> concentrations in this
 simulation peaked at a higher concentration around 2 cm (Figure
-<a href="sediment-biogeochemistry.html#fig:VCW-1">14.47</a> (e) to (h)). It was suspected that this might have
+<a href="sediment-biogeochemistry.html#fig:VCW-1">14.50</a> (e) to (h)). It was suspected that this might have
 resulted from poor resolution of the grid, however, this simulation had
 the same number and size of layers as Van Cappellen and Wang. Below 5 cm
 deep the simulation had a lower concentration than the field data, but
 the deepest 5 field data points for <span class="math inline">\(Fe^{2+}\)</span> were within the ranges of
 the simulations.</p>
 <p><span class="math inline">\(H_2S\)</span> had the greatest variation relative to its concentration, which
-increased with depth (Figure <a href="sediment-biogeochemistry.html#fig:VCW-1">14.47</a> (i)). <span class="math inline">\(FeS\)</span> concentration
+increased with depth (Figure <a href="sediment-biogeochemistry.html#fig:VCW-1">14.50</a> (i)). <span class="math inline">\(FeS\)</span> concentration
 had a consistently concave shape whereas the field data appeared to be
 concave around 3 cm deep, and the relatively high concentration of <span class="math inline">\(FeS\)</span>
 at 5 mmol L<sup>-1</sup> in the oxic zone was not within the range of these
-simulations (Figure <a href="sediment-biogeochemistry.html#fig:VCW-1">14.47</a> (j)). <span class="math inline">\(FeS\)</span> could be simulated
+simulations (Figure <a href="sediment-biogeochemistry.html#fig:VCW-1">14.50</a> (j)). <span class="math inline">\(FeS\)</span> could be simulated
 close to the field data, but only by fixing the bottom boundary at 45
 mmol L<sup>-1</sup> and not because of its precipitation from <span class="math inline">\(Fe^{2+}\)</span> and
 <span class="math inline">\(H_2S\)</span>.</p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:VCW-1"></span>
 <img src="images/23-sediment_biogeochemistry/VCW/VCW-01.png" alt="Concentration-depth profiles for major variables from 100 simulations, including the median result (black line), ranges of results (grey bands) and field data from Van Cappellen and Wang (1996) (squares)." width="80%" />
 <p class="caption">
-Figure 14.47: Concentration-depth profiles for major variables from 100 simulations, including the median result (black line), ranges of results (grey bands) and field data from Van Cappellen and Wang (1996) (squares).
+Figure 14.50: Concentration-depth profiles for major variables from 100 simulations, including the median result (black line), ranges of results (grey bands) and field data from Van Cappellen and Wang (1996) (squares).
 </p>
 </div>
 </div>
@@ -8613,25 +8699,25 @@ Figure 14.47: Concentration-depth profiles for major variables from 100 simulati
 <p>The rates of aerobic respiration and denitrification using CANDI-AED
 were close to the simulated rates of Van Cappellen and Wang (1996),
 though in the deepest part of the sediment, the simulated aerobic rate
-was greater using this model (Figure <a href="sediment-biogeochemistry.html#fig:VCW-2">14.48</a> (b)). As a result
+was greater using this model (Figure <a href="sediment-biogeochemistry.html#fig:VCW-2">14.51</a> (b)). As a result
 of the classic inhibition sequence, oxygen penetration to greater depths
-limited denitrification to a deeper depth layer (Figure <a href="sediment-biogeochemistry.html#fig:VCW-2">14.48</a>
+limited denitrification to a deeper depth layer (Figure <a href="sediment-biogeochemistry.html#fig:VCW-2">14.51</a>
 (c)). This carried through to the peaks of all oxidation rates, which
 then occurred at slightly greater depths than in the Van Cappellen and
 Wang simulation. The maximum manganese reduction rate was smaller than
 in the Van Cappellen and Wang simulation, however, in both models the
 manganese reduction rate was very small relative to the other terminal
-oxidation processes (Figure <a href="sediment-biogeochemistry.html#fig:VCW-2">14.48</a> (d)). The iron reduction
+oxidation processes (Figure <a href="sediment-biogeochemistry.html#fig:VCW-2">14.51</a> (d)). The iron reduction
 rate was similar to the Van Cappellen and Wang rate, although slightly
 smaller, and could not be increased without leading to greater
 discrepancy in the dissolved iron concentration profiles (Figure
-<a href="sediment-biogeochemistry.html#fig:VCW-2">14.48</a> (e)). The sulphate reduction profiles were very close
+<a href="sediment-biogeochemistry.html#fig:VCW-2">14.51</a> (e)). The sulphate reduction profiles were very close
 and as with Van Cappellen and Wang, methanogenesis was completely
-inhibited (Figure <a href="sediment-biogeochemistry.html#fig:VCW-2">14.48</a> (f)).</p>
+inhibited (Figure <a href="sediment-biogeochemistry.html#fig:VCW-2">14.51</a> (f)).</p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:VCW-2"></span>
 <img src="images/23-sediment_biogeochemistry/VCW/R1.png" alt="Profiles of organic matter oxidation rate with depth. Plot (a) was the total organic matter reaction rate set by a fixed depth-oxidation rate, which Van Cappellen and Wang based on the measured data (squares). Plots (b) to (f) are these simulated rates (solid lines) compared with the simulated rates of Van Cappellen and Wang (dashed lines) and in the case of sulphate reduction, measured data (squares, (f))" width="80%" />
 <p class="caption">
-Figure 14.48: Profiles of organic matter oxidation rate with depth. Plot (a) was the total organic matter reaction rate set by a fixed depth-oxidation rate, which Van Cappellen and Wang based on the measured data (squares). Plots (b) to (f) are these simulated rates (solid lines) compared with the simulated rates of Van Cappellen and Wang (dashed lines) and in the case of sulphate reduction, measured data (squares, (f))
+Figure 14.51: Profiles of organic matter oxidation rate with depth. Plot (a) was the total organic matter reaction rate set by a fixed depth-oxidation rate, which Van Cappellen and Wang based on the measured data (squares). Plots (b) to (f) are these simulated rates (solid lines) compared with the simulated rates of Van Cappellen and Wang (dashed lines) and in the case of sulphate reduction, measured data (squares, (f))
 </p>
 </div>
 </div>
@@ -8661,11 +8747,11 @@ chemistry and ecology of the water column.</p>
 detrimental effects to the ecosystem were avoided. Fish cages may be
 positioned in one place for up to five years, after which the cage would
 be moved and the environment left to recover to its background condition
-(Figure <a href="sediment-biogeochemistry.html#fig:UAEFish-1">14.49</a>).</p>
+(Figure <a href="sediment-biogeochemistry.html#fig:UAEFish-1">14.52</a>).</p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:UAEFish-1"></span>
 <img src="images/23-sediment_biogeochemistry/UAEFish/UAE1-08.png" alt="Schematic of the design of the aquaculture simulation. The simulation had a period of spin up, a period of aquaculture and then a recovery period." width="80%" />
 <p class="caption">
-Figure 14.49: Schematic of the design of the aquaculture simulation. The simulation had a period of spin up, a period of aquaculture and then a recovery period.
+Figure 14.52: Schematic of the design of the aquaculture simulation. The simulation had a period of spin up, a period of aquaculture and then a recovery period.
 </p>
 </div>
 <p>Given enough energy in the water column, the concentrations of chemicals
@@ -9026,11 +9112,11 @@ POM<sub>R</sub>
 <h5><em>Fluxes</em><a href="sediment-biogeochemistry.html#fluxes" class="anchor-section" aria-label="Anchor link to header"></a></h5>
 <p>Results of the steady state oxygen and nutrient fluxes being returned
 from the diagenesis model for the range of depositional rates (FOM) are
-shown below (figure <a href="sediment-biogeochemistry.html#fig:UAEFish-2">14.50</a>, table <a href="sediment-biogeochemistry.html#tab:param-UAE4">14.27</a>.</p>
+shown below (figure <a href="sediment-biogeochemistry.html#fig:UAEFish-2">14.53</a>, table <a href="sediment-biogeochemistry.html#tab:param-UAE4">14.27</a>.</p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:UAEFish-2"></span>
 <img src="images/23-sediment_biogeochemistry/UAEFish/Results1.png" alt="Summary of the nutrient fluxes at the sediment water interface returned from the diagenesis model for a wide range of input dpeositional flux rates." width="110%" />
 <p class="caption">
-Figure 14.50: Summary of the nutrient fluxes at the sediment water interface returned from the diagenesis model for a wide range of input dpeositional flux rates.
+Figure 14.53: Summary of the nutrient fluxes at the sediment water interface returned from the diagenesis model for a wide range of input dpeositional flux rates.
 </p>
 </div>
 <p><br />
@@ -9269,7 +9355,7 @@ O<sub>2</sub>
 </table>
 </div>
 </center>
-<p>Recovery time periods are shown below in Figure <a href="sediment-biogeochemistry.html#fig:UAEFish-3">14.51</a>
+<p>Recovery time periods are shown below in Figure <a href="sediment-biogeochemistry.html#fig:UAEFish-3">14.54</a>
 UAEFish-3, and threshold depositional rates for recovery time
 categorisation is summarised in Table <a href="sediment-biogeochemistry.html#tab:param-UAE6">14.28</a>. The impact
 zone thresholds are summarised in Table <a href="sediment-biogeochemistry.html#tab:param-UAE7">14.29</a>.</p>
@@ -9278,7 +9364,7 @@ zone thresholds are summarised in Table <a href="sediment-biogeochemistry.html#t
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:UAEFish-3"></span>
 <img src="images/23-sediment_biogeochemistry/UAEFish/Results2.png" alt="Predicted recovery time of the sediment for the 2cm oxygen and solfide concentration to return to within 85% of the pre-farmign value. Series depicted for aquaculture loading periods of 1-5 years." width="90%" />
 <p class="caption">
-Figure 14.51: Predicted recovery time of the sediment for the 2cm oxygen and solfide concentration to return to within 85% of the pre-farmign value. Series depicted for aquaculture loading periods of 1-5 years.
+Figure 14.54: Predicted recovery time of the sediment for the 2cm oxygen and solfide concentration to return to within 85% of the pre-farmign value. Series depicted for aquaculture loading periods of 1-5 years.
 </p>
 </div>
 <center>
@@ -9561,6 +9647,12 @@ were calculated. The <a href="https://aquaticecodynamics.github.io/cdm-science/s
 project</a>
 in particular looked at the effect of hypersalinity on bioturbation and
 bioirrigation rates, and the resulting effects such as denitrification.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:CoorongSVG-1"></span>
+<img src="images/23-sediment_biogeochemistry/VCW/t_D_C_6panel_oxy.svg" alt="Test" width="90%" />
+<p class="caption">
+Figure 14.55: Test
+</p>
+</div>
 </div>
 </div>
 <div id="references" class="section level2 hasAnchor" number="14.7">
@@ -9592,7 +9684,7 @@ bioirrigation rates, and the resulting effects such as denitrification.</p>
 <!-- library(kableExtra) -->
 <!-- library(readxl) -->
 <!-- library(downlit) -->
-<!-- <a href="sediment-biogeochemistry.html#fig:23-pic2">14.2</a> -->
+<!-- <a href="sediment-biogeochemistry.html#fig:23-pic2">14.3</a> -->
 <!-- install.packages("hablar") -->
 <!-- install.packages("xaringanextra") -->
 <!-- install.packages(leaflet"") -->

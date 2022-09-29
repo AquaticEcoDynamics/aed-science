@@ -159,7 +159,8 @@ tab:21p-diagtable
 tab:21p-parstable
 tab:21p-configtable
 fig:johnstone-map
-fig:23-pic1
+fig:SedOverview-1
+fig:SedOverview-2
 fig:23-pic2
 eq:sdg-1
 eq:sdg-2
@@ -185,7 +186,9 @@ eq:factors-4
 fig:NModel-1
 fig:NModel-2
 tab:NRate-table
+fig:OMCalcs-1
 tab:SecondChem-table
+fig:OMCalcs-2
 tab:Geochem-table1
 tab:Geochem-table2
 tab:Geochem-table3
@@ -267,6 +270,7 @@ tab:param-UAE4
 fig:UAEFish-3
 tab:param-UAE6
 tab:param-UAE7
+fig:CoorongSVG-1
 eq:bivalve1
 eq:bivalve2
 eq:bivalve3
@@ -499,7 +503,7 @@ biological-dynamics
 implementation-within-the-aed-framework
 sediment-water-coupling
 resolving-sediment-zonation
-numerical-solution
+SedNumericalSolution
 module-program-structure
 optional-module-links-9
 feedbacks-to-the-host-model-9
@@ -526,6 +530,7 @@ concentration-of-state-variables-.sed-files
 flux-of-state-variables-swi_fluxes.sed
 SedOtherVariablesExtrasSed
 depth-profile-settings-depths.sed
+mass-balance-calculation
 case-studies-examples-6
 case-study-model-benchmark-example
 model-setup
