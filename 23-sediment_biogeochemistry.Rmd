@@ -19,7 +19,7 @@ transformations).
 
 <center>
 
-```{r 23-pic1, echo=FALSE, fig.cap="Schematic of the main physical and chemical processes that cause chemical concentration and flux change in the sediment and across the sediment-water interface, and therefore are included in most sediment diagenesis models.", out.width = '85%'}
+```{r SedOverview-1, echo=FALSE, fig.cap="Schematic of the main physical and chemical processes that cause chemical concentration and flux change in the sediment and across the sediment-water interface, and therefore are included in most sediment diagenesis models.", out.width = '85%'}
 knitr::include_graphics("images/23-sediment_biogeochemistry/Boxes&Arrows/Overview-05.png")
 ```
 
@@ -94,6 +94,15 @@ run in isolation are also possible. This chapter provides a scientific
 description of the model and describes attributes of the model
 associated with its practical implementation and operation. A case-study
 of the model framework is also demonstrated.
+
+The major output of CANDI-AED includes concentration depth profiles and fluxes across the sediment-water interface (figure \@ref(fig:SedOverview-2)).
+
+<center>
+```{r SedOverview-2, echo=FALSE, fig.cap="Examples of the final outputs after running CANDI-AED: concentration-depth profiles and flux-time plots.", out.width = '100%'}
+knitr::include_graphics("images/23-sediment_biogeochemistry/Outputs/Overview-17.png")
+```
+
+</center>
 
 ## Model Description
 
@@ -467,21 +476,22 @@ OMModel_Groups <- unique(OMModel_tab$Group)
 
 ##### *C:N:P partitioning* {.unnumbered}
 
-The C:N:P stoichiometry is set differently for each `OMModel`. Using
-`OMModel` = 1, the ratios are set separately for the labile and
+The C:N:P stoichiometry is set differently for each `OMModel`. 
+
+Using `OMModel` = 1, the ratios are set separately for the labile and
 refractory phases, using the *x*, *y* and *z* ratios outlined in table
 \@ref(tab:OMChem-table). For example, `xlab` is the carbon fraction of
 $POM_L$, which is usually set to around 106, while `zlab` is the $POM_L$
 phosphorus fraction, which is usually set to around 1. These ratios are
-fixed throughout the simulation. The *y* nitrogen fraction is also used
-to set the amount of $NH_4^+$ released per carbon during organic matter
-oxidation.
+fixed throughout the simulation. The *x*, *y* and *z* coefficients are used to set the proportions of the other species in the redox equation (such as oxidants and reduction products), the acid-base products (such as $HCO_3^-$ and $CO_2$) and the amounts of free $NH_4^+$ and $PO_4^{3-}$ released from organic matter degradation oxidation.
+
+The *x*, *y* and *z* ratios in table \@ref(tab:OMChem-table) are written in the standard form of the equations in the sediment model literature. The carbon in the organic matter is assumed to be carbon (0) and each carbon atom requires four electrons from the oxidant to form the carbon (IV) in $CO_2$, and therefore *x* carbons require 4*x* electrons. In practice, the model code performs reactions per carbon, and so all of these coefficients are divided by *x*, for all reactants and products. This is done in order to make the reactions `OMModel` 1 equivalent to `OMModel` 2.
 
 Using `OMModel` = 2, the C:N:P ratio is set by the concentrations of
-separate organic species, such as $POC_L$, $PON_L$ and $POP_L$. The
+separate organic species, such as $POC_L$, $PON_L$ and $POP_L$, as opposed to the $POM$ phases of `OMModel` 1. The
 ratio is fixed by the boundary and initial conditions, however, if the
 boundary is dynamic, then the ratio can change through the course of the
-simulation.
+simulation. Only $DOC_L$ participates in the redox reactions, and so the equivalent of *CH~2~O* in table \@ref(tab:OMChem-table) is $DOC_L$. The release of organic N as free $NH_4^+^$ is calculated $PON_L$ oxidation at `ponl2dic` and the release of organic P as free $PO_4^{3-}$ as $POP_L$ at `popl2dic`. 
 
 Using `OMModel` = 3 is similar to `OMModel` = 1. The ratios are applied
 to $POM_1$, $POM_2$ etc. as `xPOM1`, `yPOM2` etc.
@@ -529,7 +539,7 @@ library(readxl)
 OMChem_tab <- read_xlsx("tables/23-sediment_biogeochemistry/UserManual.xlsx", sheet="OMChem3")
 # View(sediment_VarsTable)
 OMChem_Groups <- unique(OMChem_tab$Group)
-  kable(OMChem_tab[,1:2],"html", escape = F, align = "c"
+  kable(OMChem_tab[,1:3],"html", escape = F, align = "c"
         , caption = "Primary terminal redox reactions. x, y and z are stoichiometric coefficients.",bootstrap_options = "hover")%>%
   
   #   
@@ -560,8 +570,8 @@ OMChem_Groups <- unique(OMChem_tab$Group)
     
   row_spec(0, background = "#14759e", bold = TRUE, color = "white") %>%
   column_spec(1, width_min = "10em" ,color="black",bold = T) %>%
-  column_spec(2, width_min = "15em" ,color="black") %>%
-  # column_spec(3, width_min = "15em" ,color="black") %>%
+  column_spec(2, width_min = "2em" ,color="black") %>%
+  column_spec(3, width_min = "15em" ,color="black") %>%
   # column_spec(4, width_min = "15em") %>%
   row_spec(1:4, background = 'white')  %>%
  scroll_box(width = "770px", height = "40em",fixed_thead = FALSE)
@@ -969,6 +979,25 @@ Along with the nitrogen--organic matter redox reactions, there are sets
 of nitrogen oxidation reactions, where the oxidant is $O_2$ or $NO_2^-$.
 These are outlined in more detail in the AED inorganic nitrogen chapter.
 
+##### *Calculation of the primary reactions* {#SedCalculationofthePrimaryReactions .unnumbered}
+
+The chemical reactions in table \@ref(tab:OMChem-table) represent the overall process, however, the model code does not contain them in that form. A description of the numerical solution is presented below in the section [Numerical solution](#SedNumericalSolution) and a summary of the process as it pertains to primary reactions is given here. The model code contains:
+
+**The 'Reaction' function**: the balance of each reaction rate for each species.
+
+**The 'Rates' function**: the reaction rates, as the product of 
+
+-   the species, 
+-   the kinetic constants, 
+-   the stoichiometric coefficients and 
+-   the factors.
+
+<center>
+```{r OMCalcs-1, echo=FALSE, fig.cap="An illustration of one example of how the reaction rates are calculated in the model code. The balance equation is calculated as the gains and losses from the individual rates, and the rates are calculated from constants or other variables.", fig.show="hold", out.width="100%" ,fig.align='center'}
+knitr::include_graphics("images/23-sediment_biogeochemistry/OMSetup/EquationStructure-02.png")
+```
+</center>
+
 #### Secondary Redox Reactions {#SedSecondaryRedoxReactions}
 
 The reactions of chemical species produced by the primary redox
@@ -1003,6 +1032,31 @@ SecondChem_tab <- read_xlsx("tables/23-sediment_biogeochemistry/UserManual.xlsx"
 ```
 
 </center>
+
+
+
+
+
+##### *Calculation of the secondary reactions* {#SedCalculationoftheSecondaryReactions .unnumbered}
+
+As with the [primary reactions](SedCalculationofthePrimaryReactions), the secondary redox reactions are present in the code as the combination of 
+
+**The 'Reaction' function**: the sum of the rates of change of each species.
+
+**The 'Rates' function**: the reaction rates, as the product of 
+
+-   the species, 
+-   the kinetic constants, 
+-   the stoichiometric coefficients and 
+-   the factors.
+
+
+<center>
+```{r OMCalcs-2, echo=FALSE, fig.cap="An illustration of one example of how the reaction rates are calculated in the model code. The balance equation is calculated as the gains and losses from the individual rates, and the rates are calculated from constants or other variables.", fig.show="hold", out.width="100%" ,fig.align='center'}
+knitr::include_graphics("images/23-sediment_biogeochemistry/OMSetup/EquationStructure-03.png")
+```
+</center>
+
 
 #### Equilibrium Geochemistry {#EquilibriumGeochemistry}
 
@@ -2367,7 +2421,7 @@ knitr::include_graphics("images/23-sediment_biogeochemistry/GridStructure/ZoneAv
 knitr::include_graphics("images/23-sediment_biogeochemistry/GridStructure/ZoneAveraging-05.png")
 ```
 
-#### Numerical solution
+#### Numerical solution {#SedNumericalSolution}
 
 The time-dependent processes in CANDI-AED are solved by an ordinary
 differential equation solver DVODE. The details of the numerical
@@ -3718,6 +3772,13 @@ include
     m^-2^)\
 -   *Solids_m3_per_m2*: The volume of sediment solids (m^3^ m^-2^)\
 
+### Mass balance calculation
+
+The function *Mass* within the CANDI-AED code calculates the mass balance of some species.
+
+Firstly it calculates *FOM_in*, which is the influx of 
+
+
 <!-- ### netcdf outputs: .nc{-} -->
 
 <!-- As with other modules, the NetCDF files include the model outputs.  -->
@@ -4149,6 +4210,12 @@ were calculated. The [sediment modelling component of the
 project](https://aquaticecodynamics.github.io/cdm-science/sediment-biogeochemistry.html)
 in particular looked at the effect of hypersalinity on bioturbation and
 bioirrigation rates, and the resulting effects such as denitrification.
+
+
+```{r CoorongSVG-1, echo=FALSE, fig.cap="Test",fig.show='hold',fig.align='center', out.width = '90%'}
+knitr::include_graphics("images/23-sediment_biogeochemistry/VCW/t_D_C_6panel_oxy.svg")
+```
+
 
 ## References
 
