@@ -1,4 +1,4 @@
-# (PART)  Supporting Material {-}
+# (PART)  SUPPORTING MATERIAL {-}
 
 # Generic Utilities & Functions {#genericUtilitiesFunctions}
 
@@ -57,3 +57,38 @@ kable(table2,"html", escape = F, align = "c", caption = "Options for gas exchnag
 </center>
 
 <!-- ## Biological -->
+
+### Temperature scaling {#TEMP}
+
+To allow for reduced growth at non-optimal temperatures, a temperature function is used where the maximum productivity occurs at a temperature $T_{OPT}$; above this productivity decreases to zero at the maximum allowable temperature, $T_{MAX}$. Below the standard temperature, $T_{STD}$ the productivity follows a simple Arrenhius scaling formulation. In order to fit a function with these restrictions the following conditions are assumed: at $T=T_{STD}$,$\ {\ \Phi}_{tem}\left(T\right)=1$ and at  $T=T_{OPT},\ \ \frac{d\Phi_{tem}\left(T\right)}{dT}=0$, and at $T=T_{MAX}$,$\ \Phi_{tem}\left(T\right)=0$. This can be numerically solved using Newton’s iterative method and can be specific for each of the relevant biological groups. The temperature function is calculated according to (Griffin et al. 2001):
+<center>
+<br>
+\begin{equation}
+\Phi_{tem}^{grp}\left(T\right)=\vartheta_{grp}^{T-20}-\vartheta_{grp}^{k\left[T-{c1}_{grp}\right]}+{c0}_{grp}
+(\#eq:temp1)
+\end{equation}
+<br>
+</center>
+where ${c1}_{grp}$  and ${c0}_{grp}$  are solved numerically given input values of:  $T_{grp}^{std}$, $T_{grp}^{opt}$ and $T_{grp}^{max}$.
+
+### Photosynthesis-Irradiance {#P_I}
+
+The level of light limitation on phytoplankton growth can be modelled as photoinhibition or non-photoinhibition. In the absence of significant photoinhibition, Webb et al. (1974) suggested a relationship for the fractional limitation of the maximum potential rate of carbon fixation for the case where light saturation behavior was absent (Talling, 1957), and the equations can be analytically integrated with respect to depth (Hipsey and Hamilton, 2008). For the case of photoinhibition, the light saturation value of maximum production ($I_S$) is used and the net level effect can be averaged over the cell by integrating over depth.
+
+The AED modules can deploy from a library of several light functions, including those summarised in a review by Baklouti et al. (2006). The user selects the sensitivity to light according to a photosynthesis-irradiance (P-I curve) formulation, with each species set to use either a non-photoinhibited or photoinhibited method, according to the options in Table 9.
+
+```{r echo=FALSE,message=FALSE, warning=FALSE}
+library(knitr)
+knit_hooks$set(customcap= function(before, options, envir) {
+  if(!before) {
+    paste('<p class="caption"> (\\#fig:chunk1)',options$customcap,"</p>",sep="")
+    }
+    })
+```
+
+
+```{r, echo=FALSE,message=FALSE, warning=FALSE, customcap="Comparison of light limitation across various model approaches.", out.width = '100%'}
+htmltools::includeHTML('phytoplankton_plots/app.html')
+```
+
+

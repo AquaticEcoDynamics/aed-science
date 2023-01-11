@@ -1,14 +1,739 @@
+---
+editor_options: 
+  markdown: 
+    wrap: 72
+---
+
 # Macroalgae
 
 ## Contributors
+
+Matthew R. Hipsey
+
 ## Overview
+
+Benthic macroalgae represent a broad group of plants that are common in
+freshwater, estuarine and marine ecosystems. Macroalgal canopies can
+range in size from centimetres to meters tall and exhibit a range of
+different growth strategies. A common model application is simulating
+filamentous algae (e.g. *Ulva*, *Cladophora*, *Chaetomorpha* etc.) which
+are characterised by long, stringy, hairlike threads of connected cells,
+that often form nuisance blooms in eutrophic waters. Whilst macroalgae
+is a natural part of many ecosystems, excessive biomass buildup can
+impact upon related communities (e.g. seagrass), and when biomass
+detaches from the bottom substrate through the process called sloughing,
+then large accumulations become a management challenge in shallow waters
+and beaches. The $\mathrm{AED}$ macroalgal module ($\mathrm{MAG}$)
+allows for a wide variety of options, allowing users to configure
+various species and/or growth forms, and for tailoring how physiological
+processes are resolved in response to light, temperature, salinity,
+nutrients and currents.
+
 ## Model Description
-###	Process Descriptions
+
+The main balance equation for a single configured benthic macroalgal
+group, denoted $MAG_m$, is generically described as:
+
+```{=tex}
+\begin{eqnarray}
+\frac{d}{dt}MAG_{m} =  &+&  \overbrace{ f_{gpp}^{MAG_{m}} - f_{rsp}^{MAG_{m}} - f_{mor}^{MAG_{m}} - f_{exc}^{MAG_{m}} - f_{slg}^{MAG_{m}} }^\text{aed_macroalgae} \\ (\#eq:mag1)
+\end{eqnarray}
+```
+This mass conservation resolves the main processes controlling the rate
+of macroalgal biomass accumulation at any location, considering gross
+primary productivity, respiration, mortality, excretion and exudation,
+and the potential loss of mass due to detachment sloughing. The module
+supports a simple method for resolving a macroalgal group's biomass by
+assuming a constant intracellular C:N:P ratio, which leads to a single
+state variable for carbon biomass, with the N and P content computed as
+required based on the C concentration at any point in time or space and
+fixed stoichiometry. The module also supports the simulation of dynamic
+intracellular N and P stoichiometry should this be required. With this
+optional configuration, state variables are also created for macroalgal
+biomass N and P content (termed $MIN$ and $MIP$, respectively), and
+resolved based on:
+
+\begin{eqnarray}
+\frac{d}{dt}MIN_{m} =  
+&+&   \overbrace{ f_{upt}^{MIN_{m}} - f_{rsp}^{MIN_{m}} - f_{mor}^{MIN_{m}} - f_{exc}^{MIN_{m}} - f_{slg}^{MIN_{m}} }^\text{aed_macroalgae} \\ (\#eq:mag2)
+\end{eqnarray} and \begin{eqnarray}
+\frac{d}{dt}MIP_{m} =  
+&+&   \overbrace{ f_{upt}^{MIP_{m}} - f_{rsp}^{MIP_{m}} - f_{mor}^{MIP_{m}} - f_{exc}^{MIP_{m}} - f_{slg}^{MIP_{m}} }^\text{aed_macroalgae} \\ (\#eq:mag3)
+\end{eqnarray}
+
+<br>
+
+where the terms are mirrored in the C, N and P balance equations, but
+can vary dynamically thereby leading to variable stoichiometry. Biomass
+is able to detach from the benthic macroalgal mat - termed 'slough'
+($SLG$) - once sloughing occures, then this component of mass becomes
+mobile within the water column and subject to transport processes within
+the water domain:
+
+```{=tex}
+\begin{eqnarray}
+\frac{D}{Dt}SLG =  \color{darkgray}{ \mathbb{M} + \mathcal{S} } \quad
+&+&   \overbrace{ \hat{f}_{slg}^{MAG_{m}} + f_{gpp}^{SLG} - f_{rsp}^{SLG} - f_{mor}^{SLG} - f_{exc}^{SLG} - f_{set}^{SLG}  }^\text{aed_macroalgae} \\ (\#eq:slg1)
+\end{eqnarray}
+```
+where $\mathbb{M}$ and $\mathcal{S}$ refer to water mixing and boundary
+source terms, respectively. The main processes controlling the rate of
+macroalgal biomass accumulation are gross primary productivity,
+respiration, mortality, excretion and exudation, and sloughing. The N
+and P moved from the MAG pool into the SLG pool is also tracked
+accordingly.
+
+A detailed overview of the above functions for C, N and P for each of
+the various process rates is provided next. Users are able to customise
+each of these functions or disabled them as required.
+
+### Growth-form Options
+
+The $\mathrm{MAG}$ module can be applied to a variety of contexts and
+these include situations where macroalgal biomass may be fixed and/or
+potentially mobile, and depending on the seasonal development of the
+biomass, or the local configuration, it may be distributed variably
+within the water column (e.g. bottom, middle, surface). The module
+therefore supports a range of pre-configured "growth-form" options, that
+can be chosen or adapted to a specific requirement.
+
+1.  Benthic only (default)
+
+2.  Throughout water-column
+
+3.  Surface accumulation
+
+Depending on the selected growth-form
+option, the module will use the relevant environmental parameters (as
+required within the process descriptions that are described next). For
+the surface accumulation option, this assumes the biomass is at the water
+surface and receives the incident light and experiences the surface
+layer water temperature, salinity and nutrients. These options can also be combined with the `slough_model` option, to
+allow complete configuration of macroalgal behaviour.
+
+In advanced applications the above forms can be linked through a
+time-sequence, allowing the process of aging to be captured. This can be
+useful for shallow lakes or lagoons, whereby the model parameterises the
+shift in mass from benthic (where it starts to develop early in the
+season), to within the water column as the canopy expands, to a surface
+expression late in the bloom cycle.
+
+### Process Descriptions
+
+#### Photosynthesis & Nutrient Uptake {.unnumbered}
+
+The module includes various approaches from the literature for resolving
+the gross rate of productivity, $f_{gpp}^{MAG}$. In general, for each
+macroalgal group, $m$, the maximum potential growth rate at 20˚C is
+multiplied by non-dimensional expressions for limitation by light,
+phosphorus, nitrogen and salinity (when configured).
+
+The way these limitations are resolved and vertically integrated
+throughout the canopy are different for each of the several options that
+are implemented from the literature. These include a generic form
+(similar to the phytoplankton module approach), an implementation of the
+Cladophora Growth Model (CGM), a newer Cladophora model (GLCMv3) and the
+version from the Coorong Dynamics Model (CDM). These are outlined below
+as:
+
+::: {.panelset .sideways}
+::: panel
+[General]{.panel-name}
+
+::: {.bluebox data-latex=""}
+\begin{equation}
+ \text{General AED growth equation :}
+  (\#eq:mag5)
+ \end{equation} \begin{align}
+  {f_{gpp}^{MAG_{m}}} &= \:  [MAG_{m}] \times \underbrace{{R_{growth}^{MAG_{m}}}}_{\text{Max growth rate @ 20˚C}}  \times
+ \end{align} \begin{align}
+   \underbrace{(1-{k_{pr}^{MAG_{m}}})}_{\text{Photorespiratory loss}} \times \underbrace{{\Phi_{tem}^{MAG_{m}}}(\small{T})}_{\text{Temperature scaling}}  \times \underbrace{\Phi_{sal}^{MAG_{m}}(\small{S})}_{\text{Salinity limitation}} \times
+ \end{align} \begin{align}
+  &{\text{min}}\begin{Bmatrix}\underbrace{\small{\Phi_{light}^{MAG_{m}}}(\small{I})}_{\text{Light limitation}},\underbrace{\small{\Phi_{N}^{MAG_{m}}(\small{NO_{3},NH_{4},MIN_{m}})}}_{\text{N limitation}},\underbrace{ \small{ \Phi_{P}^{MAG_{m}}}(\small{PO_{4},MIP_{m}})}_{\text{P limitation}}\end{Bmatrix} 
+ \end{align}
+:::
+:::
+
+::: panel
+[CGM]{.panel-name}
+
+::: {.bluebox data-latex=""}
+\begin{equation}
+ \text{Cladophora Growth Model approach :}
+  (\#eq:mag6)
+ \end{equation} \begin{align}
+  {f_{gpp}^{MAG_{m}}} &= \:  [MAG_{m}] \times \underbrace{{R_{growth}^{MAG_{m}}}}_{\text{Max growth rate @ 20˚C}}  \times
+ \end{align} \begin{align}
+    \underbrace{{\Phi_{T,I}^{MAG_{m}}}(\small{I,T})}_{\text{Graham I,T function}} \times \underbrace{ \small{ \Phi_{P}^{MAG_{m}}}(\small{PO_{4},MIP_{m}})}_{\text{P limitation}} \times \underbrace{ \small{ \Phi_{D}^{MAG_{cgm}} [ \small{MAG_{cgm},MAG_{maxp}} ]}_{\text{Self shading}}
+ \end{align}
+:::
+:::
+
+::: panel
+[GLCMv3]{.panel-name}
+
+::: {.bluebox data-latex=""}
+\begin{equation}
+ \text{Great Lakes Cladophora Model V3 approach :}
+  (\#eq:mag7)
+ \end{equation} \begin{align}
+  {f_{gpp}^{MAG_{m}}} &= \:  [MAG_{m}] \times \underbrace{{R_{growth}^{MAG_{m}}}}_{\text{Max growth rate @ 20˚C}}  \times
+ \end{align} \begin{align}
+    \underbrace{{\Phi_{T,I}^{MAG_{m}}}(\small{I,T})}_{\text{Kuczynski I,T function}} \times \underbrace{ \small{ \Phi_{P}^{MAG_{m}}}(\small{PO_{4},MIP_{m}})}_{\text{P limitation}} 
+ \end{align}
+:::
+:::
+
+::: panel
+[CDM (Ulva)]{.panel-name}
+
+::: {.bluebox data-latex=""}
+\begin{equation}
+ \text{Coorong Dynamics Model Ulva approach :}
+  (\#eq:mag8)
+ \end{equation} \begin{align}
+  {f_{gpp}^{MAG_{m}}} &= \:  [MAG_{m}] \times \underbrace{{R_{growth}^{MAG_{m}}}}_{\text{Max growth rate @ 20˚C}}  \times
+ \end{align}
+:::
+:::
+:::
+
+\
+
+For the generic model, the response functions for light, temperature and
+salinity ($\Phi_I[\small{I}]$, $\Phi_T[\small{T}]$, and
+$\Phi_S[\small{S}]$) are able to be chosen from those in
+[#genericUtilitiesFunctions][Chapter 16].
+
+**Light and canopy self-shading**: The light available for
+photosynthesis is computed based on the light available within the
+macroalgal canopy, and the various model implementations approach this
+aspect differently. In general, the light incident at the top of the
+canopy, $I_{canopy}$, is estimated based on an estimate of the mean
+canopy height, $h_{MAG}$, and then light within the canopy is further
+attenuated as it penetrates down. Canopy height (in $m$) is determined
+based on the biomass, for example:
+
+```{=tex}
+\begin{equation}
+  h_{MAG} =\left\{
+  \begin{array}{@{}ll@{}}
+    \alpha_{hgtc}\: (MAG)   , & \text{linear form}\\
+    \alpha_{hgtc}\: (MAG)^{\beta_{hgtc}}   , & \text{power-law form; $set \beta \ne 1$}\\
+    f[MAG]   , & \text{user implemented function}\\
+  \end{array}\right.
+  (\#eq:mag9)
+\end{equation}
+```
+where $\alpha_{hgtc}$ and $\beta_{hgtc}$ are species-specific
+coefficients. The additional extinction coefficient due to the
+macroalgal biomass is accounted for, also computed as a function of
+biomass:
+
+```{=tex}
+\begin{equation}
+  K_{d}^{cgm} =\left\{
+  \begin{array}{@{}ll@{}}
+    \alpha_{extc}\: (MAG)   , & \text{linear form}\\
+    \alpha_{extc}\: (MAG)^{\beta_{extc}}   , & \text{power-law form; $set \beta \ne 1$}\\
+    f[MAG]   , & \text{user implemented function}\\
+  \end{array}\right.
+  (\#eq:mag10)
+\end{equation}
+```
+In the case of the **CGM**, the irradiance at the top of the canopy is
+used in $\Phi_I[\small{I_{canopy}}]$, which is then scaled for
+self-shading based on the biomass density relative to a maximum expected
+value, $MAG_{maxp}$. In this model, the self-shading modifier,
+$\Phi_{D}$, is computed from:
+
+```{=tex}
+\begin{equation}
+\Phi_{D}^{MAG_{cgm}} [ \small{MAG_{cgm},MAG_{maxp}} ] = \left(1-\frac{MAG_{cgm}}{MAG_{maxp}[I_{canopy}]}\right)
+(\#eq:mag11)
+\end{equation}
+```
+where $MAG_{maxp}$, is set tp be depth-dependent by computing from the
+mean light intensity at the top of the canopy, from:
+
+```{=tex}
+\begin{equation}
+MAG_{maxp}[I_{canopy}] = ( 1.18 \: ^7\!\overline{I_{canopy}} - 58.7 ) \times \chi_{DW:C}^{cgm}(1000/12) 
+(\#eq:mag12)
+\end{equation}
+```
+where $^7\!\overline{I_{canopy}}$ is the moving average of $I^{PAR}$ at
+the top of the canopy over the past 7 days.
+
+In the case of the **GLCMv3** model, the canopy is discretized into 1cm
+layers and the routine will loop through each layer to work out the
+light attenuation (considering $K_{e}^{cgm}$, Eq \@ref(eq:mag10)) and
+the net productivity of each 1cm layer; this is then vertically
+integrated over the canopy layers to get the net areal productivity.
+
+**Nutrient limitation**: The rate of growth is subject to limitation by
+availability of either N or P (or both), via the functions on growth :
+$\Phi_{P}^{MAG}$ and/or $\Phi_{N}^{MAG}$. These are computed based on
+the external or internal availability of the respective nutrient pool,
+depending on the option $\Theta_{din}^{mag}$ and $\Theta_{dip}^{mag}$
+set for each group, $m$. Where $\Theta = 0\text{ or }1$
+(`simINDynamics = 0` or `simIPDynamics = 0`), then an external Monod
+approach is used to limit growth, and where $\Theta = 2$
+(`simINDynamics = 2` or `simIPDynamics = 2`) then an internal Droop
+style limitation on growth is employed. These limitation functions are
+summarized as:
+
+```{=tex}
+\begin{equation}
+  \Phi_{P}^{MAG}(\small{PO_{4},\chi_{P:C}^{MAG}}) =\left\{
+  \begin{array}{@{}ll@{}}
+    \frac{PO_4}{K_{P}^{MAG}+PO_4}   , & \text{Monod-style ($\Theta_{dip}^{mag} < 2$)}\\
+    \frac{\chi_{Pmax}^{MAG}}{ \chi_{Pmax}^{MAG} - \chi_{Pmin}^{MAG} } \left( 1 - \frac{\chi_{Pmin}^{MAG}}{\chi_{P:C}^{MAG}}\right)    , & \text{Droop-style ($\Theta_{dip}^{mag} = 2$)}\\
+  \end{array}\right.
+  (\#eq:mag13)
+\end{equation}
+```
+for phosphorus, and for nitrogen:
+
+```{=tex}
+\begin{equation}
+  \Phi_{N}^{MAG}(\small{DIN,\chi_{N:C}^{MAG}}) =\left\{
+  \begin{array}{@{}ll@{}}
+    \frac{DIN}{K_{N}^{MAG}+DIN}   , & \text{Monod-style ($\Theta < 2$)}\\
+    \frac{\chi_{Nmax}^{MAG}}{ \chi_{Nmax}^{MAG} - \chi_{Nmin}^{MAG} } \left( 1 - \frac{\chi_{Nmin}^{MAG}}{\chi_{N:C}^{MAG}}\right)    , & \text{Droop-style ($\Theta = 2$)}\\
+  \end{array}\right.
+  (\#eq:mag14)
+\end{equation}
+```
+where $DIN$ is the sum of $NO_x$ and $NH_4$. For both N and P
+(generically denoted as $X$) in the Droop style formula,
+$\chi_{X:C}^{MAG}$ is computed dynamically for each simulated macroalgal
+species, $m$, as $\chi_{X:C}^{MAG_m}[MIX,MAG]=MIX_m/MAG_m$, and the
+users provides a minimum nutritional requirement ($\chi_{Xmin}^{MAG}$),
+and the potential for luxury storage (upto a maximum of
+$\chi_{Xmax}^{MAG})$.
+
+**Nutrient uptake**: Nutrient uptake by macroalgal filaments or leaves
+is modelled in a similar way as for phytoplankton in aed_phytoplankton,
+for both N and/or P . Where a fixed C:N and/or C:P ratio is configured,
+then the uptake rate is simply computed from the gross productivity rate
+and the stoichiometry coefficients ($\chi_{X:C}$):
+
+```{=tex}
+\begin{equation}
+f_{upt}^{MIX} = \chi_{Xcon}^{MAG} \: f_{gpp}^{MAG}  
+(\#eq:mag15)
+\end{equation}
+```
+where $X$ generically refers to either N or P as appropriate. In the
+case where N or P is chosen to dynamically vary in response to internal
+and external nutrient levels ($\Theta_{din}^{mag}$ and
+$\Theta_{dip}^{mag}$ set as `simINDynamics = 2` and/or
+`simIPDynamics = 2`), then the more advanced uptake rate is applied,
+which allows for the nutrient stoichiometry to vary between a minimum
+($\chi_{Xmin}^{MAG}$) and maximum ($\chi_{Xmax}^{MAG})$) in response to
+changing internal and external nutrient availability. The uptake rate is
+computed independent of the photosynthesis rate as:
+
+```{=tex}
+\begin{equation}
+f_{upt}^{MIX} = R_{Xuptake}^{MAG} \: \Phi_{tem}^{MAG}(\small{T}) \: \frac{DIX}{K_X^{MAG}+DIX} \frac{\chi_{X:C}^{MAG} - \chi_{Xmin}^{MAG}}{\chi_{Xmax}^{MAG} - \chi_{Xmin}^{MAG}} 
+(\#eq:mag16)
+\end{equation}
+```
+where, as above, $\chi_{X:C}^{MAG}$ is computed dynamically as
+$\chi_{X:C}^{MAG_m}[MIX,MAG]=MIX_m/MAG_m$,
+
+The generic approach outlined above is modified slightly for the CGM and
+GLCMv3 *Cladophora* model options. For the GLCMv3 model, a constant
+nitrogen configration is used ($\Theta_{din}^{mag}=0$), and instead of
+Eq. 15.16 a power-law relationship is used to scale the uptake rate of
+$PO_4$ based on the internal quotient (Kuczynski et al., 2022):
+
+```{=tex}
+\begin{equation}
+f_{upt}^{MIP} =  R_{Puptake}^{MAG} \left(\frac{MIP}{MAG}\right)^{\beta_{puptake}} \:  \frac{PO_4}{K_{PO4}^{MAG}+PO_4}
+(\#eq:mag17)
+\end{equation}
+```
+where $\beta$ ; this follows the Kuczynski et al. (2022), which is
+denoted as $\alpha Q^ \beta$, but consistent with the AED framework.
+
+#### Respiration, Excretion and Mortality {.unnumbered}
+
+In general, metabolic loss is resolved using a single function that
+accounts for respiration, natural mortality and excretion, as modelled
+with a single 'respiration' rate coefficient, $R_{resp}^{MAG}$, which is
+the mean loss rate \@ 20C, modified for variable temperature and
+salinity conditions:
+
+```{=tex}
+\begin{equation}
+\mathcal{R}_{resp}^{MAG}[T,S] = R_{resp}^{{MAG}}\ \ \Phi_{sal}^{{MAG}}\left[S\right]\ \ \left(\vartheta_{resp}^{{MAG}}\right)^{T-20}
+(\#eq:mag18)\\
+\end{equation}
+```
+To close the balance equations, this loss rate is divided into the pure
+respiratory fraction $f_{res}$ and losses due to mortality and
+excretion. The constant $f_{DOM}$ is the fraction of mortality and
+excretion to the dissolved organic pool with the remainder into the
+particulate organic pool. Nutrient losses through mortality and
+excretion are modelled using the same rates as far carbon, but applied
+to the N or P concentration ($MIN$ or $MIP$ respectively).
+
+<center>
+<br> 
+
+\begin{align*}
+f_{rsp}^{{MAG}}&=k_{fres}^{{MAG}}\ \mathcal{R}_{resp}^{MAG} \: MAG 
+(\#eq:mag19)\\
+f_{exc}^{{MAG}}&=\left(1-k_{fres}^{{MAG}}\right)\ k_{fdom}^{{MAG}}\ \mathcal{R}_{resp}^{MAG} \: MAG
+(\#eq:mag20)\\
+f_{mor}^{{MAG}}&=\left(1-k_{fres}^{{MAG}}\right)\ \left({1-k}_{fdom}^{{MAG}}\right)\ \mathcal{R}_{Resp}^{MAG} \: MAG
+(\#eq:mag21)\\
+f_{exc}^{{MIN}_a}&=k_{fdom}^{{MAG}_a}\ \mathcal{R}_{resp}^{MAG} \: MIN
+(\#eq:mag22)\\
+f_{mor}^{{MIN}_a}&=\left(1-k_{fdom}^{{MAG}_a}\right)\ \mathcal{R}_{resp}^{MAG} \: MIN
+(\#eq:mag23)\\
+f_{exc}^{{MIP}_a}&=k_{fdom}^{{MAG}_a}\ \mathcal{R}_{resp}^{MAG} \: MIP
+(\#eq:mag24)\\
+f_{mor}^{{MIP}_a}&=\left(1-k_{fdom}^{{MAG}_a}\right)\ \mathcal{R}_{resp}^{MAG} \: MIP
+(\#eq:mag25)\\
+\end{align*} 
+
+<br>
+</center>
+
+For the internal nutrient model the dynamically calculated internal
+nutrient concentrations are used directly here, and for the static model
+$MIN$ or $MIP$ is calculated from the fixed stoichiometry
+$MIX_m=\chi_{Xcon}^{MAG_m}\:MAG_m$.
+
+The salinity effect on respiration and mortality is optional, with
+functions to allow for species-specific effects as given by various
+quadratic formulations, depending on the groups desired tolerance to
+salinity; see the options in [#genericUtilitiesFunctions][Chapter 18]
+for further information and choose the apprpriate salmodel
+$Theta_{sal}^{MAG}$ for the species accordingly. Note that these can be
+configured as a modifier either on loss (and used as above;
+$\Theta_{sal}^{MAG}<0$), or via growth reduction (in Eq
+...$\Theta_{sal}^{MAG}>0$), and so users must choose just one approach.
+
+For the CGM and GLCMv3 models, the respiration rate is resolved using on
+a species-specific function for Cladophora, based on experimental data
+from Graham et al. (XXX).
+
+#### Sloughing, Slough Breakdown and Burial {.unnumbered}
+
+Sloughing is the process by which filaments or tissue detach from the
+bottom (or within-water) fixed substrate, and the material becomes
+mobile and subject to transport by currents and either settling or
+floating. This process is known to be largely species and application
+specific with various approaches to model sloughing available in the
+literature. The MAG module implements three options, selected via $\Theta_{slg}^{MAG}$ (`slough_model`),
+
+### Optional Module Links
+
+### Feedbacks to the Host Model
+
 ###	Variable Summary
-###	Parameter Summary
-###	Optional Module Links
-###	Feedbacks to the Host Model
+
+The default variables created by this module, and the optionally required linked variables needed for full functionality of this module are summarised in Table \@ref(tab:25-statetable). The diagnostic outputs able to be output are summarised in Table \@ref(tab:25-diagtable).
+
+
+#### State Variables {-}
+
+```{r 25-statetable, echo=FALSE, message=FALSE, warning=FALSE}
+library(knitr)
+library(kableExtra)
+library(readxl)
+library(rmarkdown)
+theSheet <- read_excel('tables/aed_variable_tables.xlsx', sheet = 14)
+theSheet <- theSheet[theSheet$Table == "State variable",]
+theSheetGroups <- unique(theSheet$Group)
+theSheet$`AED name` <- paste0("`",theSheet$`AED name`,"`")
+
+for(i in seq_along(theSheet$Symbol)){
+  if(!is.na(theSheet$Symbol[i])==TRUE){
+    theSheet$Symbol[i] <- paste0("$$",theSheet$Symbol[i],"$$")
+  } else {
+    theSheet$Symbol[i] <- NA
+  }
+}
+for(i in seq_along(theSheet$Unit)){
+  if(!is.na(theSheet$Unit[i])==TRUE){
+    theSheet$Unit[i] <- paste0("$$\\small{",theSheet$Unit[i],"}$$")
+  } else {
+    theSheet$Unit[i] <- NA
+  }
+}
+for(i in seq_along(theSheet$Comments)){
+  if(!is.na(theSheet$Comments[i])==TRUE){
+    theSheet$Comments[i] <- paste0("",theSheet$Comments[i],"")
+  } else {
+    theSheet$Comments[i] <- " "
+  }
+}
+
+kbl(theSheet[,3:NCOL(theSheet)], caption = "Macroalgae - *state* variables", align = "l",) %>%
+  pack_rows(theSheetGroups[1],
+            min(which(theSheet$Group == theSheetGroups[1])),
+            max(which(theSheet$Group == theSheetGroups[1])),
+            background = '#ebebeb') %>%
+  pack_rows(theSheetGroups[2],
+            min(which(theSheet$Group == theSheetGroups[2])),
+            max(which(theSheet$Group == theSheetGroups[2])),
+            background = '#ebebeb') %>%
+  row_spec(0, background = "#14759e", bold = TRUE, color = "white") %>%
+	kable_styling(full_width = F,font_size = 11) %>%
+	column_spec(2, width_min = "7em") %>%
+	column_spec(3, width_max = "18em") %>%
+	column_spec(4, width_min = "10em") %>%
+	column_spec(5, width_min = "5em") %>%
+	column_spec(7, width_min = "10em") %>%
+	column_spec(7, width_max = "20em") %>%
+  scroll_box(width = "770px", height = "820px",
+             fixed_thead = FALSE)
+```
+
+<br>
+
+
+#### Diagnostics {-}
+
+
+```{r 25-diagtable, echo=FALSE, message=FALSE, warning=FALSE}
+library(knitr)
+library(kableExtra)
+library(readxl)
+library(rmarkdown)
+theSheet <- read_excel('tables/aed_variable_tables.xlsx', sheet = 14)
+theSheet <- theSheet[theSheet$Table == "Diagnostics",]
+theSheetGroups <- unique(theSheet$Group)
+theSheet$`AED name` <- paste0("`",theSheet$`AED name`,"`")
+
+for(i in seq_along(theSheet$Symbol)){
+  if(!is.na(theSheet$Symbol[i])==TRUE){
+    theSheet$Symbol[i] <- paste0("$$",theSheet$Symbol[i],"$$")
+  } else {
+    theSheet$Symbol[i] <- NA
+  }
+}
+for(i in seq_along(theSheet$Unit)){
+  if(!is.na(theSheet$Unit[i])==TRUE){
+    theSheet$Unit[i] <- paste0("$$\\small{",theSheet$Unit[i],"}$$")
+  } else {
+    theSheet$Unit[i] <- NA
+  }
+}
+for(i in seq_along(theSheet$Comments)){
+  if(!is.na(theSheet$Comments[i])==TRUE){
+    theSheet$Comments[i] <- paste0("",theSheet$Comments[i],"")
+  } else {
+    theSheet$Comments[i] <- " "
+  }
+}
+
+kbl(theSheet[,3:NCOL(theSheet)], caption = "Macroalgae - *diagnostic* variables", align = "l",) %>%
+  pack_rows(theSheetGroups[1],
+            min(which(theSheet$Group == theSheetGroups[1])),
+            max(which(theSheet$Group == theSheetGroups[1])),
+            background = '#ebebeb') %>%
+  pack_rows(theSheetGroups[2],
+            min(which(theSheet$Group == theSheetGroups[2])),
+            max(which(theSheet$Group == theSheetGroups[2])),
+            background = '#ebebeb') %>%
+  pack_rows(theSheetGroups[3],
+            min(which(theSheet$Group == theSheetGroups[3])),
+            max(which(theSheet$Group == theSheetGroups[3])),
+            background = '#ebebeb') %>%
+  row_spec(0, background = "#00796b", bold = TRUE, color = "white") %>%
+  kable_styling(full_width = F,font_size = 11) %>%
+            column_spec(2, width_min = "7em") %>%
+	          column_spec(3, width_max = "18em") %>%
+	          column_spec(4, width_min = "10em") %>%
+	          column_spec(5, width_min = "6em") %>%
+						column_spec(7, width_min = "10em") %>%
+	          scroll_box(width = "770px", height = "1900px",
+            fixed_thead = FALSE)
+```
+
+<br>
+
+
+
+
+<!-- ```{r 16-diagnostics, echo=FALSE, message=FALSE, warning=FALSE} -->
+<!-- library(knitr) -->
+<!-- library(kableExtra) -->
+<!-- diagnostics <- read.csv("tables/16-phytoplankton/diagnostics.csv", check.names=FALSE) -->
+<!-- kable(diagnostics,"html", escape = F, align = "c", caption = "Diagnostics") %>% -->
+<!--   kable_styling(diagnostics, bootstrap_options = "basic", -->
+<!--                 full_width = F, position = "center", font_size = 12) %>% -->
+<!--   column_spec(1, width_min = "6em") %>% -->
+<!--   column_spec(2, width_min = "6em") %>% -->
+<!--   column_spec(3, width_min = "6em") %>% -->
+<!--   column_spec(4, width_min = "6em") %>% -->
+<!--   column_spec(5, width_min = "6em") %>% -->
+<!--   row_spec(1:17, background = 'white') %>% -->
+<!--   scroll_box(width = "770px", height = "500px", -->
+<!--              fixed_thead = FALSE) -->
+<!-- ``` -->
+
+
+
+###	Parameter and Option Summary
+
+The module requires users to set both module level confiuration options and parameters, and group-specific parameters.
+
+The group-specific parameters and settings are read in through the `aed_malgae_pars`, summarised in Table \@ref(tab:25-parstable).
+
+
+```{r 25-parstable, echo=FALSE, message=FALSE, warning=FALSE}
+library(knitr)
+library(kableExtra)
+library(readxl)
+library(rmarkdown)
+theSheet <- read_excel('tables/aed_variable_tables.xlsx', sheet = 14)
+theSheet <- theSheet[theSheet$Table == "Parameter",]
+theSheetGroups <- unique(theSheet$Group)
+theSheet$`AED name` <- paste0("`",theSheet$`AED name`,"`")
+
+for(i in seq_along(theSheet$Symbol)){
+  if(!is.na(theSheet$Symbol[i])==TRUE){
+    theSheet$Symbol[i] <- paste0("$$",theSheet$Symbol[i],"$$")
+  } else {
+    theSheet$Symbol[i] <- " "
+  }
+}
+for(i in seq_along(theSheet$Unit)){
+  if(!is.na(theSheet$Unit[i])==TRUE){
+    theSheet$Unit[i] <- paste0("$$\\small{",theSheet$Unit[i],"}$$")
+  } else {
+    theSheet$Unit[i] <- NA
+  }
+}
+for(i in seq_along(theSheet$Comments)){
+  if(!is.na(theSheet$Comments[i])==TRUE){
+    theSheet$Comments[i] <- paste0("",theSheet$Comments[i],"")
+  } else {
+    theSheet$Comments[i] <- "-"
+  }
+}
+
+kbl(theSheet[,3:NCOL(theSheet)], caption = "Macroalgae group-specific parameters and configuration options", align = "l",) %>%
+  pack_rows(theSheetGroups[1],
+            min(which(theSheet$Group == theSheetGroups[1])),
+            max(which(theSheet$Group == theSheetGroups[1])),
+            background = '#ebebeb') %>%
+  pack_rows(theSheetGroups[2],
+            min(which(theSheet$Group == theSheetGroups[2])),
+            max(which(theSheet$Group == theSheetGroups[2])),
+            background = '#ebebeb') %>%
+  pack_rows(theSheetGroups[3],
+					  min(which(theSheet$Group == theSheetGroups[3])),
+					  max(which(theSheet$Group == theSheetGroups[3])),
+					  background = '#ebebeb') %>%
+  pack_rows(theSheetGroups[4],
+					  min(which(theSheet$Group == theSheetGroups[4])),
+					  max(which(theSheet$Group == theSheetGroups[4])),
+					  background = '#ebebeb') %>%
+  pack_rows(theSheetGroups[5],
+					  min(which(theSheet$Group == theSheetGroups[5])),
+					  max(which(theSheet$Group == theSheetGroups[5])),
+					  background = '#ebebeb') %>%
+  pack_rows(theSheetGroups[6],
+  				  min(which(theSheet$Group == theSheetGroups[6])),
+  				  max(which(theSheet$Group == theSheetGroups[6])),
+  				  background = '#ebebeb') %>%
+  pack_rows(theSheetGroups[7],
+  				  min(which(theSheet$Group == theSheetGroups[7])),
+  				  max(which(theSheet$Group == theSheetGroups[7])),
+    			  background = '#ebebeb') %>%
+  pack_rows(theSheetGroups[8],
+  				  min(which(theSheet$Group == theSheetGroups[8])),
+  				  max(which(theSheet$Group == theSheetGroups[8])),
+    			  background = '#ebebeb') %>%
+  row_spec(0, background = "#e64a19", bold = TRUE, color = "white") %>%
+  kable_styling(full_width = F,font_size = 11) %>%
+	column_spec(2, width_min = "7em") %>%
+	column_spec(3, width_max = "19em") %>%
+	column_spec(4, width_min = "10em") %>%
+	column_spec(5, width_min = "5em") %>%
+	column_spec(7, width_min = "10em") %>%
+  scroll_box(width = "770px", height = "2500px",
+             fixed_thead = FALSE)
+```
+<br>
+
+The module level parameters and settings are read in as normal through the `aed.nml`, summarised in Table \@ref(tab:25-configtable).
+
+
+```{r 25-configtable, echo=FALSE, message=FALSE, warning=FALSE}
+library(knitr)
+library(kableExtra)
+library(readxl)
+library(rmarkdown)
+theSheet <- read_excel('tables/aed_variable_tables.xlsx', sheet = 14)
+theSheet <- theSheet[theSheet$Table == "Configuration",]
+theSheetGroups <- unique(theSheet$Group)
+theSheet$`AED name` <- paste0("`",theSheet$`AED name`,"`")
+
+for(i in seq_along(theSheet$Symbol)){
+  if(!is.na(theSheet$Symbol[i])==TRUE){
+    theSheet$Symbol[i] <- paste0("$$",theSheet$Symbol[i],"$$")
+  } else {
+    theSheet$Symbol[i] <- " "
+  }
+}
+for(i in seq_along(theSheet$Unit)){
+  if(!is.na(theSheet$Unit[i])==TRUE){
+    theSheet$Unit[i] <- paste0("$$\\small{",theSheet$Unit[i],"}$$")
+  } else {
+    theSheet$Unit[i] <- NA
+  }
+}
+for(i in seq_along(theSheet$Comments)){
+  if(!is.na(theSheet$Comments[i])==TRUE){
+    theSheet$Comments[i] <- paste0("",theSheet$Comments[i],"")
+  } else {
+    theSheet$Comments[i] <- "-"
+  }
+}
+
+kbl(theSheet[,3:NCOL(theSheet)], caption = "Macroalgae module-specific parameters and configuration options", align = "l",) %>%
+  pack_rows(theSheetGroups[1],
+            min(which(theSheet$Group == theSheetGroups[1])),
+            max(which(theSheet$Group == theSheetGroups[1])),
+            background = '#ebebeb') %>%
+  pack_rows(theSheetGroups[2],
+            min(which(theSheet$Group == theSheetGroups[2])),
+            max(which(theSheet$Group == theSheetGroups[2])),
+            background = '#ebebeb') %>%
+  pack_rows(theSheetGroups[3],
+					  min(which(theSheet$Group == theSheetGroups[3])),
+					  max(which(theSheet$Group == theSheetGroups[3])),
+					  background = '#ebebeb') %>%
+  pack_rows(theSheetGroups[4],
+					  min(which(theSheet$Group == theSheetGroups[4])),
+					  max(which(theSheet$Group == theSheetGroups[4])),
+					  background = '#ebebeb') %>%
+  row_spec(0, background = "#ff7043", bold = TRUE, color = "white") %>%
+  kable_styling(full_width = F,font_size = 11) %>%
+	column_spec(2, width_min = "7em") %>%
+	column_spec(3, width_max = "19em") %>%
+	column_spec(4, width_min = "10em") %>%
+	column_spec(5, width_min = "5em") %>%
+	column_spec(7, width_min = "10em") %>%
+  scroll_box(width = "770px", height = "1500px",
+             fixed_thead = FALSE)
+```
+<br>
+
 ## Setup & Configuration
+
 ## Case Studies & Examples
-###	Case Study
-###	Publications
+
+### Case Study
+
+### Publications

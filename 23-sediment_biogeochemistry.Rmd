@@ -1,4 +1,4 @@
-# (PART) AED Benthic Modules {.unnumbered}
+# (PART) AED BENTHIC MODULES {.unnumbered}
 
 # Sediment Biogeochemistry
 
@@ -10,7 +10,7 @@ Daniel Paraska, Matthew R. Hipsey
 
 This module is a sediment reactive transport model, based on a 1D
 approximation of the sediment solid and pore-water profiles. Each active
-sediment zone (or column) is discretized into a user defineable number
+sediment zone (or column) is discretized into a user definable number
 of layers that start at thicknesses of around 1 mm at the sediment-water
 interface and increase exponentially down to a pre-defined sediment
 depth. The model resolves in each layer both physical processes (e.g.
