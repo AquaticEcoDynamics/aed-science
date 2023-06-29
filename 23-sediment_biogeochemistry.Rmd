@@ -8,6 +8,8 @@ Daniel Paraska, Matthew R. Hipsey
 
 ## Overview
 
+Test AED
+
 This module is a sediment reactive transport model, based on a 1D approximation of the sediment solid and pore-water profiles. Each active sediment zone (or column) is discretized into a user defineable number of layers that start at thicknesses of around 1 mm at the sediment-water interface and increase exponentially down to a pre-defined sediment depth. The model resolves in each layer both physical processes (e.g. pore-water diffusion or bioturbation) and chemical processes (e.g. redox transformations).
 
 <center>
