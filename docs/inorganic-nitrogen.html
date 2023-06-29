@@ -23,7 +23,7 @@
 <meta name="author" content="" />
 
 
-<meta name="date" content="2022-09-26" />
+<meta name="date" content="2023-06-29" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -426,12 +426,14 @@ div.csl-indent {
 <li class="chapter" data-level="14.5.2" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#flux-of-state-variables-swi_fluxes.sed"><i class="fa fa-check"></i><b>14.5.2</b> Flux of state variables: ‘swi_fluxes.sed’</a></li>
 <li class="chapter" data-level="14.5.3" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#SedOtherVariablesExtrasSed"><i class="fa fa-check"></i><b>14.5.3</b> Other variables: ‘/Extras/ .sed’</a></li>
 <li class="chapter" data-level="14.5.4" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#depth-profile-settings-depths.sed"><i class="fa fa-check"></i><b>14.5.4</b> Depth profile settings: ‘Depths.sed’</a></li>
+<li class="chapter" data-level="14.5.5" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#mass-balance-calculation"><i class="fa fa-check"></i><b>14.5.5</b> Mass balance calculation</a></li>
 </ul></li>
 <li class="chapter" data-level="14.6" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#case-studies-examples-6"><i class="fa fa-check"></i><b>14.6</b> Case Studies &amp; Examples</a>
 <ul>
 <li class="chapter" data-level="14.6.1" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#case-study-model-benchmark-example"><i class="fa fa-check"></i><b>14.6.1</b> Case study: Model benchmark example</a></li>
-<li class="chapter" data-level="14.6.2" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#case-studyaquaculture-and-sediment-recovery"><i class="fa fa-check"></i><b>14.6.2</b> Case study:Aquaculture and sediment recovery</a></li>
+<li class="chapter" data-level="14.6.2" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#case-study-aquaculture-and-sediment-recovery"><i class="fa fa-check"></i><b>14.6.2</b> Case study: Aquaculture and sediment recovery</a></li>
 <li class="chapter" data-level="14.6.3" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#case-study-the-coorong-dynamics-model"><i class="fa fa-check"></i><b>14.6.3</b> Case study: The Coorong Dynamics Model</a></li>
+<li class="chapter" data-level="14.6.4" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#case-study-mass-balance-and-numerical-error-checking"><i class="fa fa-check"></i><b>14.6.4</b> Case study: Mass balance and numerical error checking</a></li>
 </ul></li>
 <li class="chapter" data-level="14.7" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#references"><i class="fa fa-check"></i><b>14.7</b> References</a></li>
 </ul></li>
@@ -657,12 +659,12 @@ f_{sed}^{NH4}=F_{sed}^{amm} \theta_{sedamm}^{T-20}\Phi_{O2}^{amm}\left[O_2\right
 <div id="parameter-summary-2" class="section level3 hasAnchor" number="6.3.3">
 <h3><span class="header-section-number">6.3.3</span> Parameter Summary<a href="inorganic-nitrogen.html#parameter-summary-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The default parameters and settings used by this module are summarised in Table @ref(tab:nitrogen_tab1).</p>
-<div id="uoxvzomqdz" style="overflow-x:auto;overflow-y:auto;width:auto;height:1000px;">
+<div id="njhxtqyhar" style="overflow-x:auto;overflow-y:auto;width:auto;height:1000px;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#uoxvzomqdz .gt_table {
+#njhxtqyhar .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -687,7 +689,7 @@ f_{sed}^{NH4}=F_{sed}^{amm} \theta_{sedamm}^{T-20}\Phi_{O2}^{amm}\left[O_2\right
   border-left-color: #D3D3D3;
 }
 
-#uoxvzomqdz .gt_heading {
+#njhxtqyhar .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -699,7 +701,7 @@ f_{sed}^{NH4}=F_{sed}^{amm} \theta_{sedamm}^{T-20}\Phi_{O2}^{amm}\left[O_2\right
   border-right-color: #D3D3D3;
 }
 
-#uoxvzomqdz .gt_title {
+#njhxtqyhar .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -711,7 +713,7 @@ f_{sed}^{NH4}=F_{sed}^{amm} \theta_{sedamm}^{T-20}\Phi_{O2}^{amm}\left[O_2\right
   border-bottom-width: 0;
 }
 
-#uoxvzomqdz .gt_subtitle {
+#njhxtqyhar .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -723,13 +725,13 @@ f_{sed}^{NH4}=F_{sed}^{amm} \theta_{sedamm}^{T-20}\Phi_{O2}^{amm}\left[O_2\right
   border-top-width: 0;
 }
 
-#uoxvzomqdz .gt_bottom_border {
+#njhxtqyhar .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#uoxvzomqdz .gt_col_headings {
+#njhxtqyhar .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -744,7 +746,7 @@ f_{sed}^{NH4}=F_{sed}^{amm} \theta_{sedamm}^{T-20}\Phi_{O2}^{amm}\left[O_2\right
   border-right-color: #D3D3D3;
 }
 
-#uoxvzomqdz .gt_col_heading {
+#njhxtqyhar .gt_col_heading {
   color: #FFFFFF;
   background-color: #14759E;
   font-size: 14px;
@@ -764,7 +766,7 @@ f_{sed}^{NH4}=F_{sed}^{amm} \theta_{sedamm}^{T-20}\Phi_{O2}^{amm}\left[O_2\right
   overflow-x: hidden;
 }
 
-#uoxvzomqdz .gt_column_spanner_outer {
+#njhxtqyhar .gt_column_spanner_outer {
   color: #FFFFFF;
   background-color: #14759E;
   font-size: 14px;
@@ -776,15 +778,15 @@ f_{sed}^{NH4}=F_{sed}^{amm} \theta_{sedamm}^{T-20}\Phi_{O2}^{amm}\left[O_2\right
   padding-right: 4px;
 }
 
-#uoxvzomqdz .gt_column_spanner_outer:first-child {
+#njhxtqyhar .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#uoxvzomqdz .gt_column_spanner_outer:last-child {
+#njhxtqyhar .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#uoxvzomqdz .gt_column_spanner {
+#njhxtqyhar .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -796,7 +798,7 @@ f_{sed}^{NH4}=F_{sed}^{amm} \theta_{sedamm}^{T-20}\Phi_{O2}^{amm}\left[O_2\right
   width: 100%;
 }
 
-#uoxvzomqdz .gt_group_heading {
+#njhxtqyhar .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -821,7 +823,7 @@ f_{sed}^{NH4}=F_{sed}^{amm} \theta_{sedamm}^{T-20}\Phi_{O2}^{amm}\left[O_2\right
   vertical-align: middle;
 }
 
-#uoxvzomqdz .gt_empty_group_heading {
+#njhxtqyhar .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #D3D3D3;
@@ -836,15 +838,15 @@ f_{sed}^{NH4}=F_{sed}^{amm} \theta_{sedamm}^{T-20}\Phi_{O2}^{amm}\left[O_2\right
   vertical-align: middle;
 }
 
-#uoxvzomqdz .gt_from_md > :first-child {
+#njhxtqyhar .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#uoxvzomqdz .gt_from_md > :last-child {
+#njhxtqyhar .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#uoxvzomqdz .gt_row {
+#njhxtqyhar .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -863,7 +865,7 @@ f_{sed}^{NH4}=F_{sed}^{amm} \theta_{sedamm}^{T-20}\Phi_{O2}^{amm}\left[O_2\right
   overflow-x: hidden;
 }
 
-#uoxvzomqdz .gt_stub {
+#njhxtqyhar .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -876,7 +878,7 @@ f_{sed}^{NH4}=F_{sed}^{amm} \theta_{sedamm}^{T-20}\Phi_{O2}^{amm}\left[O_2\right
   padding-right: 5px;
 }
 
-#uoxvzomqdz .gt_stub_row_group {
+#njhxtqyhar .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -890,11 +892,11 @@ f_{sed}^{NH4}=F_{sed}^{amm} \theta_{sedamm}^{T-20}\Phi_{O2}^{amm}\left[O_2\right
   vertical-align: top;
 }
 
-#uoxvzomqdz .gt_row_group_first td {
+#njhxtqyhar .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#uoxvzomqdz .gt_summary_row {
+#njhxtqyhar .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -904,16 +906,16 @@ f_{sed}^{NH4}=F_{sed}^{amm} \theta_{sedamm}^{T-20}\Phi_{O2}^{amm}\left[O_2\right
   padding-right: 5px;
 }
 
-#uoxvzomqdz .gt_first_summary_row {
+#njhxtqyhar .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#uoxvzomqdz .gt_first_summary_row.thick {
+#njhxtqyhar .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#uoxvzomqdz .gt_last_summary_row {
+#njhxtqyhar .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -923,7 +925,7 @@ f_{sed}^{NH4}=F_{sed}^{amm} \theta_{sedamm}^{T-20}\Phi_{O2}^{amm}\left[O_2\right
   border-bottom-color: #D3D3D3;
 }
 
-#uoxvzomqdz .gt_grand_summary_row {
+#njhxtqyhar .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -933,7 +935,7 @@ f_{sed}^{NH4}=F_{sed}^{amm} \theta_{sedamm}^{T-20}\Phi_{O2}^{amm}\left[O_2\right
   padding-right: 5px;
 }
 
-#uoxvzomqdz .gt_first_grand_summary_row {
+#njhxtqyhar .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -943,11 +945,11 @@ f_{sed}^{NH4}=F_{sed}^{amm} \theta_{sedamm}^{T-20}\Phi_{O2}^{amm}\left[O_2\right
   border-top-color: #D3D3D3;
 }
 
-#uoxvzomqdz .gt_striped {
+#njhxtqyhar .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#uoxvzomqdz .gt_table_body {
+#njhxtqyhar .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -956,7 +958,7 @@ f_{sed}^{NH4}=F_{sed}^{amm} \theta_{sedamm}^{T-20}\Phi_{O2}^{amm}\left[O_2\right
   border-bottom-color: #D3D3D3;
 }
 
-#uoxvzomqdz .gt_footnotes {
+#njhxtqyhar .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -970,7 +972,7 @@ f_{sed}^{NH4}=F_{sed}^{amm} \theta_{sedamm}^{T-20}\Phi_{O2}^{amm}\left[O_2\right
   border-right-color: #D3D3D3;
 }
 
-#uoxvzomqdz .gt_footnote {
+#njhxtqyhar .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-left: 4px;
@@ -979,7 +981,7 @@ f_{sed}^{NH4}=F_{sed}^{amm} \theta_{sedamm}^{T-20}\Phi_{O2}^{amm}\left[O_2\right
   padding-right: 5px;
 }
 
-#uoxvzomqdz .gt_sourcenotes {
+#njhxtqyhar .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -993,7 +995,7 @@ f_{sed}^{NH4}=F_{sed}^{amm} \theta_{sedamm}^{T-20}\Phi_{O2}^{amm}\left[O_2\right
   border-right-color: #D3D3D3;
 }
 
-#uoxvzomqdz .gt_sourcenote {
+#njhxtqyhar .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1001,75 +1003,77 @@ f_{sed}^{NH4}=F_{sed}^{amm} \theta_{sedamm}^{T-20}\Phi_{O2}^{amm}\left[O_2\right
   padding-right: 5px;
 }
 
-#uoxvzomqdz .gt_left {
+#njhxtqyhar .gt_left {
   text-align: left;
 }
 
-#uoxvzomqdz .gt_center {
+#njhxtqyhar .gt_center {
   text-align: center;
 }
 
-#uoxvzomqdz .gt_right {
+#njhxtqyhar .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#uoxvzomqdz .gt_font_normal {
+#njhxtqyhar .gt_font_normal {
   font-weight: normal;
 }
 
-#uoxvzomqdz .gt_font_bold {
+#njhxtqyhar .gt_font_bold {
   font-weight: bold;
 }
 
-#uoxvzomqdz .gt_font_italic {
+#njhxtqyhar .gt_font_italic {
   font-style: italic;
 }
 
-#uoxvzomqdz .gt_super {
+#njhxtqyhar .gt_super {
   font-size: 65%;
 }
 
-#uoxvzomqdz .gt_footnote_marks {
+#njhxtqyhar .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
   font-size: 75%;
   vertical-align: 0.4em;
 }
 
-#uoxvzomqdz .gt_asterisk {
+#njhxtqyhar .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#uoxvzomqdz .gt_slash_mark {
-  font-size: 0.7em;
-  line-height: 0.7em;
-  vertical-align: 0.15em;
+#njhxtqyhar .gt_indent_1 {
+  text-indent: 5px;
 }
 
-#uoxvzomqdz .gt_fraction_numerator {
-  font-size: 0.6em;
-  line-height: 0.6em;
-  vertical-align: 0.45em;
+#njhxtqyhar .gt_indent_2 {
+  text-indent: 10px;
 }
 
-#uoxvzomqdz .gt_fraction_denominator {
-  font-size: 0.6em;
-  line-height: 0.6em;
-  vertical-align: -0.05em;
+#njhxtqyhar .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#njhxtqyhar .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#njhxtqyhar .gt_indent_5 {
+  text-indent: 25px;
 }
 </style>
 <table class="gt_table">
   
   <thead class="gt_col_headings">
     <tr>
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1">Parameter name</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1">Description</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1">Unit</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1">Parameter type</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1">Default</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1">Typical range</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col">Parameter name</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col">Description</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col">Unit</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col">Parameter type</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col">Default</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col">Typical range</th>
     </tr>
   </thead>
   <tbody class="gt_table_body">
@@ -1464,12 +1468,12 @@ f_{deammonification}=R_{{NH}_4{NO}_2}\times{NO}_2^-\times{NH}_4^+\times\frac{K_{
 <div id="state-variables-2" class="section level4 hasAnchor" number="6.4.3.1">
 <h4><span class="header-section-number">6.4.3.1</span> State variables<a href="inorganic-nitrogen.html#state-variables-2" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>The following state variables are relevant to the nitrogen module, and dependent variables from other modules (Table x).</p>
-<div id="plvujfvwdu" style="overflow-x:auto;overflow-y:auto;width:100%;height:auto;">
+<div id="phnviezshj" style="overflow-x:auto;overflow-y:auto;width:100%;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#plvujfvwdu .gt_table {
+#phnviezshj .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -1494,7 +1498,7 @@ f_{deammonification}=R_{{NH}_4{NO}_2}\times{NO}_2^-\times{NH}_4^+\times\frac{K_{
   border-left-color: #D3D3D3;
 }
 
-#plvujfvwdu .gt_heading {
+#phnviezshj .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1506,7 +1510,7 @@ f_{deammonification}=R_{{NH}_4{NO}_2}\times{NO}_2^-\times{NH}_4^+\times\frac{K_{
   border-right-color: #D3D3D3;
 }
 
-#plvujfvwdu .gt_title {
+#phnviezshj .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1518,7 +1522,7 @@ f_{deammonification}=R_{{NH}_4{NO}_2}\times{NO}_2^-\times{NH}_4^+\times\frac{K_{
   border-bottom-width: 0;
 }
 
-#plvujfvwdu .gt_subtitle {
+#phnviezshj .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1530,13 +1534,13 @@ f_{deammonification}=R_{{NH}_4{NO}_2}\times{NO}_2^-\times{NH}_4^+\times\frac{K_{
   border-top-width: 0;
 }
 
-#plvujfvwdu .gt_bottom_border {
+#phnviezshj .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#plvujfvwdu .gt_col_headings {
+#phnviezshj .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1551,7 +1555,7 @@ f_{deammonification}=R_{{NH}_4{NO}_2}\times{NO}_2^-\times{NH}_4^+\times\frac{K_{
   border-right-color: #D3D3D3;
 }
 
-#plvujfvwdu .gt_col_heading {
+#phnviezshj .gt_col_heading {
   color: #FFFFFF;
   background-color: #14759E;
   font-size: 14px;
@@ -1571,7 +1575,7 @@ f_{deammonification}=R_{{NH}_4{NO}_2}\times{NO}_2^-\times{NH}_4^+\times\frac{K_{
   overflow-x: hidden;
 }
 
-#plvujfvwdu .gt_column_spanner_outer {
+#phnviezshj .gt_column_spanner_outer {
   color: #FFFFFF;
   background-color: #14759E;
   font-size: 14px;
@@ -1583,15 +1587,15 @@ f_{deammonification}=R_{{NH}_4{NO}_2}\times{NO}_2^-\times{NH}_4^+\times\frac{K_{
   padding-right: 4px;
 }
 
-#plvujfvwdu .gt_column_spanner_outer:first-child {
+#phnviezshj .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#plvujfvwdu .gt_column_spanner_outer:last-child {
+#phnviezshj .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#plvujfvwdu .gt_column_spanner {
+#phnviezshj .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1603,7 +1607,7 @@ f_{deammonification}=R_{{NH}_4{NO}_2}\times{NO}_2^-\times{NH}_4^+\times\frac{K_{
   width: 100%;
 }
 
-#plvujfvwdu .gt_group_heading {
+#phnviezshj .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1628,7 +1632,7 @@ f_{deammonification}=R_{{NH}_4{NO}_2}\times{NO}_2^-\times{NH}_4^+\times\frac{K_{
   vertical-align: middle;
 }
 
-#plvujfvwdu .gt_empty_group_heading {
+#phnviezshj .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #D3D3D3;
@@ -1643,15 +1647,15 @@ f_{deammonification}=R_{{NH}_4{NO}_2}\times{NO}_2^-\times{NH}_4^+\times\frac{K_{
   vertical-align: middle;
 }
 
-#plvujfvwdu .gt_from_md > :first-child {
+#phnviezshj .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#plvujfvwdu .gt_from_md > :last-child {
+#phnviezshj .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#plvujfvwdu .gt_row {
+#phnviezshj .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1670,7 +1674,7 @@ f_{deammonification}=R_{{NH}_4{NO}_2}\times{NO}_2^-\times{NH}_4^+\times\frac{K_{
   overflow-x: hidden;
 }
 
-#plvujfvwdu .gt_stub {
+#phnviezshj .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1683,7 +1687,7 @@ f_{deammonification}=R_{{NH}_4{NO}_2}\times{NO}_2^-\times{NH}_4^+\times\frac{K_{
   padding-right: 5px;
 }
 
-#plvujfvwdu .gt_stub_row_group {
+#phnviezshj .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1697,11 +1701,11 @@ f_{deammonification}=R_{{NH}_4{NO}_2}\times{NO}_2^-\times{NH}_4^+\times\frac{K_{
   vertical-align: top;
 }
 
-#plvujfvwdu .gt_row_group_first td {
+#phnviezshj .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#plvujfvwdu .gt_summary_row {
+#phnviezshj .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1711,16 +1715,16 @@ f_{deammonification}=R_{{NH}_4{NO}_2}\times{NO}_2^-\times{NH}_4^+\times\frac{K_{
   padding-right: 5px;
 }
 
-#plvujfvwdu .gt_first_summary_row {
+#phnviezshj .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#plvujfvwdu .gt_first_summary_row.thick {
+#phnviezshj .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#plvujfvwdu .gt_last_summary_row {
+#phnviezshj .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1730,7 +1734,7 @@ f_{deammonification}=R_{{NH}_4{NO}_2}\times{NO}_2^-\times{NH}_4^+\times\frac{K_{
   border-bottom-color: #D3D3D3;
 }
 
-#plvujfvwdu .gt_grand_summary_row {
+#phnviezshj .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1740,7 +1744,7 @@ f_{deammonification}=R_{{NH}_4{NO}_2}\times{NO}_2^-\times{NH}_4^+\times\frac{K_{
   padding-right: 5px;
 }
 
-#plvujfvwdu .gt_first_grand_summary_row {
+#phnviezshj .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1750,11 +1754,11 @@ f_{deammonification}=R_{{NH}_4{NO}_2}\times{NO}_2^-\times{NH}_4^+\times\frac{K_{
   border-top-color: #D3D3D3;
 }
 
-#plvujfvwdu .gt_striped {
+#phnviezshj .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#plvujfvwdu .gt_table_body {
+#phnviezshj .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1763,7 +1767,7 @@ f_{deammonification}=R_{{NH}_4{NO}_2}\times{NO}_2^-\times{NH}_4^+\times\frac{K_{
   border-bottom-color: #D3D3D3;
 }
 
-#plvujfvwdu .gt_footnotes {
+#phnviezshj .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1777,7 +1781,7 @@ f_{deammonification}=R_{{NH}_4{NO}_2}\times{NO}_2^-\times{NH}_4^+\times\frac{K_{
   border-right-color: #D3D3D3;
 }
 
-#plvujfvwdu .gt_footnote {
+#phnviezshj .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-left: 4px;
@@ -1786,7 +1790,7 @@ f_{deammonification}=R_{{NH}_4{NO}_2}\times{NO}_2^-\times{NH}_4^+\times\frac{K_{
   padding-right: 5px;
 }
 
-#plvujfvwdu .gt_sourcenotes {
+#phnviezshj .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1800,7 +1804,7 @@ f_{deammonification}=R_{{NH}_4{NO}_2}\times{NO}_2^-\times{NH}_4^+\times\frac{K_{
   border-right-color: #D3D3D3;
 }
 
-#plvujfvwdu .gt_sourcenote {
+#phnviezshj .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1808,74 +1812,76 @@ f_{deammonification}=R_{{NH}_4{NO}_2}\times{NO}_2^-\times{NH}_4^+\times\frac{K_{
   padding-right: 5px;
 }
 
-#plvujfvwdu .gt_left {
+#phnviezshj .gt_left {
   text-align: left;
 }
 
-#plvujfvwdu .gt_center {
+#phnviezshj .gt_center {
   text-align: center;
 }
 
-#plvujfvwdu .gt_right {
+#phnviezshj .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#plvujfvwdu .gt_font_normal {
+#phnviezshj .gt_font_normal {
   font-weight: normal;
 }
 
-#plvujfvwdu .gt_font_bold {
+#phnviezshj .gt_font_bold {
   font-weight: bold;
 }
 
-#plvujfvwdu .gt_font_italic {
+#phnviezshj .gt_font_italic {
   font-style: italic;
 }
 
-#plvujfvwdu .gt_super {
+#phnviezshj .gt_super {
   font-size: 65%;
 }
 
-#plvujfvwdu .gt_footnote_marks {
+#phnviezshj .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
   font-size: 75%;
   vertical-align: 0.4em;
 }
 
-#plvujfvwdu .gt_asterisk {
+#phnviezshj .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#plvujfvwdu .gt_slash_mark {
-  font-size: 0.7em;
-  line-height: 0.7em;
-  vertical-align: 0.15em;
+#phnviezshj .gt_indent_1 {
+  text-indent: 5px;
 }
 
-#plvujfvwdu .gt_fraction_numerator {
-  font-size: 0.6em;
-  line-height: 0.6em;
-  vertical-align: 0.45em;
+#phnviezshj .gt_indent_2 {
+  text-indent: 10px;
 }
 
-#plvujfvwdu .gt_fraction_denominator {
-  font-size: 0.6em;
-  line-height: 0.6em;
-  vertical-align: -0.05em;
+#phnviezshj .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#phnviezshj .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#phnviezshj .gt_indent_5 {
+  text-indent: 25px;
 }
 </style>
 <table class="gt_table">
   
   <thead class="gt_col_headings">
     <tr>
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1">Symbol</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1">Variable</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1">AED identifier</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1">Unit</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1">Comment</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col">Symbol</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col">Variable</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col">AED identifier</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col">Unit</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col">Comment</th>
     </tr>
   </thead>
   <tbody class="gt_table_body">
@@ -1967,12 +1973,12 @@ f_{deammonification}=R_{{NH}_4{NO}_2}\times{NO}_2^-\times{NH}_4^+\times\frac{K_{
 <div id="parameter-summary-3" class="section level3 hasAnchor" number="6.4.4">
 <h3><span class="header-section-number">6.4.4</span> Parameter summary<a href="inorganic-nitrogen.html#parameter-summary-3" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>An overview of the parameters used in the nitrogen module for users selecting simN2O 1 or 2, are summarised in Table X.</p>
-<div id="xfkrdvjlez" style="overflow-x:auto;overflow-y:auto;width:100%;height:500px;">
+<div id="sxjtfkvbep" style="overflow-x:auto;overflow-y:auto;width:100%;height:500px;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#xfkrdvjlez .gt_table {
+#sxjtfkvbep .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -1997,7 +2003,7 @@ f_{deammonification}=R_{{NH}_4{NO}_2}\times{NO}_2^-\times{NH}_4^+\times\frac{K_{
   border-left-color: #D3D3D3;
 }
 
-#xfkrdvjlez .gt_heading {
+#sxjtfkvbep .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -2009,7 +2015,7 @@ f_{deammonification}=R_{{NH}_4{NO}_2}\times{NO}_2^-\times{NH}_4^+\times\frac{K_{
   border-right-color: #D3D3D3;
 }
 
-#xfkrdvjlez .gt_title {
+#sxjtfkvbep .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -2021,7 +2027,7 @@ f_{deammonification}=R_{{NH}_4{NO}_2}\times{NO}_2^-\times{NH}_4^+\times\frac{K_{
   border-bottom-width: 0;
 }
 
-#xfkrdvjlez .gt_subtitle {
+#sxjtfkvbep .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -2033,13 +2039,13 @@ f_{deammonification}=R_{{NH}_4{NO}_2}\times{NO}_2^-\times{NH}_4^+\times\frac{K_{
   border-top-width: 0;
 }
 
-#xfkrdvjlez .gt_bottom_border {
+#sxjtfkvbep .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#xfkrdvjlez .gt_col_headings {
+#sxjtfkvbep .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2054,7 +2060,7 @@ f_{deammonification}=R_{{NH}_4{NO}_2}\times{NO}_2^-\times{NH}_4^+\times\frac{K_{
   border-right-color: #D3D3D3;
 }
 
-#xfkrdvjlez .gt_col_heading {
+#sxjtfkvbep .gt_col_heading {
   color: #FFFFFF;
   background-color: #14759E;
   font-size: 14px;
@@ -2074,7 +2080,7 @@ f_{deammonification}=R_{{NH}_4{NO}_2}\times{NO}_2^-\times{NH}_4^+\times\frac{K_{
   overflow-x: hidden;
 }
 
-#xfkrdvjlez .gt_column_spanner_outer {
+#sxjtfkvbep .gt_column_spanner_outer {
   color: #FFFFFF;
   background-color: #14759E;
   font-size: 14px;
@@ -2086,15 +2092,15 @@ f_{deammonification}=R_{{NH}_4{NO}_2}\times{NO}_2^-\times{NH}_4^+\times\frac{K_{
   padding-right: 4px;
 }
 
-#xfkrdvjlez .gt_column_spanner_outer:first-child {
+#sxjtfkvbep .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#xfkrdvjlez .gt_column_spanner_outer:last-child {
+#sxjtfkvbep .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#xfkrdvjlez .gt_column_spanner {
+#sxjtfkvbep .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -2106,7 +2112,7 @@ f_{deammonification}=R_{{NH}_4{NO}_2}\times{NO}_2^-\times{NH}_4^+\times\frac{K_{
   width: 100%;
 }
 
-#xfkrdvjlez .gt_group_heading {
+#sxjtfkvbep .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2131,7 +2137,7 @@ f_{deammonification}=R_{{NH}_4{NO}_2}\times{NO}_2^-\times{NH}_4^+\times\frac{K_{
   vertical-align: middle;
 }
 
-#xfkrdvjlez .gt_empty_group_heading {
+#sxjtfkvbep .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #D3D3D3;
@@ -2146,15 +2152,15 @@ f_{deammonification}=R_{{NH}_4{NO}_2}\times{NO}_2^-\times{NH}_4^+\times\frac{K_{
   vertical-align: middle;
 }
 
-#xfkrdvjlez .gt_from_md > :first-child {
+#sxjtfkvbep .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#xfkrdvjlez .gt_from_md > :last-child {
+#sxjtfkvbep .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#xfkrdvjlez .gt_row {
+#sxjtfkvbep .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2173,7 +2179,7 @@ f_{deammonification}=R_{{NH}_4{NO}_2}\times{NO}_2^-\times{NH}_4^+\times\frac{K_{
   overflow-x: hidden;
 }
 
-#xfkrdvjlez .gt_stub {
+#sxjtfkvbep .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2186,7 +2192,7 @@ f_{deammonification}=R_{{NH}_4{NO}_2}\times{NO}_2^-\times{NH}_4^+\times\frac{K_{
   padding-right: 5px;
 }
 
-#xfkrdvjlez .gt_stub_row_group {
+#sxjtfkvbep .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2200,11 +2206,11 @@ f_{deammonification}=R_{{NH}_4{NO}_2}\times{NO}_2^-\times{NH}_4^+\times\frac{K_{
   vertical-align: top;
 }
 
-#xfkrdvjlez .gt_row_group_first td {
+#sxjtfkvbep .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#xfkrdvjlez .gt_summary_row {
+#sxjtfkvbep .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2214,16 +2220,16 @@ f_{deammonification}=R_{{NH}_4{NO}_2}\times{NO}_2^-\times{NH}_4^+\times\frac{K_{
   padding-right: 5px;
 }
 
-#xfkrdvjlez .gt_first_summary_row {
+#sxjtfkvbep .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#xfkrdvjlez .gt_first_summary_row.thick {
+#sxjtfkvbep .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#xfkrdvjlez .gt_last_summary_row {
+#sxjtfkvbep .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2233,7 +2239,7 @@ f_{deammonification}=R_{{NH}_4{NO}_2}\times{NO}_2^-\times{NH}_4^+\times\frac{K_{
   border-bottom-color: #D3D3D3;
 }
 
-#xfkrdvjlez .gt_grand_summary_row {
+#sxjtfkvbep .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2243,7 +2249,7 @@ f_{deammonification}=R_{{NH}_4{NO}_2}\times{NO}_2^-\times{NH}_4^+\times\frac{K_{
   padding-right: 5px;
 }
 
-#xfkrdvjlez .gt_first_grand_summary_row {
+#sxjtfkvbep .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2253,11 +2259,11 @@ f_{deammonification}=R_{{NH}_4{NO}_2}\times{NO}_2^-\times{NH}_4^+\times\frac{K_{
   border-top-color: #D3D3D3;
 }
 
-#xfkrdvjlez .gt_striped {
+#sxjtfkvbep .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#xfkrdvjlez .gt_table_body {
+#sxjtfkvbep .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2266,7 +2272,7 @@ f_{deammonification}=R_{{NH}_4{NO}_2}\times{NO}_2^-\times{NH}_4^+\times\frac{K_{
   border-bottom-color: #D3D3D3;
 }
 
-#xfkrdvjlez .gt_footnotes {
+#sxjtfkvbep .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2280,7 +2286,7 @@ f_{deammonification}=R_{{NH}_4{NO}_2}\times{NO}_2^-\times{NH}_4^+\times\frac{K_{
   border-right-color: #D3D3D3;
 }
 
-#xfkrdvjlez .gt_footnote {
+#sxjtfkvbep .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-left: 4px;
@@ -2289,7 +2295,7 @@ f_{deammonification}=R_{{NH}_4{NO}_2}\times{NO}_2^-\times{NH}_4^+\times\frac{K_{
   padding-right: 5px;
 }
 
-#xfkrdvjlez .gt_sourcenotes {
+#sxjtfkvbep .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2303,7 +2309,7 @@ f_{deammonification}=R_{{NH}_4{NO}_2}\times{NO}_2^-\times{NH}_4^+\times\frac{K_{
   border-right-color: #D3D3D3;
 }
 
-#xfkrdvjlez .gt_sourcenote {
+#sxjtfkvbep .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -2311,76 +2317,78 @@ f_{deammonification}=R_{{NH}_4{NO}_2}\times{NO}_2^-\times{NH}_4^+\times\frac{K_{
   padding-right: 5px;
 }
 
-#xfkrdvjlez .gt_left {
+#sxjtfkvbep .gt_left {
   text-align: left;
 }
 
-#xfkrdvjlez .gt_center {
+#sxjtfkvbep .gt_center {
   text-align: center;
 }
 
-#xfkrdvjlez .gt_right {
+#sxjtfkvbep .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#xfkrdvjlez .gt_font_normal {
+#sxjtfkvbep .gt_font_normal {
   font-weight: normal;
 }
 
-#xfkrdvjlez .gt_font_bold {
+#sxjtfkvbep .gt_font_bold {
   font-weight: bold;
 }
 
-#xfkrdvjlez .gt_font_italic {
+#sxjtfkvbep .gt_font_italic {
   font-style: italic;
 }
 
-#xfkrdvjlez .gt_super {
+#sxjtfkvbep .gt_super {
   font-size: 65%;
 }
 
-#xfkrdvjlez .gt_footnote_marks {
+#sxjtfkvbep .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
   font-size: 75%;
   vertical-align: 0.4em;
 }
 
-#xfkrdvjlez .gt_asterisk {
+#sxjtfkvbep .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#xfkrdvjlez .gt_slash_mark {
-  font-size: 0.7em;
-  line-height: 0.7em;
-  vertical-align: 0.15em;
+#sxjtfkvbep .gt_indent_1 {
+  text-indent: 5px;
 }
 
-#xfkrdvjlez .gt_fraction_numerator {
-  font-size: 0.6em;
-  line-height: 0.6em;
-  vertical-align: 0.45em;
+#sxjtfkvbep .gt_indent_2 {
+  text-indent: 10px;
 }
 
-#xfkrdvjlez .gt_fraction_denominator {
-  font-size: 0.6em;
-  line-height: 0.6em;
-  vertical-align: -0.05em;
+#sxjtfkvbep .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#sxjtfkvbep .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#sxjtfkvbep .gt_indent_5 {
+  text-indent: 25px;
 }
 </style>
 <table class="gt_table">
   
   <thead class="gt_col_headings">
     <tr>
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1">Parameter name</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1">Description</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1">Unit</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1">Parameter type</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1">Default</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1">Typical range</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1">Comment</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col">Parameter name</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col">Description</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col">Unit</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col">Parameter type</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col">Default</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col">Typical range</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col">Comment</th>
     </tr>
   </thead>
   <tbody class="gt_table_body">
@@ -2393,7 +2401,7 @@ f_{deammonification}=R_{{NH}_4{NO}_2}\times{NO}_2^-\times{NH}_4^+\times\frac{K_{
 </div></td>
 <td class="gt_row gt_left"><div class='gt_from_md'><p>1</p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>0, 1, 2</p>
+<td class="gt_row gt_right"><div class='gt_from_md'><p>0, 1, 2</p>
 </div></td>
 <td class="gt_row gt_left"><div class='gt_from_md'></div></td></tr>
     <tr><td class="gt_row gt_left"><div class='gt_from_md'><p><code>Rn2o</code></p>
@@ -2406,7 +2414,7 @@ f_{deammonification}=R_{{NH}_4{NO}_2}\times{NO}_2^-\times{NH}_4^+\times\frac{K_{
 </div></td>
 <td class="gt_row gt_left"><div class='gt_from_md'><p>0.0015</p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'></div></td>
+<td class="gt_row gt_right"><div class='gt_from_md'></div></td>
 <td class="gt_row gt_left"><div class='gt_from_md'></div></td></tr>
     <tr><td class="gt_row gt_left"><div class='gt_from_md'><p><code>Kn2oc</code></p>
 </div></td>
@@ -2418,7 +2426,7 @@ f_{deammonification}=R_{{NH}_4{NO}_2}\times{NO}_2^-\times{NH}_4^+\times\frac{K_{
 </div></td>
 <td class="gt_row gt_left"><div class='gt_from_md'><p>0.3</p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'></div></td>
+<td class="gt_row gt_right"><div class='gt_from_md'></div></td>
 <td class="gt_row gt_left"><div class='gt_from_md'></div></td></tr>
     <tr><td class="gt_row gt_left"><div class='gt_from_md'><p><code>Knev</code></p>
 </div></td>
@@ -2430,7 +2438,7 @@ f_{deammonification}=R_{{NH}_4{NO}_2}\times{NO}_2^-\times{NH}_4^+\times\frac{K_{
 </div></td>
 <td class="gt_row gt_left"><div class='gt_from_md'><p>3</p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'></div></td>
+<td class="gt_row gt_right"><div class='gt_from_md'></div></td>
 <td class="gt_row gt_left"><div class='gt_from_md'></div></td></tr>
     <tr><td class="gt_row gt_left"><div class='gt_from_md'><p><code>aa</code></p>
 </div></td>
@@ -2442,7 +2450,7 @@ f_{deammonification}=R_{{NH}_4{NO}_2}\times{NO}_2^-\times{NH}_4^+\times\frac{K_{
 </div></td>
 <td class="gt_row gt_left"><div class='gt_from_md'><p>0.26</p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'></div></td>
+<td class="gt_row gt_right"><div class='gt_from_md'></div></td>
 <td class="gt_row gt_left"><div class='gt_from_md'></div></td></tr>
     <tr><td class="gt_row gt_left"><div class='gt_from_md'><p><code>bb</code></p>
 </div></td>
@@ -2453,7 +2461,7 @@ f_{deammonification}=R_{{NH}_4{NO}_2}\times{NO}_2^-\times{NH}_4^+\times\frac{K_{
 </div></td>
 <td class="gt_row gt_left"><div class='gt_from_md'><p>-0.0006</p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'></div></td>
+<td class="gt_row gt_right"><div class='gt_from_md'></div></td>
 <td class="gt_row gt_left"><div class='gt_from_md'></div></td></tr>
     <tr><td class="gt_row gt_left"><div class='gt_from_md'><p><code>simN2O</code></p>
 </div></td>
@@ -2464,7 +2472,7 @@ f_{deammonification}=R_{{NH}_4{NO}_2}\times{NO}_2^-\times{NH}_4^+\times\frac{K_{
 </div></td>
 <td class="gt_row gt_left"><div class='gt_from_md'><p>2</p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>0, 1, 2</p>
+<td class="gt_row gt_right"><div class='gt_from_md'><p>0, 1, 2</p>
 </div></td>
 <td class="gt_row gt_left"><div class='gt_from_md'></div></td></tr>
     <tr><td class="gt_row gt_left"><div class='gt_from_md'><p><code>Rno2o2</code></p>
@@ -2477,7 +2485,7 @@ f_{deammonification}=R_{{NH}_4{NO}_2}\times{NO}_2^-\times{NH}_4^+\times\frac{K_{
 </div></td>
 <td class="gt_row gt_left"><div class='gt_from_md'><p>1</p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'></div></td>
+<td class="gt_row gt_right"><div class='gt_from_md'></div></td>
 <td class="gt_row gt_left"><div class='gt_from_md'></div></td></tr>
     <tr><td class="gt_row gt_left"><div class='gt_from_md'><p><code>Rnh4o2</code></p>
 </div></td>
@@ -2489,7 +2497,7 @@ f_{deammonification}=R_{{NH}_4{NO}_2}\times{NO}_2^-\times{NH}_4^+\times\frac{K_{
 </div></td>
 <td class="gt_row gt_left"><div class='gt_from_md'><p>1</p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'></div></td>
+<td class="gt_row gt_right"><div class='gt_from_md'></div></td>
 <td class="gt_row gt_left"><div class='gt_from_md'></div></td></tr>
     <tr><td class="gt_row gt_left"><div class='gt_from_md'><p><code>Kpart_ammox</code></p>
 </div></td>
@@ -2501,7 +2509,7 @@ f_{deammonification}=R_{{NH}_4{NO}_2}\times{NO}_2^-\times{NH}_4^+\times\frac{K_{
 </div></td>
 <td class="gt_row gt_left"><div class='gt_from_md'><p>20</p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'></div></td>
+<td class="gt_row gt_right"><div class='gt_from_md'></div></td>
 <td class="gt_row gt_left"><div class='gt_from_md'></div></td></tr>
     <tr><td class="gt_row gt_left"><div class='gt_from_md'><p><code>Rdom_minerl</code></p>
 </div></td>
@@ -2513,7 +2521,7 @@ f_{deammonification}=R_{{NH}_4{NO}_2}\times{NO}_2^-\times{NH}_4^+\times\frac{K_{
 </div></td>
 <td class="gt_row gt_left"><div class='gt_from_md'><p>0.001</p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'></div></td>
+<td class="gt_row gt_right"><div class='gt_from_md'></div></td>
 <td class="gt_row gt_left"><div class='gt_from_md'><p>OGM</p>
 </div></td></tr>
     <tr><td class="gt_row gt_left"><div class='gt_from_md'><p><code>Kdom_minerl</code></p>
@@ -2526,7 +2534,7 @@ f_{deammonification}=R_{{NH}_4{NO}_2}\times{NO}_2^-\times{NH}_4^+\times\frac{K_{
 </div></td>
 <td class="gt_row gt_left"><div class='gt_from_md'><p>0.886</p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'></div></td>
+<td class="gt_row gt_right"><div class='gt_from_md'></div></td>
 <td class="gt_row gt_left"><div class='gt_from_md'><p>OGM</p>
 </div></td></tr>
     <tr><td class="gt_row gt_left"><div class='gt_from_md'><p><code>theta_minerl</code></p>
@@ -2538,7 +2546,7 @@ f_{deammonification}=R_{{NH}_4{NO}_2}\times{NO}_2^-\times{NH}_4^+\times\frac{K_{
 </div></td>
 <td class="gt_row gt_left"><div class='gt_from_md'><p>1</p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'></div></td>
+<td class="gt_row gt_right"><div class='gt_from_md'></div></td>
 <td class="gt_row gt_left"><div class='gt_from_md'><p>OGM</p>
 </div></td></tr>
     <tr><td class="gt_row gt_left"><div class='gt_from_md'><p><code>f_an</code></p>
@@ -2548,7 +2556,7 @@ f_{deammonification}=R_{{NH}_4{NO}_2}\times{NO}_2^-\times{NH}_4^+\times\frac{K_{
 <td class="gt_row gt_left"><div class='gt_from_md'></div></td>
 <td class="gt_row gt_left"><div class='gt_from_md'><p>1</p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'></div></td>
+<td class="gt_row gt_right"><div class='gt_from_md'></div></td>
 <td class="gt_row gt_left"><div class='gt_from_md'><p>OGM</p>
 </div></td></tr>
     <tr><td class="gt_row gt_left"><div class='gt_from_md'><p>`Klim_denitrousv</p>
@@ -2561,7 +2569,7 @@ f_{deammonification}=R_{{NH}_4{NO}_2}\times{NO}_2^-\times{NH}_4^+\times\frac{K_{
 </div></td>
 <td class="gt_row gt_left"><div class='gt_from_md'><p>1</p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'></div></td>
+<td class="gt_row gt_right"><div class='gt_from_md'></div></td>
 <td class="gt_row gt_left"><div class='gt_from_md'></div></td></tr>
     <tr><td class="gt_row gt_left"><div class='gt_from_md'><p><code>Kin_denitrousv</code></p>
 </div></td>
@@ -2573,7 +2581,7 @@ f_{deammonification}=R_{{NH}_4{NO}_2}\times{NO}_2^-\times{NH}_4^+\times\frac{K_{
 </div></td>
 <td class="gt_row gt_left"><div class='gt_from_md'><p>0.205</p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'></div></td>
+<td class="gt_row gt_right"><div class='gt_from_md'></div></td>
 <td class="gt_row gt_left"><div class='gt_from_md'></div></td></tr>
     <tr><td class="gt_row gt_left"><div class='gt_from_md'><p><code>Knit</code></p>
 </div></td>
@@ -2585,7 +2593,7 @@ f_{deammonification}=R_{{NH}_4{NO}_2}\times{NO}_2^-\times{NH}_4^+\times\frac{K_{
 </div></td>
 <td class="gt_row gt_left"><div class='gt_from_md'><p>1</p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'></div></td>
+<td class="gt_row gt_right"><div class='gt_from_md'></div></td>
 <td class="gt_row gt_left"><div class='gt_from_md'></div></td></tr>
     <tr><td class="gt_row gt_left"><div class='gt_from_md'><p><code>Kin_denitrat</code></p>
 </div></td>
@@ -2597,7 +2605,7 @@ f_{deammonification}=R_{{NH}_4{NO}_2}\times{NO}_2^-\times{NH}_4^+\times\frac{K_{
 </div></td>
 <td class="gt_row gt_left"><div class='gt_from_md'><p>20</p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'></div></td>
+<td class="gt_row gt_right"><div class='gt_from_md'></div></td>
 <td class="gt_row gt_left"><div class='gt_from_md'></div></td></tr>
     <tr><td class="gt_row gt_left"><div class='gt_from_md'><p><code>Klim_denitrit</code></p>
 </div></td>
@@ -2609,7 +2617,7 @@ f_{deammonification}=R_{{NH}_4{NO}_2}\times{NO}_2^-\times{NH}_4^+\times\frac{K_{
 </div></td>
 <td class="gt_row gt_left"><div class='gt_from_md'><p>1</p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'></div></td>
+<td class="gt_row gt_right"><div class='gt_from_md'></div></td>
 <td class="gt_row gt_left"><div class='gt_from_md'></div></td></tr>
     <tr><td class="gt_row gt_left"><div class='gt_from_md'><p><code>Kpart_denitrit</code></p>
 </div></td>
@@ -2621,7 +2629,7 @@ f_{deammonification}=R_{{NH}_4{NO}_2}\times{NO}_2^-\times{NH}_4^+\times\frac{K_{
 </div></td>
 <td class="gt_row gt_left"><div class='gt_from_md'><p>1</p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'></div></td>
+<td class="gt_row gt_right"><div class='gt_from_md'></div></td>
 <td class="gt_row gt_left"><div class='gt_from_md'></div></td></tr>
     <tr><td class="gt_row gt_left"><div class='gt_from_md'><p><code>simN2O</code></p>
 </div></td>
@@ -2632,7 +2640,7 @@ f_{deammonification}=R_{{NH}_4{NO}_2}\times{NO}_2^-\times{NH}_4^+\times\frac{K_{
 </div></td>
 <td class="gt_row gt_left"><div class='gt_from_md'><p>2</p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>0, 1, 2</p>
+<td class="gt_row gt_right"><div class='gt_from_md'><p>0, 1, 2</p>
 </div></td>
 <td class="gt_row gt_left"><div class='gt_from_md'></div></td></tr>
     <tr><td class="gt_row gt_left"><div class='gt_from_md'><p><code>Rnh4no2</code></p>
@@ -2645,7 +2653,7 @@ f_{deammonification}=R_{{NH}_4{NO}_2}\times{NO}_2^-\times{NH}_4^+\times\frac{K_{
 </div></td>
 <td class="gt_row gt_left"><div class='gt_from_md'><p>1</p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'></div></td>
+<td class="gt_row gt_right"><div class='gt_from_md'></div></td>
 <td class="gt_row gt_left"><div class='gt_from_md'></div></td></tr>
     <tr><td class="gt_row gt_left"><div class='gt_from_md'><p><code>Kin_deamm</code></p>
 </div></td>
@@ -2657,7 +2665,7 @@ f_{deammonification}=R_{{NH}_4{NO}_2}\times{NO}_2^-\times{NH}_4^+\times\frac{K_{
 </div></td>
 <td class="gt_row gt_left"><div class='gt_from_md'><p>0.886</p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'></div></td>
+<td class="gt_row gt_right"><div class='gt_from_md'></div></td>
 <td class="gt_row gt_left"><div class='gt_from_md'></div></td></tr>
     <tr><td class="gt_row gt_left"><div class='gt_from_md'><p><code>simN2O</code></p>
 </div></td>
@@ -2668,7 +2676,7 @@ f_{deammonification}=R_{{NH}_4{NO}_2}\times{NO}_2^-\times{NH}_4^+\times\frac{K_{
 </div></td>
 <td class="gt_row gt_left"><div class='gt_from_md'><p>1 or 2</p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>0, 1, 2</p>
+<td class="gt_row gt_right"><div class='gt_from_md'><p>0, 1, 2</p>
 </div></td>
 <td class="gt_row gt_left"><div class='gt_from_md'></div></td></tr>
     <tr><td class="gt_row gt_left"><div class='gt_from_md'><p><code>atm_n2o</code></p>
@@ -2681,7 +2689,7 @@ f_{deammonification}=R_{{NH}_4{NO}_2}\times{NO}_2^-\times{NH}_4^+\times\frac{K_{
 </div></td>
 <td class="gt_row gt_left"><div class='gt_from_md'><p>0.32×10<sup>-6</sup></p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'></div></td>
+<td class="gt_row gt_right"><div class='gt_from_md'></div></td>
 <td class="gt_row gt_left"><div class='gt_from_md'></div></td></tr>
     <tr><td class="gt_row gt_left"><div class='gt_from_md'><p><code>simN2O</code></p>
 </div></td>
@@ -2692,7 +2700,7 @@ f_{deammonification}=R_{{NH}_4{NO}_2}\times{NO}_2^-\times{NH}_4^+\times\frac{K_{
 </div></td>
 <td class="gt_row gt_left"><div class='gt_from_md'><p>1 or 2</p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>0, 1, 2</p>
+<td class="gt_row gt_right"><div class='gt_from_md'><p>0, 1, 2</p>
 </div></td>
 <td class="gt_row gt_left"><div class='gt_from_md'></div></td></tr>
     <tr><td class="gt_row gt_left"><div class='gt_from_md'><p><code>use_oxy</code></p>
@@ -2701,7 +2709,7 @@ f_{deammonification}=R_{{NH}_4{NO}_2}\times{NO}_2^-\times{NH}_4^+\times\frac{K_{
 <td class="gt_row gt_left"><div class='gt_from_md'></div></td>
 <td class="gt_row gt_left"><div class='gt_from_md'></div></td>
 <td class="gt_row gt_left"><div class='gt_from_md'></div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'></div></td>
+<td class="gt_row gt_right"><div class='gt_from_md'></div></td>
 <td class="gt_row gt_left"><div class='gt_from_md'></div></td></tr>
     <tr><td class="gt_row gt_left"><div class='gt_from_md'><p><code>Fsed_n2o</code></p>
 </div></td>
@@ -2712,7 +2720,7 @@ f_{deammonification}=R_{{NH}_4{NO}_2}\times{NO}_2^-\times{NH}_4^+\times\frac{K_{
 <td class="gt_row gt_left"><div class='gt_from_md'></div></td>
 <td class="gt_row gt_left"><div class='gt_from_md'><p>0</p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'></div></td>
+<td class="gt_row gt_right"><div class='gt_from_md'></div></td>
 <td class="gt_row gt_left"><div class='gt_from_md'></div></td></tr>
     <tr><td class="gt_row gt_left"><div class='gt_from_md'><p><code>Ksed_n2o</code></p>
 </div></td>
@@ -2724,7 +2732,7 @@ f_{deammonification}=R_{{NH}_4{NO}_2}\times{NO}_2^-\times{NH}_4^+\times\frac{K_{
 </div></td>
 <td class="gt_row gt_left"><div class='gt_from_md'><p>30</p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'></div></td>
+<td class="gt_row gt_right"><div class='gt_from_md'></div></td>
 <td class="gt_row gt_left"><div class='gt_from_md'></div></td></tr>
     <tr><td class="gt_row gt_left"><div class='gt_from_md'><p><code>theta_sed_n2o</code></p>
 </div></td>
@@ -2735,7 +2743,7 @@ f_{deammonification}=R_{{NH}_4{NO}_2}\times{NO}_2^-\times{NH}_4^+\times\frac{K_{
 </div></td>
 <td class="gt_row gt_left"><div class='gt_from_md'><p>1</p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'></div></td>
+<td class="gt_row gt_right"><div class='gt_from_md'></div></td>
 <td class="gt_row gt_left"><div class='gt_from_md'></div></td></tr>
   </tbody>
   
@@ -2823,8 +2831,8 @@ f_{deammonification}=R_{{NH}_4{NO}_2}\times{NO}_2^-\times{NH}_4^+\times\frac{K_{
 <p>Bruce et al. (2015) demonstrate the base nitrogen setup in a 3D model of Yarra River estuary, an urban riverine estuary in Melbourne, Australia, that experiences dynamic movement of a hypoxic salt-wedge based on river flow and tidal interactions.</p>
 <p><br></p>
 <center>
-<div id="htmlwidget-81573bd80dc53672f91d" style="width:500px;height:385px;" class="leaflet html-widget"></div>
-<script type="application/json" data-for="htmlwidget-81573bd80dc53672f91d">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"setView":[[-37.8525,144.9083],12,[]],"calls":[{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"https://openstreetmap.org\">OpenStreetMap<\/a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA<\/a>"}]},{"method":"addMarkers","args":[-37.8525,144.9083,null,null,null,{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},"Yarra River",null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]}],"limits":{"lat":[-37.8525,-37.8525],"lng":[144.9083,144.9083]}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-73456a555ca13b845caf" style="width:500px;height:385px;" class="leaflet html-widget"></div>
+<script type="application/json" data-for="htmlwidget-73456a555ca13b845caf">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"setView":[[-37.8525,144.9083],12,[]],"calls":[{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"https://openstreetmap.org\">OpenStreetMap<\/a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA<\/a>"}]},{"method":"addMarkers","args":[-37.8525,144.9083,null,null,null,{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},"Yarra River",null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]}],"limits":{"lat":[-37.8525,-37.8525],"lng":[144.9083,144.9083]}},"evals":[],"jsHooks":[]}</script>
 </center>
 <p><br></p>
 <p>The results of the simulation are shown in Figure X, highlighting the change in surface and bottom NH4, NO3 and organic nitrogen pools along the estuary length.</p>
@@ -2841,12 +2849,12 @@ Figure 6.3: Time series data for surface (blue) and bottom (red) ammonium, nitra
 </div>
 <div id="publications-2" class="section level3 hasAnchor" number="6.6.2">
 <h3><span class="header-section-number">6.6.2</span> Publications<a href="inorganic-nitrogen.html#publications-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div id="ujzrowrttn" style="overflow-x:auto;overflow-y:auto;width:100%;height:500px;">
+<div id="oqeubajaik" style="overflow-x:auto;overflow-y:auto;width:100%;height:500px;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#ujzrowrttn .gt_table {
+#oqeubajaik .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -2871,7 +2879,7 @@ Figure 6.3: Time series data for surface (blue) and bottom (red) ammonium, nitra
   border-left-color: #D3D3D3;
 }
 
-#ujzrowrttn .gt_heading {
+#oqeubajaik .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -2883,7 +2891,7 @@ Figure 6.3: Time series data for surface (blue) and bottom (red) ammonium, nitra
   border-right-color: #D3D3D3;
 }
 
-#ujzrowrttn .gt_title {
+#oqeubajaik .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -2895,7 +2903,7 @@ Figure 6.3: Time series data for surface (blue) and bottom (red) ammonium, nitra
   border-bottom-width: 0;
 }
 
-#ujzrowrttn .gt_subtitle {
+#oqeubajaik .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -2907,13 +2915,13 @@ Figure 6.3: Time series data for surface (blue) and bottom (red) ammonium, nitra
   border-top-width: 0;
 }
 
-#ujzrowrttn .gt_bottom_border {
+#oqeubajaik .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#ujzrowrttn .gt_col_headings {
+#oqeubajaik .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2928,7 +2936,7 @@ Figure 6.3: Time series data for surface (blue) and bottom (red) ammonium, nitra
   border-right-color: #D3D3D3;
 }
 
-#ujzrowrttn .gt_col_heading {
+#oqeubajaik .gt_col_heading {
   color: #FFFFFF;
   background-color: #14759E;
   font-size: 14px;
@@ -2948,7 +2956,7 @@ Figure 6.3: Time series data for surface (blue) and bottom (red) ammonium, nitra
   overflow-x: hidden;
 }
 
-#ujzrowrttn .gt_column_spanner_outer {
+#oqeubajaik .gt_column_spanner_outer {
   color: #FFFFFF;
   background-color: #14759E;
   font-size: 14px;
@@ -2960,15 +2968,15 @@ Figure 6.3: Time series data for surface (blue) and bottom (red) ammonium, nitra
   padding-right: 4px;
 }
 
-#ujzrowrttn .gt_column_spanner_outer:first-child {
+#oqeubajaik .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#ujzrowrttn .gt_column_spanner_outer:last-child {
+#oqeubajaik .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#ujzrowrttn .gt_column_spanner {
+#oqeubajaik .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -2980,7 +2988,7 @@ Figure 6.3: Time series data for surface (blue) and bottom (red) ammonium, nitra
   width: 100%;
 }
 
-#ujzrowrttn .gt_group_heading {
+#oqeubajaik .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3005,7 +3013,7 @@ Figure 6.3: Time series data for surface (blue) and bottom (red) ammonium, nitra
   vertical-align: middle;
 }
 
-#ujzrowrttn .gt_empty_group_heading {
+#oqeubajaik .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #D3D3D3;
@@ -3020,15 +3028,15 @@ Figure 6.3: Time series data for surface (blue) and bottom (red) ammonium, nitra
   vertical-align: middle;
 }
 
-#ujzrowrttn .gt_from_md > :first-child {
+#oqeubajaik .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#ujzrowrttn .gt_from_md > :last-child {
+#oqeubajaik .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#ujzrowrttn .gt_row {
+#oqeubajaik .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3047,7 +3055,7 @@ Figure 6.3: Time series data for surface (blue) and bottom (red) ammonium, nitra
   overflow-x: hidden;
 }
 
-#ujzrowrttn .gt_stub {
+#oqeubajaik .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3060,7 +3068,7 @@ Figure 6.3: Time series data for surface (blue) and bottom (red) ammonium, nitra
   padding-right: 5px;
 }
 
-#ujzrowrttn .gt_stub_row_group {
+#oqeubajaik .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3074,11 +3082,11 @@ Figure 6.3: Time series data for surface (blue) and bottom (red) ammonium, nitra
   vertical-align: top;
 }
 
-#ujzrowrttn .gt_row_group_first td {
+#oqeubajaik .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#ujzrowrttn .gt_summary_row {
+#oqeubajaik .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -3088,16 +3096,16 @@ Figure 6.3: Time series data for surface (blue) and bottom (red) ammonium, nitra
   padding-right: 5px;
 }
 
-#ujzrowrttn .gt_first_summary_row {
+#oqeubajaik .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#ujzrowrttn .gt_first_summary_row.thick {
+#oqeubajaik .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#ujzrowrttn .gt_last_summary_row {
+#oqeubajaik .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3107,7 +3115,7 @@ Figure 6.3: Time series data for surface (blue) and bottom (red) ammonium, nitra
   border-bottom-color: #D3D3D3;
 }
 
-#ujzrowrttn .gt_grand_summary_row {
+#oqeubajaik .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -3117,7 +3125,7 @@ Figure 6.3: Time series data for surface (blue) and bottom (red) ammonium, nitra
   padding-right: 5px;
 }
 
-#ujzrowrttn .gt_first_grand_summary_row {
+#oqeubajaik .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3127,11 +3135,11 @@ Figure 6.3: Time series data for surface (blue) and bottom (red) ammonium, nitra
   border-top-color: #D3D3D3;
 }
 
-#ujzrowrttn .gt_striped {
+#oqeubajaik .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#ujzrowrttn .gt_table_body {
+#oqeubajaik .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -3140,7 +3148,7 @@ Figure 6.3: Time series data for surface (blue) and bottom (red) ammonium, nitra
   border-bottom-color: #D3D3D3;
 }
 
-#ujzrowrttn .gt_footnotes {
+#oqeubajaik .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -3154,7 +3162,7 @@ Figure 6.3: Time series data for surface (blue) and bottom (red) ammonium, nitra
   border-right-color: #D3D3D3;
 }
 
-#ujzrowrttn .gt_footnote {
+#oqeubajaik .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-left: 4px;
@@ -3163,7 +3171,7 @@ Figure 6.3: Time series data for surface (blue) and bottom (red) ammonium, nitra
   padding-right: 5px;
 }
 
-#ujzrowrttn .gt_sourcenotes {
+#oqeubajaik .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -3177,7 +3185,7 @@ Figure 6.3: Time series data for surface (blue) and bottom (red) ammonium, nitra
   border-right-color: #D3D3D3;
 }
 
-#ujzrowrttn .gt_sourcenote {
+#oqeubajaik .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -3185,72 +3193,74 @@ Figure 6.3: Time series data for surface (blue) and bottom (red) ammonium, nitra
   padding-right: 5px;
 }
 
-#ujzrowrttn .gt_left {
+#oqeubajaik .gt_left {
   text-align: left;
 }
 
-#ujzrowrttn .gt_center {
+#oqeubajaik .gt_center {
   text-align: center;
 }
 
-#ujzrowrttn .gt_right {
+#oqeubajaik .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#ujzrowrttn .gt_font_normal {
+#oqeubajaik .gt_font_normal {
   font-weight: normal;
 }
 
-#ujzrowrttn .gt_font_bold {
+#oqeubajaik .gt_font_bold {
   font-weight: bold;
 }
 
-#ujzrowrttn .gt_font_italic {
+#oqeubajaik .gt_font_italic {
   font-style: italic;
 }
 
-#ujzrowrttn .gt_super {
+#oqeubajaik .gt_super {
   font-size: 65%;
 }
 
-#ujzrowrttn .gt_footnote_marks {
+#oqeubajaik .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
   font-size: 75%;
   vertical-align: 0.4em;
 }
 
-#ujzrowrttn .gt_asterisk {
+#oqeubajaik .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#ujzrowrttn .gt_slash_mark {
-  font-size: 0.7em;
-  line-height: 0.7em;
-  vertical-align: 0.15em;
+#oqeubajaik .gt_indent_1 {
+  text-indent: 5px;
 }
 
-#ujzrowrttn .gt_fraction_numerator {
-  font-size: 0.6em;
-  line-height: 0.6em;
-  vertical-align: 0.45em;
+#oqeubajaik .gt_indent_2 {
+  text-indent: 10px;
 }
 
-#ujzrowrttn .gt_fraction_denominator {
-  font-size: 0.6em;
-  line-height: 0.6em;
-  vertical-align: -0.05em;
+#oqeubajaik .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#oqeubajaik .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#oqeubajaik .gt_indent_5 {
+  text-indent: 25px;
 }
 </style>
 <table class="gt_table">
   
   <thead class="gt_col_headings">
     <tr>
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1">Author/Year</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1">Paper Title</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1">Description</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col">Author/Year</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col">Paper Title</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col">Description</th>
     </tr>
   </thead>
   <tbody class="gt_table_body">

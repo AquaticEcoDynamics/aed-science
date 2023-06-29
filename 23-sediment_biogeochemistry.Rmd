@@ -3159,21 +3159,21 @@ kable(param_UAE7 ,"html", escape = F, align = "c", caption = "Depositional thres
 
 CANDI-AED was used as part of the assessment of the Coorong Lagoon in South Australia. It was used as part of [a greater project](https://aquaticecodynamics.github.io/cdm-science/index.html), in conjunction with a fully 3D resolved Tuflow-FV model of the lagoon, that had full biogeochemistry modules and habitat assessments. In particular, the nutrient budgets and the effects of the hypersalinity were calculated. The [sediment modelling component of the project](https://aquaticecodynamics.github.io/cdm-science/sediment-biogeochemistry.html) in particular looked at the effect of hypersalinity on bioturbation and bioirrigation rates, and the resulting effects such as denitrification.
 
-```{r CoorongSVG-1, echo=FALSE, fig.cap="Test",fig.show='hold',fig.align='center', out.width = '90%'}
-knitr::include_graphics("images/23-sediment_biogeochemistry/VCW/t_D_C_6panel_oxy.svg")
-```
+<!-- ```{r CoorongSVG-1, echo=FALSE, fig.cap="Test",fig.show='hold',fig.align='center', out.width = '90%'} -->
+<!-- knitr::include_graphics("images/23-sediment_biogeochemistry/VCW/t_D_C_6panel_oxy.svg") -->
+<!-- ``` -->
 
-```{r CoorongPNG-1, echo=FALSE, fig.cap="Test",fig.show='hold',fig.align='center', out.width = '100%'}
-knitr::include_graphics("images/23-sediment_biogeochemistry/UAEFish/ThreePlots_popl_13_reso_500.png")
-```
+<!-- ```{r CoorongPNG-1, echo=FALSE, fig.cap="Test",fig.show='hold',fig.align='center', out.width = '100%'} -->
+<!-- knitr::include_graphics("images/23-sediment_biogeochemistry/UAEFish/ThreePlots_popl_13_reso_500.png") -->
+<!-- ``` -->
 
-```{r CoorongPNG-2, echo=FALSE, fig.cap="Test",fig.show='hold',fig.align='center', out.width = '100%'}
-knitr::include_graphics("images/23-sediment_biogeochemistry/UAEFish/ThreePlots_popl_13_reso_1000.png")
-```
+<!-- ```{r CoorongPNG-2, echo=FALSE, fig.cap="Test",fig.show='hold',fig.align='center', out.width = '100%'} -->
+<!-- knitr::include_graphics("images/23-sediment_biogeochemistry/UAEFish/ThreePlots_popl_13_reso_1000.png") -->
+<!-- ``` -->
 
-```{r CoorongPNG-3, echo=FALSE, fig.cap="Test",fig.show='hold',fig.align='center', out.width = '100%'}
-knitr::include_graphics("images/23-sediment_biogeochemistry/UAEFish/ThreePlots_amm_11_reso_200.png")
-```
+<!-- ```{r CoorongPNG-3, echo=FALSE, fig.cap="Test",fig.show='hold',fig.align='center', out.width = '100%'} -->
+<!-- knitr::include_graphics("images/23-sediment_biogeochemistry/UAEFish/ThreePlots_amm_11_reso_200.png") -->
+<!-- ``` -->
 
 ### Case study: Mass balance and numerical error checking
 
