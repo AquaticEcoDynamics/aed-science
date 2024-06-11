@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>18 Publications | The AED Manual</title>
   <meta name="description" content="Work in progress." />
-  <meta name="generator" content="bookdown 0.26 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.39 and GitBook 2.6.7" />
 
   <meta property="og:title" content="18 Publications | The AED Manual" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="" />
 
 
-<meta name="date" content="2023-06-29" />
+<meta name="date" content="2024-06-11" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -51,26 +51,27 @@
 <link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
-<script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script>
+<script src="libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
 <link href="libs/leaflet-1.3.1/leaflet.css" rel="stylesheet" />
 <script src="libs/leaflet-1.3.1/leaflet.js"></script>
 <link href="libs/leafletfix-1.0.0/leafletfix.css" rel="stylesheet" />
 <script src="libs/proj4-2.6.2/proj4.min.js"></script>
 <script src="libs/Proj4Leaflet-1.0.1/proj4leaflet.js"></script>
 <link href="libs/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet" />
-<script src="libs/leaflet-binding-2.1.1/leaflet.js"></script>
-<script src="libs/leaflet-providers-1.9.0/leaflet-providers_1.9.0.js"></script>
-<script src="libs/leaflet-providers-plugin-2.1.1/leaflet-providers-plugin.js"></script>
-<link href="libs/panelset-0.2.6/panelset.css" rel="stylesheet" />
-<script src="libs/panelset-0.2.6/panelset.js"></script>
+<script src="libs/leaflet-binding-2.2.2/leaflet.js"></script>
+<script src="libs/leaflet-providers-2.0.0/leaflet-providers_2.0.0.js"></script>
+<script src="libs/leaflet-providers-plugin-2.2.2/leaflet-providers-plugin.js"></script>
+<link href="libs/panelset-0.3.0/panelset.css" rel="stylesheet" />
+<script src="libs/panelset-0.3.0/panelset.js"></script>
 <script src="libs/kePrint-0.0.1/kePrint.js"></script>
 <link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
-<script src="libs/plotly-binding-4.10.0/plotly.js"></script>
+<link href="libs/htmltools-fill-0.5.8.1/fill.css" rel="stylesheet" />
+<script src="libs/plotly-binding-4.10.4/plotly.js"></script>
 <script src="libs/typedarray-0.1/typedarray.min.js"></script>
-<link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet" />
-<script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
-<link href="libs/plotly-htmlwidgets-css-2.5.1/plotly-htmlwidgets.css" rel="stylesheet" />
-<script src="libs/plotly-main-2.5.1/plotly-latest.min.js"></script>
+<link href="libs/crosstalk-1.2.1/css/crosstalk.min.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.2.1/js/crosstalk.min.js"></script>
+<link href="libs/plotly-htmlwidgets-css-2.11.1/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="libs/plotly-main-2.11.1/plotly-latest.min.js"></script>
 <script src="https://hypothes.is/embed.js" async></script>
   
 
@@ -111,11 +112,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }
 code span.al { color: #ef2929; } /* Alert */
 code span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #c4a000; } /* Attribute */
+code span.at { color: #204a87; } /* Attribute */
 code span.bn { color: #0000cf; } /* BaseN */
 code span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
 code span.ch { color: #4e9a06; } /* Char */
-code span.cn { color: #000000; } /* Constant */
+code span.cn { color: #8f5902; } /* Constant */
 code span.co { color: #8f5902; font-style: italic; } /* Comment */
 code span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
 code span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
@@ -124,14 +125,14 @@ code span.dv { color: #0000cf; } /* DecVal */
 code span.er { color: #a40000; font-weight: bold; } /* Error */
 code span.ex { } /* Extension */
 code span.fl { color: #0000cf; } /* Float */
-code span.fu { color: #000000; } /* Function */
+code span.fu { color: #204a87; font-weight: bold; } /* Function */
 code span.im { } /* Import */
 code span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
 code span.kw { color: #204a87; font-weight: bold; } /* Keyword */
 code span.op { color: #ce5c00; font-weight: bold; } /* Operator */
 code span.ot { color: #8f5902; } /* Other */
 code span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
-code span.sc { color: #000000; } /* SpecialChar */
+code span.sc { color: #ce5c00; font-weight: bold; } /* SpecialChar */
 code span.ss { color: #4e9a06; } /* SpecialString */
 code span.st { color: #4e9a06; } /* String */
 code span.va { color: #000000; } /* Variable */
@@ -139,6 +140,10 @@ code span.vs { color: #4e9a06; } /* VerbatimString */
 code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
 <style type="text/css">
 /* Used with Pandoc 2.11+ new --citeproc when CSL is used */
 div.csl-bib-body { }
@@ -430,10 +435,12 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="14.6" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#case-studies-examples-6"><i class="fa fa-check"></i><b>14.6</b> Case Studies &amp; Examples</a>
 <ul>
-<li class="chapter" data-level="14.6.1" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#case-study-model-benchmark-example"><i class="fa fa-check"></i><b>14.6.1</b> Case study: Model benchmark example</a></li>
-<li class="chapter" data-level="14.6.2" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#case-study-aquaculture-and-sediment-recovery"><i class="fa fa-check"></i><b>14.6.2</b> Case study: Aquaculture and sediment recovery</a></li>
-<li class="chapter" data-level="14.6.3" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#case-study-the-coorong-dynamics-model"><i class="fa fa-check"></i><b>14.6.3</b> Case study: The Coorong Dynamics Model</a></li>
-<li class="chapter" data-level="14.6.4" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#case-study-mass-balance-and-numerical-error-checking"><i class="fa fa-check"></i><b>14.6.4</b> Case study: Mass balance and numerical error checking</a></li>
+<li class="chapter" data-level="14.6.1" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#section"><i class="fa fa-check"></i><b>14.6.1</b> </a></li>
+<li class="chapter" data-level="" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#numerical-mass-balance-and-flux-confirmation"><i class="fa fa-check"></i>Numerical mass balance and flux confirmation</a></li>
+<li class="chapter" data-level="14.6.2" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#case-study-model-benchmark-example"><i class="fa fa-check"></i><b>14.6.2</b> Case study: Model benchmark example</a></li>
+<li class="chapter" data-level="14.6.3" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#case-study-aquaculture-and-sediment-recovery"><i class="fa fa-check"></i><b>14.6.3</b> Case study: Aquaculture and sediment recovery</a></li>
+<li class="chapter" data-level="14.6.4" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#case-study-the-coorong-dynamics-model"><i class="fa fa-check"></i><b>14.6.4</b> Case study: The Coorong Dynamics Model</a></li>
+<li class="chapter" data-level="14.6.5" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#case-study-mass-balance-and-numerical-error-checking"><i class="fa fa-check"></i><b>14.6.5</b> Case study: Mass balance and numerical error checking</a></li>
 </ul></li>
 <li class="chapter" data-level="14.7" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#references"><i class="fa fa-check"></i><b>14.7</b> References</a></li>
 </ul></li>
@@ -559,7 +566,7 @@ Description
 <tbody>
 <tr>
 <td style="text-align:center;min-width: 6em; background-color: white !important;">
-<span class="citation">Bruce et al. (<a href="#ref-bruce2014" role="doc-biblioref">2014</a>)</span>
+<span class="citation">Bruce et al. (<a href="#ref-bruce2014">2014</a>)</span>
 </td>
 <td style="text-align:center;min-width: 6em; background-color: white !important;">
 Hydrodynamic controls on oxygen dynamics in a riverine salt wedge estuary, the Yarra River estuary, Australia
@@ -570,7 +577,7 @@ Estuarine
 </tr>
 <tr>
 <td style="text-align:center;min-width: 6em; background-color: white !important;">
-<span class="citation">Bucak et al. (<a href="#ref-bucak2018" role="doc-biblioref">2018</a>)</span>
+<span class="citation">Bucak et al. (<a href="#ref-bucak2018">2018</a>)</span>
 </td>
 <td style="text-align:center;min-width: 6em; background-color: white !important;">
 Modeling the effects of climatic and land use changes on phytoplankton and water quality of the largest Turkish freshwater lake: Lake Beyşehir
@@ -581,7 +588,7 @@ Estuarine
 </tr>
 <tr>
 <td style="text-align:center;min-width: 6em; background-color: white !important;">
-<span class="citation">Chen et al. (<a href="#ref-chen2018" role="doc-biblioref">2018</a>)</span>
+<span class="citation">Chen et al. (<a href="#ref-chen2018">2018</a>)</span>
 </td>
 <td style="text-align:center;min-width: 6em; background-color: white !important;">
 Effectiveness of a bubble-plume mixing system for managing phytoplankton in lakes and reservoirs
@@ -592,7 +599,7 @@ Lake
 </tr>
 <tr>
 <td style="text-align:center;min-width: 6em; background-color: white !important;">
-<span class="citation">Coletti et al. (<a href="#ref-coletti2017" role="doc-biblioref">2017</a>)</span>
+<span class="citation">Coletti et al. (<a href="#ref-coletti2017">2017</a>)</span>
 </td>
 <td style="text-align:center;min-width: 6em; background-color: white !important;">
 Water management can reinforce plant competition in salt-affected semi-arid wetlands
@@ -603,7 +610,7 @@ Wetland
 </tr>
 <tr>
 <td style="text-align:center;min-width: 6em; background-color: white !important;">
-<span class="citation">(<a href="#ref-bruce2019" role="doc-biblioref"><strong>bruce2019?</strong></a>)</span>
+<span class="citation">(<a href="#ref-bruce2019"><strong>bruce2019?</strong></a>)</span>
 </td>
 <td style="text-align:center;min-width: 6em; background-color: white !important;">
 Integrated aquaculture modelling to determine carrying capacity of aquaculture development zones in
@@ -615,7 +622,7 @@ Aquaculture
 </tr>
 <tr>
 <td style="text-align:center;min-width: 6em; background-color: white !important;">
-<span class="citation">Fadel et al. (<a href="#ref-fadel2019" role="doc-biblioref">2019</a>)</span>
+<span class="citation">Fadel et al. (<a href="#ref-fadel2019">2019</a>)</span>
 </td>
 <td style="text-align:center;min-width: 6em; background-color: white !important;">
 A simple modelling approach to simulate the effect of different climate scenarios on toxic cyanobacterial bloom in a eutrophic reservoir
@@ -626,7 +633,7 @@ Lake
 </tr>
 <tr>
 <td style="text-align:center;min-width: 6em; background-color: white !important;">
-<span class="citation">Farrell et al. (<a href="#ref-farrell2020" role="doc-biblioref">2020</a>)</span>
+<span class="citation">Farrell et al. (<a href="#ref-farrell2020">2020</a>)</span>
 </td>
 <td style="text-align:center;min-width: 6em; background-color: white !important;">
 Ecosystem-scale nutrient cycling responses to increasing air temperatures vary with lake trophic state
@@ -637,7 +644,7 @@ Lake
 </tr>
 <tr>
 <td style="text-align:center;min-width: 6em; background-color: white !important;">
-<span class="citation">Fenocchi et al. (<a href="#ref-fenocchi2019" role="doc-biblioref">2019</a>)</span>
+<span class="citation">Fenocchi et al. (<a href="#ref-fenocchi2019">2019</a>)</span>
 </td>
 <td style="text-align:center;min-width: 6em; background-color: white !important;">
 Applicability of a one-dimensional coupled ecological-hydrodynamic numerical model to future projections in a very deep large lake (Lake Maggiore, Northern Italy/Southern Switzerland)
@@ -648,7 +655,7 @@ Lake
 </tr>
 <tr>
 <td style="text-align:center;min-width: 6em; background-color: white !important;">
-<span class="citation">Fenocchi et al. (<a href="#ref-fenocchi2020" role="doc-biblioref">2020</a>)</span>
+<span class="citation">Fenocchi et al. (<a href="#ref-fenocchi2020">2020</a>)</span>
 </td>
 <td style="text-align:center;min-width: 6em; background-color: white !important;">
 Model simulations of the ecological dynamics induced by climate and nutrient load changes for deep subalpine Lake Maggiore (Italy/Switzerland): Model simulations of the future ecological dynamics of Lake Maggiore
@@ -659,7 +666,7 @@ Lake
 </tr>
 <tr>
 <td style="text-align:center;min-width: 6em; background-color: white !important;">
-<span class="citation">Griffith and Tate (<a href="#ref-griffith2014" role="doc-biblioref">2014</a>)</span>
+<span class="citation">Griffith and Tate (<a href="#ref-griffith2014">2014</a>)</span>
 </td>
 <td style="text-align:center;min-width: 6em; background-color: white !important;">
 Hawkesbury Nepean River and South Creek Model
@@ -670,7 +677,7 @@ River
 </tr>
 <tr>
 <td style="text-align:center;min-width: 6em; background-color: white !important;">
-<span class="citation">Huang et al. (<a href="#ref-huang2018" role="doc-biblioref">2018</a>)</span>
+<span class="citation">Huang et al. (<a href="#ref-huang2018">2018</a>)</span>
 </td>
 <td style="text-align:center;min-width: 6em; background-color: white !important;">
 Assessing artificial oxygenation in a riverine salt-wedge estuary with a three-dimensional finite-volume model
@@ -681,7 +688,7 @@ Estuarine
 </tr>
 <tr>
 <td style="text-align:center;min-width: 6em; background-color: white !important;">
-<span class="citation">Krinos et al. (<a href="#ref-krinos2019" role="doc-biblioref">2019</a>)</span>
+<span class="citation">Krinos et al. (<a href="#ref-krinos2019">2019</a>)</span>
 </td>
 <td style="text-align:center;min-width: 6em; background-color: white !important;">
 Including variability in air temperature warming scenarios in a lake simulation model highlights uncertainty in predictions of cyanobacteria
@@ -692,7 +699,7 @@ Lake
 </tr>
 <tr>
 <td style="text-align:center;min-width: 6em; background-color: white !important;">
-<span class="citation">Liu et al. (<a href="#ref-liu2020" role="doc-biblioref">2020</a>)</span>
+<span class="citation">Liu et al. (<a href="#ref-liu2020">2020</a>)</span>
 </td>
 <td style="text-align:center;min-width: 6em; background-color: white !important;">
 Unravelling the metabolism black-box in a dynamic wetland environment using a hybrid model framework: Storm driven changes in oxygen budgets
@@ -703,7 +710,7 @@ Wetland
 </tr>
 <tr>
 <td style="text-align:center;min-width: 6em; background-color: white !important;">
-<span class="citation">Snortheim et al. (<a href="#ref-snortheim2017" role="doc-biblioref">2017</a>)</span>
+<span class="citation">Snortheim et al. (<a href="#ref-snortheim2017">2017</a>)</span>
 </td>
 <td style="text-align:center;min-width: 6em; background-color: white !important;">
 Meteorological drivers of hypolimnetic anoxia in a eutrophic, north temperate lake
@@ -714,7 +721,7 @@ Lake
 </tr>
 <tr>
 <td style="text-align:center;min-width: 6em; background-color: white !important;">
-<span class="citation">Subratie et al. (<a href="#ref-subratie2017" role="doc-biblioref">2017</a>)</span>
+<span class="citation">Subratie et al. (<a href="#ref-subratie2017">2017</a>)</span>
 </td>
 <td style="text-align:center;min-width: 6em; background-color: white !important;">
 GRAPLEr: A distributed collaborative environment for lake ecosystem modeling that integrates overlay networks, high-throughput computing, and WEB services
@@ -725,7 +732,7 @@ Lake
 </tr>
 <tr>
 <td style="text-align:center;min-width: 6em; background-color: white !important;">
-<span class="citation">Ward et al. (<a href="#ref-ward2020" role="doc-biblioref">2020</a>)</span>
+<span class="citation">Ward et al. (<a href="#ref-ward2020">2020</a>)</span>
 </td>
 <td style="text-align:center;min-width: 6em; background-color: white !important;">
 Differential responses of maximum versus median chlorophyll‐ a to air temperature and nutrient loads in an oligotrophic lake over 31 years
@@ -736,7 +743,7 @@ Lake
 </tr>
 <tr>
 <td style="text-align:center;min-width: 6em; background-color: white !important;">
-<span class="citation">Weber et al. (<a href="#ref-weber2017" role="doc-biblioref">2017</a>)</span>
+<span class="citation">Weber et al. (<a href="#ref-weber2017">2017</a>)</span>
 </td>
 <td style="text-align:center;min-width: 6em; background-color: white !important;">
 Optimizing withdrawal from drinking water reservoirs to reduce downstream temperature pollution and reservoir hypoxia
@@ -747,7 +754,7 @@ River
 </tr>
 <tr>
 <td style="text-align:center;min-width: 6em; background-color: white !important;">
-<span class="citation">Weng et al. (<a href="#ref-weng2020" role="doc-biblioref">2020</a>)</span>
+<span class="citation">Weng et al. (<a href="#ref-weng2020">2020</a>)</span>
 </td>
 <td style="text-align:center;min-width: 6em; background-color: white !important;">
 Coupling Natural and Human Models in the Context of a Lake Ecosystem: Lake Mendota, Wisconsin, USA
@@ -758,7 +765,7 @@ Lake
 </tr>
 <tr>
 <td style="text-align:center;min-width: 6em; background-color: white !important;">
-<span class="citation">Zhang et al. (<a href="#ref-zhang2017" role="doc-biblioref">2017</a>)</span>
+<span class="citation">Zhang et al. (<a href="#ref-zhang2017">2017</a>)</span>
 </td>
 <td style="text-align:center;min-width: 6em; background-color: white !important;">
 Simulation of multiple water source ecological replenishment for Chagan Lake based on coupled hydrodynamic and water quality models
@@ -931,7 +938,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');

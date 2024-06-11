@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>15 Bivalves | The AED Manual</title>
   <meta name="description" content="Work in progress." />
-  <meta name="generator" content="bookdown 0.26 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.39 and GitBook 2.6.7" />
 
   <meta property="og:title" content="15 Bivalves | The AED Manual" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="" />
 
 
-<meta name="date" content="2023-06-29" />
+<meta name="date" content="2024-06-11" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -51,26 +51,27 @@
 <link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
-<script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script>
+<script src="libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
 <link href="libs/leaflet-1.3.1/leaflet.css" rel="stylesheet" />
 <script src="libs/leaflet-1.3.1/leaflet.js"></script>
 <link href="libs/leafletfix-1.0.0/leafletfix.css" rel="stylesheet" />
 <script src="libs/proj4-2.6.2/proj4.min.js"></script>
 <script src="libs/Proj4Leaflet-1.0.1/proj4leaflet.js"></script>
 <link href="libs/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet" />
-<script src="libs/leaflet-binding-2.1.1/leaflet.js"></script>
-<script src="libs/leaflet-providers-1.9.0/leaflet-providers_1.9.0.js"></script>
-<script src="libs/leaflet-providers-plugin-2.1.1/leaflet-providers-plugin.js"></script>
-<link href="libs/panelset-0.2.6/panelset.css" rel="stylesheet" />
-<script src="libs/panelset-0.2.6/panelset.js"></script>
+<script src="libs/leaflet-binding-2.2.2/leaflet.js"></script>
+<script src="libs/leaflet-providers-2.0.0/leaflet-providers_2.0.0.js"></script>
+<script src="libs/leaflet-providers-plugin-2.2.2/leaflet-providers-plugin.js"></script>
+<link href="libs/panelset-0.3.0/panelset.css" rel="stylesheet" />
+<script src="libs/panelset-0.3.0/panelset.js"></script>
 <script src="libs/kePrint-0.0.1/kePrint.js"></script>
 <link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
-<script src="libs/plotly-binding-4.10.0/plotly.js"></script>
+<link href="libs/htmltools-fill-0.5.8.1/fill.css" rel="stylesheet" />
+<script src="libs/plotly-binding-4.10.4/plotly.js"></script>
 <script src="libs/typedarray-0.1/typedarray.min.js"></script>
-<link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet" />
-<script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
-<link href="libs/plotly-htmlwidgets-css-2.5.1/plotly-htmlwidgets.css" rel="stylesheet" />
-<script src="libs/plotly-main-2.5.1/plotly-latest.min.js"></script>
+<link href="libs/crosstalk-1.2.1/css/crosstalk.min.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.2.1/js/crosstalk.min.js"></script>
+<link href="libs/plotly-htmlwidgets-css-2.11.1/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="libs/plotly-main-2.11.1/plotly-latest.min.js"></script>
 <script src="https://hypothes.is/embed.js" async></script>
   
 
@@ -111,11 +112,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }
 code span.al { color: #ef2929; } /* Alert */
 code span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #c4a000; } /* Attribute */
+code span.at { color: #204a87; } /* Attribute */
 code span.bn { color: #0000cf; } /* BaseN */
 code span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
 code span.ch { color: #4e9a06; } /* Char */
-code span.cn { color: #000000; } /* Constant */
+code span.cn { color: #8f5902; } /* Constant */
 code span.co { color: #8f5902; font-style: italic; } /* Comment */
 code span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
 code span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
@@ -124,14 +125,14 @@ code span.dv { color: #0000cf; } /* DecVal */
 code span.er { color: #a40000; font-weight: bold; } /* Error */
 code span.ex { } /* Extension */
 code span.fl { color: #0000cf; } /* Float */
-code span.fu { color: #000000; } /* Function */
+code span.fu { color: #204a87; font-weight: bold; } /* Function */
 code span.im { } /* Import */
 code span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
 code span.kw { color: #204a87; font-weight: bold; } /* Keyword */
 code span.op { color: #ce5c00; font-weight: bold; } /* Operator */
 code span.ot { color: #8f5902; } /* Other */
 code span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
-code span.sc { color: #000000; } /* SpecialChar */
+code span.sc { color: #ce5c00; font-weight: bold; } /* SpecialChar */
 code span.ss { color: #4e9a06; } /* SpecialString */
 code span.st { color: #4e9a06; } /* String */
 code span.va { color: #000000; } /* Variable */
@@ -139,6 +140,10 @@ code span.vs { color: #4e9a06; } /* VerbatimString */
 code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
 <style type="text/css">
 /* Used with Pandoc 2.11+ new --citeproc when CSL is used */
 div.csl-bib-body { }
@@ -430,10 +435,12 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="14.6" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#case-studies-examples-6"><i class="fa fa-check"></i><b>14.6</b> Case Studies &amp; Examples</a>
 <ul>
-<li class="chapter" data-level="14.6.1" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#case-study-model-benchmark-example"><i class="fa fa-check"></i><b>14.6.1</b> Case study: Model benchmark example</a></li>
-<li class="chapter" data-level="14.6.2" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#case-study-aquaculture-and-sediment-recovery"><i class="fa fa-check"></i><b>14.6.2</b> Case study: Aquaculture and sediment recovery</a></li>
-<li class="chapter" data-level="14.6.3" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#case-study-the-coorong-dynamics-model"><i class="fa fa-check"></i><b>14.6.3</b> Case study: The Coorong Dynamics Model</a></li>
-<li class="chapter" data-level="14.6.4" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#case-study-mass-balance-and-numerical-error-checking"><i class="fa fa-check"></i><b>14.6.4</b> Case study: Mass balance and numerical error checking</a></li>
+<li class="chapter" data-level="14.6.1" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#section"><i class="fa fa-check"></i><b>14.6.1</b> </a></li>
+<li class="chapter" data-level="" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#numerical-mass-balance-and-flux-confirmation"><i class="fa fa-check"></i>Numerical mass balance and flux confirmation</a></li>
+<li class="chapter" data-level="14.6.2" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#case-study-model-benchmark-example"><i class="fa fa-check"></i><b>14.6.2</b> Case study: Model benchmark example</a></li>
+<li class="chapter" data-level="14.6.3" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#case-study-aquaculture-and-sediment-recovery"><i class="fa fa-check"></i><b>14.6.3</b> Case study: Aquaculture and sediment recovery</a></li>
+<li class="chapter" data-level="14.6.4" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#case-study-the-coorong-dynamics-model"><i class="fa fa-check"></i><b>14.6.4</b> Case study: The Coorong Dynamics Model</a></li>
+<li class="chapter" data-level="14.6.5" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#case-study-mass-balance-and-numerical-error-checking"><i class="fa fa-check"></i><b>14.6.5</b> Case study: Mass balance and numerical error checking</a></li>
 </ul></li>
 <li class="chapter" data-level="14.7" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#references"><i class="fa fa-check"></i><b>14.7</b> References</a></li>
 </ul></li>
@@ -517,7 +524,7 @@ div.csl-indent {
 <div id="overview-10" class="section level2 hasAnchor" number="15.2">
 <h2><span class="header-section-number">15.2</span> Overview<a href="bivalves.html#overview-10" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Based on work in freshwater and estuarine systems a bivalve module to simulate growth, production, and (optionally) population dynamics has been incorporated into the AED2+ library.</p>
-<p>The model is originally based on an application to Oneida Lake and Lake Erie for mussels. One to several size classes of mussels are simulated based on physiological parameters assembled by <span class="citation">Schneider (<a href="#ref-schneider1992" role="doc-biblioref">1992</a>)</span> and modified by <span class="citation">Bierman et al. (<a href="#ref-bierman2005" role="doc-biblioref">2005</a>)</span> to estimate effect of mussels on Saginaw Bay, Michigan, USA; a formulation also used by <span class="citation">Gudimov et al. (<a href="#ref-gudimov2015" role="doc-biblioref">2015</a>)</span> to estimate mussel effects in Lake Simcoe, Ontario, Canada. Additionally, some model structure was taken from the <span class="citation">Spillman et al. (<a href="#ref-spillman2008" role="doc-biblioref">2008</a>)</span> model of Tapes clams in the Barbamarco Lagoon, Italy, as modified by <span class="citation">Bocaniov et al. (<a href="#ref-bocaniov2014" role="doc-biblioref">2014</a>)</span> for mussels in Lake Erie.</p>
+<p>The model is originally based on an application to Oneida Lake and Lake Erie for mussels. One to several size classes of mussels are simulated based on physiological parameters assembled by <span class="citation">Schneider (<a href="#ref-schneider1992">1992</a>)</span> and modified by <span class="citation">Bierman et al. (<a href="#ref-bierman2005">2005</a>)</span> to estimate effect of mussels on Saginaw Bay, Michigan, USA; a formulation also used by <span class="citation">Gudimov et al. (<a href="#ref-gudimov2015">2015</a>)</span> to estimate mussel effects in Lake Simcoe, Ontario, Canada. Additionally, some model structure was taken from the <span class="citation">Spillman et al. (<a href="#ref-spillman2008">2008</a>)</span> model of Tapes clams in the Barbamarco Lagoon, Italy, as modified by <span class="citation">Bocaniov et al. (<a href="#ref-bocaniov2014">2014</a>)</span> for mussels in Lake Erie.</p>
 <p>The physiology of mussels are set to be size dependent, and can vary between species (e.g., Zebra vs Quagga)(Hetherington, 2016). Three size classes of mussels can be incorporated in the model, roughly corresponding to age-0, age-1 and age&gt;1 mussels. Physiological parameters are calculated for the weight assigned to each age class, using equations in Table 4. Individual mussel mass is given in mmol C or in the case of calculations of N and P budgets, in mmol N and mmol P. The stoichiometric ratios (C:N:P) are fixed. Group mussel biomass is calculated at each time step by calculating ingestion and subtracting pseudofeces production, standard dynamic action, respiration, excretion, egestion and mortality (expressed in mmol C/mmol C/day, mmol N/mmol N/day; mmol P/mmol P/day). Several of these processes are also functions of temperature, algal+POC concentrations, salinity, suspended solids and mussel density. The effect of salinity, suspended solids and mussel density is incorporated as a multiplier of filtration rate with the multipliers having values between -0 – (no filtering) and 1 (no effect). Mussel nitrogen and phosphorus concentrations are fixed ratios of mussel carbon concentrations. Since the various input and output fluxes have variable C:N:P ratios, the excretion of nutrients is dynamically adjusted each time-step to maintain this ratio at each time step. Reproduction and larval dynamics are not simulated. There is no transfer of biomass between age groups.</p>
 </div>
 <div id="model-description-9" class="section level2 hasAnchor" number="15.3">
@@ -526,7 +533,7 @@ div.csl-indent {
 <h3><span class="header-section-number">15.3.1</span> Process Descriptions<a href="bivalves.html#process-descriptions-10" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div id="ingestion" class="section level4 unnumbered hasAnchor">
 <h4>Ingestion<a href="bivalves.html#ingestion" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>Ingestion is modelled as a function of filtration rate, food availability, pseudofeces production, density, suspended solids, and salinity (Equation 2) <span class="citation">(<a href="#ref-bierman2005" role="doc-biblioref">Bierman et al., 2005</a>; <a href="#ref-gudimov2015" role="doc-biblioref">Gudimov et al., 2015</a>; <a href="#ref-schneider1992" role="doc-biblioref">Schneider, 1992</a>; <a href="#ref-spillman2008" role="doc-biblioref">Spillman et al., 2008</a>)</span>. Filtration rate is based on maximum ingestion, temperature, food availability, and pseudofeces production according to the following:</p>
+<p>Ingestion is modelled as a function of filtration rate, food availability, pseudofeces production, density, suspended solids, and salinity (Equation 2) <span class="citation">(<a href="#ref-bierman2005">Bierman et al., 2005</a>; <a href="#ref-gudimov2015">Gudimov et al., 2015</a>; <a href="#ref-schneider1992">Schneider, 1992</a>; <a href="#ref-spillman2008">Spillman et al., 2008</a>)</span>. Filtration rate is based on maximum ingestion, temperature, food availability, and pseudofeces production according to the following:</p>
 <center>
 <br>
 <span class="math display" id="eq:bivalve1">\[\begin{equation}
@@ -559,8 +566,8 @@ W = \frac{0.071}{1000} * L^{2.8}
 \end{equation}\]</span>
 </center>
 <p><br></p>
-<p>where <span class="math inline">\(Imax\)</span> is maximum ingestion rate (mmol/mmol/d), <span class="math inline">\(a_{I}\)</span> is maximum standard ingestion rate (mmol/mmol/d), <span class="math inline">\(W\)</span> is weight (g), <span class="math inline">\(bI\)</span> is exponent for weight effect on ingestion, <span class="math inline">\(L\)</span> in length (mm) <span class="citation">(<a href="#ref-bierman2005" role="doc-biblioref">Bierman et al., 2005</a>; <a href="#ref-schneider1992" role="doc-biblioref">Schneider, 1992</a>)</span>.
-The temperature dependence function <span class="citation">(<a href="#ref-thornton1978" role="doc-biblioref">Thornton and Lessem, 1978</a>)</span> was fit to zebra and quagga mussel data (Hetherington et al. Submitted) with optimal ingestion from 17°C to 20°C according to the following:</p>
+<p>where <span class="math inline">\(Imax\)</span> is maximum ingestion rate (mmol/mmol/d), <span class="math inline">\(a_{I}\)</span> is maximum standard ingestion rate (mmol/mmol/d), <span class="math inline">\(W\)</span> is weight (g), <span class="math inline">\(bI\)</span> is exponent for weight effect on ingestion, <span class="math inline">\(L\)</span> in length (mm) <span class="citation">(<a href="#ref-bierman2005">Bierman et al., 2005</a>; <a href="#ref-schneider1992">Schneider, 1992</a>)</span>.
+The temperature dependence function <span class="citation">(<a href="#ref-thornton1978">Thornton and Lessem, 1978</a>)</span> was fit to zebra and quagga mussel data (Hetherington et al. Submitted) with optimal ingestion from 17°C to 20°C according to the following:</p>
 <center>
 <br>
 <span class="math display" id="eq:bivalve5">\[\begin{equation}
@@ -593,8 +600,8 @@ f(T)_{I} = 0    \text{ for } T &gt; maxT_{I} \text{ or } T &lt; minT_{I}
 </center>
 <p><br></p>
 <p>where <span class="math inline">\(T\)</span> is temperature (°C), <span class="math inline">\(minT_{I}\)</span> is lower temperature for no ingestion (°C), <span class="math inline">\(Tmin_{I}\)</span> is lower temperature for optimum ingestion (°C), <span class="math inline">\(Tmax_{I}\)</span> is upper temperature for optimum ingestion, <span class="math inline">\(maxT_{I}\)</span> is upper temperature for no ingestion (°C).
-Filtration rate is related to food concentration [<span class="citation">Walz (<a href="#ref-walz1978" role="doc-biblioref">1978</a>)</span>; <span class="citation">Sprung and Rose (<a href="#ref-sprung1988" role="doc-biblioref">1988</a>)</span>; <span class="citation">Schneider (<a href="#ref-schneider1992" role="doc-biblioref">1992</a>)</span>; <span class="citation">Bierman et al. (<a href="#ref-bierman2005" role="doc-biblioref">2005</a>)</span>). The filtration rate is maintained at a maximum value for all food values less than saturation food concentration. The filtration rate decreases as food concentrations increase above this value.
-Pseudofeces production is implicit as the difference between the mass filtered and consumed. According to <span class="citation">Walz (<a href="#ref-walz1978" role="doc-biblioref">1978</a>)</span>, pseudofeces production (66%) was approximately double the ingestion rate (34%) at high food concentrations <span class="citation">Bierman et al. (<a href="#ref-bierman2005" role="doc-biblioref">2005</a>)</span>.</p>
+Filtration rate is related to food concentration [<span class="citation">Walz (<a href="#ref-walz1978">1978</a>)</span>; <span class="citation">Sprung and Rose (<a href="#ref-sprung1988">1988</a>)</span>; <span class="citation">Schneider (<a href="#ref-schneider1992">1992</a>)</span>; <span class="citation">Bierman et al. (<a href="#ref-bierman2005">2005</a>)</span>). The filtration rate is maintained at a maximum value for all food values less than saturation food concentration. The filtration rate decreases as food concentrations increase above this value.
+Pseudofeces production is implicit as the difference between the mass filtered and consumed. According to <span class="citation">Walz (<a href="#ref-walz1978">1978</a>)</span>, pseudofeces production (66%) was approximately double the ingestion rate (34%) at high food concentrations <span class="citation">Bierman et al. (<a href="#ref-bierman2005">2005</a>)</span>.</p>
 <p>Mussel density limits ingestion above some maximum density according to the following:</p>
 <center>
 <br>
@@ -646,7 +653,7 @@ f(SS) = 0 \text{ for } SS&gt;maxSS
 \end{equation}\]</span>
 </center>
 <p><br></p>
-<p>where <span class="math inline">\(SS\)</span> is suspended solids (mg/L), <span class="math inline">\(SSmax\)</span> is upper suspended solids for optimum ingestion (mg/L), and <span class="math inline">\(maxSS\)</span> is upper suspended solids for no ingestion (mg/L) <span class="citation">(<a href="#ref-spillman2008" role="doc-biblioref">Spillman et al., 2008</a>)</span>.
+<p>where <span class="math inline">\(SS\)</span> is suspended solids (mg/L), <span class="math inline">\(SSmax\)</span> is upper suspended solids for optimum ingestion (mg/L), and <span class="math inline">\(maxSS\)</span> is upper suspended solids for no ingestion (mg/L) <span class="citation">(<a href="#ref-spillman2008">Spillman et al., 2008</a>)</span>.
 Along with suspended solids, salinity limits ingestion according to the following:</p>
 <center>
 <br>
@@ -676,11 +683,11 @@ f(S) = 0 \text{ for } S &gt; maxS \text{ or } S &lt; minS
 \end{equation}\]</span>
 </center>
 <p><br></p>
-<p>where <span class="math inline">\(S\)</span> is salinity (psu), <span class="math inline">\(minS\)</span> is lower salinity for no ingestion (psu), <span class="math inline">\(Smin\)</span> is lower salinity for optimum ingestion (psu), <span class="math inline">\(Smax\)</span> is upper salinity for optimum ingestion (psu), <span class="math inline">\(maxS\)</span> is upper salinity for no ingestion (psu) <span class="citation">(<a href="#ref-spillman2008" role="doc-biblioref">Spillman et al., 2008</a>)</span>.</p>
+<p>where <span class="math inline">\(S\)</span> is salinity (psu), <span class="math inline">\(minS\)</span> is lower salinity for no ingestion (psu), <span class="math inline">\(Smin\)</span> is lower salinity for optimum ingestion (psu), <span class="math inline">\(Smax\)</span> is upper salinity for optimum ingestion (psu), <span class="math inline">\(maxS\)</span> is upper salinity for no ingestion (psu) <span class="citation">(<a href="#ref-spillman2008">Spillman et al., 2008</a>)</span>.</p>
 </div>
 <div id="respiration" class="section level4 unnumbered hasAnchor">
 <h4>Respiration<a href="bivalves.html#respiration" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>Respiration is modelled as a base or standard respiration rate based on weight and temperature <span class="citation">(<a href="#ref-spillman2008" role="doc-biblioref">Spillman et al., 2008</a>)</span>. Respiration rate coefficient at 20°C is based on weight from length according to the following:</p>
+<p>Respiration is modelled as a base or standard respiration rate based on weight and temperature <span class="citation">(<a href="#ref-spillman2008">Spillman et al., 2008</a>)</span>. Respiration rate coefficient at 20°C is based on weight from length according to the following:</p>
 <center>
 <br>
 <span class="math display" id="eq:bivalve19">\[\begin{equation}
@@ -707,7 +714,7 @@ f(T)_{RSpillman} = \Theta_{RSpillman}^{T-20}
 \end{equation}\]</span>
 </center>
 <p><br></p>
-<p>where <span class="math inline">\(f(T)_{RSpillman}\)</span> is respiration temperature function, <span class="math inline">\(\Theta_{RSpillman}\)</span> is temperature multiplier for bivalve respiration (-), and <span class="math inline">\(T\)</span> is temperature (°C) <span class="citation">(<a href="#ref-spillman2008" role="doc-biblioref">Spillman et al., 2008</a>)</span>.
+<p>where <span class="math inline">\(f(T)_{RSpillman}\)</span> is respiration temperature function, <span class="math inline">\(\Theta_{RSpillman}\)</span> is temperature multiplier for bivalve respiration (-), and <span class="math inline">\(T\)</span> is temperature (°C) <span class="citation">(<a href="#ref-spillman2008">Spillman et al., 2008</a>)</span>.
 Alternatively, respiration is modelled as a base or standard respiration rate based on weight and temperature in addition to the energetic cost of feeding. Respiration rate coefficient at 30°C is based on weight from length according to the following:</p>
 <center>
 <br>
@@ -725,8 +732,8 @@ W = \frac{0.071}{1000} * L^{2.8}
 \end{equation}\]</span>
 </center>
 <p><br></p>
-<p>where <span class="math inline">\(R_{30}\)</span> is respiration rate coefficient at 30°C (mmol/mmol/d), <span class="math inline">\(a^{R}\)</span> is standard respiration rate (mmol/mmol/d), <span class="math inline">\(W\)</span> is weight (g), <span class="math inline">\(b_{R}\)</span> is exponent for weight effect of respiration, and <span class="math inline">\(L\)</span> is length (mm) <span class="citation">(<a href="#ref-schneider1992" role="doc-biblioref">Schneider, 1992</a>)</span>.
-The temperature function follows <span class="citation">Schneider (<a href="#ref-schneider1992" role="doc-biblioref">1992</a>)</span> application of the model of <span class="citation">Kitchell et al. (<a href="#ref-kitchell1977" role="doc-biblioref">1977</a>)</span> to the data of <span class="citation">Jr and McMahon (<a href="#ref-alexander_jr2004" role="doc-biblioref">2004</a>)</span> according to the following:</p>
+<p>where <span class="math inline">\(R_{30}\)</span> is respiration rate coefficient at 30°C (mmol/mmol/d), <span class="math inline">\(a^{R}\)</span> is standard respiration rate (mmol/mmol/d), <span class="math inline">\(W\)</span> is weight (g), <span class="math inline">\(b_{R}\)</span> is exponent for weight effect of respiration, and <span class="math inline">\(L\)</span> is length (mm) <span class="citation">(<a href="#ref-schneider1992">Schneider, 1992</a>)</span>.
+The temperature function follows <span class="citation">Schneider (<a href="#ref-schneider1992">1992</a>)</span> application of the model of <span class="citation">Kitchell et al. (<a href="#ref-kitchell1977">1977</a>)</span> to the data of <span class="citation">Jr and McMahon (<a href="#ref-alexander_jr2004">2004</a>)</span> according to the following:</p>
 <center>
 <br>
 <span class="math display" id="eq:bivalve24">\[\begin{equation}
@@ -768,15 +775,15 @@ Y = lnQ_{R}*(Tmax_{R} – maxT_{R} + 2)
 </center>
 <p><br></p>
 <p>where <span class="math inline">\(T\)</span> is temperature (°C), <span class="math inline">\(Tmax_{R}\)</span> is upper temperature for optimum respiration (°C), <span class="math inline">\(maxT_{R}\)</span> is upper temperature for no respiration (°C), and <span class="math inline">\(Q_{R}\)</span> is respiration curve slope estimate (-). The maximum respiration occurs at 30°C with 43°C as the upper lethal temperature.
-The energetic cost of feeding or specific dynamic action is applied only to the portion of ingestion that is not egested <span class="citation">(<a href="#ref-bierman2005" role="doc-biblioref">Bierman et al., 2005</a>; <a href="#ref-gudimov2015" role="doc-biblioref">Gudimov et al., 2015</a>; <a href="#ref-schneider1992" role="doc-biblioref">Schneider, 1992</a>)</span>.</p>
+The energetic cost of feeding or specific dynamic action is applied only to the portion of ingestion that is not egested <span class="citation">(<a href="#ref-bierman2005">Bierman et al., 2005</a>; <a href="#ref-gudimov2015">Gudimov et al., 2015</a>; <a href="#ref-schneider1992">Schneider, 1992</a>)</span>.</p>
 </div>
 <div id="excretion" class="section level4 unnumbered hasAnchor">
 <h4>Excretion<a href="bivalves.html#excretion" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>Excretion is modelled as a constant fraction of assimilated food <span class="citation">(<a href="#ref-bierman2005" role="doc-biblioref">Bierman et al., 2005</a>; <a href="#ref-gudimov2015" role="doc-biblioref">Gudimov et al., 2015</a>; <a href="#ref-schneider1992" role="doc-biblioref">Schneider, 1992</a>)</span>. Excretion data for zebra and quagga mussels are limited; therefore, the excretion formulation for Mytilus edulis derived by Bayne and Newell (1983) was used <span class="citation">(<a href="#ref-bierman2005" role="doc-biblioref">Bierman et al., 2005</a>; <a href="#ref-gudimov2015" role="doc-biblioref">Gudimov et al., 2015</a>; <a href="#ref-schneider1992" role="doc-biblioref">Schneider, 1992</a>)</span>.</p>
+<p>Excretion is modelled as a constant fraction of assimilated food <span class="citation">(<a href="#ref-bierman2005">Bierman et al., 2005</a>; <a href="#ref-gudimov2015">Gudimov et al., 2015</a>; <a href="#ref-schneider1992">Schneider, 1992</a>)</span>. Excretion data for zebra and quagga mussels are limited; therefore, the excretion formulation for Mytilus edulis derived by Bayne and Newell (1983) was used <span class="citation">(<a href="#ref-bierman2005">Bierman et al., 2005</a>; <a href="#ref-gudimov2015">Gudimov et al., 2015</a>; <a href="#ref-schneider1992">Schneider, 1992</a>)</span>.</p>
 </div>
 <div id="egestion" class="section level4 unnumbered hasAnchor">
 <h4>Egestion<a href="bivalves.html#egestion" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>Egestion is modeled as a function of ingestion <span class="citation">(<a href="#ref-bierman2005" role="doc-biblioref">Bierman et al., 2005</a>; <a href="#ref-gudimov2015" role="doc-biblioref">Gudimov et al., 2015</a>; <a href="#ref-schneider1992" role="doc-biblioref">Schneider, 1992</a>)</span>. The model follows the assumption that ingestion is directly proportional to the food content of the water for all food concentrations less than the maximum which can be ingested. For all food concentrations above this saturation value, ingestion remains constant at a maximum value (<span class="math inline">\(I_{max}\)</span>) <span class="citation">(<a href="#ref-walz1978" role="doc-biblioref">Walz, 1978</a>)</span>.</p>
+<p>Egestion is modeled as a function of ingestion <span class="citation">(<a href="#ref-bierman2005">Bierman et al., 2005</a>; <a href="#ref-gudimov2015">Gudimov et al., 2015</a>; <a href="#ref-schneider1992">Schneider, 1992</a>)</span>. The model follows the assumption that ingestion is directly proportional to the food content of the water for all food concentrations less than the maximum which can be ingested. For all food concentrations above this saturation value, ingestion remains constant at a maximum value (<span class="math inline">\(I_{max}\)</span>) <span class="citation">(<a href="#ref-walz1978">Walz, 1978</a>)</span>.</p>
 </div>
 <div id="mortality" class="section level4 unnumbered hasAnchor">
 <h4>Mortality<a href="bivalves.html#mortality" class="anchor-section" aria-label="Anchor link to header"></a></h4>
@@ -789,7 +796,7 @@ f(DO) = 1 + K_{BDO} * \frac{K_{DO}}{K_{DO} + DO}
 \end{equation}\]</span>
 </center>
 <p><br></p>
-<p>where <span class="math inline">\(DO\)</span> is dissolved oxygen (mmol/m3), <span class="math inline">\(K_{BDO}\)</span> is basal respiration rate (mmol/m3), and <span class="math inline">\(K_{DO}\)</span> is half saturation constant for metabolic response to dissolved oxygen (mmol/m3) <span class="citation">(<a href="#ref-spillman2008" role="doc-biblioref">Spillman et al., 2008</a>)</span>. A mortality rate coefficient (<span class="math inline">\(K_{MORT}\)</span>) further influences the dissolved oxygen function. Additionally, mortality from predation is a constant rate added to the effect from dissolved oxygen.</p>
+<p>where <span class="math inline">\(DO\)</span> is dissolved oxygen (mmol/m3), <span class="math inline">\(K_{BDO}\)</span> is basal respiration rate (mmol/m3), and <span class="math inline">\(K_{DO}\)</span> is half saturation constant for metabolic response to dissolved oxygen (mmol/m3) <span class="citation">(<a href="#ref-spillman2008">Spillman et al., 2008</a>)</span>. A mortality rate coefficient (<span class="math inline">\(K_{MORT}\)</span>) further influences the dissolved oxygen function. Additionally, mortality from predation is a constant rate added to the effect from dissolved oxygen.</p>
 </div>
 </div>
 <div id="variable-summary-11" class="section level3 hasAnchor" number="15.3.2">
@@ -1137,16 +1144,16 @@ Name of bivalve group
 </thead>
 <tbody>
 <tr>
-<td style="text-align:center;min-width: 6em; background-color: white !important;background-color: #E8EAEF !important;">
+<td style="text-align:center;min-width: 6em; background-color: white !important;background-color: rgba(232, 234, 239, 255) !important;">
 General Parameters
 </td>
-<td style="text-align:center;min-width: 6em; background-color: white !important;background-color: #E8EAEF !important;">
+<td style="text-align:center;min-width: 6em; background-color: white !important;background-color: rgba(232, 234, 239, 255) !important;">
 </td>
-<td style="text-align:center;min-width: 6em; background-color: white !important;background-color: #E8EAEF !important;">
+<td style="text-align:center;min-width: 6em; background-color: white !important;background-color: rgba(232, 234, 239, 255) !important;">
 </td>
-<td style="text-align:center;min-width: 6em; background-color: white !important;background-color: #E8EAEF !important;">
+<td style="text-align:center;min-width: 6em; background-color: white !important;background-color: rgba(232, 234, 239, 255) !important;">
 </td>
-<td style="text-align:center;min-width: 6em; background-color: white !important;background-color: #E8EAEF !important;">
+<td style="text-align:center;min-width: 6em; background-color: white !important;background-color: rgba(232, 234, 239, 255) !important;">
 </td>
 </tr>
 <tr>
@@ -1235,16 +1242,16 @@ Ratio of internal phosphorus to carbon of bivalve (-)
 </td>
 </tr>
 <tr>
-<td style="text-align:center;min-width: 6em; background-color: white !important;background-color: #E8EAEF !important;">
+<td style="text-align:center;min-width: 6em; background-color: white !important;background-color: rgba(232, 234, 239, 255) !important;">
 FILTRATION &amp; INGESTION Parameters
 </td>
-<td style="text-align:center;min-width: 6em; background-color: white !important;background-color: #E8EAEF !important;">
+<td style="text-align:center;min-width: 6em; background-color: white !important;background-color: rgba(232, 234, 239, 255) !important;">
 </td>
-<td style="text-align:center;min-width: 6em; background-color: white !important;background-color: #E8EAEF !important;">
+<td style="text-align:center;min-width: 6em; background-color: white !important;background-color: rgba(232, 234, 239, 255) !important;">
 </td>
-<td style="text-align:center;min-width: 6em; background-color: white !important;background-color: #E8EAEF !important;">
+<td style="text-align:center;min-width: 6em; background-color: white !important;background-color: rgba(232, 234, 239, 255) !important;">
 </td>
-<td style="text-align:center;min-width: 6em; background-color: white !important;background-color: #E8EAEF !important;">
+<td style="text-align:center;min-width: 6em; background-color: white !important;background-color: rgba(232, 234, 239, 255) !important;">
 </td>
 </tr>
 <tr>
@@ -1503,16 +1510,16 @@ Upper suspended solids for no ingestion of bivalve (mg/L)
 </td>
 </tr>
 <tr>
-<td style="text-align:center;min-width: 6em; background-color: white !important;background-color: #E8EAEF !important;">
+<td style="text-align:center;min-width: 6em; background-color: white !important;background-color: rgba(232, 234, 239, 255) !important;">
 EXCRETION AND EGESTION Parameters
 </td>
-<td style="text-align:center;min-width: 6em; background-color: white !important;background-color: #E8EAEF !important;">
+<td style="text-align:center;min-width: 6em; background-color: white !important;background-color: rgba(232, 234, 239, 255) !important;">
 </td>
-<td style="text-align:center;min-width: 6em; background-color: white !important;background-color: #E8EAEF !important;">
+<td style="text-align:center;min-width: 6em; background-color: white !important;background-color: rgba(232, 234, 239, 255) !important;">
 </td>
-<td style="text-align:center;min-width: 6em; background-color: white !important;background-color: #E8EAEF !important;">
+<td style="text-align:center;min-width: 6em; background-color: white !important;background-color: rgba(232, 234, 239, 255) !important;">
 </td>
-<td style="text-align:center;min-width: 6em; background-color: white !important;background-color: #E8EAEF !important;">
+<td style="text-align:center;min-width: 6em; background-color: white !important;background-color: rgba(232, 234, 239, 255) !important;">
 </td>
 </tr>
 <tr>
@@ -1567,16 +1574,16 @@ Gamma coefficient for food availability dependence for bivalve
 </td>
 </tr>
 <tr>
-<td style="text-align:center;min-width: 6em; background-color: white !important;background-color: #E8EAEF !important;">
+<td style="text-align:center;min-width: 6em; background-color: white !important;background-color: rgba(232, 234, 239, 255) !important;">
 RESPIRATION Parameters
 </td>
-<td style="text-align:center;min-width: 6em; background-color: white !important;background-color: #E8EAEF !important;">
+<td style="text-align:center;min-width: 6em; background-color: white !important;background-color: rgba(232, 234, 239, 255) !important;">
 </td>
-<td style="text-align:center;min-width: 6em; background-color: white !important;background-color: #E8EAEF !important;">
+<td style="text-align:center;min-width: 6em; background-color: white !important;background-color: rgba(232, 234, 239, 255) !important;">
 </td>
-<td style="text-align:center;min-width: 6em; background-color: white !important;background-color: #E8EAEF !important;">
+<td style="text-align:center;min-width: 6em; background-color: white !important;background-color: rgba(232, 234, 239, 255) !important;">
 </td>
-<td style="text-align:center;min-width: 6em; background-color: white !important;background-color: #E8EAEF !important;">
+<td style="text-align:center;min-width: 6em; background-color: white !important;background-color: rgba(232, 234, 239, 255) !important;">
 </td>
 </tr>
 <tr>
@@ -1835,16 +1842,16 @@ Specific dynamic action of bivalve (-)
 </td>
 </tr>
 <tr>
-<td style="text-align:center;min-width: 6em; background-color: white !important;background-color: #E8EAEF !important;">
+<td style="text-align:center;min-width: 6em; background-color: white !important;background-color: rgba(232, 234, 239, 255) !important;">
 MORTALITY Parameters
 </td>
-<td style="text-align:center;min-width: 6em; background-color: white !important;background-color: #E8EAEF !important;">
+<td style="text-align:center;min-width: 6em; background-color: white !important;background-color: rgba(232, 234, 239, 255) !important;">
 </td>
-<td style="text-align:center;min-width: 6em; background-color: white !important;background-color: #E8EAEF !important;">
+<td style="text-align:center;min-width: 6em; background-color: white !important;background-color: rgba(232, 234, 239, 255) !important;">
 </td>
-<td style="text-align:center;min-width: 6em; background-color: white !important;background-color: #E8EAEF !important;">
+<td style="text-align:center;min-width: 6em; background-color: white !important;background-color: rgba(232, 234, 239, 255) !important;">
 </td>
-<td style="text-align:center;min-width: 6em; background-color: white !important;background-color: #E8EAEF !important;">
+<td style="text-align:center;min-width: 6em; background-color: white !important;background-color: rgba(232, 234, 239, 255) !important;">
 </td>
 </tr>
 <tr>
@@ -1933,16 +1940,16 @@ Half saturation constant for metabolic response to DO for bivalve (mmol/m3)
 </td>
 </tr>
 <tr>
-<td style="text-align:center;min-width: 6em; background-color: white !important;background-color: #E8EAEF !important;">
+<td style="text-align:center;min-width: 6em; background-color: white !important;background-color: rgba(232, 234, 239, 255) !important;">
 GENERAL Parameters
 </td>
-<td style="text-align:center;min-width: 6em; background-color: white !important;background-color: #E8EAEF !important;">
+<td style="text-align:center;min-width: 6em; background-color: white !important;background-color: rgba(232, 234, 239, 255) !important;">
 </td>
-<td style="text-align:center;min-width: 6em; background-color: white !important;background-color: #E8EAEF !important;">
+<td style="text-align:center;min-width: 6em; background-color: white !important;background-color: rgba(232, 234, 239, 255) !important;">
 </td>
-<td style="text-align:center;min-width: 6em; background-color: white !important;background-color: #E8EAEF !important;">
+<td style="text-align:center;min-width: 6em; background-color: white !important;background-color: rgba(232, 234, 239, 255) !important;">
 </td>
-<td style="text-align:center;min-width: 6em; background-color: white !important;background-color: #E8EAEF !important;">
+<td style="text-align:center;min-width: 6em; background-color: white !important;background-color: rgba(232, 234, 239, 255) !important;">
 </td>
 </tr>
 <tr>
@@ -2638,7 +2645,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');

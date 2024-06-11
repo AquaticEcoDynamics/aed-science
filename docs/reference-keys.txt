@@ -259,6 +259,8 @@ fig:Output-4
 fig:Output-2
 fig:Output-5
 fig:Output-3
+fig:dev-masscheck1
+fig:dev-masscheck2
 tab:param-VCW1
 fig:VCW-1
 fig:VCW-2
@@ -541,6 +543,9 @@ SedOtherVariablesExtrasSed
 depth-profile-settings-depths.sed
 mass-balance-calculation
 case-studies-examples-6
+section
+mass-check-methods
+mass-check-results
 case-study-model-benchmark-example
 model-setup
 results

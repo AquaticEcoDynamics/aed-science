@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>6 Inorganic Nitrogen | The AED Manual</title>
   <meta name="description" content="Work in progress." />
-  <meta name="generator" content="bookdown 0.26 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.39 and GitBook 2.6.7" />
 
   <meta property="og:title" content="6 Inorganic Nitrogen | The AED Manual" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="" />
 
 
-<meta name="date" content="2023-06-29" />
+<meta name="date" content="2024-06-11" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -51,26 +51,27 @@
 <link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
-<script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script>
+<script src="libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
 <link href="libs/leaflet-1.3.1/leaflet.css" rel="stylesheet" />
 <script src="libs/leaflet-1.3.1/leaflet.js"></script>
 <link href="libs/leafletfix-1.0.0/leafletfix.css" rel="stylesheet" />
 <script src="libs/proj4-2.6.2/proj4.min.js"></script>
 <script src="libs/Proj4Leaflet-1.0.1/proj4leaflet.js"></script>
 <link href="libs/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet" />
-<script src="libs/leaflet-binding-2.1.1/leaflet.js"></script>
-<script src="libs/leaflet-providers-1.9.0/leaflet-providers_1.9.0.js"></script>
-<script src="libs/leaflet-providers-plugin-2.1.1/leaflet-providers-plugin.js"></script>
-<link href="libs/panelset-0.2.6/panelset.css" rel="stylesheet" />
-<script src="libs/panelset-0.2.6/panelset.js"></script>
+<script src="libs/leaflet-binding-2.2.2/leaflet.js"></script>
+<script src="libs/leaflet-providers-2.0.0/leaflet-providers_2.0.0.js"></script>
+<script src="libs/leaflet-providers-plugin-2.2.2/leaflet-providers-plugin.js"></script>
+<link href="libs/panelset-0.3.0/panelset.css" rel="stylesheet" />
+<script src="libs/panelset-0.3.0/panelset.js"></script>
 <script src="libs/kePrint-0.0.1/kePrint.js"></script>
 <link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
-<script src="libs/plotly-binding-4.10.0/plotly.js"></script>
+<link href="libs/htmltools-fill-0.5.8.1/fill.css" rel="stylesheet" />
+<script src="libs/plotly-binding-4.10.4/plotly.js"></script>
 <script src="libs/typedarray-0.1/typedarray.min.js"></script>
-<link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet" />
-<script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
-<link href="libs/plotly-htmlwidgets-css-2.5.1/plotly-htmlwidgets.css" rel="stylesheet" />
-<script src="libs/plotly-main-2.5.1/plotly-latest.min.js"></script>
+<link href="libs/crosstalk-1.2.1/css/crosstalk.min.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.2.1/js/crosstalk.min.js"></script>
+<link href="libs/plotly-htmlwidgets-css-2.11.1/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="libs/plotly-main-2.11.1/plotly-latest.min.js"></script>
 <script src="https://hypothes.is/embed.js" async></script>
   
 
@@ -111,11 +112,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }
 code span.al { color: #ef2929; } /* Alert */
 code span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #c4a000; } /* Attribute */
+code span.at { color: #204a87; } /* Attribute */
 code span.bn { color: #0000cf; } /* BaseN */
 code span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
 code span.ch { color: #4e9a06; } /* Char */
-code span.cn { color: #000000; } /* Constant */
+code span.cn { color: #8f5902; } /* Constant */
 code span.co { color: #8f5902; font-style: italic; } /* Comment */
 code span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
 code span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
@@ -124,14 +125,14 @@ code span.dv { color: #0000cf; } /* DecVal */
 code span.er { color: #a40000; font-weight: bold; } /* Error */
 code span.ex { } /* Extension */
 code span.fl { color: #0000cf; } /* Float */
-code span.fu { color: #000000; } /* Function */
+code span.fu { color: #204a87; font-weight: bold; } /* Function */
 code span.im { } /* Import */
 code span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
 code span.kw { color: #204a87; font-weight: bold; } /* Keyword */
 code span.op { color: #ce5c00; font-weight: bold; } /* Operator */
 code span.ot { color: #8f5902; } /* Other */
 code span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
-code span.sc { color: #000000; } /* SpecialChar */
+code span.sc { color: #ce5c00; font-weight: bold; } /* SpecialChar */
 code span.ss { color: #4e9a06; } /* SpecialString */
 code span.st { color: #4e9a06; } /* String */
 code span.va { color: #000000; } /* Variable */
@@ -139,6 +140,10 @@ code span.vs { color: #4e9a06; } /* VerbatimString */
 code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
 <style type="text/css">
 /* Used with Pandoc 2.11+ new --citeproc when CSL is used */
 div.csl-bib-body { }
@@ -430,10 +435,12 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="14.6" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#case-studies-examples-6"><i class="fa fa-check"></i><b>14.6</b> Case Studies &amp; Examples</a>
 <ul>
-<li class="chapter" data-level="14.6.1" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#case-study-model-benchmark-example"><i class="fa fa-check"></i><b>14.6.1</b> Case study: Model benchmark example</a></li>
-<li class="chapter" data-level="14.6.2" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#case-study-aquaculture-and-sediment-recovery"><i class="fa fa-check"></i><b>14.6.2</b> Case study: Aquaculture and sediment recovery</a></li>
-<li class="chapter" data-level="14.6.3" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#case-study-the-coorong-dynamics-model"><i class="fa fa-check"></i><b>14.6.3</b> Case study: The Coorong Dynamics Model</a></li>
-<li class="chapter" data-level="14.6.4" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#case-study-mass-balance-and-numerical-error-checking"><i class="fa fa-check"></i><b>14.6.4</b> Case study: Mass balance and numerical error checking</a></li>
+<li class="chapter" data-level="14.6.1" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#section"><i class="fa fa-check"></i><b>14.6.1</b> </a></li>
+<li class="chapter" data-level="" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#numerical-mass-balance-and-flux-confirmation"><i class="fa fa-check"></i>Numerical mass balance and flux confirmation</a></li>
+<li class="chapter" data-level="14.6.2" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#case-study-model-benchmark-example"><i class="fa fa-check"></i><b>14.6.2</b> Case study: Model benchmark example</a></li>
+<li class="chapter" data-level="14.6.3" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#case-study-aquaculture-and-sediment-recovery"><i class="fa fa-check"></i><b>14.6.3</b> Case study: Aquaculture and sediment recovery</a></li>
+<li class="chapter" data-level="14.6.4" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#case-study-the-coorong-dynamics-model"><i class="fa fa-check"></i><b>14.6.4</b> Case study: The Coorong Dynamics Model</a></li>
+<li class="chapter" data-level="14.6.5" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#case-study-mass-balance-and-numerical-error-checking"><i class="fa fa-check"></i><b>14.6.5</b> Case study: Mass balance and numerical error checking</a></li>
 </ul></li>
 <li class="chapter" data-level="14.7" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#references"><i class="fa fa-check"></i><b>14.7</b> References</a></li>
 </ul></li>
@@ -659,14 +666,26 @@ f_{sed}^{NH4}=F_{sed}^{amm} \theta_{sedamm}^{T-20}\Phi_{O2}^{amm}\left[O_2\right
 <div id="parameter-summary-2" class="section level3 hasAnchor" number="6.3.3">
 <h3><span class="header-section-number">6.3.3</span> Parameter Summary<a href="inorganic-nitrogen.html#parameter-summary-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The default parameters and settings used by this module are summarised in Table @ref(tab:nitrogen_tab1).</p>
-<div id="njhxtqyhar" style="overflow-x:auto;overflow-y:auto;width:auto;height:1000px;">
-<style>html {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+<div id="yjqcxvnmbm" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:1000px;">
+<style>#yjqcxvnmbm table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-#njhxtqyhar .gt_table {
+#yjqcxvnmbm thead, #yjqcxvnmbm tbody, #yjqcxvnmbm tfoot, #yjqcxvnmbm tr, #yjqcxvnmbm td, #yjqcxvnmbm th {
+  border-style: none;
+}
+
+#yjqcxvnmbm p {
+  margin: 0;
+  padding: 0;
+}
+
+#yjqcxvnmbm .gt_table {
   display: table;
   border-collapse: collapse;
+  line-height: normal;
   margin-left: auto;
   margin-right: auto;
   color: #333333;
@@ -689,19 +708,12 @@ f_{sed}^{NH4}=F_{sed}^{amm} \theta_{sedamm}^{T-20}\Phi_{O2}^{amm}\left[O_2\right
   border-left-color: #D3D3D3;
 }
 
-#njhxtqyhar .gt_heading {
-  background-color: #FFFFFF;
-  text-align: center;
-  border-bottom-color: #FFFFFF;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
+#yjqcxvnmbm .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
 }
 
-#njhxtqyhar .gt_title {
+#yjqcxvnmbm .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -713,25 +725,37 @@ f_{sed}^{NH4}=F_{sed}^{amm} \theta_{sedamm}^{T-20}\Phi_{O2}^{amm}\left[O_2\right
   border-bottom-width: 0;
 }
 
-#njhxtqyhar .gt_subtitle {
+#yjqcxvnmbm .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
-  padding-top: 0;
-  padding-bottom: 6px;
+  padding-top: 3px;
+  padding-bottom: 5px;
   padding-left: 5px;
   padding-right: 5px;
   border-top-color: #FFFFFF;
   border-top-width: 0;
 }
 
-#njhxtqyhar .gt_bottom_border {
+#yjqcxvnmbm .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#yjqcxvnmbm .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#njhxtqyhar .gt_col_headings {
+#yjqcxvnmbm .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -746,7 +770,7 @@ f_{sed}^{NH4}=F_{sed}^{amm} \theta_{sedamm}^{T-20}\Phi_{O2}^{amm}\left[O_2\right
   border-right-color: #D3D3D3;
 }
 
-#njhxtqyhar .gt_col_heading {
+#yjqcxvnmbm .gt_col_heading {
   color: #FFFFFF;
   background-color: #14759E;
   font-size: 14px;
@@ -766,7 +790,7 @@ f_{sed}^{NH4}=F_{sed}^{amm} \theta_{sedamm}^{T-20}\Phi_{O2}^{amm}\left[O_2\right
   overflow-x: hidden;
 }
 
-#njhxtqyhar .gt_column_spanner_outer {
+#yjqcxvnmbm .gt_column_spanner_outer {
   color: #FFFFFF;
   background-color: #14759E;
   font-size: 14px;
@@ -778,15 +802,15 @@ f_{sed}^{NH4}=F_{sed}^{amm} \theta_{sedamm}^{T-20}\Phi_{O2}^{amm}\left[O_2\right
   padding-right: 4px;
 }
 
-#njhxtqyhar .gt_column_spanner_outer:first-child {
+#yjqcxvnmbm .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#njhxtqyhar .gt_column_spanner_outer:last-child {
+#yjqcxvnmbm .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#njhxtqyhar .gt_column_spanner {
+#yjqcxvnmbm .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -798,7 +822,11 @@ f_{sed}^{NH4}=F_{sed}^{amm} \theta_{sedamm}^{T-20}\Phi_{O2}^{amm}\left[O_2\right
   width: 100%;
 }
 
-#njhxtqyhar .gt_group_heading {
+#yjqcxvnmbm .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#yjqcxvnmbm .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -821,9 +849,10 @@ f_{sed}^{NH4}=F_{sed}^{amm} \theta_{sedamm}^{T-20}\Phi_{O2}^{amm}\left[O_2\right
   border-right-width: 1px;
   border-right-color: #D3D3D3;
   vertical-align: middle;
+  text-align: left;
 }
 
-#njhxtqyhar .gt_empty_group_heading {
+#yjqcxvnmbm .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #D3D3D3;
@@ -838,15 +867,15 @@ f_{sed}^{NH4}=F_{sed}^{amm} \theta_{sedamm}^{T-20}\Phi_{O2}^{amm}\left[O_2\right
   vertical-align: middle;
 }
 
-#njhxtqyhar .gt_from_md > :first-child {
+#yjqcxvnmbm .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#njhxtqyhar .gt_from_md > :last-child {
+#yjqcxvnmbm .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#njhxtqyhar .gt_row {
+#yjqcxvnmbm .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -865,7 +894,7 @@ f_{sed}^{NH4}=F_{sed}^{amm} \theta_{sedamm}^{T-20}\Phi_{O2}^{amm}\left[O_2\right
   overflow-x: hidden;
 }
 
-#njhxtqyhar .gt_stub {
+#yjqcxvnmbm .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -878,7 +907,7 @@ f_{sed}^{NH4}=F_{sed}^{amm} \theta_{sedamm}^{T-20}\Phi_{O2}^{amm}\left[O_2\right
   padding-right: 5px;
 }
 
-#njhxtqyhar .gt_stub_row_group {
+#yjqcxvnmbm .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -892,11 +921,15 @@ f_{sed}^{NH4}=F_{sed}^{amm} \theta_{sedamm}^{T-20}\Phi_{O2}^{amm}\left[O_2\right
   vertical-align: top;
 }
 
-#njhxtqyhar .gt_row_group_first td {
+#yjqcxvnmbm .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#njhxtqyhar .gt_summary_row {
+#yjqcxvnmbm .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#yjqcxvnmbm .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -906,16 +939,16 @@ f_{sed}^{NH4}=F_{sed}^{amm} \theta_{sedamm}^{T-20}\Phi_{O2}^{amm}\left[O_2\right
   padding-right: 5px;
 }
 
-#njhxtqyhar .gt_first_summary_row {
+#yjqcxvnmbm .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#njhxtqyhar .gt_first_summary_row.thick {
+#yjqcxvnmbm .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#njhxtqyhar .gt_last_summary_row {
+#yjqcxvnmbm .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -925,7 +958,7 @@ f_{sed}^{NH4}=F_{sed}^{amm} \theta_{sedamm}^{T-20}\Phi_{O2}^{amm}\left[O_2\right
   border-bottom-color: #D3D3D3;
 }
 
-#njhxtqyhar .gt_grand_summary_row {
+#yjqcxvnmbm .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -935,7 +968,7 @@ f_{sed}^{NH4}=F_{sed}^{amm} \theta_{sedamm}^{T-20}\Phi_{O2}^{amm}\left[O_2\right
   padding-right: 5px;
 }
 
-#njhxtqyhar .gt_first_grand_summary_row {
+#yjqcxvnmbm .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -945,11 +978,21 @@ f_{sed}^{NH4}=F_{sed}^{amm} \theta_{sedamm}^{T-20}\Phi_{O2}^{amm}\left[O_2\right
   border-top-color: #D3D3D3;
 }
 
-#njhxtqyhar .gt_striped {
+#yjqcxvnmbm .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#yjqcxvnmbm .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#njhxtqyhar .gt_table_body {
+#yjqcxvnmbm .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -958,7 +1001,7 @@ f_{sed}^{NH4}=F_{sed}^{amm} \theta_{sedamm}^{T-20}\Phi_{O2}^{amm}\left[O_2\right
   border-bottom-color: #D3D3D3;
 }
 
-#njhxtqyhar .gt_footnotes {
+#yjqcxvnmbm .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -972,30 +1015,8 @@ f_{sed}^{NH4}=F_{sed}^{amm} \theta_{sedamm}^{T-20}\Phi_{O2}^{amm}\left[O_2\right
   border-right-color: #D3D3D3;
 }
 
-#njhxtqyhar .gt_footnote {
+#yjqcxvnmbm .gt_footnote {
   margin: 0px;
-  font-size: 90%;
-  padding-left: 4px;
-  padding-right: 4px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#njhxtqyhar .gt_sourcenotes {
-  color: #333333;
-  background-color: #FFFFFF;
-  border-bottom-style: none;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 2px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-}
-
-#njhxtqyhar .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1003,320 +1024,340 @@ f_{sed}^{NH4}=F_{sed}^{amm} \theta_{sedamm}^{T-20}\Phi_{O2}^{amm}\left[O_2\right
   padding-right: 5px;
 }
 
-#njhxtqyhar .gt_left {
+#yjqcxvnmbm .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#yjqcxvnmbm .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#yjqcxvnmbm .gt_left {
   text-align: left;
 }
 
-#njhxtqyhar .gt_center {
+#yjqcxvnmbm .gt_center {
   text-align: center;
 }
 
-#njhxtqyhar .gt_right {
+#yjqcxvnmbm .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#njhxtqyhar .gt_font_normal {
+#yjqcxvnmbm .gt_font_normal {
   font-weight: normal;
 }
 
-#njhxtqyhar .gt_font_bold {
+#yjqcxvnmbm .gt_font_bold {
   font-weight: bold;
 }
 
-#njhxtqyhar .gt_font_italic {
+#yjqcxvnmbm .gt_font_italic {
   font-style: italic;
 }
 
-#njhxtqyhar .gt_super {
+#yjqcxvnmbm .gt_super {
   font-size: 65%;
 }
 
-#njhxtqyhar .gt_footnote_marks {
-  font-style: italic;
-  font-weight: normal;
+#yjqcxvnmbm .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
+  position: initial;
 }
 
-#njhxtqyhar .gt_asterisk {
+#yjqcxvnmbm .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#njhxtqyhar .gt_indent_1 {
+#yjqcxvnmbm .gt_indent_1 {
   text-indent: 5px;
 }
 
-#njhxtqyhar .gt_indent_2 {
+#yjqcxvnmbm .gt_indent_2 {
   text-indent: 10px;
 }
 
-#njhxtqyhar .gt_indent_3 {
+#yjqcxvnmbm .gt_indent_3 {
   text-indent: 15px;
 }
 
-#njhxtqyhar .gt_indent_4 {
+#yjqcxvnmbm .gt_indent_4 {
   text-indent: 20px;
 }
 
-#njhxtqyhar .gt_indent_5 {
+#yjqcxvnmbm .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
-<table class="gt_table">
-  
-  <thead class="gt_col_headings">
-    <tr>
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col">Parameter name</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col">Description</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col">Unit</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col">Parameter type</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col">Default</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col">Typical range</th>
+<table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+  <thead>
+    <tr class="gt_col_headings">
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="Parameter name">Parameter name</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="Description">Description</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="Unit">Unit</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="Parameter type">Parameter type</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="Default">Default</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="Typical range">Typical range</th>
     </tr>
   </thead>
   <tbody class="gt_table_body">
     <tr class="gt_group_heading_row">
-      <td colspan="6" class="gt_group_heading">Nitrification/Denitrification</td>
+      <th colspan="6" class="gt_group_heading" scope="colgroup" id="Nitrification/Denitrification">Nitrification/Denitrification</th>
     </tr>
-    <tr class="gt_row_group_first"><td class="gt_row gt_left"><div class='gt_from_md'><p><code>R_nitrif</code></p>
+    <tr class="gt_row_group_first"><td headers="Nitrification/Denitrification  Parameter name" class="gt_row gt_left"><div class='gt_from_md'><p><code>R_nitrif</code></p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>Kinetic rate constant for nitrification</p>
+<td headers="Nitrification/Denitrification  Description" class="gt_row gt_left"><div class='gt_from_md'><p>Kinetic rate constant for nitrification</p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>day<sup>-1</sup></p>
+<td headers="Nitrification/Denitrification  Unit" class="gt_row gt_left"><div class='gt_from_md'><p>day<sup>-1</sup></p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>real</p>
+<td headers="Nitrification/Denitrification  Parameter type" class="gt_row gt_left"><div class='gt_from_md'><p>real</p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>0.01</p>
+<td headers="Nitrification/Denitrification  Default" class="gt_row gt_left"><div class='gt_from_md'><p>0.01</p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>0.001-0.2</p>
+<td headers="Nitrification/Denitrification  Typical range" class="gt_row gt_left"><div class='gt_from_md'><p>0.001-0.2</p>
 </div></td></tr>
-    <tr><td class="gt_row gt_left"><div class='gt_from_md'><p><code>theta_nitrif</code></p>
+    <tr><td headers="Nitrification/Denitrification  Parameter name" class="gt_row gt_left"><div class='gt_from_md'><p><code>theta_nitrif</code></p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>Temperature dependence of nitrification</p>
+<td headers="Nitrification/Denitrification  Description" class="gt_row gt_left"><div class='gt_from_md'><p>Temperature dependence of nitrification</p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'></div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>real</p>
+<td headers="Nitrification/Denitrification  Unit" class="gt_row gt_left"><div class='gt_from_md'></div></td>
+<td headers="Nitrification/Denitrification  Parameter type" class="gt_row gt_left"><div class='gt_from_md'><p>real</p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>1</p>
+<td headers="Nitrification/Denitrification  Default" class="gt_row gt_left"><div class='gt_from_md'><p>1</p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>1.05-1.12</p>
+<td headers="Nitrification/Denitrification  Typical range" class="gt_row gt_left"><div class='gt_from_md'><p>1.05-1.12</p>
 </div></td></tr>
-    <tr><td class="gt_row gt_left"><div class='gt_from_md'><p><code>R_denit</code></p>
+    <tr><td headers="Nitrification/Denitrification  Parameter name" class="gt_row gt_left"><div class='gt_from_md'><p><code>R_denit</code></p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>Kinetic rate constant for denitrification</p>
+<td headers="Nitrification/Denitrification  Description" class="gt_row gt_left"><div class='gt_from_md'><p>Kinetic rate constant for denitrification</p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>day<sup>-1</sup></p>
+<td headers="Nitrification/Denitrification  Unit" class="gt_row gt_left"><div class='gt_from_md'><p>day<sup>-1</sup></p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>real</p>
+<td headers="Nitrification/Denitrification  Parameter type" class="gt_row gt_left"><div class='gt_from_md'><p>real</p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>0.01</p>
+<td headers="Nitrification/Denitrification  Default" class="gt_row gt_left"><div class='gt_from_md'><p>0.01</p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'></div></td></tr>
-    <tr><td class="gt_row gt_left"><div class='gt_from_md'><p><code>theta_denit</code></p>
+<td headers="Nitrification/Denitrification  Typical range" class="gt_row gt_left"><div class='gt_from_md'></div></td></tr>
+    <tr><td headers="Nitrification/Denitrification  Parameter name" class="gt_row gt_left"><div class='gt_from_md'><p><code>theta_denit</code></p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>Temperature dependence of denitrification</p>
+<td headers="Nitrification/Denitrification  Description" class="gt_row gt_left"><div class='gt_from_md'><p>Temperature dependence of denitrification</p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>Unitless</p>
+<td headers="Nitrification/Denitrification  Unit" class="gt_row gt_left"><div class='gt_from_md'><p>Unitless</p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>real</p>
+<td headers="Nitrification/Denitrification  Parameter type" class="gt_row gt_left"><div class='gt_from_md'><p>real</p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>1</p>
+<td headers="Nitrification/Denitrification  Default" class="gt_row gt_left"><div class='gt_from_md'><p>1</p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'></div></td></tr>
-    <tr><td class="gt_row gt_left"><div class='gt_from_md'><p><code>KNO3</code></p>
+<td headers="Nitrification/Denitrification  Typical range" class="gt_row gt_left"><div class='gt_from_md'></div></td></tr>
+    <tr><td headers="Nitrification/Denitrification  Parameter name" class="gt_row gt_left"><div class='gt_from_md'><p><code>KNO3</code></p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>Half saturation constant for NO<sub>3</sub><sup>-</sup> limitation on denitrification</p>
+<td headers="Nitrification/Denitrification  Description" class="gt_row gt_left"><div class='gt_from_md'><p>Half saturation constant for NO<sub>3</sub><sup>-</sup> limitation on denitrification</p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>mmol m<sup>-3</sup></p>
+<td headers="Nitrification/Denitrification  Unit" class="gt_row gt_left"><div class='gt_from_md'><p>mmol m<sup>-3</sup></p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>real</p>
+<td headers="Nitrification/Denitrification  Parameter type" class="gt_row gt_left"><div class='gt_from_md'><p>real</p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>5</p>
+<td headers="Nitrification/Denitrification  Default" class="gt_row gt_left"><div class='gt_from_md'><p>5</p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'></div></td></tr>
-    <tr><td class="gt_row gt_left"><div class='gt_from_md'><p><code>Kdenit</code></p>
+<td headers="Nitrification/Denitrification  Typical range" class="gt_row gt_left"><div class='gt_from_md'></div></td></tr>
+    <tr><td headers="Nitrification/Denitrification  Parameter name" class="gt_row gt_left"><div class='gt_from_md'><p><code>Kdenit</code></p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>O<sub>2</sub> inhibition of denitirification or exponential reduction</p>
+<td headers="Nitrification/Denitrification  Description" class="gt_row gt_left"><div class='gt_from_md'><p>O<sub>2</sub> inhibition of denitirification or exponential reduction</p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>mmol m<sup>-3</sup></p>
+<td headers="Nitrification/Denitrification  Unit" class="gt_row gt_left"><div class='gt_from_md'><p>mmol m<sup>-3</sup></p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>real</p>
+<td headers="Nitrification/Denitrification  Parameter type" class="gt_row gt_left"><div class='gt_from_md'><p>real</p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>150</p>
+<td headers="Nitrification/Denitrification  Default" class="gt_row gt_left"><div class='gt_from_md'><p>150</p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'></div></td></tr>
-    <tr><td class="gt_row gt_left"><div class='gt_from_md'><p><code>oxy_lim</code></p>
+<td headers="Nitrification/Denitrification  Typical range" class="gt_row gt_left"><div class='gt_from_md'></div></td></tr>
+    <tr><td headers="Nitrification/Denitrification  Parameter name" class="gt_row gt_left"><div class='gt_from_md'><p><code>oxy_lim</code></p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'></div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'></div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>Integer</p>
+<td headers="Nitrification/Denitrification  Description" class="gt_row gt_left"><div class='gt_from_md'></div></td>
+<td headers="Nitrification/Denitrification  Unit" class="gt_row gt_left"><div class='gt_from_md'></div></td>
+<td headers="Nitrification/Denitrification  Parameter type" class="gt_row gt_left"><div class='gt_from_md'><p>Integer</p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>1</p>
+<td headers="Nitrification/Denitrification  Default" class="gt_row gt_left"><div class='gt_from_md'><p>1</p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>1 or 2</p>
+<td headers="Nitrification/Denitrification  Typical range" class="gt_row gt_left"><div class='gt_from_md'><p>1 or 2</p>
 </div></td></tr>
-    <tr><td class="gt_row gt_left"><div class='gt_from_md'><p><code>NITpHTolMin</code></p>
+    <tr><td headers="Nitrification/Denitrification  Parameter name" class="gt_row gt_left"><div class='gt_from_md'><p><code>NITpHTolMin</code></p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>Minimum tolerance</p>
+<td headers="Nitrification/Denitrification  Description" class="gt_row gt_left"><div class='gt_from_md'><p>Minimum tolerance</p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>pH unit</p>
+<td headers="Nitrification/Denitrification  Unit" class="gt_row gt_left"><div class='gt_from_md'><p>pH unit</p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>real</p>
+<td headers="Nitrification/Denitrification  Parameter type" class="gt_row gt_left"><div class='gt_from_md'><p>real</p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>5.5</p>
+<td headers="Nitrification/Denitrification  Default" class="gt_row gt_left"><div class='gt_from_md'><p>5.5</p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'></div></td></tr>
-    <tr><td class="gt_row gt_left"><div class='gt_from_md'><p><code>NITpHOptMin</code></p>
+<td headers="Nitrification/Denitrification  Typical range" class="gt_row gt_left"><div class='gt_from_md'></div></td></tr>
+    <tr><td headers="Nitrification/Denitrification  Parameter name" class="gt_row gt_left"><div class='gt_from_md'><p><code>NITpHOptMin</code></p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>Minimum optimum</p>
+<td headers="Nitrification/Denitrification  Description" class="gt_row gt_left"><div class='gt_from_md'><p>Minimum optimum</p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>pH unit</p>
+<td headers="Nitrification/Denitrification  Unit" class="gt_row gt_left"><div class='gt_from_md'><p>pH unit</p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>real</p>
+<td headers="Nitrification/Denitrification  Parameter type" class="gt_row gt_left"><div class='gt_from_md'><p>real</p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>7.1</p>
+<td headers="Nitrification/Denitrification  Default" class="gt_row gt_left"><div class='gt_from_md'><p>7.1</p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'></div></td></tr>
-    <tr><td class="gt_row gt_left"><div class='gt_from_md'><p><code>NITpHOptMax</code></p>
+<td headers="Nitrification/Denitrification  Typical range" class="gt_row gt_left"><div class='gt_from_md'></div></td></tr>
+    <tr><td headers="Nitrification/Denitrification  Parameter name" class="gt_row gt_left"><div class='gt_from_md'><p><code>NITpHOptMax</code></p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>Maximum optimum</p>
+<td headers="Nitrification/Denitrification  Description" class="gt_row gt_left"><div class='gt_from_md'><p>Maximum optimum</p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>pH unit</p>
+<td headers="Nitrification/Denitrification  Unit" class="gt_row gt_left"><div class='gt_from_md'><p>pH unit</p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>real</p>
+<td headers="Nitrification/Denitrification  Parameter type" class="gt_row gt_left"><div class='gt_from_md'><p>real</p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>7.9</p>
+<td headers="Nitrification/Denitrification  Default" class="gt_row gt_left"><div class='gt_from_md'><p>7.9</p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'></div></td></tr>
-    <tr><td class="gt_row gt_left"><div class='gt_from_md'><p><code>NITpHTolMax</code></p>
+<td headers="Nitrification/Denitrification  Typical range" class="gt_row gt_left"><div class='gt_from_md'></div></td></tr>
+    <tr><td headers="Nitrification/Denitrification  Parameter name" class="gt_row gt_left"><div class='gt_from_md'><p><code>NITpHTolMax</code></p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>Maximum tolerance</p>
+<td headers="Nitrification/Denitrification  Description" class="gt_row gt_left"><div class='gt_from_md'><p>Maximum tolerance</p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>pH unit</p>
+<td headers="Nitrification/Denitrification  Unit" class="gt_row gt_left"><div class='gt_from_md'><p>pH unit</p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>real</p>
+<td headers="Nitrification/Denitrification  Parameter type" class="gt_row gt_left"><div class='gt_from_md'><p>real</p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>9</p>
+<td headers="Nitrification/Denitrification  Default" class="gt_row gt_left"><div class='gt_from_md'><p>9</p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'></div></td></tr>
+<td headers="Nitrification/Denitrification  Typical range" class="gt_row gt_left"><div class='gt_from_md'></div></td></tr>
     <tr class="gt_group_heading_row">
-      <td colspan="6" class="gt_group_heading">Atmospheric Deposition</td>
+      <th colspan="6" class="gt_group_heading" scope="colgroup" id="Atmospheric Deposition">Atmospheric Deposition</th>
     </tr>
-    <tr class="gt_row_group_first"><td class="gt_row gt_left"><div class='gt_from_md'><p><code>simDryDeposition</code></p>
+    <tr class="gt_row_group_first"><td headers="Atmospheric Deposition  Parameter name" class="gt_row gt_left"><div class='gt_from_md'><p><code>simDryDeposition</code></p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>Switch to turn on atmospheric deposition</p>
+<td headers="Atmospheric Deposition  Description" class="gt_row gt_left"><div class='gt_from_md'><p>Switch to turn on atmospheric deposition</p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'></div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>LOGICAL</p>
+<td headers="Atmospheric Deposition  Unit" class="gt_row gt_left"><div class='gt_from_md'></div></td>
+<td headers="Atmospheric Deposition  Parameter type" class="gt_row gt_left"><div class='gt_from_md'><p>LOGICAL</p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>TRUE</p>
+<td headers="Atmospheric Deposition  Default" class="gt_row gt_left"><div class='gt_from_md'><p>TRUE</p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'></div></td></tr>
-    <tr><td class="gt_row gt_left"><div class='gt_from_md'><p><code>simWetDeposition</code></p>
+<td headers="Atmospheric Deposition  Typical range" class="gt_row gt_left"><div class='gt_from_md'></div></td></tr>
+    <tr><td headers="Atmospheric Deposition  Parameter name" class="gt_row gt_left"><div class='gt_from_md'><p><code>simWetDeposition</code></p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>Switch to turn on rain  deposition</p>
+<td headers="Atmospheric Deposition  Description" class="gt_row gt_left"><div class='gt_from_md'><p>Switch to turn on rain  deposition</p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'></div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>LOGICAL</p>
+<td headers="Atmospheric Deposition  Unit" class="gt_row gt_left"><div class='gt_from_md'></div></td>
+<td headers="Atmospheric Deposition  Parameter type" class="gt_row gt_left"><div class='gt_from_md'><p>LOGICAL</p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>TRUE</p>
+<td headers="Atmospheric Deposition  Default" class="gt_row gt_left"><div class='gt_from_md'><p>TRUE</p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'></div></td></tr>
-    <tr><td class="gt_row gt_left"><div class='gt_from_md'><p><code>atm_din_dd</code></p>
+<td headers="Atmospheric Deposition  Typical range" class="gt_row gt_left"><div class='gt_from_md'></div></td></tr>
+    <tr><td headers="Atmospheric Deposition  Parameter name" class="gt_row gt_left"><div class='gt_from_md'><p><code>atm_din_dd</code></p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>Atmospheric DIN deposition rate</p>
+<td headers="Atmospheric Deposition  Description" class="gt_row gt_left"><div class='gt_from_md'><p>Atmospheric DIN deposition rate</p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>mmol m<sup>-2</sup> d<sup>-1</sup></p>
+<td headers="Atmospheric Deposition  Unit" class="gt_row gt_left"><div class='gt_from_md'><p>mmol m<sup>-2</sup> d<sup>-1</sup></p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>real</p>
+<td headers="Atmospheric Deposition  Parameter type" class="gt_row gt_left"><div class='gt_from_md'><p>real</p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>0</p>
+<td headers="Atmospheric Deposition  Default" class="gt_row gt_left"><div class='gt_from_md'><p>0</p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'></div></td></tr>
-    <tr><td class="gt_row gt_left"><div class='gt_from_md'><p><code>atm_din_conc</code></p>
+<td headers="Atmospheric Deposition  Typical range" class="gt_row gt_left"><div class='gt_from_md'></div></td></tr>
+    <tr><td headers="Atmospheric Deposition  Parameter name" class="gt_row gt_left"><div class='gt_from_md'><p><code>atm_din_conc</code></p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>Atmospheric DIN composition</p>
+<td headers="Atmospheric Deposition  Description" class="gt_row gt_left"><div class='gt_from_md'><p>Atmospheric DIN composition</p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>mmol m<sup>-3</sup></p>
+<td headers="Atmospheric Deposition  Unit" class="gt_row gt_left"><div class='gt_from_md'><p>mmol m<sup>-3</sup></p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>real</p>
+<td headers="Atmospheric Deposition  Parameter type" class="gt_row gt_left"><div class='gt_from_md'><p>real</p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>0</p>
+<td headers="Atmospheric Deposition  Default" class="gt_row gt_left"><div class='gt_from_md'><p>0</p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'></div></td></tr>
-    <tr><td class="gt_row gt_left"><div class='gt_from_md'><p><code>f_dindep_nox</code></p>
+<td headers="Atmospheric Deposition  Typical range" class="gt_row gt_left"><div class='gt_from_md'></div></td></tr>
+    <tr><td headers="Atmospheric Deposition  Parameter name" class="gt_row gt_left"><div class='gt_from_md'><p><code>f_dindep_nox</code></p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>Fraction of DIN that is NO<sub>x</sub></p>
+<td headers="Atmospheric Deposition  Description" class="gt_row gt_left"><div class='gt_from_md'><p>Fraction of DIN that is NO<sub>x</sub></p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'></div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>real</p>
+<td headers="Atmospheric Deposition  Unit" class="gt_row gt_left"><div class='gt_from_md'></div></td>
+<td headers="Atmospheric Deposition  Parameter type" class="gt_row gt_left"><div class='gt_from_md'><p>real</p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>0.5</p>
+<td headers="Atmospheric Deposition  Default" class="gt_row gt_left"><div class='gt_from_md'><p>0.5</p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'></div></td></tr>
+<td headers="Atmospheric Deposition  Typical range" class="gt_row gt_left"><div class='gt_from_md'></div></td></tr>
     <tr class="gt_group_heading_row">
-      <td colspan="6" class="gt_group_heading">Sediment Flux</td>
+      <th colspan="6" class="gt_group_heading" scope="colgroup" id="Sediment Flux">Sediment Flux</th>
     </tr>
-    <tr class="gt_row_group_first"><td class="gt_row gt_left"><div class='gt_from_md'><p><code>Fsed_nit</code></p>
+    <tr class="gt_row_group_first"><td headers="Sediment Flux  Parameter name" class="gt_row gt_left"><div class='gt_from_md'><p><code>Fsed_nit</code></p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>Sediment NO<sub>3</sub><sup>-</sup> flux</p>
+<td headers="Sediment Flux  Description" class="gt_row gt_left"><div class='gt_from_md'><p>Sediment NO<sub>3</sub><sup>-</sup> flux</p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'></div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'></div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'></div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'></div></td></tr>
-    <tr><td class="gt_row gt_left"><div class='gt_from_md'><p><code>Fsed_amm</code></p>
+<td headers="Sediment Flux  Unit" class="gt_row gt_left"><div class='gt_from_md'></div></td>
+<td headers="Sediment Flux  Parameter type" class="gt_row gt_left"><div class='gt_from_md'></div></td>
+<td headers="Sediment Flux  Default" class="gt_row gt_left"><div class='gt_from_md'></div></td>
+<td headers="Sediment Flux  Typical range" class="gt_row gt_left"><div class='gt_from_md'></div></td></tr>
+    <tr><td headers="Sediment Flux  Parameter name" class="gt_row gt_left"><div class='gt_from_md'><p><code>Fsed_amm</code></p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>Sediment NH<sub>4</sub><sup>+</sup> flux</p>
+<td headers="Sediment Flux  Description" class="gt_row gt_left"><div class='gt_from_md'><p>Sediment NH<sub>4</sub><sup>+</sup> flux</p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'></div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'></div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'></div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'></div></td></tr>
-    <tr><td class="gt_row gt_left"><div class='gt_from_md'><p><code>Ksed_nit</code></p>
+<td headers="Sediment Flux  Unit" class="gt_row gt_left"><div class='gt_from_md'></div></td>
+<td headers="Sediment Flux  Parameter type" class="gt_row gt_left"><div class='gt_from_md'></div></td>
+<td headers="Sediment Flux  Default" class="gt_row gt_left"><div class='gt_from_md'></div></td>
+<td headers="Sediment Flux  Typical range" class="gt_row gt_left"><div class='gt_from_md'></div></td></tr>
+    <tr><td headers="Sediment Flux  Parameter name" class="gt_row gt_left"><div class='gt_from_md'><p><code>Ksed_nit</code></p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>Sediment NO<sub>3</sub><sup>-</sup> flux</p>
+<td headers="Sediment Flux  Description" class="gt_row gt_left"><div class='gt_from_md'><p>Sediment NO<sub>3</sub><sup>-</sup> flux</p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>mmol m<sup>-2</sup> d<sup>-1</sup></p>
+<td headers="Sediment Flux  Unit" class="gt_row gt_left"><div class='gt_from_md'><p>mmol m<sup>-2</sup> d<sup>-1</sup></p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>real</p>
+<td headers="Sediment Flux  Parameter type" class="gt_row gt_left"><div class='gt_from_md'><p>real</p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>30</p>
+<td headers="Sediment Flux  Default" class="gt_row gt_left"><div class='gt_from_md'><p>30</p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'></div></td></tr>
-    <tr><td class="gt_row gt_left"><div class='gt_from_md'><p><code>Ksed_amm</code></p>
+<td headers="Sediment Flux  Typical range" class="gt_row gt_left"><div class='gt_from_md'></div></td></tr>
+    <tr><td headers="Sediment Flux  Parameter name" class="gt_row gt_left"><div class='gt_from_md'><p><code>Ksed_amm</code></p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>Sediment NH<sub>4</sub><sup>+</sup> flux</p>
+<td headers="Sediment Flux  Description" class="gt_row gt_left"><div class='gt_from_md'><p>Sediment NH<sub>4</sub><sup>+</sup> flux</p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>mmol m<sup>-2</sup> d<sup>-1</sup></p>
+<td headers="Sediment Flux  Unit" class="gt_row gt_left"><div class='gt_from_md'><p>mmol m<sup>-2</sup> d<sup>-1</sup></p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>real</p>
+<td headers="Sediment Flux  Parameter type" class="gt_row gt_left"><div class='gt_from_md'><p>real</p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>30</p>
+<td headers="Sediment Flux  Default" class="gt_row gt_left"><div class='gt_from_md'><p>30</p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'></div></td></tr>
-    <tr><td class="gt_row gt_left"><div class='gt_from_md'><p><code>theta_sed_nit</code></p>
+<td headers="Sediment Flux  Typical range" class="gt_row gt_left"><div class='gt_from_md'></div></td></tr>
+    <tr><td headers="Sediment Flux  Parameter name" class="gt_row gt_left"><div class='gt_from_md'><p><code>theta_sed_nit</code></p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>Temperature dependence on sediment NO<sub>3</sub><sup>-</sup> flux</p>
+<td headers="Sediment Flux  Description" class="gt_row gt_left"><div class='gt_from_md'><p>Temperature dependence on sediment NO<sub>3</sub><sup>-</sup> flux</p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'></div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>real</p>
+<td headers="Sediment Flux  Unit" class="gt_row gt_left"><div class='gt_from_md'></div></td>
+<td headers="Sediment Flux  Parameter type" class="gt_row gt_left"><div class='gt_from_md'><p>real</p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>1</p>
+<td headers="Sediment Flux  Default" class="gt_row gt_left"><div class='gt_from_md'><p>1</p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'></div></td></tr>
-    <tr><td class="gt_row gt_left"><div class='gt_from_md'><p><code>theta_sed_amm</code></p>
+<td headers="Sediment Flux  Typical range" class="gt_row gt_left"><div class='gt_from_md'></div></td></tr>
+    <tr><td headers="Sediment Flux  Parameter name" class="gt_row gt_left"><div class='gt_from_md'><p><code>theta_sed_amm</code></p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>Temperature dependence on sediment NH<sub>4</sub><sup>+</sup> flux</p>
+<td headers="Sediment Flux  Description" class="gt_row gt_left"><div class='gt_from_md'><p>Temperature dependence on sediment NH<sub>4</sub><sup>+</sup> flux</p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'></div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>real</p>
+<td headers="Sediment Flux  Unit" class="gt_row gt_left"><div class='gt_from_md'></div></td>
+<td headers="Sediment Flux  Parameter type" class="gt_row gt_left"><div class='gt_from_md'><p>real</p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>1</p>
+<td headers="Sediment Flux  Default" class="gt_row gt_left"><div class='gt_from_md'><p>1</p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'></div></td></tr>
+<td headers="Sediment Flux  Typical range" class="gt_row gt_left"><div class='gt_from_md'></div></td></tr>
   </tbody>
   
   
@@ -1468,14 +1509,26 @@ f_{deammonification}=R_{{NH}_4{NO}_2}\times{NO}_2^-\times{NH}_4^+\times\frac{K_{
 <div id="state-variables-2" class="section level4 hasAnchor" number="6.4.3.1">
 <h4><span class="header-section-number">6.4.3.1</span> State variables<a href="inorganic-nitrogen.html#state-variables-2" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>The following state variables are relevant to the nitrogen module, and dependent variables from other modules (Table x).</p>
-<div id="phnviezshj" style="overflow-x:auto;overflow-y:auto;width:100%;height:auto;">
-<style>html {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+<div id="bdgjmzuceu" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:100%;height:auto;">
+<style>#bdgjmzuceu table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-#phnviezshj .gt_table {
+#bdgjmzuceu thead, #bdgjmzuceu tbody, #bdgjmzuceu tfoot, #bdgjmzuceu tr, #bdgjmzuceu td, #bdgjmzuceu th {
+  border-style: none;
+}
+
+#bdgjmzuceu p {
+  margin: 0;
+  padding: 0;
+}
+
+#bdgjmzuceu .gt_table {
   display: table;
   border-collapse: collapse;
+  line-height: normal;
   margin-left: auto;
   margin-right: auto;
   color: #333333;
@@ -1498,19 +1551,12 @@ f_{deammonification}=R_{{NH}_4{NO}_2}\times{NO}_2^-\times{NH}_4^+\times\frac{K_{
   border-left-color: #D3D3D3;
 }
 
-#phnviezshj .gt_heading {
-  background-color: #FFFFFF;
-  text-align: center;
-  border-bottom-color: #FFFFFF;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
+#bdgjmzuceu .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
 }
 
-#phnviezshj .gt_title {
+#bdgjmzuceu .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1522,25 +1568,37 @@ f_{deammonification}=R_{{NH}_4{NO}_2}\times{NO}_2^-\times{NH}_4^+\times\frac{K_{
   border-bottom-width: 0;
 }
 
-#phnviezshj .gt_subtitle {
+#bdgjmzuceu .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
-  padding-top: 0;
-  padding-bottom: 6px;
+  padding-top: 3px;
+  padding-bottom: 5px;
   padding-left: 5px;
   padding-right: 5px;
   border-top-color: #FFFFFF;
   border-top-width: 0;
 }
 
-#phnviezshj .gt_bottom_border {
+#bdgjmzuceu .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#bdgjmzuceu .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#phnviezshj .gt_col_headings {
+#bdgjmzuceu .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1555,7 +1613,7 @@ f_{deammonification}=R_{{NH}_4{NO}_2}\times{NO}_2^-\times{NH}_4^+\times\frac{K_{
   border-right-color: #D3D3D3;
 }
 
-#phnviezshj .gt_col_heading {
+#bdgjmzuceu .gt_col_heading {
   color: #FFFFFF;
   background-color: #14759E;
   font-size: 14px;
@@ -1575,7 +1633,7 @@ f_{deammonification}=R_{{NH}_4{NO}_2}\times{NO}_2^-\times{NH}_4^+\times\frac{K_{
   overflow-x: hidden;
 }
 
-#phnviezshj .gt_column_spanner_outer {
+#bdgjmzuceu .gt_column_spanner_outer {
   color: #FFFFFF;
   background-color: #14759E;
   font-size: 14px;
@@ -1587,15 +1645,15 @@ f_{deammonification}=R_{{NH}_4{NO}_2}\times{NO}_2^-\times{NH}_4^+\times\frac{K_{
   padding-right: 4px;
 }
 
-#phnviezshj .gt_column_spanner_outer:first-child {
+#bdgjmzuceu .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#phnviezshj .gt_column_spanner_outer:last-child {
+#bdgjmzuceu .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#phnviezshj .gt_column_spanner {
+#bdgjmzuceu .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1607,7 +1665,11 @@ f_{deammonification}=R_{{NH}_4{NO}_2}\times{NO}_2^-\times{NH}_4^+\times\frac{K_{
   width: 100%;
 }
 
-#phnviezshj .gt_group_heading {
+#bdgjmzuceu .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#bdgjmzuceu .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1630,9 +1692,10 @@ f_{deammonification}=R_{{NH}_4{NO}_2}\times{NO}_2^-\times{NH}_4^+\times\frac{K_{
   border-right-width: 1px;
   border-right-color: #D3D3D3;
   vertical-align: middle;
+  text-align: left;
 }
 
-#phnviezshj .gt_empty_group_heading {
+#bdgjmzuceu .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #D3D3D3;
@@ -1647,15 +1710,15 @@ f_{deammonification}=R_{{NH}_4{NO}_2}\times{NO}_2^-\times{NH}_4^+\times\frac{K_{
   vertical-align: middle;
 }
 
-#phnviezshj .gt_from_md > :first-child {
+#bdgjmzuceu .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#phnviezshj .gt_from_md > :last-child {
+#bdgjmzuceu .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#phnviezshj .gt_row {
+#bdgjmzuceu .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1674,7 +1737,7 @@ f_{deammonification}=R_{{NH}_4{NO}_2}\times{NO}_2^-\times{NH}_4^+\times\frac{K_{
   overflow-x: hidden;
 }
 
-#phnviezshj .gt_stub {
+#bdgjmzuceu .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1687,7 +1750,7 @@ f_{deammonification}=R_{{NH}_4{NO}_2}\times{NO}_2^-\times{NH}_4^+\times\frac{K_{
   padding-right: 5px;
 }
 
-#phnviezshj .gt_stub_row_group {
+#bdgjmzuceu .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1701,11 +1764,15 @@ f_{deammonification}=R_{{NH}_4{NO}_2}\times{NO}_2^-\times{NH}_4^+\times\frac{K_{
   vertical-align: top;
 }
 
-#phnviezshj .gt_row_group_first td {
+#bdgjmzuceu .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#phnviezshj .gt_summary_row {
+#bdgjmzuceu .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#bdgjmzuceu .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1715,16 +1782,16 @@ f_{deammonification}=R_{{NH}_4{NO}_2}\times{NO}_2^-\times{NH}_4^+\times\frac{K_{
   padding-right: 5px;
 }
 
-#phnviezshj .gt_first_summary_row {
+#bdgjmzuceu .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#phnviezshj .gt_first_summary_row.thick {
+#bdgjmzuceu .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#phnviezshj .gt_last_summary_row {
+#bdgjmzuceu .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1734,7 +1801,7 @@ f_{deammonification}=R_{{NH}_4{NO}_2}\times{NO}_2^-\times{NH}_4^+\times\frac{K_{
   border-bottom-color: #D3D3D3;
 }
 
-#phnviezshj .gt_grand_summary_row {
+#bdgjmzuceu .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1744,7 +1811,7 @@ f_{deammonification}=R_{{NH}_4{NO}_2}\times{NO}_2^-\times{NH}_4^+\times\frac{K_{
   padding-right: 5px;
 }
 
-#phnviezshj .gt_first_grand_summary_row {
+#bdgjmzuceu .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1754,11 +1821,21 @@ f_{deammonification}=R_{{NH}_4{NO}_2}\times{NO}_2^-\times{NH}_4^+\times\frac{K_{
   border-top-color: #D3D3D3;
 }
 
-#phnviezshj .gt_striped {
+#bdgjmzuceu .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#bdgjmzuceu .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#phnviezshj .gt_table_body {
+#bdgjmzuceu .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1767,7 +1844,7 @@ f_{deammonification}=R_{{NH}_4{NO}_2}\times{NO}_2^-\times{NH}_4^+\times\frac{K_{
   border-bottom-color: #D3D3D3;
 }
 
-#phnviezshj .gt_footnotes {
+#bdgjmzuceu .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1781,30 +1858,8 @@ f_{deammonification}=R_{{NH}_4{NO}_2}\times{NO}_2^-\times{NH}_4^+\times\frac{K_{
   border-right-color: #D3D3D3;
 }
 
-#phnviezshj .gt_footnote {
+#bdgjmzuceu .gt_footnote {
   margin: 0px;
-  font-size: 90%;
-  padding-left: 4px;
-  padding-right: 4px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#phnviezshj .gt_sourcenotes {
-  color: #333333;
-  background-color: #FFFFFF;
-  border-bottom-style: none;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 2px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-}
-
-#phnviezshj .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1812,153 +1867,173 @@ f_{deammonification}=R_{{NH}_4{NO}_2}\times{NO}_2^-\times{NH}_4^+\times\frac{K_{
   padding-right: 5px;
 }
 
-#phnviezshj .gt_left {
+#bdgjmzuceu .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#bdgjmzuceu .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#bdgjmzuceu .gt_left {
   text-align: left;
 }
 
-#phnviezshj .gt_center {
+#bdgjmzuceu .gt_center {
   text-align: center;
 }
 
-#phnviezshj .gt_right {
+#bdgjmzuceu .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#phnviezshj .gt_font_normal {
+#bdgjmzuceu .gt_font_normal {
   font-weight: normal;
 }
 
-#phnviezshj .gt_font_bold {
+#bdgjmzuceu .gt_font_bold {
   font-weight: bold;
 }
 
-#phnviezshj .gt_font_italic {
+#bdgjmzuceu .gt_font_italic {
   font-style: italic;
 }
 
-#phnviezshj .gt_super {
+#bdgjmzuceu .gt_super {
   font-size: 65%;
 }
 
-#phnviezshj .gt_footnote_marks {
-  font-style: italic;
-  font-weight: normal;
+#bdgjmzuceu .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
+  position: initial;
 }
 
-#phnviezshj .gt_asterisk {
+#bdgjmzuceu .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#phnviezshj .gt_indent_1 {
+#bdgjmzuceu .gt_indent_1 {
   text-indent: 5px;
 }
 
-#phnviezshj .gt_indent_2 {
+#bdgjmzuceu .gt_indent_2 {
   text-indent: 10px;
 }
 
-#phnviezshj .gt_indent_3 {
+#bdgjmzuceu .gt_indent_3 {
   text-indent: 15px;
 }
 
-#phnviezshj .gt_indent_4 {
+#bdgjmzuceu .gt_indent_4 {
   text-indent: 20px;
 }
 
-#phnviezshj .gt_indent_5 {
+#bdgjmzuceu .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
-<table class="gt_table">
-  
-  <thead class="gt_col_headings">
-    <tr>
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col">Symbol</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col">Variable</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col">AED identifier</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col">Unit</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col">Comment</th>
+<table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+  <thead>
+    <tr class="gt_col_headings">
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="Symbol">Symbol</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="Variable">Variable</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="AED identifier">AED identifier</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="Unit">Unit</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="Comment">Comment</th>
     </tr>
   </thead>
   <tbody class="gt_table_body">
     <tr class="gt_group_heading_row">
-      <td colspan="5" class="gt_group_heading">aed_nitrogen</td>
+      <th colspan="5" class="gt_group_heading" scope="colgroup" id="aed_nitrogen">aed_nitrogen</th>
     </tr>
-    <tr class="gt_row_group_first"><td class="gt_row gt_left"><div class='gt_from_md'><p>NO<sub>3</sub><sup>-</sup></p>
+    <tr class="gt_row_group_first"><td headers="aed_nitrogen  Symbol" class="gt_row gt_left"><div class='gt_from_md'><p>NO<sub>3</sub><sup>-</sup></p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>Nitrate</p>
+<td headers="aed_nitrogen  Variable" class="gt_row gt_left"><div class='gt_from_md'><p>Nitrate</p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p><code>NIT_nit</code></p>
+<td headers="aed_nitrogen  AED identifier" class="gt_row gt_left"><div class='gt_from_md'><p><code>NIT_nit</code></p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>mmol m<sup>-3</sup></p>
+<td headers="aed_nitrogen  Unit" class="gt_row gt_left"><div class='gt_from_md'><p>mmol m<sup>-3</sup></p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>simN2O=1,2</p>
+<td headers="aed_nitrogen  Comment" class="gt_row gt_left"><div class='gt_from_md'><p>simN2O=1,2</p>
 </div></td></tr>
-    <tr><td class="gt_row gt_left"><div class='gt_from_md'><p>NO<sub>2</sub><sup>-</sup></p>
+    <tr><td headers="aed_nitrogen  Symbol" class="gt_row gt_left"><div class='gt_from_md'><p>NO<sub>2</sub><sup>-</sup></p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>Nitrite</p>
+<td headers="aed_nitrogen  Variable" class="gt_row gt_left"><div class='gt_from_md'><p>Nitrite</p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p><code>NIT_no2</code></p>
+<td headers="aed_nitrogen  AED identifier" class="gt_row gt_left"><div class='gt_from_md'><p><code>NIT_no2</code></p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>mmol m<sup>-3</sup></p>
+<td headers="aed_nitrogen  Unit" class="gt_row gt_left"><div class='gt_from_md'><p>mmol m<sup>-3</sup></p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>simN2O=2 only</p>
+<td headers="aed_nitrogen  Comment" class="gt_row gt_left"><div class='gt_from_md'><p>simN2O=2 only</p>
 </div></td></tr>
-    <tr><td class="gt_row gt_left"><div class='gt_from_md'><p>N<sub>2</sub>O</p>
+    <tr><td headers="aed_nitrogen  Symbol" class="gt_row gt_left"><div class='gt_from_md'><p>N<sub>2</sub>O</p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>Nitrous oxide</p>
+<td headers="aed_nitrogen  Variable" class="gt_row gt_left"><div class='gt_from_md'><p>Nitrous oxide</p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p><code>NIT_n2o</code></p>
+<td headers="aed_nitrogen  AED identifier" class="gt_row gt_left"><div class='gt_from_md'><p><code>NIT_n2o</code></p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>mmol m<sup>-3</sup></p>
+<td headers="aed_nitrogen  Unit" class="gt_row gt_left"><div class='gt_from_md'><p>mmol m<sup>-3</sup></p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>simN2O=1,2</p>
+<td headers="aed_nitrogen  Comment" class="gt_row gt_left"><div class='gt_from_md'><p>simN2O=1,2</p>
 </div></td></tr>
-    <tr><td class="gt_row gt_left"><div class='gt_from_md'><p>NH<sub>4</sub><sup>+</sup></p>
+    <tr><td headers="aed_nitrogen  Symbol" class="gt_row gt_left"><div class='gt_from_md'><p>NH<sub>4</sub><sup>+</sup></p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>Ammonium</p>
+<td headers="aed_nitrogen  Variable" class="gt_row gt_left"><div class='gt_from_md'><p>Ammonium</p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p><code>NIT_amm</code></p>
+<td headers="aed_nitrogen  AED identifier" class="gt_row gt_left"><div class='gt_from_md'><p><code>NIT_amm</code></p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>mmol m<sup>-3</sup></p>
+<td headers="aed_nitrogen  Unit" class="gt_row gt_left"><div class='gt_from_md'><p>mmol m<sup>-3</sup></p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>simN2O=1,2</p>
+<td headers="aed_nitrogen  Comment" class="gt_row gt_left"><div class='gt_from_md'><p>simN2O=1,2</p>
 </div></td></tr>
-    <tr><td class="gt_row gt_left"><div class='gt_from_md'><p>N<sub>2</sub></p>
+    <tr><td headers="aed_nitrogen  Symbol" class="gt_row gt_left"><div class='gt_from_md'><p>N<sub>2</sub></p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>Dinitrogen</p>
+<td headers="aed_nitrogen  Variable" class="gt_row gt_left"><div class='gt_from_md'><p>Dinitrogen</p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p><code>NIT_n2</code></p>
+<td headers="aed_nitrogen  AED identifier" class="gt_row gt_left"><div class='gt_from_md'><p><code>NIT_n2</code></p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>mmol m<sup>-3</sup></p>
+<td headers="aed_nitrogen  Unit" class="gt_row gt_left"><div class='gt_from_md'><p>mmol m<sup>-3</sup></p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>not tracked</p>
+<td headers="aed_nitrogen  Comment" class="gt_row gt_left"><div class='gt_from_md'><p>not tracked</p>
 </div></td></tr>
     <tr class="gt_group_heading_row">
-      <td colspan="5" class="gt_group_heading">Dependent variables</td>
+      <th colspan="5" class="gt_group_heading" scope="colgroup" id="Dependent variables">Dependent variables</th>
     </tr>
-    <tr class="gt_row_group_first"><td class="gt_row gt_left"><div class='gt_from_md'><p>O<sub>2</sub></p>
+    <tr class="gt_row_group_first"><td headers="Dependent variables  Symbol" class="gt_row gt_left"><div class='gt_from_md'><p>O<sub>2</sub></p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>Oxygen</p>
+<td headers="Dependent variables  Variable" class="gt_row gt_left"><div class='gt_from_md'><p>Oxygen</p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p><code>OXY_oxy</code></p>
+<td headers="Dependent variables  AED identifier" class="gt_row gt_left"><div class='gt_from_md'><p><code>OXY_oxy</code></p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>mmol m<sup>-3</sup></p>
+<td headers="Dependent variables  Unit" class="gt_row gt_left"><div class='gt_from_md'><p>mmol m<sup>-3</sup></p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'></div></td></tr>
-    <tr><td class="gt_row gt_left"><div class='gt_from_md'><p>DOC</p>
+<td headers="Dependent variables  Comment" class="gt_row gt_left"><div class='gt_from_md'></div></td></tr>
+    <tr><td headers="Dependent variables  Symbol" class="gt_row gt_left"><div class='gt_from_md'><p>DOC</p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>Dissolved organic carbon</p>
+<td headers="Dependent variables  Variable" class="gt_row gt_left"><div class='gt_from_md'><p>Dissolved organic carbon</p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p><code>OGM_doc</code></p>
+<td headers="Dependent variables  AED identifier" class="gt_row gt_left"><div class='gt_from_md'><p><code>OGM_doc</code></p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>mmol m<sup>-3</sup></p>
+<td headers="Dependent variables  Unit" class="gt_row gt_left"><div class='gt_from_md'><p>mmol m<sup>-3</sup></p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'></div></td></tr>
+<td headers="Dependent variables  Comment" class="gt_row gt_left"><div class='gt_from_md'></div></td></tr>
   </tbody>
   
   
@@ -1973,14 +2048,26 @@ f_{deammonification}=R_{{NH}_4{NO}_2}\times{NO}_2^-\times{NH}_4^+\times\frac{K_{
 <div id="parameter-summary-3" class="section level3 hasAnchor" number="6.4.4">
 <h3><span class="header-section-number">6.4.4</span> Parameter summary<a href="inorganic-nitrogen.html#parameter-summary-3" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>An overview of the parameters used in the nitrogen module for users selecting simN2O 1 or 2, are summarised in Table X.</p>
-<div id="sxjtfkvbep" style="overflow-x:auto;overflow-y:auto;width:100%;height:500px;">
-<style>html {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+<div id="vxpraxhuaa" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:100%;height:500px;">
+<style>#vxpraxhuaa table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-#sxjtfkvbep .gt_table {
+#vxpraxhuaa thead, #vxpraxhuaa tbody, #vxpraxhuaa tfoot, #vxpraxhuaa tr, #vxpraxhuaa td, #vxpraxhuaa th {
+  border-style: none;
+}
+
+#vxpraxhuaa p {
+  margin: 0;
+  padding: 0;
+}
+
+#vxpraxhuaa .gt_table {
   display: table;
   border-collapse: collapse;
+  line-height: normal;
   margin-left: auto;
   margin-right: auto;
   color: #333333;
@@ -2003,19 +2090,12 @@ f_{deammonification}=R_{{NH}_4{NO}_2}\times{NO}_2^-\times{NH}_4^+\times\frac{K_{
   border-left-color: #D3D3D3;
 }
 
-#sxjtfkvbep .gt_heading {
-  background-color: #FFFFFF;
-  text-align: center;
-  border-bottom-color: #FFFFFF;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
+#vxpraxhuaa .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
 }
 
-#sxjtfkvbep .gt_title {
+#vxpraxhuaa .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -2027,25 +2107,37 @@ f_{deammonification}=R_{{NH}_4{NO}_2}\times{NO}_2^-\times{NH}_4^+\times\frac{K_{
   border-bottom-width: 0;
 }
 
-#sxjtfkvbep .gt_subtitle {
+#vxpraxhuaa .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
-  padding-top: 0;
-  padding-bottom: 6px;
+  padding-top: 3px;
+  padding-bottom: 5px;
   padding-left: 5px;
   padding-right: 5px;
   border-top-color: #FFFFFF;
   border-top-width: 0;
 }
 
-#sxjtfkvbep .gt_bottom_border {
+#vxpraxhuaa .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#vxpraxhuaa .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#sxjtfkvbep .gt_col_headings {
+#vxpraxhuaa .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2060,7 +2152,7 @@ f_{deammonification}=R_{{NH}_4{NO}_2}\times{NO}_2^-\times{NH}_4^+\times\frac{K_{
   border-right-color: #D3D3D3;
 }
 
-#sxjtfkvbep .gt_col_heading {
+#vxpraxhuaa .gt_col_heading {
   color: #FFFFFF;
   background-color: #14759E;
   font-size: 14px;
@@ -2080,7 +2172,7 @@ f_{deammonification}=R_{{NH}_4{NO}_2}\times{NO}_2^-\times{NH}_4^+\times\frac{K_{
   overflow-x: hidden;
 }
 
-#sxjtfkvbep .gt_column_spanner_outer {
+#vxpraxhuaa .gt_column_spanner_outer {
   color: #FFFFFF;
   background-color: #14759E;
   font-size: 14px;
@@ -2092,15 +2184,15 @@ f_{deammonification}=R_{{NH}_4{NO}_2}\times{NO}_2^-\times{NH}_4^+\times\frac{K_{
   padding-right: 4px;
 }
 
-#sxjtfkvbep .gt_column_spanner_outer:first-child {
+#vxpraxhuaa .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#sxjtfkvbep .gt_column_spanner_outer:last-child {
+#vxpraxhuaa .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#sxjtfkvbep .gt_column_spanner {
+#vxpraxhuaa .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -2112,7 +2204,11 @@ f_{deammonification}=R_{{NH}_4{NO}_2}\times{NO}_2^-\times{NH}_4^+\times\frac{K_{
   width: 100%;
 }
 
-#sxjtfkvbep .gt_group_heading {
+#vxpraxhuaa .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#vxpraxhuaa .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2135,9 +2231,10 @@ f_{deammonification}=R_{{NH}_4{NO}_2}\times{NO}_2^-\times{NH}_4^+\times\frac{K_{
   border-right-width: 1px;
   border-right-color: #D3D3D3;
   vertical-align: middle;
+  text-align: left;
 }
 
-#sxjtfkvbep .gt_empty_group_heading {
+#vxpraxhuaa .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #D3D3D3;
@@ -2152,15 +2249,15 @@ f_{deammonification}=R_{{NH}_4{NO}_2}\times{NO}_2^-\times{NH}_4^+\times\frac{K_{
   vertical-align: middle;
 }
 
-#sxjtfkvbep .gt_from_md > :first-child {
+#vxpraxhuaa .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#sxjtfkvbep .gt_from_md > :last-child {
+#vxpraxhuaa .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#sxjtfkvbep .gt_row {
+#vxpraxhuaa .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2179,7 +2276,7 @@ f_{deammonification}=R_{{NH}_4{NO}_2}\times{NO}_2^-\times{NH}_4^+\times\frac{K_{
   overflow-x: hidden;
 }
 
-#sxjtfkvbep .gt_stub {
+#vxpraxhuaa .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2192,7 +2289,7 @@ f_{deammonification}=R_{{NH}_4{NO}_2}\times{NO}_2^-\times{NH}_4^+\times\frac{K_{
   padding-right: 5px;
 }
 
-#sxjtfkvbep .gt_stub_row_group {
+#vxpraxhuaa .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2206,11 +2303,15 @@ f_{deammonification}=R_{{NH}_4{NO}_2}\times{NO}_2^-\times{NH}_4^+\times\frac{K_{
   vertical-align: top;
 }
 
-#sxjtfkvbep .gt_row_group_first td {
+#vxpraxhuaa .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#sxjtfkvbep .gt_summary_row {
+#vxpraxhuaa .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#vxpraxhuaa .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2220,16 +2321,16 @@ f_{deammonification}=R_{{NH}_4{NO}_2}\times{NO}_2^-\times{NH}_4^+\times\frac{K_{
   padding-right: 5px;
 }
 
-#sxjtfkvbep .gt_first_summary_row {
+#vxpraxhuaa .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#sxjtfkvbep .gt_first_summary_row.thick {
+#vxpraxhuaa .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#sxjtfkvbep .gt_last_summary_row {
+#vxpraxhuaa .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2239,7 +2340,7 @@ f_{deammonification}=R_{{NH}_4{NO}_2}\times{NO}_2^-\times{NH}_4^+\times\frac{K_{
   border-bottom-color: #D3D3D3;
 }
 
-#sxjtfkvbep .gt_grand_summary_row {
+#vxpraxhuaa .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2249,7 +2350,7 @@ f_{deammonification}=R_{{NH}_4{NO}_2}\times{NO}_2^-\times{NH}_4^+\times\frac{K_{
   padding-right: 5px;
 }
 
-#sxjtfkvbep .gt_first_grand_summary_row {
+#vxpraxhuaa .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2259,11 +2360,21 @@ f_{deammonification}=R_{{NH}_4{NO}_2}\times{NO}_2^-\times{NH}_4^+\times\frac{K_{
   border-top-color: #D3D3D3;
 }
 
-#sxjtfkvbep .gt_striped {
+#vxpraxhuaa .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#vxpraxhuaa .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#sxjtfkvbep .gt_table_body {
+#vxpraxhuaa .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2272,7 +2383,7 @@ f_{deammonification}=R_{{NH}_4{NO}_2}\times{NO}_2^-\times{NH}_4^+\times\frac{K_{
   border-bottom-color: #D3D3D3;
 }
 
-#sxjtfkvbep .gt_footnotes {
+#vxpraxhuaa .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2286,30 +2397,8 @@ f_{deammonification}=R_{{NH}_4{NO}_2}\times{NO}_2^-\times{NH}_4^+\times\frac{K_{
   border-right-color: #D3D3D3;
 }
 
-#sxjtfkvbep .gt_footnote {
+#vxpraxhuaa .gt_footnote {
   margin: 0px;
-  font-size: 90%;
-  padding-left: 4px;
-  padding-right: 4px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#sxjtfkvbep .gt_sourcenotes {
-  color: #333333;
-  background-color: #FFFFFF;
-  border-bottom-style: none;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 2px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-}
-
-#sxjtfkvbep .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -2317,434 +2406,454 @@ f_{deammonification}=R_{{NH}_4{NO}_2}\times{NO}_2^-\times{NH}_4^+\times\frac{K_{
   padding-right: 5px;
 }
 
-#sxjtfkvbep .gt_left {
+#vxpraxhuaa .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#vxpraxhuaa .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#vxpraxhuaa .gt_left {
   text-align: left;
 }
 
-#sxjtfkvbep .gt_center {
+#vxpraxhuaa .gt_center {
   text-align: center;
 }
 
-#sxjtfkvbep .gt_right {
+#vxpraxhuaa .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#sxjtfkvbep .gt_font_normal {
+#vxpraxhuaa .gt_font_normal {
   font-weight: normal;
 }
 
-#sxjtfkvbep .gt_font_bold {
+#vxpraxhuaa .gt_font_bold {
   font-weight: bold;
 }
 
-#sxjtfkvbep .gt_font_italic {
+#vxpraxhuaa .gt_font_italic {
   font-style: italic;
 }
 
-#sxjtfkvbep .gt_super {
+#vxpraxhuaa .gt_super {
   font-size: 65%;
 }
 
-#sxjtfkvbep .gt_footnote_marks {
-  font-style: italic;
-  font-weight: normal;
+#vxpraxhuaa .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
+  position: initial;
 }
 
-#sxjtfkvbep .gt_asterisk {
+#vxpraxhuaa .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#sxjtfkvbep .gt_indent_1 {
+#vxpraxhuaa .gt_indent_1 {
   text-indent: 5px;
 }
 
-#sxjtfkvbep .gt_indent_2 {
+#vxpraxhuaa .gt_indent_2 {
   text-indent: 10px;
 }
 
-#sxjtfkvbep .gt_indent_3 {
+#vxpraxhuaa .gt_indent_3 {
   text-indent: 15px;
 }
 
-#sxjtfkvbep .gt_indent_4 {
+#vxpraxhuaa .gt_indent_4 {
   text-indent: 20px;
 }
 
-#sxjtfkvbep .gt_indent_5 {
+#vxpraxhuaa .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
-<table class="gt_table">
-  
-  <thead class="gt_col_headings">
-    <tr>
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col">Parameter name</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col">Description</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col">Unit</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col">Parameter type</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col">Default</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col">Typical range</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col">Comment</th>
+<table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+  <thead>
+    <tr class="gt_col_headings">
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="Parameter name">Parameter name</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="Description">Description</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="Unit">Unit</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="Parameter type">Parameter type</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="Default">Default</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="Typical range">Typical range</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="Comment">Comment</th>
     </tr>
   </thead>
   <tbody class="gt_table_body">
-    <tr><td class="gt_row gt_left"><div class='gt_from_md'><p><code>simN2O</code></p>
+    <tr><td headers="Parameter name" class="gt_row gt_left"><div class='gt_from_md'><p><code>simN2O</code></p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>Switch to use simple or advanced N reactions</p>
+<td headers="Description" class="gt_row gt_left"><div class='gt_from_md'><p>Switch to use simple or advanced N reactions</p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'></div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>INTEGER</p>
+<td headers="Unit" class="gt_row gt_left"><div class='gt_from_md'></div></td>
+<td headers="Parameter type" class="gt_row gt_left"><div class='gt_from_md'><p>INTEGER</p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>1</p>
+<td headers="Default" class="gt_row gt_left"><div class='gt_from_md'><p>1</p>
 </div></td>
-<td class="gt_row gt_right"><div class='gt_from_md'><p>0, 1, 2</p>
+<td headers="Typical range" class="gt_row gt_right"><div class='gt_from_md'><p>0, 1, 2</p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'></div></td></tr>
-    <tr><td class="gt_row gt_left"><div class='gt_from_md'><p><code>Rn2o</code></p>
+<td headers="Comment" class="gt_row gt_left"><div class='gt_from_md'></div></td></tr>
+    <tr><td headers="Parameter name" class="gt_row gt_left"><div class='gt_from_md'><p><code>Rn2o</code></p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>Kinetic rate constant for N<sub>2</sub>O consumption</p>
+<td headers="Description" class="gt_row gt_left"><div class='gt_from_md'><p>Kinetic rate constant for N<sub>2</sub>O consumption</p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>s<sup>-1</sup></p>
+<td headers="Unit" class="gt_row gt_left"><div class='gt_from_md'><p>s<sup>-1</sup></p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>AED_REAL</p>
+<td headers="Parameter type" class="gt_row gt_left"><div class='gt_from_md'><p>AED_REAL</p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>0.0015</p>
+<td headers="Default" class="gt_row gt_left"><div class='gt_from_md'><p>0.0015</p>
 </div></td>
-<td class="gt_row gt_right"><div class='gt_from_md'></div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'></div></td></tr>
-    <tr><td class="gt_row gt_left"><div class='gt_from_md'><p><code>Kn2oc</code></p>
+<td headers="Typical range" class="gt_row gt_right"><div class='gt_from_md'></div></td>
+<td headers="Comment" class="gt_row gt_left"><div class='gt_from_md'></div></td></tr>
+    <tr><td headers="Parameter name" class="gt_row gt_left"><div class='gt_from_md'><p><code>Kn2oc</code></p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>Exponential O<sub>2</sub> inhibiting parameter for N<sub>2</sub>O consumption through denitrification</p>
+<td headers="Description" class="gt_row gt_left"><div class='gt_from_md'><p>Exponential O<sub>2</sub> inhibiting parameter for N<sub>2</sub>O consumption through denitrification</p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>mmol m<sup>-3</sup></p>
+<td headers="Unit" class="gt_row gt_left"><div class='gt_from_md'><p>mmol m<sup>-3</sup></p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>AED_REAL</p>
+<td headers="Parameter type" class="gt_row gt_left"><div class='gt_from_md'><p>AED_REAL</p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>0.3</p>
+<td headers="Default" class="gt_row gt_left"><div class='gt_from_md'><p>0.3</p>
 </div></td>
-<td class="gt_row gt_right"><div class='gt_from_md'></div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'></div></td></tr>
-    <tr><td class="gt_row gt_left"><div class='gt_from_md'><p><code>Knev</code></p>
+<td headers="Typical range" class="gt_row gt_right"><div class='gt_from_md'></div></td>
+<td headers="Comment" class="gt_row gt_left"><div class='gt_from_md'></div></td></tr>
+    <tr><td headers="Parameter name" class="gt_row gt_left"><div class='gt_from_md'><p><code>Knev</code></p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>O<sub>2</sub> threshold for switching on N<sub>2</sub>O production from nitrification</p>
+<td headers="Description" class="gt_row gt_left"><div class='gt_from_md'><p>O<sub>2</sub> threshold for switching on N<sub>2</sub>O production from nitrification</p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>mmol m<sup>-3</sup></p>
+<td headers="Unit" class="gt_row gt_left"><div class='gt_from_md'><p>mmol m<sup>-3</sup></p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>AED_REAL</p>
+<td headers="Parameter type" class="gt_row gt_left"><div class='gt_from_md'><p>AED_REAL</p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>3</p>
+<td headers="Default" class="gt_row gt_left"><div class='gt_from_md'><p>3</p>
 </div></td>
-<td class="gt_row gt_right"><div class='gt_from_md'></div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'></div></td></tr>
-    <tr><td class="gt_row gt_left"><div class='gt_from_md'><p><code>aa</code></p>
+<td headers="Typical range" class="gt_row gt_right"><div class='gt_from_md'></div></td>
+<td headers="Comment" class="gt_row gt_left"><div class='gt_from_md'></div></td></tr>
+    <tr><td headers="Parameter name" class="gt_row gt_left"><div class='gt_from_md'><p><code>aa</code></p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>O<sub>2</sub> inhibition parameter</p>
+<td headers="Description" class="gt_row gt_left"><div class='gt_from_md'><p>O<sub>2</sub> inhibition parameter</p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>mmol m<sup>-3</sup></p>
+<td headers="Unit" class="gt_row gt_left"><div class='gt_from_md'><p>mmol m<sup>-3</sup></p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>AED_REAL</p>
+<td headers="Parameter type" class="gt_row gt_left"><div class='gt_from_md'><p>AED_REAL</p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>0.26</p>
+<td headers="Default" class="gt_row gt_left"><div class='gt_from_md'><p>0.26</p>
 </div></td>
-<td class="gt_row gt_right"><div class='gt_from_md'></div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'></div></td></tr>
-    <tr><td class="gt_row gt_left"><div class='gt_from_md'><p><code>bb</code></p>
+<td headers="Typical range" class="gt_row gt_right"><div class='gt_from_md'></div></td>
+<td headers="Comment" class="gt_row gt_left"><div class='gt_from_md'></div></td></tr>
+    <tr><td headers="Parameter name" class="gt_row gt_left"><div class='gt_from_md'><p><code>bb</code></p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>O<sub>2</sub> inhibition parameter</p>
+<td headers="Description" class="gt_row gt_left"><div class='gt_from_md'><p>O<sub>2</sub> inhibition parameter</p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'></div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>AED_REAL</p>
+<td headers="Unit" class="gt_row gt_left"><div class='gt_from_md'></div></td>
+<td headers="Parameter type" class="gt_row gt_left"><div class='gt_from_md'><p>AED_REAL</p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>-0.0006</p>
+<td headers="Default" class="gt_row gt_left"><div class='gt_from_md'><p>-0.0006</p>
 </div></td>
-<td class="gt_row gt_right"><div class='gt_from_md'></div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'></div></td></tr>
-    <tr><td class="gt_row gt_left"><div class='gt_from_md'><p><code>simN2O</code></p>
+<td headers="Typical range" class="gt_row gt_right"><div class='gt_from_md'></div></td>
+<td headers="Comment" class="gt_row gt_left"><div class='gt_from_md'></div></td></tr>
+    <tr><td headers="Parameter name" class="gt_row gt_left"><div class='gt_from_md'><p><code>simN2O</code></p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>Switch to use simple or advanced N reactions</p>
+<td headers="Description" class="gt_row gt_left"><div class='gt_from_md'><p>Switch to use simple or advanced N reactions</p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'></div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>INTEGER</p>
+<td headers="Unit" class="gt_row gt_left"><div class='gt_from_md'></div></td>
+<td headers="Parameter type" class="gt_row gt_left"><div class='gt_from_md'><p>INTEGER</p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>2</p>
+<td headers="Default" class="gt_row gt_left"><div class='gt_from_md'><p>2</p>
 </div></td>
-<td class="gt_row gt_right"><div class='gt_from_md'><p>0, 1, 2</p>
+<td headers="Typical range" class="gt_row gt_right"><div class='gt_from_md'><p>0, 1, 2</p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'></div></td></tr>
-    <tr><td class="gt_row gt_left"><div class='gt_from_md'><p><code>Rno2o2</code></p>
+<td headers="Comment" class="gt_row gt_left"><div class='gt_from_md'></div></td></tr>
+    <tr><td headers="Parameter name" class="gt_row gt_left"><div class='gt_from_md'><p><code>Rno2o2</code></p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>Kinetic rate constant for nitratation</p>
+<td headers="Description" class="gt_row gt_left"><div class='gt_from_md'><p>Kinetic rate constant for nitratation</p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>mmol<sup>-1</sup> m<sup>3</sup> s<sup>-1</sup></p>
+<td headers="Unit" class="gt_row gt_left"><div class='gt_from_md'><p>mmol<sup>-1</sup> m<sup>3</sup> s<sup>-1</sup></p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>AED_REAL</p>
+<td headers="Parameter type" class="gt_row gt_left"><div class='gt_from_md'><p>AED_REAL</p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>1</p>
+<td headers="Default" class="gt_row gt_left"><div class='gt_from_md'><p>1</p>
 </div></td>
-<td class="gt_row gt_right"><div class='gt_from_md'></div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'></div></td></tr>
-    <tr><td class="gt_row gt_left"><div class='gt_from_md'><p><code>Rnh4o2</code></p>
+<td headers="Typical range" class="gt_row gt_right"><div class='gt_from_md'></div></td>
+<td headers="Comment" class="gt_row gt_left"><div class='gt_from_md'></div></td></tr>
+    <tr><td headers="Parameter name" class="gt_row gt_left"><div class='gt_from_md'><p><code>Rnh4o2</code></p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>Kinetic rate constant for nitratation</p>
+<td headers="Description" class="gt_row gt_left"><div class='gt_from_md'><p>Kinetic rate constant for nitratation</p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>mmol<sup>-1</sup> m<sup>3</sup> s<sup>-1</sup></p>
+<td headers="Unit" class="gt_row gt_left"><div class='gt_from_md'><p>mmol<sup>-1</sup> m<sup>3</sup> s<sup>-1</sup></p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>AED_REAL</p>
+<td headers="Parameter type" class="gt_row gt_left"><div class='gt_from_md'><p>AED_REAL</p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>1</p>
+<td headers="Default" class="gt_row gt_left"><div class='gt_from_md'><p>1</p>
 </div></td>
-<td class="gt_row gt_right"><div class='gt_from_md'></div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'></div></td></tr>
-    <tr><td class="gt_row gt_left"><div class='gt_from_md'><p><code>Kpart_ammox</code></p>
+<td headers="Typical range" class="gt_row gt_right"><div class='gt_from_md'></div></td>
+<td headers="Comment" class="gt_row gt_left"><div class='gt_from_md'></div></td></tr>
+    <tr><td headers="Parameter name" class="gt_row gt_left"><div class='gt_from_md'><p><code>Kpart_ammox</code></p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>Partitioning parameter for the products of ammonium oxidation, based on O<sub>2</sub> concentration</p>
+<td headers="Description" class="gt_row gt_left"><div class='gt_from_md'><p>Partitioning parameter for the products of ammonium oxidation, based on O<sub>2</sub> concentration</p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>mmol m<sup>-3</sup></p>
+<td headers="Unit" class="gt_row gt_left"><div class='gt_from_md'><p>mmol m<sup>-3</sup></p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>AED_REAL</p>
+<td headers="Parameter type" class="gt_row gt_left"><div class='gt_from_md'><p>AED_REAL</p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>20</p>
+<td headers="Default" class="gt_row gt_left"><div class='gt_from_md'><p>20</p>
 </div></td>
-<td class="gt_row gt_right"><div class='gt_from_md'></div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'></div></td></tr>
-    <tr><td class="gt_row gt_left"><div class='gt_from_md'><p><code>Rdom_minerl</code></p>
+<td headers="Typical range" class="gt_row gt_right"><div class='gt_from_md'></div></td>
+<td headers="Comment" class="gt_row gt_left"><div class='gt_from_md'></div></td></tr>
+    <tr><td headers="Parameter name" class="gt_row gt_left"><div class='gt_from_md'><p><code>Rdom_minerl</code></p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>Kinetic rate constant for DOC mineralisation</p>
+<td headers="Description" class="gt_row gt_left"><div class='gt_from_md'><p>Kinetic rate constant for DOC mineralisation</p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>mmol<sup>-1</sup> m<sup>3</sup> s<sup>-1</sup></p>
+<td headers="Unit" class="gt_row gt_left"><div class='gt_from_md'><p>mmol<sup>-1</sup> m<sup>3</sup> s<sup>-1</sup></p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>AED_REAL</p>
+<td headers="Parameter type" class="gt_row gt_left"><div class='gt_from_md'><p>AED_REAL</p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>0.001</p>
+<td headers="Default" class="gt_row gt_left"><div class='gt_from_md'><p>0.001</p>
 </div></td>
-<td class="gt_row gt_right"><div class='gt_from_md'></div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>OGM</p>
+<td headers="Typical range" class="gt_row gt_right"><div class='gt_from_md'></div></td>
+<td headers="Comment" class="gt_row gt_left"><div class='gt_from_md'><p>OGM</p>
 </div></td></tr>
-    <tr><td class="gt_row gt_left"><div class='gt_from_md'><p><code>Kdom_minerl</code></p>
+    <tr><td headers="Parameter name" class="gt_row gt_left"><div class='gt_from_md'><p><code>Kdom_minerl</code></p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>O<sub>2</sub> concentration for inhibition and limitation</p>
+<td headers="Description" class="gt_row gt_left"><div class='gt_from_md'><p>O<sub>2</sub> concentration for inhibition and limitation</p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>mmol m<sup>-3</sup></p>
+<td headers="Unit" class="gt_row gt_left"><div class='gt_from_md'><p>mmol m<sup>-3</sup></p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>AED_REAL</p>
+<td headers="Parameter type" class="gt_row gt_left"><div class='gt_from_md'><p>AED_REAL</p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>0.886</p>
+<td headers="Default" class="gt_row gt_left"><div class='gt_from_md'><p>0.886</p>
 </div></td>
-<td class="gt_row gt_right"><div class='gt_from_md'></div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>OGM</p>
+<td headers="Typical range" class="gt_row gt_right"><div class='gt_from_md'></div></td>
+<td headers="Comment" class="gt_row gt_left"><div class='gt_from_md'><p>OGM</p>
 </div></td></tr>
-    <tr><td class="gt_row gt_left"><div class='gt_from_md'><p><code>theta_minerl</code></p>
+    <tr><td headers="Parameter name" class="gt_row gt_left"><div class='gt_from_md'><p><code>theta_minerl</code></p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>Temperature parameter</p>
+<td headers="Description" class="gt_row gt_left"><div class='gt_from_md'><p>Temperature parameter</p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'></div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>AED_REAL</p>
+<td headers="Unit" class="gt_row gt_left"><div class='gt_from_md'></div></td>
+<td headers="Parameter type" class="gt_row gt_left"><div class='gt_from_md'><p>AED_REAL</p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>1</p>
+<td headers="Default" class="gt_row gt_left"><div class='gt_from_md'><p>1</p>
 </div></td>
-<td class="gt_row gt_right"><div class='gt_from_md'></div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>OGM</p>
+<td headers="Typical range" class="gt_row gt_right"><div class='gt_from_md'></div></td>
+<td headers="Comment" class="gt_row gt_left"><div class='gt_from_md'><p>OGM</p>
 </div></td></tr>
-    <tr><td class="gt_row gt_left"><div class='gt_from_md'><p><code>f_an</code></p>
+    <tr><td headers="Parameter name" class="gt_row gt_left"><div class='gt_from_md'><p><code>f_an</code></p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'></div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'></div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'></div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>1</p>
+<td headers="Description" class="gt_row gt_left"><div class='gt_from_md'></div></td>
+<td headers="Unit" class="gt_row gt_left"><div class='gt_from_md'></div></td>
+<td headers="Parameter type" class="gt_row gt_left"><div class='gt_from_md'></div></td>
+<td headers="Default" class="gt_row gt_left"><div class='gt_from_md'><p>1</p>
 </div></td>
-<td class="gt_row gt_right"><div class='gt_from_md'></div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>OGM</p>
+<td headers="Typical range" class="gt_row gt_right"><div class='gt_from_md'></div></td>
+<td headers="Comment" class="gt_row gt_left"><div class='gt_from_md'><p>OGM</p>
 </div></td></tr>
-    <tr><td class="gt_row gt_left"><div class='gt_from_md'><p>`Klim_denitrousv</p>
+    <tr><td headers="Parameter name" class="gt_row gt_left"><div class='gt_from_md'><p>`Klim_denitrousv</p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>N<sub>2</sub>O concentration to limit denitrousation and to inhibit denitratation and denitritation</p>
+<td headers="Description" class="gt_row gt_left"><div class='gt_from_md'><p>N<sub>2</sub>O concentration to limit denitrousation and to inhibit denitratation and denitritation</p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>mmol m<sup>-3</sup></p>
+<td headers="Unit" class="gt_row gt_left"><div class='gt_from_md'><p>mmol m<sup>-3</sup></p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>AED_REAL</p>
+<td headers="Parameter type" class="gt_row gt_left"><div class='gt_from_md'><p>AED_REAL</p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>1</p>
+<td headers="Default" class="gt_row gt_left"><div class='gt_from_md'><p>1</p>
 </div></td>
-<td class="gt_row gt_right"><div class='gt_from_md'></div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'></div></td></tr>
-    <tr><td class="gt_row gt_left"><div class='gt_from_md'><p><code>Kin_denitrousv</code></p>
+<td headers="Typical range" class="gt_row gt_right"><div class='gt_from_md'></div></td>
+<td headers="Comment" class="gt_row gt_left"><div class='gt_from_md'></div></td></tr>
+    <tr><td headers="Parameter name" class="gt_row gt_left"><div class='gt_from_md'><p><code>Kin_denitrousv</code></p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>O<sub>2</sub> concentration to inhibit denitrousation</p>
+<td headers="Description" class="gt_row gt_left"><div class='gt_from_md'><p>O<sub>2</sub> concentration to inhibit denitrousation</p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>mmol m<sup>-3</sup></p>
+<td headers="Unit" class="gt_row gt_left"><div class='gt_from_md'><p>mmol m<sup>-3</sup></p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>AED_REAL</p>
+<td headers="Parameter type" class="gt_row gt_left"><div class='gt_from_md'><p>AED_REAL</p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>0.205</p>
+<td headers="Default" class="gt_row gt_left"><div class='gt_from_md'><p>0.205</p>
 </div></td>
-<td class="gt_row gt_right"><div class='gt_from_md'></div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'></div></td></tr>
-    <tr><td class="gt_row gt_left"><div class='gt_from_md'><p><code>Knit</code></p>
+<td headers="Typical range" class="gt_row gt_right"><div class='gt_from_md'></div></td>
+<td headers="Comment" class="gt_row gt_left"><div class='gt_from_md'></div></td></tr>
+    <tr><td headers="Parameter name" class="gt_row gt_left"><div class='gt_from_md'><p><code>Knit</code></p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>NO<sub>3</sub><sup>-</sup> concentration to limit denitratation</p>
+<td headers="Description" class="gt_row gt_left"><div class='gt_from_md'><p>NO<sub>3</sub><sup>-</sup> concentration to limit denitratation</p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>mmol m<sup>-3</sup></p>
+<td headers="Unit" class="gt_row gt_left"><div class='gt_from_md'><p>mmol m<sup>-3</sup></p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>AED_REAL</p>
+<td headers="Parameter type" class="gt_row gt_left"><div class='gt_from_md'><p>AED_REAL</p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>1</p>
+<td headers="Default" class="gt_row gt_left"><div class='gt_from_md'><p>1</p>
 </div></td>
-<td class="gt_row gt_right"><div class='gt_from_md'></div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'></div></td></tr>
-    <tr><td class="gt_row gt_left"><div class='gt_from_md'><p><code>Kin_denitrat</code></p>
+<td headers="Typical range" class="gt_row gt_right"><div class='gt_from_md'></div></td>
+<td headers="Comment" class="gt_row gt_left"><div class='gt_from_md'></div></td></tr>
+    <tr><td headers="Parameter name" class="gt_row gt_left"><div class='gt_from_md'><p><code>Kin_denitrat</code></p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>O<sub>2</sub> concentration for inhibiting denitratation</p>
+<td headers="Description" class="gt_row gt_left"><div class='gt_from_md'><p>O<sub>2</sub> concentration for inhibiting denitratation</p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>mmol m<sup>-3</sup></p>
+<td headers="Unit" class="gt_row gt_left"><div class='gt_from_md'><p>mmol m<sup>-3</sup></p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>AED_REAL</p>
+<td headers="Parameter type" class="gt_row gt_left"><div class='gt_from_md'><p>AED_REAL</p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>20</p>
+<td headers="Default" class="gt_row gt_left"><div class='gt_from_md'><p>20</p>
 </div></td>
-<td class="gt_row gt_right"><div class='gt_from_md'></div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'></div></td></tr>
-    <tr><td class="gt_row gt_left"><div class='gt_from_md'><p><code>Klim_denitrit</code></p>
+<td headers="Typical range" class="gt_row gt_right"><div class='gt_from_md'></div></td>
+<td headers="Comment" class="gt_row gt_left"><div class='gt_from_md'></div></td></tr>
+    <tr><td headers="Parameter name" class="gt_row gt_left"><div class='gt_from_md'><p><code>Klim_denitrit</code></p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>NO<sub>2</sub><sup>-</sup> concentration parameter that inhibits denitratation and limits denitritation</p>
+<td headers="Description" class="gt_row gt_left"><div class='gt_from_md'><p>NO<sub>2</sub><sup>-</sup> concentration parameter that inhibits denitratation and limits denitritation</p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>mmol m<sup>-3</sup></p>
+<td headers="Unit" class="gt_row gt_left"><div class='gt_from_md'><p>mmol m<sup>-3</sup></p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>AED_REAL</p>
+<td headers="Parameter type" class="gt_row gt_left"><div class='gt_from_md'><p>AED_REAL</p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>1</p>
+<td headers="Default" class="gt_row gt_left"><div class='gt_from_md'><p>1</p>
 </div></td>
-<td class="gt_row gt_right"><div class='gt_from_md'></div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'></div></td></tr>
-    <tr><td class="gt_row gt_left"><div class='gt_from_md'><p><code>Kpart_denitrit</code></p>
+<td headers="Typical range" class="gt_row gt_right"><div class='gt_from_md'></div></td>
+<td headers="Comment" class="gt_row gt_left"><div class='gt_from_md'></div></td></tr>
+    <tr><td headers="Parameter name" class="gt_row gt_left"><div class='gt_from_md'><p><code>Kpart_denitrit</code></p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>Partitioning parameter for the products of denitritation</p>
+<td headers="Description" class="gt_row gt_left"><div class='gt_from_md'><p>Partitioning parameter for the products of denitritation</p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>mmol m<sup>-3</sup></p>
+<td headers="Unit" class="gt_row gt_left"><div class='gt_from_md'><p>mmol m<sup>-3</sup></p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>AED_REAL</p>
+<td headers="Parameter type" class="gt_row gt_left"><div class='gt_from_md'><p>AED_REAL</p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>1</p>
+<td headers="Default" class="gt_row gt_left"><div class='gt_from_md'><p>1</p>
 </div></td>
-<td class="gt_row gt_right"><div class='gt_from_md'></div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'></div></td></tr>
-    <tr><td class="gt_row gt_left"><div class='gt_from_md'><p><code>simN2O</code></p>
+<td headers="Typical range" class="gt_row gt_right"><div class='gt_from_md'></div></td>
+<td headers="Comment" class="gt_row gt_left"><div class='gt_from_md'></div></td></tr>
+    <tr><td headers="Parameter name" class="gt_row gt_left"><div class='gt_from_md'><p><code>simN2O</code></p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>Switch to use simple or advanced N reactions</p>
+<td headers="Description" class="gt_row gt_left"><div class='gt_from_md'><p>Switch to use simple or advanced N reactions</p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'></div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>INTEGER</p>
+<td headers="Unit" class="gt_row gt_left"><div class='gt_from_md'></div></td>
+<td headers="Parameter type" class="gt_row gt_left"><div class='gt_from_md'><p>INTEGER</p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>2</p>
+<td headers="Default" class="gt_row gt_left"><div class='gt_from_md'><p>2</p>
 </div></td>
-<td class="gt_row gt_right"><div class='gt_from_md'><p>0, 1, 2</p>
+<td headers="Typical range" class="gt_row gt_right"><div class='gt_from_md'><p>0, 1, 2</p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'></div></td></tr>
-    <tr><td class="gt_row gt_left"><div class='gt_from_md'><p><code>Rnh4no2</code></p>
+<td headers="Comment" class="gt_row gt_left"><div class='gt_from_md'></div></td></tr>
+    <tr><td headers="Parameter name" class="gt_row gt_left"><div class='gt_from_md'><p><code>Rnh4no2</code></p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>Kinetic rate constant for deammonification</p>
+<td headers="Description" class="gt_row gt_left"><div class='gt_from_md'><p>Kinetic rate constant for deammonification</p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>mmol<sup>-1</sup> m<sup>3</sup> s<sup>-1</sup></p>
+<td headers="Unit" class="gt_row gt_left"><div class='gt_from_md'><p>mmol<sup>-1</sup> m<sup>3</sup> s<sup>-1</sup></p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>AED_REAL</p>
+<td headers="Parameter type" class="gt_row gt_left"><div class='gt_from_md'><p>AED_REAL</p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>1</p>
+<td headers="Default" class="gt_row gt_left"><div class='gt_from_md'><p>1</p>
 </div></td>
-<td class="gt_row gt_right"><div class='gt_from_md'></div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'></div></td></tr>
-    <tr><td class="gt_row gt_left"><div class='gt_from_md'><p><code>Kin_deamm</code></p>
+<td headers="Typical range" class="gt_row gt_right"><div class='gt_from_md'></div></td>
+<td headers="Comment" class="gt_row gt_left"><div class='gt_from_md'></div></td></tr>
+    <tr><td headers="Parameter name" class="gt_row gt_left"><div class='gt_from_md'><p><code>Kin_deamm</code></p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>O<sub>2</sub> concentration for inhibition of deammonification</p>
+<td headers="Description" class="gt_row gt_left"><div class='gt_from_md'><p>O<sub>2</sub> concentration for inhibition of deammonification</p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>mmol m<sup>-3</sup></p>
+<td headers="Unit" class="gt_row gt_left"><div class='gt_from_md'><p>mmol m<sup>-3</sup></p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>AED_REAL</p>
+<td headers="Parameter type" class="gt_row gt_left"><div class='gt_from_md'><p>AED_REAL</p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>0.886</p>
+<td headers="Default" class="gt_row gt_left"><div class='gt_from_md'><p>0.886</p>
 </div></td>
-<td class="gt_row gt_right"><div class='gt_from_md'></div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'></div></td></tr>
-    <tr><td class="gt_row gt_left"><div class='gt_from_md'><p><code>simN2O</code></p>
+<td headers="Typical range" class="gt_row gt_right"><div class='gt_from_md'></div></td>
+<td headers="Comment" class="gt_row gt_left"><div class='gt_from_md'></div></td></tr>
+    <tr><td headers="Parameter name" class="gt_row gt_left"><div class='gt_from_md'><p><code>simN2O</code></p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>Switch to use simple or advanced N reactions</p>
+<td headers="Description" class="gt_row gt_left"><div class='gt_from_md'><p>Switch to use simple or advanced N reactions</p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'></div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>INTEGER</p>
+<td headers="Unit" class="gt_row gt_left"><div class='gt_from_md'></div></td>
+<td headers="Parameter type" class="gt_row gt_left"><div class='gt_from_md'><p>INTEGER</p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>1 or 2</p>
+<td headers="Default" class="gt_row gt_left"><div class='gt_from_md'><p>1 or 2</p>
 </div></td>
-<td class="gt_row gt_right"><div class='gt_from_md'><p>0, 1, 2</p>
+<td headers="Typical range" class="gt_row gt_right"><div class='gt_from_md'><p>0, 1, 2</p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'></div></td></tr>
-    <tr><td class="gt_row gt_left"><div class='gt_from_md'><p><code>atm_n2o</code></p>
+<td headers="Comment" class="gt_row gt_left"><div class='gt_from_md'></div></td></tr>
+    <tr><td headers="Parameter name" class="gt_row gt_left"><div class='gt_from_md'><p><code>atm_n2o</code></p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>Atmospheric N<sub>2</sub>O concentration</p>
+<td headers="Description" class="gt_row gt_left"><div class='gt_from_md'><p>Atmospheric N<sub>2</sub>O concentration</p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>mmol m<sup>-3</sup> or ppm </p>
+<td headers="Unit" class="gt_row gt_left"><div class='gt_from_md'><p>mmol m<sup>-3</sup> or ppm </p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>AED_REAL</p>
+<td headers="Parameter type" class="gt_row gt_left"><div class='gt_from_md'><p>AED_REAL</p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>0.32×10<sup>-6</sup></p>
+<td headers="Default" class="gt_row gt_left"><div class='gt_from_md'><p>0.32×10<sup>-6</sup></p>
 </div></td>
-<td class="gt_row gt_right"><div class='gt_from_md'></div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'></div></td></tr>
-    <tr><td class="gt_row gt_left"><div class='gt_from_md'><p><code>simN2O</code></p>
+<td headers="Typical range" class="gt_row gt_right"><div class='gt_from_md'></div></td>
+<td headers="Comment" class="gt_row gt_left"><div class='gt_from_md'></div></td></tr>
+    <tr><td headers="Parameter name" class="gt_row gt_left"><div class='gt_from_md'><p><code>simN2O</code></p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>Switch to use simple or advanced N reactions</p>
+<td headers="Description" class="gt_row gt_left"><div class='gt_from_md'><p>Switch to use simple or advanced N reactions</p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'></div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>INTEGER</p>
+<td headers="Unit" class="gt_row gt_left"><div class='gt_from_md'></div></td>
+<td headers="Parameter type" class="gt_row gt_left"><div class='gt_from_md'><p>INTEGER</p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>1 or 2</p>
+<td headers="Default" class="gt_row gt_left"><div class='gt_from_md'><p>1 or 2</p>
 </div></td>
-<td class="gt_row gt_right"><div class='gt_from_md'><p>0, 1, 2</p>
+<td headers="Typical range" class="gt_row gt_right"><div class='gt_from_md'><p>0, 1, 2</p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'></div></td></tr>
-    <tr><td class="gt_row gt_left"><div class='gt_from_md'><p><code>use_oxy</code></p>
+<td headers="Comment" class="gt_row gt_left"><div class='gt_from_md'></div></td></tr>
+    <tr><td headers="Parameter name" class="gt_row gt_left"><div class='gt_from_md'><p><code>use_oxy</code></p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'></div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'></div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'></div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'></div></td>
-<td class="gt_row gt_right"><div class='gt_from_md'></div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'></div></td></tr>
-    <tr><td class="gt_row gt_left"><div class='gt_from_md'><p><code>Fsed_n2o</code></p>
+<td headers="Description" class="gt_row gt_left"><div class='gt_from_md'></div></td>
+<td headers="Unit" class="gt_row gt_left"><div class='gt_from_md'></div></td>
+<td headers="Parameter type" class="gt_row gt_left"><div class='gt_from_md'></div></td>
+<td headers="Default" class="gt_row gt_left"><div class='gt_from_md'></div></td>
+<td headers="Typical range" class="gt_row gt_right"><div class='gt_from_md'></div></td>
+<td headers="Comment" class="gt_row gt_left"><div class='gt_from_md'></div></td></tr>
+    <tr><td headers="Parameter name" class="gt_row gt_left"><div class='gt_from_md'><p><code>Fsed_n2o</code></p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>Maximum N<sub>2</sub>O sediment flux rate</p>
+<td headers="Description" class="gt_row gt_left"><div class='gt_from_md'><p>Maximum N<sub>2</sub>O sediment flux rate</p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>mmol m<sup>-2</sup> y<sup>-1</sup></p>
+<td headers="Unit" class="gt_row gt_left"><div class='gt_from_md'><p>mmol m<sup>-2</sup> y<sup>-1</sup></p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'></div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>0</p>
+<td headers="Parameter type" class="gt_row gt_left"><div class='gt_from_md'></div></td>
+<td headers="Default" class="gt_row gt_left"><div class='gt_from_md'><p>0</p>
 </div></td>
-<td class="gt_row gt_right"><div class='gt_from_md'></div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'></div></td></tr>
-    <tr><td class="gt_row gt_left"><div class='gt_from_md'><p><code>Ksed_n2o</code></p>
+<td headers="Typical range" class="gt_row gt_right"><div class='gt_from_md'></div></td>
+<td headers="Comment" class="gt_row gt_left"><div class='gt_from_md'></div></td></tr>
+    <tr><td headers="Parameter name" class="gt_row gt_left"><div class='gt_from_md'><p><code>Ksed_n2o</code></p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>O<sub>2</sub> inhibition concentration parameter</p>
+<td headers="Description" class="gt_row gt_left"><div class='gt_from_md'><p>O<sub>2</sub> inhibition concentration parameter</p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>mmol m<sup>-2</sup> y<sup>-1</sup></p>
+<td headers="Unit" class="gt_row gt_left"><div class='gt_from_md'><p>mmol m<sup>-2</sup> y<sup>-1</sup></p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>AED_REAL</p>
+<td headers="Parameter type" class="gt_row gt_left"><div class='gt_from_md'><p>AED_REAL</p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>30</p>
+<td headers="Default" class="gt_row gt_left"><div class='gt_from_md'><p>30</p>
 </div></td>
-<td class="gt_row gt_right"><div class='gt_from_md'></div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'></div></td></tr>
-    <tr><td class="gt_row gt_left"><div class='gt_from_md'><p><code>theta_sed_n2o</code></p>
+<td headers="Typical range" class="gt_row gt_right"><div class='gt_from_md'></div></td>
+<td headers="Comment" class="gt_row gt_left"><div class='gt_from_md'></div></td></tr>
+    <tr><td headers="Parameter name" class="gt_row gt_left"><div class='gt_from_md'><p><code>theta_sed_n2o</code></p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>Temperature limiting factor for sediment N<sub>2</sub>O flux</p>
+<td headers="Description" class="gt_row gt_left"><div class='gt_from_md'><p>Temperature limiting factor for sediment N<sub>2</sub>O flux</p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'></div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>AED_REAL</p>
+<td headers="Unit" class="gt_row gt_left"><div class='gt_from_md'></div></td>
+<td headers="Parameter type" class="gt_row gt_left"><div class='gt_from_md'><p>AED_REAL</p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>1</p>
+<td headers="Default" class="gt_row gt_left"><div class='gt_from_md'><p>1</p>
 </div></td>
-<td class="gt_row gt_right"><div class='gt_from_md'></div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'></div></td></tr>
+<td headers="Typical range" class="gt_row gt_right"><div class='gt_from_md'></div></td>
+<td headers="Comment" class="gt_row gt_left"><div class='gt_from_md'></div></td></tr>
   </tbody>
   
   
@@ -2773,55 +2882,55 @@ f_{deammonification}=R_{{NH}_4{NO}_2}\times{NO}_2^-\times{NH}_4^+\times\frac{K_{
 <h2><span class="header-section-number">6.5</span> Setup &amp; Configuration<a href="inorganic-nitrogen.html#setup-configuration-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>An example <code>aed.nml</code> parameter specification block for the <code>aed_nitrogen</code> module is shown below:</p>
 <p><br></p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode fortran"><code class="sourceCode fortranfixed"><span id="cb6-1"><a href="inorganic-nitrogen.html#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&amp;</span>aed_nitrogen</span>
-<span id="cb6-2"><a href="inorganic-nitrogen.html#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="co">!-- Initial values</span></span>
-<span id="cb6-3"><a href="inorganic-nitrogen.html#cb6-3" aria-hidden="true" tabindex="-1"></a>   amm_initial <span class="kw">=</span> <span class="fl">2.6</span></span>
-<span id="cb6-4"><a href="inorganic-nitrogen.html#cb6-4" aria-hidden="true" tabindex="-1"></a>   nit_initial <span class="kw">=</span> <span class="fl">0.1</span></span>
-<span id="cb6-5"><a href="inorganic-nitrogen.html#cb6-5" aria-hidden="true" tabindex="-1"></a>   n2o_initial <span class="kw">=</span> <span class="fl">0.1</span></span>
-<span id="cb6-6"><a href="inorganic-nitrogen.html#cb6-6" aria-hidden="true" tabindex="-1"></a>  <span class="co">!-- Nitrification</span></span>
-<span id="cb6-7"><a href="inorganic-nitrogen.html#cb6-7" aria-hidden="true" tabindex="-1"></a>   Rnitrif <span class="kw">=</span>  <span class="fl">0.01358676</span></span>
-<span id="cb6-8"><a href="inorganic-nitrogen.html#cb6-8" aria-hidden="true" tabindex="-1"></a>   Knitrif <span class="kw">=</span> <span class="fl">62.02209</span></span>
-<span id="cb6-9"><a href="inorganic-nitrogen.html#cb6-9" aria-hidden="true" tabindex="-1"></a>   theta_nitrif <span class="kw">=</span> <span class="fl">1.08</span></span>
-<span id="cb6-10"><a href="inorganic-nitrogen.html#cb6-10" aria-hidden="true" tabindex="-1"></a>   nitrif_reactant_variable <span class="kw">=</span> <span class="st">&#39;OXY_oxy&#39;</span></span>
-<span id="cb6-11"><a href="inorganic-nitrogen.html#cb6-11" aria-hidden="true" tabindex="-1"></a>   nitrif_ph_variable <span class="kw">=</span> <span class="st">&#39;&#39;</span></span>
-<span id="cb6-12"><a href="inorganic-nitrogen.html#cb6-12" aria-hidden="true" tabindex="-1"></a>   simNitrfpH <span class="kw">=</span> <span class="cn">.false.</span></span>
-<span id="cb6-13"><a href="inorganic-nitrogen.html#cb6-13" aria-hidden="true" tabindex="-1"></a>   Rnh4o2 <span class="kw">=</span> <span class="fl">1.0</span></span>
-<span id="cb6-14"><a href="inorganic-nitrogen.html#cb6-14" aria-hidden="true" tabindex="-1"></a>   Rno2o2 <span class="kw">=</span> <span class="fl">1.0</span></span>
-<span id="cb6-15"><a href="inorganic-nitrogen.html#cb6-15" aria-hidden="true" tabindex="-1"></a>  <span class="co">!-- N2O reactions</span></span>
-<span id="cb6-16"><a href="inorganic-nitrogen.html#cb6-16" aria-hidden="true" tabindex="-1"></a>   simN2O <span class="kw">=</span> <span class="dv">0</span></span>
-<span id="cb6-17"><a href="inorganic-nitrogen.html#cb6-17" aria-hidden="true" tabindex="-1"></a>   Rn2o <span class="kw">=</span> <span class="fl">0.05</span></span>
-<span id="cb6-18"><a href="inorganic-nitrogen.html#cb6-18" aria-hidden="true" tabindex="-1"></a>   Kpart_ammox <span class="kw">=</span> <span class="fl">1.0</span></span>
-<span id="cb6-19"><a href="inorganic-nitrogen.html#cb6-19" aria-hidden="true" tabindex="-1"></a>   Kin_deamm <span class="kw">=</span> <span class="fl">1.0</span></span>
-<span id="cb6-20"><a href="inorganic-nitrogen.html#cb6-20" aria-hidden="true" tabindex="-1"></a>   atm_n2o <span class="kw">=</span> <span class="fl">3.2e-07</span></span>
-<span id="cb6-21"><a href="inorganic-nitrogen.html#cb6-21" aria-hidden="true" tabindex="-1"></a>   n2o_piston_model <span class="kw">=</span> <span class="dv">4</span></span>
-<span id="cb6-22"><a href="inorganic-nitrogen.html#cb6-22" aria-hidden="true" tabindex="-1"></a>  <span class="co">!-- Annamox</span></span>
-<span id="cb6-23"><a href="inorganic-nitrogen.html#cb6-23" aria-hidden="true" tabindex="-1"></a>   Rnh4no2 <span class="kw">=</span> <span class="fl">0.001</span></span>
-<span id="cb6-24"><a href="inorganic-nitrogen.html#cb6-24" aria-hidden="true" tabindex="-1"></a>   kanammox <span class="kw">=</span> <span class="fl">0.001</span></span>
-<span id="cb6-25"><a href="inorganic-nitrogen.html#cb6-25" aria-hidden="true" tabindex="-1"></a>   Kanmx_nit <span class="kw">=</span> <span class="fl">1.320344</span></span>
-<span id="cb6-26"><a href="inorganic-nitrogen.html#cb6-26" aria-hidden="true" tabindex="-1"></a>   Kanmx_amm <span class="kw">=</span> <span class="fl">0.8666655</span></span>
-<span id="cb6-27"><a href="inorganic-nitrogen.html#cb6-27" aria-hidden="true" tabindex="-1"></a>  <span class="co">!-- De-nitrification</span></span>
-<span id="cb6-28"><a href="inorganic-nitrogen.html#cb6-28" aria-hidden="true" tabindex="-1"></a>   Rdenit <span class="kw">=</span> <span class="fl">9.968717</span></span>
-<span id="cb6-29"><a href="inorganic-nitrogen.html#cb6-29" aria-hidden="true" tabindex="-1"></a>   Kdenit <span class="kw">=</span> <span class="fl">29.86566</span></span>
-<span id="cb6-30"><a href="inorganic-nitrogen.html#cb6-30" aria-hidden="true" tabindex="-1"></a>   theta_denit <span class="kw">=</span> <span class="fl">1.062862</span></span>
-<span id="cb6-31"><a href="inorganic-nitrogen.html#cb6-31" aria-hidden="true" tabindex="-1"></a>   Rdnra <span class="kw">=</span> <span class="fl">0.01123021</span></span>
-<span id="cb6-32"><a href="inorganic-nitrogen.html#cb6-32" aria-hidden="true" tabindex="-1"></a>   Kdnra_oxy <span class="kw">=</span> <span class="fl">0.360534</span></span>
-<span id="cb6-33"><a href="inorganic-nitrogen.html#cb6-33" aria-hidden="true" tabindex="-1"></a>  <span class="co">!-- Atmospheric deposition</span></span>
-<span id="cb6-34"><a href="inorganic-nitrogen.html#cb6-34" aria-hidden="true" tabindex="-1"></a>   simDryDeposition <span class="kw">=</span> <span class="cn">.true.</span></span>
-<span id="cb6-35"><a href="inorganic-nitrogen.html#cb6-35" aria-hidden="true" tabindex="-1"></a>   atm_din_dd <span class="kw">=</span> <span class="fl">0.5</span></span>
-<span id="cb6-36"><a href="inorganic-nitrogen.html#cb6-36" aria-hidden="true" tabindex="-1"></a>   simWetDeposition <span class="kw">=</span> <span class="cn">.true.</span></span>
-<span id="cb6-37"><a href="inorganic-nitrogen.html#cb6-37" aria-hidden="true" tabindex="-1"></a>   atm_din_conc <span class="kw">=</span> <span class="fl">0.5</span></span>
-<span id="cb6-38"><a href="inorganic-nitrogen.html#cb6-38" aria-hidden="true" tabindex="-1"></a>  <span class="co">!-- Sediment fluxes</span></span>
-<span id="cb6-39"><a href="inorganic-nitrogen.html#cb6-39" aria-hidden="true" tabindex="-1"></a>   Ksed_amm <span class="kw">=</span> <span class="fl">41.25</span></span>
-<span id="cb6-40"><a href="inorganic-nitrogen.html#cb6-40" aria-hidden="true" tabindex="-1"></a>   Ksed_nit <span class="kw">=</span> <span class="fl">73.26015</span></span>
-<span id="cb6-41"><a href="inorganic-nitrogen.html#cb6-41" aria-hidden="true" tabindex="-1"></a>   Fsed_n2o <span class="kw">=</span> <span class="dv">0</span></span>
-<span id="cb6-42"><a href="inorganic-nitrogen.html#cb6-42" aria-hidden="true" tabindex="-1"></a>   Ksed_n2o <span class="kw">=</span> <span class="dv">100</span></span>
-<span id="cb6-43"><a href="inorganic-nitrogen.html#cb6-43" aria-hidden="true" tabindex="-1"></a>   theta_sed_amm <span class="kw">=</span> <span class="fl">1.068994</span></span>
-<span id="cb6-44"><a href="inorganic-nitrogen.html#cb6-44" aria-hidden="true" tabindex="-1"></a>   theta_sed_nit <span class="kw">=</span> <span class="fl">1.068994</span></span>
-<span id="cb6-45"><a href="inorganic-nitrogen.html#cb6-45" aria-hidden="true" tabindex="-1"></a>   Fsed_amm         <span class="kw">=</span>   <span class="fl">1.0</span></span>
-<span id="cb6-46"><a href="inorganic-nitrogen.html#cb6-46" aria-hidden="true" tabindex="-1"></a>   Fsed_nit         <span class="kw">=</span>  <span class="kw">-</span><span class="fl">0.05</span></span>
-<span id="cb6-47"><a href="inorganic-nitrogen.html#cb6-47" aria-hidden="true" tabindex="-1"></a> <span class="co">! Fsed_amm_variable = &#39;SDF_Fsed_amm&#39;</span></span>
-<span id="cb6-48"><a href="inorganic-nitrogen.html#cb6-48" aria-hidden="true" tabindex="-1"></a> <span class="co">! Fsed_nit_variable = &#39;SDF_Fsed_nit&#39;</span></span>
-<span id="cb6-49"><a href="inorganic-nitrogen.html#cb6-49" aria-hidden="true" tabindex="-1"></a><span class="kw">/</span></span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode fortran"><code class="sourceCode fortranfixed"><span id="cb6-1"><a href="inorganic-nitrogen.html#cb6-1" tabindex="-1"></a><span class="kw">&amp;</span>aed_nitrogen</span>
+<span id="cb6-2"><a href="inorganic-nitrogen.html#cb6-2" tabindex="-1"></a>  <span class="co">!-- Initial values</span></span>
+<span id="cb6-3"><a href="inorganic-nitrogen.html#cb6-3" tabindex="-1"></a>   amm_initial <span class="kw">=</span> <span class="fl">2.6</span></span>
+<span id="cb6-4"><a href="inorganic-nitrogen.html#cb6-4" tabindex="-1"></a>   nit_initial <span class="kw">=</span> <span class="fl">0.1</span></span>
+<span id="cb6-5"><a href="inorganic-nitrogen.html#cb6-5" tabindex="-1"></a>   n2o_initial <span class="kw">=</span> <span class="fl">0.1</span></span>
+<span id="cb6-6"><a href="inorganic-nitrogen.html#cb6-6" tabindex="-1"></a>  <span class="co">!-- Nitrification</span></span>
+<span id="cb6-7"><a href="inorganic-nitrogen.html#cb6-7" tabindex="-1"></a>   Rnitrif <span class="kw">=</span>  <span class="fl">0.01358676</span></span>
+<span id="cb6-8"><a href="inorganic-nitrogen.html#cb6-8" tabindex="-1"></a>   Knitrif <span class="kw">=</span> <span class="fl">62.02209</span></span>
+<span id="cb6-9"><a href="inorganic-nitrogen.html#cb6-9" tabindex="-1"></a>   theta_nitrif <span class="kw">=</span> <span class="fl">1.08</span></span>
+<span id="cb6-10"><a href="inorganic-nitrogen.html#cb6-10" tabindex="-1"></a>   nitrif_reactant_variable <span class="kw">=</span> <span class="st">&#39;OXY_oxy&#39;</span></span>
+<span id="cb6-11"><a href="inorganic-nitrogen.html#cb6-11" tabindex="-1"></a>   nitrif_ph_variable <span class="kw">=</span> <span class="st">&#39;&#39;</span></span>
+<span id="cb6-12"><a href="inorganic-nitrogen.html#cb6-12" tabindex="-1"></a>   simNitrfpH <span class="kw">=</span> <span class="cn">.false.</span></span>
+<span id="cb6-13"><a href="inorganic-nitrogen.html#cb6-13" tabindex="-1"></a>   Rnh4o2 <span class="kw">=</span> <span class="fl">1.0</span></span>
+<span id="cb6-14"><a href="inorganic-nitrogen.html#cb6-14" tabindex="-1"></a>   Rno2o2 <span class="kw">=</span> <span class="fl">1.0</span></span>
+<span id="cb6-15"><a href="inorganic-nitrogen.html#cb6-15" tabindex="-1"></a>  <span class="co">!-- N2O reactions</span></span>
+<span id="cb6-16"><a href="inorganic-nitrogen.html#cb6-16" tabindex="-1"></a>   simN2O <span class="kw">=</span> <span class="dv">0</span></span>
+<span id="cb6-17"><a href="inorganic-nitrogen.html#cb6-17" tabindex="-1"></a>   Rn2o <span class="kw">=</span> <span class="fl">0.05</span></span>
+<span id="cb6-18"><a href="inorganic-nitrogen.html#cb6-18" tabindex="-1"></a>   Kpart_ammox <span class="kw">=</span> <span class="fl">1.0</span></span>
+<span id="cb6-19"><a href="inorganic-nitrogen.html#cb6-19" tabindex="-1"></a>   Kin_deamm <span class="kw">=</span> <span class="fl">1.0</span></span>
+<span id="cb6-20"><a href="inorganic-nitrogen.html#cb6-20" tabindex="-1"></a>   atm_n2o <span class="kw">=</span> <span class="fl">3.2e-07</span></span>
+<span id="cb6-21"><a href="inorganic-nitrogen.html#cb6-21" tabindex="-1"></a>   n2o_piston_model <span class="kw">=</span> <span class="dv">4</span></span>
+<span id="cb6-22"><a href="inorganic-nitrogen.html#cb6-22" tabindex="-1"></a>  <span class="co">!-- Annamox</span></span>
+<span id="cb6-23"><a href="inorganic-nitrogen.html#cb6-23" tabindex="-1"></a>   Rnh4no2 <span class="kw">=</span> <span class="fl">0.001</span></span>
+<span id="cb6-24"><a href="inorganic-nitrogen.html#cb6-24" tabindex="-1"></a>   kanammox <span class="kw">=</span> <span class="fl">0.001</span></span>
+<span id="cb6-25"><a href="inorganic-nitrogen.html#cb6-25" tabindex="-1"></a>   Kanmx_nit <span class="kw">=</span> <span class="fl">1.320344</span></span>
+<span id="cb6-26"><a href="inorganic-nitrogen.html#cb6-26" tabindex="-1"></a>   Kanmx_amm <span class="kw">=</span> <span class="fl">0.8666655</span></span>
+<span id="cb6-27"><a href="inorganic-nitrogen.html#cb6-27" tabindex="-1"></a>  <span class="co">!-- De-nitrification</span></span>
+<span id="cb6-28"><a href="inorganic-nitrogen.html#cb6-28" tabindex="-1"></a>   Rdenit <span class="kw">=</span> <span class="fl">9.968717</span></span>
+<span id="cb6-29"><a href="inorganic-nitrogen.html#cb6-29" tabindex="-1"></a>   Kdenit <span class="kw">=</span> <span class="fl">29.86566</span></span>
+<span id="cb6-30"><a href="inorganic-nitrogen.html#cb6-30" tabindex="-1"></a>   theta_denit <span class="kw">=</span> <span class="fl">1.062862</span></span>
+<span id="cb6-31"><a href="inorganic-nitrogen.html#cb6-31" tabindex="-1"></a>   Rdnra <span class="kw">=</span> <span class="fl">0.01123021</span></span>
+<span id="cb6-32"><a href="inorganic-nitrogen.html#cb6-32" tabindex="-1"></a>   Kdnra_oxy <span class="kw">=</span> <span class="fl">0.360534</span></span>
+<span id="cb6-33"><a href="inorganic-nitrogen.html#cb6-33" tabindex="-1"></a>  <span class="co">!-- Atmospheric deposition</span></span>
+<span id="cb6-34"><a href="inorganic-nitrogen.html#cb6-34" tabindex="-1"></a>   simDryDeposition <span class="kw">=</span> <span class="cn">.true.</span></span>
+<span id="cb6-35"><a href="inorganic-nitrogen.html#cb6-35" tabindex="-1"></a>   atm_din_dd <span class="kw">=</span> <span class="fl">0.5</span></span>
+<span id="cb6-36"><a href="inorganic-nitrogen.html#cb6-36" tabindex="-1"></a>   simWetDeposition <span class="kw">=</span> <span class="cn">.true.</span></span>
+<span id="cb6-37"><a href="inorganic-nitrogen.html#cb6-37" tabindex="-1"></a>   atm_din_conc <span class="kw">=</span> <span class="fl">0.5</span></span>
+<span id="cb6-38"><a href="inorganic-nitrogen.html#cb6-38" tabindex="-1"></a>  <span class="co">!-- Sediment fluxes</span></span>
+<span id="cb6-39"><a href="inorganic-nitrogen.html#cb6-39" tabindex="-1"></a>   Ksed_amm <span class="kw">=</span> <span class="fl">41.25</span></span>
+<span id="cb6-40"><a href="inorganic-nitrogen.html#cb6-40" tabindex="-1"></a>   Ksed_nit <span class="kw">=</span> <span class="fl">73.26015</span></span>
+<span id="cb6-41"><a href="inorganic-nitrogen.html#cb6-41" tabindex="-1"></a>   Fsed_n2o <span class="kw">=</span> <span class="dv">0</span></span>
+<span id="cb6-42"><a href="inorganic-nitrogen.html#cb6-42" tabindex="-1"></a>   Ksed_n2o <span class="kw">=</span> <span class="dv">100</span></span>
+<span id="cb6-43"><a href="inorganic-nitrogen.html#cb6-43" tabindex="-1"></a>   theta_sed_amm <span class="kw">=</span> <span class="fl">1.068994</span></span>
+<span id="cb6-44"><a href="inorganic-nitrogen.html#cb6-44" tabindex="-1"></a>   theta_sed_nit <span class="kw">=</span> <span class="fl">1.068994</span></span>
+<span id="cb6-45"><a href="inorganic-nitrogen.html#cb6-45" tabindex="-1"></a>   Fsed_amm         <span class="kw">=</span>   <span class="fl">1.0</span></span>
+<span id="cb6-46"><a href="inorganic-nitrogen.html#cb6-46" tabindex="-1"></a>   Fsed_nit         <span class="kw">=</span>  <span class="kw">-</span><span class="fl">0.05</span></span>
+<span id="cb6-47"><a href="inorganic-nitrogen.html#cb6-47" tabindex="-1"></a> <span class="co">! Fsed_amm_variable = &#39;SDF_Fsed_amm&#39;</span></span>
+<span id="cb6-48"><a href="inorganic-nitrogen.html#cb6-48" tabindex="-1"></a> <span class="co">! Fsed_nit_variable = &#39;SDF_Fsed_nit&#39;</span></span>
+<span id="cb6-49"><a href="inorganic-nitrogen.html#cb6-49" tabindex="-1"></a><span class="kw">/</span></span></code></pre></div>
 <p><br></p>
 </div>
 <div id="case-studies-examples-2" class="section level2 hasAnchor" number="6.6">
@@ -2832,7 +2941,7 @@ f_{deammonification}=R_{{NH}_4{NO}_2}\times{NO}_2^-\times{NH}_4^+\times\frac{K_{
 <p><br></p>
 <center>
 <div id="htmlwidget-73456a555ca13b845caf" style="width:500px;height:385px;" class="leaflet html-widget"></div>
-<script type="application/json" data-for="htmlwidget-73456a555ca13b845caf">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"setView":[[-37.8525,144.9083],12,[]],"calls":[{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"https://openstreetmap.org\">OpenStreetMap<\/a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA<\/a>"}]},{"method":"addMarkers","args":[-37.8525,144.9083,null,null,null,{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},"Yarra River",null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]}],"limits":{"lat":[-37.8525,-37.8525],"lng":[144.9083,144.9083]}},"evals":[],"jsHooks":[]}</script>
+<script type="application/json" data-for="htmlwidget-73456a555ca13b845caf">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"setView":[[-37.8525,144.9083],12,[]],"calls":[{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"https://openstreetmap.org/copyright/\">OpenStreetMap<\/a>,  <a href=\"https://opendatacommons.org/licenses/odbl/\">ODbL<\/a>"}]},{"method":"addMarkers","args":[-37.8525,144.9083,null,null,null,{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},"Yarra River",null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]}],"limits":{"lat":[-37.8525,-37.8525],"lng":[144.9083,144.9083]}},"evals":[],"jsHooks":[]}</script>
 </center>
 <p><br></p>
 <p>The results of the simulation are shown in Figure X, highlighting the change in surface and bottom NH4, NO3 and organic nitrogen pools along the estuary length.</p>
@@ -2849,14 +2958,26 @@ Figure 6.3: Time series data for surface (blue) and bottom (red) ammonium, nitra
 </div>
 <div id="publications-2" class="section level3 hasAnchor" number="6.6.2">
 <h3><span class="header-section-number">6.6.2</span> Publications<a href="inorganic-nitrogen.html#publications-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div id="oqeubajaik" style="overflow-x:auto;overflow-y:auto;width:100%;height:500px;">
-<style>html {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+<div id="nlwjjkyvqq" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:100%;height:500px;">
+<style>#nlwjjkyvqq table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-#oqeubajaik .gt_table {
+#nlwjjkyvqq thead, #nlwjjkyvqq tbody, #nlwjjkyvqq tfoot, #nlwjjkyvqq tr, #nlwjjkyvqq td, #nlwjjkyvqq th {
+  border-style: none;
+}
+
+#nlwjjkyvqq p {
+  margin: 0;
+  padding: 0;
+}
+
+#nlwjjkyvqq .gt_table {
   display: table;
   border-collapse: collapse;
+  line-height: normal;
   margin-left: auto;
   margin-right: auto;
   color: #333333;
@@ -2879,19 +3000,12 @@ Figure 6.3: Time series data for surface (blue) and bottom (red) ammonium, nitra
   border-left-color: #D3D3D3;
 }
 
-#oqeubajaik .gt_heading {
-  background-color: #FFFFFF;
-  text-align: center;
-  border-bottom-color: #FFFFFF;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
+#nlwjjkyvqq .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
 }
 
-#oqeubajaik .gt_title {
+#nlwjjkyvqq .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -2903,25 +3017,37 @@ Figure 6.3: Time series data for surface (blue) and bottom (red) ammonium, nitra
   border-bottom-width: 0;
 }
 
-#oqeubajaik .gt_subtitle {
+#nlwjjkyvqq .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
-  padding-top: 0;
-  padding-bottom: 6px;
+  padding-top: 3px;
+  padding-bottom: 5px;
   padding-left: 5px;
   padding-right: 5px;
   border-top-color: #FFFFFF;
   border-top-width: 0;
 }
 
-#oqeubajaik .gt_bottom_border {
+#nlwjjkyvqq .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#nlwjjkyvqq .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#oqeubajaik .gt_col_headings {
+#nlwjjkyvqq .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2936,7 +3062,7 @@ Figure 6.3: Time series data for surface (blue) and bottom (red) ammonium, nitra
   border-right-color: #D3D3D3;
 }
 
-#oqeubajaik .gt_col_heading {
+#nlwjjkyvqq .gt_col_heading {
   color: #FFFFFF;
   background-color: #14759E;
   font-size: 14px;
@@ -2956,7 +3082,7 @@ Figure 6.3: Time series data for surface (blue) and bottom (red) ammonium, nitra
   overflow-x: hidden;
 }
 
-#oqeubajaik .gt_column_spanner_outer {
+#nlwjjkyvqq .gt_column_spanner_outer {
   color: #FFFFFF;
   background-color: #14759E;
   font-size: 14px;
@@ -2968,15 +3094,15 @@ Figure 6.3: Time series data for surface (blue) and bottom (red) ammonium, nitra
   padding-right: 4px;
 }
 
-#oqeubajaik .gt_column_spanner_outer:first-child {
+#nlwjjkyvqq .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#oqeubajaik .gt_column_spanner_outer:last-child {
+#nlwjjkyvqq .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#oqeubajaik .gt_column_spanner {
+#nlwjjkyvqq .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -2988,7 +3114,11 @@ Figure 6.3: Time series data for surface (blue) and bottom (red) ammonium, nitra
   width: 100%;
 }
 
-#oqeubajaik .gt_group_heading {
+#nlwjjkyvqq .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#nlwjjkyvqq .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3011,9 +3141,10 @@ Figure 6.3: Time series data for surface (blue) and bottom (red) ammonium, nitra
   border-right-width: 1px;
   border-right-color: #D3D3D3;
   vertical-align: middle;
+  text-align: left;
 }
 
-#oqeubajaik .gt_empty_group_heading {
+#nlwjjkyvqq .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #D3D3D3;
@@ -3028,15 +3159,15 @@ Figure 6.3: Time series data for surface (blue) and bottom (red) ammonium, nitra
   vertical-align: middle;
 }
 
-#oqeubajaik .gt_from_md > :first-child {
+#nlwjjkyvqq .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#oqeubajaik .gt_from_md > :last-child {
+#nlwjjkyvqq .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#oqeubajaik .gt_row {
+#nlwjjkyvqq .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3055,7 +3186,7 @@ Figure 6.3: Time series data for surface (blue) and bottom (red) ammonium, nitra
   overflow-x: hidden;
 }
 
-#oqeubajaik .gt_stub {
+#nlwjjkyvqq .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3068,7 +3199,7 @@ Figure 6.3: Time series data for surface (blue) and bottom (red) ammonium, nitra
   padding-right: 5px;
 }
 
-#oqeubajaik .gt_stub_row_group {
+#nlwjjkyvqq .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3082,11 +3213,15 @@ Figure 6.3: Time series data for surface (blue) and bottom (red) ammonium, nitra
   vertical-align: top;
 }
 
-#oqeubajaik .gt_row_group_first td {
+#nlwjjkyvqq .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#oqeubajaik .gt_summary_row {
+#nlwjjkyvqq .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#nlwjjkyvqq .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -3096,16 +3231,16 @@ Figure 6.3: Time series data for surface (blue) and bottom (red) ammonium, nitra
   padding-right: 5px;
 }
 
-#oqeubajaik .gt_first_summary_row {
+#nlwjjkyvqq .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#oqeubajaik .gt_first_summary_row.thick {
+#nlwjjkyvqq .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#oqeubajaik .gt_last_summary_row {
+#nlwjjkyvqq .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3115,7 +3250,7 @@ Figure 6.3: Time series data for surface (blue) and bottom (red) ammonium, nitra
   border-bottom-color: #D3D3D3;
 }
 
-#oqeubajaik .gt_grand_summary_row {
+#nlwjjkyvqq .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -3125,7 +3260,7 @@ Figure 6.3: Time series data for surface (blue) and bottom (red) ammonium, nitra
   padding-right: 5px;
 }
 
-#oqeubajaik .gt_first_grand_summary_row {
+#nlwjjkyvqq .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3135,11 +3270,21 @@ Figure 6.3: Time series data for surface (blue) and bottom (red) ammonium, nitra
   border-top-color: #D3D3D3;
 }
 
-#oqeubajaik .gt_striped {
+#nlwjjkyvqq .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#nlwjjkyvqq .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#oqeubajaik .gt_table_body {
+#nlwjjkyvqq .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -3148,7 +3293,7 @@ Figure 6.3: Time series data for surface (blue) and bottom (red) ammonium, nitra
   border-bottom-color: #D3D3D3;
 }
 
-#oqeubajaik .gt_footnotes {
+#nlwjjkyvqq .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -3162,30 +3307,8 @@ Figure 6.3: Time series data for surface (blue) and bottom (red) ammonium, nitra
   border-right-color: #D3D3D3;
 }
 
-#oqeubajaik .gt_footnote {
+#nlwjjkyvqq .gt_footnote {
   margin: 0px;
-  font-size: 90%;
-  padding-left: 4px;
-  padding-right: 4px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#oqeubajaik .gt_sourcenotes {
-  color: #333333;
-  background-color: #FFFFFF;
-  border-bottom-style: none;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 2px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-}
-
-#oqeubajaik .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -3193,87 +3316,107 @@ Figure 6.3: Time series data for surface (blue) and bottom (red) ammonium, nitra
   padding-right: 5px;
 }
 
-#oqeubajaik .gt_left {
+#nlwjjkyvqq .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#nlwjjkyvqq .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#nlwjjkyvqq .gt_left {
   text-align: left;
 }
 
-#oqeubajaik .gt_center {
+#nlwjjkyvqq .gt_center {
   text-align: center;
 }
 
-#oqeubajaik .gt_right {
+#nlwjjkyvqq .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#oqeubajaik .gt_font_normal {
+#nlwjjkyvqq .gt_font_normal {
   font-weight: normal;
 }
 
-#oqeubajaik .gt_font_bold {
+#nlwjjkyvqq .gt_font_bold {
   font-weight: bold;
 }
 
-#oqeubajaik .gt_font_italic {
+#nlwjjkyvqq .gt_font_italic {
   font-style: italic;
 }
 
-#oqeubajaik .gt_super {
+#nlwjjkyvqq .gt_super {
   font-size: 65%;
 }
 
-#oqeubajaik .gt_footnote_marks {
-  font-style: italic;
-  font-weight: normal;
+#nlwjjkyvqq .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
+  position: initial;
 }
 
-#oqeubajaik .gt_asterisk {
+#nlwjjkyvqq .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#oqeubajaik .gt_indent_1 {
+#nlwjjkyvqq .gt_indent_1 {
   text-indent: 5px;
 }
 
-#oqeubajaik .gt_indent_2 {
+#nlwjjkyvqq .gt_indent_2 {
   text-indent: 10px;
 }
 
-#oqeubajaik .gt_indent_3 {
+#nlwjjkyvqq .gt_indent_3 {
   text-indent: 15px;
 }
 
-#oqeubajaik .gt_indent_4 {
+#nlwjjkyvqq .gt_indent_4 {
   text-indent: 20px;
 }
 
-#oqeubajaik .gt_indent_5 {
+#nlwjjkyvqq .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
-<table class="gt_table">
-  
-  <thead class="gt_col_headings">
-    <tr>
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col">Author/Year</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col">Paper Title</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col">Description</th>
+<table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+  <thead>
+    <tr class="gt_col_headings">
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="Author/Year">Author/Year</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="Paper Title">Paper Title</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="Description">Description</th>
     </tr>
   </thead>
   <tbody class="gt_table_body">
-    <tr><td class="gt_row gt_left"><div class='gt_from_md'><p>Bruce et al. <a href="#ref-bruce2015" role="doc-biblioref">(2015)</a></p>
+    <tr><td headers="Author/Year" class="gt_row gt_left"><div class='gt_from_md'><p>Bruce et al. <a href="#ref-bruce2015" role="doc-biblioref">(2015)</a></p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>A model of oxygen and nitrogen biogeochemical response to hydrodynamic regimes in the Yarra River estuary</p>
+<td headers="Paper Title" class="gt_row gt_left"><div class='gt_from_md'><p>A model of oxygen and nitrogen biogeochemical response to hydrodynamic regimes in the Yarra River estuary</p>
 </div></td>
-<td class="gt_row gt_center">NA</td></tr>
-    <tr><td class="gt_row gt_left"><div class='gt_from_md'><p>Huang et al. <a href="#ref-huang2019" role="doc-biblioref">(2019)</a></p>
+<td headers="Description" class="gt_row gt_center">NA</td></tr>
+    <tr><td headers="Author/Year" class="gt_row gt_left"><div class='gt_from_md'><p>Huang et al. <a href="#ref-huang2019" role="doc-biblioref">(2019)</a></p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>An integrated modelling system for water quality forecasting in an urban eutrophic estuary: The Swan-Canning Estuary virtual observatory</p>
+<td headers="Paper Title" class="gt_row gt_left"><div class='gt_from_md'><p>An integrated modelling system for water quality forecasting in an urban eutrophic estuary: The Swan-Canning Estuary virtual observatory</p>
 </div></td>
-<td class="gt_row gt_center">NA</td></tr>
+<td headers="Description" class="gt_row gt_center">NA</td></tr>
   </tbody>
   
   
@@ -3356,7 +3499,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');

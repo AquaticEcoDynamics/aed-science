@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>14 Sediment Biogeochemistry | The AED Manual</title>
   <meta name="description" content="Work in progress." />
-  <meta name="generator" content="bookdown 0.26 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.39 and GitBook 2.6.7" />
 
   <meta property="og:title" content="14 Sediment Biogeochemistry | The AED Manual" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="" />
 
 
-<meta name="date" content="2023-06-29" />
+<meta name="date" content="2024-06-11" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -51,26 +51,27 @@
 <link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
-<script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script>
+<script src="libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
 <link href="libs/leaflet-1.3.1/leaflet.css" rel="stylesheet" />
 <script src="libs/leaflet-1.3.1/leaflet.js"></script>
 <link href="libs/leafletfix-1.0.0/leafletfix.css" rel="stylesheet" />
 <script src="libs/proj4-2.6.2/proj4.min.js"></script>
 <script src="libs/Proj4Leaflet-1.0.1/proj4leaflet.js"></script>
 <link href="libs/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet" />
-<script src="libs/leaflet-binding-2.1.1/leaflet.js"></script>
-<script src="libs/leaflet-providers-1.9.0/leaflet-providers_1.9.0.js"></script>
-<script src="libs/leaflet-providers-plugin-2.1.1/leaflet-providers-plugin.js"></script>
-<link href="libs/panelset-0.2.6/panelset.css" rel="stylesheet" />
-<script src="libs/panelset-0.2.6/panelset.js"></script>
+<script src="libs/leaflet-binding-2.2.2/leaflet.js"></script>
+<script src="libs/leaflet-providers-2.0.0/leaflet-providers_2.0.0.js"></script>
+<script src="libs/leaflet-providers-plugin-2.2.2/leaflet-providers-plugin.js"></script>
+<link href="libs/panelset-0.3.0/panelset.css" rel="stylesheet" />
+<script src="libs/panelset-0.3.0/panelset.js"></script>
 <script src="libs/kePrint-0.0.1/kePrint.js"></script>
 <link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
-<script src="libs/plotly-binding-4.10.0/plotly.js"></script>
+<link href="libs/htmltools-fill-0.5.8.1/fill.css" rel="stylesheet" />
+<script src="libs/plotly-binding-4.10.4/plotly.js"></script>
 <script src="libs/typedarray-0.1/typedarray.min.js"></script>
-<link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet" />
-<script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
-<link href="libs/plotly-htmlwidgets-css-2.5.1/plotly-htmlwidgets.css" rel="stylesheet" />
-<script src="libs/plotly-main-2.5.1/plotly-latest.min.js"></script>
+<link href="libs/crosstalk-1.2.1/css/crosstalk.min.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.2.1/js/crosstalk.min.js"></script>
+<link href="libs/plotly-htmlwidgets-css-2.11.1/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="libs/plotly-main-2.11.1/plotly-latest.min.js"></script>
 <script src="https://hypothes.is/embed.js" async></script>
   
 
@@ -111,11 +112,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }
 code span.al { color: #ef2929; } /* Alert */
 code span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #c4a000; } /* Attribute */
+code span.at { color: #204a87; } /* Attribute */
 code span.bn { color: #0000cf; } /* BaseN */
 code span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
 code span.ch { color: #4e9a06; } /* Char */
-code span.cn { color: #000000; } /* Constant */
+code span.cn { color: #8f5902; } /* Constant */
 code span.co { color: #8f5902; font-style: italic; } /* Comment */
 code span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
 code span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
@@ -124,14 +125,14 @@ code span.dv { color: #0000cf; } /* DecVal */
 code span.er { color: #a40000; font-weight: bold; } /* Error */
 code span.ex { } /* Extension */
 code span.fl { color: #0000cf; } /* Float */
-code span.fu { color: #000000; } /* Function */
+code span.fu { color: #204a87; font-weight: bold; } /* Function */
 code span.im { } /* Import */
 code span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
 code span.kw { color: #204a87; font-weight: bold; } /* Keyword */
 code span.op { color: #ce5c00; font-weight: bold; } /* Operator */
 code span.ot { color: #8f5902; } /* Other */
 code span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
-code span.sc { color: #000000; } /* SpecialChar */
+code span.sc { color: #ce5c00; font-weight: bold; } /* SpecialChar */
 code span.ss { color: #4e9a06; } /* SpecialString */
 code span.st { color: #4e9a06; } /* String */
 code span.va { color: #000000; } /* Variable */
@@ -139,6 +140,10 @@ code span.vs { color: #4e9a06; } /* VerbatimString */
 code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
 <style type="text/css">
 /* Used with Pandoc 2.11+ new --citeproc when CSL is used */
 div.csl-bib-body { }
@@ -430,10 +435,12 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="14.6" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#case-studies-examples-6"><i class="fa fa-check"></i><b>14.6</b> Case Studies &amp; Examples</a>
 <ul>
-<li class="chapter" data-level="14.6.1" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#case-study-model-benchmark-example"><i class="fa fa-check"></i><b>14.6.1</b> Case study: Model benchmark example</a></li>
-<li class="chapter" data-level="14.6.2" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#case-study-aquaculture-and-sediment-recovery"><i class="fa fa-check"></i><b>14.6.2</b> Case study: Aquaculture and sediment recovery</a></li>
-<li class="chapter" data-level="14.6.3" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#case-study-the-coorong-dynamics-model"><i class="fa fa-check"></i><b>14.6.3</b> Case study: The Coorong Dynamics Model</a></li>
-<li class="chapter" data-level="14.6.4" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#case-study-mass-balance-and-numerical-error-checking"><i class="fa fa-check"></i><b>14.6.4</b> Case study: Mass balance and numerical error checking</a></li>
+<li class="chapter" data-level="14.6.1" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#section"><i class="fa fa-check"></i><b>14.6.1</b> </a></li>
+<li class="chapter" data-level="" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#numerical-mass-balance-and-flux-confirmation"><i class="fa fa-check"></i>Numerical mass balance and flux confirmation</a></li>
+<li class="chapter" data-level="14.6.2" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#case-study-model-benchmark-example"><i class="fa fa-check"></i><b>14.6.2</b> Case study: Model benchmark example</a></li>
+<li class="chapter" data-level="14.6.3" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#case-study-aquaculture-and-sediment-recovery"><i class="fa fa-check"></i><b>14.6.3</b> Case study: Aquaculture and sediment recovery</a></li>
+<li class="chapter" data-level="14.6.4" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#case-study-the-coorong-dynamics-model"><i class="fa fa-check"></i><b>14.6.4</b> Case study: The Coorong Dynamics Model</a></li>
+<li class="chapter" data-level="14.6.5" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#case-study-mass-balance-and-numerical-error-checking"><i class="fa fa-check"></i><b>14.6.5</b> Case study: Mass balance and numerical error checking</a></li>
 </ul></li>
 <li class="chapter" data-level="14.7" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#references"><i class="fa fa-check"></i><b>14.7</b> References</a></li>
 </ul></li>
@@ -592,7 +599,7 @@ Figure 14.3: Overview of the chemical processes in CANDI-AED: organic matter tra
 <p>The sediment model is discretised into a user-definable number of depth layers (<code>maxnpts</code>) down to a pre-defined sediment depth(<code>xl</code>). The grid of layers is set to have either even spacing (<code>job</code> = 1) or to be exponentially increasing (<code>job</code> = 0), where the layers sizes have a thickness of a few mm at the sediment-water interface and which increase exponentially down into the sediment (figure <a href="sediment-biogeochemistry.html#fig:Init-1">14.4</a>). When the spacing increases exponentially, the first two layers are hard-coded to be a miniumum of 0.25 cm, in order to avoid numerical instability from sharp concentration differences over distances that are too small.</p>
 <p>This fixed depth of sediment has a concentration of all variables at all depth layers, and boundary conditions at the upper and lower ends of the domain.</p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:Init-1"></span>
-<img src="images/23-sediment_biogeochemistry/Initialisation/job1job2-06.png" alt="Initialisation of the depth layers. The number of layers is set by `maxnpts` and the depth of the simulation by `xl`. The setup can have even spacing (left) using parameter `job` = 1 or increasing spacing (right) `job` = 2." width="60%" />
+<img src="images/23-sediment_biogeochemistry/Initialisation/job1job2-01.png" alt="Initialisation of the depth layers. The number of layers is set by `maxnpts` and the depth of the simulation by `xl`. The setup can have even spacing (left) using parameter `job` = 1 or increasing spacing (right) `job` = 2." width="60%" />
 <p class="caption">
 Figure 14.4: Initialisation of the depth layers. The number of layers is set by <code>maxnpts</code> and the depth of the simulation by <code>xl</code>. The setup can have even spacing (left) using parameter <code>job</code> = 1 or increasing spacing (right) <code>job</code> = 2.
 </p>
@@ -628,10 +635,10 @@ Figure 14.6: Porewater is advected at the same rate as burial. If <code>poreflux
 </caption>
 <thead>
 <tr>
-<th style="text-align:center;font-weight: bold;color: white !important;background-color: #14759e !important;">
+<th style="text-align:center;font-weight: bold;color: white !important;background-color: rgba(20, 117, 158, 255) !important;">
 Variable
 </th>
-<th style="text-align:center;font-weight: bold;color: white !important;background-color: #14759e !important;">
+<th style="text-align:center;font-weight: bold;color: white !important;background-color: rgba(20, 117, 158, 255) !important;">
 Diffusivity (cm y<sup>-1</sup>)
 </th>
 </tr>
@@ -842,20 +849,20 @@ Figure 14.8: Three options for different levels of complexity in organic matter 
 </caption>
 <thead>
 <tr>
-<th style="text-align:center;font-weight: bold;color: white !important;background-color: #14759e !important;">
+<th style="text-align:center;font-weight: bold;color: white !important;background-color: rgba(20, 117, 158, 255) !important;">
 Description
 </th>
-<th style="text-align:center;font-weight: bold;color: white !important;background-color: #14759e !important;">
+<th style="text-align:center;font-weight: bold;color: white !important;background-color: rgba(20, 117, 158, 255) !important;">
 Reaction
 </th>
-<th style="text-align:center;font-weight: bold;color: white !important;background-color: #14759e !important;">
+<th style="text-align:center;font-weight: bold;color: white !important;background-color: rgba(20, 117, 158, 255) !important;">
 Rate equation
 </th>
 </tr>
 </thead>
 <tbody>
 <tr grouplength="3">
-<td colspan="3" style="border-bottom: 1px solid;color: black !important;background-color: #ebebeb !important;">
+<td colspan="3" style="border-bottom: 1px solid;color: black !important;background-color: rgba(235, 235, 235, 255) !important;">
 <strong>OMModel 1</strong>
 </td>
 </tr>
@@ -893,7 +900,7 @@ POM<sub>Ref</sub> <span class="math inline">\(\rightarrow\)</span> CO<sub>2</sub
 </td>
 </tr>
 <tr grouplength="4">
-<td colspan="3" style="border-bottom: 1px solid;color: black !important;background-color: #ebebeb !important;">
+<td colspan="3" style="border-bottom: 1px solid;color: black !important;background-color: rgba(235, 235, 235, 255) !important;">
 <strong>OMModel2</strong>
 </td>
 </tr>
@@ -942,7 +949,7 @@ DOMRef <span class="math inline">\(\rightarrow\)</span> CO<sub>2</sub> etc.
 </td>
 </tr>
 <tr grouplength="4">
-<td colspan="3" style="border-bottom: 1px solid;color: black !important;background-color: #ebebeb !important;">
+<td colspan="3" style="border-bottom: 1px solid;color: black !important;background-color: rgba(235, 235, 235, 255) !important;">
 <strong>OMModel 3</strong>
 </td>
 </tr>
@@ -991,7 +998,7 @@ OAc, H2 <span class="math inline">\(\rightarrow\)</span> CO<sub>2</sub> etc.
 </td>
 </tr>
 <tr grouplength="1">
-<td colspan="3" style="border-bottom: 1px solid;color: black !important;background-color: #ebebeb !important;">
+<td colspan="3" style="border-bottom: 1px solid;color: black !important;background-color: rgba(235, 235, 235, 255) !important;">
 <strong>OMModel 4</strong>
 </td>
 </tr>
@@ -1041,13 +1048,13 @@ POM <span class="math inline">\(\rightarrow\)</span> CO<sub>2</sub> etc.
 </caption>
 <thead>
 <tr>
-<th style="text-align:center;font-weight: bold;color: white !important;background-color: #14759e !important;">
+<th style="text-align:center;font-weight: bold;color: white !important;background-color: rgba(20, 117, 158, 255) !important;">
 Description
 </th>
-<th style="text-align:center;font-weight: bold;color: white !important;background-color: #14759e !important;">
+<th style="text-align:center;font-weight: bold;color: white !important;background-color: rgba(20, 117, 158, 255) !important;">
 .
 </th>
-<th style="text-align:center;font-weight: bold;color: white !important;background-color: #14759e !important;">
+<th style="text-align:center;font-weight: bold;color: white !important;background-color: rgba(20, 117, 158, 255) !important;">
 Reaction
 </th>
 </tr>
@@ -1264,13 +1271,13 @@ F_{OM_{i}} = \frac{OM_{i}} {(OM_{i} + K_{OM})}
 </caption>
 <thead>
 <tr>
-<th style="text-align:center;font-weight: bold;color: white !important;background-color: #14759e !important;">
+<th style="text-align:center;font-weight: bold;color: white !important;background-color: rgba(20, 117, 158, 255) !important;">
 Approach
 </th>
-<th style="text-align:center;font-weight: bold;color: white !important;background-color: #14759e !important;">
+<th style="text-align:center;font-weight: bold;color: white !important;background-color: rgba(20, 117, 158, 255) !important;">
 Limitation factor - FTEA
 </th>
-<th style="text-align:center;font-weight: bold;color: white !important;background-color: #14759e !important;">
+<th style="text-align:center;font-weight: bold;color: white !important;background-color: rgba(20, 117, 158, 255) !important;">
 Inhibition factor - FIn
 </th>
 </tr>
@@ -1402,10 +1409,10 @@ Figure 14.11: Schematic of the nitrogen-organic matter redox processes used in t
 </caption>
 <thead>
 <tr>
-<th style="text-align:center;font-weight: bold;color: white !important;background-color: #14759e !important;">
+<th style="text-align:center;font-weight: bold;color: white !important;background-color: rgba(20, 117, 158, 255) !important;">
 Process
 </th>
-<th style="text-align:center;font-weight: bold;color: white !important;background-color: #14759e !important;">
+<th style="text-align:center;font-weight: bold;color: white !important;background-color: rgba(20, 117, 158, 255) !important;">
 Rate equation
 </th>
 </tr>
@@ -1515,19 +1522,19 @@ Figure 14.12: An illustration of one example of how the reaction rates are calcu
 </caption>
 <thead>
 <tr>
-<th style="text-align:center;font-weight: bold;color: white !important;background-color: #14759e !important;">
+<th style="text-align:center;font-weight: bold;color: white !important;background-color: rgba(20, 117, 158, 255) !important;">
 Description
 </th>
-<th style="text-align:center;font-weight: bold;color: white !important;background-color: #14759e !important;">
+<th style="text-align:center;font-weight: bold;color: white !important;background-color: rgba(20, 117, 158, 255) !important;">
 ….2
 </th>
-<th style="text-align:center;font-weight: bold;color: white !important;background-color: #14759e !important;">
+<th style="text-align:center;font-weight: bold;color: white !important;background-color: rgba(20, 117, 158, 255) !important;">
 Reaction
 </th>
-<th style="text-align:center;font-weight: bold;color: white !important;background-color: #14759e !important;">
+<th style="text-align:center;font-weight: bold;color: white !important;background-color: rgba(20, 117, 158, 255) !important;">
 ….4
 </th>
-<th style="text-align:center;font-weight: bold;color: white !important;background-color: #14759e !important;">
+<th style="text-align:center;font-weight: bold;color: white !important;background-color: rgba(20, 117, 158, 255) !important;">
 Rate equation
 </th>
 </tr>
@@ -1951,23 +1958,23 @@ Figure 14.13: An illustration of one example of how the reaction rates are calcu
 </caption>
 <thead>
 <tr>
-<th style="text-align:center;font-weight: bold;color: white !important;background-color: #14759e !important;">
+<th style="text-align:center;font-weight: bold;color: white !important;background-color: rgba(20, 117, 158, 255) !important;">
 Description
 </th>
-<th style="text-align:center;font-weight: bold;color: white !important;background-color: #14759e !important;">
+<th style="text-align:center;font-weight: bold;color: white !important;background-color: rgba(20, 117, 158, 255) !important;">
 Reaction
 </th>
-<th style="text-align:center;font-weight: bold;color: white !important;background-color: #14759e !important;">
+<th style="text-align:center;font-weight: bold;color: white !important;background-color: rgba(20, 117, 158, 255) !important;">
 .
 </th>
-<th style="text-align:center;font-weight: bold;color: white !important;background-color: #14759e !important;">
+<th style="text-align:center;font-weight: bold;color: white !important;background-color: rgba(20, 117, 158, 255) !important;">
 Rate equation
 </th>
 </tr>
 </thead>
 <tbody>
 <tr grouplength="12">
-<td colspan="4" style="border-bottom: 1px solid;color: black !important;background-color: #ebebeb !important;">
+<td colspan="4" style="border-bottom: 1px solid;color: black !important;background-color: rgba(235, 235, 235, 255) !important;">
 <strong>Manganese</strong>
 </td>
 </tr>
@@ -2121,7 +2128,7 @@ If <code>rxn_mode</code> = 4<br />
 </td>
 </tr>
 <tr grouplength="12">
-<td colspan="4" style="border-bottom: 1px solid;color: black !important;background-color: #ebebeb !important;">
+<td colspan="4" style="border-bottom: 1px solid;color: black !important;background-color: rgba(235, 235, 235, 255) !important;">
 <strong>Iron</strong>
 </td>
 </tr>
@@ -2477,16 +2484,16 @@ R_{Fe(OH)_{3A}ppt} = k_{Fe(OH)_{3A}ppt}  Fe^{2+}
 </caption>
 <thead>
 <tr>
-<th style="text-align:center;font-weight: bold;color: white !important;background-color: #14759e !important;">
+<th style="text-align:center;font-weight: bold;color: white !important;background-color: rgba(20, 117, 158, 255) !important;">
 Description
 </th>
-<th style="text-align:center;font-weight: bold;color: white !important;background-color: #14759e !important;">
+<th style="text-align:center;font-weight: bold;color: white !important;background-color: rgba(20, 117, 158, 255) !important;">
 Reaction
 </th>
-<th style="text-align:center;font-weight: bold;color: white !important;background-color: #14759e !important;">
+<th style="text-align:center;font-weight: bold;color: white !important;background-color: rgba(20, 117, 158, 255) !important;">
 .
 </th>
-<th style="text-align:center;font-weight: bold;color: white !important;background-color: #14759e !important;">
+<th style="text-align:center;font-weight: bold;color: white !important;background-color: rgba(20, 117, 158, 255) !important;">
 Rate equation
 </th>
 </tr>
@@ -2862,23 +2869,23 @@ If \  \  \Omega_{Cal} \le 1 \
 </caption>
 <thead>
 <tr>
-<th style="text-align:center;font-weight: bold;color: white !important;background-color: #14759e !important;">
+<th style="text-align:center;font-weight: bold;color: white !important;background-color: rgba(20, 117, 158, 255) !important;">
 Description
 </th>
-<th style="text-align:center;font-weight: bold;color: white !important;background-color: #14759e !important;">
+<th style="text-align:center;font-weight: bold;color: white !important;background-color: rgba(20, 117, 158, 255) !important;">
 Reaction
 </th>
-<th style="text-align:center;font-weight: bold;color: white !important;background-color: #14759e !important;">
+<th style="text-align:center;font-weight: bold;color: white !important;background-color: rgba(20, 117, 158, 255) !important;">
  
 </th>
-<th style="text-align:center;font-weight: bold;color: white !important;background-color: #14759e !important;">
+<th style="text-align:center;font-weight: bold;color: white !important;background-color: rgba(20, 117, 158, 255) !important;">
 Rate equation
 </th>
 </tr>
 </thead>
 <tbody>
 <tr grouplength="7">
-<td colspan="4" style="border-bottom: 1px solid;color: black !important;background-color: #ebebeb !important;">
+<td colspan="4" style="border-bottom: 1px solid;color: black !important;background-color: rgba(235, 235, 235, 255) !important;">
 <strong>MnCO<sub>3</sub></strong>
 </td>
 </tr>
@@ -2976,7 +2983,7 @@ If <code>rxn_mode</code> = 4<br />
 </td>
 </tr>
 <tr grouplength="8">
-<td colspan="4" style="border-bottom: 1px solid;color: black !important;background-color: #ebebeb !important;">
+<td colspan="4" style="border-bottom: 1px solid;color: black !important;background-color: rgba(235, 235, 235, 255) !important;">
 <strong>FeCO<sub>3</sub></strong>
 </td>
 </tr>
@@ -3086,7 +3093,7 @@ R_{Sidppt} = k_{Sidppt} \delta_{Sid} (\Omega_{Sid} - 1) \\ R_{Siddiss} = k_{Sidd
 </td>
 </tr>
 <tr grouplength="7">
-<td colspan="4" style="border-bottom: 1px solid;color: black !important;background-color: #ebebeb !important;">
+<td colspan="4" style="border-bottom: 1px solid;color: black !important;background-color: rgba(235, 235, 235, 255) !important;">
 <strong>CaCO<sub>3</sub></strong>
 </td>
 </tr>
@@ -3209,31 +3216,31 @@ If <code>rxn_mode</code> = 4<br />
 </caption>
 <thead>
 <tr>
-<th style="text-align:center;font-weight: bold;color: white !important;background-color: #14759e !important;">
+<th style="text-align:center;font-weight: bold;color: white !important;background-color: rgba(20, 117, 158, 255) !important;">
 rxn_mode
 </th>
-<th style="text-align:center;font-weight: bold;color: white !important;background-color: #14759e !important;">
+<th style="text-align:center;font-weight: bold;color: white !important;background-color: rgba(20, 117, 158, 255) !important;">
 MnO<sub>2A</sub>
 </th>
-<th style="text-align:center;font-weight: bold;color: white !important;background-color: #14759e !important;">
+<th style="text-align:center;font-weight: bold;color: white !important;background-color: rgba(20, 117, 158, 255) !important;">
 Fe(OH)<sub>3A</sub>
 </th>
-<th style="text-align:center;font-weight: bold;color: white !important;background-color: #14759e !important;">
+<th style="text-align:center;font-weight: bold;color: white !important;background-color: rgba(20, 117, 158, 255) !important;">
 FeS
 </th>
-<th style="text-align:center;font-weight: bold;color: white !important;background-color: #14759e !important;">
+<th style="text-align:center;font-weight: bold;color: white !important;background-color: rgba(20, 117, 158, 255) !important;">
 MnCO<sub>3</sub>
 </th>
-<th style="text-align:center;font-weight: bold;color: white !important;background-color: #14759e !important;">
+<th style="text-align:center;font-weight: bold;color: white !important;background-color: rgba(20, 117, 158, 255) !important;">
 FeCO<sub>3</sub>
 </th>
-<th style="text-align:center;font-weight: bold;color: white !important;background-color: #14759e !important;">
+<th style="text-align:center;font-weight: bold;color: white !important;background-color: rgba(20, 117, 158, 255) !important;">
 CaCO<sub>3</sub>
 </th>
-<th style="text-align:center;font-weight: bold;color: white !important;background-color: #14759e !important;">
+<th style="text-align:center;font-weight: bold;color: white !important;background-color: rgba(20, 117, 158, 255) !important;">
 pH
 </th>
-<th style="text-align:center;font-weight: bold;color: white !important;background-color: #14759e !important;">
+<th style="text-align:center;font-weight: bold;color: white !important;background-color: rgba(20, 117, 158, 255) !important;">
 Update equilibration
 </th>
 </tr>
@@ -3643,9 +3650,9 @@ Figure 14.16: Example of a depth profile that sets the rate of irrigation, and t
 \end{equation}\]</span>
 <p>The effect of the scaling is shown in figure <a href="sediment-biogeochemistry.html#fig:PhysChem1">14.17</a>.</p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:PhysChem1"></span>
-<img src="images/23-sediment_biogeochemistry/PhysChemInteractions/FSal-02.png" alt="Diaagram of the salinity factor $F_{Sal}$, scaling between 1 and 0 between the parameters. In this diagram `Sal~1~` is 40 and `Sal~2~` is 70." width="50%" />
+<img src="images/23-sediment_biogeochemistry/PhysChemInteractions/FSal-02.png" alt="Diagram of the salinity factor $F_{Sal}$, scaling between 1 and 0 between the parameters. In this diagram `Sal~1~` is 40 and `Sal~2~` is 70." width="50%" />
 <p class="caption">
-Figure 14.17: Diaagram of the salinity factor <span class="math inline">\(F_{Sal}\)</span>, scaling between 1 and 0 between the parameters. In this diagram <code>Sal~1~</code> is 40 and <code>Sal~2~</code> is 70.
+Figure 14.17: Diagram of the salinity factor <span class="math inline">\(F_{Sal}\)</span>, scaling between 1 and 0 between the parameters. In this diagram <code>Sal~1~</code> is 40 and <code>Sal~2~</code> is 70.
 </p>
 </div>
 <p><span class="math inline">\(F_{Sal}\)</span> is applied to biota-driven mixing (see below) and to the nitrogen redox and adsorption reactions. It is multiplied by the following reactions:</p>
@@ -3734,20 +3741,20 @@ Figure 14.19: Schematic of the parameterisation of <span class="math inline">\(O
 </caption>
 <thead>
 <tr>
-<th style="text-align:center;font-weight: bold;color: white !important;background-color: #14759e !important;">
+<th style="text-align:center;font-weight: bold;color: white !important;background-color: rgba(20, 117, 158, 255) !important;">
 CANDI variable
 </th>
-<th style="text-align:center;font-weight: bold;color: white !important;background-color: #14759e !important;">
+<th style="text-align:center;font-weight: bold;color: white !important;background-color: rgba(20, 117, 158, 255) !important;">
 Linking variable or parameter
 </th>
-<th style="text-align:center;font-weight: bold;color: white !important;background-color: #14759e !important;">
+<th style="text-align:center;font-weight: bold;color: white !important;background-color: rgba(20, 117, 158, 255) !important;">
 Description
 </th>
 </tr>
 </thead>
 <tbody>
 <tr grouplength="3">
-<td colspan="3" style="border-bottom: 1px solid;color: black !important;background-color: #ebebeb !important;">
+<td colspan="3" style="border-bottom: 1px solid;color: black !important;background-color: rgba(235, 235, 235, 255) !important;">
 <strong>Linked: <em>id_mag</em> &gt; 0</strong>
 </td>
 </tr>
@@ -3785,7 +3792,7 @@ Root O<sub>2</sub> excretion rate parameter, used in equation
 </td>
 </tr>
 <tr grouplength="5">
-<td colspan="3" style="border-bottom: 1px solid;color: black !important;background-color: #ebebeb !important;">
+<td colspan="3" style="border-bottom: 1px solid;color: black !important;background-color: rgba(235, 235, 235, 255) !important;">
 <strong>Not linked: <em>id_mag</em> = 0</strong>
 </td>
 </tr>
@@ -4108,17 +4115,17 @@ Figure 14.28: Candi program workflow. The program is firstly initialised, then l
 </caption>
 <thead>
 <tr>
-<th style="text-align:center;font-weight: bold;color: white !important;background-color: #14759e !important;">
+<th style="text-align:center;font-weight: bold;color: white !important;background-color: rgba(20, 117, 158, 255) !important;">
 Variables
 </th>
-<th style="text-align:center;font-weight: bold;color: white !important;background-color: #14759e !important;">
+<th style="text-align:center;font-weight: bold;color: white !important;background-color: rgba(20, 117, 158, 255) !important;">
 Description
 </th>
 </tr>
 </thead>
 <tbody>
 <tr grouplength="8">
-<td colspan="2" style="border-bottom: 1px solid;color: black !important;background-color: #ebebeb !important;">
+<td colspan="2" style="border-bottom: 1px solid;color: black !important;background-color: rgba(235, 235, 235, 255) !important;">
 <strong>Compulsory variables</strong>
 </td>
 </tr>
@@ -4187,7 +4194,7 @@ CH<sub>4</sub>
 </td>
 </tr>
 <tr grouplength="3">
-<td colspan="2" style="border-bottom: 1px solid;color: black !important;background-color: #ebebeb !important;">
+<td colspan="2" style="border-bottom: 1px solid;color: black !important;background-color: rgba(235, 235, 235, 255) !important;">
 <strong>Compulsory variables not requested</strong>
 </td>
 </tr>
@@ -4216,7 +4223,7 @@ Charge balance
 </td>
 </tr>
 <tr grouplength="33">
-<td colspan="2" style="border-bottom: 1px solid;color: black !important;background-color: #ebebeb !important;">
+<td colspan="2" style="border-bottom: 1px solid;color: black !important;background-color: rgba(235, 235, 235, 255) !important;">
 <strong>Non-compulsory variables</strong>
 </td>
 </tr>
@@ -4479,7 +4486,7 @@ Ca<sup>2+</sup>
 </td>
 </tr>
 <tr grouplength="10">
-<td colspan="2" style="border-bottom: 1px solid;color: black !important;background-color: #ebebeb !important;">
+<td colspan="2" style="border-bottom: 1px solid;color: black !important;background-color: rgba(235, 235, 235, 255) !important;">
 <strong>Environmental linked variable</strong>
 </td>
 </tr>
@@ -4580,23 +4587,23 @@ Macrophyte root oxygen excretion
 </caption>
 <thead>
 <tr>
-<th style="text-align:center;font-weight: bold;color: white !important;background-color: #14759e !important;">
+<th style="text-align:center;font-weight: bold;color: white !important;background-color: rgba(20, 117, 158, 255) !important;">
 Diag variable
 </th>
-<th style="text-align:center;font-weight: bold;color: white !important;background-color: #14759e !important;">
+<th style="text-align:center;font-weight: bold;color: white !important;background-color: rgba(20, 117, 158, 255) !important;">
 Description
 </th>
-<th style="text-align:center;font-weight: bold;color: white !important;background-color: #14759e !important;">
+<th style="text-align:center;font-weight: bold;color: white !important;background-color: rgba(20, 117, 158, 255) !important;">
 Unit
 </th>
-<th style="text-align:center;font-weight: bold;color: white !important;background-color: #14759e !important;">
+<th style="text-align:center;font-weight: bold;color: white !important;background-color: rgba(20, 117, 158, 255) !important;">
 Group
 </th>
 </tr>
 </thead>
 <tbody>
 <tr grouplength="10">
-<td colspan="4" style="border-bottom: 1px solid;color: black !important;background-color: #ebebeb !important;">
+<td colspan="4" style="border-bottom: 1px solid;color: black !important;background-color: rgba(235, 235, 235, 255) !important;">
 <strong>diag_level &gt; 0</strong>
 </td>
 </tr>
@@ -4741,7 +4748,7 @@ diag_level &gt; 0
 </td>
 </tr>
 <tr grouplength="9">
-<td colspan="4" style="border-bottom: 1px solid;color: black !important;background-color: #ebebeb !important;">
+<td colspan="4" style="border-bottom: 1px solid;color: black !important;background-color: rgba(235, 235, 235, 255) !important;">
 <strong>diag_level &gt; 1</strong>
 </td>
 </tr>
@@ -4864,7 +4871,7 @@ diag_level &gt; 1
 </td>
 </tr>
 <tr grouplength="2">
-<td colspan="4" style="border-bottom: 1px solid;color: black !important;background-color: #ebebeb !important;">
+<td colspan="4" style="border-bottom: 1px solid;color: black !important;background-color: rgba(235, 235, 235, 255) !important;">
 <strong>diag_level &gt; 2</strong>
 </td>
 </tr>
@@ -4897,7 +4904,7 @@ diag_level &gt; 2
 </td>
 </tr>
 <tr grouplength="7">
-<td colspan="4" style="border-bottom: 1px solid;color: black !important;background-color: #ebebeb !important;">
+<td colspan="4" style="border-bottom: 1px solid;color: black !important;background-color: rgba(235, 235, 235, 255) !important;">
 <strong>diag_level &gt; 9</strong>
 </td>
 </tr>
@@ -5011,16 +5018,16 @@ diag_level &gt; 9
 </caption>
 <thead>
 <tr>
-<th style="text-align:center;font-weight: bold;color: white !important;background-color: #14759e !important;">
+<th style="text-align:center;font-weight: bold;color: white !important;background-color: rgba(20, 117, 158, 255) !important;">
 CANDI variable
 </th>
-<th style="text-align:center;font-weight: bold;color: white !important;background-color: #14759e !important;">
+<th style="text-align:center;font-weight: bold;color: white !important;background-color: rgba(20, 117, 158, 255) !important;">
 Linked variable
 </th>
-<th style="text-align:center;font-weight: bold;color: white !important;background-color: #14759e !important;">
+<th style="text-align:center;font-weight: bold;color: white !important;background-color: rgba(20, 117, 158, 255) !important;">
 Conversion
 </th>
-<th style="text-align:center;font-weight: bold;color: white !important;background-color: #14759e !important;">
+<th style="text-align:center;font-weight: bold;color: white !important;background-color: rgba(20, 117, 158, 255) !important;">
 Description
 </th>
 </tr>
@@ -5187,13 +5194,13 @@ Macrophyte root oxygen excretion
 </caption>
 <thead>
 <tr>
-<th style="text-align:center;font-weight: bold;color: white !important;background-color: #14759e !important;">
+<th style="text-align:center;font-weight: bold;color: white !important;background-color: rgba(20, 117, 158, 255) !important;">
 .
 </th>
-<th style="text-align:center;font-weight: bold;color: white !important;background-color: #14759e !important;">
+<th style="text-align:center;font-weight: bold;color: white !important;background-color: rgba(20, 117, 158, 255) !important;">
 Module level
 </th>
-<th style="text-align:center;font-weight: bold;color: white !important;background-color: #14759e !important;">
+<th style="text-align:center;font-weight: bold;color: white !important;background-color: rgba(20, 117, 158, 255) !important;">
 Zone-specific
 </th>
 </tr>
@@ -5370,20 +5377,20 @@ aed_candi_params.csv
 </caption>
 <thead>
 <tr>
-<th style="text-align:center;font-weight: bold;color: white !important;background-color: #14759e !important;">
+<th style="text-align:center;font-weight: bold;color: white !important;background-color: rgba(20, 117, 158, 255) !important;">
 Parameter
 </th>
-<th style="text-align:center;font-weight: bold;color: white !important;background-color: #14759e !important;">
+<th style="text-align:center;font-weight: bold;color: white !important;background-color: rgba(20, 117, 158, 255) !important;">
 Description
 </th>
-<th style="text-align:center;font-weight: bold;color: white !important;background-color: #14759e !important;">
+<th style="text-align:center;font-weight: bold;color: white !important;background-color: rgba(20, 117, 158, 255) !important;">
 Example value
 </th>
 </tr>
 </thead>
 <tbody>
 <tr grouplength="3">
-<td colspan="3" style="border-bottom: 1px solid;color: black !important;background-color: #ebebeb !important;">
+<td colspan="3" style="border-bottom: 1px solid;color: black !important;background-color: rgba(235, 235, 235, 255) !important;">
 <strong>Timing parameters</strong>
 </td>
 </tr>
@@ -5421,7 +5428,7 @@ Sediment model substep (h)
 </td>
 </tr>
 <tr grouplength="3">
-<td colspan="3" style="border-bottom: 1px solid;color: black !important;background-color: #ebebeb !important;">
+<td colspan="3" style="border-bottom: 1px solid;color: black !important;background-color: rgba(235, 235, 235, 255) !important;">
 <strong>Zone setup parameters</strong>
 </td>
 </tr>
@@ -5459,7 +5466,7 @@ Type of zone, as listed by header in aed_sdg_vars.csv (integer)
 </td>
 </tr>
 <tr grouplength="3">
-<td colspan="3" style="border-bottom: 1px solid;color: black !important;background-color: #ebebeb !important;">
+<td colspan="3" style="border-bottom: 1px solid;color: black !important;background-color: rgba(235, 235, 235, 255) !important;">
 <strong>External parameter file paths</strong>
 </td>
 </tr>
@@ -5496,7 +5503,7 @@ External equilibrium chemistry solver parameter file path (text)
 </td>
 </tr>
 <tr grouplength="6">
-<td colspan="3" style="border-bottom: 1px solid;color: black !important;background-color: #ebebeb !important;">
+<td colspan="3" style="border-bottom: 1px solid;color: black !important;background-color: rgba(235, 235, 235, 255) !important;">
 <strong>Boundary condition parameters and files</strong>
 </td>
 </tr>
@@ -5567,7 +5574,7 @@ deepbc_filevars
 </td>
 </tr>
 <tr grouplength="12">
-<td colspan="3" style="border-bottom: 1px solid;color: black !important;background-color: #ebebeb !important;">
+<td colspan="3" style="border-bottom: 1px solid;color: black !important;background-color: rgba(235, 235, 235, 255) !important;">
 <strong>Initial condition setup</strong>
 </td>
 </tr>
@@ -5703,7 +5710,7 @@ Concentration of very refractory particulate organic matter (% solids)
 </td>
 </tr>
 <tr grouplength="6">
-<td colspan="3" style="border-bottom: 1px solid;color: black !important;background-color: #ebebeb !important;">
+<td colspan="3" style="border-bottom: 1px solid;color: black !important;background-color: rgba(235, 235, 235, 255) !important;">
 <strong>Output settings</strong>
 </td>
 </tr>
@@ -5793,13 +5800,13 @@ Depths to write diag files (cm)
 </caption>
 <thead>
 <tr>
-<th style="text-align:center;font-weight: bold;color: white !important;background-color: #14759e !important;">
+<th style="text-align:center;font-weight: bold;color: white !important;background-color: rgba(20, 117, 158, 255) !important;">
 Parameter
 </th>
-<th style="text-align:center;font-weight: bold;color: white !important;background-color: #14759e !important;">
+<th style="text-align:center;font-weight: bold;color: white !important;background-color: rgba(20, 117, 158, 255) !important;">
 Description
 </th>
-<th style="text-align:center;font-weight: bold;color: white !important;background-color: #14759e !important;">
+<th style="text-align:center;font-weight: bold;color: white !important;background-color: rgba(20, 117, 158, 255) !important;">
 Example value
 </th>
 </tr>
@@ -5938,22 +5945,22 @@ Bottom boundary switch
 </caption>
 <thead>
 <tr>
-<th style="text-align:center;font-weight: bold;color: white !important;background-color: #14759e !important;">
+<th style="text-align:center;font-weight: bold;color: white !important;background-color: rgba(20, 117, 158, 255) !important;">
 Parameter
 </th>
-<th style="text-align:center;font-weight: bold;color: white !important;background-color: #14759e !important;">
+<th style="text-align:center;font-weight: bold;color: white !important;background-color: rgba(20, 117, 158, 255) !important;">
 Description
 </th>
-<th style="text-align:center;font-weight: bold;color: white !important;background-color: #14759e !important;">
+<th style="text-align:center;font-weight: bold;color: white !important;background-color: rgba(20, 117, 158, 255) !important;">
 Zone:
 </th>
-<th style="text-align:center;font-weight: bold;color: white !important;background-color: #14759e !important;">
+<th style="text-align:center;font-weight: bold;color: white !important;background-color: rgba(20, 117, 158, 255) !important;">
 11
 </th>
-<th style="text-align:center;font-weight: bold;color: white !important;background-color: #14759e !important;">
+<th style="text-align:center;font-weight: bold;color: white !important;background-color: rgba(20, 117, 158, 255) !important;">
 12
 </th>
-<th style="text-align:center;font-weight: bold;color: white !important;background-color: #14759e !important;">
+<th style="text-align:center;font-weight: bold;color: white !important;background-color: rgba(20, 117, 158, 255) !important;">
 …
 </th>
 </tr>
@@ -6149,13 +6156,13 @@ Depth of irrigation (cm)
 </caption>
 <thead>
 <tr>
-<th style="text-align:center;font-weight: bold;color: white !important;background-color: #14759e !important;">
+<th style="text-align:center;font-weight: bold;color: white !important;background-color: rgba(20, 117, 158, 255) !important;">
 Parameter
 </th>
-<th style="text-align:center;font-weight: bold;color: white !important;background-color: #14759e !important;">
+<th style="text-align:center;font-weight: bold;color: white !important;background-color: rgba(20, 117, 158, 255) !important;">
 Description
 </th>
-<th style="text-align:center;font-weight: bold;color: white !important;background-color: #14759e !important;">
+<th style="text-align:center;font-weight: bold;color: white !important;background-color: rgba(20, 117, 158, 255) !important;">
 Example value
 </th>
 </tr>
@@ -6433,13 +6440,13 @@ Description
 </caption>
 <thead>
 <tr>
-<th style="text-align:center;font-weight: bold;color: white !important;background-color: #14759e !important;">
+<th style="text-align:center;font-weight: bold;color: white !important;background-color: rgba(20, 117, 158, 255) !important;">
 Parameter name
 </th>
-<th style="text-align:center;font-weight: bold;color: white !important;background-color: #14759e !important;">
+<th style="text-align:center;font-weight: bold;color: white !important;background-color: rgba(20, 117, 158, 255) !important;">
 Description
 </th>
-<th style="text-align:center;font-weight: bold;color: white !important;background-color: #14759e !important;">
+<th style="text-align:center;font-weight: bold;color: white !important;background-color: rgba(20, 117, 158, 255) !important;">
 Example value
 </th>
 </tr>
@@ -6551,13 +6558,13 @@ NO<sub>2</sub> oxidation kinetic rate (mmol<sup>-1</sup> L y<sup>-1</sup>)
 </caption>
 <thead>
 <tr>
-<th style="text-align:center;font-weight: bold;color: white !important;background-color: #14759e !important;">
+<th style="text-align:center;font-weight: bold;color: white !important;background-color: rgba(20, 117, 158, 255) !important;">
 Parameter
 </th>
-<th style="text-align:center;font-weight: bold;color: white !important;background-color: #14759e !important;">
+<th style="text-align:center;font-weight: bold;color: white !important;background-color: rgba(20, 117, 158, 255) !important;">
 Description
 </th>
-<th style="text-align:center;font-weight: bold;color: white !important;background-color: #14759e !important;">
+<th style="text-align:center;font-weight: bold;color: white !important;background-color: rgba(20, 117, 158, 255) !important;">
 Example value
 </th>
 </tr>
@@ -6681,13 +6688,13 @@ CH<sub>4</sub> oxidation by SO<sub>4</sub><sup>2-</sup> rate (mmol<sup>-1</sup> 
 </caption>
 <thead>
 <tr>
-<th style="text-align:center;font-weight: bold;color: white !important;background-color: #14759e !important;">
+<th style="text-align:center;font-weight: bold;color: white !important;background-color: rgba(20, 117, 158, 255) !important;">
 Parameter
 </th>
-<th style="text-align:center;font-weight: bold;color: white !important;background-color: #14759e !important;">
+<th style="text-align:center;font-weight: bold;color: white !important;background-color: rgba(20, 117, 158, 255) !important;">
 Description
 </th>
-<th style="text-align:center;font-weight: bold;color: white !important;background-color: #14759e !important;">
+<th style="text-align:center;font-weight: bold;color: white !important;background-color: rgba(20, 117, 158, 255) !important;">
 Example value
 </th>
 </tr>
@@ -6810,10 +6817,10 @@ Equilibrium constant for FeS precipitation (-)
 </caption>
 <thead>
 <tr>
-<th style="text-align:center;font-weight: bold;color: white !important;background-color: #14759e !important;">
+<th style="text-align:center;font-weight: bold;color: white !important;background-color: rgba(20, 117, 158, 255) !important;">
 Parameter
 </th>
-<th style="text-align:center;font-weight: bold;color: white !important;background-color: #14759e !important;">
+<th style="text-align:center;font-weight: bold;color: white !important;background-color: rgba(20, 117, 158, 255) !important;">
 …2
 </th>
 </tr>
@@ -7131,59 +7138,59 @@ smothbm
 <p>The model is set up via the name list text file <code>aed.nml</code> using the module keyword <code>&amp;aed_seddiagenesis</code> and a model namelist block termed <code>&amp;aed_sediment</code> configured to select the <code>sediment_model</code> as “Dynamic” or “Dynamic2D” option. Once this is selected, the model will search for the <code>&amp;aed_sedcandi</code> parameter block.</p>
 <p>An example <code>aed.nml</code> configuration block for the <code>aed_seddiagenesis</code> module that includes multiple active sediment zones, plus microphytobenthos (MPB) and seagrass links, is shown below:</p>
 <p><br></p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode fortran"><code class="sourceCode fortranfixed"><span id="cb18-1"><a href="sediment-biogeochemistry.html#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co">!###############################################################################</span></span>
-<span id="cb18-2"><a href="sediment-biogeochemistry.html#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="co">! aed_seddiagenesis</span></span>
-<span id="cb18-3"><a href="sediment-biogeochemistry.html#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="co">!-------------------------------------------------------------------------------</span></span>
-<span id="cb18-4"><a href="sediment-biogeochemistry.html#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="kw">&amp;</span>aed_sediment</span>
-<span id="cb18-5"><a href="sediment-biogeochemistry.html#cb18-5" aria-hidden="true" tabindex="-1"></a>   sediment_model    <span class="kw">=</span> <span class="st">&#39;DYNAMIC&#39;</span>    <span class="co">! engages the CANDI-AED model</span></span>
-<span id="cb18-6"><a href="sediment-biogeochemistry.html#cb18-6" aria-hidden="true" tabindex="-1"></a>   mpb_link_variable <span class="kw">=</span> <span class="st">&#39;PHY_mpb&#39;</span>    <span class="co">! use to set link for MPB</span></span>
-<span id="cb18-7"><a href="sediment-biogeochemistry.html#cb18-7" aria-hidden="true" tabindex="-1"></a>   mag_link_variable <span class="kw">=</span> <span class="st">&#39;MA2_mag&#39;</span>    <span class="co">! use to set link for macroalgae inputs</span></span>
-<span id="cb18-8"><a href="sediment-biogeochemistry.html#cb18-8" aria-hidden="true" tabindex="-1"></a>   mac_link_variable <span class="kw">=</span> <span class="st">&#39;MAC_mac&#39;</span>    <span class="co">! use to set link for macrophyte root inputs</span></span>
-<span id="cb18-9"><a href="sediment-biogeochemistry.html#cb18-9" aria-hidden="true" tabindex="-1"></a>   swi_link_variable <span class="kw">=</span> <span class="st">&#39;NCS_swi&#39;</span>    <span class="co">! use to set link for variable w00</span></span>
-<span id="cb18-10"><a href="sediment-biogeochemistry.html#cb18-10" aria-hidden="true" tabindex="-1"></a><span class="kw">/</span></span>
-<span id="cb18-11"><a href="sediment-biogeochemistry.html#cb18-11" aria-hidden="true" tabindex="-1"></a><span class="kw">&amp;</span>aed_sed_candi</span>
-<span id="cb18-12"><a href="sediment-biogeochemistry.html#cb18-12" aria-hidden="true" tabindex="-1"></a>  <span class="co">!-- Time Settings --!</span></span>
-<span id="cb18-13"><a href="sediment-biogeochemistry.html#cb18-13" aria-hidden="true" tabindex="-1"></a>   spinup_days     <span class="kw">=</span>  <span class="dv">90</span></span>
-<span id="cb18-14"><a href="sediment-biogeochemistry.html#cb18-14" aria-hidden="true" tabindex="-1"></a>   spinup_dt       <span class="kw">=</span>   <span class="fl">0.25</span></span>
-<span id="cb18-15"><a href="sediment-biogeochemistry.html#cb18-15" aria-hidden="true" tabindex="-1"></a>   driver_dt       <span class="kw">=</span> <span class="dv">900</span>     </span>
-<span id="cb18-16"><a href="sediment-biogeochemistry.html#cb18-16" aria-hidden="true" tabindex="-1"></a>   substep         <span class="kw">=</span>   <span class="dv">8</span>       </span>
-<span id="cb18-17"><a href="sediment-biogeochemistry.html#cb18-17" aria-hidden="true" tabindex="-1"></a>  <span class="co">!-- Zones details --!</span></span>
-<span id="cb18-18"><a href="sediment-biogeochemistry.html#cb18-18" aria-hidden="true" tabindex="-1"></a>   n_zones         <span class="kw">=</span> <span class="dv">5</span></span>
-<span id="cb18-19"><a href="sediment-biogeochemistry.html#cb18-19" aria-hidden="true" tabindex="-1"></a>   active_zones    <span class="kw">=</span> <span class="dv">104</span>,<span class="dv">103</span>, <span class="dv">53</span>, <span class="dv">23</span>, <span class="dv">12</span>,<span class="dv">11</span></span>
-<span id="cb18-20"><a href="sediment-biogeochemistry.html#cb18-20" aria-hidden="true" tabindex="-1"></a>   zone_types      <span class="kw">=</span>   <span class="dv">5</span>, <span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">1</span></span>
-<span id="cb18-21"><a href="sediment-biogeochemistry.html#cb18-21" aria-hidden="true" tabindex="-1"></a>  <span class="co">!-- General Setup Options  --!</span></span>
-<span id="cb18-22"><a href="sediment-biogeochemistry.html#cb18-22" aria-hidden="true" tabindex="-1"></a>   dbase           <span class="kw">=</span> <span class="st">&#39;./AED/aed_candi_params.csv&#39;</span></span>
-<span id="cb18-23"><a href="sediment-biogeochemistry.html#cb18-23" aria-hidden="true" tabindex="-1"></a>   vars_files      <span class="kw">=</span> <span class="st">&#39;./AED/aed_sdg_vars.csv&#39;</span></span>
-<span id="cb18-24"><a href="sediment-biogeochemistry.html#cb18-24" aria-hidden="true" tabindex="-1"></a>   geochem_file    <span class="kw">=</span> <span class="st">&#39;./AED/aed_geochem_pars.dat&#39;</span></span>
-<span id="cb18-25"><a href="sediment-biogeochemistry.html#cb18-25" aria-hidden="true" tabindex="-1"></a>  <span class="co">!-- Sediment Boundary Conditions  --!</span></span>
-<span id="cb18-26"><a href="sediment-biogeochemistry.html#cb18-26" aria-hidden="true" tabindex="-1"></a>   swibc_mode      <span class="kw">=</span> <span class="dv">0</span>      <span class="co">! previously ibc2</span></span>
-<span id="cb18-27"><a href="sediment-biogeochemistry.html#cb18-27" aria-hidden="true" tabindex="-1"></a>   deepbc_mode     <span class="kw">=</span> <span class="dv">1</span>      <span class="co">! previously ibbc</span></span>
-<span id="cb18-28"><a href="sediment-biogeochemistry.html#cb18-28" aria-hidden="true" tabindex="-1"></a>   swibc_file      <span class="kw">=</span> <span class="st">&#39;./AED/aed_sediment_swibc.dat&#39;</span></span>
-<span id="cb18-29"><a href="sediment-biogeochemistry.html#cb18-29" aria-hidden="true" tabindex="-1"></a>   deepbc_file     <span class="kw">=</span> <span class="st">&#39;./AED/aed_sediment_deepbc.dat&#39;</span></span>
-<span id="cb18-30"><a href="sediment-biogeochemistry.html#cb18-30" aria-hidden="true" tabindex="-1"></a>   swibc_filevars  <span class="kw">=</span> <span class="st">&#39;&#39;</span> <span class="co">! &#39;oxy&#39;, &#39;nit&#39;, &#39;amm&#39;, &#39;frp&#39;, &#39;poml&#39;   ! from_bc_file</span></span>
-<span id="cb18-31"><a href="sediment-biogeochemistry.html#cb18-31" aria-hidden="true" tabindex="-1"></a>   deepbc_filevars <span class="kw">=</span> <span class="st">&#39;&#39;</span> <span class="co">! ,OXY_oxy,                            ! use_deep_bc</span></span>
-<span id="cb18-32"><a href="sediment-biogeochemistry.html#cb18-32" aria-hidden="true" tabindex="-1"></a>   flux_scale      <span class="kw">=</span> <span class="dv">1</span></span>
-<span id="cb18-33"><a href="sediment-biogeochemistry.html#cb18-33" aria-hidden="true" tabindex="-1"></a>  <span class="co">!-- Initial Conditions  --!</span></span>
-<span id="cb18-34"><a href="sediment-biogeochemistry.html#cb18-34" aria-hidden="true" tabindex="-1"></a>   SolidInitialUnit<span class="kw">=</span> <span class="st">&#39;mmolLsolid&#39;</span></span>
-<span id="cb18-35"><a href="sediment-biogeochemistry.html#cb18-35" aria-hidden="true" tabindex="-1"></a>   OMInitMethodL   <span class="kw">=</span> <span class="st">&#39;LI_I&#39;</span></span>
-<span id="cb18-36"><a href="sediment-biogeochemistry.html#cb18-36" aria-hidden="true" tabindex="-1"></a>   OM_topL         <span class="kw">=</span> <span class="dv">1</span></span>
-<span id="cb18-37"><a href="sediment-biogeochemistry.html#cb18-37" aria-hidden="true" tabindex="-1"></a>   OM_minL         <span class="kw">=</span> <span class="fl">0.9</span></span>
-<span id="cb18-38"><a href="sediment-biogeochemistry.html#cb18-38" aria-hidden="true" tabindex="-1"></a>   OM_cfL          <span class="kw">=</span> <span class="fl">0.6</span></span>
-<span id="cb18-39"><a href="sediment-biogeochemistry.html#cb18-39" aria-hidden="true" tabindex="-1"></a>   InitMinDepthL   <span class="kw">=</span> <span class="dv">99</span></span>
-<span id="cb18-40"><a href="sediment-biogeochemistry.html#cb18-40" aria-hidden="true" tabindex="-1"></a>   OMInitMethodR   <span class="kw">=</span> <span class="st">&#39;LI_I&#39;</span></span>
-<span id="cb18-41"><a href="sediment-biogeochemistry.html#cb18-41" aria-hidden="true" tabindex="-1"></a>   OM_topR         <span class="kw">=</span> <span class="dv">1</span></span>
-<span id="cb18-42"><a href="sediment-biogeochemistry.html#cb18-42" aria-hidden="true" tabindex="-1"></a>   OM_minR         <span class="kw">=</span> <span class="fl">0.3</span></span>
-<span id="cb18-43"><a href="sediment-biogeochemistry.html#cb18-43" aria-hidden="true" tabindex="-1"></a>   OM_cfR          <span class="kw">=</span> <span class="fl">0.6</span></span>
-<span id="cb18-44"><a href="sediment-biogeochemistry.html#cb18-44" aria-hidden="true" tabindex="-1"></a>   InitMinDepthR   <span class="kw">=</span> <span class="dv">50</span></span>
-<span id="cb18-45"><a href="sediment-biogeochemistry.html#cb18-45" aria-hidden="true" tabindex="-1"></a>   POMVR           <span class="kw">=</span> <span class="fl">0.3</span></span>
-<span id="cb18-46"><a href="sediment-biogeochemistry.html#cb18-46" aria-hidden="true" tabindex="-1"></a>  <span class="co">!-- Outputs  --!</span></span>
-<span id="cb18-47"><a href="sediment-biogeochemistry.html#cb18-47" aria-hidden="true" tabindex="-1"></a>   diag_level         <span class="kw">=</span> <span class="dv">10</span></span>
-<span id="cb18-48"><a href="sediment-biogeochemistry.html#cb18-48" aria-hidden="true" tabindex="-1"></a>   output_profiles    <span class="kw">=</span>  <span class="cn">.TRUE.</span></span>
-<span id="cb18-49"><a href="sediment-biogeochemistry.html#cb18-49" aria-hidden="true" tabindex="-1"></a>   morevariables      <span class="kw">=</span> <span class="st">&#39;Rgpp&#39;</span>,<span class="st">&#39;Rrsp&#39;</span>,<span class="st">&#39;FO2&#39;</span>,<span class="st">&#39;f_an&#39;</span></span>
-<span id="cb18-50"><a href="sediment-biogeochemistry.html#cb18-50" aria-hidden="true" tabindex="-1"></a>   output_diag_vars   <span class="kw">=</span> <span class="st">&#39;mpb&#39;</span>,<span class="st">&#39;oxy&#39;</span>,<span class="st">&#39;amm&#39;</span>,<span class="st">&#39;docl&#39;</span>,<span class="st">&#39;pocl&#39;</span>,<span class="st">&#39;docr&#39;</span></span>
-<span id="cb18-51"><a href="sediment-biogeochemistry.html#cb18-51" aria-hidden="true" tabindex="-1"></a>   n_ddpths           <span class="kw">=</span> <span class="dv">2</span></span>
-<span id="cb18-52"><a href="sediment-biogeochemistry.html#cb18-52" aria-hidden="true" tabindex="-1"></a>   output_diag_depths <span class="kw">=</span> <span class="fl">1.0</span>, <span class="fl">5.0</span>  <span class="co">! cm below swi</span></span>
-<span id="cb18-53"><a href="sediment-biogeochemistry.html#cb18-53" aria-hidden="true" tabindex="-1"></a><span class="kw">/</span></span></code></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode fortran"><code class="sourceCode fortranfixed"><span id="cb18-1"><a href="sediment-biogeochemistry.html#cb18-1" tabindex="-1"></a><span class="co">!###############################################################################</span></span>
+<span id="cb18-2"><a href="sediment-biogeochemistry.html#cb18-2" tabindex="-1"></a><span class="co">! aed_seddiagenesis</span></span>
+<span id="cb18-3"><a href="sediment-biogeochemistry.html#cb18-3" tabindex="-1"></a><span class="co">!-------------------------------------------------------------------------------</span></span>
+<span id="cb18-4"><a href="sediment-biogeochemistry.html#cb18-4" tabindex="-1"></a><span class="kw">&amp;</span>aed_sediment</span>
+<span id="cb18-5"><a href="sediment-biogeochemistry.html#cb18-5" tabindex="-1"></a>   sediment_model    <span class="kw">=</span> <span class="st">&#39;DYNAMIC&#39;</span>    <span class="co">! engages the CANDI-AED model</span></span>
+<span id="cb18-6"><a href="sediment-biogeochemistry.html#cb18-6" tabindex="-1"></a>   mpb_link_variable <span class="kw">=</span> <span class="st">&#39;PHY_mpb&#39;</span>    <span class="co">! use to set link for MPB</span></span>
+<span id="cb18-7"><a href="sediment-biogeochemistry.html#cb18-7" tabindex="-1"></a>   mag_link_variable <span class="kw">=</span> <span class="st">&#39;MA2_mag&#39;</span>    <span class="co">! use to set link for macroalgae inputs</span></span>
+<span id="cb18-8"><a href="sediment-biogeochemistry.html#cb18-8" tabindex="-1"></a>   mac_link_variable <span class="kw">=</span> <span class="st">&#39;MAC_mac&#39;</span>    <span class="co">! use to set link for macrophyte root inputs</span></span>
+<span id="cb18-9"><a href="sediment-biogeochemistry.html#cb18-9" tabindex="-1"></a>   swi_link_variable <span class="kw">=</span> <span class="st">&#39;NCS_swi&#39;</span>    <span class="co">! use to set link for variable w00</span></span>
+<span id="cb18-10"><a href="sediment-biogeochemistry.html#cb18-10" tabindex="-1"></a><span class="kw">/</span></span>
+<span id="cb18-11"><a href="sediment-biogeochemistry.html#cb18-11" tabindex="-1"></a><span class="kw">&amp;</span>aed_sed_candi</span>
+<span id="cb18-12"><a href="sediment-biogeochemistry.html#cb18-12" tabindex="-1"></a>  <span class="co">!-- Time Settings --!</span></span>
+<span id="cb18-13"><a href="sediment-biogeochemistry.html#cb18-13" tabindex="-1"></a>   spinup_days     <span class="kw">=</span>  <span class="dv">90</span></span>
+<span id="cb18-14"><a href="sediment-biogeochemistry.html#cb18-14" tabindex="-1"></a>   spinup_dt       <span class="kw">=</span>   <span class="fl">0.25</span></span>
+<span id="cb18-15"><a href="sediment-biogeochemistry.html#cb18-15" tabindex="-1"></a>   driver_dt       <span class="kw">=</span> <span class="dv">900</span>     </span>
+<span id="cb18-16"><a href="sediment-biogeochemistry.html#cb18-16" tabindex="-1"></a>   substep         <span class="kw">=</span>   <span class="dv">8</span>       </span>
+<span id="cb18-17"><a href="sediment-biogeochemistry.html#cb18-17" tabindex="-1"></a>  <span class="co">!-- Zones details --!</span></span>
+<span id="cb18-18"><a href="sediment-biogeochemistry.html#cb18-18" tabindex="-1"></a>   n_zones         <span class="kw">=</span> <span class="dv">5</span></span>
+<span id="cb18-19"><a href="sediment-biogeochemistry.html#cb18-19" tabindex="-1"></a>   active_zones    <span class="kw">=</span> <span class="dv">104</span>,<span class="dv">103</span>, <span class="dv">53</span>, <span class="dv">23</span>, <span class="dv">12</span>,<span class="dv">11</span></span>
+<span id="cb18-20"><a href="sediment-biogeochemistry.html#cb18-20" tabindex="-1"></a>   zone_types      <span class="kw">=</span>   <span class="dv">5</span>, <span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">1</span></span>
+<span id="cb18-21"><a href="sediment-biogeochemistry.html#cb18-21" tabindex="-1"></a>  <span class="co">!-- General Setup Options  --!</span></span>
+<span id="cb18-22"><a href="sediment-biogeochemistry.html#cb18-22" tabindex="-1"></a>   dbase           <span class="kw">=</span> <span class="st">&#39;./AED/aed_candi_params.csv&#39;</span></span>
+<span id="cb18-23"><a href="sediment-biogeochemistry.html#cb18-23" tabindex="-1"></a>   vars_files      <span class="kw">=</span> <span class="st">&#39;./AED/aed_sdg_vars.csv&#39;</span></span>
+<span id="cb18-24"><a href="sediment-biogeochemistry.html#cb18-24" tabindex="-1"></a>   geochem_file    <span class="kw">=</span> <span class="st">&#39;./AED/aed_geochem_pars.dat&#39;</span></span>
+<span id="cb18-25"><a href="sediment-biogeochemistry.html#cb18-25" tabindex="-1"></a>  <span class="co">!-- Sediment Boundary Conditions  --!</span></span>
+<span id="cb18-26"><a href="sediment-biogeochemistry.html#cb18-26" tabindex="-1"></a>   swibc_mode      <span class="kw">=</span> <span class="dv">0</span>      <span class="co">! previously ibc2</span></span>
+<span id="cb18-27"><a href="sediment-biogeochemistry.html#cb18-27" tabindex="-1"></a>   deepbc_mode     <span class="kw">=</span> <span class="dv">1</span>      <span class="co">! previously ibbc</span></span>
+<span id="cb18-28"><a href="sediment-biogeochemistry.html#cb18-28" tabindex="-1"></a>   swibc_file      <span class="kw">=</span> <span class="st">&#39;./AED/aed_sediment_swibc.dat&#39;</span></span>
+<span id="cb18-29"><a href="sediment-biogeochemistry.html#cb18-29" tabindex="-1"></a>   deepbc_file     <span class="kw">=</span> <span class="st">&#39;./AED/aed_sediment_deepbc.dat&#39;</span></span>
+<span id="cb18-30"><a href="sediment-biogeochemistry.html#cb18-30" tabindex="-1"></a>   swibc_filevars  <span class="kw">=</span> <span class="st">&#39;&#39;</span> <span class="co">! &#39;oxy&#39;, &#39;nit&#39;, &#39;amm&#39;, &#39;frp&#39;, &#39;poml&#39;   ! from_bc_file</span></span>
+<span id="cb18-31"><a href="sediment-biogeochemistry.html#cb18-31" tabindex="-1"></a>   deepbc_filevars <span class="kw">=</span> <span class="st">&#39;&#39;</span> <span class="co">! ,OXY_oxy,                            ! use_deep_bc</span></span>
+<span id="cb18-32"><a href="sediment-biogeochemistry.html#cb18-32" tabindex="-1"></a>   flux_scale      <span class="kw">=</span> <span class="dv">1</span></span>
+<span id="cb18-33"><a href="sediment-biogeochemistry.html#cb18-33" tabindex="-1"></a>  <span class="co">!-- Initial Conditions  --!</span></span>
+<span id="cb18-34"><a href="sediment-biogeochemistry.html#cb18-34" tabindex="-1"></a>   SolidInitialUnit<span class="kw">=</span> <span class="st">&#39;mmolLsolid&#39;</span></span>
+<span id="cb18-35"><a href="sediment-biogeochemistry.html#cb18-35" tabindex="-1"></a>   OMInitMethodL   <span class="kw">=</span> <span class="st">&#39;LI_I&#39;</span></span>
+<span id="cb18-36"><a href="sediment-biogeochemistry.html#cb18-36" tabindex="-1"></a>   OM_topL         <span class="kw">=</span> <span class="dv">1</span></span>
+<span id="cb18-37"><a href="sediment-biogeochemistry.html#cb18-37" tabindex="-1"></a>   OM_minL         <span class="kw">=</span> <span class="fl">0.9</span></span>
+<span id="cb18-38"><a href="sediment-biogeochemistry.html#cb18-38" tabindex="-1"></a>   OM_cfL          <span class="kw">=</span> <span class="fl">0.6</span></span>
+<span id="cb18-39"><a href="sediment-biogeochemistry.html#cb18-39" tabindex="-1"></a>   InitMinDepthL   <span class="kw">=</span> <span class="dv">99</span></span>
+<span id="cb18-40"><a href="sediment-biogeochemistry.html#cb18-40" tabindex="-1"></a>   OMInitMethodR   <span class="kw">=</span> <span class="st">&#39;LI_I&#39;</span></span>
+<span id="cb18-41"><a href="sediment-biogeochemistry.html#cb18-41" tabindex="-1"></a>   OM_topR         <span class="kw">=</span> <span class="dv">1</span></span>
+<span id="cb18-42"><a href="sediment-biogeochemistry.html#cb18-42" tabindex="-1"></a>   OM_minR         <span class="kw">=</span> <span class="fl">0.3</span></span>
+<span id="cb18-43"><a href="sediment-biogeochemistry.html#cb18-43" tabindex="-1"></a>   OM_cfR          <span class="kw">=</span> <span class="fl">0.6</span></span>
+<span id="cb18-44"><a href="sediment-biogeochemistry.html#cb18-44" tabindex="-1"></a>   InitMinDepthR   <span class="kw">=</span> <span class="dv">50</span></span>
+<span id="cb18-45"><a href="sediment-biogeochemistry.html#cb18-45" tabindex="-1"></a>   POMVR           <span class="kw">=</span> <span class="fl">0.3</span></span>
+<span id="cb18-46"><a href="sediment-biogeochemistry.html#cb18-46" tabindex="-1"></a>  <span class="co">!-- Outputs  --!</span></span>
+<span id="cb18-47"><a href="sediment-biogeochemistry.html#cb18-47" tabindex="-1"></a>   diag_level         <span class="kw">=</span> <span class="dv">10</span></span>
+<span id="cb18-48"><a href="sediment-biogeochemistry.html#cb18-48" tabindex="-1"></a>   output_profiles    <span class="kw">=</span>  <span class="cn">.TRUE.</span></span>
+<span id="cb18-49"><a href="sediment-biogeochemistry.html#cb18-49" tabindex="-1"></a>   morevariables      <span class="kw">=</span> <span class="st">&#39;Rgpp&#39;</span>,<span class="st">&#39;Rrsp&#39;</span>,<span class="st">&#39;FO2&#39;</span>,<span class="st">&#39;f_an&#39;</span></span>
+<span id="cb18-50"><a href="sediment-biogeochemistry.html#cb18-50" tabindex="-1"></a>   output_diag_vars   <span class="kw">=</span> <span class="st">&#39;mpb&#39;</span>,<span class="st">&#39;oxy&#39;</span>,<span class="st">&#39;amm&#39;</span>,<span class="st">&#39;docl&#39;</span>,<span class="st">&#39;pocl&#39;</span>,<span class="st">&#39;docr&#39;</span></span>
+<span id="cb18-51"><a href="sediment-biogeochemistry.html#cb18-51" tabindex="-1"></a>   n_ddpths           <span class="kw">=</span> <span class="dv">2</span></span>
+<span id="cb18-52"><a href="sediment-biogeochemistry.html#cb18-52" tabindex="-1"></a>   output_diag_depths <span class="kw">=</span> <span class="fl">1.0</span>, <span class="fl">5.0</span>  <span class="co">! cm below swi</span></span>
+<span id="cb18-53"><a href="sediment-biogeochemistry.html#cb18-53" tabindex="-1"></a><span class="kw">/</span></span></code></pre></div>
 <p><br></p>
 <p><br></p>
 
@@ -7558,11 +7565,51 @@ Figure 14.49: Simplified version of the extra .sed file.
 </div>
 <div id="case-studies-examples-6" class="section level2 hasAnchor" number="14.6">
 <h2><span class="header-section-number">14.6</span> Case Studies &amp; Examples<a href="sediment-biogeochemistry.html#case-studies-examples-6" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Three case studies are outlined below.</p>
-<div id="case-study-model-benchmark-example" class="section level3 hasAnchor" number="14.6.1">
-<h3><span class="header-section-number">14.6.1</span> Case study: Model benchmark example<a href="sediment-biogeochemistry.html#case-study-model-benchmark-example" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div id="model-setup" class="section level4 hasAnchor" number="14.6.1.1">
-<h4><span class="header-section-number">14.6.1.1</span> Model setup<a href="sediment-biogeochemistry.html#model-setup" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Several case studies are outlined below.</p>
+<div id="section" class="section level3" number="14.6.1">
+<h3><span class="header-section-number">14.6.1</span> </h3>
+</div>
+<div id="numerical-mass-balance-and-flux-confirmation" class="section level3 unnumbered hasAnchor">
+<h3>Numerical mass balance and flux confirmation<a href="sediment-biogeochemistry.html#numerical-mass-balance-and-flux-confirmation" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="mass-check-methods" class="section level4 hasAnchor" number="14.6.1.1">
+<h4><span class="header-section-number">14.6.1.1</span> Mass check methods<a href="sediment-biogeochemistry.html#mass-check-methods" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>The sediment model was run with no variables except one solid (organic matter) and one solute (N2) ‘tracer’, the reaction rates of which were switched to zero. The tracers were applied as fluxes and concentrations at the sediment-water interface boundary. The simulation had</p>
+<ul>
+<li>no influx for 0.5 years to check that the model had equilibrated, then</li>
+<li>the boundary flux or concentration was applied for 1 year, then</li>
+<li>the boundary was switched off and the simulation run for a further year.</li>
+</ul>
+<p>The mass of influxing matter was calculated. Key parameters were changed one by one and a range of simulations was run, in order to check for possible mass balance errors.
+Key parameters that were varied included</p>
+<ul>
+<li>either a fixed grid or exponentially increasing layers</li>
+<li>grid spacing and time steps</li>
+<li>solid sedimentation rates (ω00)</li>
+<li>porosity (ρ0 and ρ00)</li>
+<li>bioturbation depths and functions</li>
+</ul>
+</div>
+<div id="mass-check-results" class="section level4 hasAnchor" number="14.6.1.2">
+<h4><span class="header-section-number">14.6.1.2</span> Mass check results<a href="sediment-biogeochemistry.html#mass-check-results" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Simulations were run with a non-reactive solute and solid to check that the total influxing mass was equal to the mass across all layers of the sediment. Parameters and settings were changed until the masses were the same and the model could be used with confidence. In Figure 14 and Figure 15, the bottom left panel in each figure shows the sediment mass as the shaded area, and the influxed mass as the red line. An equal grid spacing of 0.2 cm was used to minimise possible large concentration differences between layers. The model was run quickly with 5-daily time steps, which had no effect on model error. The most important setting was that the initial bioturbation profile was set to the exponential decay option rather than the two-layer option (imix = 2 rather than 1, see <a href="https://aquaticecodynamics.github.io/aed-science/sediment-biogeochemistry.html#model-description-8">chapter 14.3.2.6</a> for details) because it was found that the sharp cutoff of the two-layer option was prone to small numerical errors, when the concentration differences between layers were large. With the exponential decay setting, bioturbation decreased from its maximum value at the sediment water interface to 10 cm deep. These technical setting tests did not offer a major insight into the scientific understanding of nutrient dynamics in the sediment but they were useful steps for increasing confidence in the nutrient budgets and future coupled models.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:dev-masscheck1"></span>
+<img src="images/23-sediment_biogeochemistry/MassCheck/6P_w0_a_n2_z1_res_500.png" alt="Results of a simulation for $N_2$ as a tracer. Reaction rates were turned to zero and so concentration and mass changes are the result of transport only. After 6 months of spin-up, both species were introduced at the sediment-water interface for one year. The bottom left figure showed that the total sediment mass and influxing mass were the same." width="75%" />
+<p class="caption">
+Figure 14.50: Results of a simulation for <span class="math inline">\(N_2\)</span> as a tracer. Reaction rates were turned to zero and so concentration and mass changes are the result of transport only. After 6 months of spin-up, both species were introduced at the sediment-water interface for one year. The bottom left figure showed that the total sediment mass and influxing mass were the same.
+</p>
+</div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:dev-masscheck2"></span>
+<img src="images/23-sediment_biogeochemistry/MassCheck/6P_w0_a_pomspecial_z1_res_500.png" alt="Results of a simulation for organic matter. Reaction rates were turned to zero and so concentration and mass changes are the result of transport only. After 6 months of spin-up, both species were introduced at the sediment-water interface for one year. The bottom left figure showed that the total sediment mass and influxing mass were the same." width="75%" />
+<p class="caption">
+Figure 14.51: Results of a simulation for organic matter. Reaction rates were turned to zero and so concentration and mass changes are the result of transport only. After 6 months of spin-up, both species were introduced at the sediment-water interface for one year. The bottom left figure showed that the total sediment mass and influxing mass were the same.
+</p>
+</div>
+</div>
+</div>
+<div id="case-study-model-benchmark-example" class="section level3 hasAnchor" number="14.6.2">
+<h3><span class="header-section-number">14.6.2</span> Case study: Model benchmark example<a href="sediment-biogeochemistry.html#case-study-model-benchmark-example" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="model-setup" class="section level4 hasAnchor" number="14.6.2.1">
+<h4><span class="header-section-number">14.6.2.1</span> Model setup<a href="sediment-biogeochemistry.html#model-setup" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <div id="base-simulation" class="section level5 unnumbered hasAnchor">
 <h5><em>Base simulation</em><a href="sediment-biogeochemistry.html#base-simulation" class="anchor-section" aria-label="Anchor link to header"></a></h5>
 <p>The model CANDI-AED was tested against the published modelling results of Van Cappellen and Wang (1996) in order to confirm that the model worked as expected, and also to demonstrate the flexibility of the model system. For this simulation, all boundary fluxes, bottom water concentrations, and rate constants were set to the same values as those in Van Cappellen and Wang (1996). The organic matter redox approach was set to Approach 2, by setting <code>OMApproach</code> = 2. The organic matter oxidation model was parameterized with no organic matter influx and with an oxidation rate that changes with depth (<code>OMModel</code> = 1, <code>VCW</code> = <em>TRUE</em>). The surface oxidation rate and depth attenuation were the same as Van Cappellen and Wang (1996). The irrigation coefficient was also set to be the same as in Van Cappellen and Wang (1996), using <code>irrigswitch</code> = 2. The mineral precipitation reactions were implemented only for MnCO3, FeCO3 and FeS, as per the equations in Van Cappellen and Wang (1996), rather than the larger set of precipitation reactions (<code>rxn_mode</code> = 4). Additionally, the ageing reactions of iron and manganese minerals were disabled. Ammonium adsorption was included and was the same as in Van Cappellen and Wang (1996), however, iron and manganese adsorption has not yet been included. An equivalent evenly spaced grid was used (<code>job</code> = 1), with 400 layers (<code>mxnpts</code>) to a depth of 20 cm (<code>xl</code>).</p>
@@ -7578,16 +7625,16 @@ Figure 14.49: Simplified version of the extra .sed file.
 </caption>
 <thead>
 <tr>
-<th style="text-align:center;font-weight: bold;color: white !important;background-color: #14759e !important;">
+<th style="text-align:center;font-weight: bold;color: white !important;background-color: rgba(20, 117, 158, 255) !important;">
 Parameter
 </th>
-<th style="text-align:center;font-weight: bold;color: white !important;background-color: #14759e !important;">
+<th style="text-align:center;font-weight: bold;color: white !important;background-color: rgba(20, 117, 158, 255) !important;">
 Description
 </th>
-<th style="text-align:center;font-weight: bold;color: white !important;background-color: #14759e !important;">
+<th style="text-align:center;font-weight: bold;color: white !important;background-color: rgba(20, 117, 158, 255) !important;">
 Range
 </th>
-<th style="text-align:center;font-weight: bold;color: white !important;background-color: #14759e !important;">
+<th style="text-align:center;font-weight: bold;color: white !important;background-color: rgba(20, 117, 158, 255) !important;">
 Unit
 </th>
 </tr>
@@ -7754,49 +7801,49 @@ y<sup>-1</sup>
 </center>
 </div>
 </div>
-<div id="results" class="section level4 hasAnchor" number="14.6.1.2">
-<h4><span class="header-section-number">14.6.1.2</span> Results<a href="sediment-biogeochemistry.html#results" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div id="results" class="section level4 hasAnchor" number="14.6.2.2">
+<h4><span class="header-section-number">14.6.2.2</span> Results<a href="sediment-biogeochemistry.html#results" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <div id="concentrations" class="section level5 unnumbered hasAnchor">
 <h5><em>Concentrations</em><a href="sediment-biogeochemistry.html#concentrations" class="anchor-section" aria-label="Anchor link to header"></a></h5>
-<p>The <span class="math inline">\(O_2\)</span> concentration profile matched the Van Cappellen and Wang simulation very closely, apart from the concentration at the deepest point, which was slightly higher than the field data (Figure <a href="sediment-biogeochemistry.html#fig:VCW-1">14.50</a> (a)). The results for <span class="math inline">\(O_2\)</span> were very consistent about the median value. The slightly higher concentration of oxygen at the deepest point in this simulation may have carried through to inhibit denitrification, causing the concentration of <span class="math inline">\(NO_3^-\)</span> to be higher than in the Van Cappellen and Wang simulation (Figure <a href="sediment-biogeochemistry.html#fig:VCW-1">14.50</a> (a)). <span class="math inline">\(NO_3^-\)</span> was similarly consistent about the median. The <span class="math inline">\(NH_4^+\)</span> field data points were lower than the median of these simulations but within the range of these simulations (Figure <a href="sediment-biogeochemistry.html#fig:VCW-1">14.50</a> (c)). <span class="math inline">\(pH\)</span> was between 7 and 8, and both <span class="math inline">\(NH_4^+\)</span> and <span class="math inline">\(pH\)</span> had increasing ranges with depth (Figure <a href="sediment-biogeochemistry.html#fig:VCW-1">14.50</a> (d)).</p>
-<p>The <span class="math inline">\(MnO_2\)</span> and <span class="math inline">\(Fe(OH)_{3A}\)</span> concentrations matched the data points closely, however, the <span class="math inline">\(Mn^{2+}\)</span> and <span class="math inline">\(Fe^{2+}\)</span> concentrations in this simulation peaked at a higher concentration around 2 cm (Figure <a href="sediment-biogeochemistry.html#fig:VCW-1">14.50</a> (e) to (h)). It was suspected that this might have resulted from poor resolution of the grid, however, this simulation had the same number and size of layers as Van Cappellen and Wang. Below 5 cm deep the simulation had a lower concentration than the field data, but the deepest 5 field data points for <span class="math inline">\(Fe^{2+}\)</span> were within the ranges of the simulations.</p>
-<p><span class="math inline">\(H_2S\)</span> had the greatest variation relative to its concentration, which increased with depth (Figure <a href="sediment-biogeochemistry.html#fig:VCW-1">14.50</a> (i)). <span class="math inline">\(FeS\)</span> concentration had a consistently concave shape whereas the field data appeared to be concave around 3 cm deep, and the relatively high concentration of <span class="math inline">\(FeS\)</span> at 5 mmol L<sup>-1</sup> in the oxic zone was not within the range of these simulations (Figure <a href="sediment-biogeochemistry.html#fig:VCW-1">14.50</a> (j)). <span class="math inline">\(FeS\)</span> could be simulated close to the field data, but only by fixing the bottom boundary at 45 mmol L<sup>-1</sup> and not because of its precipitation from <span class="math inline">\(Fe^{2+}\)</span> and <span class="math inline">\(H_2S\)</span>.</p>
+<p>The <span class="math inline">\(O_2\)</span> concentration profile matched the Van Cappellen and Wang simulation very closely, apart from the concentration at the deepest point, which was slightly higher than the field data (Figure <a href="sediment-biogeochemistry.html#fig:VCW-1">14.52</a> (a)). The results for <span class="math inline">\(O_2\)</span> were very consistent about the median value. The slightly higher concentration of oxygen at the deepest point in this simulation may have carried through to inhibit denitrification, causing the concentration of <span class="math inline">\(NO_3^-\)</span> to be higher than in the Van Cappellen and Wang simulation (Figure <a href="sediment-biogeochemistry.html#fig:VCW-1">14.52</a> (a)). <span class="math inline">\(NO_3^-\)</span> was similarly consistent about the median. The <span class="math inline">\(NH_4^+\)</span> field data points were lower than the median of these simulations but within the range of these simulations (Figure <a href="sediment-biogeochemistry.html#fig:VCW-1">14.52</a> (c)). <span class="math inline">\(pH\)</span> was between 7 and 8, and both <span class="math inline">\(NH_4^+\)</span> and <span class="math inline">\(pH\)</span> had increasing ranges with depth (Figure <a href="sediment-biogeochemistry.html#fig:VCW-1">14.52</a> (d)).</p>
+<p>The <span class="math inline">\(MnO_2\)</span> and <span class="math inline">\(Fe(OH)_{3A}\)</span> concentrations matched the data points closely, however, the <span class="math inline">\(Mn^{2+}\)</span> and <span class="math inline">\(Fe^{2+}\)</span> concentrations in this simulation peaked at a higher concentration around 2 cm (Figure <a href="sediment-biogeochemistry.html#fig:VCW-1">14.52</a> (e) to (h)). It was suspected that this might have resulted from poor resolution of the grid, however, this simulation had the same number and size of layers as Van Cappellen and Wang. Below 5 cm deep the simulation had a lower concentration than the field data, but the deepest 5 field data points for <span class="math inline">\(Fe^{2+}\)</span> were within the ranges of the simulations.</p>
+<p><span class="math inline">\(H_2S\)</span> had the greatest variation relative to its concentration, which increased with depth (Figure <a href="sediment-biogeochemistry.html#fig:VCW-1">14.52</a> (i)). <span class="math inline">\(FeS\)</span> concentration had a consistently concave shape whereas the field data appeared to be concave around 3 cm deep, and the relatively high concentration of <span class="math inline">\(FeS\)</span> at 5 mmol L<sup>-1</sup> in the oxic zone was not within the range of these simulations (Figure <a href="sediment-biogeochemistry.html#fig:VCW-1">14.52</a> (j)). <span class="math inline">\(FeS\)</span> could be simulated close to the field data, but only by fixing the bottom boundary at 45 mmol L<sup>-1</sup> and not because of its precipitation from <span class="math inline">\(Fe^{2+}\)</span> and <span class="math inline">\(H_2S\)</span>.</p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:VCW-1"></span>
 <img src="images/23-sediment_biogeochemistry/VCW/VCW-01.png" alt="Concentration-depth profiles for major variables from 100 simulations, including the median result (black line), ranges of results (grey bands) and field data from Van Cappellen and Wang (1996) (squares)." width="80%" />
 <p class="caption">
-Figure 14.50: Concentration-depth profiles for major variables from 100 simulations, including the median result (black line), ranges of results (grey bands) and field data from Van Cappellen and Wang (1996) (squares).
+Figure 14.52: Concentration-depth profiles for major variables from 100 simulations, including the median result (black line), ranges of results (grey bands) and field data from Van Cappellen and Wang (1996) (squares).
 </p>
 </div>
 </div>
 <div id="reaction-rates" class="section level5 unnumbered hasAnchor">
 <h5><em>Reaction rates</em><a href="sediment-biogeochemistry.html#reaction-rates" class="anchor-section" aria-label="Anchor link to header"></a></h5>
-<p>The rates of aerobic respiration and denitrification using CANDI-AED were close to the simulated rates of Van Cappellen and Wang (1996), though in the deepest part of the sediment, the simulated aerobic rate was greater using this model (Figure <a href="sediment-biogeochemistry.html#fig:VCW-2">14.51</a> (b)). As a result of the classic inhibition sequence, oxygen penetration to greater depths limited denitrification to a deeper depth layer (Figure <a href="sediment-biogeochemistry.html#fig:VCW-2">14.51</a> (c)). This carried through to the peaks of all oxidation rates, which then occurred at slightly greater depths than in the Van Cappellen and Wang simulation. The maximum manganese reduction rate was smaller than in the Van Cappellen and Wang simulation, however, in both models the manganese reduction rate was very small relative to the other terminal oxidation processes (Figure <a href="sediment-biogeochemistry.html#fig:VCW-2">14.51</a> (d)). The iron reduction rate was similar to the Van Cappellen and Wang rate, although slightly smaller, and could not be increased without leading to greater discrepancy in the dissolved iron concentration profiles (Figure <a href="sediment-biogeochemistry.html#fig:VCW-2">14.51</a> (e)). The sulphate reduction profiles were very close and as with Van Cappellen and Wang, methanogenesis was completely inhibited (Figure <a href="sediment-biogeochemistry.html#fig:VCW-2">14.51</a> (f)).</p>
+<p>The rates of aerobic respiration and denitrification using CANDI-AED were close to the simulated rates of Van Cappellen and Wang (1996), though in the deepest part of the sediment, the simulated aerobic rate was greater using this model (Figure <a href="sediment-biogeochemistry.html#fig:VCW-2">14.53</a> (b)). As a result of the classic inhibition sequence, oxygen penetration to greater depths limited denitrification to a deeper depth layer (Figure <a href="sediment-biogeochemistry.html#fig:VCW-2">14.53</a> (c)). This carried through to the peaks of all oxidation rates, which then occurred at slightly greater depths than in the Van Cappellen and Wang simulation. The maximum manganese reduction rate was smaller than in the Van Cappellen and Wang simulation, however, in both models the manganese reduction rate was very small relative to the other terminal oxidation processes (Figure <a href="sediment-biogeochemistry.html#fig:VCW-2">14.53</a> (d)). The iron reduction rate was similar to the Van Cappellen and Wang rate, although slightly smaller, and could not be increased without leading to greater discrepancy in the dissolved iron concentration profiles (Figure <a href="sediment-biogeochemistry.html#fig:VCW-2">14.53</a> (e)). The sulphate reduction profiles were very close and as with Van Cappellen and Wang, methanogenesis was completely inhibited (Figure <a href="sediment-biogeochemistry.html#fig:VCW-2">14.53</a> (f)).</p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:VCW-2"></span>
 <img src="images/23-sediment_biogeochemistry/VCW/R1.png" alt="Profiles of organic matter oxidation rate with depth. Plot (a) was the total organic matter reaction rate set by a fixed depth-oxidation rate, which Van Cappellen and Wang based on the measured data (squares). Plots (b) to (f) are these simulated rates (solid lines) compared with the simulated rates of Van Cappellen and Wang (dashed lines) and in the case of sulphate reduction, measured data (squares, (f))" width="80%" />
 <p class="caption">
-Figure 14.51: Profiles of organic matter oxidation rate with depth. Plot (a) was the total organic matter reaction rate set by a fixed depth-oxidation rate, which Van Cappellen and Wang based on the measured data (squares). Plots (b) to (f) are these simulated rates (solid lines) compared with the simulated rates of Van Cappellen and Wang (dashed lines) and in the case of sulphate reduction, measured data (squares, (f))
+Figure 14.53: Profiles of organic matter oxidation rate with depth. Plot (a) was the total organic matter reaction rate set by a fixed depth-oxidation rate, which Van Cappellen and Wang based on the measured data (squares). Plots (b) to (f) are these simulated rates (solid lines) compared with the simulated rates of Van Cappellen and Wang (dashed lines) and in the case of sulphate reduction, measured data (squares, (f))
 </p>
 </div>
 </div>
 </div>
 </div>
-<div id="case-study-aquaculture-and-sediment-recovery" class="section level3 hasAnchor" number="14.6.2">
-<h3><span class="header-section-number">14.6.2</span> Case study: Aquaculture and sediment recovery<a href="sediment-biogeochemistry.html#case-study-aquaculture-and-sediment-recovery" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div id="introduction-1" class="section level4 hasAnchor" number="14.6.2.1">
-<h4><span class="header-section-number">14.6.2.1</span> Introduction<a href="sediment-biogeochemistry.html#introduction-1" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div id="case-study-aquaculture-and-sediment-recovery" class="section level3 hasAnchor" number="14.6.3">
+<h3><span class="header-section-number">14.6.3</span> Case study: Aquaculture and sediment recovery<a href="sediment-biogeochemistry.html#case-study-aquaculture-and-sediment-recovery" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="introduction-1" class="section level4 hasAnchor" number="14.6.3.1">
+<h4><span class="header-section-number">14.6.3.1</span> Introduction<a href="sediment-biogeochemistry.html#introduction-1" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>This work was to calculate the potential effect of aquaculture on the sediment condition of fish cages propose for installation near Delma Island, UAE. The approach was similar to work done in 2015 on a proposed aquaculture site in the Abrolhos Islands, Western Australia (Paraska et al. 2015). The main objective of this part of the project was to calculate sediment chemical pore water concentrations and fluxes to the water column in response to variable deposition loads.</p>
 <p>The primary input to the sediment model was reactive organic matter derived from aquaculture waste. This was calculated by models that tracked the transport and deposition of waste particles as a result of the hydrodynamics at the study site and different fish stocking scenarios. The organic matter deposition was then used as input to the sediment diagenesis model. The resulting waste particle distributions and sediment chemistry were then used to calculate the spatial effect of the cage operations on the sediment environment, as well as the greater chemistry and ecology of the water column.</p>
-<p>The motivation behind the study was to ensure that potentially detrimental effects to the ecosystem were avoided. Fish cages may be positioned in one place for up to five years, after which the cage would be moved and the environment left to recover to its background condition (Figure <a href="sediment-biogeochemistry.html#fig:UAEFish-1">14.52</a>).</p>
+<p>The motivation behind the study was to ensure that potentially detrimental effects to the ecosystem were avoided. Fish cages may be positioned in one place for up to five years, after which the cage would be moved and the environment left to recover to its background condition (Figure <a href="sediment-biogeochemistry.html#fig:UAEFish-1">14.54</a>).</p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:UAEFish-1"></span>
 <img src="images/23-sediment_biogeochemistry/UAEFish/UAE1-08.png" alt="Schematic of the design of the aquaculture simulation. The simulation had a period of spin up, a period of aquaculture and then a recovery period." width="80%" />
 <p class="caption">
-Figure 14.52: Schematic of the design of the aquaculture simulation. The simulation had a period of spin up, a period of aquaculture and then a recovery period.
+Figure 14.54: Schematic of the design of the aquaculture simulation. The simulation had a period of spin up, a period of aquaculture and then a recovery period.
 </p>
 </div>
 <p>Given enough energy in the water column, the concentrations of chemicals can return to background relatively quickly. However, the conditions in the sediment can take much longer to recover to background levels, because the transport of chemicals is much slower. In particular, there may be a high concentration of <span class="math inline">\(H_2S\)</span> and low concentration of <span class="math inline">\(O_2\)</span>, which together would make the environment uninhabitable for benthic fauna. Further, there may be an ongoing flux of nitrogen and phosphorus from the sediment to the water column, which could fuel algal blooms.</p>
 </div>
-<div id="methods" class="section level4 hasAnchor" number="14.6.2.2">
-<h4><span class="header-section-number">14.6.2.2</span> Methods<a href="sediment-biogeochemistry.html#methods" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div id="methods" class="section level4 hasAnchor" number="14.6.3.2">
+<h4><span class="header-section-number">14.6.3.2</span> Methods<a href="sediment-biogeochemistry.html#methods" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <div id="uae-study-site-chemical-concentrations-and-fluxes" class="section level5 unnumbered hasAnchor">
 <h5><em>UAE study site chemical concentrations and fluxes</em><a href="sediment-biogeochemistry.html#uae-study-site-chemical-concentrations-and-fluxes" class="anchor-section" aria-label="Anchor link to header"></a></h5>
 <p>Field data was measured at the study site in October 2017 and analysed in November 2017. CANDI-AED was tailored to as many local conditions as possible. Since the <span class="math inline">\(O_2\)</span> and <span class="math inline">\(NO_3^-\)</span> concentrations were high and the <span class="math inline">\(NH_4^+\)</span> concentration was zero, it was assumed that the water column was aerobic. Total nitrogen in the sediment was measured as approximately 300 mg kg<sup>-1</sup>, which was converted to approximately 30 mmol L<sup>-1</sup>. Inorganic phosphate and total phosphate in the bottom water were set to zero, since their concentrations were below the detection limit. Total phosphorus in the sediment was measured as approximately 500 mg kg<sup>-1</sup>, which was converted to approximately 20 mmol L<sup>-1</sup>.</p>
@@ -7810,13 +7857,13 @@ Figure 14.52: Schematic of the design of the aquaculture simulation. The simulat
 </caption>
 <thead>
 <tr>
-<th style="text-align:center;font-weight: bold;color: white !important;background-color: #14759e !important;">
+<th style="text-align:center;font-weight: bold;color: white !important;background-color: rgba(20, 117, 158, 255) !important;">
 Modelled variable
 </th>
-<th style="text-align:center;font-weight: bold;color: white !important;background-color: #14759e !important;">
+<th style="text-align:center;font-weight: bold;color: white !important;background-color: rgba(20, 117, 158, 255) !important;">
 Field measurement (mg L<sup>-1</sup>)
 </th>
-<th style="text-align:center;font-weight: bold;color: white !important;background-color: #14759e !important;">
+<th style="text-align:center;font-weight: bold;color: white !important;background-color: rgba(20, 117, 158, 255) !important;">
 Modelled boundary (mmol L<sup>-1</sup>)
 </th>
 </tr>
@@ -7957,13 +8004,13 @@ POM<sub>R</sub>
 </caption>
 <thead>
 <tr>
-<th style="text-align:center;font-weight: bold;color: white !important;background-color: #14759e !important;">
+<th style="text-align:center;font-weight: bold;color: white !important;background-color: rgba(20, 117, 158, 255) !important;">
 Modelled variable
 </th>
-<th style="text-align:center;font-weight: bold;color: white !important;background-color: #14759e !important;">
+<th style="text-align:center;font-weight: bold;color: white !important;background-color: rgba(20, 117, 158, 255) !important;">
 Field measurement (mg L<sup>-1</sup>)
 </th>
-<th style="text-align:center;font-weight: bold;color: white !important;background-color: #14759e !important;">
+<th style="text-align:center;font-weight: bold;color: white !important;background-color: rgba(20, 117, 158, 255) !important;">
 Modelled boundary (mmol L<sup>-1</sup>)
 </th>
 </tr>
@@ -8085,15 +8132,15 @@ POM<sub>R</sub>
 </center>
 </div>
 </div>
-<div id="results-1" class="section level4 hasAnchor" number="14.6.2.3">
-<h4><span class="header-section-number">14.6.2.3</span> Results<a href="sediment-biogeochemistry.html#results-1" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div id="results-1" class="section level4 hasAnchor" number="14.6.3.3">
+<h4><span class="header-section-number">14.6.3.3</span> Results<a href="sediment-biogeochemistry.html#results-1" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <div id="fluxes" class="section level5 unnumbered hasAnchor">
 <h5><em>Fluxes</em><a href="sediment-biogeochemistry.html#fluxes" class="anchor-section" aria-label="Anchor link to header"></a></h5>
-<p>Results of the steady state oxygen and nutrient fluxes being returned from the diagenesis model for the range of depositional rates (FOM) are shown below (figure <a href="sediment-biogeochemistry.html#fig:UAEFish-2">14.53</a>, table <a href="sediment-biogeochemistry.html#tab:param-UAE4">14.27</a>.</p>
+<p>Results of the steady state oxygen and nutrient fluxes being returned from the diagenesis model for the range of depositional rates (FOM) are shown below (figure <a href="sediment-biogeochemistry.html#fig:UAEFish-2">14.55</a>, table <a href="sediment-biogeochemistry.html#tab:param-UAE4">14.27</a>.</p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:UAEFish-2"></span>
 <img src="images/23-sediment_biogeochemistry/UAEFish/Results1.png" alt="Summary of the nutrient fluxes at the sediment water interface returned from the diagenesis model for a wide range of input dpeositional flux rates." width="110%" />
 <p class="caption">
-Figure 14.53: Summary of the nutrient fluxes at the sediment water interface returned from the diagenesis model for a wide range of input dpeositional flux rates.
+Figure 14.55: Summary of the nutrient fluxes at the sediment water interface returned from the diagenesis model for a wide range of input dpeositional flux rates.
 </p>
 </div>
 <p><br />
@@ -8106,19 +8153,19 @@ Figure 14.53: Summary of the nutrient fluxes at the sediment water interface ret
 </caption>
 <thead>
 <tr>
-<th style="text-align:center;font-weight: bold;color: white !important;background-color: #14759e !important;">
+<th style="text-align:center;font-weight: bold;color: white !important;background-color: rgba(20, 117, 158, 255) !important;">
 OM Flux upper range
 </th>
-<th style="text-align:center;font-weight: bold;color: white !important;background-color: #14759e !important;">
+<th style="text-align:center;font-weight: bold;color: white !important;background-color: rgba(20, 117, 158, 255) !important;">
 NO<sub>3</sub><sup>-</sup>
 </th>
-<th style="text-align:center;font-weight: bold;color: white !important;background-color: #14759e !important;">
+<th style="text-align:center;font-weight: bold;color: white !important;background-color: rgba(20, 117, 158, 255) !important;">
 PO<sub>4</sub><sup>3-</sup>
 </th>
-<th style="text-align:center;font-weight: bold;color: white !important;background-color: #14759e !important;">
+<th style="text-align:center;font-weight: bold;color: white !important;background-color: rgba(20, 117, 158, 255) !important;">
 NH<sub>4</sub><sup>+</sup>
 </th>
-<th style="text-align:center;font-weight: bold;color: white !important;background-color: #14759e !important;">
+<th style="text-align:center;font-weight: bold;color: white !important;background-color: rgba(20, 117, 158, 255) !important;">
 O<sub>2</sub>
 </th>
 </tr>
@@ -8332,13 +8379,13 @@ O<sub>2</sub>
 </table>
 </div>
 </center>
-<p>Recovery time periods are shown below in Figure <a href="sediment-biogeochemistry.html#fig:UAEFish-3">14.54</a> UAEFish-3, and threshold depositional rates for recovery time categorisation is summarised in Table <a href="sediment-biogeochemistry.html#tab:param-UAE6">14.28</a>. The impact zone thresholds are summarised in Table <a href="sediment-biogeochemistry.html#tab:param-UAE7">14.29</a>.</p>
+<p>Recovery time periods are shown below in Figure <a href="sediment-biogeochemistry.html#fig:UAEFish-3">14.56</a> UAEFish-3, and threshold depositional rates for recovery time categorisation is summarised in Table <a href="sediment-biogeochemistry.html#tab:param-UAE6">14.28</a>. The impact zone thresholds are summarised in Table <a href="sediment-biogeochemistry.html#tab:param-UAE7">14.29</a>.</p>
 <p><br />
 </p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:UAEFish-3"></span>
 <img src="images/23-sediment_biogeochemistry/UAEFish/Results2.png" alt="Predicted recovery time of the sediment for the 2cm oxygen and solfide concentration to return to within 85% of the pre-farmign value. Series depicted for aquaculture loading periods of 1-5 years." width="90%" />
 <p class="caption">
-Figure 14.54: Predicted recovery time of the sediment for the 2cm oxygen and solfide concentration to return to within 85% of the pre-farmign value. Series depicted for aquaculture loading periods of 1-5 years.
+Figure 14.56: Predicted recovery time of the sediment for the 2cm oxygen and solfide concentration to return to within 85% of the pre-farmign value. Series depicted for aquaculture loading periods of 1-5 years.
 </p>
 </div>
 <center>
@@ -8349,19 +8396,19 @@ Figure 14.54: Predicted recovery time of the sediment for the 2cm oxygen and sol
 </caption>
 <thead>
 <tr>
-<th style="text-align:center;font-weight: bold;color: white !important;background-color: #14759e !important;">
+<th style="text-align:center;font-weight: bold;color: white !important;background-color: rgba(20, 117, 158, 255) !important;">
 Recovery time
 </th>
-<th style="text-align:center;font-weight: bold;color: white !important;background-color: #14759e !important;">
+<th style="text-align:center;font-weight: bold;color: white !important;background-color: rgba(20, 117, 158, 255) !important;">
 1 Year
 </th>
-<th style="text-align:center;font-weight: bold;color: white !important;background-color: #14759e !important;">
+<th style="text-align:center;font-weight: bold;color: white !important;background-color: rgba(20, 117, 158, 255) !important;">
 2 Years
 </th>
-<th style="text-align:center;font-weight: bold;color: white !important;background-color: #14759e !important;">
+<th style="text-align:center;font-weight: bold;color: white !important;background-color: rgba(20, 117, 158, 255) !important;">
 3 Years
 </th>
-<th style="text-align:center;font-weight: bold;color: white !important;background-color: #14759e !important;">
+<th style="text-align:center;font-weight: bold;color: white !important;background-color: rgba(20, 117, 158, 255) !important;">
 5 Years
 </th>
 </tr>
@@ -8514,19 +8561,19 @@ Recovery time
 </caption>
 <thead>
 <tr>
-<th style="text-align:center;font-weight: bold;color: white !important;background-color: #14759e !important;">
+<th style="text-align:center;font-weight: bold;color: white !important;background-color: rgba(20, 117, 158, 255) !important;">
 Zone
 </th>
-<th style="text-align:center;font-weight: bold;color: white !important;background-color: #14759e !important;">
+<th style="text-align:center;font-weight: bold;color: white !important;background-color: rgba(20, 117, 158, 255) !important;">
 1 Year
 </th>
-<th style="text-align:center;font-weight: bold;color: white !important;background-color: #14759e !important;">
+<th style="text-align:center;font-weight: bold;color: white !important;background-color: rgba(20, 117, 158, 255) !important;">
 2 Years
 </th>
-<th style="text-align:center;font-weight: bold;color: white !important;background-color: #14759e !important;">
+<th style="text-align:center;font-weight: bold;color: white !important;background-color: rgba(20, 117, 158, 255) !important;">
 3 Years
 </th>
-<th style="text-align:center;font-weight: bold;color: white !important;background-color: #14759e !important;">
+<th style="text-align:center;font-weight: bold;color: white !important;background-color: rgba(20, 117, 158, 255) !important;">
 5 Years
 </th>
 </tr>
@@ -8609,8 +8656,8 @@ Zone of Influence
 </div>
 </div>
 </div>
-<div id="case-study-the-coorong-dynamics-model" class="section level3 hasAnchor" number="14.6.3">
-<h3><span class="header-section-number">14.6.3</span> Case study: The Coorong Dynamics Model<a href="sediment-biogeochemistry.html#case-study-the-coorong-dynamics-model" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="case-study-the-coorong-dynamics-model" class="section level3 hasAnchor" number="14.6.4">
+<h3><span class="header-section-number">14.6.4</span> Case study: The Coorong Dynamics Model<a href="sediment-biogeochemistry.html#case-study-the-coorong-dynamics-model" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>CANDI-AED was used as part of the assessment of the Coorong Lagoon in South Australia. It was used as part of <a href="https://aquaticecodynamics.github.io/cdm-science/index.html">a greater project</a>, in conjunction with a fully 3D resolved Tuflow-FV model of the lagoon, that had full biogeochemistry modules and habitat assessments. In particular, the nutrient budgets and the effects of the hypersalinity were calculated. The <a href="https://aquaticecodynamics.github.io/cdm-science/sediment-biogeochemistry.html">sediment modelling component of the project</a> in particular looked at the effect of hypersalinity on bioturbation and bioirrigation rates, and the resulting effects such as denitrification.</p>
 <!-- ```{r CoorongSVG-1, echo=FALSE, fig.cap="Test",fig.show='hold',fig.align='center', out.width = '90%'} -->
 <!-- knitr::include_graphics("images/23-sediment_biogeochemistry/VCW/t_D_C_6panel_oxy.svg") -->
@@ -8625,35 +8672,35 @@ Zone of Influence
 <!-- knitr::include_graphics("images/23-sediment_biogeochemistry/UAEFish/ThreePlots_amm_11_reso_200.png") -->
 <!-- ``` -->
 </div>
-<div id="case-study-mass-balance-and-numerical-error-checking" class="section level3 hasAnchor" number="14.6.4">
-<h3><span class="header-section-number">14.6.4</span> Case study: Mass balance and numerical error checking<a href="sediment-biogeochemistry.html#case-study-mass-balance-and-numerical-error-checking" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div id="aim" class="section level4 hasAnchor" number="14.6.4.1">
-<h4><span class="header-section-number">14.6.4.1</span> Aim<a href="sediment-biogeochemistry.html#aim" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div id="case-study-mass-balance-and-numerical-error-checking" class="section level3 hasAnchor" number="14.6.5">
+<h3><span class="header-section-number">14.6.5</span> Case study: Mass balance and numerical error checking<a href="sediment-biogeochemistry.html#case-study-mass-balance-and-numerical-error-checking" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="aim" class="section level4 hasAnchor" number="14.6.5.1">
+<h4><span class="header-section-number">14.6.5.1</span> Aim<a href="sediment-biogeochemistry.html#aim" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>As a reactive transport model, CANDI-AED has a complex set of reactions. It was possible that a numerical error was present in the model, but masked by the other processes. For example, a numerical error could possibly remove or create mass, but this could be masked by the other reaction and transport processes. Thus the overall aim of this section was to run a set of simple simulations in which a possible loss or gain of mass would be distinguished from reaction and transport.</p>
 </div>
-<div id="method" class="section level4 hasAnchor" number="14.6.4.2">
-<h4><span class="header-section-number">14.6.4.2</span> Method<a href="sediment-biogeochemistry.html#method" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<div id="solid-mass-integration-and-flux-accumulation-comparison" class="section level5 hasAnchor" number="14.6.4.2.1">
-<h5><span class="header-section-number">14.6.4.2.1</span> Solid mass integration and flux accumulation comparison<a href="sediment-biogeochemistry.html#solid-mass-integration-and-flux-accumulation-comparison" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<div id="method" class="section level4 hasAnchor" number="14.6.5.2">
+<h4><span class="header-section-number">14.6.5.2</span> Method<a href="sediment-biogeochemistry.html#method" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div id="solid-mass-integration-and-flux-accumulation-comparison" class="section level5 hasAnchor" number="14.6.5.2.1">
+<h5><span class="header-section-number">14.6.5.2.1</span> Solid mass integration and flux accumulation comparison<a href="sediment-biogeochemistry.html#solid-mass-integration-and-flux-accumulation-comparison" class="anchor-section" aria-label="Anchor link to header"></a></h5>
 </div>
-<div id="solute-mass-integration-and-flux-accumulation-comparison" class="section level5 hasAnchor" number="14.6.4.2.2">
-<h5><span class="header-section-number">14.6.4.2.2</span> Solute mass integration and flux accumulation comparison<a href="sediment-biogeochemistry.html#solute-mass-integration-and-flux-accumulation-comparison" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<div id="solute-mass-integration-and-flux-accumulation-comparison" class="section level5 hasAnchor" number="14.6.5.2.2">
+<h5><span class="header-section-number">14.6.5.2.2</span> Solute mass integration and flux accumulation comparison<a href="sediment-biogeochemistry.html#solute-mass-integration-and-flux-accumulation-comparison" class="anchor-section" aria-label="Anchor link to header"></a></h5>
 </div>
-<div id="simulation-matrix" class="section level5 hasAnchor" number="14.6.4.2.3">
-<h5><span class="header-section-number">14.6.4.2.3</span> Simulation matrix<a href="sediment-biogeochemistry.html#simulation-matrix" class="anchor-section" aria-label="Anchor link to header"></a></h5>
-</div>
-</div>
-<div id="results-2" class="section level4 hasAnchor" number="14.6.4.3">
-<h4><span class="header-section-number">14.6.4.3</span> Results<a href="sediment-biogeochemistry.html#results-2" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<div id="simulation-matrix-1" class="section level5 hasAnchor" number="14.6.4.3.1">
-<h5><span class="header-section-number">14.6.4.3.1</span> Simulation matrix<a href="sediment-biogeochemistry.html#simulation-matrix-1" class="anchor-section" aria-label="Anchor link to header"></a></h5>
-</div>
-<div id="general-result" class="section level5 hasAnchor" number="14.6.4.3.2">
-<h5><span class="header-section-number">14.6.4.3.2</span> General result<a href="sediment-biogeochemistry.html#general-result" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<div id="simulation-matrix" class="section level5 hasAnchor" number="14.6.5.2.3">
+<h5><span class="header-section-number">14.6.5.2.3</span> Simulation matrix<a href="sediment-biogeochemistry.html#simulation-matrix" class="anchor-section" aria-label="Anchor link to header"></a></h5>
 </div>
 </div>
-<div id="discussion" class="section level4 hasAnchor" number="14.6.4.4">
-<h4><span class="header-section-number">14.6.4.4</span> Discussion<a href="sediment-biogeochemistry.html#discussion" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div id="results-2" class="section level4 hasAnchor" number="14.6.5.3">
+<h4><span class="header-section-number">14.6.5.3</span> Results<a href="sediment-biogeochemistry.html#results-2" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div id="simulation-matrix-1" class="section level5 hasAnchor" number="14.6.5.3.1">
+<h5><span class="header-section-number">14.6.5.3.1</span> Simulation matrix<a href="sediment-biogeochemistry.html#simulation-matrix-1" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+</div>
+<div id="general-result" class="section level5 hasAnchor" number="14.6.5.3.2">
+<h5><span class="header-section-number">14.6.5.3.2</span> General result<a href="sediment-biogeochemistry.html#general-result" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+</div>
+</div>
+<div id="discussion" class="section level4 hasAnchor" number="14.6.5.4">
+<h4><span class="header-section-number">14.6.5.4</span> Discussion<a href="sediment-biogeochemistry.html#discussion" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 </div>
 </div>
 </div>
@@ -8686,13 +8733,15 @@ Zone of Influence
 <!-- library(kableExtra) -->
 <!-- library(readxl) -->
 <!-- library(downlit) -->
-<!-- <a href="sediment-biogeochemistry.html#fig:23-pic2">14.3</a> -->
+<!-- <!-- <a href="sediment-biogeochemistry.html#fig:23-pic2">14.3</a> -->
+<p>–&gt;</p>
 <!-- install.packages("hablar") -->
 <!-- install.packages("xaringanextra") -->
-<!-- install.packages(leaflet"") -->
+<!-- install.packages("leaflet") -->
 <!-- install.packages("gt") -->
 <!-- install.packages("seacarb") -->
 <!-- install.packages("plotly") -->
+<!-- install.packages("tidyverse") -->
 
 </div>
 </div>
@@ -8763,7 +8812,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');

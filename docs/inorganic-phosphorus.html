@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>7 Inorganic Phosphorus | The AED Manual</title>
   <meta name="description" content="Work in progress." />
-  <meta name="generator" content="bookdown 0.26 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.39 and GitBook 2.6.7" />
 
   <meta property="og:title" content="7 Inorganic Phosphorus | The AED Manual" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="" />
 
 
-<meta name="date" content="2023-06-29" />
+<meta name="date" content="2024-06-11" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -51,26 +51,27 @@
 <link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
-<script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script>
+<script src="libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
 <link href="libs/leaflet-1.3.1/leaflet.css" rel="stylesheet" />
 <script src="libs/leaflet-1.3.1/leaflet.js"></script>
 <link href="libs/leafletfix-1.0.0/leafletfix.css" rel="stylesheet" />
 <script src="libs/proj4-2.6.2/proj4.min.js"></script>
 <script src="libs/Proj4Leaflet-1.0.1/proj4leaflet.js"></script>
 <link href="libs/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet" />
-<script src="libs/leaflet-binding-2.1.1/leaflet.js"></script>
-<script src="libs/leaflet-providers-1.9.0/leaflet-providers_1.9.0.js"></script>
-<script src="libs/leaflet-providers-plugin-2.1.1/leaflet-providers-plugin.js"></script>
-<link href="libs/panelset-0.2.6/panelset.css" rel="stylesheet" />
-<script src="libs/panelset-0.2.6/panelset.js"></script>
+<script src="libs/leaflet-binding-2.2.2/leaflet.js"></script>
+<script src="libs/leaflet-providers-2.0.0/leaflet-providers_2.0.0.js"></script>
+<script src="libs/leaflet-providers-plugin-2.2.2/leaflet-providers-plugin.js"></script>
+<link href="libs/panelset-0.3.0/panelset.css" rel="stylesheet" />
+<script src="libs/panelset-0.3.0/panelset.js"></script>
 <script src="libs/kePrint-0.0.1/kePrint.js"></script>
 <link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
-<script src="libs/plotly-binding-4.10.0/plotly.js"></script>
+<link href="libs/htmltools-fill-0.5.8.1/fill.css" rel="stylesheet" />
+<script src="libs/plotly-binding-4.10.4/plotly.js"></script>
 <script src="libs/typedarray-0.1/typedarray.min.js"></script>
-<link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet" />
-<script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
-<link href="libs/plotly-htmlwidgets-css-2.5.1/plotly-htmlwidgets.css" rel="stylesheet" />
-<script src="libs/plotly-main-2.5.1/plotly-latest.min.js"></script>
+<link href="libs/crosstalk-1.2.1/css/crosstalk.min.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.2.1/js/crosstalk.min.js"></script>
+<link href="libs/plotly-htmlwidgets-css-2.11.1/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="libs/plotly-main-2.11.1/plotly-latest.min.js"></script>
 <script src="https://hypothes.is/embed.js" async></script>
   
 
@@ -111,11 +112,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }
 code span.al { color: #ef2929; } /* Alert */
 code span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #c4a000; } /* Attribute */
+code span.at { color: #204a87; } /* Attribute */
 code span.bn { color: #0000cf; } /* BaseN */
 code span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
 code span.ch { color: #4e9a06; } /* Char */
-code span.cn { color: #000000; } /* Constant */
+code span.cn { color: #8f5902; } /* Constant */
 code span.co { color: #8f5902; font-style: italic; } /* Comment */
 code span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
 code span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
@@ -124,14 +125,14 @@ code span.dv { color: #0000cf; } /* DecVal */
 code span.er { color: #a40000; font-weight: bold; } /* Error */
 code span.ex { } /* Extension */
 code span.fl { color: #0000cf; } /* Float */
-code span.fu { color: #000000; } /* Function */
+code span.fu { color: #204a87; font-weight: bold; } /* Function */
 code span.im { } /* Import */
 code span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
 code span.kw { color: #204a87; font-weight: bold; } /* Keyword */
 code span.op { color: #ce5c00; font-weight: bold; } /* Operator */
 code span.ot { color: #8f5902; } /* Other */
 code span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
-code span.sc { color: #000000; } /* SpecialChar */
+code span.sc { color: #ce5c00; font-weight: bold; } /* SpecialChar */
 code span.ss { color: #4e9a06; } /* SpecialString */
 code span.st { color: #4e9a06; } /* String */
 code span.va { color: #000000; } /* Variable */
@@ -139,6 +140,10 @@ code span.vs { color: #4e9a06; } /* VerbatimString */
 code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
 <style type="text/css">
 /* Used with Pandoc 2.11+ new --citeproc when CSL is used */
 div.csl-bib-body { }
@@ -430,10 +435,12 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="14.6" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#case-studies-examples-6"><i class="fa fa-check"></i><b>14.6</b> Case Studies &amp; Examples</a>
 <ul>
-<li class="chapter" data-level="14.6.1" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#case-study-model-benchmark-example"><i class="fa fa-check"></i><b>14.6.1</b> Case study: Model benchmark example</a></li>
-<li class="chapter" data-level="14.6.2" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#case-study-aquaculture-and-sediment-recovery"><i class="fa fa-check"></i><b>14.6.2</b> Case study: Aquaculture and sediment recovery</a></li>
-<li class="chapter" data-level="14.6.3" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#case-study-the-coorong-dynamics-model"><i class="fa fa-check"></i><b>14.6.3</b> Case study: The Coorong Dynamics Model</a></li>
-<li class="chapter" data-level="14.6.4" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#case-study-mass-balance-and-numerical-error-checking"><i class="fa fa-check"></i><b>14.6.4</b> Case study: Mass balance and numerical error checking</a></li>
+<li class="chapter" data-level="14.6.1" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#section"><i class="fa fa-check"></i><b>14.6.1</b> </a></li>
+<li class="chapter" data-level="" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#numerical-mass-balance-and-flux-confirmation"><i class="fa fa-check"></i>Numerical mass balance and flux confirmation</a></li>
+<li class="chapter" data-level="14.6.2" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#case-study-model-benchmark-example"><i class="fa fa-check"></i><b>14.6.2</b> Case study: Model benchmark example</a></li>
+<li class="chapter" data-level="14.6.3" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#case-study-aquaculture-and-sediment-recovery"><i class="fa fa-check"></i><b>14.6.3</b> Case study: Aquaculture and sediment recovery</a></li>
+<li class="chapter" data-level="14.6.4" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#case-study-the-coorong-dynamics-model"><i class="fa fa-check"></i><b>14.6.4</b> Case study: The Coorong Dynamics Model</a></li>
+<li class="chapter" data-level="14.6.5" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#case-study-mass-balance-and-numerical-error-checking"><i class="fa fa-check"></i><b>14.6.5</b> Case study: Mass balance and numerical error checking</a></li>
 </ul></li>
 <li class="chapter" data-level="14.7" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#references"><i class="fa fa-check"></i><b>14.7</b> References</a></li>
 </ul></li>
@@ -594,32 +601,32 @@ f_{sed}^{FRP}=F_{sed}^{frp} \theta_{sedfrp}^{T-20}\Phi_{O2}^{frp}\left[O_2\right
 </caption>
 <thead>
 <tr>
-<th style="text-align:left;font-weight: bold;color: white !important;background-color: #14759e !important;">
+<th style="text-align:left;font-weight: bold;color: white !important;background-color: rgba(20, 117, 158, 255) !important;">
 AED name
 </th>
-<th style="text-align:left;font-weight: bold;color: white !important;background-color: #14759e !important;">
+<th style="text-align:left;font-weight: bold;color: white !important;background-color: rgba(20, 117, 158, 255) !important;">
 Symbol
 </th>
-<th style="text-align:left;font-weight: bold;color: white !important;background-color: #14759e !important;">
+<th style="text-align:left;font-weight: bold;color: white !important;background-color: rgba(20, 117, 158, 255) !important;">
 Description
 </th>
-<th style="text-align:left;font-weight: bold;color: white !important;background-color: #14759e !important;">
+<th style="text-align:left;font-weight: bold;color: white !important;background-color: rgba(20, 117, 158, 255) !important;">
 Unit
 </th>
-<th style="text-align:left;font-weight: bold;color: white !important;background-color: #14759e !important;">
+<th style="text-align:left;font-weight: bold;color: white !important;background-color: rgba(20, 117, 158, 255) !important;">
 Type
 </th>
-<th style="text-align:left;font-weight: bold;color: white !important;background-color: #14759e !important;">
+<th style="text-align:left;font-weight: bold;color: white !important;background-color: rgba(20, 117, 158, 255) !important;">
 Typical Range
 </th>
-<th style="text-align:left;font-weight: bold;color: white !important;background-color: #14759e !important;">
+<th style="text-align:left;font-weight: bold;color: white !important;background-color: rgba(20, 117, 158, 255) !important;">
 Comments
 </th>
 </tr>
 </thead>
 <tbody>
 <tr grouplength="2">
-<td colspan="7" style="border-bottom: 1px solid;background-color: #ebebeb !important;">
+<td colspan="7" style="border-bottom: 1px solid;background-color: rgba(235, 235, 235, 255) !important;">
 <strong>aed_phosphorus</strong>
 </td>
 </tr>
@@ -670,7 +677,7 @@ activated when <code>simPO4Adsorption=T</code>
 </td>
 </tr>
 <tr grouplength="5">
-<td colspan="7" style="border-bottom: 1px solid;background-color: #ebebeb !important;">
+<td colspan="7" style="border-bottom: 1px solid;background-color: rgba(235, 235, 235, 255) !important;">
 <strong>Dependent variables</strong>
 </td>
 </tr>
@@ -802,32 +809,32 @@ optional for sorption, via <code>pH_variable</code>
 </caption>
 <thead>
 <tr>
-<th style="text-align:left;font-weight: bold;color: white !important;background-color: #14759e !important;">
+<th style="text-align:left;font-weight: bold;color: white !important;background-color: rgba(20, 117, 158, 255) !important;">
 AED name
 </th>
-<th style="text-align:left;font-weight: bold;color: white !important;background-color: #14759e !important;">
+<th style="text-align:left;font-weight: bold;color: white !important;background-color: rgba(20, 117, 158, 255) !important;">
 Symbol
 </th>
-<th style="text-align:left;font-weight: bold;color: white !important;background-color: #14759e !important;">
+<th style="text-align:left;font-weight: bold;color: white !important;background-color: rgba(20, 117, 158, 255) !important;">
 Description
 </th>
-<th style="text-align:left;font-weight: bold;color: white !important;background-color: #14759e !important;">
+<th style="text-align:left;font-weight: bold;color: white !important;background-color: rgba(20, 117, 158, 255) !important;">
 Unit
 </th>
-<th style="text-align:left;font-weight: bold;color: white !important;background-color: #14759e !important;">
+<th style="text-align:left;font-weight: bold;color: white !important;background-color: rgba(20, 117, 158, 255) !important;">
 Type
 </th>
-<th style="text-align:left;font-weight: bold;color: white !important;background-color: #14759e !important;">
+<th style="text-align:left;font-weight: bold;color: white !important;background-color: rgba(20, 117, 158, 255) !important;">
 Typical Range
 </th>
-<th style="text-align:left;font-weight: bold;color: white !important;background-color: #14759e !important;">
+<th style="text-align:left;font-weight: bold;color: white !important;background-color: rgba(20, 117, 158, 255) !important;">
 Comments
 </th>
 </tr>
 </thead>
 <tbody>
 <tr grouplength="1">
-<td colspan="7" style="border-bottom: 1px solid;background-color: #ebebeb !important;">
+<td colspan="7" style="border-bottom: 1px solid;background-color: rgba(235, 235, 235, 255) !important;">
 <strong>diag_level = 0+</strong>
 </td>
 </tr>
@@ -855,7 +862,7 @@ activated when <code>simWetDeposition=T</code> or <code>simDryDeposition=T</code
 </td>
 </tr>
 <tr grouplength="1">
-<td colspan="7" style="border-bottom: 1px solid;background-color: #ebebeb !important;">
+<td colspan="7" style="border-bottom: 1px solid;background-color: rgba(235, 235, 235, 255) !important;">
 <strong>diag_level = 2+</strong>
 </td>
 </tr>
@@ -898,32 +905,32 @@ benthic
 </caption>
 <thead>
 <tr>
-<th style="text-align:left;font-weight: bold;color: white !important;background-color: #14759e !important;">
+<th style="text-align:left;font-weight: bold;color: white !important;background-color: rgba(20, 117, 158, 255) !important;">
 AED name
 </th>
-<th style="text-align:left;font-weight: bold;color: white !important;background-color: #14759e !important;">
+<th style="text-align:left;font-weight: bold;color: white !important;background-color: rgba(20, 117, 158, 255) !important;">
 Symbol
 </th>
-<th style="text-align:left;font-weight: bold;color: white !important;background-color: #14759e !important;">
+<th style="text-align:left;font-weight: bold;color: white !important;background-color: rgba(20, 117, 158, 255) !important;">
 Description
 </th>
-<th style="text-align:left;font-weight: bold;color: white !important;background-color: #14759e !important;">
+<th style="text-align:left;font-weight: bold;color: white !important;background-color: rgba(20, 117, 158, 255) !important;">
 Unit
 </th>
-<th style="text-align:left;font-weight: bold;color: white !important;background-color: #14759e !important;">
+<th style="text-align:left;font-weight: bold;color: white !important;background-color: rgba(20, 117, 158, 255) !important;">
 Type
 </th>
-<th style="text-align:left;font-weight: bold;color: white !important;background-color: #14759e !important;">
+<th style="text-align:left;font-weight: bold;color: white !important;background-color: rgba(20, 117, 158, 255) !important;">
 Typical Range
 </th>
-<th style="text-align:left;font-weight: bold;color: white !important;background-color: #14759e !important;">
+<th style="text-align:left;font-weight: bold;color: white !important;background-color: rgba(20, 117, 158, 255) !important;">
 Comments
 </th>
 </tr>
 </thead>
 <tbody>
 <tr grouplength="3">
-<td colspan="7" style="border-bottom: 1px solid;background-color: #ebebeb !important;">
+<td colspan="7" style="border-bottom: 1px solid;background-color: rgba(235, 235, 235, 255) !important;">
 <strong>Initialisation</strong>
 </td>
 </tr>
@@ -997,7 +1004,7 @@ optional limitier
 </td>
 </tr>
 <tr grouplength="5">
-<td colspan="7" style="border-bottom: 1px solid;background-color: #ebebeb !important;">
+<td colspan="7" style="border-bottom: 1px solid;background-color: rgba(235, 235, 235, 255) !important;">
 <strong>Sediment exchange</strong>
 </td>
 </tr>
@@ -1116,7 +1123,7 @@ optional link to enable spatially resolved fluxes
 </td>
 </tr>
 <tr grouplength="10">
-<td colspan="7" style="border-bottom: 1px solid;background-color: #ebebeb !important;">
+<td colspan="7" style="border-bottom: 1px solid;background-color: rgba(235, 235, 235, 255) !important;">
 <strong>Sorption</strong>
 </td>
 </tr>
@@ -1348,7 +1355,7 @@ string
 </td>
 </tr>
 <tr grouplength="4">
-<td colspan="7" style="border-bottom: 1px solid;background-color: #ebebeb !important;">
+<td colspan="7" style="border-bottom: 1px solid;background-color: rgba(235, 235, 235, 255) !important;">
 <strong>Atmospheric exchange</strong>
 </td>
 </tr>
@@ -1453,49 +1460,49 @@ float
 <div id="setup-configuration-3" class="section level2 hasAnchor" number="7.4">
 <h2><span class="header-section-number">7.4</span> Setup &amp; Configuration<a href="inorganic-phosphorus.html#setup-configuration-3" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>An example <code>aed.nml</code> parameter specification block for the <code>aed_phosphorus</code> module that is modelling dissolved and particulare (sorbed) <span class="math inline">\(PO_4\)</span> is shown below:</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode fortran"><code class="sourceCode fortranfixed"><span id="cb7-1"><a href="inorganic-phosphorus.html#cb7-1" aria-hidden="true" tabindex="-1"></a>  <span class="kw">&amp;</span>aed_phosphorus</span>
-<span id="cb7-2"><a href="inorganic-phosphorus.html#cb7-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">!-- Initial value</span></span>
-<span id="cb7-3"><a href="inorganic-phosphorus.html#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="bu">     f</span>rp_initial          <span class="kw">=</span> <span class="fl">0.25</span></span>
-<span id="cb7-4"><a href="inorganic-phosphorus.html#cb7-4" aria-hidden="true" tabindex="-1"></a>    <span class="co">!-- Sediment flux</span></span>
-<span id="cb7-5"><a href="inorganic-phosphorus.html#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="bu">     F</span>sed_frp             <span class="kw">=</span> <span class="fl">0.08</span></span>
-<span id="cb7-6"><a href="inorganic-phosphorus.html#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="bu">     K</span>sed_frp             <span class="kw">=</span> <span class="fl">30.0</span></span>
-<span id="cb7-7"><a href="inorganic-phosphorus.html#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="bu">     t</span>heta_sed_frp        <span class="kw">=</span> <span class="fl">1.08</span></span>
-<span id="cb7-8"><a href="inorganic-phosphorus.html#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="bu">     p</span>hosphorus_reactant_variable <span class="kw">=</span><span class="st">&#39;OXY_oxy&#39;</span></span>
-<span id="cb7-9"><a href="inorganic-phosphorus.html#cb7-9" aria-hidden="true" tabindex="-1"></a>    <span class="co">!-- PO4 adsorption</span></span>
-<span id="cb7-10"><a href="inorganic-phosphorus.html#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="bu">     s</span>imPO4Adsorption     <span class="kw">=</span> <span class="cn">.true.</span></span>
-<span id="cb7-11"><a href="inorganic-phosphorus.html#cb7-11" aria-hidden="true" tabindex="-1"></a><span class="bu">     a</span>ds_use_external_tss <span class="kw">=</span> <span class="cn">.true.</span></span>
-<span id="cb7-12"><a href="inorganic-phosphorus.html#cb7-12" aria-hidden="true" tabindex="-1"></a><span class="bu">     P</span>O4AdsorptionModel   <span class="kw">=</span> <span class="dv">1</span></span>
-<span id="cb7-13"><a href="inorganic-phosphorus.html#cb7-13" aria-hidden="true" tabindex="-1"></a><span class="bu">     K</span>po4p                <span class="kw">=</span> <span class="fl">0.01</span></span>
-<span id="cb7-14"><a href="inorganic-phosphorus.html#cb7-14" aria-hidden="true" tabindex="-1"></a><span class="bu">     w</span>_po4ads             <span class="kw">=</span> <span class="kw">-</span><span class="fl">0.01</span></span>
-<span id="cb7-15"><a href="inorganic-phosphorus.html#cb7-15" aria-hidden="true" tabindex="-1"></a>  <span class="kw">/</span></span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode fortran"><code class="sourceCode fortranfixed"><span id="cb7-1"><a href="inorganic-phosphorus.html#cb7-1" tabindex="-1"></a>  <span class="kw">&amp;</span>aed_phosphorus</span>
+<span id="cb7-2"><a href="inorganic-phosphorus.html#cb7-2" tabindex="-1"></a>    <span class="co">!-- Initial value</span></span>
+<span id="cb7-3"><a href="inorganic-phosphorus.html#cb7-3" tabindex="-1"></a><span class="bu">     f</span>rp_initial          <span class="kw">=</span> <span class="fl">0.25</span></span>
+<span id="cb7-4"><a href="inorganic-phosphorus.html#cb7-4" tabindex="-1"></a>    <span class="co">!-- Sediment flux</span></span>
+<span id="cb7-5"><a href="inorganic-phosphorus.html#cb7-5" tabindex="-1"></a><span class="bu">     F</span>sed_frp             <span class="kw">=</span> <span class="fl">0.08</span></span>
+<span id="cb7-6"><a href="inorganic-phosphorus.html#cb7-6" tabindex="-1"></a><span class="bu">     K</span>sed_frp             <span class="kw">=</span> <span class="fl">30.0</span></span>
+<span id="cb7-7"><a href="inorganic-phosphorus.html#cb7-7" tabindex="-1"></a><span class="bu">     t</span>heta_sed_frp        <span class="kw">=</span> <span class="fl">1.08</span></span>
+<span id="cb7-8"><a href="inorganic-phosphorus.html#cb7-8" tabindex="-1"></a><span class="bu">     p</span>hosphorus_reactant_variable <span class="kw">=</span><span class="st">&#39;OXY_oxy&#39;</span></span>
+<span id="cb7-9"><a href="inorganic-phosphorus.html#cb7-9" tabindex="-1"></a>    <span class="co">!-- PO4 adsorption</span></span>
+<span id="cb7-10"><a href="inorganic-phosphorus.html#cb7-10" tabindex="-1"></a><span class="bu">     s</span>imPO4Adsorption     <span class="kw">=</span> <span class="cn">.true.</span></span>
+<span id="cb7-11"><a href="inorganic-phosphorus.html#cb7-11" tabindex="-1"></a><span class="bu">     a</span>ds_use_external_tss <span class="kw">=</span> <span class="cn">.true.</span></span>
+<span id="cb7-12"><a href="inorganic-phosphorus.html#cb7-12" tabindex="-1"></a><span class="bu">     P</span>O4AdsorptionModel   <span class="kw">=</span> <span class="dv">1</span></span>
+<span id="cb7-13"><a href="inorganic-phosphorus.html#cb7-13" tabindex="-1"></a><span class="bu">     K</span>po4p                <span class="kw">=</span> <span class="fl">0.01</span></span>
+<span id="cb7-14"><a href="inorganic-phosphorus.html#cb7-14" tabindex="-1"></a><span class="bu">     w</span>_po4ads             <span class="kw">=</span> <span class="kw">-</span><span class="fl">0.01</span></span>
+<span id="cb7-15"><a href="inorganic-phosphorus.html#cb7-15" tabindex="-1"></a>  <span class="kw">/</span></span></code></pre></div>
 <p><br>
 An example <code>aed.nml</code> parameter specification block for the <code>aed_phosphorus</code> module that includes all options is shown below:</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode fortran"><code class="sourceCode fortranfixed"><span id="cb8-1"><a href="inorganic-phosphorus.html#cb8-1" aria-hidden="true" tabindex="-1"></a>  <span class="kw">&amp;</span>aed_phosphorus</span>
-<span id="cb8-2"><a href="inorganic-phosphorus.html#cb8-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">!-- Initial value</span></span>
-<span id="cb8-3"><a href="inorganic-phosphorus.html#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="bu">     f</span>rp_initial <span class="kw">=</span> <span class="fl">0.25</span></span>
-<span id="cb8-4"><a href="inorganic-phosphorus.html#cb8-4" aria-hidden="true" tabindex="-1"></a>    <span class="co">!-- Sediment flux</span></span>
-<span id="cb8-5"><a href="inorganic-phosphorus.html#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="bu">     F</span>sed_frp <span class="kw">=</span> <span class="fl">0.08</span></span>
-<span id="cb8-6"><a href="inorganic-phosphorus.html#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="bu">     K</span>sed_frp <span class="kw">=</span> <span class="fl">30.0</span></span>
-<span id="cb8-7"><a href="inorganic-phosphorus.html#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="bu">     t</span>heta_sed_frp <span class="kw">=</span> <span class="fl">1.08</span></span>
-<span id="cb8-8"><a href="inorganic-phosphorus.html#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="bu">     p</span>hosphorus_reactant_variable <span class="kw">=</span><span class="st">&#39;OXY_oxy&#39;</span></span>
-<span id="cb8-9"><a href="inorganic-phosphorus.html#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="bu">     F</span>sed_frp_variable <span class="kw">=</span><span class="st">&#39;SDF_Fsed_frp&#39;</span></span>
-<span id="cb8-10"><a href="inorganic-phosphorus.html#cb8-10" aria-hidden="true" tabindex="-1"></a>    <span class="co">!-- PO4 adsorption</span></span>
-<span id="cb8-11"><a href="inorganic-phosphorus.html#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="bu">     s</span>imPO4Adsorption <span class="kw">=</span> <span class="cn">.true.</span></span>
-<span id="cb8-12"><a href="inorganic-phosphorus.html#cb8-12" aria-hidden="true" tabindex="-1"></a><span class="bu">     a</span>ds_use_external_tss <span class="kw">=</span> <span class="cn">.false.</span></span>
-<span id="cb8-13"><a href="inorganic-phosphorus.html#cb8-13" aria-hidden="true" tabindex="-1"></a><span class="bu">     p</span>o4sorption_target_variable <span class="kw">=</span><span class="st">&#39;NCS_ss1&#39;</span></span>
-<span id="cb8-14"><a href="inorganic-phosphorus.html#cb8-14" aria-hidden="true" tabindex="-1"></a><span class="bu">     P</span>O4AdsorptionModel <span class="kw">=</span> <span class="dv">2</span></span>
-<span id="cb8-15"><a href="inorganic-phosphorus.html#cb8-15" aria-hidden="true" tabindex="-1"></a><span class="bu">     K</span>po4p <span class="kw">=</span> <span class="fl">0.01</span></span>
-<span id="cb8-16"><a href="inorganic-phosphorus.html#cb8-16" aria-hidden="true" tabindex="-1"></a><span class="bu">     K</span>adsratio<span class="kw">=</span> <span class="fl">1.0</span></span>
-<span id="cb8-17"><a href="inorganic-phosphorus.html#cb8-17" aria-hidden="true" tabindex="-1"></a><span class="bu">     Q</span>max <span class="kw">=</span> <span class="fl">1.0</span></span>
-<span id="cb8-18"><a href="inorganic-phosphorus.html#cb8-18" aria-hidden="true" tabindex="-1"></a><span class="bu">     w</span>_po4ads <span class="kw">=</span> <span class="kw">-</span><span class="dv">9999</span>     <span class="co">! Note: -9999 links PO4-ad settling to target_variable</span></span>
-<span id="cb8-19"><a href="inorganic-phosphorus.html#cb8-19" aria-hidden="true" tabindex="-1"></a><span class="bu">     a</span>ds_use_pH <span class="kw">=</span> <span class="cn">.false.</span></span>
-<span id="cb8-20"><a href="inorganic-phosphorus.html#cb8-20" aria-hidden="true" tabindex="-1"></a><span class="bu">     p</span>H_variable <span class="kw">=</span> <span class="st">&#39;CAR_pH&#39;</span></span>
-<span id="cb8-21"><a href="inorganic-phosphorus.html#cb8-21" aria-hidden="true" tabindex="-1"></a>    <span class="co">!-- Atmospheric deposition</span></span>
-<span id="cb8-22"><a href="inorganic-phosphorus.html#cb8-22" aria-hidden="true" tabindex="-1"></a><span class="bu">     s</span>imDryDeposition <span class="kw">=</span> <span class="cn">.false.</span></span>
-<span id="cb8-23"><a href="inorganic-phosphorus.html#cb8-23" aria-hidden="true" tabindex="-1"></a><span class="bu">     a</span>tm_pip_dd <span class="kw">=</span> <span class="fl">0.00</span></span>
-<span id="cb8-24"><a href="inorganic-phosphorus.html#cb8-24" aria-hidden="true" tabindex="-1"></a><span class="bu">     s</span>imWetDeposition <span class="kw">=</span> <span class="cn">.true.</span></span>
-<span id="cb8-25"><a href="inorganic-phosphorus.html#cb8-25" aria-hidden="true" tabindex="-1"></a><span class="bu">     a</span>tm_frp_conc <span class="kw">=</span> <span class="fl">0.01</span></span>
-<span id="cb8-26"><a href="inorganic-phosphorus.html#cb8-26" aria-hidden="true" tabindex="-1"></a>  <span class="kw">/</span></span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode fortran"><code class="sourceCode fortranfixed"><span id="cb8-1"><a href="inorganic-phosphorus.html#cb8-1" tabindex="-1"></a>  <span class="kw">&amp;</span>aed_phosphorus</span>
+<span id="cb8-2"><a href="inorganic-phosphorus.html#cb8-2" tabindex="-1"></a>    <span class="co">!-- Initial value</span></span>
+<span id="cb8-3"><a href="inorganic-phosphorus.html#cb8-3" tabindex="-1"></a><span class="bu">     f</span>rp_initial <span class="kw">=</span> <span class="fl">0.25</span></span>
+<span id="cb8-4"><a href="inorganic-phosphorus.html#cb8-4" tabindex="-1"></a>    <span class="co">!-- Sediment flux</span></span>
+<span id="cb8-5"><a href="inorganic-phosphorus.html#cb8-5" tabindex="-1"></a><span class="bu">     F</span>sed_frp <span class="kw">=</span> <span class="fl">0.08</span></span>
+<span id="cb8-6"><a href="inorganic-phosphorus.html#cb8-6" tabindex="-1"></a><span class="bu">     K</span>sed_frp <span class="kw">=</span> <span class="fl">30.0</span></span>
+<span id="cb8-7"><a href="inorganic-phosphorus.html#cb8-7" tabindex="-1"></a><span class="bu">     t</span>heta_sed_frp <span class="kw">=</span> <span class="fl">1.08</span></span>
+<span id="cb8-8"><a href="inorganic-phosphorus.html#cb8-8" tabindex="-1"></a><span class="bu">     p</span>hosphorus_reactant_variable <span class="kw">=</span><span class="st">&#39;OXY_oxy&#39;</span></span>
+<span id="cb8-9"><a href="inorganic-phosphorus.html#cb8-9" tabindex="-1"></a><span class="bu">     F</span>sed_frp_variable <span class="kw">=</span><span class="st">&#39;SDF_Fsed_frp&#39;</span></span>
+<span id="cb8-10"><a href="inorganic-phosphorus.html#cb8-10" tabindex="-1"></a>    <span class="co">!-- PO4 adsorption</span></span>
+<span id="cb8-11"><a href="inorganic-phosphorus.html#cb8-11" tabindex="-1"></a><span class="bu">     s</span>imPO4Adsorption <span class="kw">=</span> <span class="cn">.true.</span></span>
+<span id="cb8-12"><a href="inorganic-phosphorus.html#cb8-12" tabindex="-1"></a><span class="bu">     a</span>ds_use_external_tss <span class="kw">=</span> <span class="cn">.false.</span></span>
+<span id="cb8-13"><a href="inorganic-phosphorus.html#cb8-13" tabindex="-1"></a><span class="bu">     p</span>o4sorption_target_variable <span class="kw">=</span><span class="st">&#39;NCS_ss1&#39;</span></span>
+<span id="cb8-14"><a href="inorganic-phosphorus.html#cb8-14" tabindex="-1"></a><span class="bu">     P</span>O4AdsorptionModel <span class="kw">=</span> <span class="dv">2</span></span>
+<span id="cb8-15"><a href="inorganic-phosphorus.html#cb8-15" tabindex="-1"></a><span class="bu">     K</span>po4p <span class="kw">=</span> <span class="fl">0.01</span></span>
+<span id="cb8-16"><a href="inorganic-phosphorus.html#cb8-16" tabindex="-1"></a><span class="bu">     K</span>adsratio<span class="kw">=</span> <span class="fl">1.0</span></span>
+<span id="cb8-17"><a href="inorganic-phosphorus.html#cb8-17" tabindex="-1"></a><span class="bu">     Q</span>max <span class="kw">=</span> <span class="fl">1.0</span></span>
+<span id="cb8-18"><a href="inorganic-phosphorus.html#cb8-18" tabindex="-1"></a><span class="bu">     w</span>_po4ads <span class="kw">=</span> <span class="kw">-</span><span class="dv">9999</span>     <span class="co">! Note: -9999 links PO4-ad settling to target_variable</span></span>
+<span id="cb8-19"><a href="inorganic-phosphorus.html#cb8-19" tabindex="-1"></a><span class="bu">     a</span>ds_use_pH <span class="kw">=</span> <span class="cn">.false.</span></span>
+<span id="cb8-20"><a href="inorganic-phosphorus.html#cb8-20" tabindex="-1"></a><span class="bu">     p</span>H_variable <span class="kw">=</span> <span class="st">&#39;CAR_pH&#39;</span></span>
+<span id="cb8-21"><a href="inorganic-phosphorus.html#cb8-21" tabindex="-1"></a>    <span class="co">!-- Atmospheric deposition</span></span>
+<span id="cb8-22"><a href="inorganic-phosphorus.html#cb8-22" tabindex="-1"></a><span class="bu">     s</span>imDryDeposition <span class="kw">=</span> <span class="cn">.false.</span></span>
+<span id="cb8-23"><a href="inorganic-phosphorus.html#cb8-23" tabindex="-1"></a><span class="bu">     a</span>tm_pip_dd <span class="kw">=</span> <span class="fl">0.00</span></span>
+<span id="cb8-24"><a href="inorganic-phosphorus.html#cb8-24" tabindex="-1"></a><span class="bu">     s</span>imWetDeposition <span class="kw">=</span> <span class="cn">.true.</span></span>
+<span id="cb8-25"><a href="inorganic-phosphorus.html#cb8-25" tabindex="-1"></a><span class="bu">     a</span>tm_frp_conc <span class="kw">=</span> <span class="fl">0.01</span></span>
+<span id="cb8-26"><a href="inorganic-phosphorus.html#cb8-26" tabindex="-1"></a>  <span class="kw">/</span></span></code></pre></div>
 </div>
 <div id="case-studies-examples-3" class="section level2 hasAnchor" number="7.5">
 <h2><span class="header-section-number">7.5</span> Case Studies &amp; Examples<a href="inorganic-phosphorus.html#case-studies-examples-3" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -1504,23 +1511,35 @@ An example <code>aed.nml</code> parameter specification block for the <code>aed_
 <p>Falling Creek Reservoir (FCR) is a eutrophic, drinking water supply reservoir located outside of Roanoke, Virginia, USA. In the summer months, FCR will quickly exhibit hypolimnetic anoxia after the onset of thermal stratification. To manage anoxia, managers deployed a hypolimnetic oxygenation system in FCR in which water is extracted from ~1 m above the sediment onshore, where super-saturated oxygen is injected into the water before it is returned to the hypolimnion at the same depth and temperature. Consequently, the hypolimnion of FCR experiences a wide range of oxygen conditions throughout the year, which have dramatic effects on phosphorus fluxes from the sediment.</p>
 <p>Carey et al. (2022) analyzed the effect of oxygenation on phosphorus cycling in FCR over seven years, and used the <code>aed_phosphorus</code> model with the GLM hydrodynamic model to simulate the large temporal variability in phosphorus concentrations experienced under contrasting oxygenation conditions.</p>
 <center>
-<div class="figure">
-<img src="images/13-phosphorus/CareyGCB_phosphorus.jpg" style="width:90.0%" alt="" />
-<p class="caption">Figure 1: Modeled (black line) vs. observed (red points) total phosphorus (TP, left panel) and dissolved reactive phosphorus (DRP) in the hypolimnion of Falling Creek Reservoir, USA.</p>
+<div class="float">
+<img src="images/13-phosphorus/CareyGCB_phosphorus.jpg" style="width:90.0%" alt="Figure 1: Modeled (black line) vs. observed (red points) total phosphorus (TP, left panel) and dissolved reactive phosphorus (DRP) in the hypolimnion of Falling Creek Reservoir, USA." />
+<div class="figcaption">Figure 1: Modeled (black line) vs. observed (red points) total phosphorus (TP, left panel) and dissolved reactive phosphorus (DRP) in the hypolimnion of Falling Creek Reservoir, USA.</div>
 </div>
 </center>
 <p>As evident from Figure 1, the model was generally able to recreate dissolved and total phosphorus dynamics in FCR (Carey et al. 2022). Carey et al. (2022) also used the validated model to explore the effects of anoxia on coupled biogeochemical cycling in the reservoir based on different oxygenation scenarios.</p>
 </div>
 <div id="publications-3" class="section level3 hasAnchor" number="7.5.2">
 <h3><span class="header-section-number">7.5.2</span> Publications<a href="inorganic-phosphorus.html#publications-3" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div id="bjtvcxlxce" style="overflow-x:auto;overflow-y:auto;width:100%;height:500px;">
-<style>html {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+<div id="viuzarjzgn" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:100%;height:500px;">
+<style>#viuzarjzgn table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-#bjtvcxlxce .gt_table {
+#viuzarjzgn thead, #viuzarjzgn tbody, #viuzarjzgn tfoot, #viuzarjzgn tr, #viuzarjzgn td, #viuzarjzgn th {
+  border-style: none;
+}
+
+#viuzarjzgn p {
+  margin: 0;
+  padding: 0;
+}
+
+#viuzarjzgn .gt_table {
   display: table;
   border-collapse: collapse;
+  line-height: normal;
   margin-left: auto;
   margin-right: auto;
   color: #333333;
@@ -1543,19 +1562,12 @@ An example <code>aed.nml</code> parameter specification block for the <code>aed_
   border-left-color: #D3D3D3;
 }
 
-#bjtvcxlxce .gt_heading {
-  background-color: #FFFFFF;
-  text-align: center;
-  border-bottom-color: #FFFFFF;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
+#viuzarjzgn .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
 }
 
-#bjtvcxlxce .gt_title {
+#viuzarjzgn .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1567,25 +1579,37 @@ An example <code>aed.nml</code> parameter specification block for the <code>aed_
   border-bottom-width: 0;
 }
 
-#bjtvcxlxce .gt_subtitle {
+#viuzarjzgn .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
-  padding-top: 0;
-  padding-bottom: 6px;
+  padding-top: 3px;
+  padding-bottom: 5px;
   padding-left: 5px;
   padding-right: 5px;
   border-top-color: #FFFFFF;
   border-top-width: 0;
 }
 
-#bjtvcxlxce .gt_bottom_border {
+#viuzarjzgn .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#viuzarjzgn .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#bjtvcxlxce .gt_col_headings {
+#viuzarjzgn .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1600,7 +1624,7 @@ An example <code>aed.nml</code> parameter specification block for the <code>aed_
   border-right-color: #D3D3D3;
 }
 
-#bjtvcxlxce .gt_col_heading {
+#viuzarjzgn .gt_col_heading {
   color: #FFFFFF;
   background-color: #14759E;
   font-size: 14px;
@@ -1620,7 +1644,7 @@ An example <code>aed.nml</code> parameter specification block for the <code>aed_
   overflow-x: hidden;
 }
 
-#bjtvcxlxce .gt_column_spanner_outer {
+#viuzarjzgn .gt_column_spanner_outer {
   color: #FFFFFF;
   background-color: #14759E;
   font-size: 14px;
@@ -1632,15 +1656,15 @@ An example <code>aed.nml</code> parameter specification block for the <code>aed_
   padding-right: 4px;
 }
 
-#bjtvcxlxce .gt_column_spanner_outer:first-child {
+#viuzarjzgn .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#bjtvcxlxce .gt_column_spanner_outer:last-child {
+#viuzarjzgn .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#bjtvcxlxce .gt_column_spanner {
+#viuzarjzgn .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1652,7 +1676,11 @@ An example <code>aed.nml</code> parameter specification block for the <code>aed_
   width: 100%;
 }
 
-#bjtvcxlxce .gt_group_heading {
+#viuzarjzgn .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#viuzarjzgn .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1675,9 +1703,10 @@ An example <code>aed.nml</code> parameter specification block for the <code>aed_
   border-right-width: 1px;
   border-right-color: #D3D3D3;
   vertical-align: middle;
+  text-align: left;
 }
 
-#bjtvcxlxce .gt_empty_group_heading {
+#viuzarjzgn .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #D3D3D3;
@@ -1692,15 +1721,15 @@ An example <code>aed.nml</code> parameter specification block for the <code>aed_
   vertical-align: middle;
 }
 
-#bjtvcxlxce .gt_from_md > :first-child {
+#viuzarjzgn .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#bjtvcxlxce .gt_from_md > :last-child {
+#viuzarjzgn .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#bjtvcxlxce .gt_row {
+#viuzarjzgn .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1719,7 +1748,7 @@ An example <code>aed.nml</code> parameter specification block for the <code>aed_
   overflow-x: hidden;
 }
 
-#bjtvcxlxce .gt_stub {
+#viuzarjzgn .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1732,7 +1761,7 @@ An example <code>aed.nml</code> parameter specification block for the <code>aed_
   padding-right: 5px;
 }
 
-#bjtvcxlxce .gt_stub_row_group {
+#viuzarjzgn .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1746,11 +1775,15 @@ An example <code>aed.nml</code> parameter specification block for the <code>aed_
   vertical-align: top;
 }
 
-#bjtvcxlxce .gt_row_group_first td {
+#viuzarjzgn .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#bjtvcxlxce .gt_summary_row {
+#viuzarjzgn .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#viuzarjzgn .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1760,16 +1793,16 @@ An example <code>aed.nml</code> parameter specification block for the <code>aed_
   padding-right: 5px;
 }
 
-#bjtvcxlxce .gt_first_summary_row {
+#viuzarjzgn .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#bjtvcxlxce .gt_first_summary_row.thick {
+#viuzarjzgn .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#bjtvcxlxce .gt_last_summary_row {
+#viuzarjzgn .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1779,7 +1812,7 @@ An example <code>aed.nml</code> parameter specification block for the <code>aed_
   border-bottom-color: #D3D3D3;
 }
 
-#bjtvcxlxce .gt_grand_summary_row {
+#viuzarjzgn .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1789,7 +1822,7 @@ An example <code>aed.nml</code> parameter specification block for the <code>aed_
   padding-right: 5px;
 }
 
-#bjtvcxlxce .gt_first_grand_summary_row {
+#viuzarjzgn .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1799,11 +1832,21 @@ An example <code>aed.nml</code> parameter specification block for the <code>aed_
   border-top-color: #D3D3D3;
 }
 
-#bjtvcxlxce .gt_striped {
+#viuzarjzgn .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#viuzarjzgn .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#bjtvcxlxce .gt_table_body {
+#viuzarjzgn .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1812,7 +1855,7 @@ An example <code>aed.nml</code> parameter specification block for the <code>aed_
   border-bottom-color: #D3D3D3;
 }
 
-#bjtvcxlxce .gt_footnotes {
+#viuzarjzgn .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1826,30 +1869,8 @@ An example <code>aed.nml</code> parameter specification block for the <code>aed_
   border-right-color: #D3D3D3;
 }
 
-#bjtvcxlxce .gt_footnote {
+#viuzarjzgn .gt_footnote {
   margin: 0px;
-  font-size: 90%;
-  padding-left: 4px;
-  padding-right: 4px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#bjtvcxlxce .gt_sourcenotes {
-  color: #333333;
-  background-color: #FFFFFF;
-  border-bottom-style: none;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 2px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-}
-
-#bjtvcxlxce .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1857,97 +1878,117 @@ An example <code>aed.nml</code> parameter specification block for the <code>aed_
   padding-right: 5px;
 }
 
-#bjtvcxlxce .gt_left {
+#viuzarjzgn .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#viuzarjzgn .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#viuzarjzgn .gt_left {
   text-align: left;
 }
 
-#bjtvcxlxce .gt_center {
+#viuzarjzgn .gt_center {
   text-align: center;
 }
 
-#bjtvcxlxce .gt_right {
+#viuzarjzgn .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#bjtvcxlxce .gt_font_normal {
+#viuzarjzgn .gt_font_normal {
   font-weight: normal;
 }
 
-#bjtvcxlxce .gt_font_bold {
+#viuzarjzgn .gt_font_bold {
   font-weight: bold;
 }
 
-#bjtvcxlxce .gt_font_italic {
+#viuzarjzgn .gt_font_italic {
   font-style: italic;
 }
 
-#bjtvcxlxce .gt_super {
+#viuzarjzgn .gt_super {
   font-size: 65%;
 }
 
-#bjtvcxlxce .gt_footnote_marks {
-  font-style: italic;
-  font-weight: normal;
+#viuzarjzgn .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
+  position: initial;
 }
 
-#bjtvcxlxce .gt_asterisk {
+#viuzarjzgn .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#bjtvcxlxce .gt_indent_1 {
+#viuzarjzgn .gt_indent_1 {
   text-indent: 5px;
 }
 
-#bjtvcxlxce .gt_indent_2 {
+#viuzarjzgn .gt_indent_2 {
   text-indent: 10px;
 }
 
-#bjtvcxlxce .gt_indent_3 {
+#viuzarjzgn .gt_indent_3 {
   text-indent: 15px;
 }
 
-#bjtvcxlxce .gt_indent_4 {
+#viuzarjzgn .gt_indent_4 {
   text-indent: 20px;
 }
 
-#bjtvcxlxce .gt_indent_5 {
+#viuzarjzgn .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
-<table class="gt_table">
-  
-  <thead class="gt_col_headings">
-    <tr>
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col">Author/Year</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col">Paper Title</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col">Description</th>
+<table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+  <thead>
+    <tr class="gt_col_headings">
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="Author/Year">Author/Year</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="Paper Title">Paper Title</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="Description">Description</th>
     </tr>
   </thead>
   <tbody class="gt_table_body">
-    <tr><td class="gt_row gt_left"><div class='gt_from_md'><p>Ladwig et al. (2021)</p>
+    <tr><td headers="Author/Year" class="gt_row gt_left"><div class='gt_from_md'><p>Ladwig et al. (2021)</p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>Lake thermal structure drives interannual variability in summer anoxia dynamics in a eutrophic lake over 37 years.</p>
+<td headers="Paper Title" class="gt_row gt_left"><div class='gt_from_md'><p>Lake thermal structure drives interannual variability in summer anoxia dynamics in a eutrophic lake over 37 years.</p>
 </div></td>
-<td class="gt_row gt_center">NA</td></tr>
-    <tr><td class="gt_row gt_left"><div class='gt_from_md'><p>Carey et al. (2022)</p>
+<td headers="Description" class="gt_row gt_center">NA</td></tr>
+    <tr><td headers="Author/Year" class="gt_row gt_left"><div class='gt_from_md'><p>Carey et al. (2022)</p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>Anoxia decreases the magnitude of the carbon, nitrogen, and phosphorus sink in freshwaters</p>
+<td headers="Paper Title" class="gt_row gt_left"><div class='gt_from_md'><p>Anoxia decreases the magnitude of the carbon, nitrogen, and phosphorus sink in freshwaters</p>
 </div></td>
-<td class="gt_row gt_center">NA</td></tr>
-    <tr><td class="gt_row gt_left"><div class='gt_from_md'><p>Farrell et al. (2020)</p>
+<td headers="Description" class="gt_row gt_center">NA</td></tr>
+    <tr><td headers="Author/Year" class="gt_row gt_left"><div class='gt_from_md'><p>Farrell et al. (2020)</p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>Ecosystem-scale nutrient cycling responses to increasing air temperatures vary with lake trophic state</p>
+<td headers="Paper Title" class="gt_row gt_left"><div class='gt_from_md'><p>Ecosystem-scale nutrient cycling responses to increasing air temperatures vary with lake trophic state</p>
 </div></td>
-<td class="gt_row gt_center">NA</td></tr>
-    <tr><td class="gt_row gt_left"><div class='gt_from_md'><p>Ward et al. (2020)</p>
+<td headers="Description" class="gt_row gt_center">NA</td></tr>
+    <tr><td headers="Author/Year" class="gt_row gt_left"><div class='gt_from_md'><p>Ward et al. (2020)</p>
 </div></td>
-<td class="gt_row gt_left"><div class='gt_from_md'><p>Differential responses of maximum and median chlorophyll-a to air temperature and nutrient load in a 31-year oligotrophic lake simulation</p>
+<td headers="Paper Title" class="gt_row gt_left"><div class='gt_from_md'><p>Differential responses of maximum and median chlorophyll-a to air temperature and nutrient load in a 31-year oligotrophic lake simulation</p>
 </div></td>
-<td class="gt_row gt_center">NA</td></tr>
+<td headers="Description" class="gt_row gt_center">NA</td></tr>
   </tbody>
   
   
@@ -2024,7 +2065,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');

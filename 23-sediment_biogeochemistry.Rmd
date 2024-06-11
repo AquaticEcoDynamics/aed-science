@@ -107,7 +107,7 @@ The sediment model is discretised into a user-definable number of depth layers (
 This fixed depth of sediment has a concentration of all variables at all depth layers, and boundary conditions at the upper and lower ends of the domain.
 
 ```{r Init-1, echo=FALSE, fig.cap="Initialisation of the depth layers. The number of layers is set by `maxnpts` and the depth of the simulation by `xl`. The setup can have even spacing (left) using parameter `job` = 1 or increasing spacing (right) `job` = 2.",fig.show='hold',fig.align='center' ,out.width = '60%'}
-knitr::include_graphics("images/23-sediment_biogeochemistry/Initialisation/job1job2-06.png")
+knitr::include_graphics("images/23-sediment_biogeochemistry/Initialisation/job1job2-01.png")
 ```
 
 #### Physical Transport
@@ -1679,7 +1679,7 @@ A salinity factor, $F_{Sal}$, inhibits processes at hypersaline concentrations. 
 ```
 The effect of the scaling is shown in figure \@ref(fig:PhysChem1).
 
-```{r PhysChem1, echo = FALSE, out.width='50%', class = "text-image",fig.show='hold',fig.align='center', fig.cap = "Diaagram of the salinity factor $F_{Sal}$, scaling between 1 and 0 between the parameters. In this diagram `Sal~1~` is 40 and `Sal~2~` is 70."}
+```{r PhysChem1, echo = FALSE, out.width='50%', class = "text-image",fig.show='hold',fig.align='center', fig.cap = "Diagram of the salinity factor $F_{Sal}$, scaling between 1 and 0 between the parameters. In this diagram `Sal~1~` is 40 and `Sal~2~` is 70."}
 knitr::include_graphics("images/23-sediment_biogeochemistry/PhysChemInteractions/FSal-02.png")
 ```
 
@@ -2915,7 +2915,46 @@ Firstly it calculates *FOM_in*, which is the influx of
 
 ## Case Studies & Examples
 
-Three case studies are outlined below.
+Several case studies are outlined below.
+
+###
+### Numerical mass balance and flux confirmation {-}
+
+#### Mass check methods
+The sediment model was run with no variables except one solid (organic matter) and one solute (N2) ‘tracer’, the reaction rates of which were switched to zero. The tracers were applied as fluxes and concentrations at the sediment-water interface boundary. The simulation had 
+
+-	no influx for 0.5 years to check that the model had equilibrated, then 
+-	the boundary flux or concentration was applied for 1 year, then 
+-	the boundary was switched off and the simulation run for a further year. 
+
+The mass of influxing matter was calculated. Key parameters were changed one by one and a range of simulations was run, in order to check for possible mass balance errors. 
+Key parameters that were varied included 
+
+-	either a fixed grid or exponentially increasing layers
+-	grid spacing and time steps
+-	solid sedimentation rates (ω00)
+-	porosity (ρ0 and ρ00)
+-	bioturbation depths and functions
+
+
+
+#### Mass check results
+Simulations were run with a non-reactive solute and solid to check that the total influxing mass was equal to the mass across all layers of the sediment. Parameters and settings were changed until the masses were the same and the model could be used with confidence. In Figure 14 and Figure 15, the bottom left panel in each figure shows the sediment mass as the shaded area, and the influxed mass as the red line. An equal grid spacing of 0.2 cm was used to minimise possible large concentration differences between layers. The model was run quickly with 5-daily time steps, which had no effect on model error. The most important setting was that the initial bioturbation profile was set to the exponential decay option rather than the two-layer option (imix = 2 rather than 1, see [chapter 14.3.2.6](https://aquaticecodynamics.github.io/aed-science/sediment-biogeochemistry.html#model-description-8) for details) because it was found that the sharp cutoff of the two-layer option was prone to small numerical errors, when the concentration differences between layers were large. With the exponential decay setting, bioturbation decreased from its maximum value at the sediment water interface to 10 cm deep. These technical setting tests did not offer a major insight into the scientific understanding of nutrient dynamics in the sediment but they were useful steps for increasing confidence in the nutrient budgets and future coupled models.
+
+```{r dev-masscheck1, echo = FALSE, out.width='75%', class = "text-image",fig.show='hold',fig.align='center', fig.cap = "Results of a simulation for $N_2$ as a tracer. Reaction rates were turned to zero and so concentration and mass changes are the result of transport only. After 6 months of spin-up, both species were introduced at the sediment-water interface for one year. The bottom left figure showed that the total sediment mass and influxing mass were the same."}
+
+knitr::include_graphics("images/23-sediment_biogeochemistry/MassCheck/6P_w0_a_n2_z1_res_500.png")
+
+```
+
+
+```{r dev-masscheck2, echo = FALSE, out.width='75%', class = "text-image",fig.show='hold',fig.align='center', fig.cap = "Results of a simulation for organic matter. Reaction rates were turned to zero and so concentration and mass changes are the result of transport only. After 6 months of spin-up, both species were introduced at the sediment-water interface for one year. The bottom left figure showed that the total sediment mass and influxing mass were the same."}
+
+knitr::include_graphics("images/23-sediment_biogeochemistry/MassCheck/6P_w0_a_pomspecial_z1_res_500.png")
+
+```
+
+
 
 ### Case study: Model benchmark example
 
@@ -3253,16 +3292,19 @@ Van Cappellen, P. and Y. F. Wang (1996). Cycling of iron and manganese in surfac
 
 <!-- library(downlit) -->
 
-<!-- @ref(fig:23-pic2) -->
+<!-- <!-- @ref(fig:23-pic2) --> -->
 
 <!-- install.packages("hablar") -->
 
 <!-- install.packages("xaringanextra") -->
 
-<!-- install.packages(leaflet"") -->
+<!-- install.packages("leaflet") -->
 
 <!-- install.packages("gt") -->
 
 <!-- install.packages("seacarb") -->
 
 <!-- install.packages("plotly") -->
+
+<!-- install.packages("tidyverse") -->
+
