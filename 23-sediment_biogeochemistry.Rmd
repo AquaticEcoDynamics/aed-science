@@ -2917,17 +2917,26 @@ Firstly it calculates *FOM_in*, which is the influx of
 
 Several case studies are outlined below.
 
-###
 ### Numerical mass balance and flux confirmation {-}
 
-#### Mass check methods
-The sediment model was run with no variables except one solid (organic matter) and one solute (N2) ‘tracer’, the reaction rates of which were switched to zero. The tracers were applied as fluxes and concentrations at the sediment-water interface boundary. The simulation had 
+#### Mass check approach {-}
+
+It is important to check that a simulation is conserving mass in the upper layers of the sediment because with the wrong settings, numerical errors can lead to the wrong calculation of sediment mass. One method for checking for errors involved a non-reactive solid and a non-reactive solute being introduced at the sediment-water interface (SWI) as 'tracers'. As they enter at the SWI, the tracers' fluxes and concentrations were converted to mass units, per 1 m$^2$. The concentrations in the sediment were similarly summmed per 1 m$^2$, across all depths. 
+
+#### Mass check methods {-}
+
+#### General settings {-}
+
+The sediment model was run with no variables except one solid (organic matter) and one solute (N2) ‘tracer’, the reaction rates of which were set to zero. The tracers were applied as fluxes and concentrations at the sediment-water interface boundary. The simulation had 
 
 -	no influx for 0.5 years to check that the model had equilibrated, then 
 -	the boundary flux or concentration was applied for 1 year, then 
 -	the boundary was switched off and the simulation run for a further year. 
 
 The mass of influxing matter was calculated. Key parameters were changed one by one and a range of simulations was run, in order to check for possible mass balance errors. 
+
+##### Settings investigated for errors {-}
+
 Key parameters that were varied included 
 
 -	either a fixed grid or exponentially increasing layers
@@ -2936,24 +2945,177 @@ Key parameters that were varied included
 -	porosity (ρ0 and ρ00)
 -	bioturbation depths and functions
 
+##### SWI specific settings{-}
 
+'aed.nml' settings:
 
-#### Mass check results
-Simulations were run with a non-reactive solute and solid to check that the total influxing mass was equal to the mass across all layers of the sediment. Parameters and settings were changed until the masses were the same and the model could be used with confidence. In Figure 14 and Figure 15, the bottom left panel in each figure shows the sediment mass as the shaded area, and the influxed mass as the red line. An equal grid spacing of 0.2 cm was used to minimise possible large concentration differences between layers. The model was run quickly with 5-daily time steps, which had no effect on model error. The most important setting was that the initial bioturbation profile was set to the exponential decay option rather than the two-layer option (imix = 2 rather than 1, see [chapter 14.3.2.6](https://aquaticecodynamics.github.io/aed-science/sediment-biogeochemistry.html#model-description-8) for details) because it was found that the sharp cutoff of the two-layer option was prone to small numerical errors, when the concentration differences between layers were large. With the exponential decay setting, bioturbation decreased from its maximum value at the sediment water interface to 10 cm deep. These technical setting tests did not offer a major insight into the scientific understanding of nutrient dynamics in the sediment but they were useful steps for increasing confidence in the nutrient budgets and future coupled models.
+- 'swibc_mode' = 10 (integer switch). The boundary to the file listed in 'swibc_file'.
+- 'swibc_file' = 'swibc.dat' (filename). The sediment-water interface boundary condition (SWIBC) file in the aed_sdg folder.
+- 'swibc_filevars' = 'pomspecial', 'n2' (variable names). The variables taken from the swibc file. 
+
+'aed_candi_params.csv' settings:
+
+- 'OMModel' = 1 (integer switch). The simplest organic matter reaction model. 
+- 'pomspecial2dic' = 0 (y$^{-1}$). The 'pomspecial' that fluxes in is unreactive.
+
+The 'pomspecial' flux was 1.0E-08 (mmol m$^{-2}$ y$^{-1}$) and the 'n2' concentration was 1.0E-08 (mmol m$^{-3}$) for most of the simulation. The model converted the concentration from mmol m$^{-3}$ to mmol L$^{-1}$.
+
+At time 183 days (or 0.5 years) the flux and concentration increased to 1.0E+02 (mmol m$^{-2}$ y$^{-1}$) and 1.0E+05 (mmol m$^{-3}$). At 548 days (or 1.5 years) the flux and concentration returned to the very low number. 
+
+##### Grid settings {-}
+
+'aed_candi_params.csv' settings:
+
+- 'job' = 0 (integer switch). An evenly-spaced grid.
+- 'p0'  = 0.5 (fraction between 0 and 1). The porosity at the sediment-water interface.
+- 'p00' = 0.5 (fraction between 0 and 1). The porosity at depth. These porosities were set to be the same, which gave the most reliable results.
+- 'imix' = 2 (integer switch). The bioturbation set to have exponential decay rather than the sharper cutoffs with 'imix' = 1.
+- 'maxnpts' = 41 (layers). With 'job' = 0 this must a multiple of the depth (cm) + 1 layer (for the zeroth layer), for example, 81, 201 or 401.
+- 'xl' = 20 (cm). This depth was adequate for this simulation.
+- 'xirrig' = 3 (cm). The depth of irrigation.
+- 'xs' = 5. The shape of the decay curve for bioturbation. 
+
+##### Mass calculation method {-} 
+
+This section outlines the method for calculating the mass. There are many steps in the path to convert all of the quantities, starting with input parameters, calculations in the model, outputs from the model, and post-processing in R. An error in the assumptions behind or calculation of any of these steps would give a false idea of whether mass was being maintained. 
+
+###### Parameter inputs {-}
+
+Porosity is assigned in aed_candi_params.csv, using the parameters 'p0' and 'p00', setting porosity at the highest and lowest layers. 
+
+###### Internal calculations {-}
+
+'aed_secandi' calculates the variable 'poros' as an exponential decay from 'p0' to 'p00'. 
+
+'poros' is used to calculate 'ps' (1 - poros). 'ps' and 'poros' are used to calculate the 'psp' and 'pps' as 'ps'/'poros' and 'poros'/'ps'. These are ratios of porosity that are used to convert solid and solute units elsewhere in candi. For example, as 'Fe(OH)3A' (solid) reduces to 'Fe$^{2+}$' (solute) it is multiplied by 'psp' to convert the units from mmol L $^{-1}$ solids to  mmol L $^{-1}$ (porewater). 
+
+Two other variables are calculated within 'aed_sedcandi', using 'dh', which is the distance between sediment layers (cm). The porewater volume variable, 'porevol', is calculated as 'dh' / 100 $\times$ 'poros'. The solid volume variable, 'solvol', is calculated as 'dh' / 100 $\times$ 1 - 'poros'. These are then expressed as m$^3$ of porewater or solids per 1 m$^2$. 
+
+###### Model outputs {-}
+
+The model produces solid variables in units of mmol / L $^{-1}$ (solids) and solute variables in units of mmol L $^{-1}$ (porewater). These are written as concentrations over time, across all depths. 
+
+The model also produces a time series of SWI fluxes. These are in units of mmol m$^{-2}$ y^{-1}, where the area component is total area of space, rather than the area of solids or porewater.
+
+It also outputs 'porevol' and 'solvol', with entries per depth, but without time, since they do not change over time. 
+
+###### R post-processing {-}
+
+In processing the SWI fluxes file, the fluxes are converted via the following steps:
+
+- raw output is in mmol m$^-2$ y$^-1$ / 1000
+- mol m$^-2$ y$^-1$ $\times$ molecular mass 
+- cumulative [t] g m$^-2$ = cumulative[t-1] g m$^-2$ + g m$^-2$ y$^-1$ [t] $\times$ (time[t] - time[t-1])
+
+This gives a time series of influxed mass per 1 m$^-2$. 
+
+The mass in the sediment is converted via the following steps:
+
+- raw output is in mmol L$^-1$
+- if the variable is a solid, the concentration is multiplied by solvol and 1000. 
+  mmol L^-1 $\times$ m$^3$ of solids per 1 m $^2$
+  = mmol solids per 1 m$^2$
+
+  - if the variable is a solute, the concentration is multiplied by porevol and 1000. 
+  mmol L^-1 $\times$ m$^3$ of porewater per 1 m$^2$
+  = mmol porewater per 1 m$^2$
+
+- mmol m$^{-2}$ / 1000 = mol m$^{-2}$ 
+- mol m$^{-2}$ $\times$ molecular mass = g  m$^{-2}$
+- this matrix of mass m$^{-2}$ is then summed over all depths at each time. This gives a similar time series of mass per 1 m$^{-2}$.
+- for plotting, this is then carved into three sections, 0 cm to 1 cm, 1 cm to 2 cm, and 2 cm to the bottom. This does not affect the total mass. 
+
+#### Mass check results {-}
+
+##### Mass check base case  {-}
+
+Simulations were run with a non-reactive solute and solid to check that the total influxing mass was equal to the mass across all layers of the sediment. Parameters and settings were changed until the masses were the same and the model could be used with confidence. The bottom left panel in each figure shows the sediment mass as the shaded area, and the influxed mass as the red line. An equal grid spacing was used to minimise possible large concentration differences between layers. The model was run quickly with 5-daily time steps, which had no effect on model error. The most important setting was that the initial bioturbation profile was set to the exponential decay option rather than the two-layer option (imix = 2 rather than 1, see [chapter 14.3.2.6](https://aquaticecodynamics.github.io/aed-science/sediment-biogeochemistry.html#model-description-8) for details) because it was found that the sharp cutoff of the two-layer option was prone to small numerical errors, when the concentration differences between layers were large. With the exponential decay setting, bioturbation decreased from its maximum value at the sediment water interface to 10 cm deep. 
 
 ```{r dev-masscheck1, echo = FALSE, out.width='75%', class = "text-image",fig.show='hold',fig.align='center', fig.cap = "Results of a simulation for $N_2$ as a tracer. Reaction rates were turned to zero and so concentration and mass changes are the result of transport only. After 6 months of spin-up, both species were introduced at the sediment-water interface for one year. The bottom left figure showed that the total sediment mass and influxing mass were the same."}
 
-knitr::include_graphics("images/23-sediment_biogeochemistry/MassCheck/6P_w0_a_n2_z1_res_500.png")
+knitr::include_graphics("images/23-sediment_biogeochemistry/MassCheck/6P_n2_.png")
 
 ```
 
 
 ```{r dev-masscheck2, echo = FALSE, out.width='75%', class = "text-image",fig.show='hold',fig.align='center', fig.cap = "Results of a simulation for organic matter. Reaction rates were turned to zero and so concentration and mass changes are the result of transport only. After 6 months of spin-up, both species were introduced at the sediment-water interface for one year. The bottom left figure showed that the total sediment mass and influxing mass were the same."}
 
-knitr::include_graphics("images/23-sediment_biogeochemistry/MassCheck/6P_w0_a_pomspecial_z1_res_500.png")
+knitr::include_graphics("images/23-sediment_biogeochemistry/MassCheck/6P_pomspecial_.png")
 
 ```
 
+##### Deliberate errors - high porosity {-}
+
+Parameters 'p0' and 'p00' were set to 0.75. This resulted in a good solid balance but a higher sediment mass than influxed mass for solutes.
+
+<p align="center">
+<img src = "images/23-sediment_biogeochemistry/MassCheck/Bioturbation_hp.png" width=33%>
+</p>
+
+<p align="center">
+<img src = "images/23-sediment_biogeochemistry/MassCheck/Porosity_hp.png" width=33%>
+</p>
+
+With high porosity, the solid mass reconciled well but the solute mass was higher in the sediment than from the influx. The maximum mass of solute was around 350 g m$^-2$. 
+
+<p align="center">
+<img src = "images/23-sediment_biogeochemistry/MassCheck/1P_Mass_n2_hp.png" width=67%>
+</p>
+
+<p align="center">
+<img src = "images/23-sediment_biogeochemistry/MassCheck/1P_Mass_pomspecial_hp.png" width=67%>
+</p>
+
+##### Deliberate errors - low porosity {-}
+
+Parameters 'p0' and 'p00' were set to 0.75. This resulted in a good solid balance but a higher sediment mass than influxed mass for solutes.
+
+<p align="center">
+<img src = "images/23-sediment_biogeochemistry/MassCheck/Bioturbation_lp.png" width=33%>
+</p>
+
+<p align="center">
+<img src = "images/23-sediment_biogeochemistry/MassCheck/Porosity_lp.png" width=33%>
+</p>
+
+With low porosity, as with high porosity, the solid mass reconciled well but the solute mass was higher in the sediment than from the influx. The absolute mass of solid was the same with high or low porosity, however, the maximum mass of solute was approximately 100 g m$^2$. 
+
+<p align="center">
+<img src = "images/23-sediment_biogeochemistry/MassCheck/1P_Mass_n2_lp.png" width=67%>
+</p>
+
+<p align="center">
+<img src = "images/23-sediment_biogeochemistry/MassCheck/1P_Mass_pomspecial_lp.png" width=67%>
+</p>
+
+
+##### Deliberate errors - porosity gradient {-}
+
+Parameters 'p0' was set to 0.9 and 'p00' to 0.5. 
+
+<p align="center">
+<img src = "images/23-sediment_biogeochemistry/MassCheck/Bioturbation_pg.png" width=33%>
+</p>
+
+<p align="center">
+<img src = "images/23-sediment_biogeochemistry/MassCheck/Porosity_pg.png" width=33%>
+</p>
+
+This created the clearest error. Reported sediment mass was much lower than influxed mass. 
+
+<p align="center">
+<img src = "images/23-sediment_biogeochemistry/MassCheck/1P_Mass_n2_pg.png" width=67%>
+</p>
+
+<p align="center">
+<img src = "images/23-sediment_biogeochemistry/MassCheck/1P_Mass_pomspecial_pg.png" width=67%>
+</p>
+
+##### Bioturbation settings {-}
+
+In this setup, bioturbation does not cause a problem with mass. However, future simulations with different bioturbation settings should be checked for mass conservation. One of the primary risks is having a sharp cutoff for bioturation at two depths.
+
+The bioturbation intensity, 'DB0', might also affect the mass conservation. 
 
 
 ### Case study: Model benchmark example
@@ -3213,28 +3375,6 @@ CANDI-AED was used as part of the assessment of the Coorong Lagoon in South Aust
 <!-- ```{r CoorongPNG-3, echo=FALSE, fig.cap="Test",fig.show='hold',fig.align='center', out.width = '100%'} -->
 <!-- knitr::include_graphics("images/23-sediment_biogeochemistry/UAEFish/ThreePlots_amm_11_reso_200.png") -->
 <!-- ``` -->
-
-### Case study: Mass balance and numerical error checking
-
-#### Aim
-
-As a reactive transport model, CANDI-AED has a complex set of reactions. It was possible that a numerical error was present in the model, but masked by the other processes. For example, a numerical error could possibly remove or create mass, but this could be masked by the other reaction and transport processes. Thus the overall aim of this section was to run a set of simple simulations in which a possible loss or gain of mass would be distinguished from reaction and transport.
-
-#### Method
-
-##### Solid mass integration and flux accumulation comparison
-
-##### Solute mass integration and flux accumulation comparison
-
-##### Simulation matrix
-
-#### Results
-
-##### Simulation matrix
-
-##### General result
-
-#### Discussion
 
 ## References
 

@@ -435,12 +435,10 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="14.6" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#case-studies-examples-6"><i class="fa fa-check"></i><b>14.6</b> Case Studies &amp; Examples</a>
 <ul>
-<li class="chapter" data-level="14.6.1" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#section"><i class="fa fa-check"></i><b>14.6.1</b> </a></li>
 <li class="chapter" data-level="" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#numerical-mass-balance-and-flux-confirmation"><i class="fa fa-check"></i>Numerical mass balance and flux confirmation</a></li>
-<li class="chapter" data-level="14.6.2" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#case-study-model-benchmark-example"><i class="fa fa-check"></i><b>14.6.2</b> Case study: Model benchmark example</a></li>
-<li class="chapter" data-level="14.6.3" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#case-study-aquaculture-and-sediment-recovery"><i class="fa fa-check"></i><b>14.6.3</b> Case study: Aquaculture and sediment recovery</a></li>
-<li class="chapter" data-level="14.6.4" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#case-study-the-coorong-dynamics-model"><i class="fa fa-check"></i><b>14.6.4</b> Case study: The Coorong Dynamics Model</a></li>
-<li class="chapter" data-level="14.6.5" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#case-study-mass-balance-and-numerical-error-checking"><i class="fa fa-check"></i><b>14.6.5</b> Case study: Mass balance and numerical error checking</a></li>
+<li class="chapter" data-level="14.6.1" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#case-study-model-benchmark-example"><i class="fa fa-check"></i><b>14.6.1</b> Case study: Model benchmark example</a></li>
+<li class="chapter" data-level="14.6.2" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#case-study-aquaculture-and-sediment-recovery"><i class="fa fa-check"></i><b>14.6.2</b> Case study: Aquaculture and sediment recovery</a></li>
+<li class="chapter" data-level="14.6.3" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#case-study-the-coorong-dynamics-model"><i class="fa fa-check"></i><b>14.6.3</b> Case study: The Coorong Dynamics Model</a></li>
 </ul></li>
 <li class="chapter" data-level="14.7" data-path="sediment-biogeochemistry.html"><a href="sediment-biogeochemistry.html#references"><i class="fa fa-check"></i><b>14.7</b> References</a></li>
 </ul></li>
@@ -7566,21 +7564,27 @@ Figure 14.49: Simplified version of the extra .sed file.
 <div id="case-studies-examples-6" class="section level2 hasAnchor" number="14.6">
 <h2><span class="header-section-number">14.6</span> Case Studies &amp; Examples<a href="sediment-biogeochemistry.html#case-studies-examples-6" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Several case studies are outlined below.</p>
-<div id="section" class="section level3" number="14.6.1">
-<h3><span class="header-section-number">14.6.1</span> </h3>
-</div>
 <div id="numerical-mass-balance-and-flux-confirmation" class="section level3 unnumbered hasAnchor">
 <h3>Numerical mass balance and flux confirmation<a href="sediment-biogeochemistry.html#numerical-mass-balance-and-flux-confirmation" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div id="mass-check-methods" class="section level4 hasAnchor" number="14.6.1.1">
-<h4><span class="header-section-number">14.6.1.1</span> Mass check methods<a href="sediment-biogeochemistry.html#mass-check-methods" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>The sediment model was run with no variables except one solid (organic matter) and one solute (N2) ‘tracer’, the reaction rates of which were switched to zero. The tracers were applied as fluxes and concentrations at the sediment-water interface boundary. The simulation had</p>
+<div id="mass-check-approach" class="section level4 unnumbered hasAnchor">
+<h4>Mass check approach<a href="sediment-biogeochemistry.html#mass-check-approach" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>It is important to check that a simulation is conserving mass in the upper layers of the sediment because with the wrong settings, numerical errors can lead to the wrong calculation of sediment mass. One method for checking for errors involved a non-reactive solid and a non-reactive solute being introduced at the sediment-water interface (SWI) as ‘tracers’. As they enter at the SWI, the tracers’ fluxes and concentrations were converted to mass units, per 1 m<span class="math inline">\(^2\)</span>. The concentrations in the sediment were similarly summmed per 1 m<span class="math inline">\(^2\)</span>, across all depths.</p>
+</div>
+<div id="mass-check-methods" class="section level4 unnumbered hasAnchor">
+<h4>Mass check methods<a href="sediment-biogeochemistry.html#mass-check-methods" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+</div>
+<div id="general-settings" class="section level4 unnumbered hasAnchor">
+<h4>General settings<a href="sediment-biogeochemistry.html#general-settings" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>The sediment model was run with no variables except one solid (organic matter) and one solute (N2) ‘tracer’, the reaction rates of which were set to zero. The tracers were applied as fluxes and concentrations at the sediment-water interface boundary. The simulation had</p>
 <ul>
 <li>no influx for 0.5 years to check that the model had equilibrated, then</li>
 <li>the boundary flux or concentration was applied for 1 year, then</li>
 <li>the boundary was switched off and the simulation run for a further year.</li>
 </ul>
-<p>The mass of influxing matter was calculated. Key parameters were changed one by one and a range of simulations was run, in order to check for possible mass balance errors.
-Key parameters that were varied included</p>
+<p>The mass of influxing matter was calculated. Key parameters were changed one by one and a range of simulations was run, in order to check for possible mass balance errors.</p>
+<div id="settings-investigated-for-errors" class="section level5 unnumbered hasAnchor">
+<h5>Settings investigated for errors<a href="sediment-biogeochemistry.html#settings-investigated-for-errors" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<p>Key parameters that were varied included</p>
 <ul>
 <li>either a fixed grid or exponentially increasing layers</li>
 <li>grid spacing and time steps</li>
@@ -7589,27 +7593,163 @@ Key parameters that were varied included</p>
 <li>bioturbation depths and functions</li>
 </ul>
 </div>
-<div id="mass-check-results" class="section level4 hasAnchor" number="14.6.1.2">
-<h4><span class="header-section-number">14.6.1.2</span> Mass check results<a href="sediment-biogeochemistry.html#mass-check-results" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>Simulations were run with a non-reactive solute and solid to check that the total influxing mass was equal to the mass across all layers of the sediment. Parameters and settings were changed until the masses were the same and the model could be used with confidence. In Figure 14 and Figure 15, the bottom left panel in each figure shows the sediment mass as the shaded area, and the influxed mass as the red line. An equal grid spacing of 0.2 cm was used to minimise possible large concentration differences between layers. The model was run quickly with 5-daily time steps, which had no effect on model error. The most important setting was that the initial bioturbation profile was set to the exponential decay option rather than the two-layer option (imix = 2 rather than 1, see <a href="https://aquaticecodynamics.github.io/aed-science/sediment-biogeochemistry.html#model-description-8">chapter 14.3.2.6</a> for details) because it was found that the sharp cutoff of the two-layer option was prone to small numerical errors, when the concentration differences between layers were large. With the exponential decay setting, bioturbation decreased from its maximum value at the sediment water interface to 10 cm deep. These technical setting tests did not offer a major insight into the scientific understanding of nutrient dynamics in the sediment but they were useful steps for increasing confidence in the nutrient budgets and future coupled models.</p>
+<div id="swi-specific-settings" class="section level5 unnumbered hasAnchor">
+<h5>SWI specific settings<a href="sediment-biogeochemistry.html#swi-specific-settings" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<p>‘aed.nml’ settings:</p>
+<ul>
+<li>‘swibc_mode’ = 10 (integer switch). The boundary to the file listed in ‘swibc_file’.</li>
+<li>‘swibc_file’ = ‘swibc.dat’ (filename). The sediment-water interface boundary condition (SWIBC) file in the aed_sdg folder.</li>
+<li>‘swibc_filevars’ = ‘pomspecial’, ‘n2’ (variable names). The variables taken from the swibc file.</li>
+</ul>
+<p>‘aed_candi_params.csv’ settings:</p>
+<ul>
+<li>‘OMModel’ = 1 (integer switch). The simplest organic matter reaction model.</li>
+<li>‘pomspecial2dic’ = 0 (y<span class="math inline">\(^{-1}\)</span>). The ‘pomspecial’ that fluxes in is unreactive.</li>
+</ul>
+<p>The ‘pomspecial’ flux was 1.0E-08 (mmol m<span class="math inline">\(^{-2}\)</span> y<span class="math inline">\(^{-1}\)</span>) and the ‘n2’ concentration was 1.0E-08 (mmol m<span class="math inline">\(^{-3}\)</span>) for most of the simulation. The model converted the concentration from mmol m<span class="math inline">\(^{-3}\)</span> to mmol L<span class="math inline">\(^{-1}\)</span>.</p>
+<p>At time 183 days (or 0.5 years) the flux and concentration increased to 1.0E+02 (mmol m<span class="math inline">\(^{-2}\)</span> y<span class="math inline">\(^{-1}\)</span>) and 1.0E+05 (mmol m<span class="math inline">\(^{-3}\)</span>). At 548 days (or 1.5 years) the flux and concentration returned to the very low number.</p>
+</div>
+<div id="grid-settings" class="section level5 unnumbered hasAnchor">
+<h5>Grid settings<a href="sediment-biogeochemistry.html#grid-settings" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<p>‘aed_candi_params.csv’ settings:</p>
+<ul>
+<li>‘job’ = 0 (integer switch). An evenly-spaced grid.</li>
+<li>‘p0’ = 0.5 (fraction between 0 and 1). The porosity at the sediment-water interface.</li>
+<li>‘p00’ = 0.5 (fraction between 0 and 1). The porosity at depth. These porosities were set to be the same, which gave the most reliable results.</li>
+<li>‘imix’ = 2 (integer switch). The bioturbation set to have exponential decay rather than the sharper cutoffs with ‘imix’ = 1.</li>
+<li>‘maxnpts’ = 41 (layers). With ‘job’ = 0 this must a multiple of the depth (cm) + 1 layer (for the zeroth layer), for example, 81, 201 or 401.</li>
+<li>‘xl’ = 20 (cm). This depth was adequate for this simulation.</li>
+<li>‘xirrig’ = 3 (cm). The depth of irrigation.</li>
+<li>‘xs’ = 5. The shape of the decay curve for bioturbation.</li>
+</ul>
+</div>
+<div id="mass-calculation-method" class="section level5 unnumbered hasAnchor">
+<h5>Mass calculation method<a href="sediment-biogeochemistry.html#mass-calculation-method" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<p>This section outlines the method for calculating the mass. There are many steps in the path to convert all of the quantities, starting with input parameters, calculations in the model, outputs from the model, and post-processing in R. An error in the assumptions behind or calculation of any of these steps would give a false idea of whether mass was being maintained.</p>
+<div id="parameter-inputs" class="section level6 unnumbered hasAnchor">
+<h6>Parameter inputs<a href="sediment-biogeochemistry.html#parameter-inputs" class="anchor-section" aria-label="Anchor link to header"></a></h6>
+<p>Porosity is assigned in aed_candi_params.csv, using the parameters ‘p0’ and ‘p00’, setting porosity at the highest and lowest layers.</p>
+</div>
+<div id="internal-calculations" class="section level6 unnumbered hasAnchor">
+<h6>Internal calculations<a href="sediment-biogeochemistry.html#internal-calculations" class="anchor-section" aria-label="Anchor link to header"></a></h6>
+<p>‘aed_secandi’ calculates the variable ‘poros’ as an exponential decay from ‘p0’ to ‘p00’.</p>
+<p>‘poros’ is used to calculate ‘ps’ (1 - poros). ‘ps’ and ‘poros’ are used to calculate the ‘psp’ and ‘pps’ as ‘ps’/‘poros’ and ‘poros’/‘ps’. These are ratios of porosity that are used to convert solid and solute units elsewhere in candi. For example, as ‘Fe(OH)3A’ (solid) reduces to ‘Fe<span class="math inline">\(^{2+}\)</span>’ (solute) it is multiplied by ‘psp’ to convert the units from mmol L <span class="math inline">\(^{-1}\)</span> solids to mmol L <span class="math inline">\(^{-1}\)</span> (porewater).</p>
+<p>Two other variables are calculated within ‘aed_sedcandi’, using ‘dh’, which is the distance between sediment layers (cm). The porewater volume variable, ‘porevol’, is calculated as ‘dh’ / 100 <span class="math inline">\(\times\)</span> ‘poros’. The solid volume variable, ‘solvol’, is calculated as ‘dh’ / 100 <span class="math inline">\(\times\)</span> 1 - ‘poros’. These are then expressed as m<span class="math inline">\(^3\)</span> of porewater or solids per 1 m<span class="math inline">\(^2\)</span>.</p>
+</div>
+<div id="model-outputs" class="section level6 unnumbered hasAnchor">
+<h6>Model outputs<a href="sediment-biogeochemistry.html#model-outputs" class="anchor-section" aria-label="Anchor link to header"></a></h6>
+<p>The model produces solid variables in units of mmol / L <span class="math inline">\(^{-1}\)</span> (solids) and solute variables in units of mmol L <span class="math inline">\(^{-1}\)</span> (porewater). These are written as concentrations over time, across all depths.</p>
+<p>The model also produces a time series of SWI fluxes. These are in units of mmol m<span class="math inline">\(^{-2}\)</span> y^{-1}, where the area component is total area of space, rather than the area of solids or porewater.</p>
+<p>It also outputs ‘porevol’ and ‘solvol’, with entries per depth, but without time, since they do not change over time.</p>
+</div>
+<div id="r-post-processing" class="section level6 unnumbered hasAnchor">
+<h6>R post-processing<a href="sediment-biogeochemistry.html#r-post-processing" class="anchor-section" aria-label="Anchor link to header"></a></h6>
+<p>In processing the SWI fluxes file, the fluxes are converted via the following steps:</p>
+<ul>
+<li>raw output is in mmol m<span class="math inline">\(^-2\)</span> y<span class="math inline">\(^-1\)</span> / 1000</li>
+<li>mol m<span class="math inline">\(^-2\)</span> y<span class="math inline">\(^-1\)</span> <span class="math inline">\(\times\)</span> molecular mass</li>
+<li>cumulative [t] g m<span class="math inline">\(^-2\)</span> = cumulative[t-1] g m<span class="math inline">\(^-2\)</span> + g m<span class="math inline">\(^-2\)</span> y<span class="math inline">\(^-1\)</span> [t] <span class="math inline">\(\times\)</span> (time[t] - time[t-1])</li>
+</ul>
+<p>This gives a time series of influxed mass per 1 m<span class="math inline">\(^-2\)</span>.</p>
+<p>The mass in the sediment is converted via the following steps:</p>
+<ul>
+<li><p>raw output is in mmol L<span class="math inline">\(^-1\)</span></p></li>
+<li><p>if the variable is a solid, the concentration is multiplied by solvol and 1000.
+mmol L^-1 <span class="math inline">\(\times\)</span> m<span class="math inline">\(^3\)</span> of solids per 1 m <span class="math inline">\(^2\)</span>
+= mmol solids per 1 m<span class="math inline">\(^2\)</span></p>
+<ul>
+<li>if the variable is a solute, the concentration is multiplied by porevol and 1000.
+mmol L^-1 <span class="math inline">\(\times\)</span> m<span class="math inline">\(^3\)</span> of porewater per 1 m<span class="math inline">\(^2\)</span>
+= mmol porewater per 1 m<span class="math inline">\(^2\)</span></li>
+</ul></li>
+<li><p>mmol m<span class="math inline">\(^{-2}\)</span> / 1000 = mol m<span class="math inline">\(^{-2}\)</span></p></li>
+<li><p>mol m<span class="math inline">\(^{-2}\)</span> <span class="math inline">\(\times\)</span> molecular mass = g m<span class="math inline">\(^{-2}\)</span></p></li>
+<li><p>this matrix of mass m<span class="math inline">\(^{-2}\)</span> is then summed over all depths at each time. This gives a similar time series of mass per 1 m<span class="math inline">\(^{-2}\)</span>.</p></li>
+<li><p>for plotting, this is then carved into three sections, 0 cm to 1 cm, 1 cm to 2 cm, and 2 cm to the bottom. This does not affect the total mass.</p></li>
+</ul>
+</div>
+</div>
+</div>
+<div id="mass-check-results" class="section level4 unnumbered hasAnchor">
+<h4>Mass check results<a href="sediment-biogeochemistry.html#mass-check-results" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div id="mass-check-base-case" class="section level5 unnumbered hasAnchor">
+<h5>Mass check base case<a href="sediment-biogeochemistry.html#mass-check-base-case" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<p>Simulations were run with a non-reactive solute and solid to check that the total influxing mass was equal to the mass across all layers of the sediment. Parameters and settings were changed until the masses were the same and the model could be used with confidence. The bottom left panel in each figure shows the sediment mass as the shaded area, and the influxed mass as the red line. An equal grid spacing was used to minimise possible large concentration differences between layers. The model was run quickly with 5-daily time steps, which had no effect on model error. The most important setting was that the initial bioturbation profile was set to the exponential decay option rather than the two-layer option (imix = 2 rather than 1, see <a href="https://aquaticecodynamics.github.io/aed-science/sediment-biogeochemistry.html#model-description-8">chapter 14.3.2.6</a> for details) because it was found that the sharp cutoff of the two-layer option was prone to small numerical errors, when the concentration differences between layers were large. With the exponential decay setting, bioturbation decreased from its maximum value at the sediment water interface to 10 cm deep.</p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:dev-masscheck1"></span>
-<img src="images/23-sediment_biogeochemistry/MassCheck/6P_w0_a_n2_z1_res_500.png" alt="Results of a simulation for $N_2$ as a tracer. Reaction rates were turned to zero and so concentration and mass changes are the result of transport only. After 6 months of spin-up, both species were introduced at the sediment-water interface for one year. The bottom left figure showed that the total sediment mass and influxing mass were the same." width="75%" />
+<img src="images/23-sediment_biogeochemistry/MassCheck/6P_n2_.png" alt="Results of a simulation for $N_2$ as a tracer. Reaction rates were turned to zero and so concentration and mass changes are the result of transport only. After 6 months of spin-up, both species were introduced at the sediment-water interface for one year. The bottom left figure showed that the total sediment mass and influxing mass were the same." width="75%" />
 <p class="caption">
 Figure 14.50: Results of a simulation for <span class="math inline">\(N_2\)</span> as a tracer. Reaction rates were turned to zero and so concentration and mass changes are the result of transport only. After 6 months of spin-up, both species were introduced at the sediment-water interface for one year. The bottom left figure showed that the total sediment mass and influxing mass were the same.
 </p>
 </div>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:dev-masscheck2"></span>
-<img src="images/23-sediment_biogeochemistry/MassCheck/6P_w0_a_pomspecial_z1_res_500.png" alt="Results of a simulation for organic matter. Reaction rates were turned to zero and so concentration and mass changes are the result of transport only. After 6 months of spin-up, both species were introduced at the sediment-water interface for one year. The bottom left figure showed that the total sediment mass and influxing mass were the same." width="75%" />
+<img src="images/23-sediment_biogeochemistry/MassCheck/6P_pomspecial_.png" alt="Results of a simulation for organic matter. Reaction rates were turned to zero and so concentration and mass changes are the result of transport only. After 6 months of spin-up, both species were introduced at the sediment-water interface for one year. The bottom left figure showed that the total sediment mass and influxing mass were the same." width="75%" />
 <p class="caption">
 Figure 14.51: Results of a simulation for organic matter. Reaction rates were turned to zero and so concentration and mass changes are the result of transport only. After 6 months of spin-up, both species were introduced at the sediment-water interface for one year. The bottom left figure showed that the total sediment mass and influxing mass were the same.
 </p>
 </div>
 </div>
+<div id="deliberate-errors---high-porosity" class="section level5 unnumbered hasAnchor">
+<h5>Deliberate errors - high porosity<a href="sediment-biogeochemistry.html#deliberate-errors---high-porosity" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<p>Parameters ‘p0’ and ‘p00’ were set to 0.75. This resulted in a good solid balance but a higher sediment mass than influxed mass for solutes.</p>
+<p align="center">
+<img src = "images/23-sediment_biogeochemistry/MassCheck/Bioturbation_hp.png" width=33%>
+</p>
+<p align="center">
+<img src = "images/23-sediment_biogeochemistry/MassCheck/Porosity_hp.png" width=33%>
+</p>
+<p>With high porosity, the solid mass reconciled well but the solute mass was higher in the sediment than from the influx. The maximum mass of solute was around 350 g m<span class="math inline">\(^-2\)</span>.</p>
+<p align="center">
+<img src = "images/23-sediment_biogeochemistry/MassCheck/1P_Mass_n2_hp.png" width=67%>
+</p>
+<p align="center">
+<img src = "images/23-sediment_biogeochemistry/MassCheck/1P_Mass_pomspecial_hp.png" width=67%>
+</p>
 </div>
-<div id="case-study-model-benchmark-example" class="section level3 hasAnchor" number="14.6.2">
-<h3><span class="header-section-number">14.6.2</span> Case study: Model benchmark example<a href="sediment-biogeochemistry.html#case-study-model-benchmark-example" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div id="model-setup" class="section level4 hasAnchor" number="14.6.2.1">
-<h4><span class="header-section-number">14.6.2.1</span> Model setup<a href="sediment-biogeochemistry.html#model-setup" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div id="deliberate-errors---low-porosity" class="section level5 unnumbered hasAnchor">
+<h5>Deliberate errors - low porosity<a href="sediment-biogeochemistry.html#deliberate-errors---low-porosity" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<p>Parameters ‘p0’ and ‘p00’ were set to 0.75. This resulted in a good solid balance but a higher sediment mass than influxed mass for solutes.</p>
+<p align="center">
+<img src = "images/23-sediment_biogeochemistry/MassCheck/Bioturbation_lp.png" width=33%>
+</p>
+<p align="center">
+<img src = "images/23-sediment_biogeochemistry/MassCheck/Porosity_lp.png" width=33%>
+</p>
+<p>With low porosity, as with high porosity, the solid mass reconciled well but the solute mass was higher in the sediment than from the influx. The absolute mass of solid was the same with high or low porosity, however, the maximum mass of solute was approximately 100 g m<span class="math inline">\(^2\)</span>.</p>
+<p align="center">
+<img src = "images/23-sediment_biogeochemistry/MassCheck/1P_Mass_n2_lp.png" width=67%>
+</p>
+<p align="center">
+<img src = "images/23-sediment_biogeochemistry/MassCheck/1P_Mass_pomspecial_lp.png" width=67%>
+</p>
+</div>
+<div id="deliberate-errors---porosity-gradient" class="section level5 unnumbered hasAnchor">
+<h5>Deliberate errors - porosity gradient<a href="sediment-biogeochemistry.html#deliberate-errors---porosity-gradient" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<p>Parameters ‘p0’ was set to 0.9 and ‘p00’ to 0.5.</p>
+<p align="center">
+<img src = "images/23-sediment_biogeochemistry/MassCheck/Bioturbation_pg.png" width=33%>
+</p>
+<p align="center">
+<img src = "images/23-sediment_biogeochemistry/MassCheck/Porosity_pg.png" width=33%>
+</p>
+<p>This created the clearest error. Reported sediment mass was much lower than influxed mass.</p>
+<p align="center">
+<img src = "images/23-sediment_biogeochemistry/MassCheck/1P_Mass_n2_pg.png" width=67%>
+</p>
+<p align="center">
+<img src = "images/23-sediment_biogeochemistry/MassCheck/1P_Mass_pomspecial_pg.png" width=67%>
+</p>
+</div>
+<div id="bioturbation-settings" class="section level5 unnumbered hasAnchor">
+<h5>Bioturbation settings<a href="sediment-biogeochemistry.html#bioturbation-settings" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<p>In this setup, bioturbation does not cause a problem with mass. However, future simulations with different bioturbation settings should be checked for mass conservation. One of the primary risks is having a sharp cutoff for bioturation at two depths.</p>
+<p>The bioturbation intensity, ‘DB0’, might also affect the mass conservation.</p>
+</div>
+</div>
+</div>
+<div id="case-study-model-benchmark-example" class="section level3 hasAnchor" number="14.6.1">
+<h3><span class="header-section-number">14.6.1</span> Case study: Model benchmark example<a href="sediment-biogeochemistry.html#case-study-model-benchmark-example" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="model-setup" class="section level4 hasAnchor" number="14.6.1.1">
+<h4><span class="header-section-number">14.6.1.1</span> Model setup<a href="sediment-biogeochemistry.html#model-setup" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <div id="base-simulation" class="section level5 unnumbered hasAnchor">
 <h5><em>Base simulation</em><a href="sediment-biogeochemistry.html#base-simulation" class="anchor-section" aria-label="Anchor link to header"></a></h5>
 <p>The model CANDI-AED was tested against the published modelling results of Van Cappellen and Wang (1996) in order to confirm that the model worked as expected, and also to demonstrate the flexibility of the model system. For this simulation, all boundary fluxes, bottom water concentrations, and rate constants were set to the same values as those in Van Cappellen and Wang (1996). The organic matter redox approach was set to Approach 2, by setting <code>OMApproach</code> = 2. The organic matter oxidation model was parameterized with no organic matter influx and with an oxidation rate that changes with depth (<code>OMModel</code> = 1, <code>VCW</code> = <em>TRUE</em>). The surface oxidation rate and depth attenuation were the same as Van Cappellen and Wang (1996). The irrigation coefficient was also set to be the same as in Van Cappellen and Wang (1996), using <code>irrigswitch</code> = 2. The mineral precipitation reactions were implemented only for MnCO3, FeCO3 and FeS, as per the equations in Van Cappellen and Wang (1996), rather than the larger set of precipitation reactions (<code>rxn_mode</code> = 4). Additionally, the ageing reactions of iron and manganese minerals were disabled. Ammonium adsorption was included and was the same as in Van Cappellen and Wang (1996), however, iron and manganese adsorption has not yet been included. An equivalent evenly spaced grid was used (<code>job</code> = 1), with 400 layers (<code>mxnpts</code>) to a depth of 20 cm (<code>xl</code>).</p>
@@ -7801,8 +7941,8 @@ y<sup>-1</sup>
 </center>
 </div>
 </div>
-<div id="results" class="section level4 hasAnchor" number="14.6.2.2">
-<h4><span class="header-section-number">14.6.2.2</span> Results<a href="sediment-biogeochemistry.html#results" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div id="results" class="section level4 hasAnchor" number="14.6.1.2">
+<h4><span class="header-section-number">14.6.1.2</span> Results<a href="sediment-biogeochemistry.html#results" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <div id="concentrations" class="section level5 unnumbered hasAnchor">
 <h5><em>Concentrations</em><a href="sediment-biogeochemistry.html#concentrations" class="anchor-section" aria-label="Anchor link to header"></a></h5>
 <p>The <span class="math inline">\(O_2\)</span> concentration profile matched the Van Cappellen and Wang simulation very closely, apart from the concentration at the deepest point, which was slightly higher than the field data (Figure <a href="sediment-biogeochemistry.html#fig:VCW-1">14.52</a> (a)). The results for <span class="math inline">\(O_2\)</span> were very consistent about the median value. The slightly higher concentration of oxygen at the deepest point in this simulation may have carried through to inhibit denitrification, causing the concentration of <span class="math inline">\(NO_3^-\)</span> to be higher than in the Van Cappellen and Wang simulation (Figure <a href="sediment-biogeochemistry.html#fig:VCW-1">14.52</a> (a)). <span class="math inline">\(NO_3^-\)</span> was similarly consistent about the median. The <span class="math inline">\(NH_4^+\)</span> field data points were lower than the median of these simulations but within the range of these simulations (Figure <a href="sediment-biogeochemistry.html#fig:VCW-1">14.52</a> (c)). <span class="math inline">\(pH\)</span> was between 7 and 8, and both <span class="math inline">\(NH_4^+\)</span> and <span class="math inline">\(pH\)</span> had increasing ranges with depth (Figure <a href="sediment-biogeochemistry.html#fig:VCW-1">14.52</a> (d)).</p>
@@ -7827,10 +7967,10 @@ Figure 14.53: Profiles of organic matter oxidation rate with depth. Plot (a) was
 </div>
 </div>
 </div>
-<div id="case-study-aquaculture-and-sediment-recovery" class="section level3 hasAnchor" number="14.6.3">
-<h3><span class="header-section-number">14.6.3</span> Case study: Aquaculture and sediment recovery<a href="sediment-biogeochemistry.html#case-study-aquaculture-and-sediment-recovery" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div id="introduction-1" class="section level4 hasAnchor" number="14.6.3.1">
-<h4><span class="header-section-number">14.6.3.1</span> Introduction<a href="sediment-biogeochemistry.html#introduction-1" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div id="case-study-aquaculture-and-sediment-recovery" class="section level3 hasAnchor" number="14.6.2">
+<h3><span class="header-section-number">14.6.2</span> Case study: Aquaculture and sediment recovery<a href="sediment-biogeochemistry.html#case-study-aquaculture-and-sediment-recovery" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="introduction-1" class="section level4 hasAnchor" number="14.6.2.1">
+<h4><span class="header-section-number">14.6.2.1</span> Introduction<a href="sediment-biogeochemistry.html#introduction-1" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>This work was to calculate the potential effect of aquaculture on the sediment condition of fish cages propose for installation near Delma Island, UAE. The approach was similar to work done in 2015 on a proposed aquaculture site in the Abrolhos Islands, Western Australia (Paraska et al. 2015). The main objective of this part of the project was to calculate sediment chemical pore water concentrations and fluxes to the water column in response to variable deposition loads.</p>
 <p>The primary input to the sediment model was reactive organic matter derived from aquaculture waste. This was calculated by models that tracked the transport and deposition of waste particles as a result of the hydrodynamics at the study site and different fish stocking scenarios. The organic matter deposition was then used as input to the sediment diagenesis model. The resulting waste particle distributions and sediment chemistry were then used to calculate the spatial effect of the cage operations on the sediment environment, as well as the greater chemistry and ecology of the water column.</p>
 <p>The motivation behind the study was to ensure that potentially detrimental effects to the ecosystem were avoided. Fish cages may be positioned in one place for up to five years, after which the cage would be moved and the environment left to recover to its background condition (Figure <a href="sediment-biogeochemistry.html#fig:UAEFish-1">14.54</a>).</p>
@@ -7842,8 +7982,8 @@ Figure 14.54: Schematic of the design of the aquaculture simulation. The simulat
 </div>
 <p>Given enough energy in the water column, the concentrations of chemicals can return to background relatively quickly. However, the conditions in the sediment can take much longer to recover to background levels, because the transport of chemicals is much slower. In particular, there may be a high concentration of <span class="math inline">\(H_2S\)</span> and low concentration of <span class="math inline">\(O_2\)</span>, which together would make the environment uninhabitable for benthic fauna. Further, there may be an ongoing flux of nitrogen and phosphorus from the sediment to the water column, which could fuel algal blooms.</p>
 </div>
-<div id="methods" class="section level4 hasAnchor" number="14.6.3.2">
-<h4><span class="header-section-number">14.6.3.2</span> Methods<a href="sediment-biogeochemistry.html#methods" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div id="methods" class="section level4 hasAnchor" number="14.6.2.2">
+<h4><span class="header-section-number">14.6.2.2</span> Methods<a href="sediment-biogeochemistry.html#methods" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <div id="uae-study-site-chemical-concentrations-and-fluxes" class="section level5 unnumbered hasAnchor">
 <h5><em>UAE study site chemical concentrations and fluxes</em><a href="sediment-biogeochemistry.html#uae-study-site-chemical-concentrations-and-fluxes" class="anchor-section" aria-label="Anchor link to header"></a></h5>
 <p>Field data was measured at the study site in October 2017 and analysed in November 2017. CANDI-AED was tailored to as many local conditions as possible. Since the <span class="math inline">\(O_2\)</span> and <span class="math inline">\(NO_3^-\)</span> concentrations were high and the <span class="math inline">\(NH_4^+\)</span> concentration was zero, it was assumed that the water column was aerobic. Total nitrogen in the sediment was measured as approximately 300 mg kg<sup>-1</sup>, which was converted to approximately 30 mmol L<sup>-1</sup>. Inorganic phosphate and total phosphate in the bottom water were set to zero, since their concentrations were below the detection limit. Total phosphorus in the sediment was measured as approximately 500 mg kg<sup>-1</sup>, which was converted to approximately 20 mmol L<sup>-1</sup>.</p>
@@ -8132,8 +8272,8 @@ POM<sub>R</sub>
 </center>
 </div>
 </div>
-<div id="results-1" class="section level4 hasAnchor" number="14.6.3.3">
-<h4><span class="header-section-number">14.6.3.3</span> Results<a href="sediment-biogeochemistry.html#results-1" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div id="results-1" class="section level4 hasAnchor" number="14.6.2.3">
+<h4><span class="header-section-number">14.6.2.3</span> Results<a href="sediment-biogeochemistry.html#results-1" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <div id="fluxes" class="section level5 unnumbered hasAnchor">
 <h5><em>Fluxes</em><a href="sediment-biogeochemistry.html#fluxes" class="anchor-section" aria-label="Anchor link to header"></a></h5>
 <p>Results of the steady state oxygen and nutrient fluxes being returned from the diagenesis model for the range of depositional rates (FOM) are shown below (figure <a href="sediment-biogeochemistry.html#fig:UAEFish-2">14.55</a>, table <a href="sediment-biogeochemistry.html#tab:param-UAE4">14.27</a>.</p>
@@ -8656,8 +8796,8 @@ Zone of Influence
 </div>
 </div>
 </div>
-<div id="case-study-the-coorong-dynamics-model" class="section level3 hasAnchor" number="14.6.4">
-<h3><span class="header-section-number">14.6.4</span> Case study: The Coorong Dynamics Model<a href="sediment-biogeochemistry.html#case-study-the-coorong-dynamics-model" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="case-study-the-coorong-dynamics-model" class="section level3 hasAnchor" number="14.6.3">
+<h3><span class="header-section-number">14.6.3</span> Case study: The Coorong Dynamics Model<a href="sediment-biogeochemistry.html#case-study-the-coorong-dynamics-model" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>CANDI-AED was used as part of the assessment of the Coorong Lagoon in South Australia. It was used as part of <a href="https://aquaticecodynamics.github.io/cdm-science/index.html">a greater project</a>, in conjunction with a fully 3D resolved Tuflow-FV model of the lagoon, that had full biogeochemistry modules and habitat assessments. In particular, the nutrient budgets and the effects of the hypersalinity were calculated. The <a href="https://aquaticecodynamics.github.io/cdm-science/sediment-biogeochemistry.html">sediment modelling component of the project</a> in particular looked at the effect of hypersalinity on bioturbation and bioirrigation rates, and the resulting effects such as denitrification.</p>
 <!-- ```{r CoorongSVG-1, echo=FALSE, fig.cap="Test",fig.show='hold',fig.align='center', out.width = '90%'} -->
 <!-- knitr::include_graphics("images/23-sediment_biogeochemistry/VCW/t_D_C_6panel_oxy.svg") -->
@@ -8671,37 +8811,6 @@ Zone of Influence
 <!-- ```{r CoorongPNG-3, echo=FALSE, fig.cap="Test",fig.show='hold',fig.align='center', out.width = '100%'} -->
 <!-- knitr::include_graphics("images/23-sediment_biogeochemistry/UAEFish/ThreePlots_amm_11_reso_200.png") -->
 <!-- ``` -->
-</div>
-<div id="case-study-mass-balance-and-numerical-error-checking" class="section level3 hasAnchor" number="14.6.5">
-<h3><span class="header-section-number">14.6.5</span> Case study: Mass balance and numerical error checking<a href="sediment-biogeochemistry.html#case-study-mass-balance-and-numerical-error-checking" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div id="aim" class="section level4 hasAnchor" number="14.6.5.1">
-<h4><span class="header-section-number">14.6.5.1</span> Aim<a href="sediment-biogeochemistry.html#aim" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>As a reactive transport model, CANDI-AED has a complex set of reactions. It was possible that a numerical error was present in the model, but masked by the other processes. For example, a numerical error could possibly remove or create mass, but this could be masked by the other reaction and transport processes. Thus the overall aim of this section was to run a set of simple simulations in which a possible loss or gain of mass would be distinguished from reaction and transport.</p>
-</div>
-<div id="method" class="section level4 hasAnchor" number="14.6.5.2">
-<h4><span class="header-section-number">14.6.5.2</span> Method<a href="sediment-biogeochemistry.html#method" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<div id="solid-mass-integration-and-flux-accumulation-comparison" class="section level5 hasAnchor" number="14.6.5.2.1">
-<h5><span class="header-section-number">14.6.5.2.1</span> Solid mass integration and flux accumulation comparison<a href="sediment-biogeochemistry.html#solid-mass-integration-and-flux-accumulation-comparison" class="anchor-section" aria-label="Anchor link to header"></a></h5>
-</div>
-<div id="solute-mass-integration-and-flux-accumulation-comparison" class="section level5 hasAnchor" number="14.6.5.2.2">
-<h5><span class="header-section-number">14.6.5.2.2</span> Solute mass integration and flux accumulation comparison<a href="sediment-biogeochemistry.html#solute-mass-integration-and-flux-accumulation-comparison" class="anchor-section" aria-label="Anchor link to header"></a></h5>
-</div>
-<div id="simulation-matrix" class="section level5 hasAnchor" number="14.6.5.2.3">
-<h5><span class="header-section-number">14.6.5.2.3</span> Simulation matrix<a href="sediment-biogeochemistry.html#simulation-matrix" class="anchor-section" aria-label="Anchor link to header"></a></h5>
-</div>
-</div>
-<div id="results-2" class="section level4 hasAnchor" number="14.6.5.3">
-<h4><span class="header-section-number">14.6.5.3</span> Results<a href="sediment-biogeochemistry.html#results-2" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<div id="simulation-matrix-1" class="section level5 hasAnchor" number="14.6.5.3.1">
-<h5><span class="header-section-number">14.6.5.3.1</span> Simulation matrix<a href="sediment-biogeochemistry.html#simulation-matrix-1" class="anchor-section" aria-label="Anchor link to header"></a></h5>
-</div>
-<div id="general-result" class="section level5 hasAnchor" number="14.6.5.3.2">
-<h5><span class="header-section-number">14.6.5.3.2</span> General result<a href="sediment-biogeochemistry.html#general-result" class="anchor-section" aria-label="Anchor link to header"></a></h5>
-</div>
-</div>
-<div id="discussion" class="section level4 hasAnchor" number="14.6.5.4">
-<h4><span class="header-section-number">14.6.5.4</span> Discussion<a href="sediment-biogeochemistry.html#discussion" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-</div>
 </div>
 </div>
 <div id="references" class="section level2 hasAnchor" number="14.7">
