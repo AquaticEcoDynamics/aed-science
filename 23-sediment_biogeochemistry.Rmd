@@ -8,8 +8,6 @@ Daniel Paraska, Matthew R. Hipsey
 
 ## Overview
 
-Test AED
-
 This module is a sediment reactive transport model, based on a 1D approximation of the sediment solid and pore-water profiles. Each active sediment zone (or column) is discretized into a user defineable number of layers that start at thicknesses of around 1 mm at the sediment-water interface and increase exponentially down to a pre-defined sediment depth. The model resolves in each layer both physical processes (e.g. pore-water diffusion or bioturbation) and chemical processes (e.g. redox transformations).
 
 <center>
@@ -2659,15 +2657,45 @@ Before the first time step starts, CANDI-AED loads in an initial concentration p
 
 #### Initialisation of concentration profiles {.unnumbered}
 
-Concentration profiles are set using one of three options: constant, linear decrease or exponential decrease (`CO_I`, `LI_I`, `EX_I`) (figure \@ref(fig:Init-5b)).
+Concentration profiles are set using one of five options (figure \@ref(fig:Init-5b)): 
 
-The default for most initial concentrations is the constant option. The concentration for each variable is set in the input file `aed_sdg_vars.csv`, in the column `initial_vals` (\@ref(fig:Init-6b)). If the simulation has several zones, then the initial concentration for the zone is set in other columns in the csv, under the column headings `initial_01`, `initial_02` etc. If there is no initial column in the csv for a particular zone, then the zone defaults to the value in the `initial_vals` column.
+ - constant, `I_CON`
+ - exponential decrease, `I_EXP`
+ - linear, concentrated at the sediment-water interface, `I_SWI`
+ - linear, concentrated at depth, `I_DEP`
+ - a spike, `I_SPK`
 
-```{r Init-5b, echo=FALSE, fig.cap="Schematic of three possible options for initial profiles. Most concentrations default to the constant option, whereas organic matter is usually set to be linear or exponential.",fig.show='hold',fig.align='center' ,out.width = '100%'}
-knitr::include_graphics("images/23-sediment_biogeochemistry/Initialisation/InitialProfile-03.png")
+The user sets the initial concentration, a depth where it changes `InitMinDepth` and a proportion (0 to 1) of the initial concentration `_Min`. 
+
+The constant option as a constant concentration from the sediment-water interface to the deepest layer. This is the default for most variables if no other parameters are set. 
+
+The exponential option as the initial concentration at the sediment-water interface and an exponential decay to the bottom of the sediment. This is the default for most labile organic matter species.  
+
+The first linear option has the initial concentration at the sediment-water interface and a linear decrease in concentration to the `InitMinDepth`, where the concentration is the `_Min` parameter multiplied by the initial concentration. This is the default for most refractory organic matter species, as wel as $FeOH_A$ andd $MnO_{2A}$. 
+
+The other linear option has the initial concentration at the `InitMinDepth`, and the a linear increase in concentration to the sediment-water interface, where the concentration is the `_Min` parameter multiplied by the initial concentration. This is the default for $NH_4^+$ and $Fe^{2+}$. 
+
+The spike option has a peak of concentration at the depth `InitMinDepth`, a linear increase from the sediment-water interface to that depth, and a linear decrease from that depth to 2 $\times$ the `InitMinDepth`, below which the concentration is zero. The concentration peak is the initial concentration, and the concentration at the sediment-water interface and the deep sediment is the `_Min` parameter multiplied by the initial concentration. This option is like a combination of `I_SWI` and `I_DEP`. Three examples of the spike initial profile are shown below, depending on the depth of `InitMinDepth` (\@ref(fig:Init-5c)). 
+
+The concentration for each variable is set in the input file `aed_sdg_vars.csv`, in the column `initial_vals` (\@ref(fig:Init-6b)). If the simulation has several zones, then the initial concentration for the zone is set in other columns in the csv, under the column headings `initial_01`, `initial_02` etc. If there is no initial column in the csv for a particular zone, then the zone defaults to the value in the `initial_vals` column. The parameters for the depth and proportion are set in `aed.nml`. 
+
+
+
+```{r Init-5b, echo=FALSE, fig.cap="Schematic of four of the options for initial profiles.",fig.show='hold',fig.align='center' ,out.width = '75%'}
+knitr::include_graphics("images/23-sediment_biogeochemistry/Initialisation/InitialProfile-09.png")
 ```
 
 \
+
+
+```{r Init-5c, echo=FALSE, fig.cap="Schematic of three possible ways the spike initial profile can appear, depending on the depth parameter `InitMinDepth`.",fig.show='hold',fig.align='center' ,out.width = '100%'}
+knitr::include_graphics("images/23-sediment_biogeochemistry/Initialisation/InitialProfile-08.png")
+```
+
+\
+
+
+
 
 ```{r Init-6b, echo=FALSE, fig.cap="Simplified image of the `aed_sdg_vars.csv` input file. For initialisation, the `variables` need to be set, along with default `initial_vals` or zones-specific `initial_01`, `initial_02` etc. columns.",fig.show='hold',fig.align='center' ,out.width = '100%'}
 knitr::include_graphics("images/23-sediment_biogeochemistry/aed_sdg_vars/aed_sdg_vars-04.png")
