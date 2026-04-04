@@ -1,14 +1,638 @@
 # Submerged Macrophytes
 
 ## Contributors
+
+Peisheng Huang, Matthew R. Hipsey, and Brendan Busch
+
 ## Overview
+
+Submerged macrophytes (seagrasses and freshwater aquatic plants) play a central role in the health, productivity, and resilience of shallow aquatic ecosystems. Seagrass meadows in particular form some of the most extensive and ecologically valuable benthic habitats in coastal and estuarine waters. Their growth and survival depend strongly on the availability of light at the seabed, which is directly influenced by water quality conditions --- suspended sediments, coloured dissolved organic matter, phytoplankton biomass, and epiphytic algal overgrowth all modify the inherent optical properties of the water column, reducing light penetration and constraining photosynthesis.
+
+The AED macrophyte module (`aed_macrophyte`) simulates submerged macrophyte biomass dynamics through growth, respiration, mortality, and above--below ground translocation processes. The model supports multiple macrophyte groups, each with independent parameterisations, and can optionally resolve fruiting and seed release dynamics, epiphyte growth on the plant canopy, canopy structure and its feedback to hydrodynamics.
+
+The model has been constructed based on an integration of published research [@hipsey2016; @baird2016], and is applicable across a range of environments from shallow coastal embayments to freshwater lakes and wetlands.
+
+
 ## Model Description
-###	Process Descriptions
-###	Variable Summary
-###	Parameter Summary
-###	Optional Module Links
-###	Feedbacks to the Host Model
+
+The module resolves the total macrophyte biomass of each simulated group as three components: above-ground leaf biomass $MAC_{A}$, below-ground biomass $MAC_{B}$, and biomass contained in fruits (or seeds) $MAC_{F}$. Their dynamics are generally described as:
+
+\begin{eqnarray}
+\frac{d}{dt}MAC_{A} &=& \overbrace{f_{npp}^{MAC_{A}} - f_{mor}^{MAC_{A}} \pm f_{tran}^{MAC} - f_{growth}^{MAC_{F}}}^{\text{aed\_macrophyte}}
+(\#eq:mac1) \\
+\frac{d}{dt}MAC_{B} &=& \overbrace{- f_{mor}^{MAC_{B}} \mp f_{tran}^{MAC}}^{\text{aed\_macrophyte}}
+(\#eq:mac2) \\
+\frac{d}{dt}MAC_{F} &=& \overbrace{f_{growth}^{MAC_{F}} - f_{release}^{MAC_{F}}}^{\text{aed\_macrophyte}}
+(\#eq:mac3)
+\end{eqnarray}
+
+where $f_{npp}^{MAC_{A}}$ is the net growth rate of above-ground biomass (balanced by gross primary production and respiration), $f_{mor}^{MAC_{A}}$ and $f_{mor}^{MAC_{B}}$ are the mortality loss rates of $MAC_{A}$ and $MAC_{B}$ respectively, $f_{tran}^{MAC}$ is the rate of translocation of biomass between $MAC_{A}$ and $MAC_{B}$, $f_{growth}^{MAC_{F}}$ is the fruit growth rate, and $f_{release}^{MAC_{F}}$ is the fruit release rate. All rates are in units of $mmol\:C\:m^{-2}\:d^{-1}$, with a stoichiometric balance assumed based on @atkinson1983:
+
+$$550CO_{2} + 30NO_{3}^{-} + PO_{4}^{3-} + 792H_{2}O \xrightarrow{5500\:\text{photons}} (CH_{2}O)_{550}(NH_{3})_{30}H_{3}PO_{4} + 716O_{2} + 391H^{+}$$
+
+
+### Process Descriptions
+
+#### Growth and production of above-ground biomass {-}
+
+The net growth of above-ground biomass can be modelled using two approaches, depending on the light input configuration: a total photosynthetically active radiation (PAR) model, or a spectrally-resolved light model.
+
+**Option 1: Total PAR model** (`light_model` = 1)
+
+The net growth of $MAC_{A}$ is the balance of gross production and respiration:
+
+$$f_{npp}^{MAC_{A}} = f_{gpp}^{MAC_{A}} - f_{res}^{MAC_{A}}$$
+
+The gross production rate for each macrophyte group is computed as the maximum potential growth rate at $20°C$ multiplied by non-dimensional limitation functions for temperature, salinity, light, sediment nutrients, and (optionally) sediment sulfide:
+
+\begin{equation}
+f_{gpp}^{MAC_{A}} = [MAC_{A}] \times R_{growth}^{MAC_{A}} \times \Phi_{tem}^{MAC_{A}}(T) \times \Phi_{sal}^{MAC_{A}}(S) \times \min\left\{\Phi_{PAR}^{MAC_{A}}(I) \cdot \frac{k_{A}}{k_{A}+A_{eff}},\: \Phi_{N_{sed}}^{MAC_{A}}(N_{sed}),\: \Phi_{S_{sed}}^{MAC_{A}}(S_{sed})\right\}
+(\#eq:mac4)
+\end{equation}
+
+where $R_{growth}^{MAC_{A}}$ is the maximum growth rate at $20°C$ ($d^{-1}$), $\Phi_{tem}^{MAC_{A}}(T)$ is the temperature limitation function, $\Phi_{sal}^{MAC_{A}}(S)$ is the salinity limitation function, $\Phi_{PAR}^{MAC_{A}}(I)$ is the light limitation computed from a user-selected photosynthesis--irradiance (P-I) curve formulation, and $A_{eff}$ is the effective projected area fraction of the plant canopy ($m^2\:m^{-2}$). The term $\frac{k_{A}}{k_{A}+A_{eff}}$ represents the self-shading effect: as above-ground biomass increases, the light capture efficiency decreases.
+
+The nutrient limitation function follows a Michaelis--Menten form based on pore water nutrient availability:
+
+\begin{equation}
+\Phi_{N_{sed}}^{MAC_{A}}(N_{sed}) = \frac{\overline{N_{S}}}{K_{N}^{SG}+\overline{N_{S}}}
+(\#eq:mac5)
+\end{equation}
+
+where $\overline{N_{S}}$ is the dissolved inorganic nutrient concentration in the sediment pore waters and $K_{N}^{SG}$ is the half-saturation concentration for nutrient uptake.
+
+An optional sulfide limitation captures the toxic effect of sediment sulfide on seagrass productivity:
+
+\begin{equation}
+\Phi_{S_{sed}}^{MAC_{A}}(S_{sed}) = \frac{K_{S}^{SG}}{K_{S}^{SG}+\overline{S_{S}}} \times \frac{f_{npp}^{MAC_{A}}}{K_{NPP}+f_{npp}^{MAC_{A}}}
+(\#eq:mac6)
+\end{equation}
+
+where $\overline{S_{S}}$ is the sulfide concentration in the sediment, $K_{S}^{SG}$ is the half-saturation concentration for sulfide toxicity, and $K_{NPP}$ is the half-saturation productivity above which sulfide toxicity is inhibited.
+
+
+**Option 2: Spectrally-resolved light model** (`light_model` = 2)
+
+In this option, net growth is computed based on spectral light reaching the canopy, combined with the same temperature, salinity, nutrient and sulfide limitation functions:
+
+\begin{equation}
+f_{npp}^{MAC_{A}} = [MAC_{A}] \times \Phi_{tem}^{MAC_{A}}(T) \times \Phi_{sal}^{MAC_{A}}(S) \times \min\left\{\Phi_{light}^{MAC_{A}}(I),\: R_{growth}^{MAC_{A}} \Phi_{N_{sed}}^{MAC_{A}}(N_{sed}),\: R_{growth}^{MAC_{A}} \Phi_{S_{sed}}^{MAC_{A}}(S_{sed})\right\}
+(\#eq:mac7)
+\end{equation}
+
+The spectrally-resolved light limitation term combines gross photon capture and respiratory losses:
+
+\begin{equation}
+\Phi_{light}^{MAC_{A}}(I) = \frac{550}{5500} \times 1000 \times \frac{\max(0,\: f_{cap,I}^{MAC_{A}} - f_{resp,I}^{MAC_{A}})}{MAC_{A}}
+(\#eq:mac8)
+\end{equation}
+
+where $f_{cap,I}^{MAC_{A}}$ is the rate of photon capture and $f_{resp,I}^{MAC_{A}}$ is the respiratory photon loss rate. The factor $\frac{550}{5500} \times 1000$ converts $mol\:photon\:m^{-2}\:s^{-1}$ to $mmol\:C\:m^{-2}\:s^{-1}$ based on the stoichiometry of Eq. (4).
+
+The light below successive canopy layers is given by:
+
+\begin{equation}
+E_{d,below,\lambda} = E_{d,above,\lambda} \exp\left(-A_{L,\lambda}\:\Omega_{MAC}\:MAC_{A}\:\sin\beta_{blade}\right)
+(\#eq:mac9)
+\end{equation}
+
+where $E_{d,above,\lambda}$ is the downwelling irradiance above the canopy, $A_{L,\lambda}$ is the spectrally-resolved leaf absorbance, $\Omega_{MAC}$ is the carbon-specific leaf area ($m^{2}\:mmol\:C^{-1}$), and $\sin\beta_{blade}$ is the sine of the nadir angle of the leaf. The rate of photon capture is:
+
+\begin{equation}
+f_{cap,I}^{MAC_{A}} = \frac{(10^{9}hc)^{-1}}{A_{V}} \int E_{d,\lambda}\left(1-\exp\left(-A_{L,\lambda}\:\Omega_{MAC}\:MAC_{A}\:\sin\beta_{blade}\right)\right)\lambda\:d\lambda
+(\#eq:mac10)
+\end{equation}
+
+where $h$ is Planck's constant, $c$ is the speed of light, and $A_{V}$ is Avogadro's number. The respiratory photon loss rate accounts for the compensation irradiance $E_{comp}$ (the light dose at which photosynthesis balances respiration):
+
+\begin{equation}
+f_{resp,I}^{MAC_{A}} = 2\left(E_{comp}\:A_{L}\:\Omega_{MAC}\:\sin\beta_{blade} - \frac{5500}{550}\times\frac{1}{1000}\times\zeta_{MAC_{A}}\right)MAC_{A}
+(\#eq:mac11)
+\end{equation}
+
+where $\zeta_{MAC_{A}}$ is the above-ground mortality rate. The factor of two accounts for mortality occurring over 24 hours but being included in the respiration calculations only during daylight hours.
+
+
+#### Respiration and mortality of above-ground biomass {-}
+
+For the PAR-based model (Option 1), metabolic loss is resolved using a combined respiration and mortality rate coefficient $R_{resp}^{MAC_{A}}$ at $20°C$, modified for temperature and salinity:
+
+\begin{equation}
+\mathcal{R}_{resp}^{MAC_{A}}[T,S] = R_{resp}^{MAC_{A}} \: \Phi_{sal}^{MAC_{A}}[S] \: (\vartheta_{resp}^{MAC_{A}})^{T-20}
+(\#eq:mac12)
+\end{equation}
+
+This total loss rate is partitioned into a respiratory fraction and a mortality fraction:
+
+\begin{eqnarray}
+f_{res}^{MAC_{A}} &=& k_{fres}^{MAC_{A}} \: \mathcal{R}_{resp}^{MAC_{A}} \: [MAC_{A}]  (\#eq:mac13)\\
+f_{mor}^{MAC_{A}} &=& (1-k_{fres}^{MAC_{A}}) \: \mathcal{R}_{resp}^{MAC_{A}} \: [MAC_{A}] (\#eq:mac14)
+\end{eqnarray}
+
+Mortality losses are further divided into excretion to the dissolved organic pool and the particulate organic pool:
+
+\begin{eqnarray}
+f_{exc}^{MAC_{A}} &=& f_{mor}^{MAC_{A}} \: k_{dom}^{MAC_{A}} (\#eq:mac15) \\
+f_{pom}^{MAC_{A}} &=& f_{mor}^{MAC_{A}} \: (1-k_{dom}^{MAC_{A}}) (\#eq:mac16)
+\end{eqnarray}
+
+For the spectral model (Option 2), mortality is modelled as a linear loss rate:
+
+\begin{eqnarray}
+f_{mor}^{MAC_{A}} &=& \zeta_{MAC_{A}} \: [MAC_{A}]  (\#eq:mac17)\\
+f_{exc}^{MAC_{A}} &=& k_{dom}^{MAC_{A}} \: \zeta_{MAC_{A}} \: [MAC_{A}]  (\#eq:mac18)\\
+f_{pom}^{MAC_{A}} &=& (1-k_{dom}^{MAC_{A}}) \: \zeta_{MAC_{A}} \: [MAC_{A}]  (\#eq:mac19)
+\end{eqnarray}
+
+
+#### Translocation between above- and below-ground biomass {-}
+
+Translocation, the movement of carbon and nutrients between above- and below-ground biomass, is modelled as a rate $f_{tran}^{MAC}$ with a time constant $\tau_{tran}$ at which the ratio of above- and below-ground biomasses approaches a steady state specified by a target fraction of below-ground biomass, $f_{below}$:
+
+\begin{equation}
+f_{tran}^{MAC} = \left(f_{below} - \frac{MAC_{B}}{MAC_{B}+MAC_{A}}\right) (MAC_{A}+MAC_{B}) \: \tau_{tran}
+(\#eq:mac20)
+\end{equation}
+
+This formulation allows translocation in both directions: positive values move mass from above to below ground, and negative values from below to above ground.
+
+
+#### Mortality of below-ground biomass {-}
+
+Below-ground mortality follows the same structure as above-ground:
+
+\begin{eqnarray}
+f_{mor}^{MAC_{B}} &=& \zeta_{MAC_{B}} \: [MAC_{B}]  (\#eq:mac21)\\
+f_{exc}^{MAC_{B}} &=& k_{dom}^{MAC_{B}} \: \zeta_{MAC_{B}} \: [MAC_{B}]  (\#eq:mac22)\\
+f_{pom}^{MAC_{B}} &=& (1-k_{dom}^{MAC_{B}}) \: \zeta_{MAC_{B}} \: [MAC_{B}]  (\#eq:mac23)
+\end{eqnarray}
+
+where $\zeta_{MAC_{B}}$ is the mortality rate for below-ground biomass.
+
+
+#### Fruiting and seed release {-}
+
+When `simFruiting` is enabled, the growth of seagrass fruits is modelled as a one-way process of carbon movement from leaves to fruits. The fruit growth rate is:
+
+\begin{equation}
+f_{growth}^{MAC_{F}} = \left(f_{seed} - \frac{MAC_{F}}{MAC_{F}+MAC_{A}}\right)(MAC_{A}+MAC_{F}) \times \tau_{tran}^{MAC_{F}} \times k_{growth}^{MAC_{F}}
+(\#eq:mac24)
+\end{equation}
+
+where $f_{seed}$ is the target seed fraction, $\tau_{tran}^{MAC_{F}}$ is the fruit translocation rate, and $k_{growth}^{MAC_{F}}$ is a phenological growth mediation function (range 0--1):
+
+\begin{equation}
+k_{growth}^{MAC_{F}} = \left[1+\exp\left(-\left(\frac{12}{t_{dur,g}} \times t + 6 \times \frac{t_{start,g}+t_{max,g}}{t_{start,g}-t_{max,g}}\right)\right)\right]^{-1}
+(\#eq:mac25)
+\end{equation}
+
+where $t_{start,g}$ is the day of year when fruit growth is initiated, $t_{dur,g}$ is the duration parameter, and $t_{max,g} = t_{start,g} + t_{dur,g}$.
+
+Fruit release (detachment) to the water column is modelled as:
+
+\begin{equation}
+f_{release}^{MAC_{F}} = MAC_{F} \times r_{release}^{MAC_{F}} \times k_{release}^{MAC_{F}}
+(\#eq:mac26)
+\end{equation}
+
+with an analogous phenological function $k_{release}^{MAC_{F}}$ controlled by $t_{start,r}$ and $t_{dur,r}$. Once release begins, fruit growth ceases for the remainder of the year.
+
+
+#### Biomass and canopy structure {-}
+
+As biomass increases, the individuals begin to cover a significant fraction of the bottom. The effective projected area fraction is:
+
+\begin{equation}
+A_{eff} = 1-\exp(-\Omega_{MAC}\:MAC_{A})
+(\#eq:mac27)
+\end{equation}
+
+where $\Omega_{MAC}$ is the carbon-specific leaf area coefficient ($m^2\:mmol\:C^{-1}$). This provides the conversion between biomass and the fraction of the bottom covered.
+
+The biomass--shoot density relation is approximated as:
+
+\begin{equation}
+\log_{10}(DW) = a \times \log_{10}(n_{v}) + b
+(\#eq:mac28)
+\end{equation}
+
+where $DW$ is the above-ground dry weight biomass ($g\:m^{-2}$), $n_{v}$ is shoot density ($shoots\:m^{-2}$), and $a$, $b$ are species-specific coefficients.
+
+Shoot height ($l_{v}$, $m$) is related to biomass as:
+
+\begin{equation}
+l_{v} = 0.45 \times \frac{DW}{DW+120}
+(\#eq:mac29)
+\end{equation}
+
+When `simMacFeedback` is enabled, the canopy properties feed back to the hydrodynamic model through drag. Flexible blade deflection is computed using the effective blade length approach of @luhar2011:
+
+\begin{equation}
+\frac{l_{ve}}{l_{v}} = 1 - \frac{(1-0.9\:Ca^{-1/3})}{1+Ca^{-3/2}(8+B^{3/2})}
+(\#eq:mac30)
+\end{equation}
+
+where $Ca$ is the Cauchy number (ratio of hydrodynamic drag to restoring force due to stiffness) and $B$ is the buoyancy parameter:
+
+\begin{eqnarray}
+Ca &=& \frac{1}{2}\frac{\rho\:C_{d}\:b_{v}\:U^{2}\:l_{v}^{3}}{EI}  (\#eq:mac31)\\
+B &=& \frac{(\rho-\rho_{v})\:g\:b_{v}\:t_{v}\:l_{v}^{3}}{EI}  (\#eq:mac32)
+\end{eqnarray}
+
+with $E$ the elastic modulus, $I$ the second moment of area, $t_{v}$ the blade thickness, and $\rho_{v}$ the vegetation tissue density.
+
+#### Epiphyte growth {-}
+
+When `simEpiphytes` is enabled, the model resolves epiphytic algae growing on the macrophyte leaf surface. Epiphyte growth is modelled as a function of light, temperature, and nutrients, with the epiphyte biomass shading the underlying macrophyte leaves and thus providing a feedback on macrophyte productivity. The epiphyte biomass is limited by a maximum carrying capacity (`epi_max`).
+
+
+### Optional Module Links
+
+Other processes linked to macrophyte dynamics include:
+
+- Oxygen production/consumption from macrophyte photosynthesis/respiration is linked to the oxygen module --- [aed_oxygen][Dissolved Oxygen];
+- Carbon uptake during photosynthesis and release during respiration/mortality is linked to the carbon module --- [aed_carbon][Inorganic Carbon];
+- Nutrient uptake ($NO_3$, $NH_4$) from the water column (fractional) and pore water is linked to the nitrogen module --- [aed_nitrogen][Inorganic Nitrogen];
+- Phosphorus uptake from the water column (fractional) and pore water is linked to the phosphorus module --- [aed_phosphorus][Inorganic Phosphorus];
+- Organic matter contributions from mortality and excretion are linked to --- [aed_organic_matter][Organic Matter];
+- Dynamic sediment pore water nutrient and sulfide concentrations can be sourced from --- `aed_seddiagenesis`;
+- Spatially variable sediment conditions can be set via --- `aed_sedflux`.
+
+
+### Feedbacks to the Host Model
+
+When `simMacFeedback` is enabled, the macrophyte module feeds back canopy drag properties to the host hydrodynamic model, modifying the flow field based on the density and structure of the plant canopy. When `simMacDrag` is additionally enabled, the drag coefficient is dynamically adjusted based on the flexible blade deflection model.
+
+
+### Variable Summary
+
+<!-- The default variables created by this module, and the optionally required linked variables needed for full functionality of this module are summarised in Table \@ref(tab:24-statetable). The diagnostic outputs able to be output are summarised in Table \@ref(tab:24-diagtable). -->
+
+#### State variables {-}
+
+For each configured macrophyte group (denoted by subscript $a$), the module creates the following state variables:
+
+```{r 24-statetable, echo=FALSE, message=FALSE, warning=FALSE}
+library(knitr)
+library(kableExtra)
+
+state_vars <- data.frame(
+  `Variable Name` = c(
+    "`MAC_mac_a`", "`MAC_mac_a_bg`", "`MAC_mac_a_f`"
+  ),
+  Symbol = c(
+    "$$MAC_{A_a}$$", "$$MAC_{B_a}$$", "$$MAC_{F_a}$$"
+  ),
+  Description = c(
+    "Above-ground (leaf) biomass of macrophyte group *a*",
+    "Below-ground (root/rhizome) biomass of macrophyte group *a*",
+    "Fruit/seed biomass of macrophyte group *a*"
+  ),
+  Unit = c(
+    "$$\\small{mmol\\:C\\:m^{-2}}$$",
+    "$$\\small{mmol\\:C\\:m^{-2}}$$",
+    "$$\\small{mmol\\:C\\:m^{-2}}$$"
+  ),
+  `Default` = c("28000", "400", "10"),
+  Comments = c(
+    "Benthic; initialised per zone from `m_initial` or benthic map",
+    "Benthic; initialised from `m_initial_bg`",
+    "Benthic; requires `simFruiting = .true.`; initialised from `m_initial_f`"
+  ),
+  check.names = FALSE
+)
+
+kbl(state_vars, caption = "Submerged macrophytes --- state variables (per group)", align = "l") %>%
+  row_spec(0, background = "#14759e", bold = TRUE, color = "white") %>%
+  kable_styling(full_width = F, font_size = 11) %>%
+  column_spec(1, width_min = "10em") %>%
+  column_spec(3, width_max = "18em") %>%
+  column_spec(6, width_min = "14em") %>%
+  scroll_box(width = "770px", height = "200px",
+             fixed_thead = FALSE)
+```
+
+<br>
+
+Additionally, when `simEpiphytes` is enabled, an epiphyte state variable is created for each group:
+
+| Variable Name | Description | Unit |
+|:---|:---|:---|
+| `MAC_epi_a` | Epiphyte biomass on macrophyte group *a* | $mmol\:C\:m^{-2}$ |
+
+
+#### Diagnostics {-}
+
+```{r 24-diagtable, echo=FALSE, message=FALSE, warning=FALSE}
+library(knitr)
+library(kableExtra)
+
+diag_vars <- data.frame(
+  `Variable Name` = c(
+    "`MAC_gpp_a`",
+    "`MAC_npp_a`",
+    "`MAC_res_a`",
+    "`MAC_mor_a`",
+    "`MAC_lim_tem_a`",
+    "`MAC_lim_sal_a`",
+    "`MAC_lim_nut_a`",
+    "`MAC_lim_lig_a`",
+    "`MAC_tran_a`",
+    "`MAC_height_a`",
+    "`MAC_density_a`",
+    "`MAC_area_a`"
+  ),
+  Description = c(
+    "Gross primary production rate",
+    "Net primary production rate",
+    "Respiration rate",
+    "Mortality rate",
+    "Temperature limitation (0--1)",
+    "Salinity limitation (0--1)",
+    "Nutrient limitation (0--1)",
+    "Light limitation (0--1)",
+    "Translocation rate (above to below ground)",
+    "Canopy height",
+    "Shoot density",
+    "Effective projected area fraction"
+  ),
+  Unit = c(
+    "$mmol\\:C\\:m^{-2}\\:d^{-1}$",
+    "$mmol\\:C\\:m^{-2}\\:d^{-1}$",
+    "$mmol\\:C\\:m^{-2}\\:d^{-1}$",
+    "$mmol\\:C\\:m^{-2}\\:d^{-1}$",
+    "-", "-", "-", "-",
+    "$mmol\\:C\\:m^{-2}\\:d^{-1}$",
+    "$m$",
+    "$shoots\\:m^{-2}$",
+    "$m^{2}\\:m^{-2}$"
+  ),
+  Comments = c(
+    "Per group; available when `diag_level` $\\geq$ 1",
+    "Per group; available when `diag_level` $\\geq$ 1",
+    "Per group; available when `diag_level` $\\geq$ 1",
+    "Per group; available when `diag_level` $\\geq$ 1",
+    "Per group; available when `diag_level` $\\geq$ 2",
+    "Per group; available when `diag_level` $\\geq$ 2",
+    "Per group; available when `diag_level` $\\geq$ 2",
+    "Per group; available when `diag_level` $\\geq$ 2",
+    "Per group; available when `diag_level` $\\geq$ 2",
+    "Per group; available when `diag_level` $\\geq$ 2",
+    "Per group; available when `diag_level` $\\geq$ 2",
+    "Per group; available when `diag_level` $\\geq$ 2"
+  ),
+  check.names = FALSE
+)
+
+kbl(diag_vars, caption = "Submerged macrophytes --- *diagnostic* variables (per group)", align = "l") %>%
+  row_spec(0, background = "#14759e", bold = TRUE, color = "white") %>%
+  kable_styling(full_width = F, font_size = 11) %>%
+  column_spec(1, width_min = "10em") %>%
+  column_spec(2, width_max = "18em") %>%
+  column_spec(4, width_min = "14em") %>%
+  scroll_box(width = "770px", height = "400px",
+             fixed_thead = FALSE)
+```
+
+<br>
+
+### Parameter Summary
+
+The parameters for the macrophyte module are specified in two locations: the `&aed_macrophyte` namelist block in `aed.nml` (module-level settings), and a CSV parameter database file (species-level parameters). The module-level parameters are listed in Table \@ref(tab:24-parstable-nml) and the species-level parameters in Table \@ref(tab:24-parstable-csv).
+
+
+```{r 24-parstable-nml, echo=FALSE, message=FALSE, warning=FALSE}
+library(knitr)
+library(kableExtra)
+
+nml_pars <- data.frame(
+  `Parameter` = c(
+    "`num_mphy`", "`the_mphy`", "`n_zones`", "`active_zones`",
+    "`dbase`", "`mac_initial`",
+    "`simEpiphytes`", "`simStaticBiomass`", "`simMacFeedback`",
+    "`simFruiting`", "`simMacDrag`",
+    "`water_nutrient_frac`", "`water_excr_frac`", "`diag_level`"
+  ),
+  Description = c(
+    "Number of macrophyte groups",
+    "ID list of macrophyte groups (from CSV database)",
+    "Number of active benthic zones",
+    "List of zone IDs where macrophytes are active",
+    "Path to macrophyte parameter CSV database",
+    "Initialisation method (1 = from CSV, 4 = from benthic map file)",
+    "Enable epiphyte sub-model",
+    "If true, biomass is held constant (diagnostic mode)",
+    "Enable canopy feedback to hydrodynamics",
+    "Enable fruiting and seed release dynamics",
+    "Enable dynamic drag computation",
+    "Fraction of N & P uptake sourced from the water column",
+    "Fraction of N & P excretion returned to the water column",
+    "Diagnostic output level (0 = none, 1 = basic, 2 = full)"
+  ),
+  Unit = c(
+    "-", "-", "-", "-",
+    "-", "-",
+    "-", "-", "-", "-", "-",
+    "-", "-", "-"
+  ),
+  Default = c(
+    "1", "1", "1", " ",
+    " ", "1",
+    ".false.", ".false.", ".false.", ".false.", ".false.",
+    "0.5", "0.5", "0"
+  ),
+  check.names = FALSE
+)
+
+kbl(nml_pars, caption = "Submerged macrophytes --- module-level parameters (`&aed_macrophyte` namelist)", align = "l") %>%
+  row_spec(0, background = "#14759e", bold = TRUE, color = "white") %>%
+  kable_styling(full_width = F, font_size = 11) %>%
+  column_spec(1, width_min = "10em") %>%
+  column_spec(2, width_max = "22em") %>%
+  scroll_box(width = "770px", height = "450px",
+             fixed_thead = FALSE)
+```
+
+<br>
+
+```{r 24-parstable-csv, echo=FALSE, message=FALSE, warning=FALSE}
+library(knitr)
+library(kableExtra)
+
+csv_pars <- data.frame(
+  `Parameter` = c(
+    "`m_name`", "`growth_form`", "`zone_lock`",
+    "`m_initial`", "`m_initial_bg`", "`m_initial_f`", "`m_initial_minb`", "`m_initial_mind`", "`m0`",
+    "`R_growth`", "`theta_growth`", "`T_std`", "`T_opt`", "`T_max`", "`temp_method`",
+    "`light_model`", "`I_K`", "`I_S`", "`f_pr`",
+    "`k_omega`", "`sine_blade`", "`E_comp`",
+    "`R_resp`", "`theta_resp`", "`R_mort`",
+    "`sal_method`", "`S_bep`", "`S_maxsp`", "`S_opt`",
+    "`K_N`", "`K_P`", "`X_ncon`", "`X_pcon`",
+    "`K_S`", "`K_NPP`",
+    "`f_bg`", "`tau_tran`", "`R_resp_bg`", "`R_mort_bg`",
+    "`fruit_model`", "`tau_tran_fruit`", "`r_release`", "`f_seed`",
+    "`t_start_g`", "`t_dur_g`", "`t_start_r`", "`t_dur_r`",
+    "`kA`", "`K_epi`",
+    "`X_cdw`", "`X_cchl`", "`X_ldw`", "`K_ldw`", "`X_sdw`",
+    "`KeMAC`",
+    "`drag_model`", "`K_CD`", "`shoot_diameter`", "`shoot_length`", "`tissue_density`", "`elastic_modulus`",
+    "`shading_model`"
+  ),
+  Description = c(
+    "Name identifier for the macrophyte group", "Growth form type", "Benthic zone to which this group is locked",
+    "Initial above-ground biomass", "Initial below-ground biomass", "Initial fruit biomass", "Minimum biomass for initialisation", "Minimum depth for biomass initialisation", "Minimum viable biomass",
+    "Maximum growth rate at 20°C", "Temperature multiplier for growth (Arrhenius)", "Standard temperature", "Optimum temperature for growth", "Maximum temperature for growth", "Temperature response method",
+    "Light model (1 = PAR, 2 = spectral)", "Half-saturation light intensity (PAR model)", "Light saturation intensity (PAR model)", "Photorespiratory loss fraction",
+    "Carbon-specific leaf area coefficient ($\\Omega_{MAC}$)", "Sine of nadir blade angle", "Compensation irradiance (minimum light requirement)",
+    "Respiration rate at 20°C (above-ground)", "Temperature multiplier for respiration", "Mortality rate (above-ground)",
+    "Salinity response method", "Lower salinity tolerance breakpoint", "Maximum salinity tolerance", "Optimum salinity",
+    "Half-saturation for nitrogen uptake", "Half-saturation for phosphorus uptake", "N:C ratio of macrophyte tissue", "P:C ratio of macrophyte tissue",
+    "Half-saturation for sulfide toxicity", "Half-saturation NPP for sulfide interaction",
+    "Target fraction of below-ground biomass", "Translocation rate constant", "Respiration rate (below-ground)", "Mortality rate (below-ground)",
+    "Fruiting model (0 = off, 1 = on)", "Fruit translocation rate", "Maximum fruit release rate", "Target seed fraction of biomass",
+    "Day of year fruit growth starts", "Duration parameter for fruit growth", "Day of year fruit release starts", "Duration parameter for fruit release",
+    "Self-shading parameter", "Epiphyte effect on light attenuation",
+    "Carbon to dry weight ratio", "Carbon to chlorophyll ratio", "Leaf dry weight fraction", "Half-saturation for leaf DW", "Shoot density per unit DW",
+    "Light extinction coefficient for macrophyte canopy",
+    "Drag model type", "Drag coefficient", "Shoot diameter", "Shoot length", "Tissue density", "Elastic modulus",
+    "Shading model type"
+  ),
+  Unit = c(
+    "-", "-", "-",
+    "$mmol\\:C\\:m^{-2}$", "$mmol\\:C\\:m^{-2}$", "$mmol\\:C\\:m^{-2}$", "$mmol\\:C\\:m^{-2}$", "$m$", "$mmol\\:C\\:m^{-2}$",
+    "$d^{-1}$", "-", "$°C$", "$°C$", "$°C$", "-",
+    "-", "$\\mu mol\\:m^{-2}\\:s^{-1}$", "$\\mu mol\\:m^{-2}\\:s^{-1}$", "-",
+    "$m^{2}\\:mmol\\:C^{-1}$", "-", "$mol\\:photon\\:m^{-2}\\:d^{-1}$",
+    "$d^{-1}$", "-", "$d^{-1}$",
+    "-", "$psu$", "$psu$", "$psu$",
+    "$mmol\\:m^{-3}$", "$mmol\\:m^{-3}$", "$mmol\\:N/mmol\\:C$", "$mmol\\:P/mmol\\:C$",
+    "$mmol\\:m^{-3}$", "$mmol\\:C\\:m^{-2}\\:d^{-1}$",
+    "-", "$d^{-1}$", "$d^{-1}$", "$d^{-1}$",
+    "-", "$d^{-1}$", "$d^{-1}$", "-",
+    "$day$", "$day$", "$day$", "$day$",
+    "-", "-",
+    "$g\\:DW/mmol\\:C$", "$mg\\:Chl/mmol\\:C$", "-", "$g\\:DW\\:m^{-2}$", "$shoots\\:m^{-2}\\:(g\\:DW\\:m^{-2})^{-1}$",
+    "$m^{-1}$",
+    "-", "-", "$m$", "$m$", "$g\\:DW\\:m^{-3}$", "$N\\:m^{-2}$",
+    "-"
+  ),
+  `Example (P. sinuosa)` = c(
+    "p-sinuosa", "1", "93",
+    "28000", "400", "10", "400", "13.8", "0.2",
+    "0.4", "1.04", "20", "28", "38", "1",
+    "2", "80", "80", "0",
+    "0.003", "0.5", "5",
+    "0.06", "1.04", "0.01",
+    "1", "5", "40", "30",
+    "0.5", "0.5", "0.161", "0.01",
+    "0.5", "1",
+    "0.5", "0.06", "0.004", "0.004",
+    "1", "0.1", "0.1", "0.1",
+    "210", "5", "270", "5",
+    "1", "0.1",
+    "50", "100", "0.5", "0.5", "3.39",
+    "0.001",
+    "1", "0.000001", "0.01", "0.1", "200", "1",
+    "1"
+  ),
+  check.names = FALSE
+)
+
+kbl(csv_pars, caption = "Submerged macrophytes --- species-level parameters (CSV database)", align = "l") %>%
+  row_spec(0, background = "#14759e", bold = TRUE, color = "white") %>%
+  kable_styling(full_width = F, font_size = 11) %>%
+  column_spec(1, width_min = "9em") %>%
+  column_spec(2, width_max = "18em") %>%
+  column_spec(4, width_min = "10em") %>%
+  scroll_box(width = "770px", height = "600px",
+             fixed_thead = FALSE)
+```
+
+<br>
+
 ## Setup & Configuration
+
+An example `aed.nml` parameter specification block for the `aed_macrophyte` module is shown below, configured for a six-group seagrass application:
+
+```{fortran, eval = FALSE}
+&aed_macrophyte
+ !# Macrophyte community
+   num_mphy         = 6
+   the_mphy         = 1,2,3,4,5,6
+   n_zones          = 6
+   active_zones     = 60,90,91,92,93,96
+   dbase            = 'path/to/aed_macrophyte_pars.csv'
+   mac_initial      = 1
+ !# Epiphytes
+   simEpiphytes     = .true.
+   epi_model        = 1
+   R_epig           = 0.2
+   R_epib           = 0.
+   I_Kepi           = 100.
+   epi_max          = 1000.
+   epi_Xnc          = 0.1
+   epi_Xpc          = 0.01
+   epi_K_N          = 10.
+   epi_K_P          = 1.0
+   theta_epi_growth = 1.08
+   theta_epi_resp   = 1.06
+   epi_initial      = 0.15
+ !# Advanced options
+   simStaticBiomass = .false.
+   simMacFeedback   = .true.
+   simFruiting      = .true.
+   simMacDrag       = .false.
+   diag_level       = 2
+   water_nutrient_frac = 0.18
+   water_excr_frac  = 0.24
+/
+```
+
+The species-level parameters for each macrophyte group are specified in a CSV database file referenced by `dbase`. Each column corresponds to one macrophyte group and each row to a parameter. The `zone_lock` parameter assigns each group to a specific benthic zone from the model's zone map, ensuring that each species grows only in its mapped habitat area. The `mac_initial` setting controls how biomass is initialised: set to 1 for values from the CSV file, or 4 to read initial biomass from a spatially varying benthic map file.
+
+
 ## Case Studies & Examples
-###	Case Study
-###	Publications
+
+### Case Study: Cockburn Sound Seagrass Dynamics
+
+Cockburn Sound is a shallow coastal embayment in Western Australia where seagrass meadows (predominantly *Posidonia sinuosa*) form one of the most ecologically significant benthic habitats. The `aed_macrophyte` module has been applied within the Cockburn Sound--Integrated Ecosystem Model (CSIEM) to simulate the dynamics of multiple seagrass species and their interactions with water quality and light conditions.
+
+The model was configured with six macrophyte groups (*Halophila* spp., *Amphibolis* spp., *P. australis*, *P. coriacea*, *P. sinuosa*, and sparse *Halophila*), each locked to spatially mapped habitat zones derived from benthic habitat surveys. The spectrally-resolved light model (Option 2) was used to capture the detailed interaction between water clarity and seagrass photosynthesis.
+
+For *P. sinuosa* in Cockburn Sound, the biomass--shoot density relationship was established from field data collected in 1993, 2003 and 2015 as:
+
+$$\log_{10}(DW) = 0.885 \times \log_{10}(n_{v})$$
+
+yielding $n_{v} \approx 3.39 \: DW$, consistent with the empirical estimate from @krause2000 of $n_{v} \approx 4.45 \: DW$.
+
+Biomass was initialised using a depth-dependent relationship fitted to transect data:
+
+$${MAC}_{A}[z] = {MAC}_{\min} + \frac{\exp(a[z])}{1+\exp(a[z])} \times ({MAC}_{\max}-{MAC}_{\min})$$
+
+with ${MAC}_{\min} = 10$, ${MAC}_{\max} = 650$, and $a[z] = 0.95 \times (z - 7.5)$.
+
+Key ecophysiological parameters for *P. sinuosa* were derived from local experimental data, including a thermal optimum of 26°C and compensation irradiance ($E_{comp}$) of approximately 2--5 $mol\:photon\:m^{-2}\:d^{-1}$, consistent with findings from shading experiments conducted as part of the Westport Marine Science Program.
+
+The model captures the seasonal cycle of above- and below-ground biomass partitioning, the timing of fruiting and seed release, and the gradient of biomass with depth --- with higher biomass in shallower, well-lit areas declining toward the depth limit of seagrass distribution.
+
+<!-- ```{r cockburn-map, fig.cap="Map of Cockburn Sound, Western Australia.", echo=FALSE, message=FALSE, warning=FALSE, width = 501, height = 385} -->
+<!-- library(leaflet) -->
+<!-- leaflet(height=385, width=500) %>% -->
+<!--   setView(lng = 115.75, lat = -32.18, zoom = 11) %>% -->
+<!--   addTiles() %>% -->
+<!--   addProviderTiles(providers$Stadia.StamenTerrain)  %>% -->
+<!--   addMarkers(lng = 115.75, lat = -32.18, popup = "Cockburn Sound") -->
+<!-- ``` -->
+
+
+### Publications
+
+<!-- ```{r echo=FALSE, message=FALSE, warning=FALSE} -->
+<!-- library(gt) -->
+<!-- library(tidyverse) -->
+<!-- ``` -->
+
+<!-- ## Case Studies & Examples -->
+<!-- ###	Case Study -->
+<!-- ###	Publications -->

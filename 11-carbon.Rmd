@@ -931,7 +931,7 @@ aed_sites <- read.csv("maps/aed-sites-carbon.csv")
 leaflet(height=385, width=500) %>%
   setView(lng = 153.1417, lat = -27.017, zoom = 08) %>%
   addTiles() %>%
-  addProviderTiles(providers$Stamen.Terrain)  %>%
+  addProviderTiles(providers$Stadia.StamenTerrain)  %>%
   addMarkers(data = aed_sites, ~Lon, ~Lat, popup = ~Site, icon = aed_icon)
 ```
 
@@ -976,7 +976,7 @@ library(leaflet)
 leaflet(height=385, width=500) %>%
   setView(lng = 35.583333, lat = 32.833333, zoom = 10) %>%
   addTiles() %>%
-  addProviderTiles(providers$Stamen.Terrain)  %>%
+  addProviderTiles(providers$Stadia.StamenTerrain)  %>%
   addMarkers(lng = 35.583333, lat = 32.833333, popup = "Lake Kinneret")
 ```
 

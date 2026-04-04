@@ -633,7 +633,7 @@ library(leaflet)
 leaflet(height=385, width=500) %>%
   setView(lng = 146.07, lat = -17.505, zoom = 11) %>%
   addTiles() %>%
-  addProviderTiles(providers$Stamen.Terrain)  %>%
+  addProviderTiles(providers$Stadia.StamenTerrain)  %>%
   addMarkers(lng = 146.06, lat = -17.51, popup = "Johnstone River Estuary")
 ```
 

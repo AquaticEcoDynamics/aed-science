@@ -667,7 +667,7 @@ Falling Creek Reservoir (FCR) is a water supply reservoir in Virginia.
 <!-- leaflet(height=385, width=500) %>% -->
 <!--   setView(lng = 115.835235, lat = -31.991618, zoom = 11) %>% -->
 <!--   addTiles() %>% -->
-<!--   addProviderTiles(providers$Stamen.Terrain)  %>% -->
+<!--   addProviderTiles(providers$Stadia.StamenTerrain)  %>% -->
 <!--   addMarkers(lng = 115.835235, lat = -31.991618, popup = "Swan River") -->
 <!-- ``` -->
 <!-- </center> -->
